@@ -291,17 +291,17 @@
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
             MessageBox.Show(ProcessName & " isn't open!")
-            Exit Function
+            Return 0
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
         If hProcess = IntPtr.Zero Then
             MessageBox.Show("Failed to open " & ProcessName & "!")
-            Exit Function
+            Return 0
         End If
 
         Dim vBuffer As Integer
 
-        For x = &H42000000 To &H62D00000 Step &H1000
+        For x = &H36000000 To &H62D00000 Step &H1000
             'Label1.Text = "Currently processing address: " & x
 
             ReadProcessMemory1(hProcess, x, vBuffer, nsize, 0)
@@ -309,6 +309,8 @@
                 Return x
             End If
         Next
+
+        Return 0
     End Function
 
 End Module
