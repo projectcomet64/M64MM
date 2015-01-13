@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
@@ -26,7 +26,7 @@ Partial Class Form1
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.b_Freeze = New System.Windows.Forms.Button()
         Me.b_Unfreeze = New System.Windows.Forms.Button()
-        Me.ChangeCameraType = New System.Windows.Forms.Button()
+        Me.b_ChangeCameraType = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
@@ -52,14 +52,14 @@ Partial Class Form1
         Me.b_Unfreeze.Text = "Unfreeze Camera"
         Me.b_Unfreeze.UseVisualStyleBackColor = True
         '
-        'ChangeCameraType
+        'b_ChangeCameraType
         '
-        Me.ChangeCameraType.Location = New System.Drawing.Point(318, 29)
-        Me.ChangeCameraType.Name = "ChangeCameraType"
-        Me.ChangeCameraType.Size = New System.Drawing.Size(145, 23)
-        Me.ChangeCameraType.TabIndex = 2
-        Me.ChangeCameraType.Text = "Change Camera Type"
-        Me.ChangeCameraType.UseVisualStyleBackColor = True
+        Me.b_ChangeCameraType.Location = New System.Drawing.Point(318, 29)
+        Me.b_ChangeCameraType.Name = "b_ChangeCameraType"
+        Me.b_ChangeCameraType.Size = New System.Drawing.Size(145, 23)
+        Me.b_ChangeCameraType.TabIndex = 2
+        Me.b_ChangeCameraType.Text = "Change Camera Type"
+        Me.b_ChangeCameraType.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -76,7 +76,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(475, 64)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ChangeCameraType)
+        Me.Controls.Add(Me.b_ChangeCameraType)
         Me.Controls.Add(Me.b_Unfreeze)
         Me.Controls.Add(Me.b_Freeze)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -91,7 +91,7 @@ Partial Class Form1
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents b_Freeze As System.Windows.Forms.Button
     Friend WithEvents b_Unfreeze As System.Windows.Forms.Button
-    Friend WithEvents ChangeCameraType As System.Windows.Forms.Button
+    Friend WithEvents b_ChangeCameraType As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
 
 End Class
