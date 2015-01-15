@@ -4,6 +4,7 @@ Public Class MainForm
     Private Declare Function UnregisterHotKey Lib "user32" (ByVal hwnd As IntPtr, ByVal id As Integer) As Integer
 
     Private ChangeCamera As Boolean = False
+    Private CameraUnfrozen As Boolean = False
     Private Base As Long
     Private Key3WasUp As Boolean = True
     Private ctrlkey As Boolean
@@ -85,6 +86,9 @@ Public Class MainForm
 
     Private Sub Unfreeze()
         ChangeCamera = False
+        CameraUnfrozen = True
+        BackgroundWorker1.WorkerReportsProgress = True
+        BackgroundWorker1.ReportProgress(0)
         WriteInteger("Project64", Base + &H33C848, 0)
     End Sub
 
@@ -154,6 +158,11 @@ Public Class MainForm
     End Sub
 
     Private Sub BackgroundWorker1_ProgressChanged(Sender As Object, e As EventArgs) Handles BackgroundWorker1.ProgressChanged
+        If CameraUnfrozen = True Then
+            b_ChangeCameraType.Text = "Change Camera Type"
+            CameraUnfrozen = False
+            Exit Sub
+        End If
         ChangeCameraType()
     End Sub
 End Class
