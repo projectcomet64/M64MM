@@ -1,4 +1,4 @@
-Public Class Form1
+Public Class MainForm
     Private Declare Function GetKeyPress Lib "user32" Alias "GetAsyncKeyState" (ByVal key As Integer) As Integer
     Private Declare Function RegisterHotKey Lib "user32" (ByVal hwnd As IntPtr, ByVal id As Integer, ByVal fsModifiers As Integer, ByVal vk As Integer) As Integer
     Private Declare Function UnregisterHotKey Lib "user32" (ByVal hwnd As IntPtr, ByVal id As Integer) As Integer
@@ -24,7 +24,7 @@ Public Class Form1
         Timer1.Enabled = True
         Timer1.Interval = 1
         BackgroundWorker1.WorkerSupportsCancellation = True
-        MessageBox.Show("Mario 64 Movie Maker 2.0 by James ""CaptainSwag101"" Pelster." & vbCrLf & "Click OK to begin searching for a base address. This may take some time.")
+        MessageBox.Show("Mario 64 Movie Maker 2.0 by James ""CaptainSwag101"" Pelster." & vbCrLf & "Click OK to begin searching for a base address. This will take a few seconds.")
         GetBase()
         BackgroundWorker1.RunWorkerAsync()
     End Sub
@@ -49,8 +49,32 @@ Public Class Form1
             Label1.Text = "The base address is: " & Hex(Base)
             'AddressToModify = (Base + &H33C848)
         Else
-            MessageBox.Show("Base address not found!")
-            Label1.Text = "Base address not found!"
+            ' We need to go deeper...
+            If MessageBox.Show("Base address not found!" & vbCrLf & "Would you like to run a more thourough scan?" & vbCrLf & "This process may take several minutes, but is much more likely to find the base address.", "Error", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                Base = GetBaseAddress("Project64", &H100)
+                If Base > 0 Then
+                    MessageBox.Show("The base address is: " & Hex(Base))
+                    Label1.Text = "The base address is: " & Hex(Base)
+                    'AddressToModify = (Base + &H33C848)
+                Else
+                    ' We need to go even deeper...
+                    If MessageBox.Show("Base address still not found!" & vbCrLf & "Would you like to run a byte-by-byte memory scan?" & vbCrLf & "This process will take a VERY long time, but is guaranteed to find the base address if it exists.", "Error", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                        Base = GetBaseAddress("Project64", 4)
+                        If Base > 0 Then
+                            MessageBox.Show("The base address is: " & Hex(Base))
+                            Label1.Text = "The base address is: " & Hex(Base)
+                            'AddressToModify = (Base + &H33C848)
+                        Else
+                            MessageBox.Show("Sorry, the base address could not be found. Make sure you're running Project64 with a U.S. ROM of Super Mario 64." & vbCrLf & "If you are using a modded ROM, please email me the name of the hack so that I can integrate it into this program." & vbCrLf & "Email me at CaptainSwag101@gmail.com.")
+                            Label1.Text = "Base address not found!"
+                        End If
+                    Else
+                        Label1.Text = "Base address not found!"
+                    End If
+                End If
+            Else
+                Label1.Text = "Base address not found!"
+            End If
         End If
     End Sub
 
@@ -88,6 +112,8 @@ Public Class Form1
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         ' Check if a valid base address was found. If not, stop the BackgroundWorker
         If Base <= 0 Then
+            BackgroundWorker1.WorkerSupportsCancellation = True
+            BackgroundWorker1.CancelAsync()
             Exit Sub
         End If
 

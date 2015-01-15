@@ -16,6 +16,6 @@ C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\obj\Debug\M64MM2.pdb
 C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\bin\Debug\M64MM2.exe
 C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\bin\Debug\M64MM2.pdb
 C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\bin\Debug\M64MM2.xml
-C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\obj\Debug\M64MM2.Form1.resources
 C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\obj\Debug\M64MM2.Resources.resources
 C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\obj\Debug\M64MM2.vbproj.GenerateResource.Cache
+C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\obj\Debug\M64MM2.MainForm.resources

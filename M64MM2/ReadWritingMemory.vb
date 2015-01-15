@@ -282,7 +282,7 @@
         Return vBuffer
     End Function
 
-    Public Function GetBaseAddress(ByVal ProcessName As String, Optional ByVal nsize As Integer = 4) As Integer
+    Public Function GetBaseAddress(ByVal ProcessName As String, Optional scanStep As Integer = &H1000, Optional ByVal nsize As Integer = 4) As Integer
         'Dim hAddress As Integer = &H32900000
         'Dim vBuffer(805306368) As Byte
         If ProcessName.EndsWith(".exe") Then
@@ -300,8 +300,15 @@
         End If
 
         Dim vBuffer As Integer
+        Dim startPoint As Integer = &H30000000
 
-        For x = &H36000000 To &H62D00000 Step &H1000
+        If scanStep < &H1000 Then
+            startPoint = &H20000000
+        ElseIf scanStep < &H100 Then
+            startPoint = 0
+        End If
+
+        For x = startPoint To &H72D00000 Step scanStep
             'Label1.Text = "Currently processing address: " & x
 
             ReadProcessMemory1(hProcess, x, vBuffer, nsize, 0)
