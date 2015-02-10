@@ -33,6 +33,11 @@ Partial Class MainForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutM64MovieMaker20ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BackgroundWorker1
@@ -41,7 +46,7 @@ Partial Class MainForm
         '
         'b_Freeze
         '
-        Me.b_Freeze.Location = New System.Drawing.Point(12, 29)
+        Me.b_Freeze.Location = New System.Drawing.Point(12, 40)
         Me.b_Freeze.Name = "b_Freeze"
         Me.b_Freeze.Size = New System.Drawing.Size(147, 23)
         Me.b_Freeze.TabIndex = 0
@@ -50,7 +55,7 @@ Partial Class MainForm
         '
         'b_Unfreeze
         '
-        Me.b_Unfreeze.Location = New System.Drawing.Point(165, 29)
+        Me.b_Unfreeze.Location = New System.Drawing.Point(165, 40)
         Me.b_Unfreeze.Name = "b_Unfreeze"
         Me.b_Unfreeze.Size = New System.Drawing.Size(147, 23)
         Me.b_Unfreeze.TabIndex = 1
@@ -59,7 +64,7 @@ Partial Class MainForm
         '
         'b_ChangeCameraType
         '
-        Me.b_ChangeCameraType.Location = New System.Drawing.Point(318, 29)
+        Me.b_ChangeCameraType.Location = New System.Drawing.Point(318, 40)
         Me.b_ChangeCameraType.Name = "b_ChangeCameraType"
         Me.b_ChangeCameraType.Size = New System.Drawing.Size(145, 23)
         Me.b_ChangeCameraType.TabIndex = 2
@@ -69,7 +74,7 @@ Partial Class MainForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Location = New System.Drawing.Point(12, 24)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(69, 13)
         Me.Label1.TabIndex = 3
@@ -78,7 +83,7 @@ Partial Class MainForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(60, 58)
+        Me.Label2.Location = New System.Drawing.Point(60, 66)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(40, 13)
         Me.Label2.TabIndex = 4
@@ -87,7 +92,7 @@ Partial Class MainForm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(219, 58)
+        Me.Label3.Location = New System.Drawing.Point(219, 66)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(40, 13)
         Me.Label3.TabIndex = 5
@@ -96,17 +101,47 @@ Partial Class MainForm
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(371, 58)
+        Me.Label4.Location = New System.Drawing.Point(371, 66)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(40, 13)
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "Ctrl + 3"
         '
-        'Form1
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(475, 24)
+        Me.MenuStrip1.TabIndex = 7
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutM64MovieMaker20ToolStripMenuItem, Me.HelpToolStripMenuItem1})
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
+        Me.AboutToolStripMenuItem.Text = "About"
+        '
+        'AboutM64MovieMaker20ToolStripMenuItem
+        '
+        Me.AboutM64MovieMaker20ToolStripMenuItem.Name = "AboutM64MovieMaker20ToolStripMenuItem"
+        Me.AboutM64MovieMaker20ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
+        Me.AboutM64MovieMaker20ToolStripMenuItem.Size = New System.Drawing.Size(297, 22)
+        Me.AboutM64MovieMaker20ToolStripMenuItem.Text = "About Mario 64 Movie Maker 2.0..."
+        '
+        'HelpToolStripMenuItem1
+        '
+        Me.HelpToolStripMenuItem1.Enabled = False
+        Me.HelpToolStripMenuItem1.Name = "HelpToolStripMenuItem1"
+        Me.HelpToolStripMenuItem1.Size = New System.Drawing.Size(297, 22)
+        Me.HelpToolStripMenuItem1.Text = "Help..."
+        '
+        'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(475, 80)
+        Me.ClientSize = New System.Drawing.Size(475, 84)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -114,11 +149,16 @@ Partial Class MainForm
         Me.Controls.Add(Me.b_ChangeCameraType)
         Me.Controls.Add(Me.b_Unfreeze)
         Me.Controls.Add(Me.b_Freeze)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "Form1"
+        Me.Name = "MainForm"
         Me.Text = "Mario 64 Movie Maker 2.0"
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -132,5 +172,9 @@ Partial Class MainForm
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AboutM64MovieMaker20ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HelpToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

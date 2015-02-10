@@ -102,11 +102,13 @@
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
             MessageBox.Show(ProcessName & " isn't open!")
+            MainForm.IsError = True
             Exit Sub
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
         If hProcess = IntPtr.Zero Then
             MessageBox.Show("Failed to open " & ProcessName & "!")
+            MainForm.IsError = True
             Exit Sub
         End If
 
@@ -124,11 +126,13 @@
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
             MessageBox.Show(ProcessName & " isn't open!")
+            MainForm.IsError = True
             Exit Sub
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
         If hProcess = IntPtr.Zero Then
             MessageBox.Show("Failed to open " & ProcessName & "!")
+            MainForm.IsError = True
             Exit Sub
         End If
 
@@ -155,11 +159,13 @@
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
             MessageBox.Show(ProcessName & " isn't open!")
+            MainForm.IsError = True
             Exit Sub
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
         If hProcess = IntPtr.Zero Then
             MessageBox.Show("Failed to open " & ProcessName & "!")
+            MainForm.IsError = True
             Exit Sub
         End If
 
@@ -175,12 +181,14 @@
         End If
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
-            MessageBox.Show(ProcessName & " isn't open!")
+            MessageBox.Show(ProcessName & " isn't open!") '
+            MainForm.IsError = True
             Exit Sub
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
         If hProcess = IntPtr.Zero Then
             MessageBox.Show("Failed to open " & ProcessName & "!")
+            MainForm.IsError = True
             Exit Sub
         End If
 
@@ -199,11 +207,13 @@
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
             MessageBox.Show(ProcessName & " isn't open!")
+            MainForm.IsError = True
             Exit Sub
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
         If hProcess = IntPtr.Zero Then
             MessageBox.Show("Failed to open " & ProcessName & "!")
+            MainForm.IsError = True
             Exit Sub
         End If
 
@@ -222,11 +232,13 @@
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
             MessageBox.Show(ProcessName & " isn't open!")
+            MainForm.IsError = True
             Exit Function
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
         If hProcess = IntPtr.Zero Then
             MessageBox.Show("Failed to open " & ProcessName & "!")
+            MainForm.IsError = True
             Exit Function
         End If
 
@@ -243,11 +255,13 @@
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
             MessageBox.Show(ProcessName & " isn't open!")
+            MainForm.IsError = True
             Exit Function
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
         If hProcess = IntPtr.Zero Then
             MessageBox.Show("Failed to open " & ProcessName & "!")
+            MainForm.IsError = True
             Exit Function
         End If
 
@@ -266,11 +280,13 @@
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
             MessageBox.Show(ProcessName & " isn't open!")
+            MainForm.IsError = True
             Exit Function
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
         If hProcess = IntPtr.Zero Then
             MessageBox.Show("Failed to open " & ProcessName & "!")
+            MainForm.IsError = True
             Exit Function
         End If
 
@@ -291,28 +307,48 @@
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
             MessageBox.Show(ProcessName & " isn't open!")
+            MainForm.IsError = True
             Return 0
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
         If hProcess = IntPtr.Zero Then
             MessageBox.Show("Failed to open " & ProcessName & "!")
+            MainForm.IsError = True
             Return 0
         End If
 
         Dim vBuffer As Integer
         Dim startPoint As Integer = &H30000000
 
-        If scanStep < &H1000 Then
+        Dim refreshStep As Integer = &H200000
+
+        If scanStep < &H1000 And scanStep >= &H100 Then
             startPoint = &H20000000
+            refreshStep = &H200000
         ElseIf scanStep < &H100 Then
-            startPoint = 0
+            startPoint = &H15000000
+            refreshStep = &H10000
         End If
+        Dim wait As New WaitForm
+        wait.Show()
+        wait.Refresh(0)
+        Dim oldX As Long
 
         For x = startPoint To &H72D00000 Step scanStep
-            'Label1.Text = "Currently processing address: " & x
+            If (x - oldX) > refreshStep Then
+                oldX = x
+                wait.Label2.Text = "Current address: " & Hex(x)
+                wait.Refresh(100 * ((x - startPoint) / (&H72D00000 - startPoint)))
+                If (100 * ((x - startPoint) / (&H72D00000 - startPoint))) >= 99 Then
+                    wait.Close()
+                End If
+            End If
 
             ReadProcessMemory1(hProcess, x, vBuffer, nsize, 0)
             If vBuffer = &H3C1A8032 Then
+                If wait IsNot Nothing Then
+                    wait.Close()
+                End If
                 Return x
             End If
         Next

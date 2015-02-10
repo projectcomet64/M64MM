@@ -6,6 +6,7 @@ Public Class MainForm
     Private ChangeCamera As Boolean = False
     Private CameraUnfrozen As Boolean = False
     Private Base As Long
+    Public Shared IsError As Boolean = False
     Private Key3WasUp As Boolean = True
     Private ctrlkey As Boolean
     Private d1 As Boolean
@@ -27,23 +28,37 @@ Public Class MainForm
         BackgroundWorker1.WorkerSupportsCancellation = True
         MessageBox.Show("Mario 64 Movie Maker 2.0 by James ""CaptainSwag101"" Pelster." & vbCrLf & "Click OK to begin searching for a base address. This will take a few seconds.")
         GetBase()
+
+        If IsError = True Then
+            Me.Close()
+            Application.Exit()
+            Exit Sub
+        End If
         BackgroundWorker1.RunWorkerAsync()
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        RegisterHotKey(Me.Handle, 9, MOD_CTRL, VK_D1)
-        RegisterHotKey(Me.Handle, 10, MOD_CTRL, VK_D2)
-        RegisterHotKey(Me.Handle, 11, MOD_CTRL, VK_D3)
+        'RegisterHotKey(Me.Handle, 9, MOD_CTRL, VK_D1)
+        'RegisterHotKey(Me.Handle, 10, MOD_CTRL, VK_D2)
+        'RegisterHotKey(Me.Handle, 11, MOD_CTRL, VK_D3)
     End Sub
 
     Private Sub Form1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        UnregisterHotKey(Me.Handle, 9)
-        UnregisterHotKey(Me.Handle, 10)
-        UnregisterHotKey(Me.Handle, 11)
+        'UnregisterHotKey(Me.Handle, 9)
+        'UnregisterHotKey(Me.Handle, 10)
+        'UnregisterHotKey(Me.Handle, 11)
     End Sub
 
     Private Sub GetBase()
         ' Get the base RAM address of the emulated memory block by searching for the constant value of SM64's first RAM address
+        If IsError = True Then
+            BackgroundWorker1.WorkerSupportsCancellation = True
+            BackgroundWorker1.CancelAsync()
+            'Me.Close()
+            Application.Exit()
+            'Stop
+        End If
+
         Base = GetBaseAddress("Project64")
         If Base > 0 Then
             MessageBox.Show("The base address is: " & Hex(Base))
@@ -51,6 +66,15 @@ Public Class MainForm
             'AddressToModify = (Base + &H33C848)
         Else
             ' We need to go deeper...
+            If IsError = True Then
+                BackgroundWorker1.WorkerSupportsCancellation = True
+                BackgroundWorker1.CancelAsync()
+                'Me.Close()
+                Application.Exit()
+                Exit Sub
+                'Stop
+            End If
+
             If MessageBox.Show("Base address not found!" & vbCrLf & "Would you like to run a more thourough scan?" & vbCrLf & "This process may take several minutes, but is much more likely to find the base address.", "Error", MessageBoxButtons.YesNo) = DialogResult.Yes Then
                 Base = GetBaseAddress("Project64", &H100)
                 If Base > 0 Then
@@ -59,6 +83,14 @@ Public Class MainForm
                     'AddressToModify = (Base + &H33C848)
                 Else
                     ' We need to go even deeper...
+                    If IsError = True Then
+                        BackgroundWorker1.WorkerSupportsCancellation = True
+                        BackgroundWorker1.CancelAsync()
+                        'Me.Close()
+                        Application.Exit()
+                        'Stop
+                    End If
+
                     If MessageBox.Show("Base address still not found!" & vbCrLf & "Would you like to run a byte-by-byte memory scan?" & vbCrLf & "This process will take a VERY long time, but is guaranteed to find the base address if it exists.", "Error", MessageBoxButtons.YesNo) = DialogResult.Yes Then
                         Base = GetBaseAddress("Project64", 4)
                         If Base > 0 Then
@@ -71,10 +103,20 @@ Public Class MainForm
                         End If
                     Else
                         Label1.Text = "Base address not found!"
+                        BackgroundWorker1.WorkerSupportsCancellation = True
+                        BackgroundWorker1.CancelAsync()
+                        Me.Close()
+                        Application.Exit()
+                        ''Stop
                     End If
                 End If
             Else
                 Label1.Text = "Base address not found!"
+                BackgroundWorker1.WorkerSupportsCancellation = True
+                BackgroundWorker1.CancelAsync()
+                'Me.Close()
+                Application.Exit()
+                'Stop
             End If
         End If
     End Sub
@@ -114,7 +156,7 @@ Public Class MainForm
     End Sub
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
-        ' Check if a valid base address was found. If not, stop the BackgroundWorker
+        ' Check if a valid base address was found. If not, 'Stop the BackgroundWorker
         If Base <= 0 Then
             BackgroundWorker1.WorkerSupportsCancellation = True
             BackgroundWorker1.CancelAsync()
@@ -126,6 +168,11 @@ Public Class MainForm
             ' Handle key input (for hotkeys, etc.)
             HandleInput()
 
+            If IsError = True Then
+                'MsgBox("Project64 isn't open!")
+                Application.Exit()
+                Exit Sub
+            End If
             ' Sometimes exiting first-person while the camera is frozen will result in a glitched state where Mario is stuck in first-person.
             ' This checks to see if this has happened, and forcibly fixes the camera if needed.
             If ReadLong("Project64", Base + &H33C848) >= &HA2000000L Then
@@ -158,11 +205,23 @@ Public Class MainForm
     End Sub
 
     Private Sub BackgroundWorker1_ProgressChanged(Sender As Object, e As EventArgs) Handles BackgroundWorker1.ProgressChanged
+        If IsError = True Then
+            BackgroundWorker1.WorkerSupportsCancellation = True
+            BackgroundWorker1.CancelAsync()
+            Me.Close()
+            Application.Exit()
+            'Stop
+        End If
         If CameraUnfrozen = True Then
             b_ChangeCameraType.Text = "Change Camera Type"
             CameraUnfrozen = False
             Exit Sub
         End If
         ChangeCameraType()
+    End Sub
+
+    Private Sub AboutM64MovieMaker20ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutM64MovieMaker20ToolStripMenuItem.Click
+        Dim AboutDialog As New AboutForm
+        AboutDialog.ShowDialog()
     End Sub
 End Class
