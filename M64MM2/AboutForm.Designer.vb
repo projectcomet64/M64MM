@@ -30,6 +30,7 @@ Partial Class AboutForm
         Me.Label5 = New System.Windows.Forms.Label()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -39,7 +40,7 @@ Partial Class AboutForm
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(399, 26)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Mario 64 Movie Maker 2.0 beta 4"
+        Me.Label1.Text = "Mario 64 Movie Maker 2.0 beta 5"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Label2
@@ -54,7 +55,7 @@ Partial Class AboutForm
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(12, 55)
+        Me.Label3.Location = New System.Drawing.Point(12, 61)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(402, 41)
         Me.Label3.TabIndex = 2
@@ -62,12 +63,12 @@ Partial Class AboutForm
         '
         'Label4
         '
-        Me.Label4.Location = New System.Drawing.Point(12, 104)
+        Me.Label4.Location = New System.Drawing.Point(12, 108)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(402, 28)
         Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Special Thanks to Matthew ""MatthewGU4"" Guerra for helping me make this project a " & _
-    "reality!"
+        Me.Label4.Text = "Special thanks to Matthew ""MATTHEWGU4"" Guerra for helping me make this project a " & _
+    "reality and for spreading the word!"
         '
         'Label5
         '
@@ -89,19 +90,29 @@ Partial Class AboutForm
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(174, 179)
+        Me.Button1.Location = New System.Drawing.Point(173, 201)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 6
         Me.Button1.Text = "OK"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(12, 183)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(125, 13)
+        Me.Label6.TabIndex = 7
+        Me.Label6.Text = "Build date: April 15, 2015"
+        '
         'AboutForm
         '
         Me.AcceptButton = Me.Button1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(426, 214)
+        Me.ClientSize = New System.Drawing.Size(426, 236)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label5)
@@ -114,7 +125,7 @@ Partial Class AboutForm
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "AboutForm"
-        Me.Text = "AboutForm"
+        Me.Text = "About Mario 64 Movie Maker 2.0"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -126,4 +137,5 @@ Partial Class AboutForm
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label6 As System.Windows.Forms.Label
 End Class

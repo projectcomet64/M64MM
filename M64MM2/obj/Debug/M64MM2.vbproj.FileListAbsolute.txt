@@ -21,3 +21,4 @@ C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\obj\Debug\M64MM2.vbproj.Ge
 C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\obj\Debug\M64MM2.MainForm.resources
 C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\obj\Debug\M64MM2.WaitForm.resources
 C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\obj\Debug\M64MM2.AboutForm.resources
+C:\Users\James Pelster\Documents\GitHub\M64MM2\M64MM2\bin\Debug\animation_data.txt

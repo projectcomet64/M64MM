@@ -24,7 +24,6 @@ Partial Class MainForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.b_Freeze = New System.Windows.Forms.Button()
         Me.b_Unfreeze = New System.Windows.Forms.Button()
         Me.b_ChangeCameraType = New System.Windows.Forms.Button()
@@ -37,12 +36,10 @@ Partial Class MainForm
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutM64MovieMaker20ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'BackgroundWorker1
-        '
-        Me.BackgroundWorker1.WorkerSupportsCancellation = True
         '
         'b_Freeze
         '
@@ -79,6 +76,9 @@ Partial Class MainForm
         Me.Label1.Size = New System.Drawing.Size(69, 13)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "BaseAddress"
+        '
+        'Timer1
+        '
         '
         'Label2
         '
@@ -138,11 +138,30 @@ Partial Class MainForm
         Me.HelpToolStripMenuItem1.Size = New System.Drawing.Size(297, 22)
         Me.HelpToolStripMenuItem1.Text = "Help..."
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(12, 110)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(451, 21)
+        Me.ComboBox1.TabIndex = 8
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(9, 94)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(157, 13)
+        Me.Label5.TabIndex = 9
+        Me.Label5.Text = "Swap crouching animation with:"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(475, 84)
+        Me.ClientSize = New System.Drawing.Size(475, 143)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -164,7 +183,6 @@ Partial Class MainForm
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents b_Freeze As System.Windows.Forms.Button
     Friend WithEvents b_Unfreeze As System.Windows.Forms.Button
     Friend WithEvents b_ChangeCameraType As System.Windows.Forms.Button
@@ -177,5 +195,7 @@ Partial Class MainForm
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AboutM64MovieMaker20ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 
 End Class
