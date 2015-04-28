@@ -1,4 +1,3 @@
-0x0006BDA000000BDA = Crouching (Default)
 0x0000069000000B40 = Climb up ledge (right leg going up)
 0x000011D000001ADC = Thrown from painting
 0x000011E800001AC4 = Blown by wind
@@ -151,6 +150,7 @@
 0x0006B5040000022C = Start spin jump
 0x0006B730000003BC = Come up from crouch
 0x0006BAEC000002B4 = Start crouch
+0x0006BDA000000BDA = Crouching (Default)
 0x0006C97C00001C7A = Crawling
 0x0006E5F800000398 = Come up from crawling
 0x0006E9900000038A = In crawling position

@@ -39,8 +39,15 @@ Public Class MainForm
             ComboBox1.DataSource = New BindingSource(AnimData, Nothing)
             ComboBox1.DisplayMember = "Value"
             ComboBox1.ValueMember = "Key"
+            ComboBox2.DataSource = New BindingSource(AnimData, Nothing)
+            ComboBox2.DisplayMember = "Value"
+            ComboBox2.ValueMember = "Key"
             AddHandler ComboBox1.SelectedValueChanged, AddressOf ComboBox1_SelectedValueChanged
+            AddHandler ComboBox2.SelectedValueChanged, AddressOf ComboBox2_SelectedValueChanged
+            ComboBox1.SelectedIndex = 152
+            ComboBox2.SelectedIndex = 152
             ComboBox1.Refresh()
+            ComboBox2.Refresh()
             WriteAnimationSwap()
         End If
 
@@ -59,12 +66,6 @@ Public Class MainForm
         'GetBase()
     End Sub
 
-    Private Sub ComboBox1_SelectedValueChanged(ByVal sender As Object, ByVal e As EventArgs)
-        If ComboBox1.SelectedIndex <> -1 Then
-            WriteAnimationSwap()
-        End If
-    End Sub
-
     Public Function GetChunks(value As String, chunkSize As Integer) As List(Of String)
         Dim bytes As New List(Of String)
         While value.Length > chunkSize
@@ -81,8 +82,8 @@ Public Class MainForm
         'Dim animationBytes As List(Of String) = GetChunks(ComboBox1.SelectedValue, 2)
         'WriteXBytes("Project64", Base + &H64508, ComboBox1.SelectedValue)
         If EmuOpen = True And Base > 0 Then
-            WriteInteger("Project64", Base + &H64508, Integer.Parse(GetChunks(ComboBox1.SelectedValue, 8)(0), Globalization.NumberStyles.HexNumber))
-            WriteInteger("Project64", Base + &H6450C, Integer.Parse(GetChunks(ComboBox1.SelectedValue, 8)(1), Globalization.NumberStyles.HexNumber))
+            WriteInteger("Project64", Base + &H64508, Integer.Parse(GetChunks(ComboBox2.SelectedValue, 8)(0), Globalization.NumberStyles.HexNumber))
+            WriteInteger("Project64", Base + &H6450C, Integer.Parse(GetChunks(ComboBox2.SelectedValue, 8)(1), Globalization.NumberStyles.HexNumber))
         End If
 
         'WriteLong("Project64", Base + &H64508, CLng(ComboBox1.SelectedValue))
@@ -247,5 +248,17 @@ Public Class MainForm
     Private Sub AboutM64MovieMaker20ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutM64MovieMaker20ToolStripMenuItem.Click
         Dim AboutDialog As New AboutForm
         AboutDialog.ShowDialog()
+    End Sub
+
+    Private Sub ComboBox1_SelectedValueChanged(ByVal sender As Object, ByVal e As EventArgs)
+        If ComboBox1.SelectedIndex <> -1 Then
+            WriteAnimationSwap()
+        End If
+    End Sub
+
+    Private Sub ComboBox2_SelectedValueChanged(sender As Object, e As EventArgs)
+        If ComboBox2.SelectedIndex <> -1 Then
+            WriteAnimationSwap()
+        End If
     End Sub
 End Class
