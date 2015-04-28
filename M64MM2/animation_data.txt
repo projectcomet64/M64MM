@@ -125,7 +125,7 @@
 0x0005ADE800000A4C = Bump into wall
 0x0005B83400000A10 = Fall forward
 0x0005C2440000056E = Holding large object
-0x00057B4000012CE = Against wall
+0x0005C7B4000012CE = Against wall
 0x0005DA8400000F3A = Sidestepping against wall
 0x0005E9C0000011AC = Sidestepping against wall
 0x0005FB6C000011E8 = Sleepy (part 1)

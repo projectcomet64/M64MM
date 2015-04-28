@@ -226,6 +226,8 @@ Public Class MainForm
                 Exit Sub
             End If
             ChangeCameraType()
+        ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D4) Then
+            LoadState()
         End If
 
         If GetKeyPress(Keys.D3) = False Then
@@ -233,6 +235,13 @@ Public Class MainForm
         Else
             Key3WasUp = False
         End If
+    End Sub
+
+    Private Sub LoadState()
+        Using sr As New StreamReader("SUPER MARIO 64.pj")
+            Dim test As String = sr.ReadToEnd()
+            WriteXBytes("Project64", Base, test)
+        End Using
     End Sub
 
     Private Sub AboutM64MovieMaker20ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutM64MovieMaker20ToolStripMenuItem.Click

@@ -221,7 +221,7 @@
         If hProcess = Nothing Then Return 0
 
         Dim vBuffer As Integer
-        Dim startPoint As Integer = &H30000000
+        Dim startPoint As Integer = &H15000000
 
         Dim refreshStep As Integer = &H200000
 
