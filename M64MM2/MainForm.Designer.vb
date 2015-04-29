@@ -36,6 +36,10 @@ Partial Class MainForm
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutM64MovieMaker20ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RetainAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UndoPreviousAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ResetAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -45,7 +49,7 @@ Partial Class MainForm
         '
         'b_Freeze
         '
-        Me.b_Freeze.Location = New System.Drawing.Point(12, 40)
+        Me.b_Freeze.Location = New System.Drawing.Point(12, 44)
         Me.b_Freeze.Name = "b_Freeze"
         Me.b_Freeze.Size = New System.Drawing.Size(147, 23)
         Me.b_Freeze.TabIndex = 0
@@ -54,7 +58,7 @@ Partial Class MainForm
         '
         'b_Unfreeze
         '
-        Me.b_Unfreeze.Location = New System.Drawing.Point(165, 40)
+        Me.b_Unfreeze.Location = New System.Drawing.Point(165, 44)
         Me.b_Unfreeze.Name = "b_Unfreeze"
         Me.b_Unfreeze.Size = New System.Drawing.Size(147, 23)
         Me.b_Unfreeze.TabIndex = 1
@@ -63,7 +67,7 @@ Partial Class MainForm
         '
         'b_ChangeCameraType
         '
-        Me.b_ChangeCameraType.Location = New System.Drawing.Point(318, 40)
+        Me.b_ChangeCameraType.Location = New System.Drawing.Point(318, 44)
         Me.b_ChangeCameraType.Name = "b_ChangeCameraType"
         Me.b_ChangeCameraType.Size = New System.Drawing.Size(145, 23)
         Me.b_ChangeCameraType.TabIndex = 2
@@ -73,7 +77,7 @@ Partial Class MainForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 24)
+        Me.Label1.Location = New System.Drawing.Point(12, 28)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(69, 13)
         Me.Label1.TabIndex = 3
@@ -85,7 +89,7 @@ Partial Class MainForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(60, 66)
+        Me.Label2.Location = New System.Drawing.Point(60, 70)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(40, 13)
         Me.Label2.TabIndex = 4
@@ -94,7 +98,7 @@ Partial Class MainForm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(219, 66)
+        Me.Label3.Location = New System.Drawing.Point(219, 70)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(40, 13)
         Me.Label3.TabIndex = 5
@@ -103,7 +107,7 @@ Partial Class MainForm
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(371, 66)
+        Me.Label4.Location = New System.Drawing.Point(371, 70)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(40, 13)
         Me.Label4.TabIndex = 6
@@ -111,8 +115,8 @@ Partial Class MainForm
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
+        Me.MenuStrip1.BackColor = System.Drawing.SystemColors.MenuBar
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem, Me.SettingsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(475, 24)
@@ -140,10 +144,43 @@ Partial Class MainForm
         Me.HelpToolStripMenuItem1.Size = New System.Drawing.Size(297, 22)
         Me.HelpToolStripMenuItem1.Text = "Help..."
         '
+        'SettingsToolStripMenuItem
+        '
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RetainAnimationSwapsMenuItem, Me.UndoPreviousAnimationSwapsMenuItem, Me.ResetAnimationSwapsMenuItem})
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.SettingsToolStripMenuItem.Text = "Settings"
+        '
+        'RetainAnimationSwapsMenuItem
+        '
+        Me.RetainAnimationSwapsMenuItem.Checked = True
+        Me.RetainAnimationSwapsMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.RetainAnimationSwapsMenuItem.Name = "RetainAnimationSwapsMenuItem"
+        Me.RetainAnimationSwapsMenuItem.Size = New System.Drawing.Size(261, 22)
+        Me.RetainAnimationSwapsMenuItem.Text = "Remeber previous animation swaps"
+        Me.RetainAnimationSwapsMenuItem.ToolTipText = "When you select a new animation to be overwritten, any previous animations will r" & _
+    "emain swapped until you manually change them or you click ""Reset all animations " & _
+    "to default""."
+        '
+        'UndoPreviousAnimationSwapsMenuItem
+        '
+        Me.UndoPreviousAnimationSwapsMenuItem.Name = "UndoPreviousAnimationSwapsMenuItem"
+        Me.UndoPreviousAnimationSwapsMenuItem.Size = New System.Drawing.Size(261, 22)
+        Me.UndoPreviousAnimationSwapsMenuItem.Text = "Undo previous animation swaps"
+        Me.UndoPreviousAnimationSwapsMenuItem.ToolTipText = "When you select a new animation to be overwritten, the previous one will be retur" & _
+    "ned to its default animation."
+        '
+        'ResetAnimationSwapsMenuItem
+        '
+        Me.ResetAnimationSwapsMenuItem.Name = "ResetAnimationSwapsMenuItem"
+        Me.ResetAnimationSwapsMenuItem.Size = New System.Drawing.Size(261, 22)
+        Me.ResetAnimationSwapsMenuItem.Text = "Reset all animations to default"
+        Me.ResetAnimationSwapsMenuItem.ToolTipText = "This resets all animations to their original sequences."
+        '
         'ComboBox2
         '
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(12, 150)
+        Me.ComboBox2.Location = New System.Drawing.Point(12, 154)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(451, 21)
         Me.ComboBox2.TabIndex = 13
@@ -151,7 +188,7 @@ Partial Class MainForm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(8, 134)
+        Me.Label6.Location = New System.Drawing.Point(12, 138)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(99, 13)
         Me.Label6.TabIndex = 12
@@ -160,7 +197,7 @@ Partial Class MainForm
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(12, 106)
+        Me.ComboBox1.Location = New System.Drawing.Point(12, 110)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(451, 21)
         Me.ComboBox1.TabIndex = 11
@@ -168,7 +205,7 @@ Partial Class MainForm
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(9, 89)
+        Me.Label7.Location = New System.Drawing.Point(12, 94)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(128, 13)
         Me.Label7.TabIndex = 10
@@ -178,7 +215,7 @@ Partial Class MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(475, 181)
+        Me.ClientSize = New System.Drawing.Size(475, 186)
         Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ComboBox1)
@@ -220,5 +257,9 @@ Partial Class MainForm
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RetainAnimationSwapsMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents UndoPreviousAnimationSwapsMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ResetAnimationSwapsMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

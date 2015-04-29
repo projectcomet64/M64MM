@@ -82,12 +82,6 @@
     <Compile Include="AboutForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AnimationForm.Designer.vb">
-      <DependentUpon>AnimationForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AnimationForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -111,19 +105,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ReadWritingMemory.vb" />
-    <Compile Include="WaitForm.Designer.vb">
-      <DependentUpon>WaitForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WaitForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AnimationForm.resx">
-      <DependentUpon>AnimationForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
@@ -133,9 +118,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WaitForm.resx">
-      <DependentUpon>WaitForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -150,9 +132,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <Content Include="SUPER MARIO 64.pj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="animation_data.txt">

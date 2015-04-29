@@ -8,7 +8,8 @@
     Private Declare Function ReadProcessMemory1 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByRef lpBuffer As Integer, ByVal nSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Integer
     Private Declare Function ReadProcessMemory2 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByRef lpBuffer As Single, ByVal nSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Single
     Private Declare Function ReadProcessMemory3 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByRef lpBuffer As Long, ByVal nSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Long
-    Private Declare Function ReadProcessMemory4 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByVal lpBuffer() As Byte, ByVal iSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Byte()
+    Private Declare Function ReadProcessMemory4 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByVal lpBuffer() As Byte, ByVal iSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Boolean
+    Private Declare Function ReadProcessMemory5 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByVal lpBuffer As Byte, ByVal iSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Byte
 
     Const PROCESS_ALL_ACCESS = &H1F0FF
 
@@ -159,6 +160,18 @@
         vBuffer = Value
         WriteProcessMemory3(hProcess, hAddress, vBuffer, nsize, 0)
     End Sub
+
+    Public Function ReadByte(ByVal ProcessName As String, ByVal Address As Integer, Optional ByVal nsize As Integer = 1) As Byte()
+        Dim hProcess As IntPtr = GetEmuProcess("Project64")
+        If hProcess = Nothing Then Exit Function
+
+        Dim hAddress As Integer
+        Dim vBuffer(0) As Byte
+
+        hAddress = Address
+        ReadProcessMemory4(hProcess, hAddress, vBuffer, nsize, 0)
+        Return vBuffer
+    End Function
 
     Public Function ReadInteger(ByVal ProcessName As String, ByVal Address As Integer, Optional ByVal nsize As Integer = 4) As Integer
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
