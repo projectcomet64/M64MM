@@ -8,3 +8,4 @@ Want to request a feature or report a bug? Contact me at <a href="mailto://capta
 Planned features:
 * Adding a help file to explain how to use each feature of the program
 * Ability to manually move the camera independently of Mario (to create cool, dynamic shots)
+* Improve the descriptions of some animations to make them easier to understand
