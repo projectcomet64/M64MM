@@ -6,4 +6,5 @@ This program is <b>not</b> compatible with Windows XP!<br>
 Want to request a feature or report a bug? Contact me at <a href="mailto://captainswag101@gmail.com">CaptainSwag101@gmail.com</a><br>
 <br>
 Planned features:
-* Ability to change multiple animations at once, to make using multi-part animation sequences easier.
+* Adding a help file to explain how to use each feature of the program
+* Ability to manually move the camera independently of Mario (to create cool, dynamic shots)
