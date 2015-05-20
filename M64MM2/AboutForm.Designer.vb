@@ -40,7 +40,7 @@ Partial Class AboutForm
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(399, 26)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Mario 64 Movie Maker 2.0 beta 6"
+        Me.Label1.Text = "Mario 64 Movie Maker 2.0 beta 7"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Label2
@@ -84,8 +84,7 @@ Partial Class AboutForm
         Me.LinkLabel1.Location = New System.Drawing.Point(12, 156)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(143, 13)
-        Me.LinkLabel1.TabIndex = 5
-        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.TabIndex = 6
         Me.LinkLabel1.Text = "captainswag101@gmail.com"
         '
         'Button1
@@ -93,7 +92,7 @@ Partial Class AboutForm
         Me.Button1.Location = New System.Drawing.Point(173, 201)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 6
+        Me.Button1.TabIndex = 5
         Me.Button1.Text = "OK"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -104,7 +103,7 @@ Partial Class AboutForm
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(125, 13)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Build date: April 28, 2015"
+        Me.Label6.Text = "Build date: May 20, 2015"
         '
         'AboutForm
         '

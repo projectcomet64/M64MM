@@ -248,7 +248,7 @@
         'Dim wait As New WaitForm
         'wait.Show()
         'wait.Refresh(0)
-        Dim oldX As Long
+        'Dim oldX As Long
 
         For x = startPoint To &H72D00000 Step scanStep
             'If (x - oldX) > refreshStep Then

@@ -10,14 +10,31 @@ Public Class MainForm
     Public Shared EmuOpen As Boolean = False
     Private Key3WasUp As Boolean = True
     Private ctrlkey As Boolean
+    Private AnimList As New List(Of Animation)
     Private AnimData As Dictionary(Of String, String) = New Dictionary(Of String, String)
     Private LastCBox1Index As Integer
+    Private TestOnce As Boolean = False
+
+    Private ReadOnly Property CB1AnimIndex As Integer
+        Get
+            For Each anim As Animation In AnimList
+                If anim.Value = ComboBox1.SelectedValue Then Return anim.Index
+            Next
+        End Get
+    End Property
+
+    Private ReadOnly Property CB2AnimIndex As Integer
+        Get
+            For Each anim As Animation In AnimList
+                If anim.Value = ComboBox2.SelectedValue Then Return anim.Index
+            Next
+        End Get
+    End Property
 
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
 
-        ' Add any initialization after the InitializeComponent() call.
         Try
             Using sr As New StreamReader("animation_data.txt")
                 Do While sr.Peek() >= 0
@@ -27,9 +44,8 @@ Public Class MainForm
                     Dim step2 As String = step1.TrimStart("0")
                     Dim step3 As String = step2.TrimStart("x")
                     Dim splitLine() As String = Split(step3, " = ")
-                    'Dim HexValue As Int64 = Int64.Parse(splitLine(0), System.Globalization.NumberStyles.HexNumber)
-                    'AnimData.Add(HexValue, splitLine(1))
                     AnimData.Add(splitLine(0), splitLine(1))
+                    AnimList.Add(New Animation(splitLine(0), splitLine(1), CInt(splitLine(2))))
                 Loop
             End Using
         Catch e As Exception
@@ -46,15 +62,12 @@ Public Class MainForm
             AddHandler ComboBox1.SelectedValueChanged, AddressOf ComboBox1_SelectedValueChanged
             AddHandler ComboBox2.SelectedValueChanged, AddressOf ComboBox2_SelectedValueChanged
             AddHandler ResetAnimationSwapsMenuItem.Click, AddressOf ResetAnimations
-            ComboBox1.SelectedIndex = 152
-            ComboBox2.SelectedIndex = 152
-            LastCBox1Index = 152
+            ComboBox1.SelectedIndex = 0
+            ComboBox2.SelectedIndex = 0
+            LastCBox1Index = 0
             ComboBox1.Refresh()
             ComboBox2.Refresh()
-            'WriteAnimationSwap()
         End If
-
-        'MessageBox.Show("Mario 64 Movie Maker 2.0 by James ""CaptainSwag101"" Pelster." & vbCrLf & "Click OK to begin searching for a base address. This will take a few seconds.")
 
         If GetEmuProcess("Project64") = Nothing Then
             EmuOpen = False
@@ -64,9 +77,6 @@ Public Class MainForm
 
         Timer1.Enabled = True
         Timer1.Interval = 1
-
-        'Commented this because this will be called immediately later in the first timer tick
-        'GetBase()
     End Sub
 
     Public Function GetChunks(value As String, chunkSize As Integer) As List(Of String)
@@ -83,8 +93,8 @@ Public Class MainForm
 
     Private Sub WriteAnimationSwap()
         If EmuOpen = True And Base > 0 Then
-            WriteInteger("Project64", Base + &H64040 + ((ComboBox1.SelectedIndex + 1) * 8), Integer.Parse(GetChunks(ComboBox2.SelectedValue, 8)(0), Globalization.NumberStyles.HexNumber))
-            WriteInteger("Project64", Base + &H64044 + ((ComboBox1.SelectedIndex + 1) * 8), Integer.Parse(GetChunks(ComboBox2.SelectedValue, 8)(1), Globalization.NumberStyles.HexNumber))
+            WriteInteger("Project64", Base + &H64040 + ((CB1AnimIndex + 1) * 8), Integer.Parse(GetChunks(ComboBox2.SelectedValue, 8)(0), Globalization.NumberStyles.HexNumber))
+            WriteInteger("Project64", Base + &H64044 + ((CB1AnimIndex + 1) * 8), Integer.Parse(GetChunks(ComboBox2.SelectedValue, 8)(1), Globalization.NumberStyles.HexNumber))
         End If
     End Sub
 
@@ -94,13 +104,13 @@ Public Class MainForm
         Dim Half2 As String = ""
         If EmuOpen = True And Base > 0 Then
             For x = 0 To 3
-                Dim nextPart As String = Hex(CStr(ReadByte("Project64", Base + &H64040 + ((ComboBox1.SelectedIndex + 1) * 8) + x)(0)))
+                Dim nextPart As String = Hex(CStr(ReadByte("Project64", Base + &H64040 + ((CB1AnimIndex + 1) * 8) + x)(0)))
                 If nextPart.Count = 1 Then nextPart = "0" & nextPart
                 Half1 = Half1 & StrReverse(nextPart)
             Next
 
             For x = 0 To 3
-                Dim nextPart As String = Hex(CStr(ReadByte("Project64", Base + &H64044 + ((ComboBox1.SelectedIndex + 1) * 8) + x)(0)))
+                Dim nextPart As String = Hex(CStr(ReadByte("Project64", Base + &H64044 + ((CB1AnimIndex + 1) * 8) + x)(0)))
                 If nextPart.Count = 1 Then nextPart = "0" & nextPart
                 Half2 = Half2 & StrReverse(nextPart)
             Next
@@ -112,9 +122,9 @@ Public Class MainForm
     End Function
 
     Private Sub ResetAnimations()
-        For animIndex = 0 To 208
-            WriteInteger("Project64", Base + &H64040 + ((animIndex + 1) * 8), Integer.Parse(GetChunks(DirectCast(ComboBox2.Items(animIndex), KeyValuePair(Of String, String)).Key, 8)(0), Globalization.NumberStyles.HexNumber))
-            WriteInteger("Project64", Base + &H64044 + ((animIndex + 1) * 8), Integer.Parse(GetChunks(DirectCast(ComboBox2.Items(animIndex), KeyValuePair(Of String, String)).Key, 8)(1), Globalization.NumberStyles.HexNumber))
+        For Each anim As Animation In AnimList
+            WriteInteger("Project64", Base + &H64040 + ((anim.Index + 1) * 8), Integer.Parse(GetChunks(anim.Value, 8)(0), Globalization.NumberStyles.HexNumber))
+            WriteInteger("Project64", Base + &H64044 + ((anim.Index + 1) * 8), Integer.Parse(GetChunks(anim.Value, 8)(1), Globalization.NumberStyles.HexNumber))
         Next
         ComboBox2.SelectedIndex = ComboBox1.SelectedIndex
     End Sub
@@ -133,7 +143,6 @@ Public Class MainForm
             Label1.Text = "Base address not found!"
         End If
     End Sub
-
 
     Private Sub Freeze()
         ChangeCamera = False
@@ -168,7 +177,7 @@ Public Class MainForm
     End Sub
 
     Private Sub TimerEventProcessor(myObject As Object, ByVal myEventArgs As EventArgs) Handles Timer1.Tick
-        Timer1.Stop()
+        Timer1.Stop() ' Don't let the timer tick again until we're done processing the current tick (this precaution may be unnecessary)
 
         ' Main program update call
         If GetEmuProcess("Project64") = Nothing Then
@@ -180,13 +189,15 @@ Public Class MainForm
         If EmuOpen = True Then
             If Base > 0 Then
                 ' Check if base address is still correct
-                If ReadInteger("Project64", Base) <> &H3C1A8032 Then
+                If ReadInteger("Project64", Base) <> &H3C1A8032 Then ' If our old base is not valid, we need to start looking for a new one
                     Base = 0
-                    GetBase()
-                    If Base = 0 Then
-                        Timer1.Enabled = True
-                        Exit Sub
-                    End If
+                    Timer1.Enabled = True ' Re-enable the timer so we can start to scan for a new base address
+                    Exit Sub
+                End If
+
+                If TestOnce = False Then
+                    ComboBox2.SelectedValue = CurrentAnimInRAM()
+                    TestOnce = True
                 End If
 
                 ' Handle key input (for hotkeys, etc.)
@@ -194,14 +205,10 @@ Public Class MainForm
 
                 ' Sometimes exiting first-person while the camera is frozen will result in a glitched state where Mario is stuck in first-person.
                 ' This checks to see if this has happened, and forcibly fixes the camera if needed.
-                If ReadLong("Project64", Base + &H33C848) >= &HA2000000L Then
-                    WriteInteger("Project64", Base + &H33C848, &H80000000)
-                End If
+                If ReadLong("Project64", Base + &H33C848) >= &HA2000000L Then WriteInteger("Project64", Base + &H33C848, &H80000000)
 
                 ' If we are changing camera modes, repeatedly force the camera into frozen mode.
-                If ChangeCamera = True Then
-                    WriteInteger("Project64", Base + &H33C848, &H80000000)
-                End If
+                If ChangeCamera = True Then WriteInteger("Project64", Base + &H33C848, &H80000000)
             Else
                 GetBase()
             End If
@@ -209,7 +216,7 @@ Public Class MainForm
             Label1.Text = "Project64 isn't open!"
         End If
 
-        Timer1.Enabled = True
+        Timer1.Enabled = True ' Re-enable the timer so this sub will continue to be called repeatedly
     End Sub
 
     Private Sub HandleInput()
@@ -225,8 +232,6 @@ Public Class MainForm
                 Exit Sub
             End If
             ChangeCameraType()
-            'ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D4) Then
-            '    LoadState()
         End If
 
         If GetKeyPress(Keys.D3) = False Then
@@ -236,13 +241,6 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub LoadState() ' CURRENTLY BROKEN, DO NOT ENABLE OR YOU WILL CRASH YOUR EMULATOR WHEN THIS SUB IS CALLED
-        'Using sr As New StreamReader("SUPER MARIO 64.pj")
-        '    Dim test As String = sr.ReadToEnd()
-        '    WriteXBytes("Project64", Base, test)
-        'End Using
-    End Sub
-
     Private Sub AboutM64MovieMaker20ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutM64MovieMaker20ToolStripMenuItem.Click
         Dim AboutDialog As New AboutForm
         AboutDialog.ShowDialog()
@@ -250,22 +248,21 @@ Public Class MainForm
 
     Private Sub ComboBox1_SelectedValueChanged(ByVal sender As Object, ByVal e As EventArgs)
         If UndoPreviousAnimationSwapsMenuItem.Checked And EmuOpen = True And Base > 0 Then
-            WriteInteger("Project64", Base + &H64040 + ((LastCBox1Index + 1) * 8), Integer.Parse(GetChunks(DirectCast(ComboBox2.Items(LastCBox1Index), KeyValuePair(Of String, String)).Key, 8)(0), Globalization.NumberStyles.HexNumber))
-            WriteInteger("Project64", Base + &H64044 + ((LastCBox1Index + 1) * 8), Integer.Parse(GetChunks(DirectCast(ComboBox2.Items(LastCBox1Index), KeyValuePair(Of String, String)).Key, 8)(1), Globalization.NumberStyles.HexNumber))
+            For Each anim As Animation In AnimList
+                If anim.Value = DirectCast(ComboBox2.Items(LastCBox1Index), KeyValuePair(Of String, String)).Key Then
+                    WriteInteger("Project64", Base + &H64040 + ((anim.Index + 1) * 8), Integer.Parse(GetChunks(anim.Value, 8)(0), Globalization.NumberStyles.HexNumber))
+                    WriteInteger("Project64", Base + &H64044 + ((anim.Index + 1) * 8), Integer.Parse(GetChunks(anim.Value, 8)(1), Globalization.NumberStyles.HexNumber))
+                    Exit For
+                End If
+            Next
         End If
         LastCBox1Index = ComboBox1.SelectedIndex
-
-        'If ComboBox1.SelectedIndex <> -1 Then
-        '    WriteAnimationSwap()
-        'End If
 
         If EmuOpen = True And Base > 0 Then ComboBox2.SelectedValue = CurrentAnimInRAM()
     End Sub
 
     Private Sub ComboBox2_SelectedValueChanged(sender As Object, e As EventArgs)
-        If ComboBox2.SelectedIndex <> -1 Then
-            WriteAnimationSwap()
-        End If
+        WriteAnimationSwap()
     End Sub
 
     Private Sub RetainAnimationSwapsMenuItem_Click(sender As Object, e As EventArgs) Handles RetainAnimationSwapsMenuItem.Click
@@ -282,5 +279,17 @@ Public Class MainForm
 
         RetainAnimationSwapsMenuItem.Checked = False
         RetainAnimationSwapsMenuItem.CheckState = CheckState.Unchecked
+    End Sub
+End Class
+
+Public Class Animation
+    Public Value As String
+    Public Description As String
+    Public Index As Integer
+
+    Public Sub New(val As String, desc As String, ind As Integer)
+        Value = val
+        Description = desc
+        Index = ind
     End Sub
 End Class

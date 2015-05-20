@@ -156,29 +156,30 @@ Partial Class MainForm
         Me.RetainAnimationSwapsMenuItem.Checked = True
         Me.RetainAnimationSwapsMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.RetainAnimationSwapsMenuItem.Name = "RetainAnimationSwapsMenuItem"
-        Me.RetainAnimationSwapsMenuItem.Size = New System.Drawing.Size(261, 22)
+        Me.RetainAnimationSwapsMenuItem.Size = New System.Drawing.Size(274, 22)
         Me.RetainAnimationSwapsMenuItem.Text = "Remeber previous animation swaps"
-        Me.RetainAnimationSwapsMenuItem.ToolTipText = "When you select a new animation to be overwritten, any previous animations will r" & _
-    "emain swapped until you manually change them or you click ""Reset all animations " & _
-    "to default""."
+        Me.RetainAnimationSwapsMenuItem.ToolTipText = "When you select a new animation to be overwritten, any previous animations" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "will " & _
+    "remain swapped until you manually change or reset them."
         '
         'UndoPreviousAnimationSwapsMenuItem
         '
         Me.UndoPreviousAnimationSwapsMenuItem.Name = "UndoPreviousAnimationSwapsMenuItem"
-        Me.UndoPreviousAnimationSwapsMenuItem.Size = New System.Drawing.Size(261, 22)
+        Me.UndoPreviousAnimationSwapsMenuItem.Size = New System.Drawing.Size(274, 22)
         Me.UndoPreviousAnimationSwapsMenuItem.Text = "Undo previous animation swaps"
-        Me.UndoPreviousAnimationSwapsMenuItem.ToolTipText = "When you select a new animation to be overwritten, the previous one will be retur" & _
-    "ned to its default animation."
+        Me.UndoPreviousAnimationSwapsMenuItem.ToolTipText = "When you select a new animation to be overwritten, the previous one" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "will be retu" & _
+    "rned to its default animation."
         '
         'ResetAnimationSwapsMenuItem
         '
         Me.ResetAnimationSwapsMenuItem.Name = "ResetAnimationSwapsMenuItem"
-        Me.ResetAnimationSwapsMenuItem.Size = New System.Drawing.Size(261, 22)
+        Me.ResetAnimationSwapsMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
+        Me.ResetAnimationSwapsMenuItem.Size = New System.Drawing.Size(274, 22)
         Me.ResetAnimationSwapsMenuItem.Text = "Reset all animations to default"
         Me.ResetAnimationSwapsMenuItem.ToolTipText = "This resets all animations to their original sequences."
         '
         'ComboBox2
         '
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Location = New System.Drawing.Point(12, 154)
         Me.ComboBox2.Name = "ComboBox2"
@@ -196,6 +197,7 @@ Partial Class MainForm
         '
         'ComboBox1
         '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(12, 110)
         Me.ComboBox1.Name = "ComboBox1"
