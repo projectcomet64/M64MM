@@ -1,0 +1,591 @@
+Mario 64 ROM hacking document 1.5a -- by VL-Tone (2007) http://homepage.mac.com/qubedstudios/
+
+Thanks to Guy Perfect (BGNG), Cellar Dweller, HyperHacker, Stag019 and others who contributed on acmlm's board.
+---------------------------------------------------------------------------------------------------------------------------------
+In this document, normal byte ordering (ABCD) is used. This document is best viewed with a mono-spaced font like Courier or Andale Mono.
+---------------------------------------------------------------------------------------------------------------------------------
+First is a list of offsets found starting at 2AC094 in the Super Mario 64 ROM.
+They points to the level layout data for each courses found in the game.
+Entry points are where the level layout script starts to be decoded in the segment. (0E)
+
+ [Start ] [ End ]  [Entry ]
+ 003828C0 00383950 0E000418 -- Haunted House
+ 00395C90 00396340 0E000178 -- Cool Cool Mountain
+ 003CF0D0 003D0DC0 0E000AF8 -- Inside Castle 
+ 003E6A00 003E76B0 0E000388 -- Hazy Maze Cave
+ 003FB990 003FC2B0 0E0002B8 -- Shifting Sand Land
+ 00405A60 00405FB0 0E000264 -- Bob-Omb's Battlefield
+ 0040E840 0040ED70 0E000100 -- Snow Man's land 
+ 00419F90 0041A760 0E000370 -- Wet Dry World
+ 00423B20 004246D0 0E0006EC -- Jolly Roger Bay
+ 0042C6E0 0042CF20 0E000290 -- Tiny Huge Island
+ 00437400 00437870 0E0000C8 -- Tick Tock Clock
+ 0044A140 0044ABC0 0E0003E4 -- Rainbow Road
+ 004545E0 00454E00 0E000508 -- Castle Grounds
+ 0045BF60 0045C600 0E000174 -- Bowser 1 Course
+ 00461220 004614D0 0E0000CC -- Vanish Cap
+ 0046A840 0046B090 0E000234 -- Bowser's Fire Sea
+ 0046C1A0 0046C3A0 0E000050 -- Secret Aquarium
+ 00477D00 004784A0 0E0001E8 -- Bowser 3 Course
+ 0048C9B0 0048D930 0E00067C -- Lethal Lava Land
+ 00495A60 00496090 0E00026C -- Dire Dire Docks
+ 0049DA50 0049E710 0E000568 -- Whomp's Fortress
+ 004AC4B0 004AC570 0E000000 -- Thank You cake picture at the end
+ 004AF670 004AF930 0E000098 -- Castle Courtyard
+ 004B7F10 004B80D0 0E000000 -- Peach's Secret Slide
+ 004BE9E0 004BEC30 0E000068 -- Metal Cap
+ 004C2700 004C2920 0E000038 -- Wing Cap
+ 004C41C0 004C4320 0E000000 -- Bowser 1 Battle Platform
+ 004CD930 004CDBD0 0E0000B0 -- Rainbow Clouds Bonus
+ 004CE9F0 004CEC00 0E00007C -- Bowser 2 Battle Platform
+ 004D14F0 004D1910 0E00016C -- Bowser 3 Battle Platform
+ 004EB1F0 004EC000 0E000394 -- Tall Tall Mountain
+----------------------------------------------------------------
+
+***************************************************************************************************************
+
+------------------------------------
+| Level Layout Script Commands     |
+------------------------------------
+
+The level layout commands are used to load data segments and place 3d objects in the level.
+The second byte of level layout commands is always the length byte.
+Hex examples that are provided are from Level 1 (Bob omb's Battlefield) that starts at 405A60 in ROM.
+They are shown in the order they are found in the decoded level script, starting at
+405A60+0x264.
+------------------------------------
+
+[1B] [04] [00 00]
+
+[1]: 1B= Starts a RAM loading sequence (for command 0x17, 0x18 and 0x1A)
+[2]: Length byte (dec 4)
+[3,4]: Always 00
+
+------------------------------------
+
+[18] [0C] 00 [07] [00 3F C2 B0] [00 40 5A 60]
+
+[1]: 18= Decompress MIO0 data from ROM and copy it into a RAM segment
+[4]: RAM segment to copy data to
+[5,6,7,8]: Start address in ROM of MIO0 data
+[9,10,11,12]: End address in ROM of MIO0 data
+
+------------------------------------
+
+[17] [0C] 00 [0C] [00 13 B5 D0] [00 13 B9 10]
+
+[1]: 17= Copy uncompressed data from ROM to a RAM segment
+[2]: Length byte (dec 12)
+[4]: RAM segment to copy data to
+[5,6,7,8]: Start address in ROM of uncompressed data
+[9,10,11,12]: End address in ROM of uncompressed data
+
+------------------------------------
+
+[1A] [0C] 00 [07] [00 3F C2 B0] [00 40 5A 60]
+
+[1]: 1A= Decompress MIO0 data from ROM and copy it into a RAM segment (Used for texture only segments?)
+[4]: RAM segment to copy data to
+[5,6,7,8]: Start address in ROM of MIO0 data
+[9,10,11,12]: End address in ROM of MIO0 data
+
+------------------------------------
+
+[1D] [04] [00 00]
+
+[1]: 1D= Ends a RAM loading sequence (for command 0x17, 0x18 and 0x1A)
+[2]: Length byte (dec 4)
+[3,4]: Always 00
+
+------------------------------------
+
+[25] [0C] [00 01 00 00 00 01] [13 00 2E C0]
+
+[1]: 25= Loads Mario object, points to it's behavior code.
+[2]: Length byte (dec 12)
+[3,4,5,6,7,8]: ?? some parameters to be fed into the behavior code
+[9,10,11,12]: Behavior code address, including segment number
+
+------------------------------------
+
+[06] [08] 00 00 [15] [00 06 60]
+
+[1]: 06= Makes the Level layout script jump to another address (and continue decoding from
+there)
+[2]: Length byte (dec 8)
+[4]: RAM segment number to jump to
+[5]: Offset in segment where to jump
+
+------------------------------------
+
+[07] [04] [00 00]
+
+[1]: 07,0A= Jumps back to after the last 0x06 command was called
+[2]: Length byte (dec 4)
+[3,4]: Always 00
+
+------------------------------------
+
+[22] [08] 00 [36] [0E] [00 05 80]
+
+[1]: 22= Loads polygon object using geometry layout data found at address, and assigns an ID number.
+[2]: Length byte (dec 8)
+[3]: Always 00?
+[4]: ID number that will be used to insert object in level using command 0x24
+[5]: RAM segment number in RAM where to find geometry layout data
+[6,7,8]: Offset in segment number
+
+------------------------------------
+
+[21] [08] [40] [84] [08] [02 5F 08]
+
+[1]: 21= Loads polygon object data directly without using geometry layout data
+[2]: Length byte (dec 8)
+[3]: ??
+[4]: ID number that will be used to insert object in level using command 0x24
+[5]: RAM segment number where to find geometry layout data
+[6,7,8]: Offset in segment number
+
+------------------------------------
+
+[1F] [08] [01] [00] [0E 00 04 88]
+
+[1]: 1F= Loads LEVEL polygons using geometry layout data found at address, and associates an
+ID number. Also delimits the start of a particular area in a level.
+[2]: Length byte (dec 8)
+[3]: Area number in level
+[4]: Always 00?
+[5]: RAM segment number where to find geometry layout data
+[6,7,8]: Offset in segment number
+
+------------------------------------
+
+[24] [18] [1F] [36] [0D 3E] [00 00] [01 80] [00 00] [00 B4] [00 00] [00 00 00 00] [13] [00 42 84]
+
+[1]: 24= Places an object in level at X Y Z position and rotation, with some parameters.
+[2]: Length byte (dec 24)
+[3]: Course(s) on which the object will appear, as binary value
+[4]: ID number of the object, as defined by a previous 0x22 command
+[5,6] [7,8] [9,10]: X Y and Z position in level as 16-bit signed integers
+[11,12] [13,14] [15,16]: X Y and Z rotation as 16-bit signed integers
+[17,18,19,20]: Parameters to be fed into the behavior code, usage varies depending on which behavior
+[21,22,23,24]: RAM segment number and offset for behavior code to be attached to this object
+
+------------------------------------
+
+[26] [08] [0A] [09] [01] [0A] [00 00]
+
+[1]: 26= Command that connect warps, level entry and exit points, doors etc.
+[2]: Length byte (dec 8)
+[3]: Warp ID to jump from (warp ID's are defined with some previous 0x24 commands using specific behaviors)
+[4]: Course ID number to warp to (Course ID's are defined from previous 0x0C commands)
+[5]: Course area to jump to (ie, main level and bonus slide areas)
+[6]: Warp ID number in destination level area
+[7,8]: Always 00 00?
+
+------------------------------------
+
+[27] [08] [0A] [09] [01] [0A] [00 00]
+
+[1]: 27= Command that define level warps for paintings inside the Castle.
+[2]: Length byte (dec 8)
+[3]: Warp ID to jump from (warp ID's are defined with some previous 0x24 commands using specific behaviors)
+[4]: Course ID number to warp to (Course ID's are defined from previous 0x0C commands)
+[5]: Course area to jump to (ie, main level and bonus slide areas)
+[6]: Warp ID number in destination level area
+[7,8]: Always 00 00?
+
+------------------------------------
+
+[28] [0C] [00 01 00 00 00 00 00 00 00 00]
+
+[1]: 28= Sometimes seen after 0x26 commands, near the end, I don't know it's use
+[2]: Length byte (dec 12)
+[3-12]: ??
+
+------------------------------------
+
+[2E] [08] 00 00 [07] [00 E9 58]
+
+[1]: 2E= Loads terrain collision data for level, and other special models to be placed in the level.
+[2]: Length byte (dec 8)
+[5]: RAM segment number (usually 07, the main level polygon data segment)
+[6,7,8]: Offset in segment
+
+------------------------------------
+
+[39] [08] 00 00 [07] [01 10 4C]
+
+[1]: 39= Inserts multiple objects found inside main MIO0 level segment 
+[2]: Length byte (dec 8)
+[5]: RAM segment number (usually 07, the main level polygon data segment)
+[6,7,8]: Offset in segment
+
+------------------------------------
+
+[30] [04] [00 00]
+
+[1]: 30= Some command sometimes used near the end of level layout
+[2]: Length byte (dec 4)
+[3,4]: Always 00
+
+------------------------------------
+
+[36] [08] [00 00 00] [03] 00 00
+
+[1]: 36= Music command
+[2]: Length byte (dec 8)
+[3,4,5]: Other music parameters
+[6]: Song number (see table below)
+
+------------------------------------
+
+[20] [04] [00 00]
+
+[1]: 20= Seems to end area-specific data (started with command 0x1F)
+[2]: Length byte (dec 4)
+[3,4]: Always 00
+
+------------------------------------
+
+[31] [04] [00 00]
+
+[1]: 31= Defines how different terrain types behave.
+[2]: Length byte (dec 4)
+[3,4]: Always 00
+
+------------------------------------
+
+[2B] [0C] [01 00 00 87 E6 62 00 00 19 40]
+
+[1]: 2B= Some command used near the end of level layout
+[2]: Length byte (dec 12)
+[3-12]: No Idea what it does, I didn't try to modify it...
+
+------------------------------------
+
+[11] [08] 00 00 [80 24 BC D8]
+
+[1] 11,12= Some commands used near the end of level layout (0x11 is used, then 0x12)
+[2]: Length byte (dec 8)
+[4,5,6,7]: Some RAM address, seems to be always the same (8024BCD8)
+
+------------------------------------
+
+[1C] [04] [00 00]
+
+[1]: 1C,04,1E= Some commands used near the end of level layout
+[2]: Length byte (dec 4)
+[3,4]: Always 00
+
+------------------------------------
+
+[02] [04] [00 00]
+
+[1]: 02= End of level layout data
+[2]: Length byte (dec 4)
+[3,4]: Always 00
+
+------------------------------------
+
+------------------------------------
+| Song values for command 0x36 |
+------------------------------------
+00-nothing
+01-end level
+02-SMB music title
+03-Bob-omb's Battlefield
+04-Inside Castle walls
+05-Dire Dire Docks
+06-Lethal Laval land
+07-Bowser battle
+08-Snow
+09-Slide
+0A-Crash
+0B-Piranha plant lullaby
+0C-Hazy Maze
+0D-Star select
+0E-Wing cap
+0F-Metal cap
+10-Bowser Message
+11-Bowser course
+12-Star catch
+13-Ghost Merry-go-round
+14-Start and End Race with Koopa the Quick
+15-Star appears
+16-Boss fight
+17-Take a Key
+18-Looping stairs
+19-Crashes
+1A-Credits song
+1B-Crashes
+1C-Toad
+1D-Peach message
+1E-Intro Castle sequence
+1F-End fanfare
+20-End music
+21-Menu
+22-Lakitu
+
+----------------------------------------------------------------------------
+| Object format for objects loaded using 0x39 (called 0x42 objects in TT64)|
+----------------------------------------------------------------------------
+
+Each object loaded with this command is dec 10 bytes long.
+[01] [1F] [01 04] [02 DF] [07 80] [00 00]
+
+[1,2]: First 7 bits = Horizontal rotation, last 9 bits are the model/behavior preset number.
+Value 1E or 00 as type will end the object list and complete the 0x39 command.
+[3,4] [5,6] [7,8]: X Y and Z position in level as 16-bit signed integers
+[9,10]: Behavior parameters that will override the ones from the presets.
+
+The preset table used by these commands is found at EC7E0 in the ROM.
+
+There are 366 of them, and the first one in the table is defined as preset 01F.
+
+Here's the format for the table:
+
+1F= [13 00 09 1C] [00 74] [00 00]
+
+[1,2,3,4]: RAM segment number and offset for behavior code to be attached to this object
+[5,6]: Model ID number as defined by 0x21 and 0x22 commands
+[7,8]: Parameters to be fed into the behavior code, usage varies depending on which behavior
+
+------------------------------------------------
+| Object format for commands loaded using 0x2E |
+------------------------------------------------
+
+0x2E points to the collision data, which is followed by what I call "0x43 objects" which are similar to 
+0x42 objects loaded with the 0x39 command except that they can have a variable length.
+
+More details about the collision data format and 0x43 objects will be included in the next version of this doc.
+
+***************************************************************************************************************
+
+----------------------------
+| Geometry Layout Commands |
+----------------------------
+
+The geometry layout data has its own sets of commands, it doesn't use a length byte.
+It contains the hierarchy and position of parts for a given object, pointing to 
+polygon data for specific parts or frames of animation.
+------------------------------------
+
+[01] [00 00 00]
+[1]: 01= End of Geometry Layout commands.
+[2,3,4]: Always 00
+
+------------------------------------
+
+[02] [01 00 00] [0E] [00 0B F0]
+
+[1]: 02= Jumps to address in segment, continue decoding from there.
+[2,3,4]:??
+[5]: Segment number
+[6,7,8]: Offset in segment
+
+------------------------------------
+
+[03] [00 00 00]
+[1]: 03= Jumps back to after where the last 0x02 jump command was called
+[2,3,4]: Always 00
+
+------------------------------------
+
+[04] [00 00 00]
+[1]: 04= Start of a hierarchy node.
+[2,3,4]: Always 00
+
+------------------------------------
+
+[05] [00 00 00]
+[1]: 05= End of a hierarchy node.
+[2,3,4]: Always 00
+
+------------------------------------
+
+[08] [00 00 0A] [00 A0 00 78] [00 A0 00 78]
+[1]: 08= I don't know much about this one. 
+It seems to initialize something since it's often found at the start of geometry layout data...
+[5,6,7,8] [9,10,11,12]: Always 00 A0 00 78
+
+------------------------------------
+
+[0C] [00 00 00]
+[1]: 0C= I don't know the exact use of these, they all ends by 00 00 00.
+[2,3,4]: Always 00
+
+------------------------------------
+
+[0D] 00 00 00 [F8 00 02 58]
+
+[1]: 0D= Unknown use.
+[5,6,7,8]: ??
+
+------------------------------------
+
+[0E] [00 00 07] [80 29 DB 48]
+[1]: 0E= The content of the next node is animated.
+[2,3,4]: Sets the number of frames of the animation. Sometimes set to 00 or 01 when the animation is interactive.
+[5,6,7,8]: Some RAM address.
+
+------------------------------------
+
+[10] 00 00 00 00 [8E] [FF CD FF 82 00 16 FF D8 FF 79]
+
+[1]: 10= Unknown use. Related to Mario's wings on cap?
+[6]: ??
+[7,8,9,10,11,12,13,14,15,16]: Five 16-bit signed integers.
+
+------------------------------------
+
+[13] [01] [00 0C] [00 00] [00 00] [04] [01 BC 80]
+
+[1]: 15,14= Loads polygon commands (RSP graphic lib) for an object part found in MIO0 file.
+[2]: Drawing layer
+[3,4], [5,6], [7,8]: X, Y and Z position of the part, relative to the current node, 16-bit signed integers.
+[5]: Segment number
+[6,7,8]: Offset in segment (if the segment number and offset are set to 00, an invisible rotation joint is created)
+
+------------------------------------
+
+[15] [04 00 00] [07] [00 79 40]
+
+[1]: 15,14= Loads polygon commands (RSP graphic lib) for an object part found in MIO0 file.
+[2]: Drawing layer
+[3,4]: ??
+[5]: Segment number
+[6,7,8]: Offset in segment
+
+------------------------------------
+
+[16] [00 00] [63] [00 B4] [00 64]
+
+[1]: 16= Object Shadow.
+[4]: Shadow Shape (63=round)
+[5,6]: Shadow transparency level
+[7,8]: Shadow size
+
+------------------------------------
+
+[18] [00 04 00] [80 2D 10 4C]
+
+[1]: 18,19,0F= I don't know the use of this command, it points to a RAM addresses, related to animation?
+[2,3,4]: ??
+[5,6,7,8]: Some RAM address.
+
+------------------------------------
+
+[1C] [00 00 00 00 00 00 00] [80 27 79 5C]
+
+[1]: 1C= Unknown use.
+[2,3,4,5,6,7,8]: Usually zero?
+[9,10,11,12]: RAM pointer.
+
+------------------------------------
+
+[1D] [00 00 00] [00 00 40 00]
+
+[1]: 1D=Scale polygons command. 
+[5,6,7,8]: Scale factor. 0x4000 is the normal size for Mario. 0x2000 is half the size, 0x8000 is twice the size.
+
+
+------------------------------------
+There are a few other commands for the geometry layout data not documented here, they are
+mostly 4 bytes commands.
+------------------------------------
+
+***************************************************************************************************************
+
+----------------------------
+| Polygon drawing Commands |
+----------------------------
+
+[F3] [00 0,0 00] 07 [7F F][1 00]
+
+[1] : F3 = command to load the texture into the texture memory along with more settings 
+[2,3,4] : the s, t coordinates of the upper left corner of the texture tile in fixed point
+format (not used?)
+[5] : the tile number on the lower 3 bits
+[6,7,8]: width and height of texture represented as a slant. hhhwww
+width=256/www*32
+height=hhh/32/width
+
+------------------------------------
+
+[FD] [10] 00 00 [09] [00 48 00]
+
+[1]: FD = load texture
+[3] : format/pixel size fffpp000
+f = format
+RGBA = 000 (there are other options)
+p = storage size of 1 texel
+16 bits = 10 (other options too)
+0 = unused
+
+[5]: RAM segment number
+[6,7,8]: Offset in segment
+
+------------------------------------
+
+[03] [88] [00 10] [08] [00 C0 90]
+
+[1]: 03= Load color for next triangles.
+[2]: When is 0x86, loads the bright color, when 0x88(?) loads darkened color.
+[3,4]: ??
+[5]: RAM segment number
+[6,7,8]: Offset in segment
+(colors referred are in 32-bit RGBA format 8888)
+
+------------------------------------
+
+[04] [B0] [00 C0] [07 00 BD 50]
+
+[1]: 04= Loads a chunk of vertices into RSP (The RSP cannot contain too much vertices)
+[2] : number of vertices minus one in the high nibble and where in the vertex cache to load in
+the low nibble 
+(eg 0xb+1= 0xc=12 vertices loaded into index 0)
+[3,4] : number of bytes of vertex data to load( 16(dec) for each vertex) (redundant?)
+[5]: RAM segment number
+[6,7,8]: Offset in segment and base address for next triangles.
+
+------------------------------------
+
+[BF] [00 00 00] [00] [28 32 3C]
+
+[1] : BF= Triangle command
+[2,3,4] : mean nothing and are likely ignored
+[5] : vertex to get normal or color from for flat shading, if flat shading is used; seems to
+always be 0.
+[6,7,8] : vertex number times 10(dec) 
+
+------------------------------------
+
+[06] 00 00 00 [04] [00 CA 00]
+
+[1]: 06= Jumps to another point in the triangle data. 
+[2,3,4]:??
+[5]: RAM segment number
+[6,7,8]: Offset in segment
+
+------------------------------------
+
+[B8] [00 00 00 00 00 00 00]
+
+[1]: B8: Command that jumps back to the next command after the last "06" jump (uses a stack)
+[2-8]: always zero
+
+------------------------------------
+
+[E6] [00 00 00 00 00 00 00]
+
+[1]: E6= This is just makes the RSP wait until it is not using any textures, 
+or something like that, in preparation for loading the texture image.
+[2-8]: always zero
+
+------------------------------------
+
+Other additional polygon (RSP graphic lib) commands may include: 
+E7, FC, B6, F5, E8, F2, B7, BA, B9, F8, BC and FB
+
+

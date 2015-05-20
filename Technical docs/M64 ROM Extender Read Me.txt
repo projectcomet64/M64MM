@@ -1,0 +1,209 @@
+Super Mario 64 ROM Extender 1.1b  ----- 2006 VL-Tone starxon@gmail.com
+
+Thanks to BGNG for providing the MIO0 decoder and byte swapper external commands.
+
+This program is used to make an editable version of Super Mario 64, to be used with my level
+editor, which should be released later this year. It's a beta, use at your own risks.
+
+Please don't mind the BinaryIO demo dialog that appear when you start the program, just click OK to continue.
+
+You don't have to pay or register anything to use this program.
+
+It's released for testing purposes, and while it's built to be eventually used in the editor,
+it can be very usefull to anyone wanting to edit textures, as some programs already can view
+and edit the n64 texture format. (You'll have to find the texture offsets and sizes for now,
+but I'll provide a list soon.). With the extended ROM, you don't have to worry about
+compression size anymore, you can just save changes and open the ROM in an editor.
+
+What this program will do:
+
+1. Swap bytes if a .v64 version is provided. The output file is in .z64 format (ABCD byte
+order)
+2. Extend the ROM to 24 megs, by adding 16 megs of "FF".
+3. Decompress all the MIO0 files in a directory named "MIO0files".
+4. Copy the uncompressed data in the upper 16 megs of the extended ROM, leaving 32k gaps
+between data segments.
+5. Change pointers to match the decompressed data.
+6. Recalculate the checksums.
+
+What this program won't do.
+
+1. It doesn't work with European and Japanese versions.
+3. It won't work with ROMs that have a byte ordering other than ABCD or BADC.
+3. It doesn't make Luigi a playable character.
+4. The extended ROM won't run on an iPod.
+
+Some other little things to note:
+
+A few segments are copied with a MIO0 header, but those are editable, just take the header
+into account. These appear to be valid MIO0 data to the game, but actually contains only
+un-compressed data.
+
+A 32k gap is left between each segment, for possible extension. There is a lot of space left
+at the end of the ROM, because it has to be bigger than 16 megs, and the size has to be either
+8,16,24 or 32 megs.
+
+Here is a list of which MIO0 files are copied where, and if they include a MIO0 header.
+
+If you need this list in a more "computer friendly" format, just ask me.
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------
+
+MIO0 file from 00108A40 is decompressed at 00800000 to 0081BB64 as raw data with a MIO0 header
+
+MIO0 file from 00114750 is decompressed at 00823B64 to 00858EDC as raw data
+
+MIO0 file from 0012A7E0 is decompressed at 00860EDC to 0087623C as raw data
+
+MIO0 file from 00132C60 is decompressed at 0087E23C to 008843BC as raw data
+
+MIO0 file from 00134D20 is decompressed at 0088C3BC to 0089D45C as raw data
+
+MIO0 file from 0013B910 is decompressed at 008A545C to 008B918C as raw data
+
+MIO0 file from 00145E90 is decompressed at 008C118C to 008D57DC as raw data
+
+MIO0 file from 001521D0 is decompressed at 008DD7DC to 008F3894 as raw data
+
+MIO0 file from 00160670 is decompressed at 008FB894 to 009089C4 as raw data
+
+MIO0 file from 00165A50 is decompressed at 009109C4 to 00913E8C as raw data
+
+MIO0 file from 00166C60 is decompressed at 0091BE8C to 0092C004 as raw data
+
+MIO0 file from 0016D870 is decompressed at 00934004 to 00958204 as raw data
+
+MIO0 file from 00180BB0 is decompressed at 00960204 to 009770C4 as raw data
+
+MIO0 file from 00188440 is decompressed at 0097F0C4 to 009E1FD4 as raw data
+
+MIO0 file from 001B9CC0 is decompressed at 009E9FD4 to 00A01934 as raw data
+
+MIO0 file from 001C4230 is decompressed at 00A09934 to 00A2EABC as raw data
+
+MIO0 file from 001D8310 is decompressed at 00A36ABC to 00A4E934 as raw data
+
+MIO0 file from 001E51F0 is decompressed at 00A56934 to 00A5C7AC as raw data
+
+MIO0 file from 001E7EE0 is decompressed at 00A647AC to 00A7981C as raw data
+
+MIO0 file from 001F2200 is decompressed at 00A8181C to 00AAA40C as raw data
+
+MIO0 file from 00201410 is decompressed at 00AB240C to 00AE5714 as raw data
+
+MIO0 file from 0026A3A0 is decompressed at 00AED714 to 00AFA054 as raw data
+
+MIO0 file from 0026F420 is decompressed at 00B02054 to 00B085FC as raw data
+
+MIO0 file from 002708C0 is decompressed at 00B105FC to 00B178B5 as raw data with a MIO0 header
+
+MIO0 file from 002A65B0 is decompressed at 00B1F8B5 to 00B2D715 as raw data
+
+MIO0 file from 002AC6B0 is decompressed at 00B35715 to 00B55855 as raw data
+
+MIO0 file from 002B8F10 is decompressed at 00B5D855 to 00B7D995 as raw data
+
+MIO0 file from 002C73D0 is decompressed at 00B85995 to 00B9A2D5 as raw data
+
+MIO0 file from 002D0040 is decompressed at 00BA22D5 to 00BBAC15 as raw data
+
+MIO0 file from 002D64F0 is decompressed at 00BC2C15 to 00BE2D55 as raw data
+
+MIO0 file from 002E7880 is decompressed at 00BEAD55 to 00C0AE95 as raw data
+
+MIO0 file from 002F14E0 is decompressed at 00C12E95 to 00C32FD5 as raw data
+
+MIO0 file from 002FB1B0 is decompressed at 00C3AFD5 to 00C4F915 as raw data
+
+MIO0 file from 00301CD0 is decompressed at 00C57915 to 00C77A55 as raw data
+
+MIO0 file from 0030CEC0 is decompressed at 00C7FA55 to 00C9FB95 as raw data
+
+MIO0 file from 0031E1D0 is decompressed at 00CA7B95 to 00CB53A9 as raw data with a MIO0 header
+
+MIO0 file from 00326E40 is decompressed at 00CBD3A9 to 00CCB4BD as raw data with a MIO0 header
+
+MIO0 file from 0032D070 is decompressed at 00CD34BD to 00CE03D1 as raw data with a MIO0 header
+
+MIO0 file from 00334B30 is decompressed at 00CE83D1 to 00CF64E5 as raw data with a MIO0 header
+
+MIO0 file from 0033D710 is decompressed at 00CFE4E5 to 00D07DF9 as raw data with a MIO0 header
+
+MIO0 file from 00341140 is decompressed at 00D0FDF9 to 00D1B20D as raw data with a MIO0 header
+
+MIO0 file from 00347A50 is decompressed at 00D2320D to 00D31321 as raw data with a MIO0 header
+
+MIO0 file from 0034E760 is decompressed at 00D39321 to 00D430B5 as raw data with a MIO0 header
+
+MIO0 file from 00351960 is decompressed at 00D4B0B5 to 00D591C9 as raw data with a MIO0 header
+
+MIO0 file from 00357350 is decompressed at 00D611C9 to 00D6E9DD as raw data with a MIO0 header
+
+MIO0 file from 0035ED10 is decompressed at 00D769DD to 00D84671 as raw data with a MIO0 header
+
+MIO0 file from 00365980 is decompressed at 00D8C671 to 00D9A785 as raw data with a MIO0 header
+
+MIO0 file from 0036F530 is decompressed at 00DA2785 to 00DA951D as raw data
+
+MIO0 file from 00371C40 is decompressed at 00DB151D to 00DD8361 as raw data
+
+MIO0 file from 00383950 is decompressed at 00DE0361 to 00E03B07 as raw data
+
+MIO0 file from 00396340 is decompressed at 00E0BB07 to 00E84C1F as raw data
+
+MIO0 file from 003D0DC0 is decompressed at 00E8CC1F to 00EB8587 as raw data
+
+MIO0 file from 003E76B0 is decompressed at 00EC0587 to 00EE8E37 as raw data
+
+MIO0 file from 003FC2B0 is decompressed at 00EF0E37 to 00F025F9 as raw data
+
+MIO0 file from 00405FB0 is decompressed at 00F0A5F9 to 00F1A081 as raw data
+
+MIO0 file from 0040ED70 is decompressed at 00F22081 to 00F3A809 as raw data
+
+MIO0 file from 0041A760 is decompressed at 00F42809 to 00F53BB5 as raw data
+
+MIO0 file from 004246D0 is decompressed at 00F5BBB5 to 00F69F71 as raw data
+
+MIO0 file from 0042CF20 is decompressed at 00F71F71 to 00F88991 as raw data
+
+MIO0 file from 00437870 is decompressed at 00F90991 to 00FBF807 as raw data
+
+MIO0 file from 0044ABC0 is decompressed at 00FC7807 to 00FD907F as raw data
+
+MIO0 file from 00454E00 is decompressed at 00FE107F to 00FF0EAF as raw data
+
+MIO0 file from 0045C600 is decompressed at 00FF8EAF to 01003B77 as raw data
+
+MIO0 file from 004614D0 is decompressed at 0100BB77 to 0102177F as raw data
+
+MIO0 file from 0046B090 is decompressed at 0102977F to 0102CAAF as raw data
+
+MIO0 file from 0046C3A0 is decompressed at 01034AAF to 010502A3 as raw data
+
+MIO0 file from 004784A0 is decompressed at 010582A3 to 01080B73 as raw data
+
+MIO0 file from 0048D930 is decompressed at 01088B73 to 01098883 as raw data
+
+MIO0 file from 00496090 is decompressed at 010A0883 to 010B269B as raw data
+
+MIO0 file from 0049E710 is decompressed at 010BA69B to 010E19EB as raw data
+
+MIO0 file from 004AC570 is decompressed at 010E99EB to 010F0867 as raw data
+
+MIO0 file from 004AF930 is decompressed at 010F8867 to 01109903 as raw data
+
+MIO0 file from 004B80D0 is decompressed at 01111903 to 0111D8AB as raw data
+
+MIO0 file from 004BEC30 is decompressed at 011258AB to 0112E271 as raw data
+
+MIO0 file from 004C2920 is decompressed at 01136271 to 01138D39 as raw data
+
+MIO0 file from 004C4320 is decompressed at 01140D39 to 011544E7 as raw data
+
+MIO0 file from 004CDBD0 is decompressed at 0115C4E7 to 0115E087 as raw data
+
+MIO0 file from 004CEC00 is decompressed at 01166087 to 0116B143 as raw data
+
+MIO0 file from 004D1910 is decompressed at 01173143 to 011A35B7 as raw data

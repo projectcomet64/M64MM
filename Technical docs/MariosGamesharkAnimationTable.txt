@@ -1,0 +1,669 @@
+﻿Replace Crouching Animation WITH...DIS!!!
+
+
+81064508 XXXX
+8106450A YYYY
+8106450E CCCC
+
+
+:D  :D  :D  :D  :D  :D  :D  :D  :D  :D  :D  :D  :D  :D
+______________________________________________________________________________
+
+
+This contains all of the values that you'll work with
+when animation Swapping.
+
+
+XXXX YYYY CCCC
+____  ____  _____
+
+
+0000 0690 0B40 = Climb up ledge (right leg going up)
+
+
+0000 11D0 1ADC = Thrown from painting
+
+
+0000 11E8 1AC4 = Blown by wind
+
+
+0000 2CAC 1228 = Dying on ground
+
+
+0000 3ED4 09EC = Backflip
+
+
+0000 48C0 17B8 = Climbing up tree movement
+
+
+0000 6078 0490 = In tree
+
+
+0000 6508 06E8 = Swinging from tree
+
+
+0000 6520 06D0 = Go back into tree
+
+
+0000 78F0 0B04 = Jump out of tree from handstand
+
+
+0000 83F4 0670 = Hand stand in tree
+
+
+0000 840C 0658 = Go back from handstand
+
+
+0000 6BF0 0D00 = Hand stand in tree
+
+
+0000 8A64 0416 = In tree?
+
+
+0000 8E7C 0164 = Standing straight with arms out
+
+
+0000 8FE0 070A = Skid on ground
+
+
+0000 8FF8 06F2 = Skid on ground, go back to normal
+
+
+0000 96EC 05AA = Crouching
+
+
+0000 9C98 063A = Return from long jump
+
+
+0000 A2D4 07A2 = Forward long jump
+
+
+0000 AA78 0562 = Backward long jump
+
+
+0000 AFDC 04B6 = Launched from cannon
+
+
+0000 B494 1278 = Walk while holding small object
+
+
+0000 C70C 0C92 = Run while holding small object?
+
+
+0000 D3A0 1278 = Walk while holding small object?
+
+
+0000 E618 15FE = Cold, rubbing hands together
+
+
+0000 FC18 058E = Cold (part 2)
+
+
+0001 01A8 0C3E = Cold (part 3)
+
+
+0001 0DE8 0420 = Climb on ledge
+
+
+0001 1208 0678 = Waving
+
+
+0001 1880 070E = Look upward
+
+
+0001 1F90 0462 = Look upward then downward
+
+
+0001 23F4 1CE8 = Summon Peach
+
+
+0001 40DC 0B46 = Lift hand
+
+
+0001 4C24 07EA = Take cap off
+
+
+0001 5410 212C = Walking at end, looking backward to sky
+
+
+0001 753C 25B4 = Look backward then run (at end)
+
+
+0001 9AF0 2066 = Lift hand (slower?)
+
+
+0001 BB58 1DCC = Fly at end
+
+
+0001 D924 2428 = Peace sign
+
+
+0001 FD4C 0506 = Get out of sand / snow
+
+
+0002 0254 035A = Jumping from lava
+
+
+0002 05B0 05F8 = Flying (wing cap)
+
+
+0002 0BA8 0742 = Hang onto monkey-bar
+
+
+0002 12EC 1720 = Thrown onto ground
+
+
+0002 1304 1708 = Thrown forward
+
+
+0002 2A0C 0CE8 = Dying while on stomach
+
+
+0002 36F4 1E10 = Dying in gas
+
+
+0002 5504 1648 = Coughing in gas
+
+
+0002 6B4C 2AB8 = Throw key in air, catch it
+
+
+0002 9604 1FE6 = Normal death
+
+
+0002 B5EC 0C2C = Hang from ledge
+
+
+0002 C218 0628 = Lift up on ledge quickly
+
+
+0002 C840 0F8C = Wobble while on monkey-bars
+
+
+0002 D7CC 0F88 = Put hat on
+
+
+0002 E754 1BC0 = Putting star under hat
+
+
+0003 0314 0460 = Putting star under hat (part 2)
+
+
+0003 0774 3196 = Head stuck under sand
+
+
+0003 390C 028A = Sliding on bottom
+
+
+0003 3B98 05C8 = Triple jump then ground-pound
+
+
+0003 4160 0432 = Ground-pound
+
+
+0003 4178 041A = Ground-pound part
+
+
+0003 4594 2DF6 = Bottom stuck in snow / sand
+
+
+0003 738C 0D28 = Standing and holding small object
+
+
+0003 80B8 055A = Pick up small object
+
+
+0003 8614 032C = Jump with small object (wearing wing cap)
+
+
+0003 8940 04D0 = Pick up small object
+
+
+0003 8E10 0168 = Coming down with small object (wearing wing cap)
+
+
+0003 8F78 039E = Slide then fall with small object
+
+
+0003 9318 05D2 = Sliding with small object
+
+
+0003 9330 05BA = Get up from ground with small object
+
+
+0003 98EC 045A = On Koopa shell
+
+
+0003 9D48 14FE = Walking (not running)
+
+
+0003 B248 0626 = Side flip?
+
+
+0003 B870 037C = Jump while riding shell
+
+
+0003 BBEC 067E = Landing from double jump
+
+
+0003 C26C 03B2 = Mid-air part of double jump
+
+
+0003 C620 0AC4 = Normal jump
+
+
+0003 C638 0AAC = Land from normal jump
+
+
+0003 D0E4 073E = Kick in mid-air
+
+
+0003 D824 02B8 = Double jump
+
+
+0003 DADC 04FE = Triple jump?
+
+
+0003 DFDC 0482 = Throw object
+
+
+0003 E460 08C6 = Slide kick
+
+
+0003 ED28 0636 = On Koopa shell
+
+
+0003 F360 2D18 = Legs stuck under snow / sand
+
+
+0004 2078 0744 = Fall from height
+
+
+0004 2090 072C = Fall hard from double jump
+
+
+0004 27BC 054E = Picked up by enemy
+
+
+0004 2D0C 0D00 = Pick up large object
+
+
+0004 3A0C 0DE2 = Get up after being thrown
+
+
+0004 47F0 03E4 = Launch into flying position
+
+
+0004 4BD4 05FE = Move on monkey-bars
+
+
+0004 51D4 058A = Move on monkey-bars (part 2)
+
+
+0004 5760 3062 = Missing cap after getting star
+
+
+0004 87C4 14D6 = Open door and walk in
+
+
+0004 9C9C 10C8 = Exit door
+
+
+0004 AD64 3288 = Open door with key
+
+
+0004 DFEC 03FA = Unknown, looks like Mario is bowing
+
+
+0004 E3E8 076E = Similar to last
+
+
+0004 EB58 05F2 = Animates both last
+
+
+0004 F14C 07B8 = Unknown, Mario moves arms
+
+
+0004 F904 08B0 = Kick in mid-air and land
+
+
+0005 01B4 0296 = Unknown, similar to 04F14C, punch left?
+
+
+0005 044C 0268 = Punch left (part 2)
+
+
+0005 06B4 0410 = Punch right
+
+
+0005 0AC4 0538 = Punch left (part 3)
+
+
+0005 0FFC 04C0 = Pick up small object and stand
+
+
+0005 14BC 0618 = Push against something while walking
+
+
+0005 1AD4 061A = Jump on Koopa shell (part 2)
+
+
+0005 20F0 0584 = Set small object down
+
+
+0005 2674 018E = Special triple jump
+
+
+0005 268C 0176 = Similar to last, backward
+
+
+0005 2804 0932 = Do a trip and go back to crouching
+
+
+0005 3138 1222 = Running
+
+
+0005 3150 120A = Running
+
+
+0005 435C 0848 = Get bumped by enemy
+
+
+0005 4BA4 0878 = Get bumped by enemy (from behind)
+
+
+0005 541C 0133C = Dying in sand
+
+
+0005 6758 0AB4 = Stuck, looking around
+
+
+0005 720C 29EA = Walking through sand
+
+
+0005 9BF8 0F46 = Dying from shock
+
+
+0005 AB40 02A6 = Getting shocked
+
+
+0005 ADE8 0A4C = Bump into wall
+
+
+0005 B834 0A10 = Fall forward
+
+
+0005 C244 056E = Holding large object
+
+
+0005 7B40 12CE = Against wall
+
+
+0005 DA84 0F3A = Sidestepping against wall
+
+
+0005 E9C0 11AC = Sidestepping against wall
+
+
+0005 FB6C 11E8 = Sleepy (part 1)
+
+
+0006 0D54 179E = Sleepy (part 2)
+
+
+0006 24F4 1392 = Sleepy (part 3)
+
+
+0006 3888 13A8 = Sleepy (part 4)
+
+
+0006 4C30 0258 = Sleeping
+
+
+0006 4E88 0C6A = Lay down
+
+
+0006 5AF4 0730 = Laying and sleeping
+
+
+0006 6224 0618 = Belly flop
+
+
+0006 623C 0600 = On belly
+
+
+0006 683C 0CB8 = Get up after bumping into wall
+
+
+0006 74F4 0CAE = Get up after belly flop, holding small object
+
+
+0006 81A4 039A = Beginning of side kick
+
+
+0006 8540 0552 = Get up from slide kick, go back to crouching
+
+
+0006 8A94 077E = Sliding with hands back
+
+
+0006 8AAC 0766 = Get up and stand
+
+
+0006 9214 0508 = Go into falling from height position
+
+
+0006 971C 021E = Slide with hands back animation
+
+
+0006 993C 16F4 = Tiptoe
+
+
+0006 B030 036E = Land from spin jump
+
+
+0006 B3A0 0164 = Spin jump
+
+
+0006 B504 022C = Start spin jump
+
+
+0006 B730 03BC = Come up from crouch
+
+
+0006 BAEC 02B4 = Start crouch
+
+
+0006 BDA0 0BDA = Crouching
+
+
+0006 C97C 1C7A = Crawling
+
+
+0006 E5F8 0398 = Come up from crawling
+
+
+0006 E990 038A = In crawling position
+
+
+0006 ED1C 1428 = Opening door with star
+
+
+0007 0144 08AC = Opening door with star end, walk in
+
+
+
+
+
+
+
+
+Underwater animations:
+
+
+XXXX YYYY CCCC
+____ ____ ____
+
+
+0007 09F0 10BC = Hit by something
+
+
+0007 1AAC 041A = Kick legs while holding object
+
+
+0007 1EC8 029A = Holding object
+
+
+0007 2164 04AC = Swimming while holding object
+
+
+0007 2610 06BC = Stop while holding object
+
+
+0007 2CCC 0B32 = Let go of object
+
+
+0007 3800 0786 = Holding object
+
+
+0007 3F88 1530 = Drowning
+
+
+0007 54B8 133A = Die, slump over
+
+
+0007 67F4 0D08 = Die, slump over?
+
+
+0007 74FC 105A = Get hit from behind
+
+
+0007 8558 07D4 = Walking (metal Mario)
+
+
+0007 8D2C 04E0 = Single stroke from tapping A
+
+
+0007 920C 0402 = Stop swimming
+
+
+0007 9610 07BE = Strokes from holding A
+
+
+0007 9DD0 0858 = Stop in water
+
+
+0007 A628 04D0 = Grab object
+
+
+0007 AAF8 0984 = Press B
+
+
+0007 B47C 02CC = Jump (metal Mario)
+
+
+0007 B748 0A86 = Throw object
+
+
+0007 C1D0 0834 = Floating
+
+
+0007 CA04 1A72 = Get star
+
+
+0007 E478 084A = Get star (part 2)
+
+
+
+
+
+
+Other animations:
+
+
+XXXX YYYY CCCC
+____ ____ ____
+
+
+0007 ECC4 0692 = Grab Bowser's tail
+
+
+0007 ECDC 067A = Holding Bowser
+
+
+0007 F358 0CB8 = Let go of Bowser
+
+
+0008 0010 041C = Holding Bowser animation
+
+
+0008 042C 0928 = Throw large object
+
+
+0008 0D54 04EE = Low energy
+
+
+0008 1244 1138 = Walking with large object
+
+
+0008 237C 0724 = Skid on ground start
+
+
+0008 2394 070C = Switch direction quickly
+
+
+0008 2AA0 040C = Land from side flip?
+
+
+0008 2EAC 08A4 = Side flip
+
+
+0008 3750 0AA8 = Land from back flip / triple jump
+
+
+0008 41F8 0AB8 = Triple jump
+
+
+0008 4CB0 1642 = Reading sign
+
+
+0008 62F4 08AA = Standing normal (part 1)
+
+
+0008 6BA0 08AA = Standing normal (part 2)
+
+
+0008 744C 08AA = Standing normal (part 3)
+
+
+0008 7CF8 0796 = Hanging on monkey-bar
+
+
+0008 8490 0C30 = Hanging on monkey-bar, look around
+
+
+0008 90C0 0784 = Get up after sleeping (sitting)
+
+
+0008 9844 08A8 = Get up after sleeping (laying)
+
+
+0008 A0EC 08E2 = Begin walking
+
+
+0008 A9D0 0692 = Wall kick/jump from tree
+
+
+0008 A9E8 067A = Hang onto pole / tree
+
+
+0008 B064 1554 = Get star
+
+
+0008 C5B8 06C8 = End get star
+
+
+0008 CC80 0BA8 = Triple jump and start flying
+
+
+0008 D828 03EE = Start special triple jump?

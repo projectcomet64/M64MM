@@ -1,0 +1,44 @@
+﻿Animation data starts where the 0x27 26 behavior command points to; 0x28 command chooses one of these animations and uses it for the object. second byte of it gets multiplied by 4 and added to the start offset of the 27 26 command. 
+
+
+[segmented pointers to animation headers] (put as many pointers as necessary)
+
+
+____________________________________________________ 
+animation header 
+
+
+1,2 (amount of repeats, 0 for infinite) 
+3,4 (unknown) 
+5-8 (empty?) 
+9,A (frame count) 
+B,C (node count (every 0x13 command opens one node, nodes are attached to the previous node by 0x04 commands)) 
+D-10 (segmented pointer to transformation values) 
+11-14 (segmented pointer to transformation index) 
+____________________________________________________ 
+transformation index: 
+first 0x0C bytes are for translation, though it seems to only be possible to move the first limb, 
+all the other 0x0C byte groups are for limb rotation. 
+
+
+
+
+rotation/translation group: 
+1,2 (u16 X key) 
+3,4 (u16 value select) 
+5,6 (u16 Y key) 
+7,8 (u16 value select) 
+9,A (u16 Z key) 
+B,C (u16 value select) 
+
+
+
+
+framecount = obj->0x40; 
+if framecount>key { 
+framecount = key;} 
+value select*2+framecount*2+transformation values offset = pointer to translation or rotation to use 
+(rotations and translations are both 16-bit, rotations go from 0 (0 degree) over 8000 (180 degree), to FFFF (~360/~0 degree) 
+
+
+edit: i forgot to credit on old post who had a doc on how animations work for mario, i didn’t figure all of this out, that old post figured out how it worked for mario's animations, while its slightly different for object animations. also, for some reason that old post got deleted.

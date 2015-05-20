@@ -1,0 +1,292 @@
+
+<!-- saved from url=(0046)http://jul.rustedlogic.net/thread.php?id=17401 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>Jul -- SM64 Hacking: SM64 Animation format</title>
+	<meta name="description" content="Animation data starts where the 0x27 26 behavior command points to; 0x28 command chooses one of these animations and uses it for the object. second byte of i...">
+	<link rel="shortcut icon" href="http://jul.rustedlogic.net/favicon6.ico" type="image/x-icon">
+	
+			<style type="text/css">
+			html, img { image-rendering: -moz-crisp-edges; }
+/*			
+			body	{
+				cursor:	url('images/ikachanpointer.png'), default;
+				}
+			a:link {
+				cursor:	url('images/ikachanpointer2.png'), pointer;
+				}
+*/			a:link,a:visited,a:active,a:hover{text-decoration:none;font-weight:bold;}
+			a {
+				color: #BEBAFE;
+			}
+			a:visited {
+				color: #9990c0;
+			}
+			a:active {
+				color: #CFBEFF;
+			}
+			a:hover {
+				color: #CECAFE;
+			}
+			img { border:none; }
+			pre br { display: none; }
+			body {
+				scrollbar-face-color:		#7d7bc1;
+				scrollbar-track-color:		#000020;
+				scrollbar-arrow-color:		#210456;
+				scrollbar-highlight-color:	#a9a7d6;
+				scrollbar-3dlight-color:	#d4d3eb;
+				scrollbar-shadow-color:	#524fad;
+				scrollbar-darkshadow-color:	#312d7d;
+				color: #DDDDDD;
+				font:13px verdana;
+				background: #000F1F url('http://xkeeper.net/img/starsbg.png');
+			}
+			div.lastpost { font: 10px verdana !important; white-space: nowrap; }
+			div.lastpost:first-line { font: 13px verdana !important; }
+			.sparkline { display: none; }
+			.font 	{font:13px verdana}
+			.fonth	{font:13px verdana;color:FFEEFF}	/* is this even used? */
+			.fonts	{font:10px verdana}
+			.fontt	{font:10px tahoma}
+			.tdbg1	{background:#111133}
+			.tdbg2	{background:#11112B}
+			.tdbgc	{background:#2F2F5F}
+			.tdbgh	{background:#302048;}
+			.center	{text-align:center}
+			.right	{text-align:right}
+			.table	{empty-cells:	show; width: 100%;
+					 border-top:	#000000 1px solid;
+					 border-left:	#000000 1px solid;}
+			td.tbl	{border-right:	#000000 1px solid;
+					 border-bottom:	#000000 1px solid}
+			code {
+				overflow:		auto;
+				width:			100%;
+				white-space:	pre;
+				display:		block;
+			}
+			code br { display: none; }
+			input[type=radio] { color: black; background: white; }
+			
+		
+		textarea,input,select{
+		  border:	#663399 solid 1px;
+		  background:#000000;
+		  color:	#DDDDDD;
+		  font:	10pt verdana;}
+		textarea:focus {
+		  border:	#663399 solid 1px;
+		  background:#000000;
+		  color:	#DDDDDD;
+		  font:	10pt verdana;}
+		.radio{
+		  border:	none;
+		  background:none;
+		  color:	#DDDDDD;
+		  font:	10pt verdana;}
+		.submit{
+		  border:	#663399 solid 2px;
+		  font:	10pt verdana;}
+		</style>
+	<link rel="stylesheet" href="./Jul -- SM64 Hacking  SM64 Animation format_files/stylesheet.css" type="text/css">
+	</head>
+	<body>
+	<img id="f_ikachan" src="./Jul -- SM64 Hacking  SM64 Animation format_files/ikamad.png" style="position: fixed; left: 4%; top: 70%;" title="Someone stole my hat!">
+	<center>
+	 <table class="table" cellspacing="0">
+	  <form action="http://jul.rustedlogic.net/login.php" method="post" name="logout"></form><input type="hidden" name="action" value="logout">
+	  <tbody><tr><td class="tbl tdbg1 center" colspan="3"><a href="http://jul.rustedlogic.net/"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/pointlessbannerv2.png" title="Jul"></a><font class="fonts"><br>
+		<a href="javascript:document.logout.submit()">Logout</a>
+		- <a href="http://jul.rustedlogic.net/editprofile.php">Edit profile</a>
+		- <a href="http://jul.rustedlogic.net/postradar.php">Post radar</a>
+		- <a href="http://jul.rustedlogic.net/shop.php">Item shop</a>
+		- <a href="http://jul.rustedlogic.net/forum.php?fav=1">Favorites</a> - <a href="http://jul.rustedlogic.net/index.php?action=markforumread&forumid=41">Mark forum read</a>
+	  
+	  </font></td></tr><tr>
+		  <td width="120px" class="tbl tdbg2 center fonts"><nobr>Views: 62213679<br><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/_.gif" width="120" height="1"></nobr></td>
+		  <td width="100%" class="tbl tdbg2 center fonts">
+	<a href="http://jul.rustedlogic.net/index.php">Main</a>
+	- <a href="http://jul.rustedlogic.net/memberlist.php">Memberlist</a>
+	- <a href="http://jul.rustedlogic.net/activeusers.php">Active users</a>
+	- <a href="http://jul.rustedlogic.net/calendar.php">Calendar</a>
+	- <a href="http://tcrf.net/">Wiki</a>
+	- <a href="http://jul.rustedlogic.net/irc.php">IRC Chat</a>
+	- <a href="http://jul.rustedlogic.net/online.php">Online users</a><br>
+	<a href="http://jul.rustedlogic.net/ranks.php">Ranks</a>
+	- <a href="http://jul.rustedlogic.net/faq.php">Rules/FAQ</a>
+	- <a href="http://jul.rustedlogic.net/acs.php">JCS</a>
+	- <a href="http://jul.rustedlogic.net/stats.php">Stats</a>
+	- <a href="http://jul.rustedlogic.net/latestposts.php">Latest Posts</a>
+	- <a href="http://jul.rustedlogic.net/hex.php" title="Color Chart" class="popout" target="_blank">Color Chart</a>
+	- <a href="http://jul.rustedlogic.net/smilies.php" title="Smilies" class="popout" target="_blank">Smilies</a>
+	</td>
+		  <td width="120px" class="tbl tdbg2 center fonts"><nobr>04-30-15 07:46:17 AM<br><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/_.gif" width="120" height="1"></nobr></td></tr><tr>
+	  <td colspan="3" class="tbl tdbg1 center fonts">
+	  
+	 </td></tr></tbody></table>
+	</center><div style="position: absolute; top: -250px; left: -250px;"><a href="http://jul.rustedlogic.net/accounting.php">fortyfive-antelope</a></div><table class="table" cellspacing="0"><tbody><tr><td class="tbl tdbg1 fonts center">1 user currently in SM64 Hacking: <nobr><img width="16" height="16" src="./Jul -- SM64 Hacking  SM64 Animation format_files/9731372fbee4f4521099a08a83d438dd.png" align="top"> <a style="color:#97ACEF;" href="http://jul.rustedlogic.net/profile.php?id=3161">CaptainSwag101</a></nobr> | 2 guests</td></tr></tbody></table>
+		
+		<table width="100%"><tbody><tr><td align="left"><font class="font"><a href="http://jul.rustedlogic.net/index.php">Jul</a> - <a href="http://jul.rustedlogic.net/forum.php?id=41">SM64 Hacking</a> - SM64 Animation format</font></td><td align="right"><font class="fonts">
+	<a href="http://jul.rustedlogic.net/newthread.php?poll=1&id=41"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/newpoll.png" alt="New poll" align="absmiddle"></a> - <a href="http://jul.rustedlogic.net/newthread.php?id=41"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/newthread.png" alt="New thread" align="absmiddle"></a> - <a href="http://jul.rustedlogic.net/newreply.php?id=17401"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/newreply.png" alt="New reply" align="absmiddle"></a></font></td></tr></tbody></table>
+		<table width="100%"><tbody><tr><td align="left"><font class="fonts"></font></td><td align="right"><font class="fonts"><a href="http://jul.rustedlogic.net/forum.php?act=add&thread=17401" style="white-space:nowrap;">Add to favorites</a> | <a href="http://jul.rustedlogic.net/thread.php?id=17465" style="white-space:nowrap;">Next newer thread</a> | <a href="http://jul.rustedlogic.net/thread.php?id=17430" style="white-space:nowrap;">Next older thread</a></font></td></tr></tbody></table>
+		
+		
+		<div style="position:relative">
+	</div><table class="table" cellspacing="0">
+		
+		
+	<tbody><tr>
+	</tr></tbody></table><table class="table" cellspacing="0">
+	<tbody><tr><td class="tbl font tdbg1" valign="top" rowspan="2">
+	  <a name="437629"></a><a style="color:#7C60B0;" class="url2552" href="http://jul.rustedlogic.net/profile.php?id=2552">Kaze</a><font class="fonts"><br>
+	  Member<br>
+        Level: 15<br><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/barleft.gif" height="8"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/bar-on.gif" width="50" height="8"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/bar-off.gif" width="46" height="8"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/barright.gif" height="8"><br>
+	  <br>
+	  Posts: 45/62<br>
+	  EXP: 14780<br>For next: 1604<br><br>
+	  Since: 10-25-12<br><br><br>
+	  Since last post: 24 days<br>Last activity: 1 hour<br>
+	  </font>
+	  <br><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/_.gif" width="200" height="1">
+	</td>
+	<td class="tbl font tdbg1" valign="top" height="1" width="100%">
+	  <table cellspacing="0" cellpadding="2" width="100%" class="fonts">
+	    <tbody><tr><td>Posted on 11-18-14 03:00:37 PM (last edited by <a style="color:#7C60B0;" href="http://jul.rustedlogic.net/profile.php?id=2552">Kaze</a> at 11-19-14 03:40:18 PM)</td>
+	    <td width="255"><nobr><a href="http://jul.rustedlogic.net/thread.php?pid=437629#437629">Link</a> | <a href="http://jul.rustedlogic.net/newreply.php?id=17401&postid=437629">Quote</a>
+	  </nobr></td></tr></tbody></table></td></tr><tr>
+	<td class="tbl font tdbg1" valign="top" height="220" id="post437629">Animation data starts where the 0x27 26 behavior command points to; 0x28 command chooses one of these animations and uses it for the object. second byte of it gets mutliplied by 4 and added to the start offset of the 27 26 command.
+<br>
+<br>[segmented pointers to animation headers] (put as many pointers as necessary)
+<br>
+<br>____________________________________________________
+<br>animation header
+<br>
+<br>1,2 (amount of repeats, 0 for infinte)
+<br>3,4 (unknown)
+<br>5-8 (empty?)
+<br>9,A (frame count)
+<br>B,C (node count (every 0x13 command opens one node, nodes are attached to the previous node by 0x04 commands))
+<br>D-10 (segmented pointer to transformation values)
+<br>11-14 (segmented pointer to transformation index)
+<br>____________________________________________________
+<br>transformation index:
+<br>first 0x0C bytes are for translation, though it seems to only be possible to move the first limb,
+<br>all the other 0x0C byte groups are for limb rotation.
+<br>
+<br>
+<br>rotation/translation group:
+<br>1,2 (u16 X key)
+<br>3,4 (u16 value select)
+<br>5,6 (u16 Y key)
+<br>7,8 (u16 value select)
+<br>9,A (u16 Z key)
+<br>B,C (u16 value select)
+<br>
+<br>
+<br>framcount = obj-&gt;0x40;
+<br>if framecount&gt;key {
+<br>	framecount = key;}
+<br>value select*2+framecount*2+transformation values offset = pointer to translation or rotation to use
+<br>(rotations and translations are both 16bit, rotations go from 0 (0 degree) over 8000 (180 degree), to FFFF (~360/~0 degree)
+<br>
+<br>edit: i forgot to credit on old post who had a doc on how animations work for mario, i didnt figure all of this out, that old post figured out how it worked for mario's animations, while its slightly different for object animations. also, for some reason that old post got deleted.</td>
+	</tr></tbody></table>
+	
+	<div style="position:relative">
+	<table class="table" cellspacing="0">
+	<tbody><tr><td class="tbl font tdbg2" valign="top" rowspan="2">
+	  <a name="438265"></a><a style="color:#7C60B0;" class="url2552" href="http://jul.rustedlogic.net/profile.php?id=2552">Kaze</a><font class="fonts"><br>
+	  Member<br>
+        Level: 15<br><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/barleft.gif" height="8"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/bar-on.gif" width="50" height="8"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/bar-off.gif" width="46" height="8"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/barright.gif" height="8"><br>
+	  <br>
+	  Posts: 46/62<br>
+	  EXP: 14780<br>For next: 1604<br><br>
+	  Since: 10-25-12<br><br><br>
+	  Since last post: 24 days<br>Last activity: 1 hour<br>
+	  </font>
+	  <br><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/_.gif" width="200" height="1">
+	</td>
+	<td class="tbl font tdbg2" valign="top" height="1" width="100%">
+	  <table cellspacing="0" cellpadding="2" width="100%" class="fonts">
+	    <tbody><tr><td>Posted on 01-13-15 10:57:55 AM</td>
+	    <td width="255"><nobr><a href="http://jul.rustedlogic.net/thread.php?pid=438265#438265">Link</a> | <a href="http://jul.rustedlogic.net/newreply.php?id=17401&postid=438265">Quote</a>
+	  </nobr></td></tr></tbody></table></td></tr><tr>
+	<td class="tbl font tdbg2" valign="top" height="220" id="post438265">https://www.youtube.com/watch?v=lSy3N3QDrm4
+<br>
+<br>finally wrote a converter for this, only works with maya.</td>
+	</tr></tbody></table>
+	</div>
+		<table class="table" cellspacing="0">
+		
+		</table>
+		<table width="100%"><tbody><tr><td align="left"><font class="fonts"></font></td><td align="right"><font class="fonts"><a href="http://jul.rustedlogic.net/forum.php?act=add&thread=17401" style="white-space:nowrap;">Add to favorites</a> | <a href="http://jul.rustedlogic.net/thread.php?id=17465" style="white-space:nowrap;">Next newer thread</a> | <a href="http://jul.rustedlogic.net/thread.php?id=17430" style="white-space:nowrap;">Next older thread</a></font></td></tr></tbody></table>
+		
+		<table width="100%"><tbody><tr><td align="left"><font class="font"><a href="http://jul.rustedlogic.net/index.php">Jul</a> - <a href="http://jul.rustedlogic.net/forum.php?id=41">SM64 Hacking</a> - SM64 Animation format</font></td><td align="right"><font class="fonts">
+	<a href="http://jul.rustedlogic.net/newthread.php?poll=1&id=41"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/newpoll.png" alt="New poll" align="absmiddle"></a> - <a href="http://jul.rustedlogic.net/newthread.php?id=41"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/newthread.png" alt="New thread" align="absmiddle"></a> - <a href="http://jul.rustedlogic.net/newreply.php?id=17401"><img src="./Jul -- SM64 Hacking  SM64 Animation format_files/newreply.png" alt="New reply" align="absmiddle"></a></font></td></tr></tbody></table>
+		
+<br>
+<center>
+<!-- Beginning of Project Wonderful ad code: -->
+<!-- Ad box ID: 48901 -->
+<script type="text/javascript">
+<!--
+var pw_d=document;
+pw_d.projectwonderful_adbox_id = "48901";
+pw_d.projectwonderful_adbox_type = "5";
+pw_d.projectwonderful_foreground_color = "#BEBAFE";
+pw_d.projectwonderful_background_color = "#000F1F";
+//-->
+</script>
+<script type="text/javascript" src="http://www.projectwonderful.com/ad_display.js"></script>
+<noscript>&lt;map name="admap48901" id="admap48901"&gt;&lt;area href="http://www.projectwonderful.com/out_nojs.php?r=0&amp;amp;c=0&amp;amp;id=48901&amp;amp;type=5" shape="rect" coords="0,0,728,90" title="" alt="" target="_blank" /&gt;&lt;/map&gt;
+&lt;table cellpadding="0" border="0" cellspacing="0" width="728" bgcolor="#000F1F"&gt;&lt;tr&gt;&lt;td&gt;&lt;img src="http://www.projectwonderful.com/nojs.php?id=48901&amp;amp;type=5" width="728" height="90" usemap="#admap48901" border="0" alt="" /&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td bgcolor="" colspan="1"&gt;&lt;center&gt;&lt;a style="font-size:10px;color:#BEBAFE;text-decoration:none;line-height:1.2;font-weight:bold;font-family:Tahoma, verdana,arial,helvetica,sans-serif;text-transform: none;letter-spacing:normal;text-shadow:none;white-space:normal;word-spacing:normal;" href="http://www.projectwonderful.com/advertisehere.php?id=48901&amp;amp;type=5" target="_blank"&gt;Ads by Project Wonderful! Your ad could be right here, right now.&lt;/a&gt;&lt;/center&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+</noscript>
+<!-- End of Project Wonderful ad code. -->
+</center><br>
+<center>
+
+<img src="./Jul -- SM64 Hacking  SM64 Animation format_files/adnonsense.php" title="generous donations to the first national bank of bad jokes and other dumb crap people post" style="margin-left: 44px;"><br>
+<img src="./Jul -- SM64 Hacking  SM64 Animation format_files/adnonsense(1).php" title="hotpod fund" style="margin: 0 22px;"><br>
+<img src="./Jul -- SM64 Hacking  SM64 Animation format_files/adnonsense(2).php" title="VPS slushie fund" style="margin-right: 44px;">
+
+<br>
+	<font class="fonts">
+	<br><br><a href="http://rustedlogic.net/">Rusted Logic</a>
+	<br>	
+	<br>
+	<table cellpadding="0" border="0" cellspacing="2"><tbody><tr>
+		<td>
+			<img src="./Jul -- SM64 Hacking  SM64 Animation format_files/poweredbyacmlm.gif">
+		</td>
+		<td>
+			<font class="fonts">
+			Acmlmboard -  07/23/2013 b378.03
+			<br>©2000-2013 Acmlm, Xkeeper, Inuyasha, et al. <!-- Acmlm, Emuz, Blades, Xkeeper
+			<br><img src="images/4funin1.png" title="totally!" width=448 height=48> -->
+			</font>
+		</td>
+	</tr></tbody></table>
+	<a href="http://xkeeper.rustedlogic.net/sweetandsour.php" style="display: none;">bargaining-tycoon</a>
+	
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.tcrf.net/" : "http://stats.tcrf.net/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./Jul -- SM64 Hacking  SM64 Animation format_files/piwik.js" type="text/javascript"></script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 4);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript>&lt;p&gt;&lt;img src="http://stats.tcrf.net/piwik.php?idsite=4" style="border:0" alt="" /&gt;&lt;/p&gt;</noscript>
+<!-- End Piwik Tag -->
+<!--<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="js/useful.js"></script> -->
+
+
+  <br>
+		34 database queries, 1 query cache hits.</font>
+		<table cellpadding="0" border="0" cellspacing="0" class="fonts">
+			<tbody><tr><td align="right">Query execution time:&nbsp;</td><td>0.048137 seconds</td></tr>
+			<tr><td align="right">Script execution time:&nbsp;</td><td>0.024735 seconds</td></tr>
+			<tr><td align="right">Total render time:&nbsp;</td><td>0.072872 seconds</td></tr>
+		</tbody></table></center></body></html>
