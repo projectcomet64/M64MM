@@ -44,12 +44,15 @@ Partial Class MainForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.b_SoftFreeze = New System.Windows.Forms.Button()
+        Me.b_SoftUnfreeze = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'b_Freeze
         '
-        Me.b_Freeze.Enabled = False
         Me.b_Freeze.Location = New System.Drawing.Point(12, 44)
         Me.b_Freeze.Name = "b_Freeze"
         Me.b_Freeze.Size = New System.Drawing.Size(147, 23)
@@ -59,7 +62,6 @@ Partial Class MainForm
         '
         'b_Unfreeze
         '
-        Me.b_Unfreeze.Enabled = False
         Me.b_Unfreeze.Location = New System.Drawing.Point(165, 44)
         Me.b_Unfreeze.Name = "b_Unfreeze"
         Me.b_Unfreeze.Size = New System.Drawing.Size(147, 23)
@@ -69,7 +71,6 @@ Partial Class MainForm
         '
         'b_ChangeCameraType
         '
-        Me.b_ChangeCameraType.Enabled = False
         Me.b_ChangeCameraType.Location = New System.Drawing.Point(318, 44)
         Me.b_ChangeCameraType.Name = "b_ChangeCameraType"
         Me.b_ChangeCameraType.Size = New System.Drawing.Size(145, 23)
@@ -182,18 +183,20 @@ Partial Class MainForm
         '
         'ComboBox2
         '
+        Me.ComboBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox2.Enabled = False
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(12, 154)
+        Me.ComboBox2.Location = New System.Drawing.Point(10, 212)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(451, 21)
         Me.ComboBox2.TabIndex = 13
         '
         'Label6
         '
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 138)
+        Me.Label6.Location = New System.Drawing.Point(10, 196)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(99, 13)
         Me.Label6.TabIndex = 12
@@ -201,34 +204,78 @@ Partial Class MainForm
         '
         'ComboBox1
         '
+        Me.ComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.Enabled = False
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(12, 110)
+        Me.ComboBox1.Location = New System.Drawing.Point(10, 172)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(451, 21)
         Me.ComboBox1.TabIndex = 11
         '
         'Label7
         '
+        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(12, 94)
+        Me.Label7.Location = New System.Drawing.Point(10, 156)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(128, 13)
         Me.Label7.TabIndex = 10
         Me.Label7.Text = "Overwrite this animation..."
         '
+        'b_SoftFreeze
+        '
+        Me.b_SoftFreeze.Enabled = False
+        Me.b_SoftFreeze.Location = New System.Drawing.Point(83, 97)
+        Me.b_SoftFreeze.Name = "b_SoftFreeze"
+        Me.b_SoftFreeze.Size = New System.Drawing.Size(128, 23)
+        Me.b_SoftFreeze.TabIndex = 14
+        Me.b_SoftFreeze.Text = "Soft Camera Freeze"
+        Me.b_SoftFreeze.UseVisualStyleBackColor = True
+        '
+        'b_SoftUnfreeze
+        '
+        Me.b_SoftUnfreeze.Enabled = False
+        Me.b_SoftUnfreeze.Location = New System.Drawing.Point(251, 97)
+        Me.b_SoftUnfreeze.Name = "b_SoftUnfreeze"
+        Me.b_SoftUnfreeze.Size = New System.Drawing.Size(128, 23)
+        Me.b_SoftUnfreeze.TabIndex = 14
+        Me.b_SoftUnfreeze.Text = "Soft Camera Unfreeze"
+        Me.b_SoftUnfreeze.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(129, 123)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(40, 13)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "Ctrl + 4"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(298, 123)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(40, 13)
+        Me.Label8.TabIndex = 4
+        Me.Label8.Text = "Ctrl + 5"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(475, 186)
+        Me.ClientSize = New System.Drawing.Size(475, 245)
+        Me.Controls.Add(Me.b_SoftUnfreeze)
+        Me.Controls.Add(Me.b_SoftFreeze)
         Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.b_ChangeCameraType)
@@ -268,5 +315,9 @@ Partial Class MainForm
     Friend WithEvents RetainAnimationSwapsMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UndoPreviousAnimationSwapsMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ResetAnimationSwapsMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents b_SoftFreeze As System.Windows.Forms.Button
+    Friend WithEvents b_SoftUnfreeze As System.Windows.Forms.Button
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
 
 End Class

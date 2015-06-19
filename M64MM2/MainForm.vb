@@ -5,7 +5,8 @@ Public Class MainForm
     Private Declare Function GetKeyPress Lib "user32" Alias "GetAsyncKeyState" (ByVal key As Integer) As Integer
 
     Private ChangeCamera As Boolean = False
-    Private CameraUnfrozen As Boolean = False
+    Private CameraUnfrozen As Boolean = True
+    Private SoftCameraUnfrozen As Boolean = True
     Private Base As Long
     Public Shared EmuOpen As Boolean = False
     Private Key3WasUp As Boolean = True
@@ -41,6 +42,8 @@ Public Class MainForm
         AddHandler b_Freeze.Click, AddressOf Freeze
         AddHandler b_Unfreeze.Click, AddressOf Unfreeze
         AddHandler b_ChangeCameraType.Click, AddressOf ChangeCameraType
+        AddHandler b_SoftFreeze.Click, AddressOf SoftFreeze
+        AddHandler b_SoftUnfreeze.Click, AddressOf SoftUnfreeze
         AddHandler AboutMenuItem.Click, AddressOf AboutForm.ShowDialog
 
         Try
@@ -149,6 +152,7 @@ Public Class MainForm
     Private Sub Freeze()
         If EmuOpen = True And Base > 0 Then
             ChangeCamera = False
+            CameraUnfrozen = False
             WriteInteger("Project64", Base + &H33C848, &H80000000)
         End If
     End Sub
@@ -173,6 +177,30 @@ Public Class MainForm
         End If
     End Sub
 
+    Private Sub SoftFreeze()
+        If EmuOpen = True And Base > 0 Then
+            SoftCameraUnfrozen = False
+            b_Freeze.Enabled = False
+            b_Unfreeze.Enabled = False
+            b_SoftUnfreeze.Enabled = True
+            b_SoftFreeze.Enabled = False
+            'MsgBox(Hex(ReadInteger("Project64", Base + &H33B204)))
+            WriteInteger("Project64", Base + &H33B204, &H8001C520)
+        End If
+    End Sub
+
+    Private Sub SoftUnfreeze()
+        If EmuOpen = True And Base > 0 Then
+            SoftCameraUnfrozen = True
+            b_Freeze.Enabled = True
+            b_Unfreeze.Enabled = False
+            b_SoftUnfreeze.Enabled = False
+            b_SoftFreeze.Enabled = True
+            'MsgBox(Hex(ReadInteger("Project64", Base + &H33B204)))
+            WriteInteger("Project64", Base + &H33B204, &H8033C520)
+        End If
+    End Sub
+
     Private Sub TimerEventProcessor(myObject As Object, ByVal myEventArgs As EventArgs) Handles Timer1.Tick
         ' Main program update call
         If GetEmuProcess("Project64") = Nothing Then
@@ -191,14 +219,18 @@ Public Class MainForm
                     b_Unfreeze.Enabled = False
                     ComboBox1.Enabled = False
                     ComboBox2.Enabled = False
+                    b_SoftFreeze.Enabled = False
+                    b_SoftUnfreeze.Enabled = False
                     Exit Sub
                 End If
 
                 b_ChangeCameraType.Enabled = True
-                b_Freeze.Enabled = True
-                b_Unfreeze.Enabled = True
+                b_Freeze.Enabled = CameraUnfrozen
+                b_Unfreeze.Enabled = Not CameraUnfrozen
                 ComboBox1.Enabled = True
                 ComboBox2.Enabled = True
+                b_SoftFreeze.Enabled = SoftCameraUnfrozen
+                b_SoftUnfreeze.Enabled = Not SoftCameraUnfrozen
 
                 WriteAnimationSwap()
 
@@ -218,6 +250,8 @@ Public Class MainForm
                 b_ChangeCameraType.Text = "Change Camera Type"
                 ComboBox1.Enabled = False
                 ComboBox2.Enabled = False
+                b_SoftFreeze.Enabled = False
+                b_SoftUnfreeze.Enabled = False
                 GetBase()
             End If
         Else
@@ -227,6 +261,8 @@ Public Class MainForm
             b_ChangeCameraType.Text = "Change Camera Type"
             ComboBox1.Enabled = False
             ComboBox2.Enabled = False
+            b_SoftFreeze.Enabled = False
+            b_SoftUnfreeze.Enabled = False
             Label1.Text = "Project64 isn't open!"
         End If
 
@@ -249,6 +285,10 @@ Public Class MainForm
                 Exit Sub
             End If
             ChangeCameraType()
+        ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D4) Then
+            SoftFreeze()
+        ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D5) Then
+            SoftUnfreeze()
         End If
 
         If GetKeyPress(Keys.D3) = False Then
