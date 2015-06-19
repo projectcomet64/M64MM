@@ -19,6 +19,8 @@
 0x000841F800000AB8 = Triple jump = 193
 0x00003ED4000009EC = Backflip = 4
 0x0008375000000AA8 = Land from back flip / triple jump (“ta-dah” pose) = 192
+0x0008B06400001554 = Get star = 205
+0x0008C5B8000006C8 = Get star (part 2) = 206
 0x0003D0E40000073E = Kick in mid-air = 79
 0x0002960400001FE6 = Normal death = 50
 0x0000069000000B40 = Climb up ledge (right leg going up) = 0
@@ -52,12 +54,12 @@
 0x0001120800000678 = Waving = 29
 0x000118800000070E = Look upward = 30
 0x00011F9000000462 = Look upward then downward = 31
-0x000123F400001CE8 = Summon Peach = 32
-0x000140DC00000B46 = Lift hand = 33
+0x000123F400001CE8 = Summon Peach, lift hand = 32
+0x000140DC00000B46 = Lower hand = 33
 0x00014C24000007EA = Take cap off = 34
 0x000154100000212C = Walking at end, looking backward to sky = 35
 0x0001753C000025B4 = Look backward then run (at end) = 36
-0x00019AF000002066 = Lift hand (slower?) = 37
+0x00019AF000002066 = Lift hand (after defeating final Bowser?) = 37
 0x0001BB5800001DCC = Fly at ending cutscene = 38
 0x0001D92400002428 = Peace sign (after kiss from Peach) = 39
 0x0001FD4C00000506 = Get out of sand / snow = 40
@@ -74,7 +76,7 @@
 0x0002C21800000628 = Lift up on ledge quickly = 52
 0x0002C84000000F8C = Wobble while on monkey-bars = 53
 0x0002D7CC00000F88 = Put hat on = 54
-0x0002E75400001BC0 = Putting star under hat = 55
+0x0002E75400001BC0 = Putting star under hat, scratch mustache = 55
 0x0003031400000460 = Putting star under hat (part 2) = 56
 0x0003077400003196 = Head stuck under sand = 57
 0x0003390C0000028A = Sliding on bottom = 58
@@ -203,7 +205,5 @@
 0x00089844000008A8 = Get up after sleeping (laying) = 201
 0x0008A9D000000692 = Wall kick/jump from tree = 203
 0x0008A9E80000067A = Hang onto pole / tree = 204
-0x0008B06400001554 = Get star = 205
-0x0008C5B8000006C8 = Get star (part 2) = 206
 0x0008CC8000000BA8 = Triple jump and start flying = 207
 0x0008D828000003EE = Start special triple jump? = 208
