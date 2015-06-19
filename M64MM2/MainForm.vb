@@ -35,6 +35,14 @@ Public Class MainForm
         ' This call is required by the designer.
         InitializeComponent()
 
+        AddHandler ComboBox1.SelectedValueChanged, AddressOf ComboBox1_SelectedValueChanged
+        AddHandler ComboBox2.SelectedValueChanged, AddressOf ComboBox2_SelectedValueChanged
+        AddHandler ResetAnimationSwapsMenuItem.Click, AddressOf ResetAnimations
+        AddHandler b_Freeze.Click, AddressOf Freeze
+        AddHandler b_Unfreeze.Click, AddressOf Unfreeze
+        AddHandler b_ChangeCameraType.Click, AddressOf ChangeCameraType
+        AddHandler AboutMenuItem.Click, AddressOf AboutForm.ShowDialog
+
         Try
             Using sr As New StreamReader("animation_data.txt")
                 Do While sr.Peek() >= 0
@@ -59,9 +67,6 @@ Public Class MainForm
             ComboBox2.DataSource = New BindingSource(AnimData, Nothing)
             ComboBox2.DisplayMember = "Value"
             ComboBox2.ValueMember = "Key"
-            AddHandler ComboBox1.SelectedValueChanged, AddressOf ComboBox1_SelectedValueChanged
-            AddHandler ComboBox2.SelectedValueChanged, AddressOf ComboBox2_SelectedValueChanged
-            AddHandler ResetAnimationSwapsMenuItem.Click, AddressOf ResetAnimations
             ComboBox1.SelectedIndex = 0
             ComboBox2.SelectedIndex = 0
             LastCBox1Index = 0
@@ -74,9 +79,6 @@ Public Class MainForm
         Else
             EmuOpen = True
         End If
-
-        Timer1.Enabled = True
-        Timer1.Interval = 1
     End Sub
 
     Public Function GetChunks(value As String, chunkSize As Integer) As List(Of String)
@@ -145,40 +147,33 @@ Public Class MainForm
     End Sub
 
     Private Sub Freeze()
-        ChangeCamera = False
-        WriteInteger("Project64", Base + &H33C848, &H80000000)
-    End Sub
-
-    Private Sub Unfreeze()
-        ChangeCamera = False
-        CameraUnfrozen = True
-        WriteInteger("Project64", Base + &H33C848, 0)
-    End Sub
-
-    Private Sub ChangeCameraType()
-        ChangeCamera = Not ChangeCamera
-        If ChangeCamera = True Then
-            b_ChangeCameraType.Text = "Go to new area"
-        Else
-            b_ChangeCameraType.Text = "Change Camera Type"
+        If EmuOpen = True And Base > 0 Then
+            ChangeCamera = False
+            WriteInteger("Project64", Base + &H33C848, &H80000000)
         End If
     End Sub
 
-    Private Sub b_Freeze_Click(sender As Object, e As EventArgs) Handles b_Freeze.Click
-        If EmuOpen = True And Base > 0 Then Freeze()
+    Private Sub Unfreeze()
+        If EmuOpen = True And Base > 0 Then
+            ChangeCamera = False
+            CameraUnfrozen = True
+            b_ChangeCameraType.Text = "Change Camera Type"
+            WriteInteger("Project64", Base + &H33C848, 0)
+        End If
     End Sub
 
-    Private Sub b_Unfreeze_Click(sender As Object, e As EventArgs) Handles b_Unfreeze.Click
-        If EmuOpen = True And Base > 0 Then Unfreeze()
-    End Sub
-
-    Private Sub b_ChangeCameraType_Click(sender As Object, e As EventArgs) Handles b_ChangeCameraType.Click
-        If EmuOpen = True And Base > 0 Then ChangeCameraType()
+    Private Sub ChangeCameraType()
+        If EmuOpen = True And Base > 0 Then
+            ChangeCamera = Not ChangeCamera
+            If ChangeCamera = True Then
+                b_ChangeCameraType.Text = "Go to new area"
+            Else
+                Unfreeze()
+            End If
+        End If
     End Sub
 
     Private Sub TimerEventProcessor(myObject As Object, ByVal myEventArgs As EventArgs) Handles Timer1.Tick
-        Timer1.Stop() ' Don't let the timer tick again until we're done processing the current tick (this precaution may be unnecessary)
-
         ' Main program update call
         If GetEmuProcess("Project64") = Nothing Then
             EmuOpen = False
@@ -191,14 +186,21 @@ Public Class MainForm
                 ' Check if base address is still correct
                 If ReadInteger("Project64", Base) <> &H3C1A8032 Then ' If our old base is not valid, we need to start looking for a new one
                     Base = 0
-                    Timer1.Enabled = True ' Re-enable the timer so we can start to scan for a new base address
+                    b_ChangeCameraType.Enabled = False
+                    b_Freeze.Enabled = False
+                    b_Unfreeze.Enabled = False
+                    ComboBox1.Enabled = False
+                    ComboBox2.Enabled = False
                     Exit Sub
                 End If
 
-                If TestOnce = False Then
-                    ComboBox2.SelectedValue = CurrentAnimInRAM()
-                    TestOnce = True
-                End If
+                b_ChangeCameraType.Enabled = True
+                b_Freeze.Enabled = True
+                b_Unfreeze.Enabled = True
+                ComboBox1.Enabled = True
+                ComboBox2.Enabled = True
+
+                WriteAnimationSwap()
 
                 ' Handle key input (for hotkeys, etc.)
                 HandleInput()
@@ -210,13 +212,28 @@ Public Class MainForm
                 ' If we are changing camera modes, repeatedly force the camera into frozen mode.
                 If ChangeCamera = True Then WriteInteger("Project64", Base + &H33C848, &H80000000)
             Else
+                b_Freeze.Enabled = False
+                b_Unfreeze.Enabled = False
+                b_ChangeCameraType.Enabled = False
+                b_ChangeCameraType.Text = "Change Camera Type"
+                ComboBox1.Enabled = False
+                ComboBox2.Enabled = False
                 GetBase()
             End If
         Else
+            b_Freeze.Enabled = False
+            b_Unfreeze.Enabled = False
+            b_ChangeCameraType.Enabled = False
+            b_ChangeCameraType.Text = "Change Camera Type"
+            ComboBox1.Enabled = False
+            ComboBox2.Enabled = False
             Label1.Text = "Project64 isn't open!"
         End If
 
-        Timer1.Enabled = True ' Re-enable the timer so this sub will continue to be called repeatedly
+        'The way this timer was repeating before was technically 1 ms per tick, which uses too much CPU by scanning adresses EVERY 1 ms.
+        'Using 100ms as the interval between each scan doesn't waste too much CPU in the Base Adress Scan, and it's just as effective.
+        'Both Timer1 settings are set in the MainForm.Load() Event.
+        'After every tick, the timer repeats itself.
     End Sub
 
     Private Sub HandleInput()
@@ -239,11 +256,6 @@ Public Class MainForm
         Else
             Key3WasUp = False
         End If
-    End Sub
-
-    Private Sub AboutM64MovieMaker20ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutM64MovieMaker20ToolStripMenuItem.Click
-        Dim AboutDialog As New AboutForm
-        AboutDialog.ShowDialog()
     End Sub
 
     Private Sub ComboBox1_SelectedValueChanged(ByVal sender As Object, ByVal e As EventArgs)
@@ -279,6 +291,11 @@ Public Class MainForm
 
         RetainAnimationSwapsMenuItem.Checked = False
         RetainAnimationSwapsMenuItem.CheckState = CheckState.Unchecked
+    End Sub
+
+    Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Timer1.Interval = 100 'Make the timer tick every tenth of a second, to avoid unneccesary CPU use in some processors.
+        Timer1.Start()
     End Sub
 End Class
 

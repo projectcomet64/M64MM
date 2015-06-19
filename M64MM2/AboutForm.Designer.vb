@@ -40,7 +40,7 @@ Partial Class AboutForm
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(399, 26)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Mario 64 Movie Maker 2.0 beta 7"
+        Me.Label1.Text = "Mario 64 Movie Maker 2.0 beta 8"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Label2
@@ -65,14 +65,15 @@ Partial Class AboutForm
         '
         Me.Label4.Location = New System.Drawing.Point(12, 108)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(402, 28)
+        Me.Label4.Size = New System.Drawing.Size(402, 42)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Special thanks to Matthew ""MATTHEWGU4"" Guerra for helping me make this project a " & _
-    "reality and for spreading the word!"
+    "reality and for spreading the word, and to GlitchyPSIX for his contributions to " & _
+    "the program."
         '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(12, 143)
+        Me.Label5.Location = New System.Drawing.Point(12, 159)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(343, 13)
         Me.Label5.TabIndex = 4
@@ -81,15 +82,16 @@ Partial Class AboutForm
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(12, 156)
+        Me.LinkLabel1.Location = New System.Drawing.Point(12, 172)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(143, 13)
         Me.LinkLabel1.TabIndex = 6
+        Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "captainswag101@gmail.com"
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(173, 201)
+        Me.Button1.Location = New System.Drawing.Point(175, 216)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 5
@@ -99,18 +101,18 @@ Partial Class AboutForm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 183)
+        Me.Label6.Location = New System.Drawing.Point(12, 195)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(125, 13)
+        Me.Label6.Size = New System.Drawing.Size(128, 13)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Build date: May 20, 2015"
+        Me.Label6.Text = "Build date: June 19, 2015"
         '
         'AboutForm
         '
         Me.AcceptButton = Me.Button1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(426, 236)
+        Me.ClientSize = New System.Drawing.Size(426, 251)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LinkLabel1)
