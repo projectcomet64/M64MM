@@ -68,8 +68,8 @@ Partial Class AboutForm
         Me.Label4.Size = New System.Drawing.Size(402, 42)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Special thanks to Matthew ""MATTHEWGU4"" Guerra for helping me make this project a " & _
-    "reality and for spreading the word, and to GlitchyPSIX for his contributions to " & _
-    "the program."
+    "reality and for spreading the word, and to GlitchyPSIX for his discovery of the " & _
+    """Soft-Freeze"" feature."
         '
         'Label5
         '
