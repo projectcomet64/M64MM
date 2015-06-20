@@ -40,7 +40,7 @@ Partial Class AboutForm
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(399, 26)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Mario 64 Movie Maker 2.0 beta 8"
+        Me.Label1.Text = "Mario 64 Movie Maker 2.0 beta 9"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Label2

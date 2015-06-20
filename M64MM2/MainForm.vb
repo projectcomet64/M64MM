@@ -45,6 +45,8 @@ Public Class MainForm
         AddHandler b_SoftFreeze.Click, AddressOf SoftFreeze
         AddHandler b_SoftUnfreeze.Click, AddressOf SoftUnfreeze
         AddHandler AboutMenuItem.Click, AddressOf AboutForm.ShowDialog
+        AddHandler ForceCameraPresetMenuItem.Click, AddressOf ForceCameraPreset
+        AddHandler Timer1.Tick, AddressOf Main
 
         Try
             Using sr As New StreamReader("animation_data.txt")
@@ -134,6 +136,10 @@ Public Class MainForm
         ComboBox2.SelectedIndex = ComboBox1.SelectedIndex
     End Sub
 
+    Private Sub ForceCameraPreset()
+        WriteInteger("Project64", Base + &H33C6D6, &H1010, 2)
+    End Sub
+
     Private Sub GetBase(Optional silent As Boolean = True)
         ' Get the base RAM address of the emulated memory block by searching for the constant value of SM64's first RAM address
         Label1.Text = "Scanning for base address..."
@@ -170,6 +176,7 @@ Public Class MainForm
         If EmuOpen = True And Base > 0 Then
             ChangeCamera = Not ChangeCamera
             If ChangeCamera = True Then
+                CameraUnfrozen = False
                 b_ChangeCameraType.Text = "Go to new area"
             Else
                 Unfreeze()
@@ -180,8 +187,6 @@ Public Class MainForm
     Private Sub SoftFreeze()
         If EmuOpen = True And Base > 0 Then
             SoftCameraUnfrozen = False
-            b_Freeze.Enabled = False
-            b_Unfreeze.Enabled = False
             b_SoftUnfreeze.Enabled = True
             b_SoftFreeze.Enabled = False
             'MsgBox(Hex(ReadInteger("Project64", Base + &H33B204)))
@@ -192,8 +197,6 @@ Public Class MainForm
     Private Sub SoftUnfreeze()
         If EmuOpen = True And Base > 0 Then
             SoftCameraUnfrozen = True
-            b_Freeze.Enabled = True
-            b_Unfreeze.Enabled = False
             b_SoftUnfreeze.Enabled = False
             b_SoftFreeze.Enabled = True
             'MsgBox(Hex(ReadInteger("Project64", Base + &H33B204)))
@@ -201,7 +204,7 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub TimerEventProcessor(myObject As Object, ByVal myEventArgs As EventArgs) Handles Timer1.Tick
+    Private Sub Main(myObject As Object, ByVal myEventArgs As EventArgs)
         ' Main program update call
         If GetEmuProcess("Project64") = Nothing Then
             EmuOpen = False
@@ -242,7 +245,10 @@ Public Class MainForm
                 If ReadLong("Project64", Base + &H33C848) >= &HA2000000L Then WriteInteger("Project64", Base + &H33C848, &H80000000)
 
                 ' If we are changing camera modes, repeatedly force the camera into frozen mode.
-                If ChangeCamera = True Then WriteInteger("Project64", Base + &H33C848, &H80000000)
+                If ChangeCamera = True Then
+                    WriteInteger("Project64", Base + &H33C848, &H80000000)
+                End If
+
             Else
                 b_Freeze.Enabled = False
                 b_Unfreeze.Enabled = False
@@ -279,16 +285,15 @@ Public Class MainForm
             Unfreeze()
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D3) And Key3WasUp Then
             Key3WasUp = False
-            If CameraUnfrozen = True Then
-                b_ChangeCameraType.Text = "Change Camera Type"
-                CameraUnfrozen = False
-                Exit Sub
-            End If
             ChangeCameraType()
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D4) Then
             SoftFreeze()
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D5) Then
             SoftUnfreeze()
+        ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.R) Then
+            ResetAnimations()
+        ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.F) Then
+            ForceCameraPreset()
         End If
 
         If GetKeyPress(Keys.D3) = False Then
