@@ -105,7 +105,7 @@ Partial Class AboutForm
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(128, 13)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Build date: June 19, 2015"
+        Me.Label6.Text = "Build date: June 20, 2015"
         '
         'AboutForm
         '

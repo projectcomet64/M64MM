@@ -15,6 +15,7 @@ Public Class MainForm
     Private AnimData As Dictionary(Of String, String) = New Dictionary(Of String, String)
     Private LastCBox1Index As Integer
     Private TestOnce As Boolean = False
+    Private DisableAnimSwap As Boolean = False
 
     Private ReadOnly Property CB1AnimIndex As Integer
         Get
@@ -63,9 +64,14 @@ Public Class MainForm
             End Using
         Catch e As Exception
             MessageBox.Show("Error reading animation data file:" & vbCrLf & e.Message)
+            DisableAnimSwap = True
+            Label7.Text = "Animation data not loaded!"
+            Label6.Text = "Animation data not loaded!"
+            ComboBox1.Refresh()
+            ComboBox2.Refresh()
         End Try
 
-        If AnimData.Count > 0 Then
+        If AnimData.Count > 0 And DisableAnimSwap = False Then
             ComboBox1.DataSource = New BindingSource(AnimData, Nothing)
             ComboBox1.DisplayMember = "Value"
             ComboBox1.ValueMember = "Key"
@@ -187,8 +193,6 @@ Public Class MainForm
     Private Sub SoftFreeze()
         If EmuOpen = True And Base > 0 Then
             SoftCameraUnfrozen = False
-            b_SoftUnfreeze.Enabled = True
-            b_SoftFreeze.Enabled = False
             'MsgBox(Hex(ReadInteger("Project64", Base + &H33B204)))
             WriteInteger("Project64", Base + &H33B204, &H8001C520)
         End If
@@ -197,8 +201,6 @@ Public Class MainForm
     Private Sub SoftUnfreeze()
         If EmuOpen = True And Base > 0 Then
             SoftCameraUnfrozen = True
-            b_SoftUnfreeze.Enabled = False
-            b_SoftFreeze.Enabled = True
             'MsgBox(Hex(ReadInteger("Project64", Base + &H33B204)))
             WriteInteger("Project64", Base + &H33B204, &H8033C520)
         End If
@@ -228,14 +230,14 @@ Public Class MainForm
                 End If
 
                 b_ChangeCameraType.Enabled = True
-                b_Freeze.Enabled = CameraUnfrozen
-                b_Unfreeze.Enabled = Not CameraUnfrozen
-                ComboBox1.Enabled = True
-                ComboBox2.Enabled = True
-                b_SoftFreeze.Enabled = SoftCameraUnfrozen
-                b_SoftUnfreeze.Enabled = Not SoftCameraUnfrozen
+                b_Freeze.Enabled = True
+                b_Unfreeze.Enabled = True
+                ComboBox1.Enabled = Not DisableAnimSwap
+                ComboBox2.Enabled = Not DisableAnimSwap
+                b_SoftFreeze.Enabled = True
+                b_SoftUnfreeze.Enabled = True
 
-                WriteAnimationSwap()
+                If DisableAnimSwap = False Then WriteAnimationSwap()
 
                 ' Handle key input (for hotkeys, etc.)
                 HandleInput()
@@ -290,7 +292,7 @@ Public Class MainForm
             SoftFreeze()
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D5) Then
             SoftUnfreeze()
-        ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.R) Then
+        ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.R) And DisableAnimSwap = False Then
             ResetAnimations()
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.F) Then
             ForceCameraPreset()
@@ -304,7 +306,7 @@ Public Class MainForm
     End Sub
 
     Private Sub ComboBox1_SelectedValueChanged(ByVal sender As Object, ByVal e As EventArgs)
-        If UndoPreviousAnimationSwapsMenuItem.Checked And EmuOpen = True And Base > 0 Then
+        If UndoPreviousAnimationSwapsMenuItem.Checked And EmuOpen = True And Base > 0 And DisableAnimSwap = False Then
             For Each anim As Animation In AnimList
                 If anim.Value = DirectCast(ComboBox2.Items(LastCBox1Index), KeyValuePair(Of String, String)).Key Then
                     WriteInteger("Project64", Base + &H64040 + ((anim.Index + 1) * 8), Integer.Parse(GetChunks(anim.Value, 8)(0), Globalization.NumberStyles.HexNumber))
@@ -319,7 +321,7 @@ Public Class MainForm
     End Sub
 
     Private Sub ComboBox2_SelectedValueChanged(sender As Object, e As EventArgs)
-        WriteAnimationSwap()
+        If DisableAnimSwap = False Then WriteAnimationSwap()
     End Sub
 
     Private Sub RetainAnimationSwapsMenuItem_Click(sender As Object, e As EventArgs) Handles RetainAnimationSwapsMenuItem.Click
