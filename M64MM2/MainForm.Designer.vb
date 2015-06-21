@@ -40,6 +40,7 @@ Partial Class MainForm
         Me.RetainAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UndoPreviousAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ForceCameraPresetMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -150,7 +151,7 @@ Partial Class MainForm
         '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RetainAnimationSwapsMenuItem, Me.UndoPreviousAnimationSwapsMenuItem, Me.ResetAnimationSwapsMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RetainAnimationSwapsMenuItem, Me.UndoPreviousAnimationSwapsMenuItem, Me.ResetAnimationSwapsMenuItem, Me.ForceCameraPresetMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
@@ -160,7 +161,7 @@ Partial Class MainForm
         Me.RetainAnimationSwapsMenuItem.Checked = True
         Me.RetainAnimationSwapsMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.RetainAnimationSwapsMenuItem.Name = "RetainAnimationSwapsMenuItem"
-        Me.RetainAnimationSwapsMenuItem.Size = New System.Drawing.Size(274, 22)
+        Me.RetainAnimationSwapsMenuItem.Size = New System.Drawing.Size(347, 22)
         Me.RetainAnimationSwapsMenuItem.Text = "Remeber previous animation swaps"
         Me.RetainAnimationSwapsMenuItem.ToolTipText = "When you select a new animation to be overwritten, any previous animations" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "will " & _
     "remain swapped until you manually change or reset them."
@@ -168,7 +169,7 @@ Partial Class MainForm
         'UndoPreviousAnimationSwapsMenuItem
         '
         Me.UndoPreviousAnimationSwapsMenuItem.Name = "UndoPreviousAnimationSwapsMenuItem"
-        Me.UndoPreviousAnimationSwapsMenuItem.Size = New System.Drawing.Size(274, 22)
+        Me.UndoPreviousAnimationSwapsMenuItem.Size = New System.Drawing.Size(347, 22)
         Me.UndoPreviousAnimationSwapsMenuItem.Text = "Undo previous animation swaps"
         Me.UndoPreviousAnimationSwapsMenuItem.ToolTipText = "When you select a new animation to be overwritten, the previous one" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "will be retu" & _
     "rned to its default animation."
@@ -177,9 +178,17 @@ Partial Class MainForm
         '
         Me.ResetAnimationSwapsMenuItem.Name = "ResetAnimationSwapsMenuItem"
         Me.ResetAnimationSwapsMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.ResetAnimationSwapsMenuItem.Size = New System.Drawing.Size(274, 22)
+        Me.ResetAnimationSwapsMenuItem.Size = New System.Drawing.Size(347, 22)
         Me.ResetAnimationSwapsMenuItem.Text = "Reset all animations to default"
         Me.ResetAnimationSwapsMenuItem.ToolTipText = "This resets all animations to their original sequences."
+        '
+        'ForceCameraPresetMenuItem
+        '
+        Me.ForceCameraPresetMenuItem.Name = "ForceCameraPresetMenuItem"
+        Me.ForceCameraPresetMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
+        Me.ForceCameraPresetMenuItem.Size = New System.Drawing.Size(347, 22)
+        Me.ForceCameraPresetMenuItem.Text = "Force camera to be movable with C-buttons"
+        Me.ForceCameraPresetMenuItem.ToolTipText = resources.GetString("ForceCameraPresetMenuItem.ToolTipText")
         '
         'ComboBox2
         '
@@ -319,5 +328,6 @@ Partial Class MainForm
     Friend WithEvents b_SoftUnfreeze As System.Windows.Forms.Button
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents ForceCameraPresetMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

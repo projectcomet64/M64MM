@@ -123,6 +123,14 @@
   <metadata name="MenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>106, 17</value>
   </metadata>
+  <data name="ForceCameraPresetMenuItem.ToolTipText" xml:space="preserve">
+    <value>Click this whenever you are in an area that does not allow
+the camera to be rotated with the C-buttons (such as the
+inside of the castle) and the camera will be temporarily allowed
+to be manually rotated in the usual manner. However, this
+does not always work in all areas of the castle, as sometimes
+camera behaviors are hardcoded into specific parts of levels.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
