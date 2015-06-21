@@ -6,6 +6,7 @@ Public Class MainForm
 
     Private ChangeCamera As Boolean = False
     Private CameraUnfrozen As Boolean = True
+    Private PrecisionStage As Byte = 0
     Private SoftCameraUnfrozen As Boolean = True
     Private Base As Long
     Public Shared EmuOpen As Boolean = False
@@ -226,6 +227,7 @@ Public Class MainForm
                     ComboBox2.Enabled = False
                     b_SoftFreeze.Enabled = False
                     b_SoftUnfreeze.Enabled = False
+                    PrecisionModeOff(True)
                     Exit Sub
                 End If
 
@@ -236,6 +238,7 @@ Public Class MainForm
                 ComboBox2.Enabled = Not DisableAnimSwap
                 b_SoftFreeze.Enabled = True
                 b_SoftUnfreeze.Enabled = True
+                If PrecisionStage = 0 Then PrecisionStatusLabel.Text = "Precision Mode is not on." + vbCrLf + "Enable it in Settings > Enable Precision Mode"
 
                 If DisableAnimSwap = False Then WriteAnimationSwap()
 
@@ -272,6 +275,7 @@ Public Class MainForm
             b_SoftFreeze.Enabled = False
             b_SoftUnfreeze.Enabled = False
             Label1.Text = "Project64 isn't open!"
+            PrecisionStatusLabel.Text = "CANNOT USE PRECISION MODE IF THERE'S NO CAMERA TO PRECISE."
         End If
 
         'The way this timer was repeating before was technically 1 ms per tick, which uses too much CPU by scanning adresses EVERY 1 ms.
@@ -343,6 +347,82 @@ Public Class MainForm
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Interval = 100 'Make the timer tick every tenth of a second, to avoid unneccesary CPU use in some processors.
         Timer1.Start()
+    End Sub
+
+    Private Sub b_PrecisionPlusOne_Click(sender As Object, e As EventArgs) Handles b_PrecisionPlusOne.Click
+        If PrecisionStage = 1 Then
+            LockAngle()
+        ElseIf PrecisionStage = 2 Then
+            PrecisionModeOn(True)
+        End If
+    End Sub
+    ''' <summary>
+    ''' Enables Precision Mode
+    ''' </summary>
+    ''' <param name="Reclick">True or false - Is a button reclick?</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function PrecisionModeOn(ByVal Reclick As Boolean)
+        If Reclick = False Then
+            PrecisionStatusLabel.Text = "Precision Mode enabled. Click button below to lock Camera Angle"
+            CamCont.Enabled = False
+            b_PrecisionPlusOne.Enabled = True
+            PrecisionStage = 1
+            b_PrecisionPlusOne.Text = "Lock Camera Angle"
+            'Insert here the WriteInteger for forcing C-UP mode
+        ElseIf Reclick = True Then
+            PrecisionStatusLabel.Text = "Reposition Mode Enabled. Click button below to lock Camera Angle"
+            b_PrecisionPlusOne.Enabled = True
+            Unfreeze()
+            PrecisionStage = 1
+            b_PrecisionPlusOne.Text = "Lock Camera Angle"
+            'Insert here the WriteInteger for forcing C-UP mode
+        End If
+    End Function
+    ''' <summary>
+    ''' Locks the angle of the camera in C-UP mode.
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function LockAngle()
+        PrecisionStatusLabel.Text = "Camera Locked. Press below to reposition Angle." + vbCrLf + "Settings > Enable Precision mode to Exit Precision Mode"
+        Freeze()
+        b_PrecisionPlusOne.Text = "Reposition Angle"
+        PrecisionStage = 2
+    End Function
+    ''' <summary>
+    ''' Turns off Precision Mode
+    ''' </summary>
+    ''' <param name="Hard">True or False - Hard shutdown. Does not enable any buttons/unfreeze the camera</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function PrecisionModeOff(ByVal Hard As Boolean)
+        If Hard = False Then
+            CamCont.Enabled = True
+            b_PrecisionPlusOne.Enabled = False
+            PrecisionStage = 0
+            Unfreeze()
+            PrecisionStatusLabel.Text = "Precision Mode is not on." + vbCrLf + "Enable it in Settings > Enable Precision Mode"
+            PrecisionCameraModeToolStripMenuItem.Checked = False
+            'Insert Here the WriteInteger for unforce C-UP mode
+        Else
+            b_PrecisionPlusOne.Enabled = False
+            PrecisionStage = 0
+            PrecisionCameraModeToolStripMenuItem.Checked = False
+        End If
+    End Function
+
+    Private Sub PrecisionCameraModeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrecisionCameraModeToolStripMenuItem.Click
+        If PrecisionCameraModeToolStripMenuItem.Checked = False Then
+            If Base = 0 Then
+                MsgBox("Cannot use Precision Mode if Project64 with Super Mario 64 is not loaded.", MsgBoxStyle.Exclamation, "Warning")
+            Else
+                PrecisionModeOn(False)
+                PrecisionCameraModeToolStripMenuItem.Checked = True
+            End If
+        Else
+            PrecisionModeOff(False)
+        End If
     End Sub
 End Class
 
