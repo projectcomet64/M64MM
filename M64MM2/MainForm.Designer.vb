@@ -88,9 +88,6 @@ Partial Class MainForm
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "BaseAddress"
         '
-        'Timer1
-        '
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -124,7 +121,7 @@ Partial Class MainForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutMenu, Me.SettingsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(475, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(474, 24)
         Me.MenuStrip1.TabIndex = 7
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -198,7 +195,7 @@ Partial Class MainForm
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Location = New System.Drawing.Point(10, 212)
         Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(451, 21)
+        Me.ComboBox2.Size = New System.Drawing.Size(453, 21)
         Me.ComboBox2.TabIndex = 13
         '
         'Label6
@@ -219,7 +216,7 @@ Partial Class MainForm
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(10, 172)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(451, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(453, 21)
         Me.ComboBox1.TabIndex = 11
         '
         'Label7
@@ -239,7 +236,7 @@ Partial Class MainForm
         Me.b_SoftFreeze.Name = "b_SoftFreeze"
         Me.b_SoftFreeze.Size = New System.Drawing.Size(128, 23)
         Me.b_SoftFreeze.TabIndex = 14
-        Me.b_SoftFreeze.Text = "Soft Camera Freeze"
+        Me.b_SoftFreeze.Text = "Soft-Freeze Camera"
         Me.b_SoftFreeze.UseVisualStyleBackColor = True
         '
         'b_SoftUnfreeze
@@ -249,7 +246,7 @@ Partial Class MainForm
         Me.b_SoftUnfreeze.Name = "b_SoftUnfreeze"
         Me.b_SoftUnfreeze.Size = New System.Drawing.Size(128, 23)
         Me.b_SoftUnfreeze.TabIndex = 14
-        Me.b_SoftUnfreeze.Text = "Soft Camera Unfreeze"
+        Me.b_SoftUnfreeze.Text = "Soft-Unfreeze Camera"
         Me.b_SoftUnfreeze.UseVisualStyleBackColor = True
         '
         'Label5
@@ -274,7 +271,7 @@ Partial Class MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(475, 245)
+        Me.ClientSize = New System.Drawing.Size(474, 245)
         Me.Controls.Add(Me.b_SoftUnfreeze)
         Me.Controls.Add(Me.b_SoftFreeze)
         Me.Controls.Add(Me.ComboBox2)
