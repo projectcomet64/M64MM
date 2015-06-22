@@ -208,8 +208,9 @@ Partial Class MainForm
         Me.PrecisionModeMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
         Me.PrecisionModeMenuItem.Size = New System.Drawing.Size(347, 22)
         Me.PrecisionModeMenuItem.Text = "Enable Precision Mode"
-        Me.PrecisionModeMenuItem.ToolTipText = "Enabled Precision Camera Controls, which let you" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "control the angle of the camera" & _
-    " from Mario's vision" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and lock it there." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.PrecisionModeMenuItem.ToolTipText = "Enables Precision Camera Mode, which lets you" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "control the angle of the camera fr" & _
+    "om Mario's first-person" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "view and lock it wherever you want, and then readjust t" & _
+    "he camera at will." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'ComboBox2
         '
