@@ -342,7 +342,7 @@ Partial Class MainForm
         Me.PrecisionStatusLabel.Name = "PrecisionStatusLabel"
         Me.PrecisionStatusLabel.Size = New System.Drawing.Size(438, 32)
         Me.PrecisionStatusLabel.TabIndex = 1
-        Me.PrecisionStatusLabel.Text = "Precision Mode is not on."
+        Me.PrecisionStatusLabel.Text = "Precision Mode is disabled."
         Me.PrecisionStatusLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'b_PrecisionPlusOne

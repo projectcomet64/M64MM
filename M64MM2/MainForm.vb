@@ -239,7 +239,7 @@ Public Class MainForm
                 b_SoftFreeze.Enabled = True
                 b_SoftUnfreeze.Enabled = True
                 If PrecisionStage = 0 Then
-                    PrecisionStatusLabel.Text = "Precision Mode is not on." + vbCrLf + "Enable it in Settings -> Enable Precision Mode"
+                    PrecisionStatusLabel.Text = "Precision Mode is disabled." + vbCrLf + "Enable it in Settings -> Enable Precision Mode"
                     b_PrecisionPlusOne.Text = "Precision Mode Disabled"
                 End If
 
@@ -279,7 +279,7 @@ Public Class MainForm
             b_SoftFreeze.Enabled = False
             b_SoftUnfreeze.Enabled = False
             BaseAddressLabel.Text = "Project64 isn't open!"
-            PrecisionStatusLabel.Text = "Precision mode disabled: Project64 isn't open."
+            PrecisionStatusLabel.Text = "Precision mode is disabled: Project64 isn't open."
         End If
     End Sub
 
@@ -405,7 +405,7 @@ Public Class MainForm
             PrecisionStage = 0
             Unfreeze()
             SoftUnfreeze()
-            PrecisionStatusLabel.Text = "Precision Mode is not on." + vbCrLf + "Enable it in Settings -> Enable Precision Mode"
+            PrecisionStatusLabel.Text = "Precision Mode is disabled." + vbCrLf + "Enable it in Settings -> Enable Precision Mode"
             PrecisionModeMenuItem.Checked = False
             'Insert Here the WriteInteger for unforce C-Up mode
         Else
