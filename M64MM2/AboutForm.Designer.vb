@@ -31,14 +31,16 @@ Partial Class AboutForm
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(15, 9)
+        Me.Label1.Location = New System.Drawing.Point(147, 106)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(399, 26)
+        Me.Label1.Size = New System.Drawing.Size(349, 26)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Mario 64 Movie Maker 2.0 beta 9"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -46,26 +48,26 @@ Partial Class AboutForm
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(20, 35)
+        Me.Label2.Location = New System.Drawing.Point(165, 132)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(394, 17)
+        Me.Label2.Size = New System.Drawing.Size(331, 17)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Created by James ""CaptainSwag101"" Pelster"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(12, 61)
+        Me.Label3.Location = New System.Drawing.Point(17, 160)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(402, 41)
+        Me.Label3.Size = New System.Drawing.Size(479, 41)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = resources.GetString("Label3.Text")
         '
         'Label4
         '
-        Me.Label4.Location = New System.Drawing.Point(12, 108)
+        Me.Label4.Location = New System.Drawing.Point(17, 213)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(402, 42)
+        Me.Label4.Size = New System.Drawing.Size(479, 42)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Special thanks to Matthew ""MATTHEWGU4"" Guerra for helping me make this project a " & _
     "reality and for spreading the word, and to GlitchyPSIX for his discovery of the " & _
@@ -73,7 +75,7 @@ Partial Class AboutForm
         '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(12, 159)
+        Me.Label5.Location = New System.Drawing.Point(17, 270)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(343, 13)
         Me.Label5.TabIndex = 4
@@ -82,7 +84,7 @@ Partial Class AboutForm
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(12, 172)
+        Me.LinkLabel1.Location = New System.Drawing.Point(353, 270)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(143, 13)
         Me.LinkLabel1.TabIndex = 6
@@ -91,7 +93,7 @@ Partial Class AboutForm
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(175, 216)
+        Me.Button1.Location = New System.Drawing.Point(217, 327)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 5
@@ -101,18 +103,29 @@ Partial Class AboutForm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 195)
+        Me.Label6.Location = New System.Drawing.Point(183, 311)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(128, 13)
         Me.Label6.TabIndex = 7
         Me.Label6.Text = "Build date: June 20, 2015"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.M64MM2.My.Resources.Resources.M64MM2
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(137, 137)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 8
+        Me.PictureBox1.TabStop = False
         '
         'AboutForm
         '
         Me.AcceptButton = Me.Button1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(426, 251)
+        Me.ClientSize = New System.Drawing.Size(508, 362)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LinkLabel1)
@@ -127,6 +140,7 @@ Partial Class AboutForm
         Me.MinimizeBox = False
         Me.Name = "AboutForm"
         Me.Text = "About Mario 64 Movie Maker 2.0"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -139,4 +153,5 @@ Partial Class AboutForm
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 End Class
