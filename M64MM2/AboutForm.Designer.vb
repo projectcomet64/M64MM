@@ -38,19 +38,19 @@ Partial Class AboutForm
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(147, 106)
+        Me.Label1.Location = New System.Drawing.Point(121, 106)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(349, 26)
+        Me.Label1.Size = New System.Drawing.Size(269, 26)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Mario 64 Movie Maker 2.0 beta 9"
+        Me.Label1.Text = "Mario 64 Movie Maker 2.0"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(165, 132)
+        Me.Label2.Location = New System.Drawing.Point(103, 132)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(331, 17)
+        Me.Label2.Size = New System.Drawing.Size(300, 17)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Created by James ""CaptainSwag101"" Pelster"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -107,14 +107,14 @@ Partial Class AboutForm
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(128, 13)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Build date: June 20, 2015"
+        Me.Label6.Text = "Build date: June 22, 2015"
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.M64MM2.My.Resources.Resources.M64MM2
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
+        Me.PictureBox1.Image = Global.M64MM2.My.Resources.Resources.M64MM2_Icon
+        Me.PictureBox1.Location = New System.Drawing.Point(217, 9)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(137, 137)
+        Me.PictureBox1.Size = New System.Drawing.Size(75, 94)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 8
         Me.PictureBox1.TabStop = False
