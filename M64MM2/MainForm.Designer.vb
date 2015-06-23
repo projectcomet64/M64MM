@@ -27,7 +27,7 @@ Partial Class MainForm
         Me.b_Freeze = New System.Windows.Forms.Button()
         Me.b_Unfreeze = New System.Windows.Forms.Button()
         Me.b_ChangeCameraType = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.BaseAddressLabel = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -42,7 +42,7 @@ Partial Class MainForm
         Me.ResetAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ForceCameraPresetMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.PrecisionCameraModeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrecisionModeMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -51,15 +51,15 @@ Partial Class MainForm
         Me.b_SoftUnfreeze = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.CamCont = New System.Windows.Forms.GroupBox()
-        Me.AnimSCont = New System.Windows.Forms.GroupBox()
-        Me.PCamCont = New System.Windows.Forms.GroupBox()
+        Me.NormalCamControls = New System.Windows.Forms.GroupBox()
+        Me.AnimSwapControls = New System.Windows.Forms.GroupBox()
+        Me.PrecisionCamControls = New System.Windows.Forms.GroupBox()
         Me.PrecisionStatusLabel = New System.Windows.Forms.Label()
         Me.b_PrecisionPlusOne = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
-        Me.CamCont.SuspendLayout()
-        Me.AnimSCont.SuspendLayout()
-        Me.PCamCont.SuspendLayout()
+        Me.NormalCamControls.SuspendLayout()
+        Me.AnimSwapControls.SuspendLayout()
+        Me.PrecisionCamControls.SuspendLayout()
         Me.SuspendLayout()
         '
         'b_Freeze
@@ -89,14 +89,14 @@ Partial Class MainForm
         Me.b_ChangeCameraType.Text = "Change Camera Type"
         Me.b_ChangeCameraType.UseVisualStyleBackColor = True
         '
-        'Label1
+        'BaseAddressLabel
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 28)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 13)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "BaseAddress"
+        Me.BaseAddressLabel.AutoSize = True
+        Me.BaseAddressLabel.Location = New System.Drawing.Point(12, 28)
+        Me.BaseAddressLabel.Name = "BaseAddressLabel"
+        Me.BaseAddressLabel.Size = New System.Drawing.Size(69, 13)
+        Me.BaseAddressLabel.TabIndex = 3
+        Me.BaseAddressLabel.Text = "BaseAddress"
         '
         'Label2
         '
@@ -158,7 +158,7 @@ Partial Class MainForm
         '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RetainAnimationSwapsMenuItem, Me.UndoPreviousAnimationSwapsMenuItem, Me.ResetAnimationSwapsMenuItem, Me.ForceCameraPresetMenuItem, Me.ToolStripSeparator1, Me.PrecisionCameraModeToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RetainAnimationSwapsMenuItem, Me.UndoPreviousAnimationSwapsMenuItem, Me.ResetAnimationSwapsMenuItem, Me.ForceCameraPresetMenuItem, Me.ToolStripSeparator1, Me.PrecisionModeMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
@@ -202,14 +202,15 @@ Partial Class MainForm
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(344, 6)
         '
-        'PrecisionCameraModeToolStripMenuItem
+        'PrecisionModeMenuItem
         '
-        Me.PrecisionCameraModeToolStripMenuItem.Image = Global.M64MM2.My.Resources.Resources.Bullseye
-        Me.PrecisionCameraModeToolStripMenuItem.Name = "PrecisionCameraModeToolStripMenuItem"
-        Me.PrecisionCameraModeToolStripMenuItem.Size = New System.Drawing.Size(347, 22)
-        Me.PrecisionCameraModeToolStripMenuItem.Text = "Precision Camera Mode"
-        Me.PrecisionCameraModeToolStripMenuItem.ToolTipText = "Enabled Precision Camera Controls, which let you" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "control the angle of the camera" & _
-    " from Mario's vision" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and lock it there." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.PrecisionModeMenuItem.Name = "PrecisionModeMenuItem"
+        Me.PrecisionModeMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.PrecisionModeMenuItem.Size = New System.Drawing.Size(347, 22)
+        Me.PrecisionModeMenuItem.Text = "Enable Precision Mode"
+        Me.PrecisionModeMenuItem.ToolTipText = "Enables Precision Camera Mode, which lets you" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "control the angle of the camera fr" & _
+    "om Mario's first-person" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "view and lock it wherever you want, and then readjust t" & _
+    "he camera at will." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'ComboBox2
         '
@@ -291,49 +292,49 @@ Partial Class MainForm
         Me.Label8.TabIndex = 4
         Me.Label8.Text = "Ctrl + 5"
         '
-        'CamCont
+        'NormalCamControls
         '
-        Me.CamCont.Controls.Add(Me.b_SoftFreeze)
-        Me.CamCont.Controls.Add(Me.b_SoftUnfreeze)
-        Me.CamCont.Controls.Add(Me.Label5)
-        Me.CamCont.Controls.Add(Me.Label8)
-        Me.CamCont.Controls.Add(Me.Label2)
-        Me.CamCont.Controls.Add(Me.Label4)
-        Me.CamCont.Controls.Add(Me.b_Freeze)
-        Me.CamCont.Controls.Add(Me.Label3)
-        Me.CamCont.Controls.Add(Me.b_ChangeCameraType)
-        Me.CamCont.Controls.Add(Me.b_Unfreeze)
-        Me.CamCont.Location = New System.Drawing.Point(9, 44)
-        Me.CamCont.Name = "CamCont"
-        Me.CamCont.Size = New System.Drawing.Size(453, 129)
-        Me.CamCont.TabIndex = 15
-        Me.CamCont.TabStop = False
-        Me.CamCont.Text = "Normal Camera Control"
+        Me.NormalCamControls.Controls.Add(Me.b_SoftFreeze)
+        Me.NormalCamControls.Controls.Add(Me.b_SoftUnfreeze)
+        Me.NormalCamControls.Controls.Add(Me.Label5)
+        Me.NormalCamControls.Controls.Add(Me.Label8)
+        Me.NormalCamControls.Controls.Add(Me.Label2)
+        Me.NormalCamControls.Controls.Add(Me.Label4)
+        Me.NormalCamControls.Controls.Add(Me.b_Freeze)
+        Me.NormalCamControls.Controls.Add(Me.Label3)
+        Me.NormalCamControls.Controls.Add(Me.b_ChangeCameraType)
+        Me.NormalCamControls.Controls.Add(Me.b_Unfreeze)
+        Me.NormalCamControls.Location = New System.Drawing.Point(9, 44)
+        Me.NormalCamControls.Name = "NormalCamControls"
+        Me.NormalCamControls.Size = New System.Drawing.Size(453, 129)
+        Me.NormalCamControls.TabIndex = 15
+        Me.NormalCamControls.TabStop = False
+        Me.NormalCamControls.Text = "Normal Camera Controls"
         '
-        'AnimSCont
+        'AnimSwapControls
         '
-        Me.AnimSCont.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.AnimSCont.Controls.Add(Me.Label7)
-        Me.AnimSCont.Controls.Add(Me.ComboBox1)
-        Me.AnimSCont.Controls.Add(Me.ComboBox2)
-        Me.AnimSCont.Controls.Add(Me.Label6)
-        Me.AnimSCont.Location = New System.Drawing.Point(9, 264)
-        Me.AnimSCont.Name = "AnimSCont"
-        Me.AnimSCont.Size = New System.Drawing.Size(453, 102)
-        Me.AnimSCont.TabIndex = 16
-        Me.AnimSCont.TabStop = False
-        Me.AnimSCont.Text = "Animation Swap Control"
+        Me.AnimSwapControls.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.AnimSwapControls.Controls.Add(Me.Label7)
+        Me.AnimSwapControls.Controls.Add(Me.ComboBox1)
+        Me.AnimSwapControls.Controls.Add(Me.ComboBox2)
+        Me.AnimSwapControls.Controls.Add(Me.Label6)
+        Me.AnimSwapControls.Location = New System.Drawing.Point(9, 264)
+        Me.AnimSwapControls.Name = "AnimSwapControls"
+        Me.AnimSwapControls.Size = New System.Drawing.Size(453, 102)
+        Me.AnimSwapControls.TabIndex = 16
+        Me.AnimSwapControls.TabStop = False
+        Me.AnimSwapControls.Text = "Animation Swap Control"
         '
-        'PCamCont
+        'PrecisionCamControls
         '
-        Me.PCamCont.Controls.Add(Me.PrecisionStatusLabel)
-        Me.PCamCont.Controls.Add(Me.b_PrecisionPlusOne)
-        Me.PCamCont.Location = New System.Drawing.Point(9, 179)
-        Me.PCamCont.Name = "PCamCont"
-        Me.PCamCont.Size = New System.Drawing.Size(453, 80)
-        Me.PCamCont.TabIndex = 17
-        Me.PCamCont.TabStop = False
-        Me.PCamCont.Text = "Precision Camera Control"
+        Me.PrecisionCamControls.Controls.Add(Me.PrecisionStatusLabel)
+        Me.PrecisionCamControls.Controls.Add(Me.b_PrecisionPlusOne)
+        Me.PrecisionCamControls.Location = New System.Drawing.Point(9, 179)
+        Me.PrecisionCamControls.Name = "PrecisionCamControls"
+        Me.PrecisionCamControls.Size = New System.Drawing.Size(453, 80)
+        Me.PrecisionCamControls.TabIndex = 17
+        Me.PrecisionCamControls.TabStop = False
+        Me.PrecisionCamControls.Text = "Precision Camera Control"
         '
         'PrecisionStatusLabel
         '
@@ -341,17 +342,17 @@ Partial Class MainForm
         Me.PrecisionStatusLabel.Name = "PrecisionStatusLabel"
         Me.PrecisionStatusLabel.Size = New System.Drawing.Size(438, 32)
         Me.PrecisionStatusLabel.TabIndex = 1
-        Me.PrecisionStatusLabel.Text = "Precision Mode is not on."
+        Me.PrecisionStatusLabel.Text = "Precision Mode is disabled."
         Me.PrecisionStatusLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'b_PrecisionPlusOne
         '
         Me.b_PrecisionPlusOne.Enabled = False
-        Me.b_PrecisionPlusOne.Location = New System.Drawing.Point(164, 51)
+        Me.b_PrecisionPlusOne.Location = New System.Drawing.Point(160, 51)
         Me.b_PrecisionPlusOne.Name = "b_PrecisionPlusOne"
-        Me.b_PrecisionPlusOne.Size = New System.Drawing.Size(122, 23)
+        Me.b_PrecisionPlusOne.Size = New System.Drawing.Size(132, 23)
         Me.b_PrecisionPlusOne.TabIndex = 0
-        Me.b_PrecisionPlusOne.Text = "-NaN-"
+        Me.b_PrecisionPlusOne.Text = "Precision Mode Disabled"
         Me.b_PrecisionPlusOne.UseVisualStyleBackColor = True
         '
         'MainForm
@@ -359,10 +360,10 @@ Partial Class MainForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(474, 377)
-        Me.Controls.Add(Me.PCamCont)
-        Me.Controls.Add(Me.AnimSCont)
-        Me.Controls.Add(Me.CamCont)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.PrecisionCamControls)
+        Me.Controls.Add(Me.AnimSwapControls)
+        Me.Controls.Add(Me.NormalCamControls)
+        Me.Controls.Add(Me.BaseAddressLabel)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -373,11 +374,11 @@ Partial Class MainForm
         Me.Text = "Mario 64 Movie Maker 2.0"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        Me.CamCont.ResumeLayout(False)
-        Me.CamCont.PerformLayout()
-        Me.AnimSCont.ResumeLayout(False)
-        Me.AnimSCont.PerformLayout()
-        Me.PCamCont.ResumeLayout(False)
+        Me.NormalCamControls.ResumeLayout(False)
+        Me.NormalCamControls.PerformLayout()
+        Me.AnimSwapControls.ResumeLayout(False)
+        Me.AnimSwapControls.PerformLayout()
+        Me.PrecisionCamControls.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -385,7 +386,7 @@ Partial Class MainForm
     Friend WithEvents b_Freeze As System.Windows.Forms.Button
     Friend WithEvents b_Unfreeze As System.Windows.Forms.Button
     Friend WithEvents b_ChangeCameraType As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents BaseAddressLabel As System.Windows.Forms.Label
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -408,10 +409,10 @@ Partial Class MainForm
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents ForceCameraPresetMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents PrecisionCameraModeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents CamCont As System.Windows.Forms.GroupBox
-    Friend WithEvents AnimSCont As System.Windows.Forms.GroupBox
-    Friend WithEvents PCamCont As System.Windows.Forms.GroupBox
+    Friend WithEvents PrecisionModeMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents NormalCamControls As System.Windows.Forms.GroupBox
+    Friend WithEvents AnimSwapControls As System.Windows.Forms.GroupBox
+    Friend WithEvents PrecisionCamControls As System.Windows.Forms.GroupBox
     Friend WithEvents PrecisionStatusLabel As System.Windows.Forms.Label
     Friend WithEvents b_PrecisionPlusOne As System.Windows.Forms.Button
 
