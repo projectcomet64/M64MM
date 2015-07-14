@@ -36,7 +36,7 @@
             vBuffer = ReadInteger(Process, lvl, nsize)
             Return vBuffer
         Catch ex As Exception
-
+            Return Nothing
         End Try
     End Function
 
@@ -63,7 +63,7 @@
             vBuffer = ReadFloat(Process, lvl, nsize)
             Return vBuffer
         Catch ex As Exception
-
+            Return Nothing
         End Try
     End Function
 
@@ -90,7 +90,7 @@
             vBuffer = ReadLong(Process, lvl, nsize)
             Return vBuffer
         Catch ex As Exception
-
+            Return Nothing
         End Try
     End Function
 
@@ -163,7 +163,7 @@
 
     Public Function ReadByte(ByVal ProcessName As String, ByVal Address As Integer, Optional ByVal nsize As Integer = 1) As Byte()
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
-        If hProcess = Nothing Then Exit Function
+        If hProcess = Nothing Then Return Nothing
 
         Dim hAddress As Integer
         Dim vBuffer(0) As Byte
@@ -175,7 +175,7 @@
 
     Public Function ReadInteger(ByVal ProcessName As String, ByVal Address As Integer, Optional ByVal nsize As Integer = 4) As Integer
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
-        If hProcess = Nothing Then Exit Function
+        If hProcess = Nothing Then Return Nothing
 
         Dim hAddress, vBuffer As Integer
         hAddress = Address
@@ -185,7 +185,7 @@
 
     Public Function ReadFloat(ByVal ProcessName As String, ByVal Address As Integer, Optional ByVal nsize As Integer = 4) As Single
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
-        If hProcess = Nothing Then Exit Function
+        If hProcess = Nothing Then Return Nothing
 
         Dim hAddress As Integer
         Dim vBuffer As Single
@@ -197,7 +197,7 @@
 
     Public Function ReadLong(ByVal ProcessName As String, ByVal Address As Integer, Optional ByVal nsize As Integer = 4) As Long
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
-        If hProcess = Nothing Then Exit Function
+        If hProcess = Nothing Then Return Nothing
 
         Dim hAddress As Integer
         Dim vBuffer As Long
@@ -227,8 +227,6 @@
     End Function
 
     Public Function GetBaseAddress(ByVal ProcessName As String, silent As Boolean, Optional scanStep As Integer = &H1000, Optional ByVal nsize As Integer = 4) As Integer
-        'Dim hAddress As Integer = &H32900000
-        'Dim vBuffer(805306368) As Byte
 
         Dim hProcess As IntPtr = GetEmuProcess("Project64", silent)
         If hProcess = Nothing Then Return 0
@@ -236,37 +234,16 @@
         Dim vBuffer As Integer
         Dim startPoint As Integer = &H15000000
 
-        Dim refreshStep As Integer = &H200000
-
         If scanStep < &H1000 And scanStep >= &H100 Then
             startPoint = &H20000000
-            refreshStep = &H200000
         ElseIf scanStep < &H100 Then
             startPoint = &H15000000
-            refreshStep = &H10000
         End If
-        'Dim wait As New WaitForm
-        'wait.Show()
-        'wait.Refresh(0)
-        'Dim oldX As Long
 
         For x = startPoint To &H72D00000 Step scanStep
-            'If (x - oldX) > refreshStep Then
-            '    oldX = x
-            '    wait.Label2.Text = "Current address: " & Hex(x)
-            '    wait.Refresh(100 * ((x - startPoint) / (&H72D00000 - startPoint)))
-            '    If (100 * ((x - startPoint) / (&H72D00000 - startPoint))) >= 99 Then
-            '        wait.Close()
-            '    End If
-            'End If
-
             ReadProcessMemory1(hProcess, x, vBuffer, nsize, 0)
-            If vBuffer = &H3C1A8032 Then
-                'If wait IsNot Nothing Then
-                '    wait.Close()
-                'End If
-                Return x
-            End If
+
+            If vBuffer = &H3C1A8032 Then Return x
         Next
 
         Return 0

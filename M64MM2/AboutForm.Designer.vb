@@ -93,7 +93,7 @@ Partial Class AboutForm
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(217, 327)
+        Me.Button1.Location = New System.Drawing.Point(213, 327)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 5
@@ -103,11 +103,11 @@ Partial Class AboutForm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(183, 311)
+        Me.Label6.Location = New System.Drawing.Point(190, 311)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(128, 13)
+        Me.Label6.Size = New System.Drawing.Size(123, 13)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Build date: June 22, 2015"
+        Me.Label6.Text = "Build date: July 14, 2015"
         '
         'PictureBox1
         '

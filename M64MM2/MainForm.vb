@@ -17,12 +17,15 @@ Public Class MainForm
     Private LastCBox1Index As Integer
     Private TestOnce As Boolean = False
     Private DisableAnimSwap As Boolean = False
+    Private OriginalFuntionCall As String
+    Private CameraControlFunction As String
 
     Private ReadOnly Property CB1AnimIndex As Integer
         Get
             For Each anim As Animation In AnimList
                 If anim.Value = ComboBox1.SelectedValue Then Return anim.Index
             Next
+            Return 0
         End Get
     End Property
 
@@ -31,6 +34,7 @@ Public Class MainForm
             For Each anim As Animation In AnimList
                 If anim.Value = ComboBox2.SelectedValue Then Return anim.Index
             Next
+            Return 0
         End Get
     End Property
 
@@ -295,16 +299,36 @@ Public Class MainForm
             SoftFreeze()
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D5) Then
             SoftUnfreeze()
+        ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D6) Then
+            For x = 0 To 26
+                Dim partialFunction As Integer = ReadInteger("Project64", Base + &H290D90 + (4 * x))
+                WriteInteger("Project64", Base + &H33D2D0 + (4 * x), partialFunction)
+            Next
+            WriteInteger("Project64", Base + &H33D3D0, ReadInteger("Project64", Base + &H33CBD0))
+            WriteInteger("Project64", Base + &HEE060, &H8033D2D0)
+            'MsgBox(CameraControlFunction)
+        ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.D7) Then
+            For x = 0 To 26
+                Dim partialFunction As String = Hex(ReadInteger("Project64", Base + &H290D90 + (4 * x)))
+                If partialFunction.Count < 7 Then
+                    For y = 0 To (7 - partialFunction.Count)
+                        partialFunction = "0" & partialFunction
+                    Next
+
+                End If
+                CameraControlFunction = CameraControlFunction & partialFunction
+            Next
+
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.R) And DisableAnimSwap = False Then
-            ResetAnimations()
+                ResetAnimations()
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.F) Then
-            ForceCameraPreset()
+                ForceCameraPreset()
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.P) Then
-            If PrecisionModeMenuItem.Checked = False Then
-                PrecisionModeOn(False)
-            ElseIf PrecisionModeMenuItem.Checked = True Then
-                PrecisionModeOff(False)
-            End If
+                If PrecisionModeMenuItem.Checked = False Then
+                    PrecisionModeOn(False)
+                ElseIf PrecisionModeMenuItem.Checked = True Then
+                    PrecisionModeOff(False)
+                End If
 
         End If
 
@@ -366,7 +390,7 @@ Public Class MainForm
     ''' Enables Precision Mode
     ''' </summary>
     ''' <param name="Reclick">True or false - Is a button reclick?</param>
-    Private Function PrecisionModeOn(ByVal Reclick As Boolean)
+    Private Sub PrecisionModeOn(ByVal Reclick As Boolean)
         If Reclick = False Then
             PrecisionStatusLabel.Text = "Camera position locked. Click the button below to lock camera rotation."
             NormalCamControls.Enabled = False
@@ -384,21 +408,21 @@ Public Class MainForm
             SoftFreeze()
             WriteInteger("Project64", Base + &H33C848, &H60000000)
         End If
-    End Function
+    End Sub
     ''' <summary>
-    ''' Locks the angle of the camera in C-UP mode.
+    ''' Locks the angle of the camera in C-Up mode.
     ''' </summary>
-    Private Function LockAngle()
+    Private Sub LockAngle()
         PrecisionStatusLabel.Text = "Camera completely locked. Press the button below to re-adjust camera angle." + vbCrLf + "To disable precision mode, uncheck Settings -> Enable Precision Mode"
         Freeze()
         b_PrecisionPlusOne.Text = "Unlock Camera Rotation"
         PrecisionStage = 2
-    End Function
+    End Sub
     ''' <summary>
     ''' Turns off Precision Mode
     ''' </summary>
     ''' <param name="Hard">True or False - Hard shutdown. Does not enable any buttons/unfreeze the camera</param>
-    Private Function PrecisionModeOff(ByVal Hard As Boolean)
+    Private Sub PrecisionModeOff(ByVal Hard As Boolean)
         If Hard = False Then
             NormalCamControls.Enabled = True
             b_PrecisionPlusOne.Enabled = False
@@ -413,7 +437,7 @@ Public Class MainForm
             PrecisionStage = 0
             PrecisionModeMenuItem.Checked = False
         End If
-    End Function
+    End Sub
 
     Private Sub PrecisionCameraModeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrecisionModeMenuItem.Click
         If PrecisionModeMenuItem.Checked = False Then
