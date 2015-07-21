@@ -1,6 +1,4 @@
-﻿Imports System.Diagnostics
-
-Public Class AboutForm
+﻿Public Class AboutForm
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Process.Start("mailto:" & LinkLabel1.Text)

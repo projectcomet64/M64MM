@@ -1,4 +1,3 @@
-Imports System
 Imports System.IO
 
 Public Class MainForm
@@ -42,6 +41,8 @@ Public Class MainForm
         ' This call is required by the designer.
         InitializeComponent()
 
+        Dim AboutBox As New AboutForm
+
         AddHandler ComboBox1.SelectedValueChanged, AddressOf ComboBox1_SelectedValueChanged
         AddHandler ComboBox2.SelectedValueChanged, AddressOf ComboBox2_SelectedValueChanged
         AddHandler ResetAnimationSwapsMenuItem.Click, AddressOf ResetAnimations
@@ -50,7 +51,7 @@ Public Class MainForm
         AddHandler b_ChangeCameraType.Click, AddressOf ChangeCameraType
         AddHandler b_SoftFreeze.Click, AddressOf SoftFreeze
         AddHandler b_SoftUnfreeze.Click, AddressOf SoftUnfreeze
-        AddHandler AboutMenuItem.Click, AddressOf AboutForm.ShowDialog
+        AddHandler AboutMenuItem.Click, AddressOf AboutBox.ShowDialog
         AddHandler ForceCameraPresetMenuItem.Click, AddressOf ForceCameraPreset
         AddHandler Timer1.Tick, AddressOf Main
 
@@ -64,7 +65,7 @@ Public Class MainForm
                     Dim step3 As String = step2.TrimStart("x")
                     Dim splitLine() As String = Split(step3, " = ")
                     AnimData.Add(splitLine(0), splitLine(1))
-                    AnimList.Add(New Animation(splitLine(0), splitLine(1), CInt(splitLine(2))))
+                    AnimList.Add(New Animation(splitLine(0), splitLine(1), splitLine(2)))
                 Loop
             End Using
         Catch e As Exception
@@ -224,6 +225,7 @@ Public Class MainForm
                 ' Check if base address is still correct
                 If ReadInteger("Project64", Base) <> &H3C1A8032 Then ' If our old base is not valid, we need to start looking for a new one
                     Base = 0
+                    If Timer1.Interval <> 500 Then Timer1.Interval = 500
                     b_ChangeCameraType.Enabled = False
                     b_Freeze.Enabled = False
                     b_Unfreeze.Enabled = False
@@ -235,6 +237,7 @@ Public Class MainForm
                     Exit Sub
                 End If
 
+                If Timer1.Interval <> 100 Then Timer1.Interval = 100
                 b_ChangeCameraType.Enabled = True
                 b_Freeze.Enabled = True
                 b_Unfreeze.Enabled = True
@@ -263,6 +266,7 @@ Public Class MainForm
                 End If
 
             Else
+                Timer1.Interval = 500
                 b_Freeze.Enabled = False
                 b_Unfreeze.Enabled = False
                 b_ChangeCameraType.Enabled = False
@@ -274,6 +278,7 @@ Public Class MainForm
                 GetBase()
             End If
         Else
+            Timer1.Interval = 500
             b_Freeze.Enabled = False
             b_Unfreeze.Enabled = False
             b_ChangeCameraType.Enabled = False
@@ -320,15 +325,15 @@ Public Class MainForm
             Next
 
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.R) And DisableAnimSwap = False Then
-                ResetAnimations()
+            ResetAnimations()
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.F) Then
-                ForceCameraPreset()
+            ForceCameraPreset()
         ElseIf GetKeyPress(Keys.ControlKey) And GetKeyPress(Keys.P) Then
-                If PrecisionModeMenuItem.Checked = False Then
-                    PrecisionModeOn(False)
-                ElseIf PrecisionModeMenuItem.Checked = True Then
-                    PrecisionModeOff(False)
-                End If
+            If PrecisionModeMenuItem.Checked = False Then
+                PrecisionModeOn(False)
+            ElseIf PrecisionModeMenuItem.Checked = True Then
+                PrecisionModeOff(False)
+            End If
 
         End If
 
@@ -375,7 +380,8 @@ Public Class MainForm
     End Sub
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Timer1.Interval = 100 'Make the timer tick every tenth of a second, to avoid unneccesary CPU use in some processors.
+        'Make the timer tick every half of a second, to avoid unneccesary CPU use in some processors, but change to every tenth of a second once we have found the base address.
+        Timer1.Interval = 500
         Timer1.Start()
     End Sub
 

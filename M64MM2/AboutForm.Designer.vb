@@ -38,11 +38,11 @@ Partial Class AboutForm
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(121, 106)
+        Me.Label1.Location = New System.Drawing.Point(12, 106)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(269, 26)
+        Me.Label1.Size = New System.Drawing.Size(484, 26)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Mario 64 Movie Maker 2.0"
+        Me.Label1.Text = "Mario 64 Movie Maker 2.0.1"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Label2
@@ -69,8 +69,8 @@ Partial Class AboutForm
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(479, 42)
         Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Special thanks to Matthew ""MATTHEWGU4"" Guerra for helping me make this project a " & _
-    "reality and for spreading the word, and to GlitchyPSIX for his discovery of the " & _
+        Me.Label4.Text = "Special thanks to Matthew ""MATTHEWGU4"" Guerra for helping me make this project a " &
+    "reality and for spreading the word, and to GlitchyPSIX for his discovery of the " &
     """Soft-Freeze"" feature."
         '
         'Label5
@@ -107,7 +107,7 @@ Partial Class AboutForm
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(123, 13)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Build date: July 14, 2015"
+        Me.Label6.Text = "Build date: July 21, 2015"
         '
         'PictureBox1
         '

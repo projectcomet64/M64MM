@@ -226,21 +226,21 @@
         Return hProcess
     End Function
 
-    Public Function GetBaseAddress(ByVal ProcessName As String, silent As Boolean, Optional scanStep As Integer = &H1000, Optional ByVal nsize As Integer = 4) As Integer
+    Public Function GetBaseAddress(ByVal ProcessName As String, silent As Boolean, Optional scanStep As Integer = &H10000, Optional ByVal nsize As Integer = 4) As Integer
 
         Dim hProcess As IntPtr = GetEmuProcess("Project64", silent)
         If hProcess = Nothing Then Return 0
 
         Dim vBuffer As Integer
-        Dim startPoint As Integer = &H15000000
+        Dim startPoint As Integer = &H10000000
 
-        If scanStep < &H1000 And scanStep >= &H100 Then
-            startPoint = &H20000000
-        ElseIf scanStep < &H100 Then
-            startPoint = &H15000000
-        End If
+        'If scanStep < &H1000 And scanStep >= &H100 Then
+        '    startPoint = &H20000000
+        'ElseIf scanStep < &H100 Then
+        '    startPoint = &H15000000
+        'End If
 
-        For x = startPoint To &H72D00000 Step scanStep
+        For x = startPoint To &H70000000 Step scanStep
             ReadProcessMemory1(hProcess, x, vBuffer, nsize, 0)
 
             If vBuffer = &H3C1A8032 Then Return x
