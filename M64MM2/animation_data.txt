@@ -44,26 +44,18 @@
 0x0000A2D4000007A2 = Forward long jump = 19
 0x0000AA7800000562 = Backward long jump = 20
 0x0000AFDC000004B6 = Launched from cannon = 21
-0x0000B49400001278 = Walk while holding small object = 22
-0x0000C70C00000C92 = Run while holding small object? = 23
-0x0000D3A000001278 = Walk while holding small object? = 24
-0x0000E618000015FE = Cold, rubbing hands together = 25
-0x0000FC180000058E = Cold (part 2) = 26
-0x000101A800000C3E = Cold (part 3) = 27
-0x00010DE800000420 = Climb on ledge = 28
 0x0001120800000678 = Waving = 29
 0x000118800000070E = Look upward = 30
 0x00011F9000000462 = Look upward then downward = 31
+0x00019AF000002066 = Lift hand (after defeating final Bowser) = 37
+0x0001BB5800001DCC = Fly at ending cutscene = 38
 0x000123F400001CE8 = Summon Peach, lift hand = 32
 0x000140DC00000B46 = Lower hand = 33
 0x00014C24000007EA = Take cap off = 34
+0x0001D92400002428 = Peace sign (after kiss from Peach) = 39
 0x000154100000212C = Walking at end, looking backward to sky = 35
 0x0001753C000025B4 = Look backward then run (at end) = 36
-0x00019AF000002066 = Lift hand (after defeating final Bowser?) = 37
-0x0001BB5800001DCC = Fly at ending cutscene = 38
-0x0001D92400002428 = Peace sign (after kiss from Peach) = 39
-0x0001FD4C00000506 = Get out of sand / snow = 40
-0x000202540000035A = Jumping from lava = 41
+0x000202540000035A = Jumping from lava (burning) = 41
 0x000205B0000005F8 = Flying (wing cap) = 42
 0x00020BA800000742 = Hang onto monkey-bar = 43
 0x000212EC00001720 = Thrown onto ground = 44
@@ -72,26 +64,33 @@
 0x0002550400001648 = Coughing in gas = 48
 0x000236F400001E10 = Dying in gas = 47
 0x00026B4C00002AB8 = Throw key in air, catch it = 49
+0x00010DE800000420 = Climb down and hang from ledge = 28
 0x0002B5EC00000C2C = Hang from ledge = 51
 0x0002C21800000628 = Lift up on ledge quickly = 52
-0x0002C84000000F8C = Wobble while on monkey-bars = 53
 0x0002D7CC00000F88 = Put hat on = 54
 0x0002E75400001BC0 = Putting star under hat, scratch mustache = 55
 0x0003031400000460 = Putting star under hat (part 2) = 56
-0x0003077400003196 = Head stuck under sand = 57
+0x0004576000003062 = Missing cap after getting star = 94
 0x0003390C0000028A = Sliding on bottom = 58
 0x00033B98000005C8 = Triple jump then ground-pound = 59
 0x0003416000000432 = Ground-pound = 60
 0x000341780000041A = Ground-pound part = 61
 0x0003459400002DF6 = Bottom stuck in snow / sand = 62
-0x0003738C00000D28 = Standing and holding small object = 63
+0x0001FD4C00000506 = Get out of sand / snow = 40
+0x0003077400003196 = Head stuck under sand = 57
 0x000380B80000055A = Pick up small object = 64
+0x0003738C00000D28 = Standing and holding small object = 63
 0x000386140000032C = Jump with small object (wearing wing cap) = 65
 0x00038940000004D0 = Pick up small object = 66
+0x0000B49400001278 = Walk while holding small object = 22
+0x0000C70C00000C92 = Run while holding small object? = 23
+0x0000D3A000001278 = Walk while holding small object? = 24
 0x00038E1000000168 = Coming down with small object (wearing wing cap) = 67
 0x00038F780000039E = Slide then fall with small object = 68
 0x00039318000005D2 = Sliding with small object = 69
 0x00039330000005BA = Get up from ground with small object = 70
+0x00042D0C00000D00 = Pick up large object = 89
+0x0005C2440000056E = Holding large object = 125
 0x0003ED2800000636 = Riding on Koopa shell = 84
 0x000398EC0000045A = Jump on Koopa shell = 71
 0x00051AD40000061A = Jump on Koopa shell (part 2) = 109
@@ -104,12 +103,13 @@
 0x0004207800000744 = Fall from height = 86
 0x000420900000072C = Fall hard from double jump = 87
 0x000427BC0000054E = Picked up by enemy = 88
-0x00042D0C00000D00 = Pick up large object = 89
 0x00043A0C00000DE2 = Get up after being thrown = 90
 0x000447F0000003E4 = Launch into flying position = 91
+0x00087CF800000796 = Hanging on monkey-bar = 198
+0x0008849000000C30 = Hanging on monkey-bar, look around = 199
+0x0002C84000000F8C = Wobble while on monkey-bars = 53
 0x00044BD4000005FE = Move on monkey-bars = 92
 0x000451D40000058A = Move on monkey-bars (part 2) = 93
-0x0004576000003062 = Missing cap after getting star = 94
 0x000487C4000014D6 = Open door and walk in = 95
 0x00049C9C000010C8 = Exit door = 96
 0x0004AD6400003288 = Open door with key = 97
@@ -138,10 +138,12 @@
 0x00059BF800000F46 = Dying from shock = 121
 0x0005ADE800000A4C = Bump into wall = 123
 0x0005B83400000A10 = Fall forward = 124
-0x0005C2440000056E = Holding large object = 125
 0x0005C7B4000012CE = Against wall = 126
-0x0005DA8400000F3A = Sidestepping against wall = 127
-0x0005E9C0000011AC = Sidestepping against wall = 128
+0x0005DA8400000F3A = Sidestepping against wall, looking left = 127
+0x0005E9C0000011AC = Sidestepping against wall, looking right = 128
+0x0000E618000015FE = Cold, rubbing hands together (part 1) = 25
+0x000101A800000C3E = Cold (part 2, loops) = 27
+0x0000FC180000058E = Cold (part 3) = 26
 0x0005FB6C000011E8 = Sleepy (part 1) = 129
 0x00060D540000179E = Sleepy (part 2) = 130
 0x000624F400001392 = Sleepy (part 3) = 131
@@ -149,6 +151,8 @@
 0x00064C3000000258 = Sleeping = 133
 0x00064E8800000C6A = Lay down = 134
 0x00065AF400000730 = Laying and sleeping = 135
+0x000890C000000784 = Get up after sleeping (sitting) = 200
+0x00089844000008A8 = Get up after sleeping (laying) = 201
 0x0006622400000618 = Belly flop = 136
 0x0006623C00000600 = On belly = 137
 0x0006683C00000CB8 = Get up after bumping into wall = 138
@@ -198,11 +202,7 @@
 0x000823940000070C = Switch direction quickly = 189
 0x00082AA00000040C = Land from side flip? = 190
 0x00082EAC000008A4 = Side flip = 191
-0x00084CB000001642 = Reading sign = 194
-0x00087CF800000796 = Hanging on monkey-bar = 198
-0x0008849000000C30 = Hanging on monkey-bar, look around = 199
-0x000890C000000784 = Get up after sleeping (sitting) = 200
-0x00089844000008A8 = Get up after sleeping (laying) = 201
+0x00084CB000001642 = Reading sign/First-person pose = 194
 0x0008A9D000000692 = Wall kick/jump from tree = 203
 0x0008A9E80000067A = Hang onto pole / tree = 204
 0x0008CC8000000BA8 = Triple jump and start flying = 207
