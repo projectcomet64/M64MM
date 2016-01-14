@@ -4,12 +4,13 @@ Imports System.IO
 Public Class MainForm
 	Private Declare Function GetKeyPress Lib "user32" Alias "GetAsyncKeyState" (key As Integer) As Integer
 
+	Public Base As Long
+	Public Shared EmuOpen As Boolean = False
+	Private MemDebugWindow As MemDebugForm
 	Private ChangeCamera As Boolean = False
 	Private CameraUnfrozen As Boolean = True
 	Private PrecisionStage As Byte = 0
 	Private SoftCameraUnfrozen As Boolean = True
-	Private Base As Long
-	Public Shared EmuOpen As Boolean = False
 	Private Key3WasUp As Boolean = True
 	Private ctrlkey As Boolean
 	Private AnimList As New List(Of Animation)
@@ -482,6 +483,14 @@ Public Class MainForm
 			End If
 		Else
 			PrecisionModeOff(False)
+		End If
+	End Sub
+
+	Private Sub OpenMemDebugWindow(sender As Object, e As EventArgs) Handles EnableMemoryIODebugWindowToolStripMenuItem.Click
+		If IsNothing(MemDebugWindow) Then
+			MemDebugWindow = New MemDebugForm
+		ElseIf Not MemDebugWindow.Enabled Then
+			MemDebugWindow.Enabled = True
 		End If
 	End Sub
 End Class

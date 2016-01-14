@@ -56,6 +56,7 @@ Partial Class MainForm
 		Me.PrecisionCamControls = New System.Windows.Forms.GroupBox()
 		Me.PrecisionStatusLabel = New System.Windows.Forms.Label()
 		Me.b_PrecisionPlusOne = New System.Windows.Forms.Button()
+		Me.EnableMemoryIODebugWindowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 		Me.MenuStrip1.SuspendLayout()
 		Me.NormalCamControls.SuspendLayout()
 		Me.AnimSwapControls.SuspendLayout()
@@ -159,7 +160,7 @@ Partial Class MainForm
 		'
 		'SettingsToolStripMenuItem
 		'
-		Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RetainAnimationSwapsMenuItem, Me.UndoPreviousAnimationSwapsMenuItem, Me.ResetAnimationSwapsMenuItem, Me.ForceCameraPresetMenuItem, Me.ToolStripSeparator1, Me.PrecisionModeMenuItem})
+		Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RetainAnimationSwapsMenuItem, Me.UndoPreviousAnimationSwapsMenuItem, Me.ResetAnimationSwapsMenuItem, Me.ForceCameraPresetMenuItem, Me.ToolStripSeparator1, Me.PrecisionModeMenuItem, Me.EnableMemoryIODebugWindowToolStripMenuItem})
 		Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
 		Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
 		Me.SettingsToolStripMenuItem.Text = "Settings"
@@ -356,6 +357,12 @@ Partial Class MainForm
 		Me.b_PrecisionPlusOne.Text = "Precision Mode Disabled"
 		Me.b_PrecisionPlusOne.UseVisualStyleBackColor = True
 		'
+		'EnableMemoryIODebugWindowToolStripMenuItem
+		'
+		Me.EnableMemoryIODebugWindowToolStripMenuItem.Name = "EnableMemoryIODebugWindowToolStripMenuItem"
+		Me.EnableMemoryIODebugWindowToolStripMenuItem.Size = New System.Drawing.Size(347, 22)
+		Me.EnableMemoryIODebugWindowToolStripMenuItem.Text = "Enable Memory I/O Debug Window"
+		'
 		'MainForm
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -417,5 +424,5 @@ Partial Class MainForm
     Friend WithEvents PrecisionCamControls As System.Windows.Forms.GroupBox
     Friend WithEvents PrecisionStatusLabel As System.Windows.Forms.Label
     Friend WithEvents b_PrecisionPlusOne As System.Windows.Forms.Button
-
+	Friend WithEvents EnableMemoryIODebugWindowToolStripMenuItem As ToolStripMenuItem
 End Class
