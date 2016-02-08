@@ -25,38 +25,126 @@ Public Class MemDebugForm
         End If
     End Sub
 
-    Private Sub IN_Address1_ValidateHex(sender As Object, Optional e As EventArgs = Nothing, Optional key As KeyEventArgs = Nothing) Handles IN_Address1.Leave, IN_Address1.KeyDown
-        If IN_Address1.Text IsNot Nothing AndAlso IN_Address1.Text <> "" Then
-            If (key IsNot Nothing AndAlso key.KeyCode <> Keys.Return) Or (key Is Nothing And e IsNot Nothing) Then
-                If IN_Address1.Text.StartsWith("0x") Or (IN_Address1.Text.StartsWith("80") And IN_Address1.Text.Length = 8) Then
-                    IN_Address1.Text = IN_Address1.Text.Substring(2)
-                End If
+    Private Sub IN_Address_ValidateHex(sender As Object, Optional e As EventArgs = Nothing, Optional key As KeyEventArgs = Nothing) Handles IN_Address1.Leave, IN_Address1.KeyDown
+        Select Case DirectCast(sender, Control).Name
+            Case "IN_Address1"
+                If IN_Address1.Text IsNot Nothing AndAlso IN_Address1.Text <> "" Then
+                    If (key IsNot Nothing AndAlso key.KeyCode = Keys.Return) Or (key Is Nothing And e IsNot Nothing) Then
+                        If IN_Address1.Text.StartsWith("0x") Or (IN_Address1.Text.StartsWith("80") And IN_Address1.Text.Length = 8) Then
+                            IN_Address1.Text = IN_Address1.Text.Substring(2)
+                        End If
 
-                Try
-                    Address1 = UInteger.Parse(IN_Address1.Text, NumberStyles.HexNumber)
-                Catch ex As Exception
-                    MsgBox("The value you have entered is not a valid Hexadecimal address." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
-                    'IN_Address1.Text = ""
-                End Try
-            End If
-        End If
+                        Try
+                            Address1 = UInteger.Parse(IN_Address1.Text, NumberStyles.HexNumber)
+                        Catch ex As Exception
+                            MsgBox("The value you have entered is not a valid Hexadecimal address." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
+                        End Try
+                    End If
+                End If
+            Case "IN_Address2"
+                If IN_Address2.Text IsNot Nothing AndAlso IN_Address2.Text <> "" Then
+                    If (key IsNot Nothing AndAlso key.KeyCode = Keys.Return) Or (key Is Nothing And e IsNot Nothing) Then
+                        If IN_Address2.Text.StartsWith("0x") Or (IN_Address2.Text.StartsWith("80") And IN_Address2.Text.Length = 8) Then
+                            IN_Address2.Text = IN_Address2.Text.Substring(2)
+                        End If
+
+                        Try
+                            Address2 = UInteger.Parse(IN_Address2.Text, NumberStyles.HexNumber)
+                        Catch ex As Exception
+                            MsgBox("The value you have entered is not a valid Hexadecimal address." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
+                        End Try
+                    End If
+                End If
+            Case "IN_Address3"
+                If IN_Address3.Text IsNot Nothing AndAlso IN_Address3.Text <> "" Then
+                    If (key IsNot Nothing AndAlso key.KeyCode = Keys.Return) Or (key Is Nothing And e IsNot Nothing) Then
+                        If IN_Address3.Text.StartsWith("0x") Or (IN_Address3.Text.StartsWith("80") And IN_Address3.Text.Length = 8) Then
+                            IN_Address3.Text = IN_Address3.Text.Substring(2)
+                        End If
+
+                        Try
+                            Address3 = UInteger.Parse(IN_Address3.Text, NumberStyles.HexNumber)
+                        Catch ex As Exception
+                            MsgBox("The value you have entered is not a valid Hexadecimal address." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
+                        End Try
+                    End If
+                End If
+            Case "IN_Address4"
+                If IN_Address4.Text IsNot Nothing AndAlso IN_Address4.Text <> "" Then
+                    If (key IsNot Nothing AndAlso key.KeyCode = Keys.Return) Or (key Is Nothing And e IsNot Nothing) Then
+                        If IN_Address4.Text.StartsWith("0x") Or (IN_Address4.Text.StartsWith("80") And IN_Address4.Text.Length = 8) Then
+                            IN_Address4.Text = IN_Address4.Text.Substring(2)
+                        End If
+
+                        Try
+                            Address4 = UInteger.Parse(IN_Address4.Text, NumberStyles.HexNumber)
+                        Catch ex As Exception
+                            MsgBox("The value you have entered is not a valid Hexadecimal address." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
+                        End Try
+                    End If
+                End If
+        End Select
     End Sub
 
-    Private Sub IN_Value1_ValidateHex(sender As Object, Optional e As EventArgs = Nothing, Optional key As KeyEventArgs = Nothing) Handles IN_Value1.Leave, IN_Value1.KeyDown
-        If IN_Value1.Text IsNot Nothing AndAlso IN_Value1.Text <> "" Then
-            If (key IsNot Nothing AndAlso key.KeyCode <> Keys.Return) Or (key Is Nothing And e IsNot Nothing) Then
-                If IN_Value1.Text.StartsWith("0x") Then
-                    IN_Value1.Text = IN_Value1.Text.Substring(2)
-                End If
+    Private Sub IN_Value_ValidateHex(sender As Object, Optional e As EventArgs = Nothing, Optional key As KeyEventArgs = Nothing) Handles IN_Value1.Leave, IN_Value1.KeyDown, IN_Value2.Leave, IN_Value2.KeyDown, IN_Value3.Leave, IN_Value3.KeyDown, IN_Value4.Leave, IN_Value4.KeyDown
+        Select Case DirectCast(sender, Control).Name
+            Case "IN_Value1"
+                If IN_Value1.Text IsNot Nothing AndAlso IN_Value1.Text <> "" Then
+                    If (key IsNot Nothing AndAlso key.KeyCode = Keys.Return) Or (key Is Nothing And e IsNot Nothing) Then
+                        If IN_Value1.Text.StartsWith("0x") Then
+                            IN_Value1.Text = IN_Value1.Text.Substring(2)
+                        End If
 
-                Try
-                    Value1 = UInteger.Parse(IN_Value1.Text, NumberStyles.HexNumber)
-                Catch ex As Exception
-                    MsgBox("The number you have entered is not a valid Hexadecimal value." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
-                    'IN_Value1.Text = ""
-                End Try
-            End If
-        End If
+                        Try
+                            Value1 = UInteger.Parse(IN_Value1.Text, NumberStyles.HexNumber)
+                        Catch ex As Exception
+                            MsgBox("The number you have entered is not a valid Hexadecimal value." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
+                        End Try
+                    End If
+                End If
+            Case "IN_Value2"
+                If IN_Value2.Text IsNot Nothing AndAlso IN_Value2.Text <> "" Then
+                    If (key IsNot Nothing AndAlso key.KeyCode = Keys.Return) Or (key Is Nothing And e IsNot Nothing) Then
+                        If IN_Value2.Text.StartsWith("0x") Then
+                            IN_Value2.Text = IN_Value2.Text.Substring(2)
+                        End If
+
+                        Try
+                            Value2 = UInteger.Parse(IN_Value2.Text, NumberStyles.HexNumber)
+                        Catch ex As Exception
+                            MsgBox("The number you have entered is not a valid Hexadecimal value." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
+                        End Try
+                    End If
+                End If
+            Case "IN_Value3"
+                If IN_Value3.Text IsNot Nothing AndAlso IN_Value3.Text <> "" Then
+                    If (key IsNot Nothing AndAlso key.KeyCode = Keys.Return) Or (key Is Nothing And e IsNot Nothing) Then
+                        If IN_Value3.Text.StartsWith("0x") Then
+                            IN_Value3.Text = IN_Value3.Text.Substring(2)
+                        End If
+
+                        Try
+                            Value3 = UInteger.Parse(IN_Value3.Text, NumberStyles.HexNumber)
+                        Catch ex As Exception
+                            MsgBox("The number you have entered is not a valid Hexadecimal value." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
+                        End Try
+                    End If
+                End If
+            Case "IN_Value4"
+                If IN_Value4.Text IsNot Nothing AndAlso IN_Value4.Text <> "" Then
+                    If (key IsNot Nothing AndAlso key.KeyCode = Keys.Return) Or (key Is Nothing And e IsNot Nothing) Then
+                        If IN_Value4.Text.StartsWith("0x") Then
+                            IN_Value4.Text = IN_Value4.Text.Substring(2)
+                        End If
+
+                        Try
+                            Value4 = UInteger.Parse(IN_Value4.Text, NumberStyles.HexNumber)
+                        Catch ex As Exception
+                            MsgBox("The number you have entered is not a valid Hexadecimal value." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
+                        End Try
+                    End If
+                End If
+        End Select
     End Sub
 
     Private Sub B_Read_Click(sender As Object, e As EventArgs) Handles B_Read1.Click, B_Read2.Click, B_Read3.Click, B_Read4.Click
@@ -135,21 +223,5 @@ Public Class MemDebugForm
                     End If
             End Select
         End If
-    End Sub
-
-    Private Sub IN_Value1_ValidateHex(sender As Object, e As KeyEventArgs)
-
-    End Sub
-
-    Private Sub IN_Value1_ValidateHex(sender As Object, e As EventArgs) Handles IN_Value1.Leave, IN_Value1.KeyDown
-
-    End Sub
-
-    Private Sub IN_Address1_ValidateHex(sender As Object, e As KeyEventArgs)
-
-    End Sub
-
-    Private Sub IN_Address1_ValidateHex(sender As Object, e As EventArgs) Handles IN_Address1.Leave, IN_Address1.KeyDown
-
     End Sub
 End Class
