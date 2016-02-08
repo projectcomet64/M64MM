@@ -35,7 +35,7 @@ Public Class MemDebugForm
                 Try
                     Address1 = UInteger.Parse(IN_Address1.Text, NumberStyles.HexNumber)
                 Catch ex As Exception
-                    MsgBox("The value you have entered is not a valid Hexadecimal address." & vbCrLf & ex.Message)
+                    MsgBox("The value you have entered is not a valid Hexadecimal address." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
                     'IN_Address1.Text = ""
                 End Try
             End If
@@ -52,33 +52,88 @@ Public Class MemDebugForm
                 Try
                     Value1 = UInteger.Parse(IN_Value1.Text, NumberStyles.HexNumber)
                 Catch ex As Exception
-                    MsgBox("The number you have entered is not a valid Hexadecimal value." & vbCrLf & ex.Message)
+                    MsgBox("The number you have entered is not a valid Hexadecimal value." & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
                     'IN_Value1.Text = ""
                 End Try
             End If
         End If
     End Sub
 
-    Private Sub B_Read1_Click(sender As Object, e As EventArgs) Handles B_Read1.Click
+    Private Sub B_Read_Click(sender As Object, e As EventArgs) Handles B_Read1.Click, B_Read2.Click, B_Read3.Click, B_Read4.Click
         If WeGotABadassOverHere Then
-            Value1 = ReadUInteger("Project64", MainForm.Base + Address1)
-            IN_Value1.Text = Hex(Value1)
+            Try
+                Select Case DirectCast(sender, Control).Name
+                    Case "B_Read1"
+                        Value1 = ReadUInteger("Project64", MainForm.Base + Address1)
+                        IN_Value1.Text = Hex(Value1)
+                    Case "B_Read2"
+                        Value2 = ReadUInteger("Project64", MainForm.Base + Address2)
+                        IN_Value2.Text = Hex(Value2)
+                    Case "B_Read3"
+                        Value3 = ReadUInteger("Project64", MainForm.Base + Address3)
+                        IN_Value3.Text = Hex(Value3)
+                    Case "B_Read4"
+                        Value4 = ReadUInteger("Project64", MainForm.Base + Address4)
+                        IN_Value4.Text = Hex(Value4)
+                End Select
+            Catch ex As Exception
+                MsgBox("Something went wrong:" & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
+            End Try
         End If
     End Sub
 
-    Private Sub B_Write1_Click(sender As Object, e As EventArgs) Handles B_Write1.Click
+    Private Sub B_Write_Click(sender As Object, e As EventArgs) Handles B_Write1.Click, B_Write2.Click, B_Write3.Click, B_Write4.Click
         If WeGotABadassOverHere Then
-            If Address1 <= 4 Then
-                Dim WarningText As String = "You are attempting to write to the first four bytes of Super Mario 64's memory, " &
+            Select Case DirectCast(sender, Control).Name
+                Case "B_Write1"
+                    If Address1 <= 4 Then
+                        Dim WarningText As String = "You are attempting to write to the first four bytes of Super Mario 64's memory, " &
                           "which contains the value this program uses to find the game's base address. " &
                           "If you click ""Yes"", you will need to reset the emulator before this program will be able " &
                           "to find Super Mario 64 again. Are you sure you want to do this?"
-                If MessageBox.Show(WarningText, "Are you sure?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-                    WriteUInteger("Project64", MainForm.Base + Address1, Value1)
-                End If
-            Else
-                WriteUInteger("Project64", MainForm.Base + Address1, Value1)
-            End If
+                        If MessageBox.Show(WarningText, "Are you sure?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                            WriteUInteger("Project64", MainForm.Base + Address1, Value1)
+                        End If
+                    Else
+                        WriteUInteger("Project64", MainForm.Base + Address1, Value1)
+                    End If
+                Case "B_Write2"
+                    If Address2 <= 4 Then
+                        Dim WarningText As String = "You are attempting to write to the first four bytes of Super Mario 64's memory, " &
+                          "which contains the value this program uses to find the game's base address. " &
+                          "If you click ""Yes"", you will need to reset the emulator before this program will be able " &
+                          "to find Super Mario 64 again. Are you sure you want to do this?"
+                        If MessageBox.Show(WarningText, "Are you sure?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                            WriteUInteger("Project64", MainForm.Base + Address2, Value2)
+                        End If
+                    Else
+                        WriteUInteger("Project64", MainForm.Base + Address2, Value2)
+                    End If
+                Case "B_Write3"
+                    If Address3 <= 4 Then
+                        Dim WarningText As String = "You are attempting to write to the first four bytes of Super Mario 64's memory, " &
+                          "which contains the value this program uses to find the game's base address. " &
+                          "If you click ""Yes"", you will need to reset the emulator before this program will be able " &
+                          "to find Super Mario 64 again. Are you sure you want to do this?"
+                        If MessageBox.Show(WarningText, "Are you sure?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                            WriteUInteger("Project64", MainForm.Base + Address3, Value3)
+                        End If
+                    Else
+                        WriteUInteger("Project64", MainForm.Base + Address3, Value3)
+                    End If
+                Case "B_Write4"
+                    If Address4 <= 4 Then
+                        Dim WarningText As String = "You are attempting to write to the first four bytes of Super Mario 64's memory, " &
+                          "which contains the value this program uses to find the game's base address. " &
+                          "If you click ""Yes"", you will need to reset the emulator before this program will be able " &
+                          "to find Super Mario 64 again. Are you sure you want to do this?"
+                        If MessageBox.Show(WarningText, "Are you sure?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                            WriteUInteger("Project64", MainForm.Base + Address4, Value4)
+                        End If
+                    Else
+                        WriteUInteger("Project64", MainForm.Base + Address4, Value4)
+                    End If
+            End Select
         End If
     End Sub
 
