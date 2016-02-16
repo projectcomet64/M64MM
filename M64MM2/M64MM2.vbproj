@@ -37,6 +37,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>M64MM2.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -162,12 +163,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="M64MM2.ico" />
-    <Content Include="M64MM22.ico" />
     <None Include="Resources\M64MM2.ico" />
     <None Include="Resources\M64MM2 Icon.png" />
-    <None Include="Resources\M64MM2_Icon.bmp" />
-    <None Include="Resources\M64MM2.png" />
-    <None Include="Resources\Bullseye.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
