@@ -87,7 +87,19 @@
         Dim vBuffer(0) As Byte
 
         hAddress = Address
-        ReadProcessMemory4(hProcess, hAddress, vBuffer, nsize, 0)
+        ReadProcessMemory4(hProcess, Address, vBuffer, nsize, 0)
+        Return vBuffer
+    End Function
+
+    Public Function ReadXBytes(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal count As Integer = 1) As Byte()
+        Dim hProcess As IntPtr = GetEmuProcess("Project64")
+        If hProcess = Nothing Then Return Nothing
+
+        Dim hAddress As Integer
+        Dim vBuffer(count) As Byte
+
+        hAddress = Address
+        ReadProcessMemory4(hProcess, hAddress, vBuffer, count, 0)
         Return vBuffer
     End Function
 
