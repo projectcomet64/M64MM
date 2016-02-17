@@ -6,8 +6,9 @@ Public Class MainForm
 
     Public Shared Base As Long
     Public Shared EmuOpen As Boolean = False
-    Private MemDebugWindow As MemDebugForm
-    Private ChangeCamera As Boolean = False
+	Private MemDebugWindow As MemDebugForm
+	Private ColorCodeWindow As ColorCodeStudio
+	Private ChangeCamera As Boolean = False
     Private CameraUnfrozen As Boolean = True
     Private PrecisionStage As Byte = 0
     Private SoftCameraUnfrozen As Boolean = True
@@ -505,15 +506,27 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub OpenMemDebugWindow(sender As Object, e As EventArgs) Handles EnableMemoryIODebugWindowToolStripMenuItem.Click
-        If IsNothing(MemDebugWindow) Then
-            MemDebugWindow = New MemDebugForm()
-            MemDebugWindow.Show()
-        ElseIf Not MemDebugWindow.Enabled Then
-            MemDebugWindow.Enabled = True
-            MemDebugWindow.Show()
-        End If
-    End Sub
+	Private Sub OpenMemDebugWindow(sender As Object, e As EventArgs) Handles MemoryIODebugToolStripMenuItem.Click
+		If IsNothing(MemDebugWindow) Then
+			MemDebugWindow = New MemDebugForm()
+			MemDebugWindow.Show()
+		ElseIf Not MemDebugWindow.WindowState = FormWindowState.Normal Then
+			MemDebugWindow.WindowState = FormWindowState.Normal
+		ElseIf Not MemDebugWindow.Focused Then
+			MemDebugWindow.Focus()
+		End If
+	End Sub
+
+	Private Sub OpenColorCodeStudio(sender As Object, e As EventArgs) Handles ColorCodeStudioMenuItem.Click
+		If IsNothing(ColorCodeWindow) OrElse ColorCodeWindow.IsDisposed Then
+			ColorCodeWindow = New ColorCodeStudio
+			ColorCodeWindow.Show()
+		ElseIf Not ColorCodeWindow.WindowState = FormWindowState.Normal Then
+			ColorCodeWindow.WindowState = FormWindowState.Normal
+		ElseIf Not ColorCodeWindow.Focused Then
+			ColorCodeWindow.Focus()
+		End If
+	End Sub
 End Class
 
 Public Class Animation
