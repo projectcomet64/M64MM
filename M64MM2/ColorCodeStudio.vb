@@ -1,23 +1,12 @@
 ﻿Public Class ColorCodeStudio
-	'Private HatColor(3) As Color '= Color.FromArgb(127, 0, 0)
-	'Private HairColor(3) As Color
-	'Private SkinColor(3) As Color
-	'Private PantsColor(3) As Color
-	'Private GlovesColor(3) As Color
-	'Private ShoesColor(3) As Color
-
-	Private Sub ColorCodeStudio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-		'HatColor(0) = HatButton1.BackColor
-		'HatColor(1) = HatButton2.BackColor
-		'HatColor(2) = HatButton3.BackColor
-		'HatColor(3) = HatButton4.BackColor
-
-
-	End Sub
-
-	Private Sub ColorButton_Click(sender As Object, e As EventArgs) Handles HatButton1.Click, HatButton4.Click, HatButton3.Click, HatButton2.Click
-		If ColorDialog1.ShowDialog() = DialogResult.OK Then
-			DirectCast(sender, Button).BackColor = ColorDialog1.Color
-		End If
-	End Sub
+    Private Sub ColorButton_Click(sender As Object, e As EventArgs) Handles HatButton1.Click, HatButton4.Click, HatButton3.Click, HatButton2.Click
+        If ColorDialog1.ShowDialog() = DialogResult.OK Then
+            Dim senderButton As Button = DirectCast(sender, Button)
+            senderButton.BackColor = ColorDialog1.Color
+            Dim colorData As String
+            colorData = FixZeroHexByte(Hex(senderButton.BackColor.R)) & FixZeroHexByte(Hex(senderButton.BackColor.G)) & FixZeroHexByte(Hex(senderButton.BackColor.B)) & "00"
+            Dim bytes As String = colorData.Substring(6, 2) & colorData.Substring(4, 2) & colorData.Substring(2, 2) & colorData.Substring(0, 2)
+            WriteXBytes("Project64", MainForm.Base + &H07EC38, bytes)
+        End If
+    End Sub
 End Class

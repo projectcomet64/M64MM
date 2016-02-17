@@ -1,4 +1,6 @@
-﻿Module ReadWritingMemory
+﻿Imports System.Globalization
+
+Module ReadWritingMemory
     Private Declare Function OpenProcess Lib "kernel32" (ByVal dwDesiredAccess As Integer, ByVal bInheritHandle As Integer, ByVal dwProcessId As Integer) As Integer
 
     Private Declare Function WriteProcessMemory1 Lib "kernel32" Alias "WriteProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByRef lpBuffer As Integer, ByVal nSize As Integer, ByRef lpNumberOfBytesWritten As Integer) As Integer
@@ -78,6 +80,54 @@
         vBuffer = Value
         WriteProcessMemory3(hProcess, hAddress, vBuffer, nsize, 0)
     End Sub
+
+    Public Sub BigEndianWrite(ByVal ProcessName As String, ByVal Address As Long, ByVal Value As String)
+        Dim hProcess As IntPtr = GetEmuProcess("Project64")
+        If hProcess = Nothing Then Exit Sub
+
+        Dim bigEndianBytes As String
+        For I As Integer = (Value.Length / 2) - 1 To 0 Step -1
+            bigEndianBytes = Value.Substring(I * 2, 2)
+        Next
+
+        Dim C As Integer
+        Dim B As Integer
+        Dim D As Integer
+        Dim V As Byte
+
+        B = 0
+        D = 1
+        For C = 1 To Math.Round((Len(Value) / 2))
+            V = Val("&H" & Mid$(Value, D, 2))
+            Call WriteProcessMemory1(hProcess, Address + B, V, 1, 0&)
+            B = B + 1
+            D = D + 2
+        Next C
+    End Sub
+
+    Public Function FixZeroHexByte(val As String) As String
+        If val.Length = 1 And Byte.Parse(val, NumberStyles.HexNumber) < 16 Then
+            Return "0" & val
+        Else
+            Return val
+        End If
+    End Function
+
+    Public Function BigEndianRead(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal count As Integer = 1) As Byte()
+        Dim bytesRead(count - 1) As Byte
+        Dim AddressMod As Integer = Address Mod 4
+
+        For Q As Integer = 1 To (count - AddressMod)
+            bytesRead(count - AddressMod - Q) = ReadByte("Project64", Address + (Q - AddressMod - 1))(0)
+        Next
+        If AddressMod > 0 Then
+            For R As Integer = (count - AddressMod) To (count - 1)
+                bytesRead(count - R + (count - AddressMod - 1)) = ReadByte("Project64", Address + (count - AddressMod + R))(0)
+            Next
+        End If
+
+        Return bytesRead
+    End Function
 
     Public Function ReadByte(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal nsize As Integer = 1) As Byte()
         Dim hProcess As IntPtr = GetEmuProcess("Project64")

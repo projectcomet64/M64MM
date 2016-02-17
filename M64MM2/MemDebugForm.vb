@@ -147,30 +147,6 @@ Public Class MemDebugForm
         End Select
     End Sub
 
-    Private Function FixZeroHexByte(val As String) As String
-        If val.Length = 1 And Byte.Parse(val, NumberStyles.HexNumber) < 16 Then
-            Return "0" & val
-        Else
-            Return val
-        End If
-    End Function
-
-    Private Function BigEndianRead(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal count As Integer = 1) As Byte()
-        Dim bytesRead(count - 1) As Byte
-        Dim AddressMod As Integer = Address Mod 4
-
-        For Q As Integer = 1 To (count - AddressMod)
-            bytesRead(count - AddressMod - Q) = ReadByte("Project64", Address + (Q - AddressMod - 1))(0)
-        Next
-        If AddressMod > 0 Then
-            For R As Integer = (count - AddressMod) To (count - 1)
-                bytesRead(count - R + (count - AddressMod - 1)) = ReadByte("Project64", Address + (count - AddressMod + R))(0)
-            Next
-        End If
-
-        Return bytesRead
-    End Function
-
     Private Sub B_Read_Click(sender As Object, e As EventArgs) Handles B_Read1.Click, B_Read2.Click, B_Read3.Click, B_Read4.Click
         If WeGotABadassOverHere Then
             Try
