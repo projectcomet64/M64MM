@@ -147,13 +147,13 @@ Public Class MainForm
     End Function
 
     Private Sub ResetAnimations()
+        ComboBox2.SelectedIndex = ComboBox1.SelectedIndex
         For Each anim As Animation In AnimList
             WriteInteger("Project64", Base + &H64040 + ((anim.Index + 1) * 8),
                          Integer.Parse(GetChunks(anim.Value, 8)(0), NumberStyles.HexNumber))
             WriteInteger("Project64", Base + &H64044 + ((anim.Index + 1) * 8),
                          Integer.Parse(GetChunks(anim.Value, 8)(1), NumberStyles.HexNumber))
         Next
-        ComboBox2.SelectedIndex = ComboBox1.SelectedIndex
     End Sub
 
     Private Sub ForceCameraPreset()
@@ -280,6 +280,7 @@ Public Class MainForm
                             foundButton.Enabled = True
                         End If
                     Next
+                    ColorCodeWindow.RefreshColorCycle()
                 End If
                 If PrecisionStage = 0 Then
                     PrecisionStatusLabel.Text = "Precision Mode is disabled." + vbCrLf +

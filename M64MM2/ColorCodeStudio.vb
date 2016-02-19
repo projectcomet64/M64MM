@@ -14,6 +14,9 @@ Public Class ColorCodeStudio
     'Private shoesColorMap As New ColorMap()
 
     Public returnedCode As String = ""
+    Private rand As Random = New Random()
+    Private cycleTime As Integer
+    Private cycleColors As Boolean = False
     Private CCCopyPaste As ColorCodeCopyPasteForm
     Private DefaultColors(23) As Color
     Private IsSettingAllColors As Boolean = False
@@ -133,6 +136,31 @@ Public Class ColorCodeStudio
             End If
         Next
         IsSettingAllColors = False
+    End Sub
+
+    Public Sub RefreshColorCycle()
+        If cycleColors = True Then
+            'Uncomment the following If statement and adjust the cap (default = 1) to slow down the refresh rate
+            'If cycleTime >= 1 Then
+            Dim buttonIndex As Integer
+            IsSettingAllColors = True
+            For Each control As Control In Controls
+                If TypeOf control Is Button Then
+                    Dim foundButton As Button = DirectCast(control, Button)
+                    'If the button has no text, it's a color-selection button
+                    If foundButton.Text = "" Then
+                        foundButton.BackColor = Color.FromArgb(rand.Next(0, 256), rand.Next(0, 256), rand.Next(0, 256))
+                        foundButton.PerformClick()
+                        buttonIndex += 1
+                    End If
+                End If
+            Next
+            IsSettingAllColors = False
+            '    cycleTime = 0
+            'Else
+            '    cycleTime += 1
+            'End If
+        End If
     End Sub
 
     Private Sub LoadFromRam(sender As Object, e As EventArgs) Handles LoadRamButton.Click
@@ -365,5 +393,9 @@ Public Class ColorCodeStudio
         Dim width As Integer = image.Width
         Dim height As Integer = image.Height
 
+    End Sub
+
+    Private Sub PictureBox1_DoubleClick(sender As Object, e As EventArgs) Handles PictureBox1.DoubleClick
+        cycleColors = Not cycleColors
     End Sub
 End Class

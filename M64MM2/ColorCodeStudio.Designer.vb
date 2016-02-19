@@ -46,9 +46,9 @@ Partial Class ColorCodeStudio
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ImportCCButton = New System.Windows.Forms.Button()
         Me.ExportCCButton = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -259,6 +259,17 @@ Partial Class ColorCodeStudio
         Me.ToolTip1.InitialDelay = 1000
         Me.ToolTip1.ReshowDelay = 100
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(209, 40)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(192, 272)
+        Me.PictureBox1.TabIndex = 32
+        Me.PictureBox1.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.PictureBox1, resources.GetString("PictureBox1.ToolTip"))
+        '
         'ImportCCButton
         '
         Me.ImportCCButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -278,17 +289,6 @@ Partial Class ColorCodeStudio
         Me.ExportCCButton.TabIndex = 34
         Me.ExportCCButton.Text = "Export color code..."
         Me.ExportCCButton.UseVisualStyleBackColor = True
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(209, 40)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(192, 272)
-        Me.PictureBox1.TabIndex = 32
-        Me.PictureBox1.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.PictureBox1, resources.GetString("PictureBox1.ToolTip"))
         '
         'Label7
         '
