@@ -23,8 +23,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>2.0.2.1</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>2.0.3.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -98,6 +98,12 @@
     <Compile Include="AboutForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ColorCodeCopyPasteForm.Designer.vb">
+      <DependentUpon>ColorCodeCopyPasteForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ColorCodeCopyPasteForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ColorCodeStudio.Designer.vb">
       <DependentUpon>ColorCodeStudio.vb</DependentUpon>
     </Compile>
@@ -138,6 +144,9 @@
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ColorCodeCopyPasteForm.resx">
+      <DependentUpon>ColorCodeCopyPasteForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ColorCodeStudio.resx">
       <DependentUpon>ColorCodeStudio.vb</DependentUpon>
     </EmbeddedResource>
@@ -165,7 +174,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="animation_data.txt">

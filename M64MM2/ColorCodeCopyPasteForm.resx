@@ -117,79 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ColorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>140, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="PictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-        mgraiYJuYlI+AByFgmpOop4UVFNBO1HQTUzKB4CjUFDNSdSTgmoqaCcKuolJ6x/gFS0l5tBOnOQDxBPa
-        iZN8gHhCO3GSDxBPaCdO8gHiCe3EST5APKGdOMkHiCe0Eyf5APGEduIkHyCe0E6c5APEE9qJk3yAeEI7
-        cZIPEE9oJ07yAeIJ7cRJPkA8oZ04yQeIJ7QTJ/kA8YR24mT9A9BQ4w66iUn5ALGKbmJSPkCsopuYlA8Q
-        q+gmJuUDxCq6iUn5ALGKbmJSPkCsopuYlA8Qq+gmJuUDxCq6iUn5ALGKbmJSPkCsopuYlA8Qq+gmJuUD
-        xCq6iUn5ALGKbmJSPkCsopuYlA8Qq+gmJv2sB4ZiZTvUk5PzoaE42Q715OR8aChOtkM9OTkfGoqT7VBP
-        Ts6HhuJkO9STk/OhoTjZDvXk5HxoKE62Qz05OR8aipPtUE9OzoeG4mQ71JOT86GhONkO9eTkfGgoTrZD
-        PTk5HxqKk+1QT07Oh4biZDvUk5PzoaE42Q715OR8aChOtkM9OTkfGoqT7VBPTtzzr3/8/DrrZ5wNzcRJ
-        P2Mv1JSTfsbZ0Eyc9DP2Qk056WecDc3EST9jL9SUk37G2dBMnPQz9kJNOelnnA3NxEk/Yy/UlJN+xtnQ
-        TJz0M/ZCTTnpZ5wNzcRJP2Mv1JSTfsbZ0Eyc9DP2Qk056WecDc3EST9jL9SUk37G2dBMnPQz9kJNOeln
-        nA3NxEk/Yy/UlJN+xtnQTJz0M/ZCTTnpZ5wNzcRJP2Mv1JSTfsbZ0Eyc9DP2Qk056WecDc3EST9jL9SU
-        k37G2dBMnPQzvg8VvaTHcDY0k0sygOOhmVySARwPzeSSDOB4aCaXZADHQzO5JAM4HprJJRnA8dBMLskA
-        jodmckkGcDw0k0sygOOhmVySARwPzeSSDOB4aCaXZADHQzO5JAM4HprJJRnA8dBMLskAjodmcsfP7/8B
-        mzKD/XTHTTgAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="PictureBox1.ToolTip" xml:space="preserve">
-    <value>If you're wondering what this is here for, it was
-originally supposed to change colors to match
-the colors you selected, but I can't seem to
-make it work properly yet, sorry!
-(Also, you can just look at Mario's colors in-game).</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAoAMDAQAAEABABoBgAApgAAACAgEAABAAQA6AIAAA4HAAAQEBAAAQAEACgBAAD2CQAAMDAAAAEA

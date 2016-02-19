@@ -42,7 +42,7 @@ Partial Class AboutForm
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(484, 26)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Mario 64 Movie Maker 2.0.2.1"
+        Me.Label1.Text = "Mario 64 Movie Maker 2.0.3"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Label2
@@ -103,11 +103,11 @@ Partial Class AboutForm
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(190, 287)
+        Me.Label6.Location = New System.Drawing.Point(191, 287)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(140, 13)
+        Me.Label6.Size = New System.Drawing.Size(146, 13)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Build date: February 8, 2016"
+        Me.Label6.Text = "Build date: February 19, 2016"
         '
         'PictureBox1
         '

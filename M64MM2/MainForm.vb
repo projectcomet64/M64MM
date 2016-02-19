@@ -249,6 +249,14 @@ Public Class MainForm
                         MemDebugWindow.CB_Accept.Checked = False
                         MemDebugWindow.CB_Accept.Enabled = False
                     End If
+                    If ColorCodeWindow IsNot Nothing Then
+                        For Each control As Control In ColorCodeWindow.Controls
+                            If TypeOf control Is Button Then
+                                Dim foundButton As Button = DirectCast(control, Button)
+                                foundButton.Enabled = False
+                            End If
+                        Next
+                    End If
                 End If
 
                 ' NOTE: I think we should have the previous block of code somehow exit or move to an are where it doesn't re-enable the form's controls for 1 update
@@ -264,6 +272,14 @@ Public Class MainForm
                 b_SoftUnfreeze.Enabled = True
                 If MemDebugWindow IsNot Nothing Then
                     MemDebugWindow.CB_Accept.Enabled = True
+                End If
+                If ColorCodeWindow IsNot Nothing Then
+                    For Each control As Control In ColorCodeWindow.Controls
+                        If TypeOf control Is Button Then
+                            Dim foundButton As Button = DirectCast(control, Button)
+                            foundButton.Enabled = True
+                        End If
+                    Next
                 End If
                 If PrecisionStage = 0 Then
                     PrecisionStatusLabel.Text = "Precision Mode is disabled." + vbCrLf +
@@ -301,6 +317,14 @@ Public Class MainForm
                     MemDebugWindow.CB_Accept.Checked = False
                     MemDebugWindow.CB_Accept.Enabled = False
                 End If
+                If ColorCodeWindow IsNot Nothing Then
+                    For Each control As Control In ColorCodeWindow.Controls
+                        If TypeOf control Is Button Then
+                            Dim foundButton As Button = DirectCast(control, Button)
+                            foundButton.Enabled = False
+                        End If
+                    Next
+                End If
                 GetBase()
             End If
         Else
@@ -318,6 +342,14 @@ Public Class MainForm
             If MemDebugWindow IsNot Nothing Then
                 MemDebugWindow.CB_Accept.Checked = False
                 MemDebugWindow.CB_Accept.Enabled = False
+            End If
+            If ColorCodeWindow IsNot Nothing Then
+                For Each control As Control In ColorCodeWindow.Controls
+                    If TypeOf control Is Button Then
+                        Dim foundButton As Button = DirectCast(control, Button)
+                        foundButton.Enabled = False
+                    End If
+                Next
             End If
         End If
     End Sub

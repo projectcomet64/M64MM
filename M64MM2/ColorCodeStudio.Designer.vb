@@ -22,6 +22,7 @@ Partial Class ColorCodeStudio
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ColorCodeStudio))
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.HatButton1 = New System.Windows.Forms.Button()
@@ -44,14 +45,19 @@ Partial Class ColorCodeStudio
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ImportCCButton = New System.Windows.Forms.Button()
+        Me.ExportCCButton = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'HatButton1
         '
+        Me.HatButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.HatButton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.HatButton1.Location = New System.Drawing.Point(12, 28)
+        Me.HatButton1.Location = New System.Drawing.Point(12, 60)
         Me.HatButton1.Name = "HatButton1"
         Me.HatButton1.Size = New System.Drawing.Size(75, 23)
         Me.HatButton1.TabIndex = 0
@@ -59,8 +65,9 @@ Partial Class ColorCodeStudio
         '
         'HatButton3
         '
+        Me.HatButton3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.HatButton3.BackColor = System.Drawing.Color.Red
-        Me.HatButton3.Location = New System.Drawing.Point(93, 28)
+        Me.HatButton3.Location = New System.Drawing.Point(93, 60)
         Me.HatButton3.Name = "HatButton3"
         Me.HatButton3.Size = New System.Drawing.Size(75, 23)
         Me.HatButton3.TabIndex = 3
@@ -68,8 +75,9 @@ Partial Class ColorCodeStudio
         '
         'HairButton3
         '
+        Me.HairButton3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.HairButton3.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.HairButton3.Location = New System.Drawing.Point(93, 84)
+        Me.HairButton3.Location = New System.Drawing.Point(93, 116)
         Me.HairButton3.Name = "HairButton3"
         Me.HairButton3.Size = New System.Drawing.Size(75, 23)
         Me.HairButton3.TabIndex = 7
@@ -77,8 +85,9 @@ Partial Class ColorCodeStudio
         '
         'HairButton1
         '
+        Me.HairButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.HairButton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(3, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.HairButton1.Location = New System.Drawing.Point(12, 84)
+        Me.HairButton1.Location = New System.Drawing.Point(12, 116)
         Me.HairButton1.Name = "HairButton1"
         Me.HairButton1.Size = New System.Drawing.Size(75, 23)
         Me.HairButton1.TabIndex = 4
@@ -86,8 +95,9 @@ Partial Class ColorCodeStudio
         '
         'SkinButton3
         '
+        Me.SkinButton3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.SkinButton3.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(121, Byte), Integer))
-        Me.SkinButton3.Location = New System.Drawing.Point(93, 140)
+        Me.SkinButton3.Location = New System.Drawing.Point(93, 172)
         Me.SkinButton3.Name = "SkinButton3"
         Me.SkinButton3.Size = New System.Drawing.Size(75, 23)
         Me.SkinButton3.TabIndex = 11
@@ -95,8 +105,9 @@ Partial Class ColorCodeStudio
         '
         'SkinButton1
         '
+        Me.SkinButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.SkinButton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(60, Byte), Integer))
-        Me.SkinButton1.Location = New System.Drawing.Point(12, 140)
+        Me.SkinButton1.Location = New System.Drawing.Point(12, 172)
         Me.SkinButton1.Name = "SkinButton1"
         Me.SkinButton1.Size = New System.Drawing.Size(75, 23)
         Me.SkinButton1.TabIndex = 8
@@ -104,8 +115,9 @@ Partial Class ColorCodeStudio
         '
         'PantsButton3
         '
+        Me.PantsButton3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PantsButton3.BackColor = System.Drawing.Color.Blue
-        Me.PantsButton3.Location = New System.Drawing.Point(93, 195)
+        Me.PantsButton3.Location = New System.Drawing.Point(93, 227)
         Me.PantsButton3.Name = "PantsButton3"
         Me.PantsButton3.Size = New System.Drawing.Size(75, 23)
         Me.PantsButton3.TabIndex = 15
@@ -113,8 +125,9 @@ Partial Class ColorCodeStudio
         '
         'PantsButton1
         '
+        Me.PantsButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PantsButton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.PantsButton1.Location = New System.Drawing.Point(12, 195)
+        Me.PantsButton1.Location = New System.Drawing.Point(12, 227)
         Me.PantsButton1.Name = "PantsButton1"
         Me.PantsButton1.Size = New System.Drawing.Size(75, 23)
         Me.PantsButton1.TabIndex = 12
@@ -122,8 +135,9 @@ Partial Class ColorCodeStudio
         '
         'GlovesButton3
         '
+        Me.GlovesButton3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GlovesButton3.BackColor = System.Drawing.Color.White
-        Me.GlovesButton3.Location = New System.Drawing.Point(93, 255)
+        Me.GlovesButton3.Location = New System.Drawing.Point(93, 287)
         Me.GlovesButton3.Name = "GlovesButton3"
         Me.GlovesButton3.Size = New System.Drawing.Size(75, 23)
         Me.GlovesButton3.TabIndex = 19
@@ -131,8 +145,9 @@ Partial Class ColorCodeStudio
         '
         'GlovesButton1
         '
+        Me.GlovesButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GlovesButton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.GlovesButton1.Location = New System.Drawing.Point(12, 255)
+        Me.GlovesButton1.Location = New System.Drawing.Point(12, 287)
         Me.GlovesButton1.Name = "GlovesButton1"
         Me.GlovesButton1.Size = New System.Drawing.Size(75, 23)
         Me.GlovesButton1.TabIndex = 16
@@ -140,8 +155,9 @@ Partial Class ColorCodeStudio
         '
         'ShoesButton3
         '
+        Me.ShoesButton3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ShoesButton3.BackColor = System.Drawing.Color.FromArgb(CType(CType(114, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(14, Byte), Integer))
-        Me.ShoesButton3.Location = New System.Drawing.Point(93, 310)
+        Me.ShoesButton3.Location = New System.Drawing.Point(93, 342)
         Me.ShoesButton3.Name = "ShoesButton3"
         Me.ShoesButton3.Size = New System.Drawing.Size(75, 23)
         Me.ShoesButton3.TabIndex = 23
@@ -149,8 +165,9 @@ Partial Class ColorCodeStudio
         '
         'ShoesButton1
         '
+        Me.ShoesButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ShoesButton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(7, Byte), Integer))
-        Me.ShoesButton1.Location = New System.Drawing.Point(12, 310)
+        Me.ShoesButton1.Location = New System.Drawing.Point(12, 342)
         Me.ShoesButton1.Name = "ShoesButton1"
         Me.ShoesButton1.Size = New System.Drawing.Size(75, 23)
         Me.ShoesButton1.TabIndex = 20
@@ -158,7 +175,8 @@ Partial Class ColorCodeStudio
         '
         'DefaultButton
         '
-        Me.DefaultButton.Location = New System.Drawing.Point(183, 310)
+        Me.DefaultButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.DefaultButton.Location = New System.Drawing.Point(183, 316)
         Me.DefaultButton.Name = "DefaultButton"
         Me.DefaultButton.Size = New System.Drawing.Size(119, 23)
         Me.DefaultButton.TabIndex = 24
@@ -167,7 +185,8 @@ Partial Class ColorCodeStudio
         '
         'LoadRamButton
         '
-        Me.LoadRamButton.Location = New System.Drawing.Point(308, 310)
+        Me.LoadRamButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LoadRamButton.Location = New System.Drawing.Point(308, 316)
         Me.LoadRamButton.Name = "LoadRamButton"
         Me.LoadRamButton.Size = New System.Drawing.Size(119, 23)
         Me.LoadRamButton.TabIndex = 25
@@ -176,8 +195,9 @@ Partial Class ColorCodeStudio
         '
         'Label1
         '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 12)
+        Me.Label1.Location = New System.Drawing.Point(12, 44)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(50, 13)
         Me.Label1.TabIndex = 26
@@ -185,8 +205,9 @@ Partial Class ColorCodeStudio
         '
         'Label2
         '
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 68)
+        Me.Label2.Location = New System.Drawing.Point(12, 100)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(26, 13)
         Me.Label2.TabIndex = 27
@@ -194,8 +215,9 @@ Partial Class ColorCodeStudio
         '
         'Label3
         '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 124)
+        Me.Label3.Location = New System.Drawing.Point(12, 156)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(28, 13)
         Me.Label3.TabIndex = 28
@@ -203,8 +225,9 @@ Partial Class ColorCodeStudio
         '
         'Label4
         '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 179)
+        Me.Label4.Location = New System.Drawing.Point(12, 211)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(34, 13)
         Me.Label4.TabIndex = 29
@@ -212,8 +235,9 @@ Partial Class ColorCodeStudio
         '
         'Label5
         '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(12, 239)
+        Me.Label5.Location = New System.Drawing.Point(12, 271)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(40, 13)
         Me.Label5.TabIndex = 30
@@ -221,27 +245,68 @@ Partial Class ColorCodeStudio
         '
         'Label6
         '
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 294)
+        Me.Label6.Location = New System.Drawing.Point(12, 326)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(37, 13)
         Me.Label6.TabIndex = 31
         Me.Label6.Text = "Shoes"
         '
+        'ToolTip1
+        '
+        Me.ToolTip1.AutoPopDelay = 10000
+        Me.ToolTip1.InitialDelay = 1000
+        Me.ToolTip1.ReshowDelay = 100
+        '
+        'ImportCCButton
+        '
+        Me.ImportCCButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ImportCCButton.Location = New System.Drawing.Point(183, 341)
+        Me.ImportCCButton.Name = "ImportCCButton"
+        Me.ImportCCButton.Size = New System.Drawing.Size(119, 23)
+        Me.ImportCCButton.TabIndex = 33
+        Me.ImportCCButton.Text = "Import color code..."
+        Me.ImportCCButton.UseVisualStyleBackColor = True
+        '
+        'ExportCCButton
+        '
+        Me.ExportCCButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ExportCCButton.Location = New System.Drawing.Point(308, 341)
+        Me.ExportCCButton.Name = "ExportCCButton"
+        Me.ExportCCButton.Size = New System.Drawing.Size(119, 23)
+        Me.ExportCCButton.TabIndex = 34
+        Me.ExportCCButton.Text = "Export color code..."
+        Me.ExportCCButton.UseVisualStyleBackColor = True
+        '
         'PictureBox1
         '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(209, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(209, 40)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(192, 272)
         Me.PictureBox1.TabIndex = 32
         Me.PictureBox1.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.PictureBox1, resources.GetString("PictureBox1.ToolTip"))
+        '
+        'Label7
+        '
+        Me.Label7.Location = New System.Drawing.Point(12, 9)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(415, 31)
+        Me.Label7.TabIndex = 35
+        Me.Label7.Text = "IMPORTANT: Make sure to uncheck any color codes currently enabled in Project64. O" &
+    "therwise, they will prevent this program from modifying Mario's colors."
         '
         'ColorCodeStudio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(439, 344)
+        Me.ClientSize = New System.Drawing.Size(439, 376)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.ExportCCButton)
+        Me.Controls.Add(Me.ImportCCButton)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
@@ -296,4 +361,8 @@ Partial Class ColorCodeStudio
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents ImportCCButton As Button
+    Friend WithEvents ExportCCButton As Button
+    Friend WithEvents Label7 As Label
 End Class
