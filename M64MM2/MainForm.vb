@@ -244,6 +244,9 @@ Public Class MainForm
                     ComboBox2.Enabled = False
                     b_SoftFreeze.Enabled = False
                     b_SoftUnfreeze.Enabled = False
+                    LevitateTrackBar.Enabled = False
+                    NoFallDmgCB.Enabled = False
+                    DisableHudCB.Enabled = False
                     PrecisionModeOff(True)
                     If MemDebugWindow IsNot Nothing Then
                         MemDebugWindow.CB_Accept.Checked = False
@@ -261,7 +264,7 @@ Public Class MainForm
 
                 ' NOTE: I think we should have the previous block of code somehow exit or move to an are where it doesn't re-enable the form's controls for 1 update
                 ' because I think that's what the current code is doing. (Bottom line, re-do the code at some point, maybe in C#.)
-
+                ' GlitchyPSIX: mmm, I don't think that issue would be in this file.
                 If Timer1.Interval <> 100 Then Timer1.Interval = 100
                 b_ChangeCameraType.Enabled = True
                 b_Freeze.Enabled = True
@@ -270,6 +273,9 @@ Public Class MainForm
                 ComboBox2.Enabled = Not DisableAnimSwap
                 b_SoftFreeze.Enabled = True
                 b_SoftUnfreeze.Enabled = True
+                LevitateTrackBar.Enabled = True
+                DisableHudCB.Enabled = True
+                NoFallDmgCB.Enabled = True
                 If MemDebugWindow IsNot Nothing Then
                     MemDebugWindow.CB_Accept.Enabled = True
                 End If
@@ -314,6 +320,9 @@ Public Class MainForm
                 ComboBox2.Enabled = False
                 b_SoftFreeze.Enabled = False
                 b_SoftUnfreeze.Enabled = False
+                LevitateTrackBar.Enabled = False
+                NoFallDmgCB.Enabled = False
+                DisableHudCB.Enabled = False
                 If MemDebugWindow IsNot Nothing Then
                     MemDebugWindow.CB_Accept.Checked = False
                     MemDebugWindow.CB_Accept.Enabled = False
@@ -338,8 +347,11 @@ Public Class MainForm
             ComboBox2.Enabled = False
             b_SoftFreeze.Enabled = False
             b_SoftUnfreeze.Enabled = False
+            LevitateTrackBar.Enabled = False
+            NoFallDmgCB.Enabled = False
+            DisableHudCB.Enabled = False
             BaseAddressLabel.Text = "Project64 isn't open!"
-            PrecisionStatusLabel.Text = "Precision mode is disabled: Project64 isn't open."
+            PrecisionStatusLabel.Text = "Precision mode is disabled. Reason: Project64 isn't open."
             If MemDebugWindow IsNot Nothing Then
                 MemDebugWindow.CB_Accept.Checked = False
                 MemDebugWindow.CB_Accept.Enabled = False
@@ -495,7 +507,7 @@ Public Class MainForm
     '''     Locks the angle of the camera in C-Up mode.
     ''' </summary>
     Private Sub LockAngle()
-        PrecisionStatusLabel.Text = "Camera completely locked. Press the button below to re-adjust camera angle." +
+        PrecisionStatusLabel.Text = "Camera locked. Press the button below to re-adjust camera angle." +
                                     vbCrLf + "To disable precision mode, uncheck Settings -> Enable Precision Mode"
         Freeze()
         b_PrecisionPlusOne.Text = "Unlock Camera Rotation"
@@ -529,7 +541,7 @@ Public Class MainForm
         If PrecisionModeMenuItem.Checked = False Then
             If Base = 0 Then
                 MsgBox("Cannot use Precision Mode if Project64 with Super Mario 64 is not loaded.",
-                       MsgBoxStyle.Exclamation, "I'm sorry Dave")
+                       MsgBoxStyle.Exclamation, "sorry m9")
             Else
                 PrecisionModeOn(False)
                 PrecisionModeMenuItem.Checked = True
@@ -560,6 +572,31 @@ Public Class MainForm
 			ColorCodeWindow.Focus()
 		End If
 	End Sub
+
+    Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles LevitateTrackBar.Scroll
+        WriteInteger("Project64", Base + &H33B223, LevitateTrackBar.Value)
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles NoFallDmgCB.CheckedChanged
+        If NoFallDmgCB.Checked = True Then
+            WriteInteger("Project64", Base + &H33B22C, &HE8E1)
+            WriteInteger("Project64", Base + &H33B178, &HFFFF)
+        ElseIf NoFallDmgCB.Checked = False Then
+            ' * nope.
+        End If
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged_1(sender As Object, e As EventArgs) Handles DisableHudCB.CheckedChanged
+        If DisableHudCB.Checked = True Then
+            WriteInteger("Project64", Base + &H2E3DB0, 0)
+            WriteInteger("Project64", Base + &H2E3DE0, 0)
+            WriteInteger("Project64", Base + &H2E3E18, 0)
+            WriteInteger("Project64", Base + &H2E3DC8, 0)
+            DisableHudCB.Enabled = False
+        Else
+            DisableHudCB.Enabled = True
+        End If
+    End Sub
 End Class
 
 Public Class Animation

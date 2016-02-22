@@ -59,10 +59,21 @@ Partial Class MainForm
         Me.PrecisionCamControls = New System.Windows.Forms.GroupBox()
         Me.PrecisionStatusLabel = New System.Windows.Forms.Label()
         Me.b_PrecisionPlusOne = New System.Windows.Forms.Button()
+        Me.LevControls = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.MaxLeviHeight = New System.Windows.Forms.Label()
+        Me.LevitateTrackBar = New System.Windows.Forms.TrackBar()
+        Me.Info = New System.Windows.Forms.ToolTip(Me.components)
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.NoFallDmgCB = New System.Windows.Forms.CheckBox()
+        Me.DisableHudCB = New System.Windows.Forms.CheckBox()
         Me.MenuStrip1.SuspendLayout()
         Me.NormalCamControls.SuspendLayout()
         Me.AnimSwapControls.SuspendLayout()
         Me.PrecisionCamControls.SuspendLayout()
+        Me.LevControls.SuspendLayout()
+        CType(Me.LevitateTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'b_Freeze
@@ -135,7 +146,7 @@ Partial Class MainForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutMenu, Me.SettingsToolStripMenuItem, Me.ToolsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(474, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(593, 24)
         Me.MenuStrip1.TabIndex = 7
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -344,7 +355,7 @@ Partial Class MainForm
         Me.AnimSwapControls.Controls.Add(Me.ComboBox1)
         Me.AnimSwapControls.Controls.Add(Me.ComboBox2)
         Me.AnimSwapControls.Controls.Add(Me.Label6)
-        Me.AnimSwapControls.Location = New System.Drawing.Point(10, 265)
+        Me.AnimSwapControls.Location = New System.Drawing.Point(10, 264)
         Me.AnimSwapControls.Name = "AnimSwapControls"
         Me.AnimSwapControls.Size = New System.Drawing.Size(454, 109)
         Me.AnimSwapControls.TabIndex = 16
@@ -381,11 +392,92 @@ Partial Class MainForm
         Me.b_PrecisionPlusOne.Text = "Precision Mode Disabled"
         Me.b_PrecisionPlusOne.UseVisualStyleBackColor = True
         '
+        'LevControls
+        '
+        Me.LevControls.Controls.Add(Me.Label1)
+        Me.LevControls.Controls.Add(Me.MaxLeviHeight)
+        Me.LevControls.Controls.Add(Me.LevitateTrackBar)
+        Me.LevControls.Location = New System.Drawing.Point(470, 44)
+        Me.LevControls.Name = "LevControls"
+        Me.LevControls.Size = New System.Drawing.Size(111, 184)
+        Me.LevControls.TabIndex = 18
+        Me.LevControls.TabStop = False
+        Me.LevControls.Text = "Hover Height"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(37, 162)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(59, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "0 (Nothing)"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        '
+        'MaxLeviHeight
+        '
+        Me.MaxLeviHeight.AutoSize = True
+        Me.MaxLeviHeight.Location = New System.Drawing.Point(38, 24)
+        Me.MaxLeviHeight.Name = "MaxLeviHeight"
+        Me.MaxLeviHeight.Size = New System.Drawing.Size(58, 13)
+        Me.MaxLeviHeight.TabIndex = 1
+        Me.MaxLeviHeight.Text = "5 (Highest)"
+        Me.MaxLeviHeight.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        '
+        'LevitateTrackBar
+        '
+        Me.LevitateTrackBar.Location = New System.Drawing.Point(6, 19)
+        Me.LevitateTrackBar.Maximum = 5
+        Me.LevitateTrackBar.Name = "LevitateTrackBar"
+        Me.LevitateTrackBar.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.LevitateTrackBar.Size = New System.Drawing.Size(45, 165)
+        Me.LevitateTrackBar.TabIndex = 0
+        Me.Info.SetToolTip(Me.LevitateTrackBar, "Reminder: Some animations won't be affected by this. Recommended value is 1.")
+        '
+        'Info
+        '
+        Me.Info.IsBalloon = True
+        Me.Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        Me.Info.ToolTipTitle = "Hey!"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.DisableHudCB)
+        Me.GroupBox1.Controls.Add(Me.NoFallDmgCB)
+        Me.GroupBox1.Location = New System.Drawing.Point(470, 234)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(111, 139)
+        Me.GroupBox1.TabIndex = 19
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Small Extras"
+        '
+        'NoFallDmgCB
+        '
+        Me.NoFallDmgCB.AutoSize = True
+        Me.NoFallDmgCB.Location = New System.Drawing.Point(6, 20)
+        Me.NoFallDmgCB.Name = "NoFallDmgCB"
+        Me.NoFallDmgCB.Size = New System.Drawing.Size(102, 17)
+        Me.NoFallDmgCB.TabIndex = 0
+        Me.NoFallDmgCB.Text = "No Fall Damage"
+        Me.NoFallDmgCB.UseVisualStyleBackColor = True
+        '
+        'DisableHudCB
+        '
+        Me.DisableHudCB.AutoSize = True
+        Me.DisableHudCB.Location = New System.Drawing.Point(6, 42)
+        Me.DisableHudCB.Name = "DisableHudCB"
+        Me.DisableHudCB.Size = New System.Drawing.Size(88, 17)
+        Me.DisableHudCB.TabIndex = 1
+        Me.DisableHudCB.Text = "Disable HUD"
+        Me.DisableHudCB.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(474, 385)
+        Me.ClientSize = New System.Drawing.Size(593, 385)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.LevControls)
         Me.Controls.Add(Me.PrecisionCamControls)
         Me.Controls.Add(Me.AnimSwapControls)
         Me.Controls.Add(Me.NormalCamControls)
@@ -406,6 +498,11 @@ Partial Class MainForm
         Me.AnimSwapControls.ResumeLayout(False)
         Me.AnimSwapControls.PerformLayout()
         Me.PrecisionCamControls.ResumeLayout(False)
+        Me.LevControls.ResumeLayout(False)
+        Me.LevControls.PerformLayout()
+        CType(Me.LevitateTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -445,4 +542,12 @@ Partial Class MainForm
 	Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
 	Friend WithEvents ColorCodeStudioMenuItem As ToolStripMenuItem
 	Friend WithEvents MemoryIODebugToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LevControls As GroupBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents MaxLeviHeight As Label
+    Friend WithEvents LevitateTrackBar As TrackBar
+    Friend WithEvents Info As ToolTip
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents NoFallDmgCB As CheckBox
+    Friend WithEvents DisableHudCB As CheckBox
 End Class
