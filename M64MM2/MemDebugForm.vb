@@ -248,4 +248,8 @@ Public Class MemDebugForm
             End Select
         End If
     End Sub
+
+    Private Sub IN_Value1_TextChanged(sender As Object, e As EventArgs) Handles IN_Value1.TextChanged
+
+    End Sub
 End Class
