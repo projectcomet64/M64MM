@@ -180,6 +180,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="M64MM2.ico" />
+    <None Include="Resources\m64mm_mario_sprite.png" />
     <None Include="Resources\M64MM2.ico" />
     <None Include="Resources\M64MM2 Icon.png" />
   </ItemGroup>

@@ -1,6 +1,4 @@
-﻿Imports System.Drawing.Imaging
-Imports System.Globalization
-Imports System.Linq
+﻿Imports System.Globalization
 
 Public Class ColorCodeStudio
     'These commented variables are part of my failed attempt at making the Mario sprite change
@@ -36,7 +34,12 @@ Public Class ColorCodeStudio
         If IsSettingAllColors = True OrElse ColorDialog1.ShowDialog() = DialogResult.OK Then
 
             If Not IsSettingAllColors Then senderButton.BackColor = ColorDialog1.Color
-
+            UpdateHatnShirt(0, 0, 0, HatButton3.BackColor)
+            Haircut(0, 0, 0, HairButton3.BackColor)
+            UpdateOveralls(0, 0, 0, PantsButton3.BackColor)
+            UpdateGloves(0, 0, 0, GlovesButton3.BackColor)
+            UpdateShoes(0, 0, 0, ShoesButton3.BackColor)
+            UpdateSkin(0, 0, 0, SkinButton3.BackColor)
             Dim colorData As String
             colorData = FixZeroHexByte(Hex(senderButton.BackColor.R)) & FixZeroHexByte(Hex(senderButton.BackColor.G)) & FixZeroHexByte(Hex(senderButton.BackColor.B)) & "00"
             Dim bytes As String = colorData.Substring(6, 2) & colorData.Substring(4, 2) & colorData.Substring(2, 2) & colorData.Substring(0, 2)
@@ -115,6 +118,7 @@ Public Class ColorCodeStudio
                 If foundButton.Text = "" Then
                     DefaultColors(buttonIndex) = foundButton.BackColor
                     buttonIndex += 1
+
                 End If
             End If
         Next
@@ -131,6 +135,11 @@ Public Class ColorCodeStudio
                 If foundButton.Text = "" Then
                     foundButton.BackColor = DefaultColors(buttonIndex)
                     foundButton.PerformClick()
+                    UpdateHatnShirt(255, 0, 0)
+                    Haircut(115, 6, 0)
+                    UpdateShoes(115, 6, 0)
+                    UpdateOveralls(0, 0, 255)
+                    UpdateSkin(254, 193, 121)
                     buttonIndex += 1
                 End If
             End If
@@ -150,6 +159,12 @@ Public Class ColorCodeStudio
                     'If the button has no text, it's a color-selection button
                     If foundButton.Text = "" Then
                         foundButton.BackColor = Color.FromArgb(rand.Next(0, 256), rand.Next(0, 256), rand.Next(0, 256))
+                        'SEIZURE MODE OFF.
+                        UpdateHatnShirt(100, 100, 100)
+                        Haircut(100, 100, 100)
+                        UpdateShoes(100, 100, 100)
+                        UpdateOveralls(100, 100, 100)
+                        UpdateGloves(100, 100, 100)
                         foundButton.PerformClick()
                         buttonIndex += 1
                     End If
@@ -171,6 +186,7 @@ Public Class ColorCodeStudio
         'HatButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(2), 4)
         HatButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        UpdateHatnShirt(val(0), val(1), val(2))
         'val = BigEndianRead("Project64", MainForm.Base + addresses(3), 4)
         'HatButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(4), 4)
@@ -179,6 +195,7 @@ Public Class ColorCodeStudio
         'HairButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(6), 4)
         HairButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        Haircut(val(0), val(1), val(2))
         'val = BigEndianRead("Project64", MainForm.Base + addresses(7), 4)
         'HairButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(8), 4)
@@ -187,6 +204,7 @@ Public Class ColorCodeStudio
         'SkinButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(10), 4)
         SkinButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        UpdateSkin(val(0), val(1), val(2))
         'val = BigEndianRead("Project64", MainForm.Base + addresses(11), 4)
         'SkinButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(12), 4)
@@ -195,6 +213,7 @@ Public Class ColorCodeStudio
         'PantsButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(14), 4)
         PantsButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        UpdateOveralls(val(0), val(1), val(2))
         'val = BigEndianRead("Project64", MainForm.Base + addresses(15), 4)
         'PantsButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(16), 4)
@@ -203,6 +222,7 @@ Public Class ColorCodeStudio
         'GlovesButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(18), 4)
         GlovesButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        UpdateGloves(val(0), val(1), val(2))
         'val = BigEndianRead("Project64", MainForm.Base + addresses(19), 4)
         'GlovesButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(20), 4)
@@ -211,6 +231,7 @@ Public Class ColorCodeStudio
         'ShoesButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
         val = BigEndianRead("Project64", MainForm.Base + addresses(22), 4)
         ShoesButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        UpdateShoes(val(0), val(1), val(2))
         'val = BigEndianRead("Project64", MainForm.Base + addresses(23), 4)
         'ShoesButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
 
@@ -249,36 +270,42 @@ Public Class ColorCodeStudio
                             HatButton1.PerformClick()
                         Case "07EC40"
                             HatButton3.BackColor = Color.FromArgb(R, G, B)
+                            UpdateHatnShirt(R, G, B)
                             HatButton3.PerformClick()
                         Case "07EC98"
                             HairButton1.BackColor = Color.FromArgb(R, G, B)
                             HairButton1.PerformClick()
                         Case "07ECA0"
                             HairButton3.BackColor = Color.FromArgb(R, G, B)
+                            Haircut(R, G, B)
                             HairButton3.PerformClick()
                         Case "07EC80"
                             SkinButton1.BackColor = Color.FromArgb(R, G, B)
                             SkinButton1.PerformClick()
                         Case "07EC88"
                             SkinButton3.BackColor = Color.FromArgb(R, G, B)
+                            UpdateSkin(R, G, B)
                             SkinButton3.PerformClick()
                         Case "07EC20"
                             PantsButton1.BackColor = Color.FromArgb(R, G, B)
                             PantsButton1.PerformClick()
                         Case "07EC28"
                             PantsButton3.BackColor = Color.FromArgb(R, G, B)
+                            UpdateOveralls(R, G, B)
                             PantsButton3.PerformClick()
                         Case "07EC50"
                             GlovesButton1.BackColor = Color.FromArgb(R, G, B)
                             GlovesButton1.PerformClick()
                         Case "07EC58"
                             GlovesButton3.BackColor = Color.FromArgb(R, G, B)
+                            UpdateGloves(R, G, B)
                             GlovesButton3.PerformClick()
                         Case "07EC68"
                             ShoesButton1.BackColor = Color.FromArgb(R, G, B)
                             ShoesButton1.PerformClick()
                         Case "07EC70"
                             ShoesButton3.BackColor = Color.FromArgb(R, G, B)
+                            UpdateShoes(R, G, B)
                             ShoesButton3.PerformClick()
                     End Select
                 Next
@@ -385,17 +412,133 @@ Public Class ColorCodeStudio
     End Sub
 
     'This was my failed attempt at making the Mario sprite change colors to match your
-    'selected colors. I don't know if I'll ever find a way to make it do that,
+    ''selected colors. I don't know if I'll ever find a way to make it do that,
     'but if anyone has any ideas, let me know.
-    Private Sub PictureBox1_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox1.Paint
-        Dim image As New Bitmap(PictureBox1.Image)
-        Dim imageAttributes As New ImageAttributes()
-        Dim width As Integer = image.Width
-        Dim height As Integer = image.Height
+    'Private Sub PictureBox1_Paint(sender As Object, e As PaintEventArgs)
+    '    Dim image As New Bitmap(PictureBox1.Image)
+    '    Dim imageAttributes As New ImageAttributes()
+    '    Dim width As Integer = image.Width
+    '    Dim height As Integer = image.Height
 
+    'End Sub
+
+    Private Sub PictureBox1_DoubleClick(sender As Object, e As EventArgs)
+        cycleColors = Not cycleColors
     End Sub
 
-    Private Sub PictureBox1_DoubleClick(sender As Object, e As EventArgs) Handles PictureBox1.DoubleClick
-        cycleColors = Not cycleColors
+    Private Sub UpdateHatnShirt(ByVal r As Integer, ByVal g As Integer, ByVal b As Integer, Optional ByVal c As Color = Nothing)
+        If c = Nothing Then
+            capsh1.BackColor = (Color.FromArgb(255, r, g, b))
+            capsh2.BackColor = (Color.FromArgb(255, r, g, b))
+            capsh3.BackColor = (Color.FromArgb(255, r, g, b))
+            capsh4.BackColor = (Color.FromArgb(255, r, g, b))
+            capsh5.BackColor = (Color.FromArgb(255, r, g, b))
+            capsh6.BackColor = (Color.FromArgb(255, r, g, b))
+            capsh7.BackColor = (Color.FromArgb(255, r, g, b))
+            capsh8.BackColor = (Color.FromArgb(255, r, g, b))
+            capsh9.BackColor = (Color.FromArgb(255, r, g, b))
+            capsh10.BackColor = (Color.FromArgb(255, r, g, b))
+            capsh11.BackColor = (Color.FromArgb(255, r, g, b))
+        Else
+            capsh1.BackColor = (c)
+            capsh2.BackColor = (c)
+            capsh3.BackColor = (c)
+            capsh4.BackColor = (c)
+            capsh5.BackColor = (c)
+            capsh6.BackColor = (c)
+            capsh7.BackColor = (c)
+            capsh8.BackColor = (c)
+            capsh9.BackColor = (c)
+            capsh10.BackColor = (c)
+            capsh11.BackColor = (c)
+        End If
+    End Sub
+
+    Private Sub UpdateOveralls(ByVal r As Integer, ByVal g As Integer, ByVal b As Integer, Optional ByVal c As Color = Nothing)
+        If c = Nothing Then
+            over1.BackColor = (Color.FromArgb(255, r, g, b))
+            over2.BackColor = (Color.FromArgb(255, r, g, b))
+            over3.BackColor = (Color.FromArgb(255, r, g, b))
+            over4.BackColor = (Color.FromArgb(255, r, g, b))
+            over5.BackColor = (Color.FromArgb(255, r, g, b))
+            over6.BackColor = (Color.FromArgb(255, r, g, b))
+            over7.BackColor = (Color.FromArgb(255, r, g, b))
+        Else
+            over1.BackColor = (c)
+            over2.BackColor = (c)
+            over3.BackColor = (c)
+            over4.BackColor = (c)
+            over5.BackColor = (c)
+            over6.BackColor = (c)
+            over7.BackColor = (c)
+        End If
+    End Sub
+
+    Private Sub UpdateSkin(ByVal r As Integer, ByVal g As Integer, ByVal b As Integer, Optional ByVal c As Color = Nothing)
+        If c = Nothing Then
+            face1.BackColor = (Color.FromArgb(255, r, g, b))
+            face2.BackColor = (Color.FromArgb(255, r, g, b))
+            face3.BackColor = (Color.FromArgb(255, r, g, b))
+            face4.BackColor = (Color.FromArgb(255, r, g, b))
+            face5.BackColor = (Color.FromArgb(255, r, g, b))
+            face6.BackColor = (Color.FromArgb(255, r, g, b))
+            face7.BackColor = (Color.FromArgb(255, r, g, b))
+            face8.BackColor = (Color.FromArgb(255, r, g, b))
+            face9.BackColor = (Color.FromArgb(255, r, g, b))
+        Else
+            face1.BackColor = (c)
+            face2.BackColor = (c)
+            face3.BackColor = (c)
+            face4.BackColor = (c)
+            face5.BackColor = (c)
+            face6.BackColor = (c)
+            face7.BackColor = (c)
+            face8.BackColor = (c)
+            face9.BackColor = (c)
+        End If
+    End Sub
+
+    Private Sub UpdateGloves(ByVal r As Integer, ByVal g As Integer, ByVal b As Integer, Optional ByVal c As Color = Nothing)
+        If c = Nothing Then
+            glo1.BackColor = (Color.FromArgb(255, r, g, b))
+            glo2.BackColor = (Color.FromArgb(255, r, g, b))
+            glo3.BackColor = (Color.FromArgb(255, r, g, b))
+            glo4.BackColor = (Color.FromArgb(255, r, g, b))
+        Else
+            glo1.BackColor = (c)
+            glo2.BackColor = (c)
+            glo3.BackColor = (c)
+            glo4.BackColor = (c)
+        End If
+    End Sub
+
+    Private Sub UpdateShoes(ByVal r As Integer, ByVal g As Integer, ByVal b As Integer, Optional ByVal c As Color = Nothing)
+        If c = Nothing Then
+            sho1.BackColor = (Color.FromArgb(255, r, g, b))
+            sho2.BackColor = (Color.FromArgb(255, r, g, b))
+            sho3.BackColor = (Color.FromArgb(255, r, g, b))
+            sho4.BackColor = (Color.FromArgb(255, r, g, b))
+        Else
+            sho1.BackColor = (c)
+            sho2.BackColor = (c)
+            sho3.BackColor = (c)
+            sho4.BackColor = (c)
+        End If
+    End Sub
+
+    Private Sub Haircut(ByVal r As Integer, ByVal g As Integer, ByVal b As Integer, Optional ByVal c As Color = Nothing)
+        If c = Nothing Then
+            hair1.BackColor = (Color.FromArgb(255, r, g, b))
+            hair2.BackColor = (Color.FromArgb(255, r, g, b))
+            hair3.BackColor = (Color.FromArgb(255, r, g, b))
+            hair4.BackColor = (Color.FromArgb(255, r, g, b))
+            hair5.BackColor = (Color.FromArgb(255, r, g, b))
+        Else
+            hair1.BackColor = (c)
+            hair2.BackColor = (c)
+            hair3.BackColor = (c)
+            hair4.BackColor = (c)
+            hair5.BackColor = (c)
+        End If
     End Sub
 End Class
