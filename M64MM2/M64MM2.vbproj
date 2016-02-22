@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2.0.2.0</ApplicationVersion>
+    <ApplicationVersion>2.0.3.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -37,6 +37,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>M64MM2.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -97,11 +98,29 @@
     <Compile Include="AboutForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ColorCodeCopyPasteForm.Designer.vb">
+      <DependentUpon>ColorCodeCopyPasteForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ColorCodeCopyPasteForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorCodeStudio.Designer.vb">
+      <DependentUpon>ColorCodeStudio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ColorCodeStudio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemDebugForm.Designer.vb">
+      <DependentUpon>MemDebugForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MemDebugForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -125,8 +144,17 @@
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ColorCodeCopyPasteForm.resx">
+      <DependentUpon>ColorCodeCopyPasteForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorCodeStudio.resx">
+      <DependentUpon>ColorCodeStudio.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemDebugForm.resx">
+      <DependentUpon>MemDebugForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -146,19 +174,14 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="animation_data.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="M64MM2.ico" />
-    <Content Include="M64MM22.ico" />
     <None Include="Resources\M64MM2.ico" />
     <None Include="Resources\M64MM2 Icon.png" />
-    <None Include="Resources\M64MM2_Icon.bmp" />
-    <None Include="Resources\M64MM2.png" />
-    <None Include="Resources\Bullseye.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
