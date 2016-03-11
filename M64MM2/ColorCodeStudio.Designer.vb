@@ -335,31 +335,31 @@ Partial Class ColorCodeStudio
         'capsh2
         '
         Me.capsh2.BackColor = System.Drawing.Color.Red
-        Me.capsh2.Location = New System.Drawing.Point(216, 125)
+        Me.capsh2.Location = New System.Drawing.Point(216, 124)
         Me.capsh2.Name = "capsh2"
-        Me.capsh2.Size = New System.Drawing.Size(73, 27)
+        Me.capsh2.Size = New System.Drawing.Size(80, 32)
         Me.capsh2.TabIndex = 36
         '
         'capsh1
         '
         Me.capsh1.BackColor = System.Drawing.Color.Red
-        Me.capsh1.Location = New System.Drawing.Point(204, 139)
+        Me.capsh1.Location = New System.Drawing.Point(200, 140)
         Me.capsh1.Name = "capsh1"
-        Me.capsh1.Size = New System.Drawing.Size(127, 15)
+        Me.capsh1.Size = New System.Drawing.Size(128, 16)
         Me.capsh1.TabIndex = 36
         '
         'capsh5
         '
         Me.capsh5.BackColor = System.Drawing.Color.Red
-        Me.capsh5.Location = New System.Drawing.Point(204, 224)
+        Me.capsh5.Location = New System.Drawing.Point(200, 236)
         Me.capsh5.Name = "capsh5"
-        Me.capsh5.Size = New System.Drawing.Size(26, 42)
+        Me.capsh5.Size = New System.Drawing.Size(32, 48)
         Me.capsh5.TabIndex = 36
         '
         'capsh6
         '
         Me.capsh6.BackColor = System.Drawing.Color.Red
-        Me.capsh6.Location = New System.Drawing.Point(190, 239)
+        Me.capsh6.Location = New System.Drawing.Point(184, 252)
         Me.capsh6.Name = "capsh6"
         Me.capsh6.Size = New System.Drawing.Size(26, 28)
         Me.capsh6.TabIndex = 36
@@ -367,15 +367,15 @@ Partial Class ColorCodeStudio
         'capsh4
         '
         Me.capsh4.BackColor = System.Drawing.Color.Red
-        Me.capsh4.Location = New System.Drawing.Point(177, 253)
+        Me.capsh4.Location = New System.Drawing.Point(168, 268)
         Me.capsh4.Name = "capsh4"
-        Me.capsh4.Size = New System.Drawing.Size(53, 14)
+        Me.capsh4.Size = New System.Drawing.Size(48, 16)
         Me.capsh4.TabIndex = 36
         '
         'capsh3
         '
         Me.capsh3.BackColor = System.Drawing.Color.Red
-        Me.capsh3.Location = New System.Drawing.Point(202, 267)
+        Me.capsh3.Location = New System.Drawing.Point(200, 284)
         Me.capsh3.Name = "capsh3"
         Me.capsh3.Size = New System.Drawing.Size(16, 16)
         Me.capsh3.TabIndex = 36
@@ -383,15 +383,15 @@ Partial Class ColorCodeStudio
         'capsh8
         '
         Me.capsh8.BackColor = System.Drawing.Color.Red
-        Me.capsh8.Location = New System.Drawing.Point(246, 224)
+        Me.capsh8.Location = New System.Drawing.Point(244, 236)
         Me.capsh8.Name = "capsh8"
-        Me.capsh8.Size = New System.Drawing.Size(43, 11)
+        Me.capsh8.Size = New System.Drawing.Size(48, 16)
         Me.capsh8.TabIndex = 36
         '
         'capsh7
         '
         Me.capsh7.BackColor = System.Drawing.Color.Red
-        Me.capsh7.Location = New System.Drawing.Point(246, 233)
+        Me.capsh7.Location = New System.Drawing.Point(246, 248)
         Me.capsh7.Name = "capsh7"
         Me.capsh7.Size = New System.Drawing.Size(28, 21)
         Me.capsh7.TabIndex = 36
@@ -399,7 +399,7 @@ Partial Class ColorCodeStudio
         'capsh10
         '
         Me.capsh10.BackColor = System.Drawing.Color.Red
-        Me.capsh10.Location = New System.Drawing.Point(289, 239)
+        Me.capsh10.Location = New System.Drawing.Point(291, 251)
         Me.capsh10.Name = "capsh10"
         Me.capsh10.Size = New System.Drawing.Size(41, 27)
         Me.capsh10.TabIndex = 36
@@ -407,7 +407,7 @@ Partial Class ColorCodeStudio
         'capsh11
         '
         Me.capsh11.BackColor = System.Drawing.Color.Red
-        Me.capsh11.Location = New System.Drawing.Point(305, 254)
+        Me.capsh11.Location = New System.Drawing.Point(303, 266)
         Me.capsh11.Name = "capsh11"
         Me.capsh11.Size = New System.Drawing.Size(41, 13)
         Me.capsh11.TabIndex = 36
@@ -415,7 +415,7 @@ Partial Class ColorCodeStudio
         'capsh9
         '
         Me.capsh9.BackColor = System.Drawing.Color.Red
-        Me.capsh9.Location = New System.Drawing.Point(305, 244)
+        Me.capsh9.Location = New System.Drawing.Point(303, 253)
         Me.capsh9.Name = "capsh9"
         Me.capsh9.Size = New System.Drawing.Size(12, 36)
         Me.capsh9.TabIndex = 36
@@ -423,143 +423,143 @@ Partial Class ColorCodeStudio
         'Label17
         '
         Me.Label17.BackColor = System.Drawing.Color.Black
-        Me.Label17.Location = New System.Drawing.Point(274, 153)
+        Me.Label17.Location = New System.Drawing.Point(280, 156)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(16, 30)
+        Me.Label17.Size = New System.Drawing.Size(16, 32)
         Me.Label17.TabIndex = 36
         '
         'face3
         '
         Me.face3.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(121, Byte), Integer))
-        Me.face3.Location = New System.Drawing.Point(246, 151)
+        Me.face3.Location = New System.Drawing.Point(248, 156)
         Me.face3.Name = "face3"
-        Me.face3.Size = New System.Drawing.Size(30, 73)
+        Me.face3.Size = New System.Drawing.Size(32, 80)
         Me.face3.TabIndex = 36
         '
         'face2
         '
         Me.face2.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(121, Byte), Integer))
-        Me.face2.Location = New System.Drawing.Point(218, 209)
+        Me.face2.Location = New System.Drawing.Point(216, 220)
         Me.face2.Name = "face2"
-        Me.face2.Size = New System.Drawing.Size(98, 15)
+        Me.face2.Size = New System.Drawing.Size(96, 16)
         Me.face2.TabIndex = 36
         '
         'face9
         '
         Me.face9.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(121, Byte), Integer))
-        Me.face9.Location = New System.Drawing.Point(304, 180)
+        Me.face9.Location = New System.Drawing.Point(312, 188)
         Me.face9.Name = "face9"
-        Me.face9.Size = New System.Drawing.Size(42, 15)
+        Me.face9.Size = New System.Drawing.Size(48, 16)
         Me.face9.TabIndex = 36
         '
         'face7
         '
         Me.face7.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(121, Byte), Integer))
-        Me.face7.Location = New System.Drawing.Point(290, 164)
+        Me.face7.Location = New System.Drawing.Point(296, 172)
         Me.face7.Name = "face7"
-        Me.face7.Size = New System.Drawing.Size(41, 17)
+        Me.face7.Size = New System.Drawing.Size(48, 16)
         Me.face7.TabIndex = 36
         '
         'face4
         '
         Me.face4.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(121, Byte), Integer))
-        Me.face4.Location = New System.Drawing.Point(217, 195)
+        Me.face4.Location = New System.Drawing.Point(216, 204)
         Me.face4.Name = "face4"
-        Me.face4.Size = New System.Drawing.Size(30, 16)
+        Me.face4.Size = New System.Drawing.Size(32, 16)
         Me.face4.TabIndex = 36
         '
         'face5
         '
         Me.face5.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(121, Byte), Integer))
-        Me.face5.Location = New System.Drawing.Point(275, 180)
+        Me.face5.Location = New System.Drawing.Point(280, 188)
         Me.face5.Name = "face5"
-        Me.face5.Size = New System.Drawing.Size(15, 15)
+        Me.face5.Size = New System.Drawing.Size(16, 16)
         Me.face5.TabIndex = 36
         '
         'face8
         '
         Me.face8.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(121, Byte), Integer))
-        Me.face8.Location = New System.Drawing.Point(290, 152)
+        Me.face8.Location = New System.Drawing.Point(296, 156)
         Me.face8.Name = "face8"
-        Me.face8.Size = New System.Drawing.Size(15, 15)
+        Me.face8.Size = New System.Drawing.Size(16, 16)
         Me.face8.TabIndex = 36
         '
         'face6
         '
         Me.face6.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(121, Byte), Integer))
-        Me.face6.Location = New System.Drawing.Point(232, 167)
+        Me.face6.Location = New System.Drawing.Point(232, 172)
         Me.face6.Name = "face6"
-        Me.face6.Size = New System.Drawing.Size(15, 15)
+        Me.face6.Size = New System.Drawing.Size(16, 16)
         Me.face6.TabIndex = 36
         '
         'face1
         '
         Me.face1.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(121, Byte), Integer))
-        Me.face1.Location = New System.Drawing.Point(203, 167)
+        Me.face1.Location = New System.Drawing.Point(200, 172)
         Me.face1.Name = "face1"
-        Me.face1.Size = New System.Drawing.Size(14, 29)
+        Me.face1.Size = New System.Drawing.Size(16, 32)
         Me.face1.TabIndex = 36
         '
         'Label27
         '
         Me.Label27.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label27.Location = New System.Drawing.Point(276, 195)
+        Me.Label27.Location = New System.Drawing.Point(280, 204)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(54, 15)
+        Me.Label27.Size = New System.Drawing.Size(64, 16)
         Me.Label27.TabIndex = 36
         '
         'Label28
         '
         Me.Label28.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label28.Location = New System.Drawing.Point(289, 181)
+        Me.Label28.Location = New System.Drawing.Point(296, 188)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(15, 28)
+        Me.Label28.Size = New System.Drawing.Size(16, 32)
         Me.Label28.TabIndex = 36
         '
         'hair3
         '
         Me.hair3.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.hair3.Location = New System.Drawing.Point(204, 153)
+        Me.hair3.Location = New System.Drawing.Point(200, 156)
         Me.hair3.Name = "hair3"
-        Me.hair3.Size = New System.Drawing.Size(42, 14)
+        Me.hair3.Size = New System.Drawing.Size(48, 16)
         Me.hair3.TabIndex = 36
         '
         'hair1
         '
         Me.hair1.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.hair1.Location = New System.Drawing.Point(217, 167)
+        Me.hair1.Location = New System.Drawing.Point(216, 172)
         Me.hair1.Name = "hair1"
-        Me.hair1.Size = New System.Drawing.Size(15, 28)
+        Me.hair1.Size = New System.Drawing.Size(16, 32)
         Me.hair1.TabIndex = 36
         '
         'hair2
         '
         Me.hair2.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.hair2.Location = New System.Drawing.Point(230, 180)
+        Me.hair2.Location = New System.Drawing.Point(232, 188)
         Me.hair2.Name = "hair2"
-        Me.hair2.Size = New System.Drawing.Size(16, 15)
+        Me.hair2.Size = New System.Drawing.Size(16, 16)
         Me.hair2.TabIndex = 36
         '
         'hair5
         '
         Me.hair5.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.hair5.Location = New System.Drawing.Point(190, 169)
+        Me.hair5.Location = New System.Drawing.Point(184, 172)
         Me.hair5.Name = "hair5"
-        Me.hair5.Size = New System.Drawing.Size(13, 41)
+        Me.hair5.Size = New System.Drawing.Size(16, 48)
         Me.hair5.TabIndex = 36
         '
         'hair4
         '
         Me.hair4.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.hair4.Location = New System.Drawing.Point(202, 196)
+        Me.hair4.Location = New System.Drawing.Point(200, 204)
         Me.hair4.Name = "hair4"
-        Me.hair4.Size = New System.Drawing.Size(15, 14)
+        Me.hair4.Size = New System.Drawing.Size(16, 16)
         Me.hair4.TabIndex = 36
         '
         'sho3
         '
         Me.sho3.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.sho3.Location = New System.Drawing.Point(190, 325)
+        Me.sho3.Location = New System.Drawing.Point(188, 337)
         Me.sho3.Name = "sho3"
         Me.sho3.Size = New System.Drawing.Size(40, 27)
         Me.sho3.TabIndex = 36
@@ -567,7 +567,7 @@ Partial Class ColorCodeStudio
         'sho1
         '
         Me.sho1.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.sho1.Location = New System.Drawing.Point(285, 325)
+        Me.sho1.Location = New System.Drawing.Point(283, 337)
         Me.sho1.Name = "sho1"
         Me.sho1.Size = New System.Drawing.Size(45, 27)
         Me.sho1.TabIndex = 36
@@ -575,7 +575,7 @@ Partial Class ColorCodeStudio
         'sho2
         '
         Me.sho2.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.sho2.Location = New System.Drawing.Point(326, 338)
+        Me.sho2.Location = New System.Drawing.Point(324, 350)
         Me.sho2.Name = "sho2"
         Me.sho2.Size = New System.Drawing.Size(20, 14)
         Me.sho2.TabIndex = 36
@@ -583,7 +583,7 @@ Partial Class ColorCodeStudio
         'sho4
         '
         Me.sho4.BackColor = System.Drawing.Color.FromArgb(CType(CType(115, Byte), Integer), CType(CType(6, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.sho4.Location = New System.Drawing.Point(177, 338)
+        Me.sho4.Location = New System.Drawing.Point(175, 350)
         Me.sho4.Name = "sho4"
         Me.sho4.Size = New System.Drawing.Size(20, 14)
         Me.sho4.TabIndex = 36
@@ -591,23 +591,23 @@ Partial Class ColorCodeStudio
         'over1
         '
         Me.over1.BackColor = System.Drawing.Color.Blue
-        Me.over1.Location = New System.Drawing.Point(246, 254)
+        Me.over1.Location = New System.Drawing.Point(244, 268)
         Me.over1.Name = "over1"
-        Me.over1.Size = New System.Drawing.Size(28, 55)
+        Me.over1.Size = New System.Drawing.Size(32, 64)
         Me.over1.TabIndex = 36
         '
         'over2
         '
         Me.over2.BackColor = System.Drawing.Color.Blue
-        Me.over2.Location = New System.Drawing.Point(218, 266)
+        Me.over2.Location = New System.Drawing.Point(216, 278)
         Me.over2.Name = "over2"
-        Me.over2.Size = New System.Drawing.Size(28, 59)
+        Me.over2.Size = New System.Drawing.Size(32, 64)
         Me.over2.TabIndex = 36
         '
         'over4
         '
         Me.over4.BackColor = System.Drawing.Color.Blue
-        Me.over4.Location = New System.Drawing.Point(274, 266)
+        Me.over4.Location = New System.Drawing.Point(272, 278)
         Me.over4.Name = "over4"
         Me.over4.Size = New System.Drawing.Size(31, 59)
         Me.over4.TabIndex = 36
@@ -615,23 +615,23 @@ Partial Class ColorCodeStudio
         'over7
         '
         Me.over7.BackColor = System.Drawing.Color.Blue
-        Me.over7.Location = New System.Drawing.Point(230, 224)
+        Me.over7.Location = New System.Drawing.Point(232, 236)
         Me.over7.Name = "over7"
-        Me.over7.Size = New System.Drawing.Size(18, 42)
+        Me.over7.Size = New System.Drawing.Size(16, 48)
         Me.over7.TabIndex = 36
         '
         'over6
         '
         Me.over6.BackColor = System.Drawing.Color.Blue
-        Me.over6.Location = New System.Drawing.Point(272, 235)
+        Me.over6.Location = New System.Drawing.Point(275, 252)
         Me.over6.Name = "over6"
-        Me.over6.Size = New System.Drawing.Size(17, 34)
+        Me.over6.Size = New System.Drawing.Size(16, 32)
         Me.over6.TabIndex = 36
         '
         'over5
         '
         Me.over5.BackColor = System.Drawing.Color.Blue
-        Me.over5.Location = New System.Drawing.Point(299, 296)
+        Me.over5.Location = New System.Drawing.Point(297, 308)
         Me.over5.Name = "over5"
         Me.over5.Size = New System.Drawing.Size(17, 29)
         Me.over5.TabIndex = 36
@@ -639,39 +639,39 @@ Partial Class ColorCodeStudio
         'over3
         '
         Me.over3.BackColor = System.Drawing.Color.Blue
-        Me.over3.Location = New System.Drawing.Point(204, 296)
+        Me.over3.Location = New System.Drawing.Point(200, 316)
         Me.over3.Name = "over3"
-        Me.over3.Size = New System.Drawing.Size(18, 29)
+        Me.over3.Size = New System.Drawing.Size(16, 32)
         Me.over3.TabIndex = 36
         '
         'Label47
         '
         Me.Label47.BackColor = System.Drawing.Color.Yellow
-        Me.Label47.Location = New System.Drawing.Point(230, 266)
+        Me.Label47.Location = New System.Drawing.Point(232, 278)
         Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(19, 18)
+        Me.Label47.Size = New System.Drawing.Size(16, 16)
         Me.Label47.TabIndex = 36
         '
         'Label48
         '
         Me.Label48.BackColor = System.Drawing.Color.Yellow
-        Me.Label48.Location = New System.Drawing.Point(271, 267)
+        Me.Label48.Location = New System.Drawing.Point(269, 279)
         Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(19, 18)
+        Me.Label48.Size = New System.Drawing.Size(16, 16)
         Me.Label48.TabIndex = 36
         '
         'glo1
         '
         Me.glo1.BackColor = System.Drawing.Color.Gainsboro
-        Me.glo1.Location = New System.Drawing.Point(177, 267)
+        Me.glo1.Location = New System.Drawing.Point(168, 284)
         Me.glo1.Name = "glo1"
-        Me.glo1.Size = New System.Drawing.Size(30, 42)
+        Me.glo1.Size = New System.Drawing.Size(32, 48)
         Me.glo1.TabIndex = 36
         '
         'glo4
         '
         Me.glo4.BackColor = System.Drawing.Color.Gainsboro
-        Me.glo4.Location = New System.Drawing.Point(316, 266)
+        Me.glo4.Location = New System.Drawing.Point(314, 278)
         Me.glo4.Name = "glo4"
         Me.glo4.Size = New System.Drawing.Size(30, 42)
         Me.glo4.TabIndex = 36
@@ -679,7 +679,7 @@ Partial Class ColorCodeStudio
         'glo3
         '
         Me.glo3.BackColor = System.Drawing.Color.Gainsboro
-        Me.glo3.Location = New System.Drawing.Point(305, 280)
+        Me.glo3.Location = New System.Drawing.Point(303, 292)
         Me.glo3.Name = "glo3"
         Me.glo3.Size = New System.Drawing.Size(16, 17)
         Me.glo3.TabIndex = 36
@@ -687,7 +687,7 @@ Partial Class ColorCodeStudio
         'glo2
         '
         Me.glo2.BackColor = System.Drawing.Color.Gainsboro
-        Me.glo2.Location = New System.Drawing.Point(202, 280)
+        Me.glo2.Location = New System.Drawing.Point(200, 300)
         Me.glo2.Name = "glo2"
         Me.glo2.Size = New System.Drawing.Size(16, 16)
         Me.glo2.TabIndex = 36
