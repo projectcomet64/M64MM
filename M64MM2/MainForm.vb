@@ -55,9 +55,17 @@ Public Class MainForm
         AddHandler b_SoftUnfreeze.Click, AddressOf SoftUnfreeze
         AddHandler AboutMenuItem.Click, AddressOf AboutBox.ShowDialog
         AddHandler ForceCameraPresetMenuItem.Click, AddressOf ForceCameraPreset
-        AddHandler Timer1.Tick, AddressOf Main
+		AddHandler Timer1.Tick, AddressOf Main
 
-        Try
+		b_Freeze.Text = My.Resources.FreezeCamera
+		b_Unfreeze.Text = My.Resources.UnfreezeCamera
+		b_ChangeCameraType.Text = My.Resources.ChangeCameraType
+
+		b_Freeze.Enabled = False
+		b_Unfreeze.Enabled = False
+		b_ChangeCameraType.Enabled = False
+
+		Try
             Using sr As New StreamReader("animation_data.txt")
                 Do While sr.Peek() >= 0
                     Dim rawLine As String
@@ -162,14 +170,14 @@ Public Class MainForm
 
     Private Sub GetBase()
         ' Get the base RAM address of the emulated memory block by searching for the constant value of SM64's first RAM address
-        BaseAddressLabel.Text = "Scanning for base address..."
-        BaseAddressLabel.Refresh()
+        BaseAddressLabel.Text = My.Resources.SearchingForBaseAddress
+		BaseAddressLabel.Refresh()
         Base = GetBaseAddress("Project64")
         If Base > 0 Then
-            BaseAddressLabel.Text = "The base address is: " & Hex(Base)
-        Else
-            BaseAddressLabel.Text = "Base address not found!"
-        End If
+			BaseAddressLabel.Text = My.Resources.BaseAddressIs & Hex(Base)
+		Else
+			BaseAddressLabel.Text = My.Resources.BaseAddressNotFound
+		End If
     End Sub
 
     Private Sub Freeze()
@@ -184,8 +192,8 @@ Public Class MainForm
         If EmuOpen = True And Base > 0 Then
             ChangeCamera = False
             CameraUnfrozen = True
-            b_ChangeCameraType.Text = "Change Camera Type"
-            WriteInteger("Project64", Base + &H33C848, 0)
+			b_ChangeCameraType.Text = My.Resources.ChangeCameraType
+			WriteInteger("Project64", Base + &H33C848, 0)
         End If
     End Sub
 
@@ -194,8 +202,8 @@ Public Class MainForm
             ChangeCamera = Not ChangeCamera
             If ChangeCamera = True Then
                 CameraUnfrozen = False
-                b_ChangeCameraType.Text = "Go to new area"
-            Else
+				b_ChangeCameraType.Text = My.Resources.GotoNewArea
+			Else
                 Unfreeze()
             End If
         End If
@@ -315,8 +323,8 @@ Public Class MainForm
                 b_Freeze.Enabled = False
                 b_Unfreeze.Enabled = False
                 b_ChangeCameraType.Enabled = False
-                b_ChangeCameraType.Text = "Change Camera Type"
-                ComboBox1.Enabled = False
+				b_ChangeCameraType.Text = My.Resources.ChangeCameraType
+				ComboBox1.Enabled = False
                 ComboBox2.Enabled = False
                 b_SoftFreeze.Enabled = False
                 b_SoftUnfreeze.Enabled = False
@@ -342,8 +350,8 @@ Public Class MainForm
             b_Freeze.Enabled = False
             b_Unfreeze.Enabled = False
             b_ChangeCameraType.Enabled = False
-            b_ChangeCameraType.Text = "Change Camera Type"
-            ComboBox1.Enabled = False
+			b_ChangeCameraType.Text = My.Resources.ChangeCameraType
+			ComboBox1.Enabled = False
             ComboBox2.Enabled = False
             b_SoftFreeze.Enabled = False
             b_SoftUnfreeze.Enabled = False
@@ -485,16 +493,16 @@ Public Class MainForm
     ''' <param name="Reclick">True or false - Is a button reclick?</param>
     Private Sub PrecisionModeOn(Reclick As Boolean)
         If Reclick = False Then
-            PrecisionStatusLabel.Text = "Camera position locked. Click the button below to lock camera rotation."
-            NormalCamControls.Enabled = False
+			PrecisionStatusLabel.Text = My.Resources.CameraLockDesc
+			NormalCamControls.Enabled = False
             b_PrecisionPlusOne.Enabled = True
             PrecisionStage = 1
-            b_PrecisionPlusOne.Text = "Lock Camera Rotation"
-            SoftFreeze()
+			b_PrecisionPlusOne.Text = "Unlock Camera Rotation"
+			SoftFreeze()
             WriteInteger("Project64", Base + &H33C848, &H60000000)
         ElseIf Reclick = True Then
-            PrecisionStatusLabel.Text = "Camera rotation unlocked. Click the button below to lock camera rotation."
-            b_PrecisionPlusOne.Enabled = True
+			PrecisionStatusLabel.Text = My.Resources.CameraUnlockDesc
+			b_PrecisionPlusOne.Enabled = True
             Unfreeze()
             PrecisionStage = 1
             b_PrecisionPlusOne.Text = "Lock Camera Rotation"
