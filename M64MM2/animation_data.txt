@@ -79,7 +79,7 @@
 0x0001FD4C00000506 = Get out of sand / snow = 40
 0x0003077400003196 = Head stuck under sand = 57
 0x000380B80000055A = Pick up small object = 64
-0x0003738C00000D28 = Standing and holding small object = 63
+0x0003738C00000D2A = Standing and holding small object = 63
 0x000386140000032C = Jump with small object (wearing wing cap) = 65
 0x00038940000004D0 = Pick up small object = 66
 0x0000B49400001278 = Walk while holding small object = 22

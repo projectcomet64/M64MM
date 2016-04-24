@@ -48,6 +48,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>M64MM2.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -180,7 +181,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="M64MM2.ico" />
-    <None Include="Resources\m64mm_mario_sprite.png" />
+    <None Include="Resources\M64MM2 CC Mario big.png" />
+    <None Include="Resources\MarioSprite.bmp" />
     <None Include="Resources\M64MM2.ico" />
     <None Include="Resources\M64MM2 Icon.png" />
   </ItemGroup>
