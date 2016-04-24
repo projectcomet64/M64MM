@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LB_Disclaimer.Text" xml:space="preserve">
-    <value>This window is for testing reading from/writing to SM64's memory (RAM). You should only use this if you know what you're doing. The developers accept no responsibility for lost save data, program crashes, or Operative System crashes.</value>
+    <value>This window is for testing reading from/writing to SM64's memory (RAM). You should only use this if you know what you're doing. The developers accept no responsibility for lost save data, program crashes, or system crashes.
+</value>
   </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
