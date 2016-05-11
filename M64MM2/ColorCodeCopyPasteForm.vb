@@ -10,12 +10,12 @@
 
         If OutputOnly = True Then
             B_Cancel.Visible = False
-            B_OK.Text = "Close"
-            Label1.Text = "Here's that color code you asked for!"
+            B_OK.Text = My.Resources.CCSEXbtn
+            Label1.Text = My.Resources.CCSEXLabel
             TextBox1.Text = cc
             TextBox1.ReadOnly = True
         Else
-            Label1.Text = "Paste your color code into the textbox below, then click ""OK""."
+            Label1.Text = My.Resources.CCSIMLabel
         End If
     End Sub
 
@@ -39,5 +39,9 @@
             e.Handled = True
             e.SuppressKeyPress = True
         End If
+    End Sub
+
+    Private Sub ColorCodeCopyPasteForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        B_Cancel.Text = My.Resources.CCSEXCancel
     End Sub
 End Class
