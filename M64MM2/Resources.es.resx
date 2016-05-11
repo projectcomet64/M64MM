@@ -117,276 +117,261 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="M64MM2_CC_Mario_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="M64MM2_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\M64MM2 Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CCWarning" xml:space="preserve">
-    <value>IMPORTANT: Make sure to uncheck any color codes currently enabled in Project64. Otherwise, they will prevent this program from modifying Mario's colors.</value>
-  </data>
-  <data name="MemDebugWarning" xml:space="preserve">
-    <value>This window is for testing reading from/writing to SM64's memory (RAM). You should only use this if you know what you're doing. The developers accept no responsibility for lost save data, program crashes, or system crashes.</value>
-  </data>
   <data name="AboutCreatorDesc" xml:space="preserve">
-    <value>Created by James "CaptainSwag101" Pelster</value>
+    <value>Creado por James "CaptainSwag101" Pelster.</value>
   </data>
   <data name="AboutText1" xml:space="preserve">
-    <value>This program is dedicated to the Super Mario 64 Bloopers/Machinima community, thanks for all the effort you've put into your work, and I hope this tool will help you create awesome videos for years to come!</value>
+    <value>Este programa está dedicado a la comunidad de Machinima de SM64, gracias por todo el esfuerzo que has puesto en tu trabajo, y espero que esta herramienta te ayude a crear vídeos geniales por los próximos años!</value>
   </data>
   <data name="AboutText2" xml:space="preserve">
-    <value>Special thanks to Matthew "MATTHEWGU4" Guerra for helping me make this project a reality and for spreading the word, and to GlitchyPSIX for his discovery of the "Soft-Freeze" feature.</value>
+    <value>Gracias especiales a Matthew "MATTHEWGU4" Guerra por ayudar a que este proyecto se haya hecho realidad, y a difundirlo, y a José "GlitchyPSIX" Félix por el descubrimiento de el "fijado de cámara suave", y la traducción al español.</value>
   </data>
   <data name="AboutText3" xml:space="preserve">
-    <value>Found any bugs, need help, or want to suggest a feature? Email me at:</value>
+    <value>¿Hallaste errores, o quieres proponer una mejora? Mándame un correo (Inglés) a:</value>
   </data>
   <data name="BaseAddressIs" xml:space="preserve">
-    <value>The base address is: </value>
+    <value>Dirección base: </value>
   </data>
   <data name="BaseAddressNotFound" xml:space="preserve">
-    <value>Base address not found!</value>
+    <value>No se pudo hallar la dirección base!</value>
   </data>
   <data name="BaseAddressOverwriteWarning" xml:space="preserve">
-    <value>You are attempting to write to the first four bytes of Super Mario 64's memory, which contains the value this program uses to find the game's base address. If you click ""Yes"", you will need to reset the emulator before this program will be able to find Super Mario 64 again. Are you sure you want to do this?</value>
+    <value>¡AVISO!: Intentarás escribir los primeros 4 bytes de la memoria de SM64, los cuales contienen los valores que el programa necesita para encontrar la dirección base. Si haces clic en ""Sí"", tendrás que reiniciar el emulador para que el programa encuentre el emulador una vez más. ¿Seguro que quieres hacer esto?</value>
   </data>
   <data name="CameraLockDesc" xml:space="preserve">
-    <value>Camera position locked. Click the button below to lock camera rotation.</value>
+    <value>Posición de la cámara fijada. Presiona el botón de abajo para fijar la rotación.</value>
   </data>
   <data name="CameraUnlockDesc" xml:space="preserve">
-    <value>Camera rotation unlocked. Click the button below to lock camera rotation.</value>
+    <value>Editando la rotación. Presiona el botón de abajo para fijar la rotación.</value>
+  </data>
+  <data name="CCWarning" xml:space="preserve">
+    <value>AVISO: ¡Asegúrate de desactivar cualquier otro código de color (CC) en el Project64! De no hacerlo, evitará que los cambios hechos aquí sean visibles en el juego.</value>
   </data>
   <data name="ChangeCameraType" xml:space="preserve">
-    <value>Change Camera Type</value>
+    <value>Cambiar tipo de cámara.</value>
   </data>
   <data name="FreezeCamera" xml:space="preserve">
-    <value>Freeze Camera</value>
+    <value>Fijar cámara</value>
   </data>
   <data name="GotoNewArea" xml:space="preserve">
-    <value>Go to new area</value>
+    <value>Cambiar de área</value>
   </data>
   <data name="InvalidHexAddress" xml:space="preserve">
-    <value>The value you have entered is not a valid Hexadecimal address.</value>
+    <value>La dirección ingresada no es un valor hexadecimal válido.</value>
   </data>
   <data name="InvalidHexValue" xml:space="preserve">
-    <value>The number you have entered is not a valid Hexadecimal value.</value>
+    <value>El número ingresado no es un valor hexadecimal válido.</value>
+  </data>
+  <data name="MemDebugWarning" xml:space="preserve">
+    <value>Esta ventana es para editar la memoria activa de SM64 (Memoria RAM). Sólo deberías usar esto si sabes lo que haces. Los desarrolladores no se responsabilizan de caídas del emulador, o pérdida de datos causados por falla del sistema.</value>
   </data>
   <data name="SearchingForBaseAddress" xml:space="preserve">
-    <value>Scanning for base address...</value>
+    <value>Escaneando la dirección base...</value>
   </data>
   <data name="UnfreezeCamera" xml:space="preserve">
-    <value>Unfreeze Camera</value>
+    <value>Liberar cámara</value>
   </data>
   <data name="PrecisionButtonLock" xml:space="preserve">
-    <value>Lock Camera Rotation</value>
+    <value>Fijar ángulo</value>
   </data>
   <data name="PrecisionButtonUnlock" xml:space="preserve">
-    <value>Unlock Camera Rotation</value>
+    <value>Liberar ángulo</value>
   </data>
   <data name="PrecisionModeBoxName" xml:space="preserve">
-    <value>Precision Camera Control</value>
+    <value>Controlador del Modo Precisión</value>
   </data>
   <data name="PrecisionStatusDisabled" xml:space="preserve">
-    <value>Precision Mode is disabled.
-Enable it in Settings -&gt; Precision Mode</value>
+    <value>Modo Precisión apagado.
+Para habilitarlo, ve a Opciones -&gt; Modo Precisión</value>
   </data>
   <data name="PrecisionStatusFinish" xml:space="preserve">
-    <value>Camera locked. Press the button below to re-adjust camera angle.
-To disable precision mode, uncheck Settings -&gt; Precision Mode</value>
+    <value>Cámara totalmente fijada. Presiona el botón de abajo para editar el ángulo.
+Para salir de este modo, desactívalo en Opciones -&gt; Modo Precisión</value>
   </data>
   <data name="PrecisionStatusNoEmu" xml:space="preserve">
-    <value>Precision mode is disabled. Reason: Project64 isn't open.</value>
+    <value>Modo Precisión apagado; el Project64 no está abierto.</value>
   </data>
   <data name="SoftFreezeCamera" xml:space="preserve">
-    <value>Soft-Freeze Camera</value>
+    <value>Fijar cámara (suave)</value>
   </data>
   <data name="SoftUnfreezeCamera" xml:space="preserve">
-    <value>Soft-Unfreeze Camera</value>
+    <value>Liberar cámara (suave)</value>
   </data>
   <data name="AboutBuildDate" xml:space="preserve">
-    <value>Build Date: </value>
+    <value>Fecha de publicación: </value>
   </data>
   <data name="AboutMenu" xml:space="preserve">
-    <value>Help</value>
+    <value>Ayuda</value>
   </data>
   <data name="AboutStrip" xml:space="preserve">
-    <value>About Mario 64 Movie Maker 2.0...</value>
+    <value>Acerca de Mario 64 Movie Maker 2.0...</value>
   </data>
   <data name="AnimationDataNotLoaded" xml:space="preserve">
-    <value>Animation data not loaded!</value>
+    <value>¡No se han cargado las animaciones!</value>
   </data>
   <data name="AnimationDataReadError" xml:space="preserve">
-    <value>Error reading animation data file:</value>
+    <value>No se pudo leer el archivo de animaciones:</value>
   </data>
   <data name="AnimationGroupName" xml:space="preserve">
-    <value>Animation Swap Control</value>
+    <value>Controlador de animaciones</value>
     <comment> </comment>
   </data>
   <data name="AnimationO1" xml:space="preserve">
-    <value>Overwrite this animation...</value>
+    <value>Cambia esta animación:</value>
   </data>
   <data name="AnimationO2" xml:space="preserve">
-    <value>...with this one!</value>
+    <value>por esta:</value>
   </data>
   <data name="CamControlName" xml:space="preserve">
-    <value>Normal Camera Controls</value>
+    <value>Controles de cámara normal</value>
   </data>
   <data name="CCSDefaultMB" xml:space="preserve">
-    <value>Want to set these colors as default?</value>
+    <value>¿Quieres establecer este código de color como el código de color por omisión?</value>
   </data>
   <data name="CCSDefaults" xml:space="preserve">
-    <value>Defaults</value>
+    <value>Por omisión</value>
   </data>
   <data name="CCSDMBTitle" xml:space="preserve">
-    <value>Set as default?</value>
+    <value>Pregunta</value>
   </data>
   <data name="CCSEXbtn" xml:space="preserve">
-    <value>Close</value>
+    <value>Cerrar</value>
   </data>
   <data name="CCSEXCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="CCSEXLabel" xml:space="preserve">
-    <value>Here's that color code you asked for!</value>
+    <value>¡Aquí esta lo que pediste!</value>
     <comment>export label</comment>
   </data>
   <data name="CCSExport" xml:space="preserve">
-    <value>Export color code...</value>
+    <value>Exportar CC...</value>
   </data>
   <data name="CCSFormTitle" xml:space="preserve">
-    <value>Color Code Studio</value>
+    <value>Estudio de códigos de color</value>
   </data>
   <data name="CCSGloves" xml:space="preserve">
-    <value>Gloves</value>
+    <value>Guantes</value>
   </data>
   <data name="CCSHair" xml:space="preserve">
-    <value>Hair</value>
+    <value>Pelo</value>
   </data>
   <data name="CCSHat" xml:space="preserve">
-    <value>Hat/Shirt</value>
+    <value>Camisa y gorra</value>
   </data>
   <data name="CCSIMLabel" xml:space="preserve">
-    <value>Paste your color code into the textbox below, then click "OK".</value>
+    <value>Pega el código de color en la caja de texto debajo, luego presiona OK.</value>
     <comment>import label</comment>
   </data>
   <data name="CCSImport" xml:space="preserve">
-    <value>Import color code...</value>
+    <value>Importar CC...</value>
   </data>
   <data name="CCSImportError" xml:space="preserve">
-    <value>An error occurred while trying to import the color code. Make sure you entered a valid code!</value>
+    <value>Algo pasó y el código de color no fue importado. Asegúrate de que esté bien escrito!</value>
   </data>
   <data name="CCSLoad" xml:space="preserve">
-    <value>Load from game</value>
+    <value>Cargar del juego</value>
   </data>
   <data name="CCSOveralls" xml:space="preserve">
-    <value>Overalls</value>
+    <value>Overoles</value>
   </data>
   <data name="CCSShoes" xml:space="preserve">
-    <value>Shoes</value>
+    <value>Zapatos</value>
   </data>
   <data name="CCSSkin" xml:space="preserve">
-    <value>Skin</value>
+    <value>Piel</value>
   </data>
   <data name="ForceCameraC" xml:space="preserve">
-    <value>Force Camera to be movable with C-Buttons</value>
+    <value>Forzar a que la cámara sea movible con los Botones C</value>
   </data>
   <data name="ForceCameraCTooltip" xml:space="preserve">
-    <value>Click this whenever you are in an area that does not allow
-the camera to be rotated with the C-buttons (such as the
-inside of the castle) and the camera will be temporarily allowed
-to be manually rotated in the usual manner. However, this
-does not always work in all areas of the castle, as sometimes
-camera behaviors are hardcoded into specific parts of levels.</value>
+    <value>Te permite usar los Botones C (controlan la rotación y el zoom de la cámara) en lugares que generalmente no lo permiten, como dentro del castillo.
+Sin embargo, esto puede no funcionar en ciertas partes del castillo ya que muchos niveles tienen sus valores de cámara dentro del código del juego.</value>
   </data>
   <data name="HelpStrip" xml:space="preserve">
-    <value>Help...</value>
+    <value>Ayuda...</value>
   </data>
   <data name="HoverControlName" xml:space="preserve">
-    <value>Hover Control</value>
+    <value>Control de flote</value>
   </data>
   <data name="HoverMax" xml:space="preserve">
-    <value>5 (Highest)</value>
+    <value>5 (ALTA!)</value>
   </data>
   <data name="HoverMin" xml:space="preserve">
-    <value>0 (None)</value>
+    <value>0 (Nada)</value>
   </data>
   <data name="HoverToolTip" xml:space="preserve">
-    <value>Reminder: Some animations won't be affected by this. Recommended value is 1.</value>
+    <value>Cuidado: No todas las animaciones son afectadas por esto. El valor recomendado es 1.</value>
   </data>
   <data name="IOAddr" xml:space="preserve">
-    <value>Address:</value>
+    <value>Dirección:</value>
   </data>
   <data name="IOBadass" xml:space="preserve">
-    <value>I know what I'm doing.</value>
+    <value>Sé lo que hago.</value>
   </data>
   <data name="IOFormTitle" xml:space="preserve">
-    <value>Memory I/O Editor</value>
+    <value>Editor de memoria activa</value>
   </data>
   <data name="IOGroupName" xml:space="preserve">
-    <value>Memory Controls</value>
+    <value>Controles de memoria</value>
   </data>
   <data name="IORead" xml:space="preserve">
-    <value>Read</value>
+    <value>LEER</value>
   </data>
   <data name="IOValue" xml:space="preserve">
-    <value>Value:</value>
+    <value>Valor:</value>
   </data>
   <data name="IOWrite" xml:space="preserve">
-    <value>Write</value>
+    <value>ESCR.</value>
   </data>
   <data name="NoPJPrecisionError" xml:space="preserve">
-    <value>You cannot turn on the Precision Mode because Project64 isn't open.</value>
+    <value>No puedes activar el modo precisión sin el Project64 abierto.</value>
   </data>
   <data name="PJNotOpen" xml:space="preserve">
-    <value>Project64 isn't open!</value>
+    <value>Project64 no está abierto!</value>
   </data>
   <data name="PrecisionButtonDisabled" xml:space="preserve">
-    <value>Precision Mode is off.</value>
+    <value>Modo Precisión apag.</value>
   </data>
   <data name="PrecisionGroupName" xml:space="preserve">
-    <value>Precision Camera Control</value>
+    <value>Controlador de precisión</value>
   </data>
   <data name="PrecisionModeStrip" xml:space="preserve">
-    <value>Precision Mode</value>
+    <value>Modo Precisión</value>
   </data>
   <data name="PrecisionModeTooltip" xml:space="preserve">
-    <value>Enables Precision Camera Mode, which lets you
-control the angle of the camera from Mario's first-person
-view and lock it wherever you want, and then readjust the camera at will.</value>
+    <value>Habilita el modo de precisión, que permite fijar un ángulo para la cámara, y editarlo cuando te plazca.</value>
   </data>
   <data name="RememberPrevSwaps" xml:space="preserve">
-    <value>Remember previous animation swaps</value>
+    <value>Recordar los cambios de animaciones</value>
   </data>
   <data name="RememberPrevSwapsTooltip" xml:space="preserve">
-    <value>When you select a new animation to be overwritten, any previous animations
-will remain swapped until you manually change or reset them.</value>
+    <value>Al seleccionar una nueva animación para cambiar, la anterior recordará el cambio que hiciste.</value>
   </data>
   <data name="ResetAllSwaps" xml:space="preserve">
-    <value>Reset all animations to default (Malfunctioning)</value>
+    <value>Restaurar todas las animaciones (No funciona.)</value>
   </data>
   <data name="ResetAllSwapsTooltip" xml:space="preserve">
-    <value>This resets all animations to their original sequences.
-However, it currently does not work as intended, so
-I have disabled it until I determine how to fix it.</value>
+    <value>Esto reinicia TODAS las animaciones a su valor por omisión.
+Sin embargo, no funciona como se esperó, así que lo deshabilité hasta
+que pueda repararlo.</value>
   </data>
   <data name="SettingsMenu" xml:space="preserve">
-    <value>Settings</value>
+    <value>Opciones</value>
   </data>
   <data name="SmolExtrasName" xml:space="preserve">
-    <value>Small Extras</value>
+    <value>Extras pequeños</value>
   </data>
   <data name="SmolExtrasNOHUD" xml:space="preserve">
-    <value>Remove HUD</value>
+    <value>Remover la IU</value>
   </data>
   <data name="ToolsMenu" xml:space="preserve">
-    <value>Tools</value>
+    <value>Herramientas</value>
   </data>
   <data name="UndoAllPrevSwaps" xml:space="preserve">
-    <value>Undo previous animation swaps</value>
+    <value>Deshacer los cambios de animaciones</value>
   </data>
   <data name="UndoAllPrevSwapsTooltip" xml:space="preserve">
-    <value>When you select a new animation to be overwritten, the previous one
-will be returned to its default animation.</value>
+    <value>Al seleccionar una nueva animación para cambiar, la anterior volverá a su animación por omisión.</value>
   </data>
 </root>

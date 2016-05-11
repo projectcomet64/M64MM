@@ -19,8 +19,18 @@ Public Class ColorCodeStudio
 	Private IsSettingAllColors As Boolean = False
 
 	Private Sub ColorCodeStudio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-		Label1.Text = "Hat/Shirt"
-		Label7.Text = CCWarning
+        Label1.Text = My.Resources.CCSHat
+        Label2.Text = My.Resources.CCSHair
+        Label3.Text = My.Resources.CCSSkin
+        Label4.Text = My.Resources.CCSOveralls
+        Label5.Text = My.Resources.CCSGloves
+        Label6.Text = My.Resources.CCSShoes
+        Me.Text = My.Resources.CCSFormTitle
+        DefaultButton.Text = CCSDefaults
+        ImportCCButton.Text = CCSImport
+        ExportCCButton.Text = CCSExport
+        LoadRamButton.Text = CCSLoad
+        Label7.Text = CCWarning
         'Save the default colors as what they are when the form loads
         AssignDefaults()
 		hatColorMap.OldColor = Color.FromArgb(255, 0, 0)
@@ -264,10 +274,10 @@ Public Class ColorCodeStudio
 		'ShoesButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
 		MarioSprite.Refresh()
 
-		If MessageBox.Show("Do you want to use these colors as default?", "Set as default?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-			AssignDefaults()
-		End If
-	End Sub
+        If MessageBox.Show(CCSDefaultMB, CCSDMBTitle, MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            AssignDefaults()
+        End If
+    End Sub
 
 	Private Sub ImportColorCode(sender As Object, e As EventArgs) Handles ImportCCButton.Click
 		If CCCopyPaste IsNot Nothing AndAlso CCCopyPaste.IsDisposed = False Then
@@ -342,8 +352,8 @@ Public Class ColorCodeStudio
 				MarioSprite.Refresh()
 				IsSettingAllColors = False
 			Catch ex As Exception
-				MsgBox("An error occurred while trying to import the color code. Make sure you entered a valid code!" & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
-			End Try
+                MsgBox(CCSImportError & vbCrLf & ex.Message & vbCrLf & ex.StackTrace)
+            End Try
 		End If
 	End Sub
 

@@ -8,10 +8,12 @@
         Close()
     End Sub
 
-	Private Sub AboutForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-		Label2.Text = My.Resources.AboutCreatorDesc
-		Label3.Text = My.Resources.AboutText1
-		Label4.Text = My.Resources.AboutText2
-		Label5.Text = My.Resources.AboutText3
-	End Sub
+    Private Sub AboutForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Label2.Text = My.Resources.AboutCreatorDesc
+        Label3.Text = My.Resources.AboutText1
+        Label4.Text = My.Resources.AboutText2
+        Label5.Text = My.Resources.AboutText3
+        Label6.Text = My.Resources.AboutBuildDate + My.Settings.BuildDate.ToShortDateString
+    End Sub
+
 End Class
