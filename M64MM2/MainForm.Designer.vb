@@ -33,9 +33,6 @@ Partial Class MainForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RetainAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UndoPreviousAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -46,10 +43,13 @@ Partial Class MainForm
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ColorCodeStudioMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MemoryIODebugToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.AnimOW2 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.AnimOW1 = New System.Windows.Forms.Label()
         Me.b_SoftFreeze = New System.Windows.Forms.Button()
         Me.b_SoftUnfreeze = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -60,20 +60,20 @@ Partial Class MainForm
         Me.PrecisionStatusLabel = New System.Windows.Forms.Label()
         Me.b_PrecisionPlusOne = New System.Windows.Forms.Button()
         Me.LevControls = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.MinLeviHeight = New System.Windows.Forms.Label()
         Me.MaxLeviHeight = New System.Windows.Forms.Label()
         Me.LevitateTrackBar = New System.Windows.Forms.TrackBar()
         Me.Info = New System.Windows.Forms.ToolTip(Me.components)
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.NoFallDmgCB = New System.Windows.Forms.CheckBox()
+        Me.SmallExtra = New System.Windows.Forms.GroupBox()
         Me.DisableHudCB = New System.Windows.Forms.CheckBox()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuStrip1.SuspendLayout()
         Me.NormalCamControls.SuspendLayout()
         Me.AnimSwapControls.SuspendLayout()
         Me.PrecisionCamControls.SuspendLayout()
         Me.LevControls.SuspendLayout()
         CType(Me.LevitateTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
+        Me.SmallExtra.SuspendLayout()
         Me.SuspendLayout()
         '
         'b_Freeze
@@ -143,37 +143,16 @@ Partial Class MainForm
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.MenuBar
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutMenu, Me.SettingsToolStripMenuItem, Me.ToolsToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.AboutMenu})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(593, 24)
         Me.MenuStrip1.TabIndex = 7
         Me.MenuStrip1.Text = "MenuStrip1"
         '
-        'AboutMenu
-        '
-        Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutMenuItem, Me.HelpToolStripMenuItem1})
-        Me.AboutMenu.Name = "AboutMenu"
-        Me.AboutMenu.Size = New System.Drawing.Size(52, 20)
-        Me.AboutMenu.Text = "About"
-        '
-        'AboutMenuItem
-        '
-        Me.AboutMenuItem.Name = "AboutMenuItem"
-        Me.AboutMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.AboutMenuItem.Size = New System.Drawing.Size(297, 22)
-        Me.AboutMenuItem.Text = "About Mario 64 Movie Maker 2.0..."
-        '
-        'HelpToolStripMenuItem1
-        '
-        Me.HelpToolStripMenuItem1.Enabled = False
-        Me.HelpToolStripMenuItem1.Name = "HelpToolStripMenuItem1"
-        Me.HelpToolStripMenuItem1.Size = New System.Drawing.Size(297, 22)
-        Me.HelpToolStripMenuItem1.Text = "Help..."
-        '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RetainAnimationSwapsMenuItem, Me.UndoPreviousAnimationSwapsMenuItem, Me.ResetAnimationSwapsMenuItem, Me.ForceCameraPresetMenuItem, Me.ToolStripSeparator1, Me.PrecisionModeMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RetainAnimationSwapsMenuItem, Me.UndoPreviousAnimationSwapsMenuItem, Me.ToolStripSeparator2, Me.ResetAnimationSwapsMenuItem, Me.ForceCameraPresetMenuItem, Me.ToolStripSeparator1, Me.PrecisionModeMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
@@ -249,6 +228,27 @@ Partial Class MainForm
         Me.MemoryIODebugToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.MemoryIODebugToolStripMenuItem.Text = "Memory I/O Debug"
         '
+        'AboutMenu
+        '
+        Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutMenuItem, Me.HelpToolStripMenuItem1})
+        Me.AboutMenu.Name = "AboutMenu"
+        Me.AboutMenu.Size = New System.Drawing.Size(52, 20)
+        Me.AboutMenu.Text = "About"
+        '
+        'AboutMenuItem
+        '
+        Me.AboutMenuItem.Name = "AboutMenuItem"
+        Me.AboutMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
+        Me.AboutMenuItem.Size = New System.Drawing.Size(297, 22)
+        Me.AboutMenuItem.Text = "About Mario 64 Movie Maker 2.0..."
+        '
+        'HelpToolStripMenuItem1
+        '
+        Me.HelpToolStripMenuItem1.Enabled = False
+        Me.HelpToolStripMenuItem1.Name = "HelpToolStripMenuItem1"
+        Me.HelpToolStripMenuItem1.Size = New System.Drawing.Size(297, 22)
+        Me.HelpToolStripMenuItem1.Text = "Help..."
+        '
         'ComboBox2
         '
         Me.ComboBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -260,15 +260,15 @@ Partial Class MainForm
         Me.ComboBox2.Size = New System.Drawing.Size(440, 21)
         Me.ComboBox2.TabIndex = 13
         '
-        'Label6
+        'AnimOW2
         '
-        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(7, 61)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(99, 13)
-        Me.Label6.TabIndex = 12
-        Me.Label6.Text = "With this animation:"
+        Me.AnimOW2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.AnimOW2.AutoSize = True
+        Me.AnimOW2.Location = New System.Drawing.Point(7, 61)
+        Me.AnimOW2.Name = "AnimOW2"
+        Me.AnimOW2.Size = New System.Drawing.Size(99, 13)
+        Me.AnimOW2.TabIndex = 12
+        Me.AnimOW2.Text = "With this animation:"
         '
         'ComboBox1
         '
@@ -281,15 +281,15 @@ Partial Class MainForm
         Me.ComboBox1.Size = New System.Drawing.Size(440, 21)
         Me.ComboBox1.TabIndex = 11
         '
-        'Label7
+        'AnimOW1
         '
-        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(7, 17)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(128, 13)
-        Me.Label7.TabIndex = 10
-        Me.Label7.Text = "Overwrite this animation..."
+        Me.AnimOW1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.AnimOW1.AutoSize = True
+        Me.AnimOW1.Location = New System.Drawing.Point(7, 17)
+        Me.AnimOW1.Name = "AnimOW1"
+        Me.AnimOW1.Size = New System.Drawing.Size(128, 13)
+        Me.AnimOW1.TabIndex = 10
+        Me.AnimOW1.Text = "Overwrite this animation..."
         '
         'b_SoftFreeze
         '
@@ -351,10 +351,10 @@ Partial Class MainForm
         'AnimSwapControls
         '
         Me.AnimSwapControls.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.AnimSwapControls.Controls.Add(Me.Label7)
+        Me.AnimSwapControls.Controls.Add(Me.AnimOW1)
         Me.AnimSwapControls.Controls.Add(Me.ComboBox1)
         Me.AnimSwapControls.Controls.Add(Me.ComboBox2)
-        Me.AnimSwapControls.Controls.Add(Me.Label6)
+        Me.AnimSwapControls.Controls.Add(Me.AnimOW2)
         Me.AnimSwapControls.Location = New System.Drawing.Point(10, 264)
         Me.AnimSwapControls.Name = "AnimSwapControls"
         Me.AnimSwapControls.Size = New System.Drawing.Size(454, 109)
@@ -394,7 +394,7 @@ Partial Class MainForm
         '
         'LevControls
         '
-        Me.LevControls.Controls.Add(Me.Label1)
+        Me.LevControls.Controls.Add(Me.MinLeviHeight)
         Me.LevControls.Controls.Add(Me.MaxLeviHeight)
         Me.LevControls.Controls.Add(Me.LevitateTrackBar)
         Me.LevControls.Location = New System.Drawing.Point(470, 44)
@@ -404,15 +404,15 @@ Partial Class MainForm
         Me.LevControls.TabStop = False
         Me.LevControls.Text = "Hover Height"
         '
-        'Label1
+        'MinLeviHeight
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(37, 162)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "0 (Nothing)"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.MinLeviHeight.AutoSize = True
+        Me.MinLeviHeight.Location = New System.Drawing.Point(37, 162)
+        Me.MinLeviHeight.Name = "MinLeviHeight"
+        Me.MinLeviHeight.Size = New System.Drawing.Size(59, 13)
+        Me.MinLeviHeight.TabIndex = 1
+        Me.MinLeviHeight.Text = "0 (Nothing)"
+        Me.MinLeviHeight.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         '
         'MaxLeviHeight
         '
@@ -440,43 +440,37 @@ Partial Class MainForm
         Me.Info.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.Info.ToolTipTitle = "Hey!"
         '
-        'GroupBox1
+        'SmallExtra
         '
-        Me.GroupBox1.Controls.Add(Me.DisableHudCB)
-        Me.GroupBox1.Controls.Add(Me.NoFallDmgCB)
-        Me.GroupBox1.Location = New System.Drawing.Point(470, 234)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(111, 139)
-        Me.GroupBox1.TabIndex = 19
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Small Extras"
-        '
-        'NoFallDmgCB
-        '
-        Me.NoFallDmgCB.AutoSize = True
-        Me.NoFallDmgCB.Location = New System.Drawing.Point(6, 20)
-        Me.NoFallDmgCB.Name = "NoFallDmgCB"
-        Me.NoFallDmgCB.Size = New System.Drawing.Size(102, 17)
-        Me.NoFallDmgCB.TabIndex = 0
-        Me.NoFallDmgCB.Text = "No Fall Damage"
-        Me.NoFallDmgCB.UseVisualStyleBackColor = True
+        Me.SmallExtra.Controls.Add(Me.DisableHudCB)
+        Me.SmallExtra.Location = New System.Drawing.Point(470, 234)
+        Me.SmallExtra.Name = "SmallExtra"
+        Me.SmallExtra.Size = New System.Drawing.Size(111, 139)
+        Me.SmallExtra.TabIndex = 19
+        Me.SmallExtra.TabStop = False
+        Me.SmallExtra.Text = "Small Extras"
         '
         'DisableHudCB
         '
         Me.DisableHudCB.AutoSize = True
-        Me.DisableHudCB.Location = New System.Drawing.Point(6, 42)
+        Me.DisableHudCB.Location = New System.Drawing.Point(8, 19)
         Me.DisableHudCB.Name = "DisableHudCB"
         Me.DisableHudCB.Size = New System.Drawing.Size(88, 17)
         Me.DisableHudCB.TabIndex = 1
         Me.DisableHudCB.Text = "Disable HUD"
         Me.DisableHudCB.UseVisualStyleBackColor = True
         '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(344, 6)
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(593, 385)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.SmallExtra)
         Me.Controls.Add(Me.LevControls)
         Me.Controls.Add(Me.PrecisionCamControls)
         Me.Controls.Add(Me.AnimSwapControls)
@@ -501,8 +495,8 @@ Partial Class MainForm
         Me.LevControls.ResumeLayout(False)
         Me.LevControls.PerformLayout()
         CType(Me.LevitateTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.SmallExtra.ResumeLayout(False)
+        Me.SmallExtra.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -520,9 +514,9 @@ Partial Class MainForm
     Friend WithEvents AboutMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
-    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents AnimOW2 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents AnimOW1 As System.Windows.Forms.Label
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RetainAnimationSwapsMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UndoPreviousAnimationSwapsMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -543,11 +537,11 @@ Partial Class MainForm
 	Friend WithEvents ColorCodeStudioMenuItem As ToolStripMenuItem
 	Friend WithEvents MemoryIODebugToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LevControls As GroupBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents MinLeviHeight As Label
     Friend WithEvents MaxLeviHeight As Label
     Friend WithEvents LevitateTrackBar As TrackBar
     Friend WithEvents Info As ToolTip
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents NoFallDmgCB As CheckBox
+    Friend WithEvents SmallExtra As GroupBox
     Friend WithEvents DisableHudCB As CheckBox
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
 End Class
