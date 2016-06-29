@@ -26,10 +26,10 @@ Public Class MainForm
 
     Private ReadOnly Property CB1AnimIndex As Integer
         Get
-            For Each anim As Animation In AnimList
-                If anim.Value = SelectedAnim1 Then Return anim.Index
-            Next
-            Return 0
+			For Each anim As Animation In AnimList
+				If anim.Value = SelectedAnim1 Then Return anim.Index
+			Next
+			Return 0
         End Get
     End Property
 
@@ -46,8 +46,8 @@ Public Class MainForm
         ' This call is required by the designer.
         InitializeComponent()
 
-        Dim AboutBox As New AboutForm
-        AddHandler ResetAnimationSwapsMenuItem.Click, AddressOf ResetAnimations
+		Dim AboutBox As New AboutForm
+		AddHandler ResetAnimationSwapsMenuItem.Click, AddressOf ResetAnimations
         AddHandler b_Freeze.Click, AddressOf Freeze
         AddHandler b_Unfreeze.Click, AddressOf Unfreeze
         AddHandler b_ChangeCameraType.Click, AddressOf ChangeCameraType
