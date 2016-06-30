@@ -118,13 +118,64 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="M64MM2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\M64MM2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bullseye" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bullseye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="M64MM2_CC_Mario_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="M64MM2_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\M64MM2 Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CCWarning" xml:space="preserve">
+    <value>IMPORTANT: Make sure to uncheck any color codes currently enabled in Project64. Otherwise, they will prevent this program from modifying Mario's colors.</value>
+  </data>
+  <data name="MemDebugWarning" xml:space="preserve">
+    <value>This window is for testing reading from/writing to SM64's memory (RAM). You should only use this if you know what you're doing. The developers accept no responsibility for lost save data, program crashes, or system crashes.</value>
+  </data>
+  <data name="AboutCreatorDesc" xml:space="preserve">
+    <value>Created by James "CaptainSwag101" Pelster</value>
+  </data>
+  <data name="AboutText1" xml:space="preserve">
+    <value>This program is dedicated to the Super Mario 64 Bloopers/Machinima community, thanks for all the effort you've put into your work, and I hope this tool will help you create awesome videos for years to come!</value>
+  </data>
+  <data name="AboutText2" xml:space="preserve">
+    <value>Special thanks to Matthew "MATTHEWGU4" Guerra for helping me make this project a reality and for spreading the word, and to GlitchyPSIX for his discovery of the "Soft-Freeze" feature.</value>
+  </data>
+  <data name="AboutText3" xml:space="preserve">
+    <value>Found any bugs, need help, or want to suggest a feature? Email me at:</value>
+  </data>
+  <data name="BaseAddressIs" xml:space="preserve">
+    <value>The base address is: </value>
+  </data>
+  <data name="BaseAddressNotFound" xml:space="preserve">
+    <value>Base address not found!</value>
+  </data>
+  <data name="BaseAddressOverwriteWarning" xml:space="preserve">
+    <value>You are attempting to write to the first four bytes of Super Mario 64's memory, which contains the value this program uses to find the game's base address. If you click ""Yes"", you will need to reset the emulator before this program will be able to find Super Mario 64 again. Are you sure you want to do this?</value>
+  </data>
+  <data name="CameraLockDesc" xml:space="preserve">
+    <value>Camera position locked. Click the button below to lock camera rotation.</value>
+  </data>
+  <data name="CameraUnlockDesc" xml:space="preserve">
+    <value>Camera rotation unlocked. Click the button below to lock camera rotation.</value>
+  </data>
+  <data name="ChangeCameraType" xml:space="preserve">
+    <value>Change Camera Type</value>
+  </data>
+  <data name="FreezeCamera" xml:space="preserve">
+    <value>Freeze Camera</value>
+  </data>
+  <data name="GotoNewArea" xml:space="preserve">
+    <value>Go to new area</value>
+  </data>
+  <data name="InvalidHexAddress" xml:space="preserve">
+    <value>The value you have entered is not a valid Hexadecimal address.</value>
+  </data>
+  <data name="InvalidHexValue" xml:space="preserve">
+    <value>The number you have entered is not a valid Hexadecimal value.</value>
+  </data>
+  <data name="SearchingForBaseAddress" xml:space="preserve">
+    <value>Scanning for base address...</value>
+  </data>
+  <data name="UnfreezeCamera" xml:space="preserve">
+    <value>Unfreeze Camera</value>
   </data>
 </root>

@@ -1,0 +1,107 @@
+Value to write: RRGGBB00
+R = Red <255
+G = Green <255
+B = Blue <255
+_________________________
+
+Overalls:
+FIRST SQUARE
+07EC20
+
+SECOND SQUARE
+07EC24
+
+THIRD SQUARE
+07EC28
+
+FOURTH SQUARE
+07EC2C
+____________________
+Cap, Arms and Shirt:
+FIRST SQUARE
+07EC38
+
+SECOND SQUARE
+07EC3C
+
+THIRD SQUARE
+07EC40
+
+FOURTH SQUARE
+07EC44
+_____________________
+Gloves:
+FIRST SQUARE
+07EC50
+
+SECOND SQUARE
+07EC54
+
+THIRD SQUARE
+07EC58
+
+FOURTH SQUARE
+07EC5C
+______________________
+Shoes:
+FIRST SQUARE
+07EC68
+
+SECOND SQUARE
+07EC6C
+
+THIRD SQUARE
+07EC70 
+
+FOURTH SQUARE
+07EC74
+_______________________
+Face:
+FIRST SQUARE
+07EC80
+
+SECOND SQUARE
+07EC84
+
+THIRD SQUARE
+07EC88
+
+FOURTH SQUARE
+07EC8C
+________________________
+Hair:
+FIRST SQUARE
+07EC98
+
+SECOND SQUARE
+07EC9C
+
+THIRD SQUARE
+07ECA0
+
+FOURTH SQUARE
+07ECA4
+________________________
+EXTRAS:
+NO HUD
+Value: ALL SET 00000000
+Addresses:
+ 2E3DB0
+ 2E3DE0
+ 2E3E18
+ 2E3DC8
+
+NO FALL DAMAGE
+Address: 33B22C
+Value: 00E8
+Address: 33B178
+Value: FFFF
+
+SLIGHT LEVITATE FOR SOME ANIMATIONS THAT REQUIRE SO
+Address: 33B223
+Values:
+0: In ground (Default)
+1: slight levitating (recommended for those flying animations)
+v  UP TO
+5: heavy levitating (not recommended)
+

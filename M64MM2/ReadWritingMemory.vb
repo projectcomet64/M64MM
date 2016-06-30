@@ -1,111 +1,21 @@
-﻿Module ReadWritingMemory
+﻿Imports System.Globalization
+
+Module ReadWritingMemory
     Private Declare Function OpenProcess Lib "kernel32" (ByVal dwDesiredAccess As Integer, ByVal bInheritHandle As Integer, ByVal dwProcessId As Integer) As Integer
 
-    Private Declare Function WriteProcessMemory1 Lib "kernel32" Alias "WriteProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByRef lpBuffer As Integer, ByVal nSize As Integer, ByRef lpNumberOfBytesWritten As Integer) As Integer
-    Private Declare Function WriteProcessMemory2 Lib "kernel32" Alias "WriteProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByRef lpBuffer As Single, ByVal nSize As Integer, ByRef lpNumberOfBytesWritten As Integer) As Single
-    Private Declare Function WriteProcessMemory3 Lib "kernel32" Alias "WriteProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByRef lpBuffer As Long, ByVal nSize As Integer, ByRef lpNumberOfBytesWritten As Integer) As Long
+    Private Declare Function WriteProcessMemory1 Lib "kernel32" Alias "WriteProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByRef lpBuffer As Integer, ByVal nSize As Integer, ByRef lpNumberOfBytesWritten As Integer) As Integer
+    Private Declare Function WriteProcessMemory2 Lib "kernel32" Alias "WriteProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByRef lpBuffer As Single, ByVal nSize As Integer, ByRef lpNumberOfBytesWritten As Integer) As Single
+    Private Declare Function WriteProcessMemory3 Lib "kernel32" Alias "WriteProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByRef lpBuffer As Long, ByVal nSize As Integer, ByRef lpNumberOfBytesWritten As Integer) As Long
+    Private Declare Function WriteProcessMemory4 Lib "kernel32" Alias "WriteProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByRef lpBuffer As UInteger, ByVal nSize As Integer, ByRef lpNumberOfBytesWritten As Integer) As UInteger
 
-    Private Declare Function ReadProcessMemory1 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByRef lpBuffer As Integer, ByVal nSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Integer
-    Private Declare Function ReadProcessMemory2 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByRef lpBuffer As Single, ByVal nSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Single
-    Private Declare Function ReadProcessMemory3 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByRef lpBuffer As Long, ByVal nSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Long
-    Private Declare Function ReadProcessMemory4 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByVal lpBuffer() As Byte, ByVal iSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Boolean
-    Private Declare Function ReadProcessMemory5 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As Integer, ByVal lpBuffer As Byte, ByVal iSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Byte
+    Private Declare Function ReadProcessMemory1 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByRef lpBuffer As Integer, ByVal nSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Integer
+    Private Declare Function ReadProcessMemory2 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByRef lpBuffer As Single, ByVal nSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Single
+    Private Declare Function ReadProcessMemory3 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByRef lpBuffer As Long, ByVal nSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Long
+    Private Declare Function ReadProcessMemory4 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByVal lpBuffer() As Byte, ByVal iSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Boolean
+    Private Declare Function ReadProcessMemory5 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByVal lpBuffer As Byte, ByVal iSize As Integer, ByRef lpNumberOfBytesRead As Integer) As Byte
+    Private Declare Function ReadProcessMemory6 Lib "kernel32" Alias "ReadProcessMemory" (ByVal hProcess As Integer, ByVal lpBaseAddress As UInteger, ByRef lpBuffer As UInteger, ByVal nSize As Integer, ByRef lpNumberOfBytesRead As Integer) As UInteger
 
     Const PROCESS_ALL_ACCESS = &H1F0FF
-
-    Public Function WriteDMAInteger(ByVal Process As String, ByVal Address As Integer, ByVal Offsets As Integer(), ByVal Value As Integer, ByVal Level As Integer, Optional ByVal nsize As Integer = 4) As Boolean
-        Try
-            Dim lvl As Integer = Address
-            For i As Integer = 1 To Level
-                lvl = ReadInteger(Process, lvl, nsize) + Offsets(i - 1)
-            Next
-            WriteInteger(Process, lvl, Value, nsize)
-            Return True
-        Catch ex As Exception
-            Return False
-        End Try
-    End Function
-
-    Public Function ReadDMAInteger(ByVal Process As String, ByVal Address As Integer, ByVal Offsets As Integer(), ByVal Level As Integer, Optional ByVal nsize As Integer = 4) As Integer
-        Try
-            Dim lvl As Integer = Address
-            For i As Integer = 1 To Level
-                lvl = ReadInteger(Process, lvl, nsize) + Offsets(i - 1)
-            Next
-            Dim vBuffer As Integer
-            vBuffer = ReadInteger(Process, lvl, nsize)
-            Return vBuffer
-        Catch ex As Exception
-            Return Nothing
-        End Try
-    End Function
-
-    Public Function WriteDMAFloat(ByVal Process As String, ByVal Address As Integer, ByVal Offsets As Integer(), ByVal Value As Single, ByVal Level As Integer, Optional ByVal nsize As Integer = 4) As Boolean
-        Try
-            Dim lvl As Integer = Address
-            For i As Integer = 1 To Level
-                lvl = ReadFloat(Process, lvl, nsize) + Offsets(i - 1)
-            Next
-            WriteFloat(Process, lvl, Value, nsize)
-            Return True
-        Catch ex As Exception
-            Return False
-        End Try
-    End Function
-
-    Public Function ReadDMAFloat(ByVal Process As String, ByVal Address As Integer, ByVal Offsets As Integer(), ByVal Level As Integer, Optional ByVal nsize As Integer = 4) As Single
-        Try
-            Dim lvl As Integer = Address
-            For i As Integer = 1 To Level
-                lvl = ReadFloat(Process, lvl, nsize) + Offsets(i - 1)
-            Next
-            Dim vBuffer As Single
-            vBuffer = ReadFloat(Process, lvl, nsize)
-            Return vBuffer
-        Catch ex As Exception
-            Return Nothing
-        End Try
-    End Function
-
-    Public Function WriteDMALong(ByVal Process As String, ByVal Address As Integer, ByVal Offsets As Integer(), ByVal Value As Long, ByVal Level As Integer, Optional ByVal nsize As Integer = 4) As Boolean
-        Try
-            Dim lvl As Integer = Address
-            For i As Integer = 1 To Level
-                lvl = ReadLong(Process, lvl, nsize) + Offsets(i - 1)
-            Next
-            WriteLong(Process, lvl, Value, nsize)
-            Return True
-        Catch ex As Exception
-            Return False
-        End Try
-    End Function
-
-    Public Function ReadDMALong(ByVal Process As String, ByVal Address As Integer, ByVal Offsets As Integer(), ByVal Level As Integer, Optional ByVal nsize As Integer = 4) As Long
-        Try
-            Dim lvl As Integer = Address
-            For i As Integer = 1 To Level
-                lvl = ReadLong(Process, lvl, nsize) + Offsets(i - 1)
-            Next
-            Dim vBuffer As Long
-            vBuffer = ReadLong(Process, lvl, nsize)
-            Return vBuffer
-        Catch ex As Exception
-            Return Nothing
-        End Try
-    End Function
-
-    Public Sub WriteNOPs(ByVal ProcessName As String, ByVal Address As Long, ByVal NOPNum As Integer)
-        Dim C As Integer
-        Dim B As Integer
-        Dim hProcess As IntPtr = GetEmuProcess("Project64")
-        If hProcess = Nothing Then Exit Sub
-
-        B = 0
-        For C = 1 To NOPNum
-            Call WriteProcessMemory1(hProcess, Address + B, &H90, 1, 0&)
-            B = B + 1
-        Next C
-    End Sub
 
     Public Sub WriteXBytes(ByVal ProcessName As String, ByVal Address As Long, ByVal Value As String)
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
@@ -127,7 +37,7 @@
 
     End Sub
 
-    Public Sub WriteInteger(ByVal ProcessName As String, ByVal Address As Integer, ByVal Value As Integer, Optional ByVal nsize As Integer = 4)
+    Public Sub WriteInteger(ByVal ProcessName As String, ByVal Address As UInteger, ByVal Value As Integer, Optional ByVal nsize As Integer = 4)
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
         If hProcess = Nothing Then Exit Sub
 
@@ -137,7 +47,17 @@
         WriteProcessMemory1(hProcess, hAddress, CInt(vBuffer), nsize, 0)
     End Sub
 
-    Public Sub WriteFloat(ByVal ProcessName As String, ByVal Address As Integer, ByVal Value As Single, Optional ByVal nsize As Integer = 4)
+    Public Sub WriteUInteger(ByVal ProcessName As String, ByVal Address As UInteger, ByVal Value As UInteger, Optional ByVal nsize As Integer = 4)
+        Dim hProcess As IntPtr = GetEmuProcess("Project64")
+        If hProcess = Nothing Then Exit Sub
+
+        Dim hAddress, vBuffer As UInteger
+        hAddress = Address
+        vBuffer = Value
+        WriteProcessMemory4(hProcess, hAddress, vBuffer, nsize, 0)
+    End Sub
+
+    Public Sub WriteFloat(ByVal ProcessName As String, ByVal Address As UInteger, ByVal Value As Single, Optional ByVal nsize As Integer = 4)
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
         If hProcess = Nothing Then Exit Sub
 
@@ -149,7 +69,7 @@
         WriteProcessMemory2(hProcess, hAddress, vBuffer, nsize, 0)
     End Sub
 
-    Public Sub WriteLong(ByVal ProcessName As String, ByVal Address As Integer, ByVal Value As Long, Optional ByVal nsize As Integer = 4)
+    Public Sub WriteLong(ByVal ProcessName As String, ByVal Address As UInteger, ByVal Value As Long, Optional ByVal nsize As Integer = 4)
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
         If hProcess = Nothing Then Exit Sub
 
@@ -161,7 +81,55 @@
         WriteProcessMemory3(hProcess, hAddress, vBuffer, nsize, 0)
     End Sub
 
-    Public Function ReadByte(ByVal ProcessName As String, ByVal Address As Integer, Optional ByVal nsize As Integer = 1) As Byte()
+    Public Sub BigEndianWrite(ByVal ProcessName As String, ByVal Address As Long, ByVal Value As String)
+        Dim hProcess As IntPtr = GetEmuProcess("Project64")
+        If hProcess = Nothing Then Exit Sub
+
+        Dim bigEndianBytes As String
+        For I As Integer = (Value.Length / 2) - 1 To 0 Step -1
+            bigEndianBytes = Value.Substring(I * 2, 2)
+        Next
+
+        Dim C As Integer
+        Dim B As Integer
+        Dim D As Integer
+        Dim V As Byte
+
+        B = 0
+        D = 1
+        For C = 1 To Math.Round((Len(Value) / 2))
+            V = Val("&H" & Mid$(Value, D, 2))
+            Call WriteProcessMemory1(hProcess, Address + B, V, 1, 0&)
+            B = B + 1
+            D = D + 2
+        Next C
+    End Sub
+
+    Public Function FixZeroHexByte(val As String) As String
+        If val.Length = 1 And Byte.Parse(val, NumberStyles.HexNumber) < 16 Then
+            Return "0" & val
+        Else
+            Return val
+        End If
+    End Function
+
+    Public Function BigEndianRead(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal count As Integer = 1) As Byte()
+        Dim bytesRead(count - 1) As Byte
+        Dim AddressMod As Integer = Address Mod 4
+
+        For Q As Integer = 1 To (count - AddressMod)
+            bytesRead(count - AddressMod - Q) = ReadByte("Project64", Address + (Q - AddressMod - 1))(0)
+        Next
+        If AddressMod > 0 Then
+            For R As Integer = (count - AddressMod) To (count - 1)
+                bytesRead(count - R + (count - AddressMod - 1)) = ReadByte("Project64", Address + (count - AddressMod + R))(0)
+            Next
+        End If
+
+        Return bytesRead
+    End Function
+
+    Public Function ReadByte(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal nsize As Integer = 1) As Byte()
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
         If hProcess = Nothing Then Return Nothing
 
@@ -169,11 +137,23 @@
         Dim vBuffer(0) As Byte
 
         hAddress = Address
-        ReadProcessMemory4(hProcess, hAddress, vBuffer, nsize, 0)
+        ReadProcessMemory4(hProcess, Address, vBuffer, nsize, 0)
         Return vBuffer
     End Function
 
-    Public Function ReadInteger(ByVal ProcessName As String, ByVal Address As Integer, Optional ByVal nsize As Integer = 4) As Integer
+    Public Function ReadXBytes(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal count As Integer = 1) As Byte()
+        Dim hProcess As IntPtr = GetEmuProcess("Project64")
+        If hProcess = Nothing Then Return Nothing
+
+        Dim hAddress As Integer
+        Dim vBuffer(count) As Byte
+
+        hAddress = Address
+        ReadProcessMemory4(hProcess, hAddress, vBuffer, count, 0)
+        Return vBuffer
+    End Function
+
+    Public Function ReadInteger(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal nsize As Integer = 4) As Integer
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
         If hProcess = Nothing Then Return Nothing
 
@@ -183,7 +163,17 @@
         Return vBuffer
     End Function
 
-    Public Function ReadFloat(ByVal ProcessName As String, ByVal Address As Integer, Optional ByVal nsize As Integer = 4) As Single
+    Public Function ReadUInteger(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal nsize As Integer = 4) As UInteger
+        Dim hProcess As IntPtr = GetEmuProcess("Project64")
+        If hProcess = Nothing Then Return Nothing
+
+        Dim hAddress, vBuffer As UInteger
+        hAddress = Address
+        ReadProcessMemory6(hProcess, hAddress, vBuffer, nsize, 0)
+        Return vBuffer
+    End Function
+
+    Public Function ReadFloat(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal nsize As Integer = 4) As Single
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
         If hProcess = Nothing Then Return Nothing
 
@@ -195,7 +185,7 @@
         Return vBuffer
     End Function
 
-    Public Function ReadLong(ByVal ProcessName As String, ByVal Address As Integer, Optional ByVal nsize As Integer = 4) As Long
+    Public Function ReadLong(ByVal ProcessName As String, ByVal Address As UInteger, Optional ByVal nsize As Integer = 4) As Long
         Dim hProcess As IntPtr = GetEmuProcess("Project64")
         If hProcess = Nothing Then Return Nothing
 
@@ -207,15 +197,12 @@
         Return vBuffer
     End Function
 
-    Public Function GetEmuProcess(ProcessName As String, Optional silent As Boolean = True) As IntPtr
+    Public Function GetEmuProcess(ProcessName As String) As IntPtr
         If ProcessName.EndsWith(".exe") Then
             ProcessName = ProcessName.Replace(".exe", "")
         End If
         Dim MyP As Process() = Process.GetProcessesByName(ProcessName)
         If MyP.Length = 0 Then
-            If silent = False Then
-                MessageBox.Show(ProcessName & " isn't open!")
-            End If
             Return Nothing
         End If
         Dim hProcess As IntPtr = OpenProcess(PROCESS_ALL_ACCESS, 0, MyP(0).Id)
@@ -226,9 +213,9 @@
         Return hProcess
     End Function
 
-    Public Function GetBaseAddress(ByVal ProcessName As String, silent As Boolean, Optional scanStep As Integer = &H10000, Optional ByVal nsize As Integer = 4) As Integer
+    Public Function GetBaseAddress(ByVal ProcessName As String, Optional scanStep As Integer = &H10000, Optional ByVal nsize As Integer = 4) As Integer
 
-        Dim hProcess As IntPtr = GetEmuProcess("Project64", silent)
+        Dim hProcess As IntPtr = GetEmuProcess("Project64")
         If hProcess = Nothing Then Return 0
 
         Dim vBuffer As Integer
@@ -248,5 +235,4 @@
 
         Return 0
     End Function
-
 End Module
