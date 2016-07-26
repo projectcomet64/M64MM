@@ -235,6 +235,25 @@ Public Class MemDebugForm
 	End Sub
 
 	Private Sub MemDebugForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-		LB_Disclaimer.Text = MemDebugWarning
-	End Sub
+        LB_Disclaimer.Text = MemDebugWarning
+        CB_Accept.Text = IOBadass
+        B_Read1.Text = IORead
+        B_Read2.Text = IORead
+        B_Read3.Text = IORead
+        B_Read4.Text = IORead
+        B_Write1.Text = IOWrite
+        B_Write2.Text = IOWrite
+        B_Write3.Text = IOWrite
+        B_Write4.Text = IOWrite
+        LB_Address1.Text = IOAddr
+        LB_Address2.Text = IOAddr
+        LB_Address3.Text = IOAddr
+        LB_Address4.Text = IOAddr
+        LB_Value1.Text = IOValue
+        LB_Value2.Text = IOValue
+        LB_Value3.Text = IOValue
+        LB_Value4.Text = IOValue
+        GB_DebugControls.Text = IOFormTitle
+        Me.Text = IOFormTitle
+    End Sub
 End Class
