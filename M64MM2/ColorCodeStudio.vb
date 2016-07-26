@@ -218,60 +218,49 @@ Public Class ColorCodeStudio
 
 	Private Sub LoadFromRam(sender As Object, e As EventArgs) Handles LoadRamButton.Click
 		Dim addresses As Integer() = {&H7EC38, &H7EC3C, &H7EC40, &H7EC44, &H7EC98, &H7EC9C, &H7ECA0, &H7ECA4, &H7EC80, &H7EC84, &H7EC88, &H7EC8C, &H7EC20, &H7EC24, &H7EC28, &H7EC2C, &H7EC50, &H7EC54, &H7EC58, &H7EC5C, &H7EC68, &H7EC6C, &H7EC70, &H7EC74}
+
 		Dim val As Byte() = BigEndianRead("Project64", MainForm.Base + addresses(0), 4)
 		HatButton1.BackColor = Color.FromArgb(val(0), val(1), val(2))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(1), 4)
-        'HatButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(2), 4)
 		HatButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
 		UpdateHatnShirt(Color.FromArgb(val(0), val(1), val(2)))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(3), 4)
-        'HatButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(4), 4)
 		HairButton1.BackColor = Color.FromArgb(val(0), val(1), val(2))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(5), 4)
-        'HairButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(6), 4)
 		HairButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
 		UpdateHair(Color.FromArgb(val(0), val(1), val(2)))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(7), 4)
-        'HairButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(8), 4)
 		SkinButton1.BackColor = Color.FromArgb(val(0), val(1), val(2))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(9), 4)
-        'SkinButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(10), 4)
 		SkinButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
 		UpdateSkin(Color.FromArgb(val(0), val(1), val(2)))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(11), 4)
-        'SkinButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(12), 4)
 		PantsButton1.BackColor = Color.FromArgb(val(0), val(1), val(2))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(13), 4)
-        'PantsButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(14), 4)
 		PantsButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
 		UpdateOveralls(Color.FromArgb(val(0), val(1), val(2)))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(15), 4)
-        'PantsButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(16), 4)
 		GlovesButton1.BackColor = Color.FromArgb(val(0), val(1), val(2))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(17), 4)
-        'GlovesButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(18), 4)
 		GlovesButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
 		UpdateGloves(Color.FromArgb(val(0), val(1), val(2)))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(19), 4)
-        'GlovesButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(20), 4)
 		ShoesButton1.BackColor = Color.FromArgb(val(0), val(1), val(2))
-        'val = BigEndianRead("Project64", MainForm.Base + addresses(21), 4)
-        'ShoesButton2.BackColor = Color.FromArgb(val(0), val(1), val(2))
+        
         val = BigEndianRead("Project64", MainForm.Base + addresses(22), 4)
 		ShoesButton3.BackColor = Color.FromArgb(val(0), val(1), val(2))
 		UpdateShoes(Color.FromArgb(val(0), val(1), val(2)))
-		'val = BigEndianRead("Project64", MainForm.Base + addresses(23), 4)
-		'ShoesButton4.BackColor = Color.FromArgb(val(0), val(1), val(2))
+
 		MarioSprite.Refresh()
 
         If MessageBox.Show(CCSDefaultMB, CCSDMBTitle, MessageBoxButtons.YesNo) = DialogResult.Yes Then
