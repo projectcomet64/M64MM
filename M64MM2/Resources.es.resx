@@ -214,7 +214,6 @@ Para salir de este modo, desactívalo en Opciones -&gt; Modo Precisión</value>
   </data>
   <data name="AnimationGroupName" xml:space="preserve">
     <value>Controlador de animaciones</value>
-    <comment> </comment>
   </data>
   <data name="AnimationO1" xml:space="preserve">
     <value>Cambia esta animación:</value>
@@ -373,5 +372,25 @@ que pueda repararlo.</value>
   </data>
   <data name="UndoAllPrevSwapsTooltip" xml:space="preserve">
     <value>Al seleccionar una nueva animación para cambiar, la anterior volverá a su animación por omisión.</value>
+  </data>
+  <data name="CCS_ColorMode" xml:space="preserve">
+    <value>Modo Color</value>
+    <comment>when in shading mode</comment>
+  </data>
+  <data name="CCS_RestoreSh" xml:space="preserve">
+    <value>Rest. iluminación</value>
+  </data>
+  <data name="CCS_ShadeX" xml:space="preserve">
+    <value>X de luz</value>
+  </data>
+  <data name="CCS_ShadeY" xml:space="preserve">
+    <value>Y de luz</value>
+  </data>
+  <data name="CCS_ShadeZ" xml:space="preserve">
+    <value>Z de luz</value>
+  </data>
+  <data name="CCS_ShadingMode" xml:space="preserve">
+    <value>Modo Iluminación</value>
+    <comment>when in color mode</comment>
   </data>
 </root>

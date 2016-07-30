@@ -50,7 +50,18 @@ Partial Class ColorCodeStudio
         Me.ExportCCButton = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.MarioSprite = New System.Windows.Forms.PictureBox()
+        Me.Z_BAR = New System.Windows.Forms.TrackBar()
+        Me.Y_BAR = New System.Windows.Forms.TrackBar()
+        Me.X_BAR = New System.Windows.Forms.TrackBar()
+        Me.SX_lb = New System.Windows.Forms.Label()
+        Me.SY_lb = New System.Windows.Forms.Label()
+        Me.SZ_lb = New System.Windows.Forms.Label()
+        Me.RESTOREBTN = New System.Windows.Forms.Button()
+        Me.SHADM_btn = New System.Windows.Forms.Button()
         CType(Me.MarioSprite, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Z_BAR, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Y_BAR, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.X_BAR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'HairButton3
@@ -299,11 +310,100 @@ Partial Class ColorCodeStudio
         Me.MarioSprite.TabIndex = 36
         Me.MarioSprite.TabStop = False
         '
+        'Z_BAR
+        '
+        Me.Z_BAR.Location = New System.Drawing.Point(130, 387)
+        Me.Z_BAR.Maximum = 127
+        Me.Z_BAR.Minimum = -128
+        Me.Z_BAR.Name = "Z_BAR"
+        Me.Z_BAR.Size = New System.Drawing.Size(256, 45)
+        Me.Z_BAR.TabIndex = 37
+        Me.Z_BAR.TickStyle = System.Windows.Forms.TickStyle.TopLeft
+        Me.Z_BAR.Visible = False
+        '
+        'Y_BAR
+        '
+        Me.Y_BAR.Location = New System.Drawing.Point(79, 111)
+        Me.Y_BAR.Maximum = 127
+        Me.Y_BAR.Minimum = -128
+        Me.Y_BAR.Name = "Y_BAR"
+        Me.Y_BAR.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.Y_BAR.Size = New System.Drawing.Size(45, 270)
+        Me.Y_BAR.TabIndex = 38
+        Me.Y_BAR.Visible = False
+        '
+        'X_BAR
+        '
+        Me.X_BAR.Location = New System.Drawing.Point(130, 61)
+        Me.X_BAR.Maximum = 127
+        Me.X_BAR.Minimum = -128
+        Me.X_BAR.Name = "X_BAR"
+        Me.X_BAR.Size = New System.Drawing.Size(256, 45)
+        Me.X_BAR.TabIndex = 39
+        Me.X_BAR.Visible = False
+        '
+        'SX_lb
+        '
+        Me.SX_lb.AutoSize = True
+        Me.SX_lb.Location = New System.Drawing.Point(230, 45)
+        Me.SX_lb.Name = "SX_lb"
+        Me.SX_lb.Size = New System.Drawing.Size(56, 13)
+        Me.SX_lb.TabIndex = 40
+        Me.SX_lb.Text = "Shading X"
+        Me.SX_lb.Visible = False
+        '
+        'SY_lb
+        '
+        Me.SY_lb.AutoSize = True
+        Me.SY_lb.Location = New System.Drawing.Point(68, 93)
+        Me.SY_lb.Name = "SY_lb"
+        Me.SY_lb.Size = New System.Drawing.Size(56, 13)
+        Me.SY_lb.TabIndex = 40
+        Me.SY_lb.Text = "Shading Y"
+        Me.SY_lb.Visible = False
+        '
+        'SZ_lb
+        '
+        Me.SZ_lb.AutoSize = True
+        Me.SZ_lb.Location = New System.Drawing.Point(230, 425)
+        Me.SZ_lb.Name = "SZ_lb"
+        Me.SZ_lb.Size = New System.Drawing.Size(56, 13)
+        Me.SZ_lb.TabIndex = 40
+        Me.SZ_lb.Text = "Shading Z"
+        Me.SZ_lb.Visible = False
+        '
+        'RESTOREBTN
+        '
+        Me.RESTOREBTN.Location = New System.Drawing.Point(392, 74)
+        Me.RESTOREBTN.Name = "RESTOREBTN"
+        Me.RESTOREBTN.Size = New System.Drawing.Size(112, 23)
+        Me.RESTOREBTN.TabIndex = 41
+        Me.RESTOREBTN.Text = "Restore Shading"
+        Me.RESTOREBTN.UseVisualStyleBackColor = True
+        Me.RESTOREBTN.Visible = False
+        '
+        'SHADM_btn
+        '
+        Me.SHADM_btn.Location = New System.Drawing.Point(392, 45)
+        Me.SHADM_btn.Name = "SHADM_btn"
+        Me.SHADM_btn.Size = New System.Drawing.Size(112, 23)
+        Me.SHADM_btn.TabIndex = 41
+        Me.SHADM_btn.Text = "Lighting Mode"
+        Me.SHADM_btn.UseVisualStyleBackColor = True
+        '
         'ColorCodeStudio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(516, 476)
+        Me.ClientSize = New System.Drawing.Size(521, 476)
+        Me.Controls.Add(Me.SZ_lb)
+        Me.Controls.Add(Me.SHADM_btn)
+        Me.Controls.Add(Me.RESTOREBTN)
+        Me.Controls.Add(Me.SY_lb)
+        Me.Controls.Add(Me.SX_lb)
+        Me.Controls.Add(Me.Z_BAR)
+        Me.Controls.Add(Me.Y_BAR)
+        Me.Controls.Add(Me.X_BAR)
         Me.Controls.Add(Me.MarioSprite)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.ExportCCButton)
@@ -334,7 +434,11 @@ Partial Class ColorCodeStudio
         Me.Name = "ColorCodeStudio"
         Me.Text = "Color Code Studio"
         CType(Me.MarioSprite, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Z_BAR, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Y_BAR, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.X_BAR, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -364,4 +468,12 @@ Partial Class ColorCodeStudio
     Friend WithEvents ExportCCButton As Button
     Friend WithEvents Label7 As Label
 	Friend WithEvents MarioSprite As PictureBox
+    Friend WithEvents Z_BAR As TrackBar
+    Friend WithEvents Y_BAR As TrackBar
+    Friend WithEvents X_BAR As TrackBar
+    Friend WithEvents SX_lb As Label
+    Friend WithEvents SY_lb As Label
+    Friend WithEvents SZ_lb As Label
+    Friend WithEvents RESTOREBTN As Button
+    Friend WithEvents SHADM_btn As Button
 End Class

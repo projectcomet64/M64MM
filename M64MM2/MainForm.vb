@@ -618,6 +618,13 @@ Public Class MainForm
             DisableHudCB.Enabled = True
         End If
     End Sub
+
+    Private Sub ResetAnimationSwapsMenuItem_Click(sender As Object, e As EventArgs) Handles ResetAnimationSwapsMenuItem.Click
+    End Sub
+
+    Private Sub ResetAnimationSwapsMenuItem_DoubleClick(sender As Object, e As EventArgs) Handles ResetAnimationSwapsMenuItem.DoubleClick
+
+    End Sub
 End Class
 
 Public Class Animation

@@ -137,7 +137,7 @@
     <value>This program is dedicated to the Super Mario 64 Bloopers/Machinima community, thanks for all the effort you've put into your work, and I hope this tool will help you create awesome videos for years to come!</value>
   </data>
   <data name="AboutText2" xml:space="preserve">
-    <value>Special thanks to Matthew "MATTHEWGU4" Guerra for helping me make this project a reality and for spreading the word, and to GlitchyPSIX for his discovery of the "Soft-Freeze" feature.</value>
+    <value>Special thanks to Matthew "MATTHEWGU4" Guerra for helping me make this project a reality and for spreading the word, and to GlitchyPSIX for his discovery of the "Soft-Freeze" feature, and the shading editor.</value>
   </data>
   <data name="AboutText3" xml:space="preserve">
     <value>Found any bugs, need help, or want to suggest a feature? Email me at:</value>
@@ -221,7 +221,6 @@ To disable precision mode, uncheck Settings -&gt; Precision Mode</value>
   </data>
   <data name="AnimationGroupName" xml:space="preserve">
     <value>Animation Swap Control</value>
-    <comment> </comment>
   </data>
   <data name="AnimationO1" xml:space="preserve">
     <value>Overwrite this animation...</value>
@@ -388,5 +387,25 @@ I have disabled it until I determine how to fix it.</value>
   <data name="UndoAllPrevSwapsTooltip" xml:space="preserve">
     <value>When you select a new animation to be overwritten, the previous one
 will be returned to its default animation.</value>
+  </data>
+  <data name="CCS_ColorMode" xml:space="preserve">
+    <value>CC Mode</value>
+    <comment>when in shading mode</comment>
+  </data>
+  <data name="CCS_RestoreSh" xml:space="preserve">
+    <value>Restore Light</value>
+  </data>
+  <data name="CCS_ShadeX" xml:space="preserve">
+    <value>Light point X</value>
+  </data>
+  <data name="CCS_ShadeY" xml:space="preserve">
+    <value>Light point Y</value>
+  </data>
+  <data name="CCS_ShadeZ" xml:space="preserve">
+    <value>Light point Z</value>
+  </data>
+  <data name="CCS_ShadingMode" xml:space="preserve">
+    <value>Lighting Mode</value>
+    <comment>when in color mode</comment>
   </data>
 </root>

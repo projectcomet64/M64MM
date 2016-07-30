@@ -140,6 +140,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ReadWritingMemory.vb" />
+    <Compile Include="ShadowFunctions.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
