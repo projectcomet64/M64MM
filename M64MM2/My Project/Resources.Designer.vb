@@ -106,7 +106,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Special thanks to Matthew &quot;MATTHEWGU4&quot; Guerra for helping me make this project a reality and for spreading the word, and to GlitchyPSIX for his discovery of the &quot;Soft-Freeze&quot; feature..
+        '''  Looks up a localized string similar to Special thanks to Matthew &quot;MATTHEWGU4&quot; Guerra for helping me make this project a reality and for spreading the word, and to GlitchyPSIX for his discovery of the &quot;Soft-Freeze&quot; feature, and the shading editor..
         '''</summary>
         Friend ReadOnly Property AboutText2() As String
             Get
@@ -219,6 +219,60 @@ Namespace My.Resources
         Friend ReadOnly Property CameraUnlockDesc() As String
             Get
                 Return ResourceManager.GetString("CameraUnlockDesc", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to CC Mode.
+        '''</summary>
+        Friend ReadOnly Property CCS_ColorMode() As String
+            Get
+                Return ResourceManager.GetString("CCS_ColorMode", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Restore Light.
+        '''</summary>
+        Friend ReadOnly Property CCS_RestoreSh() As String
+            Get
+                Return ResourceManager.GetString("CCS_RestoreSh", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Light point X.
+        '''</summary>
+        Friend ReadOnly Property CCS_ShadeX() As String
+            Get
+                Return ResourceManager.GetString("CCS_ShadeX", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Light point Y.
+        '''</summary>
+        Friend ReadOnly Property CCS_ShadeY() As String
+            Get
+                Return ResourceManager.GetString("CCS_ShadeY", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Light point Z.
+        '''</summary>
+        Friend ReadOnly Property CCS_ShadeZ() As String
+            Get
+                Return ResourceManager.GetString("CCS_ShadeZ", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Lighting Mode.
+        '''</summary>
+        Friend ReadOnly Property CCS_ShadingMode() As String
+            Get
+                Return ResourceManager.GetString("CCS_ShadingMode", resourceCulture)
             End Get
         End Property
         

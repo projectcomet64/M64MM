@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class MainForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
@@ -36,6 +36,7 @@ Partial Class MainForm
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RetainAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UndoPreviousAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ResetAnimationSwapsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ForceCameraPresetMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -66,7 +67,6 @@ Partial Class MainForm
         Me.Info = New System.Windows.Forms.ToolTip(Me.components)
         Me.SmallExtra = New System.Windows.Forms.GroupBox()
         Me.DisableHudCB = New System.Windows.Forms.CheckBox()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuStrip1.SuspendLayout()
         Me.NormalCamControls.SuspendLayout()
         Me.AnimSwapControls.SuspendLayout()
@@ -175,6 +175,11 @@ Partial Class MainForm
         Me.UndoPreviousAnimationSwapsMenuItem.ToolTipText = "When you select a new animation to be overwritten, the previous one" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "will be retu" &
     "rned to its default animation."
         '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(344, 6)
+        '
         'ResetAnimationSwapsMenuItem
         '
         Me.ResetAnimationSwapsMenuItem.Enabled = False
@@ -219,13 +224,13 @@ Partial Class MainForm
         'ColorCodeStudioMenuItem
         '
         Me.ColorCodeStudioMenuItem.Name = "ColorCodeStudioMenuItem"
-        Me.ColorCodeStudioMenuItem.Size = New System.Drawing.Size(177, 22)
-        Me.ColorCodeStudioMenuItem.Text = "Color Code Studio"
+        Me.ColorCodeStudioMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.ColorCodeStudioMenuItem.Text = "Color Code/Shading Studio"
         '
         'MemoryIODebugToolStripMenuItem
         '
         Me.MemoryIODebugToolStripMenuItem.Name = "MemoryIODebugToolStripMenuItem"
-        Me.MemoryIODebugToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.MemoryIODebugToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.MemoryIODebugToolStripMenuItem.Text = "Memory I/O Debug"
         '
         'AboutMenu
@@ -460,11 +465,6 @@ Partial Class MainForm
         Me.DisableHudCB.Text = "Disable HUD"
         Me.DisableHudCB.UseVisualStyleBackColor = True
         '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(344, 6)
-        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -533,9 +533,9 @@ Partial Class MainForm
     Friend WithEvents PrecisionCamControls As System.Windows.Forms.GroupBox
     Friend WithEvents PrecisionStatusLabel As System.Windows.Forms.Label
     Friend WithEvents b_PrecisionPlusOne As System.Windows.Forms.Button
-	Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
-	Friend WithEvents ColorCodeStudioMenuItem As ToolStripMenuItem
-	Friend WithEvents MemoryIODebugToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ColorCodeStudioMenuItem As ToolStripMenuItem
+    Friend WithEvents MemoryIODebugToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LevControls As GroupBox
     Friend WithEvents MinLeviHeight As Label
     Friend WithEvents MaxLeviHeight As Label
