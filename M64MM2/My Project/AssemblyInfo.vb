@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Mario 64 Movie Maker 2.0")>
+<Assembly: AssemblyTitle("Mario 64 Movie Maker 2.1")>
 <Assembly: AssemblyDescription("For all you Mario 64 Machinimists!")>
 <Assembly: AssemblyCompany("Swag Industries")>
 <Assembly: AssemblyProduct("M64MM2")>
@@ -32,6 +32,6 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("2.0.3.1")>
-<Assembly: AssemblyFileVersion("2.0.3.1")>
+<Assembly: AssemblyVersion("2.1.0.0")>
+<Assembly: AssemblyFileVersion("2.1.0.0")>
 <Assembly: NeutralResourcesLanguage("en-US")>

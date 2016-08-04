@@ -294,7 +294,7 @@ Public Class MainForm
                             foundButton.Enabled = True
                         End If
                     Next
-                    ColorCodeWindow.RefreshColorCycle()
+                    ColorCodeWindow.RefreshCycles()
                 End If
                 If PrecisionStage = 0 Then
                     PrecisionStatusLabel.Text = My.Resources.PrecisionStatusDisabled
