@@ -204,7 +204,7 @@ Para salir de este modo, desactívalo en Opciones -&gt; Modo Precisión</value>
     <value>Ayuda</value>
   </data>
   <data name="AboutStrip" xml:space="preserve">
-    <value>Acerca de Mario 64 Movie Maker 2.1...</value>
+    <value>Acerca de Mario 64 Movie Maker 2.0...</value>
   </data>
   <data name="AnimationDataNotLoaded" xml:space="preserve">
     <value>¡No se han cargado las animaciones!</value>

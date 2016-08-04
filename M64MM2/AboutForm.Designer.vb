@@ -42,7 +42,7 @@ Partial Class AboutForm
 		Me.Label1.Name = "Label1"
 		Me.Label1.Size = New System.Drawing.Size(484, 26)
 		Me.Label1.TabIndex = 0
-		Me.Label1.Text = "Mario 64 Movie Maker 2.1"
+		Me.Label1.Text = "Mario 64 Movie Maker 2.0.5"
 		Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
 		'
 		'Label2
@@ -138,7 +138,7 @@ Partial Class AboutForm
 		Me.MinimizeBox = false
 		Me.Name = "AboutForm"
 		Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
-		Me.Text = "About Mario 64 Movie Maker 2.1"
+		Me.Text = "About Mario 64 Movie Maker 2.0"
 		CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).EndInit
 		Me.ResumeLayout(false)
 		Me.PerformLayout
