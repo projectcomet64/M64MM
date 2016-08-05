@@ -235,7 +235,7 @@ To disable precision mode, uncheck Settings -&gt; Precision Mode</value>
     <value>Want to set these colors as default?</value>
   </data>
   <data name="CCSDefaults" xml:space="preserve">
-    <value>Defaults</value>
+    <value>Restore Colors</value>
   </data>
   <data name="CCSDMBTitle" xml:space="preserve">
     <value>Set as default?</value>
@@ -393,7 +393,7 @@ will be returned to its default animation.</value>
     <comment>when in shading mode</comment>
   </data>
   <data name="CCS_RestoreSh" xml:space="preserve">
-    <value>Restore Light</value>
+    <value>Restore Lighting</value>
   </data>
   <data name="CCS_ShadeX" xml:space="preserve">
     <value>Light point X</value>
