@@ -232,7 +232,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Restore Light.
+        '''  Looks up a localized string similar to Restore Lighting.
         '''</summary>
         Friend ReadOnly Property CCS_RestoreSh() As String
             Get
@@ -286,7 +286,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Defaults.
+        '''  Looks up a localized string similar to Restore Colors.
         '''</summary>
         Friend ReadOnly Property CCSDefaults() As String
             Get
