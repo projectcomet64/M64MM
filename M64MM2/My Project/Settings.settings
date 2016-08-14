@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="BuildDate" Type="System.DateTime" Scope="Application">
-      <Value Profile="(Default)">05/11/2016 06:22:00</Value>
+      <Value Profile="(Default)">08/13/2016 23:32:00</Value>
     </Setting>
   </Settings>
 </SettingsFile>

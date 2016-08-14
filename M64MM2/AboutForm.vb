@@ -14,6 +14,15 @@
         Label4.Text = My.Resources.AboutText2
         Label5.Text = My.Resources.AboutText3
         Label6.Text = My.Resources.AboutBuildDate + My.Settings.BuildDate.ToShortDateString
+        'EDITOR'S NOTE:
+        'In Settings, change the Build Date to "Today" when you release pl0x
     End Sub
 
+    'NOTE'S NOTE:
+    ' please change the super hidden label 7u7
+    ' idk, i wanna keep it as one of those weird, non visible
+    ' easter eggs
+    ' even though in-code comments exists
+    ' i'm just like that lol
+    ' i doubt it does any significant change in the size of the file or the ram load...
 End Class

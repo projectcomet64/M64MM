@@ -26,7 +26,7 @@ Namespace My.Resources
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
      Global.Microsoft.VisualBasic.HideModuleNameAttribute()>  _
-    Friend Module Resources
+    Public Module Resources
         
         Private resourceMan As Global.System.Resources.ResourceManager
         
@@ -36,7 +36,7 @@ Namespace My.Resources
         '''  Returns the cached ResourceManager instance used by this class.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
+        Public ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
                     Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("M64MM2.Resources", GetType(Resources).Assembly)
@@ -51,7 +51,7 @@ Namespace My.Resources
         '''  resource lookups using this strongly typed resource class.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Friend Property Culture() As Global.System.Globalization.CultureInfo
+        Public Property Culture() As Global.System.Globalization.CultureInfo
             Get
                 Return resourceCulture
             End Get
@@ -63,16 +63,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Build Date: .
         '''</summary>
-        Friend ReadOnly Property AboutBuildDate() As String
+        Public ReadOnly Property AboutBuildDate() As String
             Get
                 Return ResourceManager.GetString("AboutBuildDate", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Created by James &quot;CaptainSwag101&quot; Pelster.
+        '''  Looks up a localized string similar to Created by James &quot;CaptainSwag101&quot; Pelster &amp; GlitchyPSIX.
         '''</summary>
-        Friend ReadOnly Property AboutCreatorDesc() As String
+        Public ReadOnly Property AboutCreatorDesc() As String
             Get
                 Return ResourceManager.GetString("AboutCreatorDesc", resourceCulture)
             End Get
@@ -81,16 +81,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Help.
         '''</summary>
-        Friend ReadOnly Property AboutMenu() As String
+        Public ReadOnly Property AboutMenu() As String
             Get
                 Return ResourceManager.GetString("AboutMenu", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to About Mario 64 Movie Maker 2.0....
+        '''  Looks up a localized string similar to About Mario 64 Movie Maker 2.0.5....
         '''</summary>
-        Friend ReadOnly Property AboutStrip() As String
+        Public ReadOnly Property AboutStrip() As String
             Get
                 Return ResourceManager.GetString("AboutStrip", resourceCulture)
             End Get
@@ -99,16 +99,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to This program is dedicated to the Super Mario 64 Bloopers/Machinima community, thanks for all the effort you&apos;ve put into your work, and I hope this tool will help you create awesome videos for years to come!.
         '''</summary>
-        Friend ReadOnly Property AboutText1() As String
+        Public ReadOnly Property AboutText1() As String
             Get
                 Return ResourceManager.GetString("AboutText1", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Special thanks to Matthew &quot;MATTHEWGU4&quot; Guerra for helping me make this project a reality and for spreading the word, and to GlitchyPSIX for his discovery of the &quot;Soft-Freeze&quot; feature, and the shading editor..
+        '''  Looks up a localized string similar to Special thanks to Matthew &quot;MATTHEWGU4&quot; Guerra for helping me make this project a reality and for spreading the word, and to GlitchyPSIX for his attributions to the program..
         '''</summary>
-        Friend ReadOnly Property AboutText2() As String
+        Public ReadOnly Property AboutText2() As String
             Get
                 Return ResourceManager.GetString("AboutText2", resourceCulture)
             End Get
@@ -117,7 +117,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Found any bugs, need help, or want to suggest a feature? Email me at:.
         '''</summary>
-        Friend ReadOnly Property AboutText3() As String
+        Public ReadOnly Property AboutText3() As String
             Get
                 Return ResourceManager.GetString("AboutText3", resourceCulture)
             End Get
@@ -126,7 +126,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Animation data not loaded!.
         '''</summary>
-        Friend ReadOnly Property AnimationDataNotLoaded() As String
+        Public ReadOnly Property AnimationDataNotLoaded() As String
             Get
                 Return ResourceManager.GetString("AnimationDataNotLoaded", resourceCulture)
             End Get
@@ -135,7 +135,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Error reading animation data file:.
         '''</summary>
-        Friend ReadOnly Property AnimationDataReadError() As String
+        Public ReadOnly Property AnimationDataReadError() As String
             Get
                 Return ResourceManager.GetString("AnimationDataReadError", resourceCulture)
             End Get
@@ -144,7 +144,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Animation Swap Control.
         '''</summary>
-        Friend ReadOnly Property AnimationGroupName() As String
+        Public ReadOnly Property AnimationGroupName() As String
             Get
                 Return ResourceManager.GetString("AnimationGroupName", resourceCulture)
             End Get
@@ -153,7 +153,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Overwrite this animation....
         '''</summary>
-        Friend ReadOnly Property AnimationO1() As String
+        Public ReadOnly Property AnimationO1() As String
             Get
                 Return ResourceManager.GetString("AnimationO1", resourceCulture)
             End Get
@@ -162,16 +162,25 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to ...with this one!.
         '''</summary>
-        Friend ReadOnly Property AnimationO2() As String
+        Public ReadOnly Property AnimationO2() As String
             Get
                 Return ResourceManager.GetString("AnimationO2", resourceCulture)
             End Get
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Back.
+        '''</summary>
+        Public ReadOnly Property Back() As String
+            Get
+                Return ResourceManager.GetString("Back", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to The base address is: .
         '''</summary>
-        Friend ReadOnly Property BaseAddressIs() As String
+        Public ReadOnly Property BaseAddressIs() As String
             Get
                 Return ResourceManager.GetString("BaseAddressIs", resourceCulture)
             End Get
@@ -180,7 +189,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Base address not found!.
         '''</summary>
-        Friend ReadOnly Property BaseAddressNotFound() As String
+        Public ReadOnly Property BaseAddressNotFound() As String
             Get
                 Return ResourceManager.GetString("BaseAddressNotFound", resourceCulture)
             End Get
@@ -189,7 +198,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to You are attempting to write to the first four bytes of Super Mario 64&apos;s memory, which contains the value this program uses to find the game&apos;s base address. If you click &quot;&quot;Yes&quot;&quot;, you will need to reset the emulator before this program will be able to find Super Mario 64 again. Are you sure you want to do this?.
         '''</summary>
-        Friend ReadOnly Property BaseAddressOverwriteWarning() As String
+        Public ReadOnly Property BaseAddressOverwriteWarning() As String
             Get
                 Return ResourceManager.GetString("BaseAddressOverwriteWarning", resourceCulture)
             End Get
@@ -198,7 +207,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Normal Camera Controls.
         '''</summary>
-        Friend ReadOnly Property CamControlName() As String
+        Public ReadOnly Property CamControlName() As String
             Get
                 Return ResourceManager.GetString("CamControlName", resourceCulture)
             End Get
@@ -207,7 +216,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Camera position locked. Click the button below to lock camera rotation..
         '''</summary>
-        Friend ReadOnly Property CameraLockDesc() As String
+        Public ReadOnly Property CameraLockDesc() As String
             Get
                 Return ResourceManager.GetString("CameraLockDesc", resourceCulture)
             End Get
@@ -216,7 +225,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Camera rotation unlocked. Click the button below to lock camera rotation..
         '''</summary>
-        Friend ReadOnly Property CameraUnlockDesc() As String
+        Public ReadOnly Property CameraUnlockDesc() As String
             Get
                 Return ResourceManager.GetString("CameraUnlockDesc", resourceCulture)
             End Get
@@ -225,7 +234,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to CC Mode.
         '''</summary>
-        Friend ReadOnly Property CCS_ColorMode() As String
+        Public ReadOnly Property CCS_ColorMode() As String
             Get
                 Return ResourceManager.GetString("CCS_ColorMode", resourceCulture)
             End Get
@@ -234,7 +243,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Restore Lighting.
         '''</summary>
-        Friend ReadOnly Property CCS_RestoreSh() As String
+        Public ReadOnly Property CCS_RestoreSh() As String
             Get
                 Return ResourceManager.GetString("CCS_RestoreSh", resourceCulture)
             End Get
@@ -243,7 +252,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Light point X.
         '''</summary>
-        Friend ReadOnly Property CCS_ShadeX() As String
+        Public ReadOnly Property CCS_ShadeX() As String
             Get
                 Return ResourceManager.GetString("CCS_ShadeX", resourceCulture)
             End Get
@@ -252,7 +261,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Light point Y.
         '''</summary>
-        Friend ReadOnly Property CCS_ShadeY() As String
+        Public ReadOnly Property CCS_ShadeY() As String
             Get
                 Return ResourceManager.GetString("CCS_ShadeY", resourceCulture)
             End Get
@@ -261,7 +270,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Light point Z.
         '''</summary>
-        Friend ReadOnly Property CCS_ShadeZ() As String
+        Public ReadOnly Property CCS_ShadeZ() As String
             Get
                 Return ResourceManager.GetString("CCS_ShadeZ", resourceCulture)
             End Get
@@ -270,7 +279,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Lighting Mode.
         '''</summary>
-        Friend ReadOnly Property CCS_ShadingMode() As String
+        Public ReadOnly Property CCS_ShadingMode() As String
             Get
                 Return ResourceManager.GetString("CCS_ShadingMode", resourceCulture)
             End Get
@@ -279,7 +288,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Want to set these colors as default?.
         '''</summary>
-        Friend ReadOnly Property CCSDefaultMB() As String
+        Public ReadOnly Property CCSDefaultMB() As String
             Get
                 Return ResourceManager.GetString("CCSDefaultMB", resourceCulture)
             End Get
@@ -288,7 +297,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Restore Colors.
         '''</summary>
-        Friend ReadOnly Property CCSDefaults() As String
+        Public ReadOnly Property CCSDefaults() As String
             Get
                 Return ResourceManager.GetString("CCSDefaults", resourceCulture)
             End Get
@@ -297,7 +306,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Set as default?.
         '''</summary>
-        Friend ReadOnly Property CCSDMBTitle() As String
+        Public ReadOnly Property CCSDMBTitle() As String
             Get
                 Return ResourceManager.GetString("CCSDMBTitle", resourceCulture)
             End Get
@@ -306,7 +315,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Close.
         '''</summary>
-        Friend ReadOnly Property CCSEXbtn() As String
+        Public ReadOnly Property CCSEXbtn() As String
             Get
                 Return ResourceManager.GetString("CCSEXbtn", resourceCulture)
             End Get
@@ -315,7 +324,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Cancel.
         '''</summary>
-        Friend ReadOnly Property CCSEXCancel() As String
+        Public ReadOnly Property CCSEXCancel() As String
             Get
                 Return ResourceManager.GetString("CCSEXCancel", resourceCulture)
             End Get
@@ -324,7 +333,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Here&apos;s that color code you asked for!.
         '''</summary>
-        Friend ReadOnly Property CCSEXLabel() As String
+        Public ReadOnly Property CCSEXLabel() As String
             Get
                 Return ResourceManager.GetString("CCSEXLabel", resourceCulture)
             End Get
@@ -333,7 +342,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Export color code....
         '''</summary>
-        Friend ReadOnly Property CCSExport() As String
+        Public ReadOnly Property CCSExport() As String
             Get
                 Return ResourceManager.GetString("CCSExport", resourceCulture)
             End Get
@@ -342,7 +351,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Color Code Studio.
         '''</summary>
-        Friend ReadOnly Property CCSFormTitle() As String
+        Public ReadOnly Property CCSFormTitle() As String
             Get
                 Return ResourceManager.GetString("CCSFormTitle", resourceCulture)
             End Get
@@ -351,7 +360,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Gloves.
         '''</summary>
-        Friend ReadOnly Property CCSGloves() As String
+        Public ReadOnly Property CCSGloves() As String
             Get
                 Return ResourceManager.GetString("CCSGloves", resourceCulture)
             End Get
@@ -360,7 +369,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Hair.
         '''</summary>
-        Friend ReadOnly Property CCSHair() As String
+        Public ReadOnly Property CCSHair() As String
             Get
                 Return ResourceManager.GetString("CCSHair", resourceCulture)
             End Get
@@ -369,7 +378,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Hat/Shirt.
         '''</summary>
-        Friend ReadOnly Property CCSHat() As String
+        Public ReadOnly Property CCSHat() As String
             Get
                 Return ResourceManager.GetString("CCSHat", resourceCulture)
             End Get
@@ -378,7 +387,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Paste your color code into the textbox below, then click &quot;OK&quot;..
         '''</summary>
-        Friend ReadOnly Property CCSIMLabel() As String
+        Public ReadOnly Property CCSIMLabel() As String
             Get
                 Return ResourceManager.GetString("CCSIMLabel", resourceCulture)
             End Get
@@ -387,7 +396,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Import color code....
         '''</summary>
-        Friend ReadOnly Property CCSImport() As String
+        Public ReadOnly Property CCSImport() As String
             Get
                 Return ResourceManager.GetString("CCSImport", resourceCulture)
             End Get
@@ -396,7 +405,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to An error occurred while trying to import the color code. Make sure you entered a valid code!.
         '''</summary>
-        Friend ReadOnly Property CCSImportError() As String
+        Public ReadOnly Property CCSImportError() As String
             Get
                 Return ResourceManager.GetString("CCSImportError", resourceCulture)
             End Get
@@ -405,7 +414,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Load from game.
         '''</summary>
-        Friend ReadOnly Property CCSLoad() As String
+        Public ReadOnly Property CCSLoad() As String
             Get
                 Return ResourceManager.GetString("CCSLoad", resourceCulture)
             End Get
@@ -414,7 +423,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Overalls.
         '''</summary>
-        Friend ReadOnly Property CCSOveralls() As String
+        Public ReadOnly Property CCSOveralls() As String
             Get
                 Return ResourceManager.GetString("CCSOveralls", resourceCulture)
             End Get
@@ -423,7 +432,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Shoes.
         '''</summary>
-        Friend ReadOnly Property CCSShoes() As String
+        Public ReadOnly Property CCSShoes() As String
             Get
                 Return ResourceManager.GetString("CCSShoes", resourceCulture)
             End Get
@@ -432,7 +441,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Skin.
         '''</summary>
-        Friend ReadOnly Property CCSSkin() As String
+        Public ReadOnly Property CCSSkin() As String
             Get
                 Return ResourceManager.GetString("CCSSkin", resourceCulture)
             End Get
@@ -441,7 +450,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to IMPORTANT: Make sure to uncheck any color codes currently enabled in Project64. Otherwise, they will prevent this program from modifying Mario&apos;s colors..
         '''</summary>
-        Friend ReadOnly Property CCWarning() As String
+        Public ReadOnly Property CCWarning() As String
             Get
                 Return ResourceManager.GetString("CCWarning", resourceCulture)
             End Get
@@ -450,7 +459,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Change Camera Type.
         '''</summary>
-        Friend ReadOnly Property ChangeCameraType() As String
+        Public ReadOnly Property ChangeCameraType() As String
             Get
                 Return ResourceManager.GetString("ChangeCameraType", resourceCulture)
             End Get
@@ -459,7 +468,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Force Camera to be movable with C-Buttons.
         '''</summary>
-        Friend ReadOnly Property ForceCameraC() As String
+        Public ReadOnly Property ForceCameraC() As String
             Get
                 Return ResourceManager.GetString("ForceCameraC", resourceCulture)
             End Get
@@ -473,7 +482,7 @@ Namespace My.Resources
         '''does not always work in all areas of the castle, as sometimes
         '''camera behaviors are hardcoded into specific parts of levels..
         '''</summary>
-        Friend ReadOnly Property ForceCameraCTooltip() As String
+        Public ReadOnly Property ForceCameraCTooltip() As String
             Get
                 Return ResourceManager.GetString("ForceCameraCTooltip", resourceCulture)
             End Get
@@ -482,34 +491,61 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Freeze Camera.
         '''</summary>
-        Friend ReadOnly Property FreezeCamera() As String
+        Public ReadOnly Property FreezeCamera() As String
             Get
                 Return ResourceManager.GetString("FreezeCamera", resourceCulture)
             End Get
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Front.
+        '''</summary>
+        Public ReadOnly Property Front() As String
+            Get
+                Return ResourceManager.GetString("Front", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Go to new area.
         '''</summary>
-        Friend ReadOnly Property GotoNewArea() As String
+        Public ReadOnly Property GotoNewArea() As String
             Get
                 Return ResourceManager.GetString("GotoNewArea", resourceCulture)
             End Get
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Heal Mario (nonfunctional).
+        '''</summary>
+        Public ReadOnly Property Heal_Extra() As String
+            Get
+                Return ResourceManager.GetString("Heal_Extra", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Help....
         '''</summary>
-        Friend ReadOnly Property HelpStrip() As String
+        Public ReadOnly Property HelpStrip() As String
             Get
                 Return ResourceManager.GetString("HelpStrip", resourceCulture)
             End Get
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Higher.
+        '''</summary>
+        Public ReadOnly Property Higher() As String
+            Get
+                Return ResourceManager.GetString("Higher", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Hover Control.
         '''</summary>
-        Friend ReadOnly Property HoverControlName() As String
+        Public ReadOnly Property HoverControlName() As String
             Get
                 Return ResourceManager.GetString("HoverControlName", resourceCulture)
             End Get
@@ -518,7 +554,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to 5 (Highest).
         '''</summary>
-        Friend ReadOnly Property HoverMax() As String
+        Public ReadOnly Property HoverMax() As String
             Get
                 Return ResourceManager.GetString("HoverMax", resourceCulture)
             End Get
@@ -527,7 +563,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to 0 (None).
         '''</summary>
-        Friend ReadOnly Property HoverMin() As String
+        Public ReadOnly Property HoverMin() As String
             Get
                 Return ResourceManager.GetString("HoverMin", resourceCulture)
             End Get
@@ -536,7 +572,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Reminder: Some animations won&apos;t be affected by this. Recommended value is 1..
         '''</summary>
-        Friend ReadOnly Property HoverToolTip() As String
+        Public ReadOnly Property HoverToolTip() As String
             Get
                 Return ResourceManager.GetString("HoverToolTip", resourceCulture)
             End Get
@@ -545,7 +581,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to The value you have entered is not a valid Hexadecimal address..
         '''</summary>
-        Friend ReadOnly Property InvalidHexAddress() As String
+        Public ReadOnly Property InvalidHexAddress() As String
             Get
                 Return ResourceManager.GetString("InvalidHexAddress", resourceCulture)
             End Get
@@ -554,7 +590,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to The number you have entered is not a valid Hexadecimal value..
         '''</summary>
-        Friend ReadOnly Property InvalidHexValue() As String
+        Public ReadOnly Property InvalidHexValue() As String
             Get
                 Return ResourceManager.GetString("InvalidHexValue", resourceCulture)
             End Get
@@ -563,7 +599,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Address:.
         '''</summary>
-        Friend ReadOnly Property IOAddr() As String
+        Public ReadOnly Property IOAddr() As String
             Get
                 Return ResourceManager.GetString("IOAddr", resourceCulture)
             End Get
@@ -572,7 +608,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to I know what I&apos;m doing..
         '''</summary>
-        Friend ReadOnly Property IOBadass() As String
+        Public ReadOnly Property IOBadass() As String
             Get
                 Return ResourceManager.GetString("IOBadass", resourceCulture)
             End Get
@@ -581,7 +617,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Memory I/O Editor.
         '''</summary>
-        Friend ReadOnly Property IOFormTitle() As String
+        Public ReadOnly Property IOFormTitle() As String
             Get
                 Return ResourceManager.GetString("IOFormTitle", resourceCulture)
             End Get
@@ -590,7 +626,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Memory Controls.
         '''</summary>
-        Friend ReadOnly Property IOGroupName() As String
+        Public ReadOnly Property IOGroupName() As String
             Get
                 Return ResourceManager.GetString("IOGroupName", resourceCulture)
             End Get
@@ -599,7 +635,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Read.
         '''</summary>
-        Friend ReadOnly Property IORead() As String
+        Public ReadOnly Property IORead() As String
             Get
                 Return ResourceManager.GetString("IORead", resourceCulture)
             End Get
@@ -608,7 +644,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Value:.
         '''</summary>
-        Friend ReadOnly Property IOValue() As String
+        Public ReadOnly Property IOValue() As String
             Get
                 Return ResourceManager.GetString("IOValue", resourceCulture)
             End Get
@@ -617,16 +653,34 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Write.
         '''</summary>
-        Friend ReadOnly Property IOWrite() As String
+        Public ReadOnly Property IOWrite() As String
             Get
                 Return ResourceManager.GetString("IOWrite", resourceCulture)
             End Get
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Left.
+        '''</summary>
+        Public ReadOnly Property Left() As String
+            Get
+                Return ResourceManager.GetString("Left", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Lower.
+        '''</summary>
+        Public ReadOnly Property Lower() As String
+            Get
+                Return ResourceManager.GetString("Lower", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property M64MM2_CC_Mario_big() As System.Drawing.Bitmap
+        Public ReadOnly Property M64MM2_CC_Mario_big() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("M64MM2_CC_Mario_big", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
@@ -636,7 +690,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property M64MM2_Icon() As System.Drawing.Bitmap
+        Public ReadOnly Property M64MM2_Icon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("M64MM2_Icon", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
@@ -646,7 +700,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to This window is for testing reading from/writing to SM64&apos;s memory (RAM). You should only use this if you know what you&apos;re doing. The developers accept no responsibility for lost save data, program crashes, or system crashes..
         '''</summary>
-        Friend ReadOnly Property MemDebugWarning() As String
+        Public ReadOnly Property MemDebugWarning() As String
             Get
                 Return ResourceManager.GetString("MemDebugWarning", resourceCulture)
             End Get
@@ -655,7 +709,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to You cannot turn on the Precision Mode because Project64 isn&apos;t open..
         '''</summary>
-        Friend ReadOnly Property NoPJPrecisionError() As String
+        Public ReadOnly Property NoPJPrecisionError() As String
             Get
                 Return ResourceManager.GetString("NoPJPrecisionError", resourceCulture)
             End Get
@@ -664,7 +718,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Project64 isn&apos;t open!.
         '''</summary>
-        Friend ReadOnly Property PJNotOpen() As String
+        Public ReadOnly Property PJNotOpen() As String
             Get
                 Return ResourceManager.GetString("PJNotOpen", resourceCulture)
             End Get
@@ -673,7 +727,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Precision Mode is off..
         '''</summary>
-        Friend ReadOnly Property PrecisionButtonDisabled() As String
+        Public ReadOnly Property PrecisionButtonDisabled() As String
             Get
                 Return ResourceManager.GetString("PrecisionButtonDisabled", resourceCulture)
             End Get
@@ -682,7 +736,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Lock Camera Rotation.
         '''</summary>
-        Friend ReadOnly Property PrecisionButtonLock() As String
+        Public ReadOnly Property PrecisionButtonLock() As String
             Get
                 Return ResourceManager.GetString("PrecisionButtonLock", resourceCulture)
             End Get
@@ -691,7 +745,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Unlock Camera Rotation.
         '''</summary>
-        Friend ReadOnly Property PrecisionButtonUnlock() As String
+        Public ReadOnly Property PrecisionButtonUnlock() As String
             Get
                 Return ResourceManager.GetString("PrecisionButtonUnlock", resourceCulture)
             End Get
@@ -700,7 +754,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Precision Camera Control.
         '''</summary>
-        Friend ReadOnly Property PrecisionGroupName() As String
+        Public ReadOnly Property PrecisionGroupName() As String
             Get
                 Return ResourceManager.GetString("PrecisionGroupName", resourceCulture)
             End Get
@@ -709,7 +763,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Precision Camera Control.
         '''</summary>
-        Friend ReadOnly Property PrecisionModeBoxName() As String
+        Public ReadOnly Property PrecisionModeBoxName() As String
             Get
                 Return ResourceManager.GetString("PrecisionModeBoxName", resourceCulture)
             End Get
@@ -718,7 +772,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Precision Mode.
         '''</summary>
-        Friend ReadOnly Property PrecisionModeStrip() As String
+        Public ReadOnly Property PrecisionModeStrip() As String
             Get
                 Return ResourceManager.GetString("PrecisionModeStrip", resourceCulture)
             End Get
@@ -729,7 +783,7 @@ Namespace My.Resources
         '''control the angle of the camera from Mario&apos;s first-person
         '''view and lock it wherever you want, and then readjust the camera at will..
         '''</summary>
-        Friend ReadOnly Property PrecisionModeTooltip() As String
+        Public ReadOnly Property PrecisionModeTooltip() As String
             Get
                 Return ResourceManager.GetString("PrecisionModeTooltip", resourceCulture)
             End Get
@@ -739,7 +793,7 @@ Namespace My.Resources
         '''  Looks up a localized string similar to Precision Mode is disabled.
         '''Enable it in Settings -&gt; Precision Mode.
         '''</summary>
-        Friend ReadOnly Property PrecisionStatusDisabled() As String
+        Public ReadOnly Property PrecisionStatusDisabled() As String
             Get
                 Return ResourceManager.GetString("PrecisionStatusDisabled", resourceCulture)
             End Get
@@ -749,7 +803,7 @@ Namespace My.Resources
         '''  Looks up a localized string similar to Camera locked. Press the button below to re-adjust camera angle.
         '''To disable precision mode, uncheck Settings -&gt; Precision Mode.
         '''</summary>
-        Friend ReadOnly Property PrecisionStatusFinish() As String
+        Public ReadOnly Property PrecisionStatusFinish() As String
             Get
                 Return ResourceManager.GetString("PrecisionStatusFinish", resourceCulture)
             End Get
@@ -758,16 +812,43 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Precision mode is disabled. Reason: Project64 isn&apos;t open..
         '''</summary>
-        Friend ReadOnly Property PrecisionStatusNoEmu() As String
+        Public ReadOnly Property PrecisionStatusNoEmu() As String
             Get
                 Return ResourceManager.GetString("PrecisionStatusNoEmu", resourceCulture)
             End Get
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Randomizer: X.
+        '''</summary>
+        Public ReadOnly Property RandomX() As String
+            Get
+                Return ResourceManager.GetString("RandomX", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Randomizer: Y.
+        '''</summary>
+        Public ReadOnly Property RandomY() As String
+            Get
+                Return ResourceManager.GetString("RandomY", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Randomizer: Z.
+        '''</summary>
+        Public ReadOnly Property RandomZ() As String
+            Get
+                Return ResourceManager.GetString("RandomZ", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Remember previous animation swaps.
         '''</summary>
-        Friend ReadOnly Property RememberPrevSwaps() As String
+        Public ReadOnly Property RememberPrevSwaps() As String
             Get
                 Return ResourceManager.GetString("RememberPrevSwaps", resourceCulture)
             End Get
@@ -777,7 +858,7 @@ Namespace My.Resources
         '''  Looks up a localized string similar to When you select a new animation to be overwritten, any previous animations
         '''will remain swapped until you manually change or reset them..
         '''</summary>
-        Friend ReadOnly Property RememberPrevSwapsTooltip() As String
+        Public ReadOnly Property RememberPrevSwapsTooltip() As String
             Get
                 Return ResourceManager.GetString("RememberPrevSwapsTooltip", resourceCulture)
             End Get
@@ -786,7 +867,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Reset all animations to default (Malfunctioning).
         '''</summary>
-        Friend ReadOnly Property ResetAllSwaps() As String
+        Public ReadOnly Property ResetAllSwaps() As String
             Get
                 Return ResourceManager.GetString("ResetAllSwaps", resourceCulture)
             End Get
@@ -797,16 +878,25 @@ Namespace My.Resources
         '''However, it currently does not work as intended, so
         '''I have disabled it until I determine how to fix it..
         '''</summary>
-        Friend ReadOnly Property ResetAllSwapsTooltip() As String
+        Public ReadOnly Property ResetAllSwapsTooltip() As String
             Get
                 Return ResourceManager.GetString("ResetAllSwapsTooltip", resourceCulture)
             End Get
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Right.
+        '''</summary>
+        Public ReadOnly Property Right() As String
+            Get
+                Return ResourceManager.GetString("Right", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Scanning for base address....
         '''</summary>
-        Friend ReadOnly Property SearchingForBaseAddress() As String
+        Public ReadOnly Property SearchingForBaseAddress() As String
             Get
                 Return ResourceManager.GetString("SearchingForBaseAddress", resourceCulture)
             End Get
@@ -815,7 +905,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Settings.
         '''</summary>
-        Friend ReadOnly Property SettingsMenu() As String
+        Public ReadOnly Property SettingsMenu() As String
             Get
                 Return ResourceManager.GetString("SettingsMenu", resourceCulture)
             End Get
@@ -824,7 +914,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Small Extras.
         '''</summary>
-        Friend ReadOnly Property SmolExtrasName() As String
+        Public ReadOnly Property SmolExtrasName() As String
             Get
                 Return ResourceManager.GetString("SmolExtrasName", resourceCulture)
             End Get
@@ -833,7 +923,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Remove HUD.
         '''</summary>
-        Friend ReadOnly Property SmolExtrasNOHUD() As String
+        Public ReadOnly Property SmolExtrasNOHUD() As String
             Get
                 Return ResourceManager.GetString("SmolExtrasNOHUD", resourceCulture)
             End Get
@@ -842,7 +932,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Soft-Freeze Camera.
         '''</summary>
-        Friend ReadOnly Property SoftFreezeCamera() As String
+        Public ReadOnly Property SoftFreezeCamera() As String
             Get
                 Return ResourceManager.GetString("SoftFreezeCamera", resourceCulture)
             End Get
@@ -851,7 +941,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Soft-Unfreeze Camera.
         '''</summary>
-        Friend ReadOnly Property SoftUnfreezeCamera() As String
+        Public ReadOnly Property SoftUnfreezeCamera() As String
             Get
                 Return ResourceManager.GetString("SoftUnfreezeCamera", resourceCulture)
             End Get
@@ -860,7 +950,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Tools.
         '''</summary>
-        Friend ReadOnly Property ToolsMenu() As String
+        Public ReadOnly Property ToolsMenu() As String
             Get
                 Return ResourceManager.GetString("ToolsMenu", resourceCulture)
             End Get
@@ -869,7 +959,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Undo previous animation swaps.
         '''</summary>
-        Friend ReadOnly Property UndoAllPrevSwaps() As String
+        Public ReadOnly Property UndoAllPrevSwaps() As String
             Get
                 Return ResourceManager.GetString("UndoAllPrevSwaps", resourceCulture)
             End Get
@@ -879,7 +969,7 @@ Namespace My.Resources
         '''  Looks up a localized string similar to When you select a new animation to be overwritten, the previous one
         '''will be returned to its default animation..
         '''</summary>
-        Friend ReadOnly Property UndoAllPrevSwapsTooltip() As String
+        Public ReadOnly Property UndoAllPrevSwapsTooltip() As String
             Get
                 Return ResourceManager.GetString("UndoAllPrevSwapsTooltip", resourceCulture)
             End Get
@@ -888,7 +978,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Unfreeze Camera.
         '''</summary>
-        Friend ReadOnly Property UnfreezeCamera() As String
+        Public ReadOnly Property UnfreezeCamera() As String
             Get
                 Return ResourceManager.GetString("UnfreezeCamera", resourceCulture)
             End Get

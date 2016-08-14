@@ -131,13 +131,13 @@
     <value>This window is for testing reading from/writing to SM64's memory (RAM). You should only use this if you know what you're doing. The developers accept no responsibility for lost save data, program crashes, or system crashes.</value>
   </data>
   <data name="AboutCreatorDesc" xml:space="preserve">
-    <value>Created by James "CaptainSwag101" Pelster</value>
+    <value>Created by James "CaptainSwag101" Pelster &amp; GlitchyPSIX</value>
   </data>
   <data name="AboutText1" xml:space="preserve">
     <value>This program is dedicated to the Super Mario 64 Bloopers/Machinima community, thanks for all the effort you've put into your work, and I hope this tool will help you create awesome videos for years to come!</value>
   </data>
   <data name="AboutText2" xml:space="preserve">
-    <value>Special thanks to Matthew "MATTHEWGU4" Guerra for helping me make this project a reality and for spreading the word, and to GlitchyPSIX for his discovery of the "Soft-Freeze" feature, and the shading editor.</value>
+    <value>Special thanks to Matthew "MATTHEWGU4" Guerra for helping me make this project a reality and for spreading the word, and to GlitchyPSIX for his attributions to the program.</value>
   </data>
   <data name="AboutText3" xml:space="preserve">
     <value>Found any bugs, need help, or want to suggest a feature? Email me at:</value>
@@ -211,7 +211,7 @@ To disable precision mode, uncheck Settings -&gt; Precision Mode</value>
     <value>Help</value>
   </data>
   <data name="AboutStrip" xml:space="preserve">
-    <value>About Mario 64 Movie Maker 2.0...</value>
+    <value>About Mario 64 Movie Maker 2.0.5...</value>
   </data>
   <data name="AnimationDataNotLoaded" xml:space="preserve">
     <value>Animation data not loaded!</value>
@@ -407,5 +407,44 @@ will be returned to its default animation.</value>
   <data name="CCS_ShadingMode" xml:space="preserve">
     <value>Lighting Mode</value>
     <comment>when in color mode</comment>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Front" xml:space="preserve">
+    <value>Front</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Heal_Extra" xml:space="preserve">
+    <value>Heal Mario (nonfunctional)</value>
+  </data>
+  <data name="Higher" xml:space="preserve">
+    <value>Higher</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Left</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Lower" xml:space="preserve">
+    <value>Lower</value>
+    <comment>shading</comment>
+  </data>
+  <data name="RandomX" xml:space="preserve">
+    <value>Randomizer: X</value>
+    <comment>shading</comment>
+  </data>
+  <data name="RandomY" xml:space="preserve">
+    <value>Randomizer: Y</value>
+    <comment>shading</comment>
+  </data>
+  <data name="RandomZ" xml:space="preserve">
+    <value>Randomizer: Z</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Right</value>
+    <comment>shading</comment>
   </data>
 </root>
