@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutCreatorDesc" xml:space="preserve">
-    <value>Creado por James "CaptainSwag101" Pelster.</value>
+    <value>Creado por James "CaptainSwag101" Pelster y GlitchyPSI.</value>
   </data>
   <data name="AboutText1" xml:space="preserve">
     <value>Este programa está dedicado a la comunidad de Machinima de SM64, gracias por todo el esfuerzo que has puesto en tu trabajo, y espero que esta herramienta te ayude a crear vídeos geniales por los próximos años!</value>
   </data>
   <data name="AboutText2" xml:space="preserve">
-    <value>Gracias especiales a Matthew "MATTHEWGU4" Guerra por ayudar a que este proyecto se haya hecho realidad, y a difundirlo, y a José "GlitchyPSIX" Félix por el descubrimiento de el "fijado de cámara suave", y la traducción al español.</value>
+    <value>Gracias especiales a Matthew "MATTHEWGU4" Guerra por ayudar a que este proyecto se haya hecho realidad, y a difundirlo, y a GlitchyPSIX por sus aportaciones al programa.</value>
   </data>
   <data name="AboutText3" xml:space="preserve">
     <value>¿Hallaste errores, o quieres proponer una mejora? Mándame un correo (Inglés) a:</value>
@@ -198,13 +198,13 @@ Para salir de este modo, desactívalo en Opciones -&gt; Modo Precisión</value>
     <value>Liberar cámara (suave)</value>
   </data>
   <data name="AboutBuildDate" xml:space="preserve">
-    <value>Fecha de publicación: </value>
+    <value>Fecha de compilación: </value>
   </data>
   <data name="AboutMenu" xml:space="preserve">
     <value>Ayuda</value>
   </data>
   <data name="AboutStrip" xml:space="preserve">
-    <value>Acerca de Mario 64 Movie Maker 2.0...</value>
+    <value>Acerca de Mario 64 Movie Maker 2.0.5...</value>
   </data>
   <data name="AnimationDataNotLoaded" xml:space="preserve">
     <value>¡No se han cargado las animaciones!</value>
@@ -392,5 +392,44 @@ que pueda repararlo.</value>
   <data name="CCS_ShadingMode" xml:space="preserve">
     <value>Modo Iluminación</value>
     <comment>when in color mode</comment>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Detrás</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Front" xml:space="preserve">
+    <value>Frente</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Higher" xml:space="preserve">
+    <value>Arriba</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Izq.</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Lower" xml:space="preserve">
+    <value>Abajo</value>
+    <comment>shading</comment>
+  </data>
+  <data name="RandomX" xml:space="preserve">
+    <value>Aleatorizador: X</value>
+    <comment>shading</comment>
+  </data>
+  <data name="RandomY" xml:space="preserve">
+    <value>Aleatorizador: Y</value>
+    <comment>shading</comment>
+  </data>
+  <data name="RandomZ" xml:space="preserve">
+    <value>Aleatorizador: Z</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Der.</value>
+    <comment>shading</comment>
+  </data>
+  <data name="Heal_Extra" xml:space="preserve">
+    <value>Sanar a Mario</value>
   </data>
 </root>
