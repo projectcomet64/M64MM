@@ -1,0 +1,38 @@
+the absolute madman -glitchypsix
+
+OVERALLS SHADING: 07EC30
+[aa][bb][cc][00]
+aa = X
+bb = Y
+cc = Z
+
+CAP SHADING: 07EC48
+[aa][bb][cc][00]
+aa = X
+bb = Y
+cc = Z
+
+GLOVES SHADING: 07EC60
+[aa][bb][cc][00]
+aa = X
+bb = Y
+cc = Z
+
+SHOES SHADING: 07EC78
+[aa][bb][cc][00]
+aa = X
+bb = Y
+cc = Z
+
+FACE SHADING: 07EC90
+[aa][bb][cc][00]
+aa = X
+bb = Y
+cc = Z
+
+HAIR SHADING: 07ECA8
+[aa][bb][cc][00]
+aa = X
+bb = Y
+cc = Z
+
