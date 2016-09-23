@@ -214,7 +214,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Camera position locked. Click the button below to lock camera rotation..
+        '''  Looks up a localized string similar to Camera position locked. Click the button below or use CTRL+SHIFT+P to lock the camera rotation..
         '''</summary>
         Public ReadOnly Property CameraLockDesc() As String
             Get
@@ -223,7 +223,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Camera rotation unlocked. Click the button below to lock camera rotation..
+        '''  Looks up a localized string similar to Camera rotation unlocked. Click the button below or use CTRL+SHIFT+P to lock camera rotation..
         '''</summary>
         Public ReadOnly Property CameraUnlockDesc() As String
             Get
@@ -791,7 +791,7 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to Precision Mode is disabled.
-        '''Enable it in Settings -&gt; Precision Mode.
+        '''Enable it in Settings -&gt; Precision Mode or use CTRL+P.
         '''</summary>
         Public ReadOnly Property PrecisionStatusDisabled() As String
             Get
@@ -800,8 +800,8 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Camera locked. Press the button below to re-adjust camera angle.
-        '''To disable precision mode, uncheck Settings -&gt; Precision Mode.
+        '''  Looks up a localized string similar to Camera locked. Press the button below or use CTRL+SHIFT+P to re-adjust camera angle.
+        '''To disable precision mode, uncheck Settings -&gt; Precision Mode or use CTRL+P.
         '''</summary>
         Public ReadOnly Property PrecisionStatusFinish() As String
             Get

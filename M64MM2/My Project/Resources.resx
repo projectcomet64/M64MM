@@ -152,10 +152,10 @@
     <value>You are attempting to write to the first four bytes of Super Mario 64's memory, which contains the value this program uses to find the game's base address. If you click ""Yes"", you will need to reset the emulator before this program will be able to find Super Mario 64 again. Are you sure you want to do this?</value>
   </data>
   <data name="CameraLockDesc" xml:space="preserve">
-    <value>Camera position locked. Click the button below to lock camera rotation.</value>
+    <value>Camera position locked. Click the button below or use CTRL+SHIFT+P to lock the camera rotation.</value>
   </data>
   <data name="CameraUnlockDesc" xml:space="preserve">
-    <value>Camera rotation unlocked. Click the button below to lock camera rotation.</value>
+    <value>Camera rotation unlocked. Click the button below or use CTRL+SHIFT+P to lock camera rotation.</value>
   </data>
   <data name="ChangeCameraType" xml:space="preserve">
     <value>Change Camera Type</value>
@@ -189,11 +189,11 @@
   </data>
   <data name="PrecisionStatusDisabled" xml:space="preserve">
     <value>Precision Mode is disabled.
-Enable it in Settings -&gt; Precision Mode</value>
+Enable it in Settings -&gt; Precision Mode or use CTRL+P</value>
   </data>
   <data name="PrecisionStatusFinish" xml:space="preserve">
-    <value>Camera locked. Press the button below to re-adjust camera angle.
-To disable precision mode, uncheck Settings -&gt; Precision Mode</value>
+    <value>Camera locked. Press the button below or use CTRL+SHIFT+P to re-adjust camera angle.
+To disable precision mode, uncheck Settings -&gt; Precision Mode or use CTRL+P</value>
   </data>
   <data name="PrecisionStatusNoEmu" xml:space="preserve">
     <value>Precision mode is disabled. Reason: Project64 isn't open.</value>
