@@ -120,11 +120,6 @@
   <data name="Label3.Text" xml:space="preserve">
     <value>This program is dedicated to the Super Mario 64 Bloopers/Machinima community, thanks for all the effort you've put into your work, and I hope this tool will help you create awesome videos for years to come!</value>
   </data>
-  <data name="Label7.Text" xml:space="preserve">
-    <value>you must be very good to run the program and be able to see this.
-devnote: this info is changed via the resources only. check the code.
-inb4 tcrf knows about this and pastes it on their site lololololo  --glitchy</value>
-  </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

@@ -88,7 +88,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to About Mario 64 Movie Maker 2.0.5....
+        '''  Looks up a localized string similar to About Mario 64 Movie Maker 2.0.5.1....
         '''</summary>
         Public ReadOnly Property AboutStrip() As String
             Get
