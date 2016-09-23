@@ -127,7 +127,7 @@
     <value>Gracias especiales a Matthew "MATTHEWGU4" Guerra por ayudar a que este proyecto se haya hecho realidad, y a difundirlo, y a GlitchyPSIX por sus aportaciones al programa.</value>
   </data>
   <data name="AboutText3" xml:space="preserve">
-    <value>¿Hallaste errores, o quieres proponer una mejora? Mándame un correo (Inglés) a:</value>
+    <value>¿Halló errores, o quiere proponer una mejora? Mándeme un correo (En inglés, por favor.) a:</value>
   </data>
   <data name="BaseAddressIs" xml:space="preserve">
     <value>Dirección base: </value>
@@ -136,16 +136,16 @@
     <value>No se pudo hallar la dirección base!</value>
   </data>
   <data name="BaseAddressOverwriteWarning" xml:space="preserve">
-    <value>¡AVISO!: Intentarás escribir los primeros 4 bytes de la memoria de SM64, los cuales contienen los valores que el programa necesita para encontrar la dirección base. Si haces clic en ""Sí"", tendrás que reiniciar el emulador para que el programa encuentre el emulador una vez más. ¿Seguro que quieres hacer esto?</value>
+    <value>¡AVISO!: Está a punto de intentar escribir en los primeros 4 bytes de la memoria de SM64, los cuales contienen los valores que el programa necesita para encontrar la dirección base. Si hace clic en ""Sí"", tendrá que reiniciar el emulador para que el programa encuentre el emulador una vez más. ¿Está seguro de que quiere hacer esto?</value>
   </data>
   <data name="CameraLockDesc" xml:space="preserve">
-    <value>Posición de la cámara fijada. Presiona el botón de abajo para fijar la rotación.</value>
+    <value>Posición de la cámara fijada. Presiona el botón de abajo o use CTRL+SHIFT+P para fijar la rotación.</value>
   </data>
   <data name="CameraUnlockDesc" xml:space="preserve">
-    <value>Editando la rotación. Presiona el botón de abajo para fijar la rotación.</value>
+    <value>Editando la rotación. Presiona el botón de abajo o use CTRL+SHIFT+P para fijar la rotación.</value>
   </data>
   <data name="CCWarning" xml:space="preserve">
-    <value>AVISO: ¡Asegúrate de desactivar cualquier otro código de color (CC) en el Project64! De no hacerlo, evitará que los cambios hechos aquí sean visibles en el juego.</value>
+    <value>AVISO: ¡Asegúrese de desactivar cualquier otro código de color (CC) en el Project64! De no hacerlo, evitará que los cambios hechos aquí sean visibles en el juego.</value>
   </data>
   <data name="ChangeCameraType" xml:space="preserve">
     <value>Cambiar tipo de cámara.</value>
@@ -163,7 +163,7 @@
     <value>El número ingresado no es un valor hexadecimal válido.</value>
   </data>
   <data name="MemDebugWarning" xml:space="preserve">
-    <value>Esta ventana es para editar la memoria activa de SM64 (Memoria RAM). Sólo deberías usar esto si sabes lo que haces. Los desarrolladores no se responsabilizan de caídas del emulador, o pérdida de datos causados por falla del sistema.</value>
+    <value>Esta ventana es para editar la memoria activa de SM64 (Memoria RAM). Sólo debería usar esto si sabe lo que hace. Los desarrolladores no se responsabilizan de caídas del emulador, o pérdida de datos causados por falla del sistema. (¡No debería pasar!)</value>
   </data>
   <data name="SearchingForBaseAddress" xml:space="preserve">
     <value>Escaneando la dirección base...</value>
@@ -182,11 +182,11 @@
   </data>
   <data name="PrecisionStatusDisabled" xml:space="preserve">
     <value>Modo Precisión apagado.
-Para habilitarlo, ve a Opciones -&gt; Modo Precisión</value>
+Para habilitarlo, vaya a Opciones -&gt; Modo Precisión o usa CTRL+P.</value>
   </data>
   <data name="PrecisionStatusFinish" xml:space="preserve">
-    <value>Cámara totalmente fijada. Presiona el botón de abajo para editar el ángulo.
-Para salir de este modo, desactívalo en Opciones -&gt; Modo Precisión</value>
+    <value>Cámara totalmente fijada. Presione el botón de abajo o usa CTRL+SHIFT+P para editar el ángulo.
+Para salir de este modo, desactívelo en Opciones -&gt; Modo Precisión o use CTRL+P.</value>
   </data>
   <data name="PrecisionStatusNoEmu" xml:space="preserve">
     <value>Modo Precisión apagado; el Project64 no está abierto.</value>
@@ -204,7 +204,7 @@ Para salir de este modo, desactívalo en Opciones -&gt; Modo Precisión</value>
     <value>Ayuda</value>
   </data>
   <data name="AboutStrip" xml:space="preserve">
-    <value>Acerca de Mario 64 Movie Maker 2.0.5...</value>
+    <value>Acerca de Mario 64 Movie Maker 2.0.5.1...</value>
   </data>
   <data name="AnimationDataNotLoaded" xml:space="preserve">
     <value>¡No se han cargado las animaciones!</value>
@@ -216,16 +216,16 @@ Para salir de este modo, desactívalo en Opciones -&gt; Modo Precisión</value>
     <value>Controlador de animaciones</value>
   </data>
   <data name="AnimationO1" xml:space="preserve">
-    <value>Cambia esta animación:</value>
+    <value>Cambia esta animación...</value>
   </data>
   <data name="AnimationO2" xml:space="preserve">
-    <value>por esta:</value>
+    <value>...por esta!</value>
   </data>
   <data name="CamControlName" xml:space="preserve">
     <value>Controles de cámara normal</value>
   </data>
   <data name="CCSDefaultMB" xml:space="preserve">
-    <value>¿Quieres establecer este código de color como el código de color por omisión?</value>
+    <value>¿Quiere establecer este código de color como el código de color por omisión?</value>
   </data>
   <data name="CCSDefaults" xml:space="preserve">
     <value>Por omisión</value>
@@ -259,17 +259,17 @@ Para salir de este modo, desactívalo en Opciones -&gt; Modo Precisión</value>
     <value>Camisa y gorra</value>
   </data>
   <data name="CCSIMLabel" xml:space="preserve">
-    <value>Pega el código de color en la caja de texto debajo, luego presiona OK.</value>
+    <value>Pegue el código de color en la caja de texto debajo, luego presione OK.</value>
     <comment>import label</comment>
   </data>
   <data name="CCSImport" xml:space="preserve">
     <value>Importar CC...</value>
   </data>
   <data name="CCSImportError" xml:space="preserve">
-    <value>Algo pasó y el código de color no fue importado. Asegúrate de que esté bien escrito!</value>
+    <value>Algo pasó y el código de color no fue importado. Asegúrese de que esté bien escrito!</value>
   </data>
   <data name="CCSLoad" xml:space="preserve">
-    <value>Cargar del juego</value>
+    <value>Cargar desde el juego</value>
   </data>
   <data name="CCSOveralls" xml:space="preserve">
     <value>Overoles</value>
@@ -324,7 +324,7 @@ Sin embargo, esto puede no funcionar en ciertas partes del castillo ya que mucho
     <value>ESCR.</value>
   </data>
   <data name="NoPJPrecisionError" xml:space="preserve">
-    <value>No puedes activar el modo precisión sin el Project64 abierto.</value>
+    <value>No puede activar el modo precisión sin el Project64 abierto.</value>
   </data>
   <data name="PJNotOpen" xml:space="preserve">
     <value>Project64 no está abierto!</value>
