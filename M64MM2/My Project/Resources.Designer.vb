@@ -525,15 +525,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Help....
-        '''</summary>
-        Public ReadOnly Property HelpStrip() As String
-            Get
-                Return ResourceManager.GetString("HelpStrip", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to Higher.
         '''</summary>
         Public ReadOnly Property Higher() As String
@@ -665,6 +656,15 @@ Namespace My.Resources
         Public ReadOnly Property Left() As String
             Get
                 Return ResourceManager.GetString("Left", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Licensing Info....
+        '''</summary>
+        Public ReadOnly Property LicenseStrip() As String
+            Get
+                Return ResourceManager.GetString("LicenseStrip", resourceCulture)
             End Get
         End Property
         

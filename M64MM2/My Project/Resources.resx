@@ -298,8 +298,8 @@ to be manually rotated in the usual manner. However, this
 does not always work in all areas of the castle, as sometimes
 camera behaviors are hardcoded into specific parts of levels.</value>
   </data>
-  <data name="HelpStrip" xml:space="preserve">
-    <value>Help...</value>
+  <data name="LicenseStrip" xml:space="preserve">
+    <value>Licensing Info...</value>
   </data>
   <data name="HoverControlName" xml:space="preserve">
     <value>Hover Control</value>

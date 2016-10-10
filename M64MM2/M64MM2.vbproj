@@ -113,6 +113,12 @@
     <Compile Include="ColorCodeStudio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LicenseForm.Designer.vb">
+      <DependentUpon>LicenseForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LicenseForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ColorCodeStudio.resx">
       <DependentUpon>ColorCodeStudio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LicenseForm.resx">
+      <DependentUpon>LicenseForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
