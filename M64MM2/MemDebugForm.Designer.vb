@@ -26,6 +26,7 @@ Partial Class MemDebugForm
         Me.LB_Disclaimer = New System.Windows.Forms.Label()
         Me.CB_Accept = New System.Windows.Forms.CheckBox()
         Me.GB_DebugControls = New System.Windows.Forms.GroupBox()
+        Me.AAFirst_btn = New System.Windows.Forms.Button()
         Me.B_Write4 = New System.Windows.Forms.Button()
         Me.B_Read4 = New System.Windows.Forms.Button()
         Me.IN_Value4 = New System.Windows.Forms.TextBox()
@@ -79,6 +80,7 @@ Partial Class MemDebugForm
         Me.GB_DebugControls.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GB_DebugControls.Controls.Add(Me.AAFirst_btn)
         Me.GB_DebugControls.Controls.Add(Me.B_Write4)
         Me.GB_DebugControls.Controls.Add(Me.B_Read4)
         Me.GB_DebugControls.Controls.Add(Me.IN_Value4)
@@ -106,10 +108,20 @@ Partial Class MemDebugForm
         Me.GB_DebugControls.Enabled = False
         Me.GB_DebugControls.Location = New System.Drawing.Point(13, 103)
         Me.GB_DebugControls.Name = "GB_DebugControls"
-        Me.GB_DebugControls.Size = New System.Drawing.Size(308, 275)
+        Me.GB_DebugControls.Size = New System.Drawing.Size(308, 303)
         Me.GB_DebugControls.TabIndex = 2
         Me.GB_DebugControls.TabStop = False
         Me.GB_DebugControls.Text = "Debug Controls"
+        '
+        'AAFirst_btn
+        '
+        Me.AAFirst_btn.Location = New System.Drawing.Point(9, 274)
+        Me.AAFirst_btn.Name = "AAFirst_btn"
+        Me.AAFirst_btn.Size = New System.Drawing.Size(125, 23)
+        Me.AAFirst_btn.TabIndex = 25
+        Me.AAFirst_btn.Text = "don't mind me yet"
+        Me.AAFirst_btn.UseVisualStyleBackColor = True
+        Me.AAFirst_btn.Visible = False
         '
         'B_Write4
         '
@@ -323,7 +335,7 @@ Partial Class MemDebugForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(333, 390)
+        Me.ClientSize = New System.Drawing.Size(333, 418)
         Me.Controls.Add(Me.GB_DebugControls)
         Me.Controls.Add(Me.CB_Accept)
         Me.Controls.Add(Me.LB_Disclaimer)
@@ -366,4 +378,5 @@ Partial Class MemDebugForm
     Friend WithEvents IN_Address2 As TextBox
     Friend WithEvents LB_Value2 As Label
     Friend WithEvents LB_Address2 As Label
+    Friend WithEvents AAFirst_btn As Button
 End Class

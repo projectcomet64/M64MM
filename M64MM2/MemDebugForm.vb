@@ -256,4 +256,8 @@ Public Class MemDebugForm
         GB_DebugControls.Text = IOFormTitle
         Me.Text = IOFormTitle
     End Sub
+
+    Private Sub AAFirst_btn_Click(sender As Object, e As EventArgs) Handles AAFirst_btn.Click
+        EXMemDebugForm.Show()
+    End Sub
 End Class
