@@ -105,10 +105,9 @@ Public Class MainForm
                 Loop
             End Using
         Catch e As Exception
-            MessageBox.Show(My.Resources.AnimationDataReadError & vbCrLf & e.Message)
-            DisableAnimSwap = True
-            AnimOW1.Text = My.Resources.AnimationDataNotLoaded
-            AnimOW2.Text = My.Resources.AnimationDataNotLoaded
+            MessageBox.Show(My.Resources.CameraStylesFileError & vbCrLf & e.Message)
+            DisableCamSwap = True
+            CameraType_gb.Text = My.Resources.CameraStylesNoCam
             ComboBox3.Refresh()
         End Try
 
@@ -356,6 +355,7 @@ Public Class MainForm
                 b_ChangeCameraType.Text = My.Resources.ChangeCameraType
                 ComboBox1.Enabled = False
                 ComboBox2.Enabled = False
+                ComboBox3.Enabled = False
                 b_SoftFreeze.Enabled = False
                 b_SoftUnfreeze.Enabled = False
                 LevitateTrackBar.Enabled = False
@@ -383,6 +383,7 @@ Public Class MainForm
             b_ChangeCameraType.Text = My.Resources.ChangeCameraType
             ComboBox1.Enabled = False
             ComboBox2.Enabled = False
+            ComboBox3.Enabled = False
             b_SoftFreeze.Enabled = False
             b_SoftUnfreeze.Enabled = False
             LevitateTrackBar.Enabled = False
@@ -535,6 +536,9 @@ Public Class MainForm
         DisableHudBTN.Enabled = False
         LevitateTrackBar.Enabled = False
         HealBTN.Text = My.Resources.Heal_Extra
+        CameraType_gb.Text = My.Resources.CameraStylesText
+        CurrentCameraAdvice_lb.Text = My.Resources.CameraStylesLabel
+        ChangeCam_btn.Text = My.Resources.CameraStylesChangeNow
         'Make the timer tick every half of a second, to avoid unneccesary CPU use in some processors, but change to every tenth of a second once we have found the base address.
         Timer1.Interval = 500
         Timer1.Start()
@@ -663,7 +667,7 @@ Public Class MainForm
             LicenseWindow.Show()
         End If
     End Sub
-
+    '13/december/2016
     'one thing
     'i'm in exams so i'm going to keep some things in barebones for now
     'like, still going to make the extra new section I just added to get out whenever PJ64 ain't on

@@ -88,7 +88,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to About Mario 64 Movie Maker 2.0.5.1....
+        '''  Looks up a localized string similar to About Mario 64 Movie Maker 2.0.6....
         '''</summary>
         Public ReadOnly Property AboutStrip() As String
             Get
@@ -219,6 +219,51 @@ Namespace My.Resources
         Public ReadOnly Property CameraLockDesc() As String
             Get
                 Return ResourceManager.GetString("CameraLockDesc", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Apply.
+        '''</summary>
+        Public ReadOnly Property CameraStylesChangeNow() As String
+            Get
+                Return ResourceManager.GetString("CameraStylesChangeNow", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Could not load the camera data file:.
+        '''</summary>
+        Public ReadOnly Property CameraStylesFileError() As String
+            Get
+                Return ResourceManager.GetString("CameraStylesFileError", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Change the current cam. style for:.
+        '''</summary>
+        Public ReadOnly Property CameraStylesLabel() As String
+            Get
+                Return ResourceManager.GetString("CameraStylesLabel", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to -- no cameras available --.
+        '''</summary>
+        Public ReadOnly Property CameraStylesNoCam() As String
+            Get
+                Return ResourceManager.GetString("CameraStylesNoCam", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Camera Style Control.
+        '''</summary>
+        Public ReadOnly Property CameraStylesText() As String
+            Get
+                Return ResourceManager.GetString("CameraStylesText", resourceCulture)
             End Get
         End Property
         
@@ -457,11 +502,20 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Change Camera Type.
+        '''  Looks up a localized string similar to Prepare Camera.
         '''</summary>
         Public ReadOnly Property ChangeCameraType() As String
             Get
                 Return ResourceManager.GetString("ChangeCameraType", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        '''</summary>
+        Public ReadOnly Property exmo3intro() As System.IO.UnmanagedMemoryStream
+            Get
+                Return ResourceManager.GetStream("exmo3intro", resourceCulture)
             End Get
         End Property
         
@@ -507,7 +561,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Go to new area.
+        '''  Looks up a localized string similar to We&apos;re here!.
         '''</summary>
         Public ReadOnly Property GotoNewArea() As String
             Get
@@ -981,6 +1035,16 @@ Namespace My.Resources
         Public ReadOnly Property UnfreezeCamera() As String
             Get
                 Return ResourceManager.GetString("UnfreezeCamera", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Public ReadOnly Property WGW_EXMO3() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("WGW_EXMO3", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
     End Module

@@ -68,10 +68,10 @@ Partial Class MainForm
         Me.SmallExtra = New System.Windows.Forms.GroupBox()
         Me.HealBTN = New System.Windows.Forms.Button()
         Me.DisableHudBTN = New System.Windows.Forms.Button()
-        Me.CameraType_gb = New System.Windows.Forms.GroupBox()
-        Me.ChangeCam_btn = New System.Windows.Forms.Button()
-        Me.CurrentCameraAdvice_lb = New System.Windows.Forms.Label()
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.CurrentCameraAdvice_lb = New System.Windows.Forms.Label()
+        Me.ChangeCam_btn = New System.Windows.Forms.Button()
+        Me.CameraType_gb = New System.Windows.Forms.GroupBox()
         Me.MenuStrip1.SuspendLayout()
         Me.NormalCamControls.SuspendLayout()
         Me.AnimSwapControls.SuspendLayout()
@@ -480,6 +480,35 @@ Partial Class MainForm
         Me.DisableHudBTN.Text = "Remove HUD"
         Me.DisableHudBTN.UseVisualStyleBackColor = True
         '
+        'ComboBox3
+        '
+        Me.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox3.Enabled = False
+        Me.ComboBox3.FormattingEnabled = True
+        Me.ComboBox3.Location = New System.Drawing.Point(15, 47)
+        Me.ComboBox3.Name = "ComboBox3"
+        Me.ComboBox3.Size = New System.Drawing.Size(172, 21)
+        Me.ComboBox3.TabIndex = 0
+        '
+        'CurrentCameraAdvice_lb
+        '
+        Me.CurrentCameraAdvice_lb.AutoSize = True
+        Me.CurrentCameraAdvice_lb.Location = New System.Drawing.Point(12, 28)
+        Me.CurrentCameraAdvice_lb.Name = "CurrentCameraAdvice_lb"
+        Me.CurrentCameraAdvice_lb.Size = New System.Drawing.Size(178, 13)
+        Me.CurrentCameraAdvice_lb.TabIndex = 1
+        Me.CurrentCameraAdvice_lb.Text = "Change the current camera style for:"
+        '
+        'ChangeCam_btn
+        '
+        Me.ChangeCam_btn.Enabled = False
+        Me.ChangeCam_btn.Location = New System.Drawing.Point(59, 74)
+        Me.ChangeCam_btn.Name = "ChangeCam_btn"
+        Me.ChangeCam_btn.Size = New System.Drawing.Size(75, 23)
+        Me.ChangeCam_btn.TabIndex = 2
+        Me.ChangeCam_btn.Text = "Change!"
+        Me.ChangeCam_btn.UseVisualStyleBackColor = True
+        '
         'CameraType_gb
         '
         Me.CameraType_gb.Controls.Add(Me.ChangeCam_btn)
@@ -491,34 +520,6 @@ Partial Class MainForm
         Me.CameraType_gb.TabIndex = 20
         Me.CameraType_gb.TabStop = False
         Me.CameraType_gb.Text = "Camera Style Control"
-        '
-        'ChangeCam_btn
-        '
-        Me.ChangeCam_btn.Location = New System.Drawing.Point(59, 74)
-        Me.ChangeCam_btn.Name = "ChangeCam_btn"
-        Me.ChangeCam_btn.Size = New System.Drawing.Size(75, 23)
-        Me.ChangeCam_btn.TabIndex = 2
-        Me.ChangeCam_btn.Text = "Change!"
-        Me.ChangeCam_btn.UseVisualStyleBackColor = True
-        '
-        'CurrentCameraAdvice_lb
-        '
-        Me.CurrentCameraAdvice_lb.AutoSize = True
-        Me.CurrentCameraAdvice_lb.Location = New System.Drawing.Point(12, 28)
-        Me.CurrentCameraAdvice_lb.Name = "CurrentCameraAdvice_lb"
-        Me.CurrentCameraAdvice_lb.Size = New System.Drawing.Size(178, 13)
-        Me.CurrentCameraAdvice_lb.TabIndex = 1
-        Me.CurrentCameraAdvice_lb.Text = "Change the current camera style for:"
-        '
-        'ComboBox3
-        '
-        Me.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox3.Enabled = False
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(15, 47)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(172, 21)
-        Me.ComboBox3.TabIndex = 0
         '
         'MainForm
         '
@@ -601,8 +602,8 @@ Partial Class MainForm
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents HealBTN As Button
     Friend WithEvents DisableHudBTN As Button
-    Friend WithEvents CameraType_gb As GroupBox
     Friend WithEvents ComboBox3 As ComboBox
-    Friend WithEvents ChangeCam_btn As Button
     Friend WithEvents CurrentCameraAdvice_lb As Label
+    Friend WithEvents ChangeCam_btn As Button
+    Friend WithEvents CameraType_gb As GroupBox
 End Class

@@ -154,6 +154,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ReadWritingMemory.vb" />
+    <Compile Include="Resources.es.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.es.resx</DependentUpon>
+    </Compile>
     <Compile Include="ShadowFunctions.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +190,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.es.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.es.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +213,8 @@
     </Content>
     <Content Include="camera_data.txt" />
     <Content Include="M64MM2.ico" />
+    <None Include="Resources\exmo3intro.wav" />
+    <None Include="Resources\WGW EXMO3.png" />
     <None Include="Resources\M64MM2 CC Mario big.png" />
     <None Include="Resources\MarioSprite.bmp" />
     <None Include="Resources\M64MM2.ico" />

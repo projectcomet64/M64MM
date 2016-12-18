@@ -115,7 +115,7 @@ Partial Class MemDebugForm
         '
         'AAFirst_btn
         '
-        Me.AAFirst_btn.Location = New System.Drawing.Point(9, 274)
+        Me.AAFirst_btn.Location = New System.Drawing.Point(92, 270)
         Me.AAFirst_btn.Name = "AAFirst_btn"
         Me.AAFirst_btn.Size = New System.Drawing.Size(125, 23)
         Me.AAFirst_btn.TabIndex = 25

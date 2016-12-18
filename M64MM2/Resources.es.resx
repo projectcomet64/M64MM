@@ -148,13 +148,13 @@
     <value>AVISO: ¡Asegúrese de desactivar cualquier otro código de color (CC) en el Project64! De no hacerlo, evitará que los cambios hechos aquí sean visibles en el juego.</value>
   </data>
   <data name="ChangeCameraType" xml:space="preserve">
-    <value>Cambiar tipo de cámara.</value>
+    <value>Preparar cámara</value>
   </data>
   <data name="FreezeCamera" xml:space="preserve">
     <value>Fijar cámara</value>
   </data>
   <data name="GotoNewArea" xml:space="preserve">
-    <value>Cambiar de área</value>
+    <value>¡Estamos listos!</value>
   </data>
   <data name="InvalidHexAddress" xml:space="preserve">
     <value>La dirección ingresada no es un valor hexadecimal válido.</value>
@@ -204,7 +204,7 @@ Para salir de este modo, desactívelo en Opciones -&gt; Modo Precisión o use CT
     <value>Ayuda</value>
   </data>
   <data name="AboutStrip" xml:space="preserve">
-    <value>Acerca de Mario 64 Movie Maker 2.0.5.1...</value>
+    <value>Acerca de Mario 64 Movie Maker 2.0.6...</value>
   </data>
   <data name="AnimationDataNotLoaded" xml:space="preserve">
     <value>¡No se han cargado las animaciones!</value>
@@ -431,5 +431,25 @@ que pueda repararlo.</value>
   </data>
   <data name="Heal_Extra" xml:space="preserve">
     <value>Sanar a Mario</value>
+  </data>
+  <data name="CameraStylesChangeNow" xml:space="preserve">
+    <value>Aplicar</value>
+    <comment>camera style</comment>
+  </data>
+  <data name="CameraStylesFileError" xml:space="preserve">
+    <value>No se pudo cargar el archivo de estilos de cámara:</value>
+    <comment>camera style</comment>
+  </data>
+  <data name="CameraStylesLabel" xml:space="preserve">
+    <value>Cambiar el estilo de cám. por:</value>
+    <comment>camera style</comment>
+  </data>
+  <data name="CameraStylesNoCam" xml:space="preserve">
+    <value>-- no hay cámaras disponibles --</value>
+    <comment>camera style</comment>
+  </data>
+  <data name="CameraStylesText" xml:space="preserve">
+    <value>Controlador de estilos de cámara</value>
+    <comment>camera style</comment>
   </data>
 </root>

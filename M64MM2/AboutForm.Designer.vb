@@ -33,7 +33,9 @@ Partial Class AboutForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -43,7 +45,7 @@ Partial Class AboutForm
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(484, 26)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Mario 64 Movie Maker 2.0.5.1"
+        Me.Label1.Text = "Mario 64 Movie Maker 2.0.6 + EXMO3"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Label2
@@ -112,7 +114,7 @@ Partial Class AboutForm
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.M64MM2.My.Resources.Resources.M64MM2_Icon
-        Me.PictureBox1.Location = New System.Drawing.Point(227, 9)
+        Me.PictureBox1.Location = New System.Drawing.Point(112, 7)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(75, 94)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -125,11 +127,20 @@ Partial Class AboutForm
         Me.Label7.Enabled = False
         Me.Label7.Location = New System.Drawing.Point(12, 9)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(209, 95)
+        Me.Label7.Size = New System.Drawing.Size(94, 92)
         Me.Label7.TabIndex = 9
-        Me.Label7.Text = "OH MY GOD -Joseph Joestar" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Windows 7 was a bit of a pain but the solution was rig" &
-    "ht under our noses..." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label7.Text = "now with extra exmo" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.Label7.Visible = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(227, 12)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(211, 91)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 10
+        Me.PictureBox2.TabStop = False
         '
         'AboutForm
         '
@@ -137,6 +148,7 @@ Partial Class AboutForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(528, 336)
+        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label6)
@@ -155,6 +167,7 @@ Partial Class AboutForm
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.Text = "About Mario 64 Movie Maker 2.0"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -169,4 +182,5 @@ Partial Class AboutForm
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents PictureBox2 As PictureBox
 End Class
