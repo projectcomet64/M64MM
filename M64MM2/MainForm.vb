@@ -309,6 +309,7 @@ Public Class MainForm
                 ComboBox1.Enabled = Not DisableAnimSwap
                 ComboBox2.Enabled = Not DisableAnimSwap
                 ComboBox3.Enabled = Not DisableCamSwap
+                ChangeCam_btn.Enabled = Not DisableCamSwap
                 b_SoftFreeze.Enabled = True
                 b_SoftUnfreeze.Enabled = True
                 LevitateTrackBar.Enabled = True
@@ -359,6 +360,7 @@ Public Class MainForm
                 b_SoftFreeze.Enabled = False
                 b_SoftUnfreeze.Enabled = False
                 LevitateTrackBar.Enabled = False
+                ChangeCam_btn.Enabled = False
                 DisableHudBTN.Enabled = False
                 HealBTN.Enabled = False
                 If MemDebugWindow IsNot Nothing Then
