@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("Mario 64 Movie Maker 2.0.6")>
 <Assembly: AssemblyDescription("For all you Mario 64 Machinimists!")>
-<Assembly: AssemblyCompany("Swag Industries")>
+<Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("M64MM2")>
 <Assembly: AssemblyCopyright("Copyright © 2016 James Pelster")>
 <Assembly: AssemblyTrademark("")>

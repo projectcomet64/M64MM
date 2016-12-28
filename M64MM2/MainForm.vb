@@ -287,6 +287,7 @@ Public Class MainForm
                     LevitateTrackBar.Enabled = False
                     DisableHudBTN.Enabled = False
                     HealBTN.Enabled = False
+                    ChangeCam_btn.Enabled = False
                     PrecisionModeOff(True)
                     If MemDebugWindow IsNot Nothing Then
                         MemDebugWindow.CB_Accept.Checked = False
@@ -309,12 +310,12 @@ Public Class MainForm
                 ComboBox1.Enabled = Not DisableAnimSwap
                 ComboBox2.Enabled = Not DisableAnimSwap
                 ComboBox3.Enabled = Not DisableCamSwap
-                ChangeCam_btn.Enabled = Not DisableCamSwap
                 b_SoftFreeze.Enabled = True
                 b_SoftUnfreeze.Enabled = True
                 LevitateTrackBar.Enabled = True
                 DisableHudBTN.Enabled = True
                 HealBTN.Enabled = True
+                ChangeCam_btn.Enabled = Not DisableCamSwap
                 If MemDebugWindow IsNot Nothing Then
                     MemDebugWindow.CB_Accept.Enabled = True
                 End If
@@ -391,6 +392,7 @@ Public Class MainForm
             LevitateTrackBar.Enabled = False
             DisableHudBTN.Enabled = False
             HealBTN.Enabled = False
+            ChangeCam_btn.Enabled = False
             BaseAddressLabel.Text = My.Resources.PJNotOpen
             PrecisionStatusLabel.Text = My.Resources.PrecisionStatusNoEmu
             If MemDebugWindow IsNot Nothing Then
