@@ -37,7 +37,6 @@
             this.grpCamera = new System.Windows.Forms.GroupBox();
             this.btnSoftUnfreeze = new System.Windows.Forms.Button();
             this.btnSoftFreeze = new System.Windows.Forms.Button();
-            this.btnPrepare = new System.Windows.Forms.Button();
             this.btnUnfreeze = new System.Windows.Forms.Button();
             this.btnFreeze = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -49,6 +48,9 @@
             this.cbAnimNew = new System.Windows.Forms.ComboBox();
             this.cbAnimOld = new System.Windows.Forms.ComboBox();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnAnimSwap = new System.Windows.Forms.Button();
+            this.btnAnimReset = new System.Windows.Forms.Button();
+            this.btnAnimResetAll = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -83,7 +85,6 @@
             // 
             this.grpCamera.Controls.Add(this.btnSoftUnfreeze);
             this.grpCamera.Controls.Add(this.btnSoftFreeze);
-            this.grpCamera.Controls.Add(this.btnPrepare);
             this.grpCamera.Controls.Add(this.btnUnfreeze);
             this.grpCamera.Controls.Add(this.btnFreeze);
             resources.ApplyResources(this.grpCamera, "grpCamera");
@@ -102,23 +103,19 @@
             this.btnSoftFreeze.Name = "btnSoftFreeze";
             this.btnSoftFreeze.UseVisualStyleBackColor = true;
             // 
-            // btnPrepare
-            // 
-            resources.ApplyResources(this.btnPrepare, "btnPrepare");
-            this.btnPrepare.Name = "btnPrepare";
-            this.btnPrepare.UseVisualStyleBackColor = true;
-            // 
             // btnUnfreeze
             // 
             resources.ApplyResources(this.btnUnfreeze, "btnUnfreeze");
             this.btnUnfreeze.Name = "btnUnfreeze";
             this.btnUnfreeze.UseVisualStyleBackColor = true;
+            this.btnUnfreeze.Click += new System.EventHandler(this.UnfreezeCam);
             // 
             // btnFreeze
             // 
             resources.ApplyResources(this.btnFreeze, "btnFreeze");
             this.btnFreeze.Name = "btnFreeze";
             this.btnFreeze.UseVisualStyleBackColor = true;
+            this.btnFreeze.Click += new System.EventHandler(this.FreezeCam);
             // 
             // statusStrip
             // 
@@ -141,6 +138,9 @@
             // 
             // grpAnimSwap
             // 
+            this.grpAnimSwap.Controls.Add(this.btnAnimResetAll);
+            this.grpAnimSwap.Controls.Add(this.btnAnimReset);
+            this.grpAnimSwap.Controls.Add(this.btnAnimSwap);
             this.grpAnimSwap.Controls.Add(this.lblAnimNew);
             this.grpAnimSwap.Controls.Add(this.lblAnimOld);
             this.grpAnimSwap.Controls.Add(this.cbAnimNew);
@@ -174,8 +174,28 @@
             // 
             // updateTimer
             // 
-            this.updateTimer.Interval = 250;
             this.updateTimer.Tick += new System.EventHandler(this.Update);
+            // 
+            // btnAnimSwap
+            // 
+            resources.ApplyResources(this.btnAnimSwap, "btnAnimSwap");
+            this.btnAnimSwap.Name = "btnAnimSwap";
+            this.btnAnimSwap.UseVisualStyleBackColor = true;
+            this.btnAnimSwap.Click += new System.EventHandler(this.WriteAnimSwap);
+            // 
+            // btnAnimReset
+            // 
+            resources.ApplyResources(this.btnAnimReset, "btnAnimReset");
+            this.btnAnimReset.Name = "btnAnimReset";
+            this.btnAnimReset.UseVisualStyleBackColor = true;
+            this.btnAnimReset.Click += new System.EventHandler(this.WriteAnimReset);
+            // 
+            // btnAnimResetAll
+            // 
+            resources.ApplyResources(this.btnAnimResetAll, "btnAnimResetAll");
+            this.btnAnimResetAll.Name = "btnAnimResetAll";
+            this.btnAnimResetAll.UseVisualStyleBackColor = true;
+            this.btnAnimResetAll.Click += new System.EventHandler(this.WriteAnimResetAll);
             // 
             // MainForm
             // 
@@ -209,7 +229,6 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.GroupBox grpCamera;
         private System.Windows.Forms.Button btnFreeze;
-        private System.Windows.Forms.Button btnPrepare;
         private System.Windows.Forms.Button btnUnfreeze;
         private System.Windows.Forms.Button btnSoftFreeze;
         private System.Windows.Forms.StatusStrip statusStrip;
@@ -222,6 +241,9 @@
         private System.Windows.Forms.Label lblAnimOld;
         private System.Windows.Forms.Label lblAnimNew;
         private System.Windows.Forms.Timer updateTimer;
+        private System.Windows.Forms.Button btnAnimSwap;
+        private System.Windows.Forms.Button btnAnimResetAll;
+        private System.Windows.Forms.Button btnAnimReset;
     }
 }
 

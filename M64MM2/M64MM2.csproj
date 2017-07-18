@@ -92,5 +92,10 @@
   <ItemGroup>
     <None Include="Resources\M64MM2.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="animation_data.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

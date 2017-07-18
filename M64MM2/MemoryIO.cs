@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace M64MM2
@@ -36,27 +37,27 @@ namespace M64MM2
             return buffer;
         }
 
-        public static short ReadShort(long address)
+        public static ushort ReadUShort(long address)
         {
-            long size = sizeof(short);
+            long size = sizeof(ushort);
             byte[] buffer = ReadBytes(address, size);
-            short value = BitConverter.ToInt16(buffer, 0);
+            ushort value = BitConverter.ToUInt16(buffer, 0);
             return value;
         }
 
-        public static int ReadInt(long address)
+        public static uint ReadUInt(long address)
         {
-            long size = sizeof(int);
+            long size = sizeof(uint);
             byte[] buffer = ReadBytes(address, size);
-            int value = BitConverter.ToInt32(buffer, 0);
+            uint value = BitConverter.ToUInt32(buffer, 0);
             return value;
         }
 
-        public static long ReadLong(long address)
+        public static ulong ReadULong(long address)
         {
-            long size = sizeof(long);
+            long size = sizeof(ulong);
             byte[] buffer = ReadBytes(address, size);
-            long value = BitConverter.ToInt64(buffer, 0);
+            ulong value = BitConverter.ToUInt64(buffer, 0);
             return value;
         }
         #endregion
@@ -76,19 +77,19 @@ namespace M64MM2
             WriteProcessMemory(emuProcessHandle, ptr, data, size, ref bytesWritten);
         }
 
-        public static void WriteShort(long address, short data)
+        public static void WriteUShort(long address, ushort data)
         {
             byte[] buffer = BitConverter.GetBytes(data);
             WriteBytes(address, buffer);
         }
 
-        public static void WriteInt(long address, int data)
+        public static void WriteUInt(long address, uint data)
         {
             byte[] buffer = BitConverter.GetBytes(data);
             WriteBytes(address, buffer);
         }
 
-        public static void WriteLong(long address, long data)
+        public static void WriteULong(long address, ulong data)
         {
             byte[] buffer = BitConverter.GetBytes(data);
             WriteBytes(address, buffer);
@@ -110,23 +111,23 @@ namespace M64MM2
 
         public static void FindBaseAddress()
         {
-            int value = 0;
+            uint value = 0;
 
-            long start = 0x10000000;
-            long stop = 0x70000000;
+            long start = 0x20000000;
+            long stop = 0x60000000;
             long step = 0x10000;
 
             //Check if the old base address is still valid
             if (BaseAddress > 0)
             {
-                value = ReadInt(BaseAddress);
+                value = ReadUInt(BaseAddress);
 
                 if (value == 0x3C1A8032) return;
             }
 
             for (long scanAddress = start; scanAddress < stop - step; scanAddress += step)
             {
-                value = ReadInt(scanAddress);
+                value = ReadUInt(scanAddress);
 
                 if (value == 0x3C1A8032)
                 {
@@ -142,10 +143,18 @@ namespace M64MM2
         private static bool IsMemSafe(long address, long size)
         {
             //Don't read or write memory outside of Project64, for security and stability reasons
-            if (address < emuProcessHandle.ToInt64() + emuProcess.WorkingSet64 - size)
+            //if (address < emuProcessHandle.ToInt64() + emuProcess.WorkingSet64 - size)
                 return true;
 
             return false;
+        }
+
+        public static byte[] StringToByteArray(string hex)
+        {
+            return Enumerable.Range(0, hex.Length)
+                .Where(x => x % 2 == 0)
+                .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+                .ToArray();
         }
     }
 }
