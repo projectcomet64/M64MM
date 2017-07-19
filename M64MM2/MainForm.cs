@@ -17,6 +17,7 @@ namespace M64MM2
 {
     public partial class MainForm : Form
     {
+        ColorCodeForm ccForm;
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
         List<Animation> animList;
@@ -164,6 +165,17 @@ namespace M64MM2
             WriteUInt(BaseAddress + 0x33B204, 0x8033C520);
 
             lblCameraStatus.Text = cameraFrozen ? "Camera State: Frozen" : "Camera State: Default";
+        }
+
+
+        private void colorCodeStudioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ccForm == null || ccForm.IsDisposed) ccForm = new ColorCodeForm();
+
+            if (!ccForm.Visible)
+            {
+                ccForm.Show();
+            }
         }
     }
 

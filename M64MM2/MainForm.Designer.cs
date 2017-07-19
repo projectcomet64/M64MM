@@ -51,6 +51,7 @@
             this.cbAnimNew = new System.Windows.Forms.ComboBox();
             this.cbAnimOld = new System.Windows.Forms.ComboBox();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
+            this.colorCodeStudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -73,6 +74,8 @@
             // 
             // toolsMenuItem
             // 
+            this.toolsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.colorCodeStudioToolStripMenuItem});
             this.toolsMenuItem.Name = "toolsMenuItem";
             resources.ApplyResources(this.toolsMenuItem, "toolsMenuItem");
             // 
@@ -199,6 +202,12 @@
             // 
             this.updateTimer.Tick += new System.EventHandler(this.Update);
             // 
+            // colorCodeStudioToolStripMenuItem
+            // 
+            this.colorCodeStudioToolStripMenuItem.Name = "colorCodeStudioToolStripMenuItem";
+            resources.ApplyResources(this.colorCodeStudioToolStripMenuItem, "colorCodeStudioToolStripMenuItem");
+            this.colorCodeStudioToolStripMenuItem.Click += new System.EventHandler(this.colorCodeStudioToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -246,6 +255,7 @@
         private System.Windows.Forms.Button btnAnimSwap;
         private System.Windows.Forms.Button btnAnimResetAll;
         private System.Windows.Forms.Button btnAnimReset;
+        private System.Windows.Forms.ToolStripMenuItem colorCodeStudioToolStripMenuItem;
     }
 }
 

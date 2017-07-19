@@ -61,12 +61,32 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CC_Mario_big {
+            get {
+                object obj = ResourceManager.GetObject("CC_Mario_big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon M64MM2 {
             get {
                 object obj = ResourceManager.GetObject("M64MM2", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap M64MM2_Icon {
+            get {
+                object obj = ResourceManager.GetObject("M64MM2_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
