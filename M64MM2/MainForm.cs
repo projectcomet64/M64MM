@@ -9,39 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static M64MM2.MemoryIO;
+
+using static M64MM2.Utils;
+
 
 namespace M64MM2
 {
     public partial class MainForm : Form
     {
-        private bool changeCamera = false;
-        private List<Animation> animList;
-        private Dictionary<string, string> animData;
-        private int animIndexOld
-        {
-            get
-            {
-                foreach (Animation anim in animList)
-                {
-                    if (anim.Value == cbAnimOld.SelectedText)
-                        return anim.Index;
-                }
-                return 0;
-            }
-        }
-        private int animIndexNew
-        {
-            get
-            {
-                foreach (Animation anim in animList)
-                {
-                    if (anim.Value == cbAnimNew.SelectedText)
-                        return anim.Index;
-                }
-                return 0;
-            }
-        }
+        bool cameraFrozen = false;
+        bool cameraSoftFrozen = false;
+        List<Animation> animList;
+        Dictionary<string, string> animData;
+        Animation selectedAnimOld => animList[cbAnimOld.SelectedIndex];
+        Animation selectedAnimNew => animList[cbAnimNew.SelectedIndex];
 
 
         public MainForm()
@@ -58,16 +39,14 @@ namespace M64MM2
                     do
                     {
                         string rawLine = sr.ReadLine();
-                        string step1 = rawLine.Trim();
-                        string step2 = step1.TrimStart('0');
-                        string step3 = step2.TrimStart('x');
-                        string[] splitLine = step3.Split('|');
-                        animData.Add(splitLine[0], splitLine[1]);
+                        string[] splitLine = rawLine.Trim().Split('|');
+                        
                         Animation anim;
                         anim.Value = splitLine[0];
-                        anim.Description = splitLine[1];
+                        //anim.Description = splitLine[1];
                         anim.Index = int.Parse(splitLine[2]);
                         animList.Add(anim);
+                        animData.Add(splitLine[0], splitLine[1]);
                     }
                     while (sr.Peek() >= 0);
                 }
@@ -102,7 +81,7 @@ namespace M64MM2
             }
         }
 
-        private void Update(object sender, EventArgs e)
+        void Update(object sender, EventArgs e)
         {
             //Early validity checks
             if (!IsEmuOpen)
@@ -123,62 +102,74 @@ namespace M64MM2
 
 
             //Main program logic starts here
-            if (changeCamera)
+            if (cameraFrozen)
             {
                 WriteUInt(BaseAddress + 0x33C848, 0x80000000);
             }
         }
 
-        private void WriteAnimSwap(object sender, EventArgs e)
+
+        void WriteAnimSwap(object sender, EventArgs e)
         {
-            WriteULong(BaseAddress + 0x64040 + ((animIndexOld + 1) * 8), ulong.Parse(((KeyValuePair<string, string>)cbAnimNew.SelectedItem).Key, NumberStyles.HexNumber));
-            //WriteUInt(BaseAddress + 0x64044 + ((animIndexOld + 1) * 8), uint.Parse(((string)cbAnimNew.SelectedValue).Substring(0, 8), NumberStyles.HexNumber));
+            byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimNew.Value), 4);
+            WriteBytes(BaseAddress + 0x64040 + ((selectedAnimOld.Index + 1) * 8), stuffToWrite);
         }
 
-        private void WriteAnimReset(object sender, EventArgs e)
+        void WriteAnimReset(object sender, EventArgs e)
         {
-            WriteULong(BaseAddress + 0x64040 + ((animIndexOld + 1) * 8), ulong.Parse(((KeyValuePair<string, string>)cbAnimOld.SelectedItem).Key, NumberStyles.HexNumber));
-            //WriteUInt(BaseAddress + 0x64044 + ((animIndexOld + 1) * 8), uint.Parse(((string)cbAnimOld.SelectedValue).Substring(0, 8), NumberStyles.HexNumber));
+            byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimOld.Value), 4);
+            WriteBytes(BaseAddress + 0x64040 + ((selectedAnimOld.Index + 1) * 8), stuffToWrite);
+
+            cbAnimNew.SelectedIndex = cbAnimOld.SelectedIndex;
         }
 
-        private void WriteAnimResetAll(object sender, EventArgs e)
+        void WriteAnimResetAll(object sender, EventArgs e)
         {
             foreach (Animation anim in animList)
             {
-                WriteULong(BaseAddress + 0x64040 + ((animIndexOld + 1) * 8), ulong.Parse(anim.Value, NumberStyles.HexNumber));
-                //WriteUInt(BaseAddress + 0x64044 + ((anim.Index + 1) * 8), uint.Parse(anim.Value, NumberStyles.HexNumber));
+                byte[] stuffToWrite = SwapEndian(StringToByteArray(anim.Value), 4);
+                WriteBytes(BaseAddress + 0x64040 + ((anim.Index + 1) * 8), stuffToWrite);
             }
+
+            cbAnimNew.SelectedIndex = cbAnimOld.SelectedIndex;
         }
 
-        private void FreezeCam(object sender, EventArgs e)
+
+        void FreezeCam(object sender, EventArgs e)
         {
-            changeCamera = true;
+            cameraFrozen = true;
             WriteUInt(BaseAddress + 0x33C848, 0x80000000);
+            lblCameraStatus.Text = "Camera State: Frozen";
         }
 
-        private void UnfreezeCam(object sender, EventArgs e)
+        void UnfreezeCam(object sender, EventArgs e)
         {
-            changeCamera = false;
+            cameraFrozen = false;
             WriteUInt(BaseAddress + 0x33C848, 0x00000000);
+
+            lblCameraStatus.Text = cameraSoftFrozen ? "Camera State: Soft-Frozen" : "Camera State: Default";
         }
 
-        private void SoftFreezeCam(object sender, EventArgs e)
+        void SoftFreezeCam(object sender, EventArgs e)
         {
-            changeCamera = false;
+            cameraSoftFrozen = true;
             WriteUInt(BaseAddress + 0x33B204, 0x8001C520);
+
+            lblCameraStatus.Text = cameraFrozen ? "Camera State: Frozen" : "Camera State: Soft-Frozen";
         }
 
-        private void SoftUnfreezeCam(object sender, EventArgs e)
+        void SoftUnfreezeCam(object sender, EventArgs e)
         {
-            changeCamera = false;
+            cameraSoftFrozen = false;
             WriteUInt(BaseAddress + 0x33B204, 0x8033C520);
+
+            lblCameraStatus.Text = cameraFrozen ? "Camera State: Frozen" : "Camera State: Default";
         }
     }
 
     struct Animation
     {
         public string Value;
-        public string Description;
         public int Index;
     }
 }

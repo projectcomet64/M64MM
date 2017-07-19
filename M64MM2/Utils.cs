@@ -2,24 +2,28 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace M64MM2
 {
-    static class MemoryIO
+    static class Utils
     {
-        public static long BaseAddress = 0;
-        public static bool IsEmuOpen => (emuProcess != null && !emuProcess.HasExited && emuProcessHandle != null);
-        private static Process emuProcess;
-        private static IntPtr emuProcessHandle;
+        public static long BaseAddress;
+        public static bool IsEmuOpen => (emuProcess != null && !emuProcess.HasExited);
 
-        private const int PROCESS_ALL_ACCESS = 0x1F0FF;
+        static Process emuProcess;
+        static IntPtr emuProcessHandle;
+        const int PROCESS_ALL_ACCESS = 0x1F0FF;
 
-        [DllImport("Kernel32.dll")]
-        private static extern IntPtr OpenProcess(int dwDesitedAccess, bool bInheritHandle, int dwProcessID);
-        [DllImport("Kernel32.dll")]
-        private static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesRead);
-        [DllImport("Kernel32.dll")]
-        private static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesWritten);
+        [DllImport("user32.dll")]
+        static extern short GetAsyncKeyState(Keys vKey);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesRead);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesWritten);
+
 
         #region Reading
         public static byte[] ReadBytes(long address, long size)
@@ -27,11 +31,6 @@ namespace M64MM2
             IntPtr ptr = new IntPtr(address);
             byte[] buffer = new byte[size];
             long bytesRead = 0;
-
-            if (!IsMemSafe(address, size))
-            {
-                throw new UnauthorizedAccessException("Error: Program attempted to access memory outside of the allowed range.");
-            }
 
             ReadProcessMemory(emuProcessHandle, ptr, buffer, size, ref bytesRead);
             return buffer;
@@ -62,17 +61,13 @@ namespace M64MM2
         }
         #endregion
 
+
         #region Writing
         public static void WriteBytes(long address, byte[] data)
         {
             IntPtr ptr = new IntPtr(address);
             long size = data.LongLength;
             long bytesWritten = 0;
-
-            if (!IsMemSafe(address, size))
-            {
-                throw new UnauthorizedAccessException("Error: Program attempted to access memory outside of the allowed range.");
-            }
 
             WriteProcessMemory(emuProcessHandle, ptr, data, size, ref bytesWritten);
         }
@@ -95,6 +90,7 @@ namespace M64MM2
             WriteBytes(address, buffer);
         }
         #endregion
+
 
         public static void FindEmuProcess()
         {
@@ -140,21 +136,28 @@ namespace M64MM2
             BaseAddress = 0;
         }
 
-        private static bool IsMemSafe(long address, long size)
-        {
-            //Don't read or write memory outside of Project64, for security and stability reasons
-            //if (address < emuProcessHandle.ToInt64() + emuProcess.WorkingSet64 - size)
-                return true;
-
-            return false;
-        }
-
         public static byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)
                 .Where(x => x % 2 == 0)
                 .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
                 .ToArray();
+        }
+
+        public static byte[] SwapEndian(byte[] array, int wordSize)
+        {
+            for (int x = 0; x < array.Length / wordSize; x++)
+            {
+                Array.Reverse(array, x * wordSize, wordSize);
+            }
+
+            return array;
+        }
+
+
+        public static short GetKey(Keys vKey)
+        {
+            return GetAsyncKeyState(vKey);
         }
     }
 }
