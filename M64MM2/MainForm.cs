@@ -21,7 +21,6 @@ namespace M64MM2
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
         List<Animation> animList;
-        Dictionary<string, string> animData;
         Animation selectedAnimOld => animList[cbAnimOld.SelectedIndex];
         Animation selectedAnimNew => animList[cbAnimNew.SelectedIndex];
 
@@ -31,13 +30,12 @@ namespace M64MM2
             InitializeComponent();
             updateTimer.Start();
             animList = new List<Animation>();
-            animData = new Dictionary<string, string>();
 
             try
             {
                 using (StreamReader sr =  new StreamReader("animation_data.txt"))
                 {
-                    do
+                    while (!sr.EndOfStream && sr.Peek() != 0)
                     {
                         string rawLine = sr.ReadLine();
                         string[] splitLine = rawLine.Trim().Split('|');
@@ -45,11 +43,15 @@ namespace M64MM2
                         Animation anim;
                         anim.Value = splitLine[0];
                         //anim.Description = splitLine[1];
-                        anim.Index = int.Parse(splitLine[2]);
+                        anim.RealIndex = int.Parse(splitLine[2]);
                         animList.Add(anim);
-                        animData.Add(splitLine[0], splitLine[1]);
+
+                        cbAnimOld.Items.Add(splitLine[1]);
+                        cbAnimNew.Items.Add(splitLine[1]);
+
+                        cbAnimOld.SelectedIndex = 0;
+                        cbAnimNew.SelectedIndex = 0;
                     }
-                    while (sr.Peek() >= 0);
                 }
             }
             catch (Exception e)
@@ -64,22 +66,11 @@ namespace M64MM2
                 btnAnimResetAll.Enabled = false;
             }
 
-            if (animData.Count > 0)
+            /* if (animList.Count > 0)
             {
-                cbAnimOld.DataSource = new BindingSource(animData, null);
-                cbAnimOld.DisplayMember = "Value";
-                cbAnimOld.ValueMember = "Key";
-
-                cbAnimNew.DataSource = new BindingSource(animData, null);
-                cbAnimNew.DisplayMember = "Value";
-                cbAnimNew.ValueMember = "Key";
-
-                cbAnimOld.SelectedIndex = 0;
-                cbAnimNew.SelectedIndex = 0;
-
                 cbAnimOld.Refresh();
                 cbAnimNew.Refresh();
-            }
+            } */
         }
 
         void Update(object sender, EventArgs e)
@@ -102,7 +93,10 @@ namespace M64MM2
             lblProgramStatus.Text = "Status: Base address found at 0x" + BaseAddress.ToString("X");
 
 
+            //==============================
             //Main program logic starts here
+            //------------------------------
+
             if (cameraFrozen)
             {
                 WriteUInt(BaseAddress + 0x33C848, 0x80000000);
@@ -113,14 +107,17 @@ namespace M64MM2
         void WriteAnimSwap(object sender, EventArgs e)
         {
             byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimNew.Value), 4);
-            WriteBytes(BaseAddress + 0x64040 + ((selectedAnimOld.Index + 1) * 8), stuffToWrite);
+            long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
+
+            WriteBytes(address, stuffToWrite);
         }
 
         void WriteAnimReset(object sender, EventArgs e)
         {
             byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimOld.Value), 4);
-            WriteBytes(BaseAddress + 0x64040 + ((selectedAnimOld.Index + 1) * 8), stuffToWrite);
+            long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
 
+            WriteBytes(address, stuffToWrite);
             cbAnimNew.SelectedIndex = cbAnimOld.SelectedIndex;
         }
 
@@ -129,7 +126,9 @@ namespace M64MM2
             foreach (Animation anim in animList)
             {
                 byte[] stuffToWrite = SwapEndian(StringToByteArray(anim.Value), 4);
-                WriteBytes(BaseAddress + 0x64040 + ((anim.Index + 1) * 8), stuffToWrite);
+                long address = BaseAddress + 0x64040 + (anim.RealIndex + 1) * 8;
+
+                WriteBytes(address, stuffToWrite);
             }
 
             cbAnimNew.SelectedIndex = cbAnimOld.SelectedIndex;
@@ -172,16 +171,14 @@ namespace M64MM2
         {
             if (ccForm == null || ccForm.IsDisposed) ccForm = new ColorCodeForm();
 
-            if (!ccForm.Visible)
-            {
+            if (!ccForm.Visible || ccForm.WindowState == FormWindowState.Minimized)
                 ccForm.Show();
-            }
         }
     }
 
     struct Animation
     {
         public string Value;
-        public int Index;
+        public int RealIndex;
     }
 }

@@ -1,14 +1,14 @@
-﻿0x01 = Open Camera
-0x02 = Tick Tock Clock
-0x03 = Secret Aquarium
-0x04 = Inside Castle/Haunted Mansion
-0x05 = Unmoving
-0x07 = Unmoving 2
-0x08 = Underwater
-0x09 = Peach's Secret Slide
-0x0A = Cannon View (Cannot C-Up)
-0x0B = Distanced Bowser Fight
-0x0D = Fixed Reference Point
-0x0E = Platform/Bowser Courses
-0x0F = Unmoving 3
-0x10 = Free Roam Camera
+﻿01|Open Camera
+02|Tick Tock Clock
+03|Secret Aquarium
+04|Inside Castle/Haunted Mansion
+05|Unmoving
+07|Unmoving 2
+08|Underwater
+09|Peach's Secret Slide
+0A|Cannon View (Cannot use C-Up)
+0B|Distanced Bowser Fight
+0D|Fixed Angle
+0E|Platform/Bowser Courses
+0F|Unmoving 3
+10|Free Roam Camera
