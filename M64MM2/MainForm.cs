@@ -17,7 +17,7 @@ namespace M64MM2
 {
     public partial class MainForm : Form
     {
-        ColorCodeForm ccForm;
+        AppearanceForm appearanceForm;
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
         List<Animation> animList;
@@ -31,6 +31,7 @@ namespace M64MM2
             updateTimer.Start();
             animList = new List<Animation>();
 
+            //Load animation data
             try
             {
                 using (StreamReader sr =  new StreamReader("animation_data.txt"))
@@ -65,12 +66,6 @@ namespace M64MM2
                 btnAnimReset.Enabled = false;
                 btnAnimResetAll.Enabled = false;
             }
-
-            /* if (animList.Count > 0)
-            {
-                cbAnimOld.Refresh();
-                cbAnimNew.Refresh();
-            } */
         }
 
         void Update(object sender, EventArgs e)
@@ -190,10 +185,10 @@ namespace M64MM2
 
         private void colorCodeStudioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ccForm == null || ccForm.IsDisposed) ccForm = new ColorCodeForm();
+            if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
 
-            if (!ccForm.Visible || ccForm.WindowState == FormWindowState.Minimized)
-                ccForm.Show();
+            if (!appearanceForm.Visible || appearanceForm.WindowState == FormWindowState.Minimized)
+                appearanceForm.Show();
         }
     }
 

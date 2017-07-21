@@ -42,6 +42,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lblProgramStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblCameraStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblCameraCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.grpAnimSwap = new System.Windows.Forms.GroupBox();
             this.btnAnimResetAll = new System.Windows.Forms.Button();
             this.btnAnimReset = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.cbAnimNew = new System.Windows.Forms.ComboBox();
             this.cbAnimOld = new System.Windows.Forms.ComboBox();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            this.lblCameraCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -142,6 +142,11 @@
             resources.ApplyResources(this.lblCameraStatus, "lblCameraStatus");
             this.lblCameraStatus.Name = "lblCameraStatus";
             // 
+            // lblCameraCode
+            // 
+            this.lblCameraCode.Name = "lblCameraCode";
+            resources.ApplyResources(this.lblCameraCode, "lblCameraCode");
+            // 
             // grpAnimSwap
             // 
             this.grpAnimSwap.Controls.Add(this.btnAnimResetAll);
@@ -202,11 +207,6 @@
             // updateTimer
             // 
             this.updateTimer.Tick += new System.EventHandler(this.Update);
-            // 
-            // lblCameraCode
-            // 
-            this.lblCameraCode.Name = "lblCameraCode";
-            resources.ApplyResources(this.lblCameraCode, "lblCameraCode");
             // 
             // MainForm
             // 

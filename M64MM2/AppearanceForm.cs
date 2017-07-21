@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using M64MM2.Properties;
 
@@ -16,7 +11,7 @@ using static M64MM2.Utils;
 
 namespace M64MM2
 {
-    public partial class ColorCodeForm : Form
+    public partial class AppearanceForm : Form
     {
         Color defaultHatMain = Color.FromArgb(255, 0, 0);
         Color defaultHatShade = Color.FromArgb(127, 0, 0);
@@ -38,7 +33,7 @@ namespace M64MM2
         ColorMap pantsMap = new ColorMap();
         ColorMap shoesMap = new ColorMap();
 
-        public ColorCodeForm()
+        public AppearanceForm()
         {
             InitializeComponent();
 
@@ -114,6 +109,9 @@ namespace M64MM2
             sender.BackColor = colorDialog.Color;
             marioSprite.Refresh();
 
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
+
             byte[] colorData = new byte[4];
             colorData[0] = sender.BackColor.R;
             colorData[1] = sender.BackColor.G;
@@ -167,8 +165,34 @@ namespace M64MM2
             }
         }
 
+        void importColorCode(object s, EventArgs e)
+        {
+            
+        }
+
+        void exportColorCode(object s, EventArgs e)
+        {
+
+        }
+
         void resetColors(object sender, EventArgs e)
         {
+            pantsColorShade.BackColor = defaultPantsShade;
+            pantsColorMain.BackColor = defaultPantsMain;
+            hatColorShade.BackColor = defaultHatShade;
+            hatColorMain.BackColor = defaultHatMain;
+            glovesColorShade.BackColor = defaultGlovesShade;
+            glovesColorMain.BackColor = defaultGlovesMain;
+            shoesColorShade.BackColor = defaultShoesShade;
+            shoesColorMain.BackColor = defaultShoesMain;
+            skinColorShade.BackColor = defaultSkinShade;
+            skinColorMain.BackColor = defaultSkinMain;
+            hairColorShade.BackColor = defaultHairShade;
+            hairColorMain.BackColor = defaultHairMain;
+
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
+
             byte[] colorData = new byte[4];
             colorData[3] = 0;
 

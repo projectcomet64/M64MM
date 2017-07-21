@@ -1,6 +1,6 @@
 ﻿namespace M64MM2
 {
-    partial class ColorCodeForm
+    partial class AppearanceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorCodeForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppearanceForm));
             this.marioSprite = new System.Windows.Forms.PictureBox();
             this.hatColorMain = new System.Windows.Forms.Button();
             this.hatColorShade = new System.Windows.Forms.Button();
@@ -371,6 +371,7 @@
             this.btnExportCode.TabIndex = 22;
             this.btnExportCode.Text = "Export Color Code";
             this.btnExportCode.UseVisualStyleBackColor = true;
+            this.btnExportCode.Click += new System.EventHandler(this.exportColorCode);
             // 
             // btnImportCode
             // 
@@ -380,6 +381,7 @@
             this.btnImportCode.TabIndex = 21;
             this.btnImportCode.Text = "Import Color Code";
             this.btnImportCode.UseVisualStyleBackColor = true;
+            this.btnImportCode.Click += new System.EventHandler(this.importColorCode);
             // 
             // grpShading
             // 
@@ -500,7 +502,7 @@
             this.tbLeftRight.TabIndex = 0;
             this.tbLeftRight.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
-            // ColorCodeForm
+            // AppearanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -511,8 +513,8 @@
             this.Controls.Add(this.marioSprite);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "ColorCodeForm";
-            this.Text = "Color Code Studio";
+            this.Name = "AppearanceForm";
+            this.Text = "Appearance Settings";
             ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).EndInit();
             this.grpColor.ResumeLayout(false);
             this.grpColor.PerformLayout();

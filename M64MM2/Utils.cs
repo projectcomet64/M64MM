@@ -13,7 +13,7 @@ namespace M64MM2
 
         static Process emuProcess;
         static IntPtr emuProcessHandle;
-        const int PROCESS_ALL_ACCESS = 0x1F0FF;
+        const int PROCESS_ALL_ACCESS = 0x01F0FF;
 
         [DllImport("user32.dll")]
         static extern short GetAsyncKeyState(Keys vKey);
