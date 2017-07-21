@@ -371,7 +371,7 @@
             this.btnExportCode.TabIndex = 22;
             this.btnExportCode.Text = "Export Color Code";
             this.btnExportCode.UseVisualStyleBackColor = true;
-            this.btnExportCode.Click += new System.EventHandler(this.exportColorCode);
+            this.btnExportCode.Click += new System.EventHandler(this.openCopyPasteForm);
             // 
             // btnImportCode
             // 
@@ -381,7 +381,7 @@
             this.btnImportCode.TabIndex = 21;
             this.btnImportCode.Text = "Import Color Code";
             this.btnImportCode.UseVisualStyleBackColor = true;
-            this.btnImportCode.Click += new System.EventHandler(this.importColorCode);
+            this.btnImportCode.Click += new System.EventHandler(this.openCopyPasteForm);
             // 
             // grpShading
             // 

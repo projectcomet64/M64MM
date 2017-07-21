@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using M64MM2.Properties;
@@ -68,7 +69,7 @@ namespace M64MM2
             pantsMap.NewColor = blendColors(pantsColorMain.BackColor, pantsColorShade.BackColor);
             shoesMap.NewColor = blendColors(shoesColorMain.BackColor, shoesColorShade.BackColor);
 
-            // Set the image attribute's color mappings
+            // Set the image attribute'sender color mappings
             ColorMap[] colorMap = new ColorMap[6];
             colorMap[0] = hatMap;
             colorMap[1] = hairMap;
@@ -86,7 +87,7 @@ namespace M64MM2
             g.DrawImage(bmp, rect, 0, 0, bmp.Width, bmp.Height, GraphicsUnit.Pixel, attr);
         }
 
-        //Blends two colors together via a quasi-additive formula and produces a result that's somewhat similar to SM64's lighting algorithm.
+        //Blends two colors together via a quasi-additive formula and produces a result that'sender somewhat similar to SM64'sender lighting algorithm.
         Color blendColors(Color mainColor, Color shadeColor)
         {
             int r = (int)Math.Min((shadeColor.R / 1.25) + (mainColor.R / 2.0), 255);
@@ -98,28 +99,28 @@ namespace M64MM2
         }
 
 
-        void colorButton_Click(object s, EventArgs e)
+        void colorButton_Click(object sender, EventArgs e)
         {
-            Button sender = (Button) s;
-            colorDialog.Color = sender.BackColor;
+            Button senderButton = (Button) sender;
+            colorDialog.Color = senderButton.BackColor;
 
             if (colorDialog.ShowDialog(this) != DialogResult.OK) return;
-            if (!sender.Enabled) return;
+            if (!senderButton.Enabled) return;
 
-            sender.BackColor = colorDialog.Color;
+            senderButton.BackColor = colorDialog.Color;
             marioSprite.Refresh();
 
             if (!IsEmuOpen || BaseAddress == 0) return;
 
 
             byte[] colorData = new byte[4];
-            colorData[0] = sender.BackColor.R;
-            colorData[1] = sender.BackColor.G;
-            colorData[2] = sender.BackColor.B;
+            colorData[0] = senderButton.BackColor.R;
+            colorData[1] = senderButton.BackColor.G;
+            colorData[2] = senderButton.BackColor.B;
             colorData[3] = 0;
 
             int address = 0;
-            switch (sender.Name)
+            switch (senderButton.Name)
             {
                 case "pantsColorShade":
                     address = 0x07EC20;
@@ -165,33 +166,9 @@ namespace M64MM2
             }
         }
 
-        void importColorCode(object s, EventArgs e)
+        void applyAllColors()
         {
-            
-        }
-
-        void exportColorCode(object s, EventArgs e)
-        {
-
-        }
-
-        void resetColors(object sender, EventArgs e)
-        {
-            pantsColorShade.BackColor = defaultPantsShade;
-            pantsColorMain.BackColor = defaultPantsMain;
-            hatColorShade.BackColor = defaultHatShade;
-            hatColorMain.BackColor = defaultHatMain;
-            glovesColorShade.BackColor = defaultGlovesShade;
-            glovesColorMain.BackColor = defaultGlovesMain;
-            shoesColorShade.BackColor = defaultShoesShade;
-            shoesColorMain.BackColor = defaultShoesMain;
-            skinColorShade.BackColor = defaultSkinShade;
-            skinColorMain.BackColor = defaultSkinMain;
-            hairColorShade.BackColor = defaultHairShade;
-            hairColorMain.BackColor = defaultHairMain;
-
             if (!IsEmuOpen || BaseAddress == 0) return;
-
 
             byte[] colorData = new byte[4];
             colorData[3] = 0;
@@ -210,7 +187,7 @@ namespace M64MM2
             colorData[1] = defaultHatShade.G;
             colorData[2] = defaultHatShade.B;
             WriteBytes(BaseAddress + 0x07EC38, SwapEndian(colorData, 4));
-            
+
             colorData[0] = defaultHatMain.R;
             colorData[1] = defaultHatMain.G;
             colorData[2] = defaultHatMain.B;
@@ -257,8 +234,195 @@ namespace M64MM2
             WriteBytes(BaseAddress + 0x07ECA0, SwapEndian(colorData, 4));
         }
 
+        void openCopyPasteForm(object sender, EventArgs e)
+        {
+            CopyPasteForm form = new CopyPasteForm();
+
+            Button senderButton = (Button)sender;
+
+            if (senderButton.Name == btnImportCode.Name)
+            {
+                form.lblInfo.Text = "Please paste your color code below, then click OK.";
+
+                form.ShowDialog(this);
+            }
+            else if (senderButton.Name == btnExportCode.Name)
+            {
+                form.lblInfo.Text = "Here's your generated color code:";
+                form.btnCancel.Visible = false;
+                form.tbColorCode.ReadOnly = true;
+                form.tbColorCode.Lines = GenerateColorCode();
+
+                form.ShowDialog(this);
+            }
+        }
+
+        public void ParseColorCode(string code)
+        {
+            //Trim some data we don't need anymore. Now each line of the color code is represented by 3 bytes.
+            byte[] data = StringToByteArray(code.Replace("8107EC", ""));
+
+            //Every 6 bytes of the trimmed data represents one color.
+            //The first line holds the red and green values, and the second line holds the blue value.
+            for (int i = 0; i < data.Length / 6; i++)
+            {
+                byte r = data[(i * 6) + 1];
+                byte g = data[(i * 6) + 2];
+                byte b = data[(i * 6) + 4];
+
+                switch (data[(i * 6)])
+                {
+                    case 0x38:
+                        hatColorShade.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0x40:
+                        hatColorMain.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0x98:
+                        hairColorShade.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0xA0:
+                        hairColorMain.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0x80:
+                        skinColorShade.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0x88:
+                        skinColorMain.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0x50:
+                        glovesColorShade.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0x58:
+                        glovesColorMain.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0x20:
+                        pantsColorShade.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0x28:
+                        pantsColorMain.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0x68:
+                        shoesColorShade.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                    case 0x70:
+                        shoesColorMain.BackColor = Color.FromArgb(r, g, b);
+                        break;
+                }
+            }
+
+            marioSprite.Refresh();
+            applyAllColors();
+
+            if (MessageBox.Show(this, "Set these colors as default?", "Set defaults?", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            defaultPantsShade = pantsColorShade.BackColor;
+            defaultPantsMain = pantsColorMain.BackColor;
+            defaultHatShade = hatColorShade.BackColor;
+            defaultHatMain = hatColorMain.BackColor;
+            defaultGlovesShade = glovesColorShade.BackColor;
+            defaultGlovesMain = glovesColorMain.BackColor;
+            defaultShoesShade = shoesColorShade.BackColor;
+            defaultShoesMain = shoesColorMain.BackColor;
+            defaultSkinShade = skinColorShade.BackColor;
+            defaultSkinMain = skinColorMain.BackColor;
+            defaultHairShade = hairColorShade.BackColor;
+            defaultHairMain = hairColorMain.BackColor;
+        }
+
+        string[] GenerateColorCode()
+        {
+            List<string> code = new List<string>();
+
+            foreach (Control control in this.grpColor.Controls)
+            {
+                Button button = control as Button;
+                if (button == null || !string.IsNullOrWhiteSpace(button.Text)) continue;
+
+                string[] addressToWrite = new string[2];
+                switch (button.Name)
+                {
+                    case "hatColorShade":
+                        addressToWrite[0] = "07EC38";
+                        addressToWrite[1] = "07EC3A";
+                        break;
+                    case "hatColorMain":
+                        addressToWrite[0] = "07EC40";
+                        addressToWrite[1] = "07EC42";
+                        break;
+                    case "hairColorShade":
+                        addressToWrite[0] = "07EC98";
+                        addressToWrite[1] = "07EC9A";
+                        break;
+                    case "hairColorMain":
+                        addressToWrite[0] = "07ECA0";
+                        addressToWrite[1] = "07ECA2";
+                        break;
+                    case "skinColorShade":
+                        addressToWrite[0] = "07EC80";
+                        addressToWrite[1] = "07EC82";
+                        break;
+                    case "skinColorMain":
+                        addressToWrite[0] = "07EC88";
+                        addressToWrite[1] = "07EC8A";
+                        break;
+                    case "glovesColorShade":
+                        addressToWrite[0] = "07EC50";
+                        addressToWrite[1] = "07EC52";
+                        break;
+                    case "glovesColorMain":
+                        addressToWrite[0] = "07EC58";
+                        addressToWrite[1] = "07EC5A";
+                        break;
+                    case "pantsColorShade":
+                        addressToWrite[0] = "07EC20";
+                        addressToWrite[1] = "07EC22";
+                        break;
+                    case "pantsColorMain":
+                        addressToWrite[0] = "07EC28";
+                        addressToWrite[1] = "07EC2A";
+                        break;
+                    case "shoesColorShade":
+                        addressToWrite[0] = "07EC68";
+                        addressToWrite[1] = "07EC6A";
+                        break;
+                    case "shoesColorMain":
+                        addressToWrite[0] = "07EC70";
+                        addressToWrite[1] = "07EC72";
+                        break;
+                }
+
+                code.Add("81" + addressToWrite[0] + " " + button.BackColor.R.ToString("X2") + button.BackColor.G.ToString("X2"));
+                code.Add("81" + addressToWrite[1] + " " + button.BackColor.B.ToString("X2") + "00");
+            }
+
+            return code.ToArray();
+        }
+
+        void resetColors(object sender, EventArgs e)
+        {
+            pantsColorShade.BackColor = defaultPantsShade;
+            pantsColorMain.BackColor = defaultPantsMain;
+            hatColorShade.BackColor = defaultHatShade;
+            hatColorMain.BackColor = defaultHatMain;
+            glovesColorShade.BackColor = defaultGlovesShade;
+            glovesColorMain.BackColor = defaultGlovesMain;
+            shoesColorShade.BackColor = defaultShoesShade;
+            shoesColorMain.BackColor = defaultShoesMain;
+            skinColorShade.BackColor = defaultSkinShade;
+            skinColorMain.BackColor = defaultSkinMain;
+            hairColorShade.BackColor = defaultHairShade;
+            hairColorMain.BackColor = defaultHairMain;
+
+            marioSprite.Refresh();
+            applyAllColors();
+        }
+
         void loadFromGame(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             byte[] colorData;
 
             colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC20, 4), 4);

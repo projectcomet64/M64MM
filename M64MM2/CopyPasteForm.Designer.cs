@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CopyPasteForm));
             this.lblInfo = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbColorCode = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -40,12 +40,13 @@
             resources.ApplyResources(this.lblInfo, "lblInfo");
             this.lblInfo.Name = "lblInfo";
             // 
-            // textBox1
+            // tbColorCode
             // 
-            this.textBox1.AcceptsReturn = true;
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox1.Name = "textBox1";
+            this.tbColorCode.AcceptsReturn = true;
+            resources.ApplyResources(this.tbColorCode, "tbColorCode");
+            this.tbColorCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbColorCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbColorCode.Name = "tbColorCode";
             // 
             // btnCancel
             // 
@@ -53,12 +54,14 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
             resources.ApplyResources(this.btnOK, "btnOK");
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // CopyPasteForm
             // 
@@ -68,7 +71,7 @@
             this.CancelButton = this.btnCancel;
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbColorCode);
             this.Controls.Add(this.lblInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "CopyPasteForm";
@@ -78,10 +81,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblInfo;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOK;
+        public System.Windows.Forms.Label lblInfo;
+        public System.Windows.Forms.TextBox tbColorCode;
+        public System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.Button btnOK;
     }
 }
