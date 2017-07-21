@@ -155,9 +155,9 @@ namespace M64MM2
         }
 
 
-        public static short GetKey(Keys vKey)
+        public static bool GetKey(Keys vKey)
         {
-            return GetAsyncKeyState(vKey);
+            return 0 != GetAsyncKeyState(vKey);
         }
     }
 }

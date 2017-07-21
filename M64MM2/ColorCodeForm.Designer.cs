@@ -54,29 +54,29 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.grpColor = new System.Windows.Forms.GroupBox();
-            this.grpShading = new System.Windows.Forms.GroupBox();
-            this.btnImportCode = new System.Windows.Forms.Button();
-            this.btnExportCode = new System.Windows.Forms.Button();
             this.btnLoadFromGame = new System.Windows.Forms.Button();
             this.btnResetColors = new System.Windows.Forms.Button();
-            this.tbLeftRight = new System.Windows.Forms.TrackBar();
-            this.tbBottomTop = new System.Windows.Forms.TrackBar();
-            this.tbBackFront = new System.Windows.Forms.TrackBar();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.btnExportCode = new System.Windows.Forms.Button();
+            this.btnImportCode = new System.Windows.Forms.Button();
+            this.grpShading = new System.Windows.Forms.GroupBox();
+            this.btnRandomizeShading = new System.Windows.Forms.Button();
+            this.btnResetShading = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.btnResetShading = new System.Windows.Forms.Button();
-            this.btnRandomizeShading = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbBackFront = new System.Windows.Forms.TrackBar();
+            this.tbBottomTop = new System.Windows.Forms.TrackBar();
+            this.tbLeftRight = new System.Windows.Forms.TrackBar();
             this.randomizerTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).BeginInit();
             this.grpColor.SuspendLayout();
             this.grpShading.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbBottomTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbBackFront)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbBottomTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).BeginInit();
             this.SuspendLayout();
             // 
             // marioSprite
@@ -343,6 +343,44 @@
             this.grpColor.TabStop = false;
             this.grpColor.Text = "Color Settings:";
             // 
+            // btnLoadFromGame
+            // 
+            this.btnLoadFromGame.Location = new System.Drawing.Point(123, 241);
+            this.btnLoadFromGame.Name = "btnLoadFromGame";
+            this.btnLoadFromGame.Size = new System.Drawing.Size(111, 23);
+            this.btnLoadFromGame.TabIndex = 24;
+            this.btnLoadFromGame.Text = "Load From Game";
+            this.btnLoadFromGame.UseVisualStyleBackColor = true;
+            this.btnLoadFromGame.Click += new System.EventHandler(this.loadFromGame);
+            // 
+            // btnResetColors
+            // 
+            this.btnResetColors.Location = new System.Drawing.Point(6, 241);
+            this.btnResetColors.Name = "btnResetColors";
+            this.btnResetColors.Size = new System.Drawing.Size(111, 23);
+            this.btnResetColors.TabIndex = 23;
+            this.btnResetColors.Text = "Reset Colors";
+            this.btnResetColors.UseVisualStyleBackColor = true;
+            this.btnResetColors.Click += new System.EventHandler(this.resetColors);
+            // 
+            // btnExportCode
+            // 
+            this.btnExportCode.Location = new System.Drawing.Point(123, 212);
+            this.btnExportCode.Name = "btnExportCode";
+            this.btnExportCode.Size = new System.Drawing.Size(111, 23);
+            this.btnExportCode.TabIndex = 22;
+            this.btnExportCode.Text = "Export Color Code";
+            this.btnExportCode.UseVisualStyleBackColor = true;
+            // 
+            // btnImportCode
+            // 
+            this.btnImportCode.Location = new System.Drawing.Point(6, 212);
+            this.btnImportCode.Name = "btnImportCode";
+            this.btnImportCode.Size = new System.Drawing.Size(111, 23);
+            this.btnImportCode.TabIndex = 21;
+            this.btnImportCode.Text = "Import Color Code";
+            this.btnImportCode.UseVisualStyleBackColor = true;
+            // 
             // grpShading
             // 
             this.grpShading.Controls.Add(this.btnRandomizeShading);
@@ -363,96 +401,23 @@
             this.grpShading.TabStop = false;
             this.grpShading.Text = "Shading Settings:";
             // 
-            // btnImportCode
+            // btnRandomizeShading
             // 
-            this.btnImportCode.Location = new System.Drawing.Point(6, 212);
-            this.btnImportCode.Name = "btnImportCode";
-            this.btnImportCode.Size = new System.Drawing.Size(111, 23);
-            this.btnImportCode.TabIndex = 21;
-            this.btnImportCode.Text = "Import Color Code";
-            this.btnImportCode.UseVisualStyleBackColor = true;
+            this.btnRandomizeShading.Location = new System.Drawing.Point(318, 72);
+            this.btnRandomizeShading.Name = "btnRandomizeShading";
+            this.btnRandomizeShading.Size = new System.Drawing.Size(116, 23);
+            this.btnRandomizeShading.TabIndex = 23;
+            this.btnRandomizeShading.Text = "Randomize Shading";
+            this.btnRandomizeShading.UseVisualStyleBackColor = true;
             // 
-            // btnExportCode
+            // btnResetShading
             // 
-            this.btnExportCode.Location = new System.Drawing.Point(123, 212);
-            this.btnExportCode.Name = "btnExportCode";
-            this.btnExportCode.Size = new System.Drawing.Size(111, 23);
-            this.btnExportCode.TabIndex = 22;
-            this.btnExportCode.Text = "Export Color Code";
-            this.btnExportCode.UseVisualStyleBackColor = true;
-            // 
-            // btnLoadFromGame
-            // 
-            this.btnLoadFromGame.Location = new System.Drawing.Point(123, 241);
-            this.btnLoadFromGame.Name = "btnLoadFromGame";
-            this.btnLoadFromGame.Size = new System.Drawing.Size(111, 23);
-            this.btnLoadFromGame.TabIndex = 24;
-            this.btnLoadFromGame.Text = "Load From Game";
-            this.btnLoadFromGame.UseVisualStyleBackColor = true;
-            // 
-            // btnResetColors
-            // 
-            this.btnResetColors.Location = new System.Drawing.Point(6, 241);
-            this.btnResetColors.Name = "btnResetColors";
-            this.btnResetColors.Size = new System.Drawing.Size(111, 23);
-            this.btnResetColors.TabIndex = 23;
-            this.btnResetColors.Text = "Reset Colors";
-            this.btnResetColors.UseVisualStyleBackColor = true;
-            this.btnResetColors.Click += new System.EventHandler(this.resetColors);
-            // 
-            // tbLeftRight
-            // 
-            this.tbLeftRight.AutoSize = false;
-            this.tbLeftRight.Location = new System.Drawing.Point(59, 19);
-            this.tbLeftRight.Name = "tbLeftRight";
-            this.tbLeftRight.Size = new System.Drawing.Size(200, 23);
-            this.tbLeftRight.TabIndex = 0;
-            this.tbLeftRight.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // tbBottomTop
-            // 
-            this.tbBottomTop.AutoSize = false;
-            this.tbBottomTop.Location = new System.Drawing.Point(59, 48);
-            this.tbBottomTop.Name = "tbBottomTop";
-            this.tbBottomTop.Size = new System.Drawing.Size(200, 23);
-            this.tbBottomTop.TabIndex = 1;
-            this.tbBottomTop.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // tbBackFront
-            // 
-            this.tbBackFront.AutoSize = false;
-            this.tbBackFront.Location = new System.Drawing.Point(59, 77);
-            this.tbBackFront.Name = "tbBackFront";
-            this.tbBackFront.Size = new System.Drawing.Size(200, 23);
-            this.tbBackFront.TabIndex = 2;
-            this.tbBackFront.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // label10
-            // 
-            this.label10.Location = new System.Drawing.Point(6, 19);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 13);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Left";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label11
-            // 
-            this.label11.Location = new System.Drawing.Point(6, 48);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(47, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Bottom";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label12
-            // 
-            this.label12.Location = new System.Drawing.Point(6, 77);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 13);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Back";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnResetShading.Location = new System.Drawing.Point(318, 19);
+            this.btnResetShading.Name = "btnResetShading";
+            this.btnResetShading.Size = new System.Drawing.Size(116, 23);
+            this.btnResetShading.TabIndex = 22;
+            this.btnResetShading.Text = "Reset Shading";
+            this.btnResetShading.UseVisualStyleBackColor = true;
             // 
             // label13
             // 
@@ -481,23 +446,59 @@
             this.label15.Text = "Right";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnResetShading
+            // label12
             // 
-            this.btnResetShading.Location = new System.Drawing.Point(318, 19);
-            this.btnResetShading.Name = "btnResetShading";
-            this.btnResetShading.Size = new System.Drawing.Size(116, 23);
-            this.btnResetShading.TabIndex = 22;
-            this.btnResetShading.Text = "Reset Shading";
-            this.btnResetShading.UseVisualStyleBackColor = true;
+            this.label12.Location = new System.Drawing.Point(6, 77);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(47, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Back";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnRandomizeShading
+            // label11
             // 
-            this.btnRandomizeShading.Location = new System.Drawing.Point(318, 72);
-            this.btnRandomizeShading.Name = "btnRandomizeShading";
-            this.btnRandomizeShading.Size = new System.Drawing.Size(116, 23);
-            this.btnRandomizeShading.TabIndex = 23;
-            this.btnRandomizeShading.Text = "Randomize Shading";
-            this.btnRandomizeShading.UseVisualStyleBackColor = true;
+            this.label11.Location = new System.Drawing.Point(6, 48);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Bottom";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(6, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Left";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tbBackFront
+            // 
+            this.tbBackFront.AutoSize = false;
+            this.tbBackFront.Location = new System.Drawing.Point(59, 77);
+            this.tbBackFront.Name = "tbBackFront";
+            this.tbBackFront.Size = new System.Drawing.Size(200, 23);
+            this.tbBackFront.TabIndex = 2;
+            this.tbBackFront.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // tbBottomTop
+            // 
+            this.tbBottomTop.AutoSize = false;
+            this.tbBottomTop.Location = new System.Drawing.Point(59, 48);
+            this.tbBottomTop.Name = "tbBottomTop";
+            this.tbBottomTop.Size = new System.Drawing.Size(200, 23);
+            this.tbBottomTop.TabIndex = 1;
+            this.tbBottomTop.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // tbLeftRight
+            // 
+            this.tbLeftRight.AutoSize = false;
+            this.tbLeftRight.Location = new System.Drawing.Point(59, 19);
+            this.tbLeftRight.Name = "tbLeftRight";
+            this.tbLeftRight.Size = new System.Drawing.Size(200, 23);
+            this.tbLeftRight.TabIndex = 0;
+            this.tbLeftRight.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // ColorCodeForm
             // 
@@ -516,9 +517,9 @@
             this.grpColor.ResumeLayout(false);
             this.grpColor.PerformLayout();
             this.grpShading.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbBottomTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbBackFront)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbBottomTop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).EndInit();
             this.ResumeLayout(false);
 
         }

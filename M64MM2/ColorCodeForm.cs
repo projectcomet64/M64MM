@@ -86,12 +86,12 @@ namespace M64MM2
             attr.SetRemapTable(colorMap);
 
             // Draw using the color map
-            dynamic rect = new Rectangle(0, 0, e.ClipRectangle.Width, e.ClipRectangle.Height);
+            Rectangle rect = new Rectangle(0, 0, e.ClipRectangle.Width, e.ClipRectangle.Height);
             g.Clear(BackColor);
             g.DrawImage(bmp, rect, 0, 0, bmp.Width, bmp.Height, GraphicsUnit.Pixel, attr);
         }
 
-        //Blends two colors together and produces a result that's somewhat similar to SM64's lighting algorithm.
+        //Blends two colors together via a quasi-additive formula and produces a result that's somewhat similar to SM64's lighting algorithm.
         Color blendColors(Color mainColor, Color shadeColor)
         {
             int r = (int)Math.Min((shadeColor.R / 1.25) + (mainColor.R / 2.0), 255);
@@ -124,40 +124,40 @@ namespace M64MM2
             switch (sender.Name)
             {
                 case "pantsColorShade":
-                    address = 0x7EC20;
+                    address = 0x07EC20;
                     break;
                 case "pantsColorMain":
-                    address = 0x7EC28;
+                    address = 0x07EC28;
                     break;
                 case "hatColorShade":
-                    address = 0x7EC38;
+                    address = 0x07EC38;
                     break;
                 case "hatColorMain":
-                    address = 0x7EC40;
+                    address = 0x07EC40;
                     break;
                 case "glovesColorShade":
-                    address = 0x7EC50;
+                    address = 0x07EC50;
                     break;
                 case "glovesColorMain":
-                    address = 0x7EC58;
+                    address = 0x07EC58;
                     break;
                 case "shoesColorShade":
-                    address = 0x7EC68;
+                    address = 0x07EC68;
                     break;
                 case "shoesColorMain":
-                    address = 0x7EC70;
+                    address = 0x07EC70;
                     break;
                 case "skinColorShade":
-                    address = 0x7EC80;
+                    address = 0x07EC80;
                     break;
                 case "skinColorMain":
-                    address = 0x7EC88;
+                    address = 0x07EC88;
                     break;
                 case "hairColorShade":
-                    address = 0x7EC98;
+                    address = 0x07EC98;
                     break;
                 case "hairColorMain":
-                    address = 0x7ECA0;
+                    address = 0x07ECA0;
                     break;
             }
 
@@ -175,62 +175,122 @@ namespace M64MM2
             colorData[0] = defaultPantsShade.R;
             colorData[1] = defaultPantsShade.G;
             colorData[2] = defaultPantsShade.B;
-            WriteBytes(BaseAddress + 0x7EC20, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC20, SwapEndian(colorData, 4));
 
             colorData[0] = defaultPantsMain.R;
             colorData[1] = defaultPantsMain.G;
             colorData[2] = defaultPantsMain.B;
-            WriteBytes(BaseAddress + 0x7EC28, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC28, SwapEndian(colorData, 4));
 
             colorData[0] = defaultHatShade.R;
             colorData[1] = defaultHatShade.G;
             colorData[2] = defaultHatShade.B;
-            WriteBytes(BaseAddress + 0x7EC38, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC38, SwapEndian(colorData, 4));
             
             colorData[0] = defaultHatMain.R;
             colorData[1] = defaultHatMain.G;
             colorData[2] = defaultHatMain.B;
-            WriteBytes(BaseAddress + 0x7EC40, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC40, SwapEndian(colorData, 4));
 
             colorData[0] = defaultGlovesShade.R;
             colorData[1] = defaultGlovesShade.G;
             colorData[2] = defaultGlovesShade.B;
-            WriteBytes(BaseAddress + 0x7EC50, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC50, SwapEndian(colorData, 4));
 
             colorData[0] = defaultGlovesMain.R;
             colorData[1] = defaultGlovesMain.G;
             colorData[2] = defaultGlovesMain.B;
-            WriteBytes(BaseAddress + 0x7EC58, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC58, SwapEndian(colorData, 4));
 
             colorData[0] = defaultShoesShade.R;
             colorData[1] = defaultShoesShade.G;
             colorData[2] = defaultShoesShade.B;
-            WriteBytes(BaseAddress + 0x7EC68, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC68, SwapEndian(colorData, 4));
 
             colorData[0] = defaultShoesMain.R;
             colorData[1] = defaultShoesMain.G;
             colorData[2] = defaultShoesMain.B;
-            WriteBytes(BaseAddress + 0x7EC70, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC70, SwapEndian(colorData, 4));
 
             colorData[0] = defaultSkinShade.R;
             colorData[1] = defaultSkinShade.G;
             colorData[2] = defaultSkinShade.B;
-            WriteBytes(BaseAddress + 0x7EC80, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC80, SwapEndian(colorData, 4));
 
             colorData[0] = defaultSkinMain.R;
             colorData[1] = defaultSkinMain.G;
             colorData[2] = defaultSkinMain.B;
-            WriteBytes(BaseAddress + 0x7EC88, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC88, SwapEndian(colorData, 4));
 
             colorData[0] = defaultHairShade.R;
             colorData[1] = defaultHairShade.G;
             colorData[2] = defaultHairShade.B;
-            WriteBytes(BaseAddress + 0x7EC98, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07EC98, SwapEndian(colorData, 4));
 
             colorData[0] = defaultHairMain.R;
             colorData[1] = defaultHairMain.G;
             colorData[2] = defaultHairMain.B;
-            WriteBytes(BaseAddress + 0x7ECA0, SwapEndian(colorData, 4));
+            WriteBytes(BaseAddress + 0x07ECA0, SwapEndian(colorData, 4));
+        }
+
+        void loadFromGame(object sender, EventArgs e)
+        {
+            byte[] colorData;
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC20, 4), 4);
+            pantsColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC28, 4), 4);
+            pantsColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC38, 4), 4);
+            hatColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC40, 4), 4);
+            hatColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC50, 4), 4);
+            glovesColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC58, 4), 4);
+            glovesColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC68, 4), 4);
+            shoesColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
+            shoesColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC80, 4), 4);
+            skinColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC88, 4), 4);
+            skinColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC98, 4), 4);
+            hairColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07ECA0, 4), 4);
+            hairColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+
+            marioSprite.Refresh();
+
+
+            if (MessageBox.Show(this, "Set these colors as default?", "Set defaults?", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+            
+            defaultPantsShade = pantsColorShade.BackColor;
+            defaultPantsMain = pantsColorMain.BackColor;
+            defaultHatShade = hatColorShade.BackColor;
+            defaultHatMain = hatColorMain.BackColor;
+            defaultGlovesShade = glovesColorShade.BackColor;
+            defaultGlovesMain = glovesColorMain.BackColor;
+            defaultShoesShade = shoesColorShade.BackColor;
+            defaultShoesMain = shoesColorMain.BackColor;
+            defaultSkinShade = skinColorShade.BackColor;
+            defaultSkinMain = skinColorMain.BackColor;
+            defaultHairShade = hairColorShade.BackColor;
+            defaultHairMain = hairColorMain.BackColor;
         }
     }
 }

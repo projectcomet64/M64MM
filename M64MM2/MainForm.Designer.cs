@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.settingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorCodeStudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCamera = new System.Windows.Forms.GroupBox();
             this.btnSoftUnfreeze = new System.Windows.Forms.Button();
@@ -51,7 +51,7 @@
             this.cbAnimNew = new System.Windows.Forms.ComboBox();
             this.cbAnimOld = new System.Windows.Forms.ComboBox();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            this.colorCodeStudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblCameraCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -61,16 +61,10 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsMenuItem,
             this.toolsMenuItem,
             this.aboutMenuItem});
             resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
-            // 
-            // settingsMenuItem
-            // 
-            this.settingsMenuItem.Name = "settingsMenuItem";
-            resources.ApplyResources(this.settingsMenuItem, "settingsMenuItem");
             // 
             // toolsMenuItem
             // 
@@ -78,6 +72,12 @@
             this.colorCodeStudioToolStripMenuItem});
             this.toolsMenuItem.Name = "toolsMenuItem";
             resources.ApplyResources(this.toolsMenuItem, "toolsMenuItem");
+            // 
+            // colorCodeStudioToolStripMenuItem
+            // 
+            this.colorCodeStudioToolStripMenuItem.Name = "colorCodeStudioToolStripMenuItem";
+            resources.ApplyResources(this.colorCodeStudioToolStripMenuItem, "colorCodeStudioToolStripMenuItem");
+            this.colorCodeStudioToolStripMenuItem.Click += new System.EventHandler(this.colorCodeStudioToolStripMenuItem_Click);
             // 
             // aboutMenuItem
             // 
@@ -126,7 +126,8 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblProgramStatus,
-            this.lblCameraStatus});
+            this.lblCameraStatus,
+            this.lblCameraCode});
             resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.SizingGrip = false;
@@ -202,11 +203,10 @@
             // 
             this.updateTimer.Tick += new System.EventHandler(this.Update);
             // 
-            // colorCodeStudioToolStripMenuItem
+            // lblCameraCode
             // 
-            this.colorCodeStudioToolStripMenuItem.Name = "colorCodeStudioToolStripMenuItem";
-            resources.ApplyResources(this.colorCodeStudioToolStripMenuItem, "colorCodeStudioToolStripMenuItem");
-            this.colorCodeStudioToolStripMenuItem.Click += new System.EventHandler(this.colorCodeStudioToolStripMenuItem_Click);
+            this.lblCameraCode.Name = "lblCameraCode";
+            resources.ApplyResources(this.lblCameraCode, "lblCameraCode");
             // 
             // MainForm
             // 
@@ -235,7 +235,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem settingsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
         private System.Windows.Forms.GroupBox grpCamera;
@@ -256,6 +255,7 @@
         private System.Windows.Forms.Button btnAnimResetAll;
         private System.Windows.Forms.Button btnAnimReset;
         private System.Windows.Forms.ToolStripMenuItem colorCodeStudioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel lblCameraCode;
     }
 }
 

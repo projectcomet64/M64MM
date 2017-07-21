@@ -121,12 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="settingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
-  </data>
-  <data name="settingsMenuItem.Text" xml:space="preserve">
-    <value>&amp;Settings</value>
-  </data>
   <data name="colorCodeStudioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
@@ -310,7 +304,7 @@
     <value>False</value>
   </data>
   <data name="lblProgramStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 17</value>
+    <value>280, 17</value>
   </data>
   <data name="lblProgramStatus.Text" xml:space="preserve">
     <value>Status: Project64 isn't open.</value>
@@ -322,13 +316,19 @@
     <value>False</value>
   </data>
   <data name="lblCameraStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 17</value>
+    <value>200, 17</value>
   </data>
   <data name="lblCameraStatus.Text" xml:space="preserve">
     <value>Camera State: Default</value>
   </data>
   <data name="lblCameraStatus.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
+  </data>
+  <data name="lblCameraCode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="lblCameraCode.Text" xml:space="preserve">
+    <value>0x00000000</value>
   </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 339</value>
@@ -1099,16 +1099,16 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Mario 64 Movie Maker</value>
   </data>
-  <data name="&gt;&gt;settingsMenuItem.Name" xml:space="preserve">
-    <value>settingsMenuItem</value>
-  </data>
-  <data name="&gt;&gt;settingsMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;toolsMenuItem.Name" xml:space="preserve">
     <value>toolsMenuItem</value>
   </data>
   <data name="&gt;&gt;toolsMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorCodeStudioToolStripMenuItem.Name" xml:space="preserve">
+    <value>colorCodeStudioToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;colorCodeStudioToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;aboutMenuItem.Name" xml:space="preserve">
@@ -1135,11 +1135,11 @@
   <data name="&gt;&gt;updateTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;colorCodeStudioToolStripMenuItem.Name" xml:space="preserve">
-    <value>colorCodeStudioToolStripMenuItem</value>
+  <data name="&gt;&gt;lblCameraCode.Name" xml:space="preserve">
+    <value>lblCameraCode</value>
   </data>
-  <data name="&gt;&gt;colorCodeStudioToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblCameraCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

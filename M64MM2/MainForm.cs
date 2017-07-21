@@ -90,16 +90,37 @@ namespace M64MM2
                 return;
             }
 
-            lblProgramStatus.Text = "Status: Base address found at 0x" + BaseAddress.ToString("X");
+            lblProgramStatus.Text = "Status: Base address found at 0x" + BaseAddress.ToString("X8");
 
 
             //==============================
             //Main program logic starts here
             //------------------------------
 
-            if (cameraFrozen)
+            //Don't overwrite the camera state if we're in non-bugged first-person
+            byte[] cameraState = SwapEndian(ReadBytes(BaseAddress + 0x33C848, 4), 4);
+            lblCameraCode.Text = "0x" + BitConverter.ToString(cameraState).Replace("-", "");
+
+            if (cameraFrozen && (cameraState[0] == 0xA2 || cameraState[0] < 0x80))
             {
                 WriteUInt(BaseAddress + 0x33C848, 0x80000000);
+            }
+
+
+            //Handle hotkey input
+            if (GetKey(Keys.LControlKey) || GetKey(Keys.RControlKey))
+            {
+                if (GetKey(Keys.D1))
+                    FreezeCam(null, null);
+
+                if (GetKey(Keys.D2))
+                    UnfreezeCam(null, null);
+
+                if (GetKey(Keys.D4))
+                    SoftFreezeCam(null, null);
+
+                if (GetKey(Keys.D5))
+                    SoftUnfreezeCam(null, null);
             }
         }
 
