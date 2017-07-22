@@ -14,6 +14,8 @@ namespace M64MM2
 {
     public partial class AppearanceForm : Form
     {
+        Random rand;
+
         Color defaultHatMain = Color.FromArgb(255, 0, 0);
         Color defaultHatShade = Color.FromArgb(127, 0, 0);
         Color defaultHairMain = Color.FromArgb(115, 6, 0);
@@ -34,9 +36,20 @@ namespace M64MM2
         ColorMap pantsMap = new ColorMap();
         ColorMap shoesMap = new ColorMap();
 
+        static readonly int[] shadowAddresses = {
+            0x07EC30,
+            0x07EC48,
+            0x07EC60,
+            0x07EC78,
+            0x07EC90,
+            0x07ECA8
+        };
+
         public AppearanceForm()
         {
             InitializeComponent();
+
+            rand = new Random();
 
             hatMap.OldColor = Color.FromArgb(255, 0, 0);
             hatMap.NewColor = blendColors(hatColorMain.BackColor, hatColorShade.BackColor);
@@ -479,6 +492,62 @@ namespace M64MM2
             defaultSkinMain = skinColorMain.BackColor;
             defaultHairShade = hairColorShade.BackColor;
             defaultHairMain = hairColorMain.BackColor;
+        }
+
+
+        void resetShadows(object sender, EventArgs e)
+        {
+            tbLeftRight.Value = 0x28;
+            tbBottomTop.Value = 0x28;
+            tbBackFront.Value = -0x28;
+
+            foreach (Control c in this.grpShading.Controls)
+            {
+                if (c is TrackBar)
+                {
+                    changeShadows(c, null);
+                }
+            }
+        }
+
+        void randomizeShadows(object sender, EventArgs e)
+        {
+            tbLeftRight.Value = rand.Next(-127, 128);
+            tbBottomTop.Value = rand.Next(-127, 128);
+            tbBackFront.Value = rand.Next(-127, 128);
+
+            foreach (Control c in this.grpShading.Controls)
+            {
+                if (c is TrackBar)
+                {
+                    changeShadows(c, null);
+                }
+            }
+        }
+
+        void changeShadows(object sender, EventArgs e)
+        {
+            TrackBar senderBar = (TrackBar) sender;
+            byte[] data = new byte[1];
+
+            foreach (int address in shadowAddresses)
+            {
+                if (senderBar.Name == "tbLeftRight")
+                {
+                    data[0] = (byte)senderBar.Value;
+                    WriteBytes(BaseAddress + address + 3, data);
+                }
+                else if (senderBar.Name == "tbBottomTop")
+                {
+                    data[0] = (byte)senderBar.Value;
+                    WriteBytes(BaseAddress + address + 2, data);
+                }
+                else if (senderBar.Name == "tbBackFront")
+                {
+                    data[0] = (byte)-senderBar.Value;
+                    WriteBytes(BaseAddress + address + 1, data);
+                }
+            }
         }
     }
 }

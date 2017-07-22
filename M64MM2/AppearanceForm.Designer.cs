@@ -83,11 +83,8 @@
             // 
             this.marioSprite.BackColor = System.Drawing.Color.Transparent;
             this.marioSprite.Image = global::M64MM2.Properties.Resources.CC_Mario_big;
-            this.marioSprite.Location = new System.Drawing.Point(258, 51);
+            resources.ApplyResources(this.marioSprite, "marioSprite");
             this.marioSprite.Name = "marioSprite";
-            this.marioSprite.Size = new System.Drawing.Size(192, 256);
-            this.marioSprite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.marioSprite.TabIndex = 0;
             this.marioSprite.TabStop = false;
             this.marioSprite.Paint += new System.Windows.Forms.PaintEventHandler(this.marioSprite_Paint);
             // 
@@ -95,10 +92,8 @@
             // 
             this.hatColorMain.BackColor = System.Drawing.Color.Red;
             this.hatColorMain.ForeColor = System.Drawing.Color.Black;
-            this.hatColorMain.Location = new System.Drawing.Point(6, 32);
+            resources.ApplyResources(this.hatColorMain, "hatColorMain");
             this.hatColorMain.Name = "hatColorMain";
-            this.hatColorMain.Size = new System.Drawing.Size(48, 24);
-            this.hatColorMain.TabIndex = 1;
             this.hatColorMain.UseVisualStyleBackColor = false;
             this.hatColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -106,10 +101,8 @@
             // 
             this.hatColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.hatColorShade.ForeColor = System.Drawing.Color.Black;
-            this.hatColorShade.Location = new System.Drawing.Point(60, 32);
+            resources.ApplyResources(this.hatColorShade, "hatColorShade");
             this.hatColorShade.Name = "hatColorShade";
-            this.hatColorShade.Size = new System.Drawing.Size(48, 24);
-            this.hatColorShade.TabIndex = 2;
             this.hatColorShade.UseVisualStyleBackColor = false;
             this.hatColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -117,10 +110,8 @@
             // 
             this.hairColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(3)))), ((int)(((byte)(0)))));
             this.hairColorShade.ForeColor = System.Drawing.Color.Black;
-            this.hairColorShade.Location = new System.Drawing.Point(60, 62);
+            resources.ApplyResources(this.hairColorShade, "hairColorShade");
             this.hairColorShade.Name = "hairColorShade";
-            this.hairColorShade.Size = new System.Drawing.Size(48, 24);
-            this.hairColorShade.TabIndex = 4;
             this.hairColorShade.UseVisualStyleBackColor = false;
             this.hairColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -128,10 +119,8 @@
             // 
             this.hairColorMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(6)))), ((int)(((byte)(0)))));
             this.hairColorMain.ForeColor = System.Drawing.Color.Black;
-            this.hairColorMain.Location = new System.Drawing.Point(6, 62);
+            resources.ApplyResources(this.hairColorMain, "hairColorMain");
             this.hairColorMain.Name = "hairColorMain";
-            this.hairColorMain.Size = new System.Drawing.Size(48, 24);
-            this.hairColorMain.TabIndex = 3;
             this.hairColorMain.UseVisualStyleBackColor = false;
             this.hairColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -139,10 +128,8 @@
             // 
             this.skinColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(96)))), ((int)(((byte)(60)))));
             this.skinColorShade.ForeColor = System.Drawing.Color.Black;
-            this.skinColorShade.Location = new System.Drawing.Point(60, 92);
+            resources.ApplyResources(this.skinColorShade, "skinColorShade");
             this.skinColorShade.Name = "skinColorShade";
-            this.skinColorShade.Size = new System.Drawing.Size(48, 24);
-            this.skinColorShade.TabIndex = 6;
             this.skinColorShade.UseVisualStyleBackColor = false;
             this.skinColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -150,10 +137,8 @@
             // 
             this.skinColorMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(193)))), ((int)(((byte)(121)))));
             this.skinColorMain.ForeColor = System.Drawing.Color.Black;
-            this.skinColorMain.Location = new System.Drawing.Point(6, 92);
+            resources.ApplyResources(this.skinColorMain, "skinColorMain");
             this.skinColorMain.Name = "skinColorMain";
-            this.skinColorMain.Size = new System.Drawing.Size(48, 24);
-            this.skinColorMain.TabIndex = 5;
             this.skinColorMain.UseVisualStyleBackColor = false;
             this.skinColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -161,10 +146,8 @@
             // 
             this.glovesColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.glovesColorShade.ForeColor = System.Drawing.Color.Black;
-            this.glovesColorShade.Location = new System.Drawing.Point(60, 122);
+            resources.ApplyResources(this.glovesColorShade, "glovesColorShade");
             this.glovesColorShade.Name = "glovesColorShade";
-            this.glovesColorShade.Size = new System.Drawing.Size(48, 24);
-            this.glovesColorShade.TabIndex = 8;
             this.glovesColorShade.UseVisualStyleBackColor = false;
             this.glovesColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -172,10 +155,8 @@
             // 
             this.glovesColorMain.BackColor = System.Drawing.Color.White;
             this.glovesColorMain.ForeColor = System.Drawing.Color.Black;
-            this.glovesColorMain.Location = new System.Drawing.Point(6, 122);
+            resources.ApplyResources(this.glovesColorMain, "glovesColorMain");
             this.glovesColorMain.Name = "glovesColorMain";
-            this.glovesColorMain.Size = new System.Drawing.Size(48, 24);
-            this.glovesColorMain.TabIndex = 7;
             this.glovesColorMain.UseVisualStyleBackColor = false;
             this.glovesColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -183,10 +164,8 @@
             // 
             this.pantsColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.pantsColorShade.ForeColor = System.Drawing.Color.Black;
-            this.pantsColorShade.Location = new System.Drawing.Point(60, 152);
+            resources.ApplyResources(this.pantsColorShade, "pantsColorShade");
             this.pantsColorShade.Name = "pantsColorShade";
-            this.pantsColorShade.Size = new System.Drawing.Size(48, 24);
-            this.pantsColorShade.TabIndex = 10;
             this.pantsColorShade.UseVisualStyleBackColor = false;
             this.pantsColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -194,10 +173,8 @@
             // 
             this.pantsColorMain.BackColor = System.Drawing.Color.Blue;
             this.pantsColorMain.ForeColor = System.Drawing.Color.Black;
-            this.pantsColorMain.Location = new System.Drawing.Point(6, 152);
+            resources.ApplyResources(this.pantsColorMain, "pantsColorMain");
             this.pantsColorMain.Name = "pantsColorMain";
-            this.pantsColorMain.Size = new System.Drawing.Size(48, 24);
-            this.pantsColorMain.TabIndex = 9;
             this.pantsColorMain.UseVisualStyleBackColor = false;
             this.pantsColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -205,10 +182,8 @@
             // 
             this.shoesColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(14)))), ((int)(((byte)(7)))));
             this.shoesColorShade.ForeColor = System.Drawing.Color.Black;
-            this.shoesColorShade.Location = new System.Drawing.Point(60, 182);
+            resources.ApplyResources(this.shoesColorShade, "shoesColorShade");
             this.shoesColorShade.Name = "shoesColorShade";
-            this.shoesColorShade.Size = new System.Drawing.Size(48, 24);
-            this.shoesColorShade.TabIndex = 12;
             this.shoesColorShade.UseVisualStyleBackColor = false;
             this.shoesColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -216,66 +191,40 @@
             // 
             this.shoesColorMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(28)))), ((int)(((byte)(14)))));
             this.shoesColorMain.ForeColor = System.Drawing.Color.Black;
-            this.shoesColorMain.Location = new System.Drawing.Point(6, 182);
+            resources.ApplyResources(this.shoesColorMain, "shoesColorMain");
             this.shoesColorMain.Name = "shoesColorMain";
-            this.shoesColorMain.Size = new System.Drawing.Size(48, 24);
-            this.shoesColorMain.TabIndex = 11;
             this.shoesColorMain.UseVisualStyleBackColor = false;
             this.shoesColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(114, 38);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Hat/Clothes";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(114, 68);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Hair";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(114, 98);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Skin";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(114, 128);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Gloves";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(114, 158);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Pants";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(114, 188);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Shoes";
             // 
             // colorDialog
             // 
@@ -285,30 +234,18 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(6, 16);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Main";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(60, 16);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 13);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Shading";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(12, 9);
+            resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(440, 30);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "IMPORTANT: Make sure to DISABLE all color codes in Project64!\r\nOtherwise, Mario\'s" +
-    " colors won\'t match the ones you pick here.";
             // 
             // grpColor
             // 
@@ -336,50 +273,35 @@
             this.grpColor.Controls.Add(this.shoesColorShade);
             this.grpColor.Controls.Add(this.pantsColorShade);
             this.grpColor.Controls.Add(this.shoesColorMain);
-            this.grpColor.Location = new System.Drawing.Point(12, 42);
+            resources.ApplyResources(this.grpColor, "grpColor");
             this.grpColor.Name = "grpColor";
-            this.grpColor.Size = new System.Drawing.Size(240, 270);
-            this.grpColor.TabIndex = 22;
             this.grpColor.TabStop = false;
-            this.grpColor.Text = "Color Settings:";
             // 
             // btnLoadFromGame
             // 
-            this.btnLoadFromGame.Location = new System.Drawing.Point(123, 241);
+            resources.ApplyResources(this.btnLoadFromGame, "btnLoadFromGame");
             this.btnLoadFromGame.Name = "btnLoadFromGame";
-            this.btnLoadFromGame.Size = new System.Drawing.Size(111, 23);
-            this.btnLoadFromGame.TabIndex = 24;
-            this.btnLoadFromGame.Text = "Load From Game";
             this.btnLoadFromGame.UseVisualStyleBackColor = true;
             this.btnLoadFromGame.Click += new System.EventHandler(this.loadFromGame);
             // 
             // btnResetColors
             // 
-            this.btnResetColors.Location = new System.Drawing.Point(6, 241);
+            resources.ApplyResources(this.btnResetColors, "btnResetColors");
             this.btnResetColors.Name = "btnResetColors";
-            this.btnResetColors.Size = new System.Drawing.Size(111, 23);
-            this.btnResetColors.TabIndex = 23;
-            this.btnResetColors.Text = "Reset Colors";
             this.btnResetColors.UseVisualStyleBackColor = true;
             this.btnResetColors.Click += new System.EventHandler(this.resetColors);
             // 
             // btnExportCode
             // 
-            this.btnExportCode.Location = new System.Drawing.Point(123, 212);
+            resources.ApplyResources(this.btnExportCode, "btnExportCode");
             this.btnExportCode.Name = "btnExportCode";
-            this.btnExportCode.Size = new System.Drawing.Size(111, 23);
-            this.btnExportCode.TabIndex = 22;
-            this.btnExportCode.Text = "Export Color Code";
             this.btnExportCode.UseVisualStyleBackColor = true;
             this.btnExportCode.Click += new System.EventHandler(this.openCopyPasteForm);
             // 
             // btnImportCode
             // 
-            this.btnImportCode.Location = new System.Drawing.Point(6, 212);
+            resources.ApplyResources(this.btnImportCode, "btnImportCode");
             this.btnImportCode.Name = "btnImportCode";
-            this.btnImportCode.Size = new System.Drawing.Size(111, 23);
-            this.btnImportCode.TabIndex = 21;
-            this.btnImportCode.Text = "Import Color Code";
             this.btnImportCode.UseVisualStyleBackColor = true;
             this.btnImportCode.Click += new System.EventHandler(this.openCopyPasteForm);
             // 
@@ -396,125 +318,94 @@
             this.grpShading.Controls.Add(this.tbBackFront);
             this.grpShading.Controls.Add(this.tbBottomTop);
             this.grpShading.Controls.Add(this.tbLeftRight);
-            this.grpShading.Location = new System.Drawing.Point(12, 318);
+            resources.ApplyResources(this.grpShading, "grpShading");
             this.grpShading.Name = "grpShading";
-            this.grpShading.Size = new System.Drawing.Size(440, 107);
-            this.grpShading.TabIndex = 23;
             this.grpShading.TabStop = false;
-            this.grpShading.Text = "Shading Settings:";
             // 
             // btnRandomizeShading
             // 
-            this.btnRandomizeShading.Location = new System.Drawing.Point(318, 72);
+            resources.ApplyResources(this.btnRandomizeShading, "btnRandomizeShading");
             this.btnRandomizeShading.Name = "btnRandomizeShading";
-            this.btnRandomizeShading.Size = new System.Drawing.Size(116, 23);
-            this.btnRandomizeShading.TabIndex = 23;
-            this.btnRandomizeShading.Text = "Randomize Shading";
             this.btnRandomizeShading.UseVisualStyleBackColor = true;
+            this.btnRandomizeShading.Click += new System.EventHandler(this.randomizeShadows);
             // 
             // btnResetShading
             // 
-            this.btnResetShading.Location = new System.Drawing.Point(318, 19);
+            resources.ApplyResources(this.btnResetShading, "btnResetShading");
             this.btnResetShading.Name = "btnResetShading";
-            this.btnResetShading.Size = new System.Drawing.Size(116, 23);
-            this.btnResetShading.TabIndex = 22;
-            this.btnResetShading.Text = "Reset Shading";
             this.btnResetShading.UseVisualStyleBackColor = true;
+            this.btnResetShading.Click += new System.EventHandler(this.resetShadows);
             // 
             // label13
             // 
-            this.label13.Location = new System.Drawing.Point(265, 77);
+            resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(47, 13);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "Front";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(265, 48);
+            resources.ApplyResources(this.label14, "label14");
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(47, 13);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Top";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(265, 19);
+            resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(47, 13);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Right";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label12
             // 
-            this.label12.Location = new System.Drawing.Point(6, 77);
+            resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 13);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Back";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(6, 48);
+            resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(47, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Bottom";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(6, 19);
+            resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 13);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Left";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbBackFront
             // 
-            this.tbBackFront.AutoSize = false;
-            this.tbBackFront.Location = new System.Drawing.Point(59, 77);
+            resources.ApplyResources(this.tbBackFront, "tbBackFront");
+            this.tbBackFront.Maximum = 127;
+            this.tbBackFront.Minimum = -127;
             this.tbBackFront.Name = "tbBackFront";
-            this.tbBackFront.Size = new System.Drawing.Size(200, 23);
-            this.tbBackFront.TabIndex = 2;
             this.tbBackFront.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbBackFront.Value = -40;
+            this.tbBackFront.ValueChanged += new System.EventHandler(this.changeShadows);
             // 
             // tbBottomTop
             // 
-            this.tbBottomTop.AutoSize = false;
-            this.tbBottomTop.Location = new System.Drawing.Point(59, 48);
+            resources.ApplyResources(this.tbBottomTop, "tbBottomTop");
+            this.tbBottomTop.Maximum = 127;
+            this.tbBottomTop.Minimum = -127;
             this.tbBottomTop.Name = "tbBottomTop";
-            this.tbBottomTop.Size = new System.Drawing.Size(200, 23);
-            this.tbBottomTop.TabIndex = 1;
             this.tbBottomTop.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbBottomTop.Value = 40;
+            this.tbBottomTop.ValueChanged += new System.EventHandler(this.changeShadows);
             // 
             // tbLeftRight
             // 
-            this.tbLeftRight.AutoSize = false;
-            this.tbLeftRight.Location = new System.Drawing.Point(59, 19);
+            resources.ApplyResources(this.tbLeftRight, "tbLeftRight");
+            this.tbLeftRight.Maximum = 127;
+            this.tbLeftRight.Minimum = -127;
             this.tbLeftRight.Name = "tbLeftRight";
-            this.tbLeftRight.Size = new System.Drawing.Size(200, 23);
-            this.tbLeftRight.TabIndex = 0;
             this.tbLeftRight.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbLeftRight.Value = 40;
+            this.tbLeftRight.ValueChanged += new System.EventHandler(this.changeShadows);
             // 
             // AppearanceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 437);
             this.Controls.Add(this.grpShading);
             this.Controls.Add(this.grpColor);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.marioSprite);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AppearanceForm";
-            this.Text = "Appearance Settings";
             ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).EndInit();
             this.grpColor.ResumeLayout(false);
             this.grpColor.PerformLayout();

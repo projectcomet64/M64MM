@@ -21,6 +21,7 @@ namespace M64MM2
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
         List<Animation> animList;
+        List<CamStyle> camStyles;
         Animation selectedAnimOld => animList[cbAnimOld.SelectedIndex];
         Animation selectedAnimNew => animList[cbAnimNew.SelectedIndex];
 
@@ -28,8 +29,11 @@ namespace M64MM2
         public MainForm()
         {
             InitializeComponent();
+            updateTimer.Interval = 250;
             updateTimer.Start();
             animList = new List<Animation>();
+            camStyles = new List<CamStyle>();
+
 
             //Load animation data
             try
@@ -66,6 +70,43 @@ namespace M64MM2
                 btnAnimReset.Enabled = false;
                 btnAnimResetAll.Enabled = false;
             }
+
+            
+            //Load camera style data
+            try
+            {
+                using (StreamReader sr = new StreamReader("camera_data.txt"))
+                {
+                    while (sr.Peek() >= 0)
+                    {
+                        string rawLine = sr.ReadLine().Trim();
+                        string[] splitLine = rawLine.Split('|');
+                        CamStyle style = new CamStyle
+                        {
+                            Value = byte.Parse(splitLine[0], NumberStyles.HexNumber),
+                            Name = splitLine[1]
+                        };
+                        camStyles.Add(style);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                cbCamStyles.Enabled = false;
+                btnChangeCamStyle.Enabled = false;
+            }
+
+            if (camStyles.Count > 0)
+            {
+                foreach (CamStyle style in camStyles)
+                {
+                    cbCamStyles.Items.Add(style.Name);
+                }
+                cbCamStyles.SelectedIndex = 0;
+                cbCamStyles.Refresh();
+            }
+
         }
 
         void Update(object sender, EventArgs e)
@@ -91,6 +132,7 @@ namespace M64MM2
             //==============================
             //Main program logic starts here
             //------------------------------
+            updateTimer.Interval = 100;
 
             //Don't overwrite the camera state if we're in non-bugged first-person
             byte[] cameraState = SwapEndian(ReadBytes(BaseAddress + 0x33C848, 4), 4);
@@ -182,13 +224,35 @@ namespace M64MM2
             lblCameraStatus.Text = cameraFrozen ? "Camera State: Frozen" : "Camera State: Default";
         }
 
+        void changeCameraStyle(object sender, EventArgs e)
+        {
+            if (!IsEmuOpen || BaseAddress == 0) return;
 
-        private void colorCodeStudioToolStripMenuItem_Click(object sender, EventArgs e)
+            byte[] data = new byte[1];
+            data[0] = camStyles[cbCamStyles.SelectedIndex].Value;
+
+            WriteBytes(BaseAddress + 0x33c6d6, data);
+            WriteBytes(BaseAddress + 0x33c6d7, data);
+        }
+
+
+        void openAppearanceSettings(object sender, EventArgs e)
         {
             if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
 
-            if (!appearanceForm.Visible || appearanceForm.WindowState == FormWindowState.Minimized)
+            if (!appearanceForm.Visible)
                 appearanceForm.Show();
+
+            if (appearanceForm.WindowState == FormWindowState.Minimized)
+            {
+                appearanceForm.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        void openAboutForm(object sender, EventArgs e)
+        {
+            AboutForm about = new AboutForm();
+            about.ShowDialog(this);
         }
     }
 
@@ -196,5 +260,11 @@ namespace M64MM2
     {
         public string Value;
         public int RealIndex;
+    }
+
+    struct CamStyle
+    {
+        public byte Value;
+        public string Name;
     }
 }
