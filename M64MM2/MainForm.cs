@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using M64MM2.Properties;
 using static M64MM2.Utils;
 
 
@@ -18,6 +18,7 @@ namespace M64MM2
     public partial class MainForm : Form
     {
         AppearanceForm appearanceForm;
+        ExtraControlsForm extraControlsForm;
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
         List<Animation> animList;
@@ -62,8 +63,7 @@ namespace M64MM2
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-                cbAnimOld.Text = "Animation data not loaded!";
-                cbAnimNew.Text = "Animation data not loaded!";
+                cbAnimOld.Text = cbAnimNew.Text = Resources.animDataNotLoaded;
                 cbAnimOld.Enabled = false;
                 cbAnimNew.Enabled = false;
                 btnAnimSwap.Enabled = false;
@@ -93,6 +93,7 @@ namespace M64MM2
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
+                cbCamStyles.Text = Resources.cameraDataNotLoaded;
                 cbCamStyles.Enabled = false;
                 btnChangeCamStyle.Enabled = false;
             }
@@ -114,7 +115,7 @@ namespace M64MM2
             //Early validity checks
             if (!IsEmuOpen)
             {
-                lblProgramStatus.Text = "Status: Project64 is not open.";
+                lblProgramStatus.Text = Resources.programStatus1;
                 FindEmuProcess();
                 return;
             }
@@ -122,11 +123,11 @@ namespace M64MM2
             FindBaseAddress();
             if (BaseAddress <= 0)
             {
-                lblProgramStatus.Text = "Status: Base address not found.";
+                lblProgramStatus.Text = Resources.programStatus2;
                 return;
             }
 
-            lblProgramStatus.Text = "Status: Base address found at 0x" + BaseAddress.ToString("X8");
+            lblProgramStatus.Text = Resources.programStatus3 + "0x" + BaseAddress.ToString("X8");
 
 
             //==============================
@@ -140,7 +141,8 @@ namespace M64MM2
 
             if (cameraFrozen && (cameraState[0] == 0xA2 || cameraState[0] < 0x80))
             {
-                WriteUInt(BaseAddress + 0x33C848, 0x80000000);
+                byte[] data = { 0x80 };
+                WriteBytes(BaseAddress + 0x33C84B, data);
             }
 
 
@@ -159,6 +161,50 @@ namespace M64MM2
                 if (GetKey(Keys.D5))
                     SoftUnfreezeCam(null, null);
             }
+        }
+
+
+        void FreezeCam(object sender, EventArgs e)
+        {
+            cameraFrozen = true;
+            byte[] data = { 0x80 };
+            WriteBytes(BaseAddress + 0x33C84B, data);
+            lblCameraStatus.Text = Resources.cameraStateFrozen;
+        }
+
+        void UnfreezeCam(object sender, EventArgs e)
+        {
+            cameraFrozen = false;
+            byte[] data = { 0x00 };
+            WriteBytes(BaseAddress + 0x33C84B, data);
+
+            lblCameraStatus.Text = cameraSoftFrozen ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault;
+        }
+
+        void SoftFreezeCam(object sender, EventArgs e)
+        {
+            cameraSoftFrozen = true;
+            WriteUInt(BaseAddress + 0x33B204, 0x8001C520);
+
+            lblCameraStatus.Text = cameraFrozen ? Resources.cameraStateFrozen : Resources.cameraStateSoftFrozen;
+        }
+
+        void SoftUnfreezeCam(object sender, EventArgs e)
+        {
+            cameraSoftFrozen = false;
+            WriteUInt(BaseAddress + 0x33B204, 0x8033C520);
+
+            lblCameraStatus.Text = cameraFrozen ? Resources.cameraStateFrozen : Resources.cameraStateDefault;
+        }
+
+        void changeCameraStyle(object sender, EventArgs e)
+        {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
+            byte[] data = { camStyles[cbCamStyles.SelectedIndex].Value };
+
+            WriteBytes(BaseAddress + 0x33c6d6, data);
+            WriteBytes(BaseAddress + 0x33c6d7, data);
         }
 
 
@@ -193,49 +239,6 @@ namespace M64MM2
         }
 
 
-        void FreezeCam(object sender, EventArgs e)
-        {
-            cameraFrozen = true;
-            WriteUInt(BaseAddress + 0x33C848, 0x80000000);
-            lblCameraStatus.Text = "Camera State: Frozen";
-        }
-
-        void UnfreezeCam(object sender, EventArgs e)
-        {
-            cameraFrozen = false;
-            WriteUInt(BaseAddress + 0x33C848, 0x00000000);
-
-            lblCameraStatus.Text = cameraSoftFrozen ? "Camera State: Soft-Frozen" : "Camera State: Default";
-        }
-
-        void SoftFreezeCam(object sender, EventArgs e)
-        {
-            cameraSoftFrozen = true;
-            WriteUInt(BaseAddress + 0x33B204, 0x8001C520);
-
-            lblCameraStatus.Text = cameraFrozen ? "Camera State: Frozen" : "Camera State: Soft-Frozen";
-        }
-
-        void SoftUnfreezeCam(object sender, EventArgs e)
-        {
-            cameraSoftFrozen = false;
-            WriteUInt(BaseAddress + 0x33B204, 0x8033C520);
-
-            lblCameraStatus.Text = cameraFrozen ? "Camera State: Frozen" : "Camera State: Default";
-        }
-
-        void changeCameraStyle(object sender, EventArgs e)
-        {
-            if (!IsEmuOpen || BaseAddress == 0) return;
-
-            byte[] data = new byte[1];
-            data[0] = camStyles[cbCamStyles.SelectedIndex].Value;
-
-            WriteBytes(BaseAddress + 0x33c6d6, data);
-            WriteBytes(BaseAddress + 0x33c6d7, data);
-        }
-
-
         void openAppearanceSettings(object sender, EventArgs e)
         {
             if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
@@ -244,9 +247,7 @@ namespace M64MM2
                 appearanceForm.Show();
 
             if (appearanceForm.WindowState == FormWindowState.Minimized)
-            {
                 appearanceForm.WindowState = FormWindowState.Normal;
-            }
         }
 
         void openAboutForm(object sender, EventArgs e)
@@ -254,7 +255,16 @@ namespace M64MM2
             AboutForm about = new AboutForm();
             about.ShowDialog(this);
         }
+
+        void openExtraControls(object sender, EventArgs e)
+        {
+            if (extraControlsForm == null || extraControlsForm.IsDisposed) extraControlsForm = new ExtraControlsForm();
+
+            if (!extraControlsForm.Visible)
+                extraControlsForm.Show();
+        }
     }
+
 
     struct Animation
     {

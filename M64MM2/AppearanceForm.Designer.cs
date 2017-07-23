@@ -87,6 +87,7 @@
             this.marioSprite.Name = "marioSprite";
             this.marioSprite.TabStop = false;
             this.marioSprite.Paint += new System.Windows.Forms.PaintEventHandler(this.marioSprite_Paint);
+            this.marioSprite.DoubleClick += new System.EventHandler(this.marioSprite_DoubleClick);
             // 
             // hatColorMain
             // 
@@ -395,6 +396,10 @@
             this.tbLeftRight.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbLeftRight.Value = 40;
             this.tbLeftRight.ValueChanged += new System.EventHandler(this.changeShadows);
+            // 
+            // randomizerTimer
+            // 
+            this.randomizerTimer.Tick += new System.EventHandler(this.randomizerTimer_Tick);
             // 
             // AppearanceForm
             // 

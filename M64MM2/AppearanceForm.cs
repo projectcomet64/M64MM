@@ -186,64 +186,64 @@ namespace M64MM2
             byte[] colorData = new byte[4];
             colorData[3] = 0;
 
-            colorData[0] = defaultPantsShade.R;
-            colorData[1] = defaultPantsShade.G;
-            colorData[2] = defaultPantsShade.B;
+            colorData[0] = pantsColorShade.BackColor.R;
+            colorData[1] = pantsColorShade.BackColor.G;
+            colorData[2] = pantsColorShade.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC20, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultPantsMain.R;
-            colorData[1] = defaultPantsMain.G;
-            colorData[2] = defaultPantsMain.B;
+            colorData[0] = pantsColorMain.BackColor.R;
+            colorData[1] = pantsColorMain.BackColor.G;
+            colorData[2] = pantsColorMain.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC28, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultHatShade.R;
-            colorData[1] = defaultHatShade.G;
-            colorData[2] = defaultHatShade.B;
+            colorData[0] = hatColorShade.BackColor.R;
+            colorData[1] = hatColorShade.BackColor.G;
+            colorData[2] = hatColorShade.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC38, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultHatMain.R;
-            colorData[1] = defaultHatMain.G;
-            colorData[2] = defaultHatMain.B;
+            colorData[0] = hatColorMain.BackColor.R;
+            colorData[1] = hatColorMain.BackColor.G;
+            colorData[2] = hatColorMain.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC40, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultGlovesShade.R;
-            colorData[1] = defaultGlovesShade.G;
-            colorData[2] = defaultGlovesShade.B;
+            colorData[0] = glovesColorShade.BackColor.R;
+            colorData[1] = glovesColorShade.BackColor.G;
+            colorData[2] = glovesColorShade.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC50, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultGlovesMain.R;
-            colorData[1] = defaultGlovesMain.G;
-            colorData[2] = defaultGlovesMain.B;
+            colorData[0] = glovesColorMain.BackColor.R;
+            colorData[1] = glovesColorMain.BackColor.G;
+            colorData[2] = glovesColorMain.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC58, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultShoesShade.R;
-            colorData[1] = defaultShoesShade.G;
-            colorData[2] = defaultShoesShade.B;
+            colorData[0] = shoesColorShade.BackColor.R;
+            colorData[1] = shoesColorShade.BackColor.G;
+            colorData[2] = shoesColorShade.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC68, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultShoesMain.R;
-            colorData[1] = defaultShoesMain.G;
-            colorData[2] = defaultShoesMain.B;
+            colorData[0] = shoesColorMain.BackColor.R;
+            colorData[1] = shoesColorMain.BackColor.G;
+            colorData[2] = shoesColorMain.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC70, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultSkinShade.R;
-            colorData[1] = defaultSkinShade.G;
-            colorData[2] = defaultSkinShade.B;
+            colorData[0] = skinColorShade.BackColor.R;
+            colorData[1] = skinColorShade.BackColor.G;
+            colorData[2] = skinColorShade.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC80, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultSkinMain.R;
-            colorData[1] = defaultSkinMain.G;
-            colorData[2] = defaultSkinMain.B;
+            colorData[0] = skinColorMain.BackColor.R;
+            colorData[1] = skinColorMain.BackColor.G;
+            colorData[2] = skinColorMain.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC88, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultHairShade.R;
-            colorData[1] = defaultHairShade.G;
-            colorData[2] = defaultHairShade.B;
+            colorData[0] = hairColorShade.BackColor.R;
+            colorData[1] = hairColorShade.BackColor.G;
+            colorData[2] = hairColorShade.BackColor.B;
             WriteBytes(BaseAddress + 0x07EC98, SwapEndian(colorData, 4));
 
-            colorData[0] = defaultHairMain.R;
-            colorData[1] = defaultHairMain.G;
-            colorData[2] = defaultHairMain.B;
+            colorData[0] = hairColorMain.BackColor.R;
+            colorData[1] = hairColorMain.BackColor.G;
+            colorData[2] = hairColorMain.BackColor.B;
             WriteBytes(BaseAddress + 0x07ECA0, SwapEndian(colorData, 4));
         }
 
@@ -255,13 +255,13 @@ namespace M64MM2
 
             if (senderButton.Name == btnImportCode.Name)
             {
-                form.lblInfo.Text = "Please paste your color code below, then click OK.";
+                form.lblInfo.Text = Resources.colorCodeImportMsg;
 
                 form.ShowDialog(this);
             }
             else if (senderButton.Name == btnExportCode.Name)
             {
-                form.lblInfo.Text = "Here's your generated color code:";
+                form.lblInfo.Text = Resources.colorCodeExportMsg;
                 form.btnCancel.Visible = false;
                 form.tbColorCode.ReadOnly = true;
                 form.tbColorCode.Lines = GenerateColorCode();
@@ -327,21 +327,7 @@ namespace M64MM2
             marioSprite.Refresh();
             applyAllColors();
 
-            if (MessageBox.Show(this, "Set these colors as default?", "Set defaults?", MessageBoxButtons.YesNo) == DialogResult.No)
-                return;
-
-            defaultPantsShade = pantsColorShade.BackColor;
-            defaultPantsMain = pantsColorMain.BackColor;
-            defaultHatShade = hatColorShade.BackColor;
-            defaultHatMain = hatColorMain.BackColor;
-            defaultGlovesShade = glovesColorShade.BackColor;
-            defaultGlovesMain = glovesColorMain.BackColor;
-            defaultShoesShade = shoesColorShade.BackColor;
-            defaultShoesMain = shoesColorMain.BackColor;
-            defaultSkinShade = skinColorShade.BackColor;
-            defaultSkinMain = skinColorMain.BackColor;
-            defaultHairShade = hairColorShade.BackColor;
-            defaultHairMain = hairColorMain.BackColor;
+            askSetDefaultColors();
         }
 
         string[] GenerateColorCode()
@@ -475,11 +461,15 @@ namespace M64MM2
             hairColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
 
             marioSprite.Refresh();
-
-
-            if (MessageBox.Show(this, "Set these colors as default?", "Set defaults?", MessageBoxButtons.YesNo) == DialogResult.No)
-                return;
             
+            askSetDefaultColors();
+        }
+
+        void askSetDefaultColors()
+        {
+            if (MessageBox.Show(this, Resources.setDefaultColorsMsg, Resources.setDefaultColorsMsgTitle, MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
             defaultPantsShade = pantsColorShade.BackColor;
             defaultPantsMain = pantsColorMain.BackColor;
             defaultHatShade = hatColorShade.BackColor;
@@ -492,6 +482,28 @@ namespace M64MM2
             defaultSkinMain = skinColorMain.BackColor;
             defaultHairShade = hairColorShade.BackColor;
             defaultHairMain = hairColorMain.BackColor;
+        }
+
+        void marioSprite_DoubleClick(object sender, EventArgs e)
+        {
+            if (!randomizerTimer.Enabled)
+                randomizerTimer.Start();
+            else
+                randomizerTimer.Stop();
+        }
+
+        private void randomizerTimer_Tick(object sender, EventArgs e)
+        {
+            foreach (Control control in this.grpColor.Controls)
+            {
+                if (control is Button && String.IsNullOrEmpty(control.Text))
+                {
+                    control.BackColor = Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255));
+                }
+            }
+
+            marioSprite.Refresh();
+            applyAllColors();
         }
 
 

@@ -37,8 +37,7 @@
     <StartupObject>M64MM2.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\M64MM2.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
@@ -74,6 +73,12 @@
     <Compile Include="CopyPasteForm.Designer.cs">
       <DependentUpon>CopyPasteForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExtraControlsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtraControlsForm.Designer.cs">
+      <DependentUpon>ExtraControlsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CopyPasteForm.resx">
       <DependentUpon>CopyPasteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtraControlsForm.resx">
+      <DependentUpon>ExtraControlsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

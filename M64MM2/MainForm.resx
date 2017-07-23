@@ -121,6 +121,18 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="appearanceSettingsMenuItem.Text" xml:space="preserve">
+    <value>&amp;Appearance Settings...</value>
+  </data>
+  <data name="extraControlsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="extraControlsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Extra Controls...</value>
+  </data>
   <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 20</value>
   </data>
@@ -157,12 +169,6 @@
   </data>
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="appearanceSettingsMenuItem.Text" xml:space="preserve">
-    <value>&amp;Appearance Settings...</value>
   </data>
   <data name="&gt;&gt;btnSoftUnfreeze.Name" xml:space="preserve">
     <value>btnSoftUnfreeze</value>
@@ -348,6 +354,30 @@
   <metadata name="statusStrip.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 220</value>
+  </data>
+  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>524, 22</value>
+  </data>
+  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="statusStrip.Text" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="lblProgramStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -377,30 +407,6 @@
   </data>
   <data name="lblCameraCode.Text" xml:space="preserve">
     <value>0x00000000</value>
-  </data>
-  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 329</value>
-  </data>
-  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 22</value>
-  </data>
-  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="statusStrip.Text" xml:space="preserve">
-    <value>statusStrip</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
-    <value>statusStrip</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="&gt;&gt;btnAnimResetAll.Name" xml:space="preserve">
     <value>btnAnimResetAll</value>
@@ -702,18 +708,6 @@
   <data name="&gt;&gt;btnChangeCamStyle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>grpCamStyle</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;cbCamStyles.Name" xml:space="preserve">
     <value>cbCamStyles</value>
   </data>
@@ -724,19 +718,19 @@
     <value>grpCamStyle</value>
   </data>
   <data name="&gt;&gt;cbCamStyles.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="grpCamStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 223</value>
+    <value>296, 27</value>
   </data>
   <data name="grpCamStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 101</value>
+    <value>216, 82</value>
   </data>
   <data name="grpCamStyle.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="grpCamStyle.Text" xml:space="preserve">
-    <value>Camera Style Controls</value>
+    <value>Change Camera Style</value>
   </data>
   <data name="&gt;&gt;grpCamStyle.Name" xml:space="preserve">
     <value>grpCamStyle</value>
@@ -750,56 +744,8 @@
   <data name="&gt;&gt;grpCamStyle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="cbCamStyles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 44</value>
-  </data>
-  <data name="cbCamStyles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 21</value>
-  </data>
-  <data name="cbCamStyles.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbCamStyles.Name" xml:space="preserve">
-    <value>cbCamStyles</value>
-  </data>
-  <data name="&gt;&gt;cbCamStyles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbCamStyles.Parent" xml:space="preserve">
-    <value>grpCamStyle</value>
-  </data>
-  <data name="&gt;&gt;cbCamStyles.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 13</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Change camera style to:</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>grpCamStyle</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="btnChangeCamStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 71</value>
+    <value>43, 51</value>
   </data>
   <data name="btnChangeCamStyle.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 23</value>
@@ -822,14 +768,38 @@
   <data name="&gt;&gt;btnChangeCamStyle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="cbCamStyles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 23</value>
+  </data>
+  <data name="cbCamStyles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 21</value>
+  </data>
+  <data name="cbCamStyles.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.Name" xml:space="preserve">
+    <value>cbCamStyles</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.Parent" xml:space="preserve">
+    <value>grpCamStyle</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>524, 351</value>
+    <value>524, 242</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1404,6 +1374,12 @@
   </data>
   <data name="&gt;&gt;updateTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;extraControlsToolStripMenuItem.Name" xml:space="preserve">
+    <value>extraControlsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;extraControlsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

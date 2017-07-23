@@ -20,7 +20,7 @@ namespace M64MM2
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("mailto:" + linkLabel1.Text);
+            Process.Start("mailto:" + lnkEmail.Text);
         }
 
         private void btnOK_Click(object sender, EventArgs e)

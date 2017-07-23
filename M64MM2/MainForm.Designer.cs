@@ -53,9 +53,9 @@
             this.cbAnimOld = new System.Windows.Forms.ComboBox();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.grpCamStyle = new System.Windows.Forms.GroupBox();
-            this.cbCamStyles = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
+            this.cbCamStyles = new System.Windows.Forms.ComboBox();
+            this.extraControlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -74,7 +74,8 @@
             // toolsMenuItem
             // 
             this.toolsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.appearanceSettingsMenuItem});
+            this.appearanceSettingsMenuItem,
+            this.extraControlsToolStripMenuItem});
             this.toolsMenuItem.Name = "toolsMenuItem";
             resources.ApplyResources(this.toolsMenuItem, "toolsMenuItem");
             // 
@@ -215,22 +216,10 @@
             // grpCamStyle
             // 
             this.grpCamStyle.Controls.Add(this.btnChangeCamStyle);
-            this.grpCamStyle.Controls.Add(this.label1);
             this.grpCamStyle.Controls.Add(this.cbCamStyles);
             resources.ApplyResources(this.grpCamStyle, "grpCamStyle");
             this.grpCamStyle.Name = "grpCamStyle";
             this.grpCamStyle.TabStop = false;
-            // 
-            // cbCamStyles
-            // 
-            this.cbCamStyles.FormattingEnabled = true;
-            resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
-            this.cbCamStyles.Name = "cbCamStyles";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
             // 
             // btnChangeCamStyle
             // 
@@ -238,6 +227,18 @@
             this.btnChangeCamStyle.Name = "btnChangeCamStyle";
             this.btnChangeCamStyle.UseVisualStyleBackColor = true;
             this.btnChangeCamStyle.Click += new System.EventHandler(this.changeCameraStyle);
+            // 
+            // cbCamStyles
+            // 
+            this.cbCamStyles.FormattingEnabled = true;
+            resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
+            this.cbCamStyles.Name = "cbCamStyles";
+            // 
+            // extraControlsToolStripMenuItem
+            // 
+            this.extraControlsToolStripMenuItem.Name = "extraControlsToolStripMenuItem";
+            resources.ApplyResources(this.extraControlsToolStripMenuItem, "extraControlsToolStripMenuItem");
+            this.extraControlsToolStripMenuItem.Click += new System.EventHandler(this.openExtraControls);
             // 
             // MainForm
             // 
@@ -260,7 +261,6 @@
             this.grpAnimSwap.ResumeLayout(false);
             this.grpAnimSwap.PerformLayout();
             this.grpCamStyle.ResumeLayout(false);
-            this.grpCamStyle.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,8 +292,8 @@
         private System.Windows.Forms.ToolStripStatusLabel lblCameraCode;
         private System.Windows.Forms.GroupBox grpCamStyle;
         private System.Windows.Forms.ComboBox cbCamStyles;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnChangeCamStyle;
+        private System.Windows.Forms.ToolStripMenuItem extraControlsToolStripMenuItem;
     }
 }
 

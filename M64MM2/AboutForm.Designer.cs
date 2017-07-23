@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblAuthor = new System.Windows.Forms.Label();
             this.appIcon = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblSpecialThanks = new System.Windows.Forms.Label();
+            this.lblBugReport = new System.Windows.Forms.Label();
+            this.lnkEmail = new System.Windows.Forms.LinkLabel();
+            this.lblBuildDate = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblLicenseInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.appIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblName
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.lblName, "lblName");
+            this.lblName.Name = "lblName";
             // 
-            // label2
+            // lblAuthor
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.lblAuthor, "lblAuthor");
+            this.lblAuthor.Name = "lblAuthor";
             // 
             // appIcon
             // 
@@ -58,27 +58,27 @@
             this.appIcon.Name = "appIcon";
             this.appIcon.TabStop = false;
             // 
-            // label3
+            // lblSpecialThanks
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            resources.ApplyResources(this.lblSpecialThanks, "lblSpecialThanks");
+            this.lblSpecialThanks.Name = "lblSpecialThanks";
             // 
-            // label4
+            // lblBugReport
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(this.lblBugReport, "lblBugReport");
+            this.lblBugReport.Name = "lblBugReport";
             // 
-            // linkLabel1
+            // lnkEmail
             // 
-            resources.ApplyResources(this.linkLabel1, "linkLabel1");
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            resources.ApplyResources(this.lnkEmail, "lnkEmail");
+            this.lnkEmail.Name = "lnkEmail";
+            this.lnkEmail.TabStop = true;
+            this.lnkEmail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // label5
+            // lblBuildDate
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.lblBuildDate, "lblBuildDate");
+            this.lblBuildDate.Name = "lblBuildDate";
             // 
             // btnOK
             // 
@@ -87,24 +87,24 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // label6
+            // lblLicenseInfo
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
+            resources.ApplyResources(this.lblLicenseInfo, "lblLicenseInfo");
+            this.lblLicenseInfo.Name = "lblLicenseInfo";
             // 
             // AboutForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblLicenseInfo);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblBuildDate);
+            this.Controls.Add(this.lnkEmail);
+            this.Controls.Add(this.lblBugReport);
+            this.Controls.Add(this.lblSpecialThanks);
             this.Controls.Add(this.appIcon);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblAuthor);
+            this.Controls.Add(this.lblName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -117,14 +117,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblAuthor;
         private System.Windows.Forms.PictureBox appIcon;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblSpecialThanks;
+        private System.Windows.Forms.Label lblBugReport;
+        private System.Windows.Forms.LinkLabel lnkEmail;
+        private System.Windows.Forms.Label lblBuildDate;
         private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblLicenseInfo;
     }
 }

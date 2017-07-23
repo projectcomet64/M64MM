@@ -61,12 +61,120 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Animation data not loaded!.
+        /// </summary>
+        internal static string animDataNotLoaded {
+            get {
+                return ResourceManager.GetString("animDataNotLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera data not loaded!.
+        /// </summary>
+        internal static string cameraDataNotLoaded {
+            get {
+                return ResourceManager.GetString("cameraDataNotLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera State: Default.
+        /// </summary>
+        internal static string cameraStateDefault {
+            get {
+                return ResourceManager.GetString("cameraStateDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera State: Frozen.
+        /// </summary>
+        internal static string cameraStateFrozen {
+            get {
+                return ResourceManager.GetString("cameraStateFrozen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera State: Soft-Frozen.
+        /// </summary>
+        internal static string cameraStateSoftFrozen {
+            get {
+                return ResourceManager.GetString("cameraStateSoftFrozen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap CC_Mario_big {
             get {
                 object obj = ResourceManager.GetObject("CC_Mario_big", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here&apos;s your generated color code:.
+        /// </summary>
+        internal static string colorCodeExportMsg {
+            get {
+                return ResourceManager.GetString("colorCodeExportMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please paste your color code below, then click OK..
+        /// </summary>
+        internal static string colorCodeImportMsg {
+            get {
+                return ResourceManager.GetString("colorCodeImportMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid color code: line {0} is too {1}..
+        /// </summary>
+        internal static string invalidColorCodeMsg1 {
+            get {
+                return ResourceManager.GetString("invalidColorCodeMsg1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid color code: line {0} is trying to edit memory address {1}, which is not where Mario&apos;s color data is located. Make sure you&apos;re not using a PAL region color code!.
+        /// </summary>
+        internal static string invalidColorCodeMsg2 {
+            get {
+                return ResourceManager.GetString("invalidColorCodeMsg2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to long.
+        /// </summary>
+        internal static string invalidColorCodeMsgLong {
+            get {
+                return ResourceManager.GetString("invalidColorCodeMsgLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to short.
+        /// </summary>
+        internal static string invalidColorCodeMsgShort {
+            get {
+                return ResourceManager.GetString("invalidColorCodeMsgShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Color Code.
+        /// </summary>
+        internal static string invalidColorCodeMsgTitle {
+            get {
+                return ResourceManager.GetString("invalidColorCodeMsgTitle", resourceCulture);
             }
         }
         
@@ -87,6 +195,51 @@ namespace M64MM2.Properties {
             get {
                 object obj = ResourceManager.GetObject("M64MM2_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status: Project64 is not open..
+        /// </summary>
+        internal static string programStatus1 {
+            get {
+                return ResourceManager.GetString("programStatus1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status: Base address not found..
+        /// </summary>
+        internal static string programStatus2 {
+            get {
+                return ResourceManager.GetString("programStatus2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status: Base address found at .
+        /// </summary>
+        internal static string programStatus3 {
+            get {
+                return ResourceManager.GetString("programStatus3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set these colors as default?.
+        /// </summary>
+        internal static string setDefaultColorsMsg {
+            get {
+                return ResourceManager.GetString("setDefaultColorsMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set defaults?.
+        /// </summary>
+        internal static string setDefaultColorsMsgTitle {
+            get {
+                return ResourceManager.GetString("setDefaultColorsMsgTitle", resourceCulture);
             }
         }
     }

@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using M64MM2.Properties;
 
-using static M64MM2.Utils;
 
 namespace M64MM2
 {
@@ -41,8 +41,8 @@ namespace M64MM2
                 //If each line isn't exactly 12 characters long, it's not a valid code
                 if (line.Length != 12)
                 {
-                    string errorMsg = "Invalid color code: line " + (lineNum + 1) + " is too " + (line.Length > 12 ? "long." : "short.");
-                    MessageBox.Show(this, errorMsg, "Invalid Color Code", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string errorMsg = String.Format(Resources.invalidColorCodeMsg1, lineNum + 1, line.Length > 12 ? Resources.invalidColorCodeMsgLong : Resources.invalidColorCodeMsgShort);
+                    MessageBox.Show(this, errorMsg, Resources.invalidColorCodeMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -50,9 +50,8 @@ namespace M64MM2
                 int address = int.Parse(line.Substring(2, 6), NumberStyles.HexNumber);
                 if (address < 0x07EC20 || address > 0x07ECA2)
                 {
-                    string errorMsg = "Invalid color code: line " + (lineNum + 1) + " is trying to edit memory address " + line.Substring(2, 6) + ", " +
-                                      "which is not where Mario's color data is located. " + "Make sure you're not using a PAL region color code!";
-                    MessageBox.Show(this, errorMsg, "Invalid Color Code", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string errorMsg = String.Format(Resources.invalidColorCodeMsg2, (lineNum + 1), line.Substring(2, 6));
+                    MessageBox.Show(this, errorMsg, Resources.invalidColorCodeMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
