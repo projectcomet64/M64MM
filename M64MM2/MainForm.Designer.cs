@@ -33,6 +33,7 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appearanceSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extraControlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCamera = new System.Windows.Forms.GroupBox();
             this.btnSoftUnfreeze = new System.Windows.Forms.Button();
@@ -55,7 +56,6 @@
             this.grpCamStyle = new System.Windows.Forms.GroupBox();
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
-            this.extraControlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -84,6 +84,12 @@
             this.appearanceSettingsMenuItem.Name = "appearanceSettingsMenuItem";
             resources.ApplyResources(this.appearanceSettingsMenuItem, "appearanceSettingsMenuItem");
             this.appearanceSettingsMenuItem.Click += new System.EventHandler(this.openAppearanceSettings);
+            // 
+            // extraControlsToolStripMenuItem
+            // 
+            this.extraControlsToolStripMenuItem.Name = "extraControlsToolStripMenuItem";
+            resources.ApplyResources(this.extraControlsToolStripMenuItem, "extraControlsToolStripMenuItem");
+            this.extraControlsToolStripMenuItem.Click += new System.EventHandler(this.openExtraControls);
             // 
             // aboutMenuItem
             // 
@@ -208,6 +214,7 @@
             // 
             resources.ApplyResources(this.cbAnimOld, "cbAnimOld");
             this.cbAnimOld.Name = "cbAnimOld";
+            this.cbAnimOld.SelectionChangeCommitted += new System.EventHandler(this.cbAnimOld_SelectionChangeCommited);
             // 
             // updateTimer
             // 
@@ -233,12 +240,6 @@
             this.cbCamStyles.FormattingEnabled = true;
             resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
             this.cbCamStyles.Name = "cbCamStyles";
-            // 
-            // extraControlsToolStripMenuItem
-            // 
-            this.extraControlsToolStripMenuItem.Name = "extraControlsToolStripMenuItem";
-            resources.ApplyResources(this.extraControlsToolStripMenuItem, "extraControlsToolStripMenuItem");
-            this.extraControlsToolStripMenuItem.Click += new System.EventHandler(this.openExtraControls);
             // 
             // MainForm
             // 

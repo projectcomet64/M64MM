@@ -30,7 +30,7 @@ namespace M64MM2
         public MainForm()
         {
             InitializeComponent();
-            updateTimer.Interval = 250;
+            updateTimer.Interval = 1000;
             updateTimer.Start();
             animList = new List<Animation>();
             camStyles = new List<CamStyle>();
@@ -166,6 +166,8 @@ namespace M64MM2
 
         void FreezeCam(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             cameraFrozen = true;
             byte[] data = { 0x80 };
             WriteBytes(BaseAddress + 0x33C84B, data);
@@ -174,6 +176,8 @@ namespace M64MM2
 
         void UnfreezeCam(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             cameraFrozen = false;
             byte[] data = { 0x00 };
             WriteBytes(BaseAddress + 0x33C84B, data);
@@ -183,6 +187,8 @@ namespace M64MM2
 
         void SoftFreezeCam(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             cameraSoftFrozen = true;
             WriteUInt(BaseAddress + 0x33B204, 0x8001C520);
 
@@ -191,6 +197,8 @@ namespace M64MM2
 
         void SoftUnfreezeCam(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             cameraSoftFrozen = false;
             WriteUInt(BaseAddress + 0x33B204, 0x8033C520);
 
@@ -203,13 +211,15 @@ namespace M64MM2
 
             byte[] data = { camStyles[cbCamStyles.SelectedIndex].Value };
 
-            WriteBytes(BaseAddress + 0x33c6d6, data);
-            WriteBytes(BaseAddress + 0x33c6d7, data);
+            WriteBytes(BaseAddress + 0x33C6D6, data);
+            WriteBytes(BaseAddress + 0x33C6D7, data);
         }
 
 
         void WriteAnimSwap(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimNew.Value), 4);
             long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
 
@@ -218,6 +228,8 @@ namespace M64MM2
 
         void WriteAnimReset(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimOld.Value), 4);
             long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
 
@@ -227,6 +239,8 @@ namespace M64MM2
 
         void WriteAnimResetAll(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             foreach (Animation anim in animList)
             {
                 byte[] stuffToWrite = SwapEndian(StringToByteArray(anim.Value), 4);
@@ -236,6 +250,21 @@ namespace M64MM2
             }
 
             cbAnimNew.SelectedIndex = cbAnimOld.SelectedIndex;
+        }
+
+        void cbAnimOld_SelectionChangeCommited(object sender, EventArgs e)
+        {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
+            long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
+            byte[] currentAnim = SwapEndian(ReadBytes(address, 8), 4);
+            string currentAnimValue = BitConverter.ToString(currentAnim).Replace("-", "");
+
+            for (int i = 0; i < animList.Count; i++)
+            {
+                if (animList[i].Value == currentAnimValue)
+                    cbAnimNew.SelectedIndex = i;
+            }
         }
 
 

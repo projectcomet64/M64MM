@@ -17,16 +17,25 @@ namespace M64MM2
         public ExtraControlsForm()
         {
             InitializeComponent();
+
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
+            tbLevitate.Value = ReadBytes(BaseAddress + 0x33B223, 1)[0];
+
         }
 
         void tbLevitate_ValueChanged(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             byte[] data = { (byte) tbLevitate.Value };
             WriteBytes(BaseAddress + 0x33B223, data);
         }
 
         void btnRemoveHud_Click(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             WriteUInt(BaseAddress + 0x2E3DB0, 0);
             WriteUInt(BaseAddress + 0x2E3DE0, 0);
             WriteUInt(BaseAddress + 0x2E3E18, 0);

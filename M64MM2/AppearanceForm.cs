@@ -14,7 +14,7 @@ namespace M64MM2
 {
     public partial class AppearanceForm : Form
     {
-        Random rand;
+        readonly Random rand;
 
         Color defaultHatMain = Color.FromArgb(255, 0, 0);
         Color defaultHatShade = Color.FromArgb(127, 0, 0);
@@ -539,6 +539,8 @@ namespace M64MM2
 
         void changeShadows(object sender, EventArgs e)
         {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
             TrackBar senderBar = (TrackBar) sender;
             byte[] data = new byte[1];
 
