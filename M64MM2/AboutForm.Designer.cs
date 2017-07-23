@@ -53,7 +53,7 @@
             // 
             // appIcon
             // 
-            this.appIcon.Image = global::M64MM2.Properties.Resources.M64MM2_Icon;
+            this.appIcon.Image = global::M64MM2.Properties.Resources.M64MM2_New_Icon_2;
             resources.ApplyResources(this.appIcon, "appIcon");
             this.appIcon.Name = "appIcon";
             this.appIcon.TabStop = false;

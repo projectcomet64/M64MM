@@ -199,6 +199,36 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon M64MM2_New {
+            get {
+                object obj = ResourceManager.GetObject("M64MM2_New", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap M64MM2_New_Icon {
+            get {
+                object obj = ResourceManager.GetObject("M64MM2_New_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap M64MM2_New_Icon_2 {
+            get {
+                object obj = ResourceManager.GetObject("M64MM2_New_Icon_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Status: Project64 is not open..
         /// </summary>
         internal static string programStatus1 {
