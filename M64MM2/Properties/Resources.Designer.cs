@@ -134,6 +134,15 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have entered an invalid animation name into {0}. Please make sure to choose a valid option from the list..
+        /// </summary>
+        internal static string invalidAnimSelected {
+            get {
+                return ResourceManager.GetString("invalidAnimSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid color code: line {0} is too {1}..
         /// </summary>
         internal static string invalidColorCodeMsg1 {

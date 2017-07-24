@@ -23,8 +23,8 @@ namespace M64MM2
         bool cameraSoftFrozen = false;
         List<Animation> animList;
         List<CamStyle> camStyles;
-        Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : animList[0];
-        Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : animList[0];
+        Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : new Animation();
+        Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : new Animation();
 
 
         public MainForm()
@@ -220,6 +220,12 @@ namespace M64MM2
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 
+            if (selectedAnimOld.Value == "" || selectedAnimNew.Value == "")
+            {
+                MessageBox.Show(this, String.Format(Resources.invalidAnimSelected, ((Control) sender).Name));
+                return;
+            }
+
             byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimNew.Value), 4);
             long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
 
@@ -229,6 +235,12 @@ namespace M64MM2
         void WriteAnimReset(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
+
+            if (selectedAnimOld.Value == "" || selectedAnimNew.Value == "")
+            {
+                MessageBox.Show(this, String.Format(Resources.invalidAnimSelected, ((Control)sender).Name));
+                return;
+            }
 
             byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimOld.Value), 4);
             long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
@@ -252,7 +264,7 @@ namespace M64MM2
             cbAnimNew.SelectedIndex = cbAnimOld.SelectedIndex;
         }
 
-        void cbAnimOld_SelectionChangeCommited(object sender, EventArgs e)
+        void cbAnimOld_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 

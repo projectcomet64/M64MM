@@ -206,19 +206,18 @@
             // 
             // cbAnimNew
             // 
-            this.cbAnimNew.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cbAnimNew.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbAnimNew.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbAnimNew.FormattingEnabled = true;
             resources.ApplyResources(this.cbAnimNew, "cbAnimNew");
             this.cbAnimNew.Name = "cbAnimNew";
             // 
             // cbAnimOld
             // 
-            this.cbAnimOld.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cbAnimOld.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbAnimOld.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             resources.ApplyResources(this.cbAnimOld, "cbAnimOld");
             this.cbAnimOld.Name = "cbAnimOld";
-            this.cbAnimOld.SelectedIndexChanged += new System.EventHandler(this.cbAnimOld_SelectionChangeCommited);
+            this.cbAnimOld.SelectedIndexChanged += new System.EventHandler(this.cbAnimOld_SelectedIndexChanged);
             // 
             // updateTimer
             // 

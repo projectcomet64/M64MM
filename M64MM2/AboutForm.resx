@@ -298,7 +298,7 @@ Special thanks to Matthew "MatthewGU4" Guerra for helping me make this project a
     <value>6</value>
   </data>
   <data name="lblBuildDate.Text" xml:space="preserve">
-    <value>Build Date: July 23, 2017</value>
+    <value>Build Date: July 24, 2017</value>
   </data>
   <data name="lblBuildDate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
