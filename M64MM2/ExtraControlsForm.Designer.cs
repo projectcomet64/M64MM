@@ -80,14 +80,14 @@
             this.btnRemoveHud.UseVisualStyleBackColor = true;
             this.btnRemoveHud.Click += new System.EventHandler(this.btnRemoveHud_Click);
             // 
-            // ExtraControls
+            // ExtraControlsForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "ExtraControls";
+            this.Name = "ExtraControlsForm";
             ((System.ComponentModel.ISupportInitialize)(this.tbLevitate)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

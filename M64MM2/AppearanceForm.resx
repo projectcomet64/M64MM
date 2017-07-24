@@ -640,6 +640,78 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;btnLoadFromGame.Name" xml:space="preserve">
+    <value>btnLoadFromGame</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFromGame.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFromGame.Parent" xml:space="preserve">
+    <value>grpColor</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFromGame.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnResetColors.Name" xml:space="preserve">
+    <value>btnResetColors</value>
+  </data>
+  <data name="&gt;&gt;btnResetColors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnResetColors.Parent" xml:space="preserve">
+    <value>grpColor</value>
+  </data>
+  <data name="&gt;&gt;btnResetColors.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnExportCode.Name" xml:space="preserve">
+    <value>btnExportCode</value>
+  </data>
+  <data name="&gt;&gt;btnExportCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnExportCode.Parent" xml:space="preserve">
+    <value>grpColor</value>
+  </data>
+  <data name="&gt;&gt;btnExportCode.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnImportCode.Name" xml:space="preserve">
+    <value>btnImportCode</value>
+  </data>
+  <data name="&gt;&gt;btnImportCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnImportCode.Parent" xml:space="preserve">
+    <value>grpColor</value>
+  </data>
+  <data name="&gt;&gt;btnImportCode.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="grpColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 42</value>
+  </data>
+  <data name="grpColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 270</value>
+  </data>
+  <data name="grpColor.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="grpColor.Text" xml:space="preserve">
+    <value>Color Settings:</value>
+  </data>
+  <data name="&gt;&gt;grpColor.Name" xml:space="preserve">
+    <value>grpColor</value>
+  </data>
+  <data name="&gt;&gt;grpColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpColor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="btnLoadFromGame.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 241</value>
   </data>
@@ -736,29 +808,161 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
   <data name="&gt;&gt;btnImportCode.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="grpColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 42</value>
+  <data name="&gt;&gt;btnRandomizeShading.Name" xml:space="preserve">
+    <value>btnRandomizeShading</value>
   </data>
-  <data name="grpColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 270</value>
+  <data name="&gt;&gt;btnRandomizeShading.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="grpColor.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+  <data name="&gt;&gt;btnRandomizeShading.Parent" xml:space="preserve">
+    <value>grpShading</value>
   </data>
-  <data name="grpColor.Text" xml:space="preserve">
-    <value>Color Settings:</value>
+  <data name="&gt;&gt;btnRandomizeShading.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;grpColor.Name" xml:space="preserve">
-    <value>grpColor</value>
+  <data name="&gt;&gt;btnResetShading.Name" xml:space="preserve">
+    <value>btnResetShading</value>
   </data>
-  <data name="&gt;&gt;grpColor.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnResetShading.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnResetShading.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;btnResetShading.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tbBackFront.Name" xml:space="preserve">
+    <value>tbBackFront</value>
+  </data>
+  <data name="&gt;&gt;tbBackFront.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbBackFront.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;tbBackFront.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;tbBottomTop.Name" xml:space="preserve">
+    <value>tbBottomTop</value>
+  </data>
+  <data name="&gt;&gt;tbBottomTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbBottomTop.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;tbBottomTop.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;tbLeftRight.Name" xml:space="preserve">
+    <value>tbLeftRight</value>
+  </data>
+  <data name="&gt;&gt;tbLeftRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbLeftRight.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;tbLeftRight.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="grpShading.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 318</value>
+  </data>
+  <data name="grpShading.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 107</value>
+  </data>
+  <data name="grpShading.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="grpShading.Text" xml:space="preserve">
+    <value>Shading Settings:</value>
+  </data>
+  <data name="&gt;&gt;grpShading.Name" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;grpShading.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;grpColor.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpShading.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;grpColor.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;grpShading.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnRandomizeShading.Location" type="System.Drawing.Point, System.Drawing">
     <value>318, 72</value>
@@ -1041,30 +1245,6 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
   </data>
   <data name="&gt;&gt;tbLeftRight.ZOrder" xml:space="preserve">
     <value>10</value>
-  </data>
-  <data name="grpShading.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 318</value>
-  </data>
-  <data name="grpShading.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 107</value>
-  </data>
-  <data name="grpShading.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="grpShading.Text" xml:space="preserve">
-    <value>Shading Settings:</value>
-  </data>
-  <data name="&gt;&gt;grpShading.Name" xml:space="preserve">
-    <value>grpShading</value>
-  </data>
-  <data name="&gt;&gt;grpShading.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpShading.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grpShading.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <metadata name="randomizerTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>131, 17</value>

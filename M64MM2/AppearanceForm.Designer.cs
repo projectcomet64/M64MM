@@ -409,6 +409,7 @@
             this.Controls.Add(this.grpColor);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.marioSprite);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "AppearanceForm";
             ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).EndInit();

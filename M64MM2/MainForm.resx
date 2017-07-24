@@ -121,30 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="appearanceSettingsMenuItem.Text" xml:space="preserve">
-    <value>&amp;Appearance Settings...</value>
-  </data>
-  <data name="extraControlsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="extraControlsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Extra Controls...</value>
-  </data>
-  <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 20</value>
-  </data>
-  <data name="toolsMenuItem.Text" xml:space="preserve">
-    <value>&amp;Tools</value>
-  </data>
-  <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 20</value>
-  </data>
-  <data name="aboutMenuItem.Text" xml:space="preserve">
-    <value>&amp;About</value>
-  </data>
   <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -169,6 +145,102 @@
   </data>
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
+  </data>
+  <data name="toolsMenuItem.Text" xml:space="preserve">
+    <value>&amp;Tools</value>
+  </data>
+  <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="appearanceSettingsMenuItem.Text" xml:space="preserve">
+    <value>&amp;Appearance Settings...</value>
+  </data>
+  <data name="extraControlsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="extraControlsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Extra Controls...</value>
+  </data>
+  <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 20</value>
+  </data>
+  <data name="aboutMenuItem.Text" xml:space="preserve">
+    <value>&amp;About</value>
+  </data>
+  <data name="&gt;&gt;btnSoftUnfreeze.Name" xml:space="preserve">
+    <value>btnSoftUnfreeze</value>
+  </data>
+  <data name="&gt;&gt;btnSoftUnfreeze.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSoftUnfreeze.Parent" xml:space="preserve">
+    <value>grpCamera</value>
+  </data>
+  <data name="&gt;&gt;btnSoftUnfreeze.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnSoftFreeze.Name" xml:space="preserve">
+    <value>btnSoftFreeze</value>
+  </data>
+  <data name="&gt;&gt;btnSoftFreeze.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSoftFreeze.Parent" xml:space="preserve">
+    <value>grpCamera</value>
+  </data>
+  <data name="&gt;&gt;btnSoftFreeze.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnUnfreeze.Name" xml:space="preserve">
+    <value>btnUnfreeze</value>
+  </data>
+  <data name="&gt;&gt;btnUnfreeze.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnUnfreeze.Parent" xml:space="preserve">
+    <value>grpCamera</value>
+  </data>
+  <data name="&gt;&gt;btnUnfreeze.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnFreeze.Name" xml:space="preserve">
+    <value>btnFreeze</value>
+  </data>
+  <data name="&gt;&gt;btnFreeze.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnFreeze.Parent" xml:space="preserve">
+    <value>grpCamera</value>
+  </data>
+  <data name="&gt;&gt;btnFreeze.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="grpCamera.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <data name="grpCamera.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 82</value>
+  </data>
+  <data name="grpCamera.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="grpCamera.Text" xml:space="preserve">
+    <value>Camera Controls</value>
+  </data>
+  <data name="&gt;&gt;grpCamera.Name" xml:space="preserve">
+    <value>grpCamera</value>
+  </data>
+  <data name="&gt;&gt;grpCamera.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpCamera.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpCamera.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnSoftUnfreeze.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -276,36 +348,36 @@
   <data name="&gt;&gt;btnFreeze.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="grpCamera.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
-  </data>
-  <data name="grpCamera.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 82</value>
-  </data>
-  <data name="grpCamera.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="grpCamera.Text" xml:space="preserve">
-    <value>Camera Controls</value>
-  </data>
-  <data name="&gt;&gt;grpCamera.Name" xml:space="preserve">
-    <value>grpCamera</value>
-  </data>
-  <data name="&gt;&gt;grpCamera.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpCamera.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grpCamera.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>125, 17</value>
   </metadata>
   <metadata name="statusStrip.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 220</value>
+  </data>
+  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>524, 22</value>
+  </data>
+  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="statusStrip.Text" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="lblProgramStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -335,30 +407,6 @@
   </data>
   <data name="lblCameraCode.Text" xml:space="preserve">
     <value>0x00000000</value>
-  </data>
-  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 220</value>
-  </data>
-  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 22</value>
-  </data>
-  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="statusStrip.Text" xml:space="preserve">
-    <value>statusStrip</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
-    <value>statusStrip</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="btnAnimResetAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -564,6 +612,54 @@
   <metadata name="updateTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>234, 17</value>
   </metadata>
+  <data name="&gt;&gt;btnChangeCamStyle.Name" xml:space="preserve">
+    <value>btnChangeCamStyle</value>
+  </data>
+  <data name="&gt;&gt;btnChangeCamStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnChangeCamStyle.Parent" xml:space="preserve">
+    <value>grpCamStyle</value>
+  </data>
+  <data name="&gt;&gt;btnChangeCamStyle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.Name" xml:space="preserve">
+    <value>cbCamStyles</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.Parent" xml:space="preserve">
+    <value>grpCamStyle</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpCamStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>296, 27</value>
+  </data>
+  <data name="grpCamStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 82</value>
+  </data>
+  <data name="grpCamStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="grpCamStyle.Text" xml:space="preserve">
+    <value>Change Camera Style</value>
+  </data>
+  <data name="&gt;&gt;grpCamStyle.Name" xml:space="preserve">
+    <value>grpCamStyle</value>
+  </data>
+  <data name="&gt;&gt;grpCamStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpCamStyle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpCamStyle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnChangeCamStyle.Location" type="System.Drawing.Point, System.Drawing">
     <value>43, 51</value>
   </data>
@@ -608,30 +704,6 @@
   </data>
   <data name="&gt;&gt;cbCamStyles.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="grpCamStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>296, 27</value>
-  </data>
-  <data name="grpCamStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 82</value>
-  </data>
-  <data name="grpCamStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="grpCamStyle.Text" xml:space="preserve">
-    <value>Change Camera Style</value>
-  </data>
-  <data name="&gt;&gt;grpCamStyle.Name" xml:space="preserve">
-    <value>grpCamStyle</value>
-  </data>
-  <data name="&gt;&gt;grpCamStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpCamStyle.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grpCamStyle.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

@@ -48,7 +48,7 @@ namespace M64MM2
 
                 //If the code tries to write data outside of where Mario's colors are located, it's not a valid code
                 int address = int.Parse(line.Substring(2, 6), NumberStyles.HexNumber);
-                if (address < 0x07EC20 || address > 0x07ECA2)
+                if (address < 0x07EC20 || address > 0x07ECA6)
                 {
                     string errorMsg = String.Format(Resources.invalidColorCodeMsg2, (lineNum + 1), line.Substring(2, 6));
                     MessageBox.Show(this, errorMsg, Resources.invalidColorCodeMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);

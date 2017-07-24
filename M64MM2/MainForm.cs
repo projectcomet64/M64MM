@@ -23,8 +23,8 @@ namespace M64MM2
         bool cameraSoftFrozen = false;
         List<Animation> animList;
         List<CamStyle> camStyles;
-        Animation selectedAnimOld => animList[cbAnimOld.SelectedIndex];
-        Animation selectedAnimNew => animList[cbAnimNew.SelectedIndex];
+        Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : animList[0];
+        Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : animList[0];
 
 
         public MainForm()
