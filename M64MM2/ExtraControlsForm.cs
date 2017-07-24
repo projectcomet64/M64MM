@@ -40,7 +40,7 @@ namespace M64MM2
             WriteUInt(BaseAddress + 0x2E3DE0, 0);
             WriteUInt(BaseAddress + 0x2E3E18, 0);
             WriteUInt(BaseAddress + 0x2E3DC8, 0);
-            WriteUInt(BaseAddress + 0x3325F4, 0x1);
+            WriteUInt(BaseAddress + 0x3325F4, 0x01000000);
         }
     }
 }
