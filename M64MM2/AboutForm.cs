@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using M64MM2.Properties;
 
 namespace M64MM2
 {
@@ -26,6 +27,21 @@ namespace M64MM2
         private void btnOK_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AboutForm_Load(object sender, EventArgs e)
+        {
+            lnkDiscord.Text = ("http://discord.gg/" + Resources.discordInvite);
+        }
+
+        private void lnkDiscord_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://discord.gg/" + Resources.discordInvite);
+        }
+
+        private void lnkGithubIssues_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://github.com/jpmac26/M64MM2/issues");
         }
     }
 }
