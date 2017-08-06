@@ -304,6 +304,11 @@ namespace M64MM2
             if (!extraControlsForm.Visible)
                 extraControlsForm.Show();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

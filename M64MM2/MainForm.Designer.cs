@@ -65,45 +65,45 @@
             // 
             // menuStrip
             // 
+            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsMenuItem,
             this.aboutMenuItem});
-            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
             // 
             // toolsMenuItem
             // 
+            resources.ApplyResources(this.toolsMenuItem, "toolsMenuItem");
             this.toolsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.appearanceSettingsMenuItem,
             this.extraControlsToolStripMenuItem});
             this.toolsMenuItem.Name = "toolsMenuItem";
-            resources.ApplyResources(this.toolsMenuItem, "toolsMenuItem");
             // 
             // appearanceSettingsMenuItem
             // 
-            this.appearanceSettingsMenuItem.Name = "appearanceSettingsMenuItem";
             resources.ApplyResources(this.appearanceSettingsMenuItem, "appearanceSettingsMenuItem");
+            this.appearanceSettingsMenuItem.Name = "appearanceSettingsMenuItem";
             this.appearanceSettingsMenuItem.Click += new System.EventHandler(this.openAppearanceSettings);
             // 
             // extraControlsToolStripMenuItem
             // 
-            this.extraControlsToolStripMenuItem.Name = "extraControlsToolStripMenuItem";
             resources.ApplyResources(this.extraControlsToolStripMenuItem, "extraControlsToolStripMenuItem");
+            this.extraControlsToolStripMenuItem.Name = "extraControlsToolStripMenuItem";
             this.extraControlsToolStripMenuItem.Click += new System.EventHandler(this.openExtraControls);
             // 
             // aboutMenuItem
             // 
-            this.aboutMenuItem.Name = "aboutMenuItem";
             resources.ApplyResources(this.aboutMenuItem, "aboutMenuItem");
+            this.aboutMenuItem.Name = "aboutMenuItem";
             this.aboutMenuItem.Click += new System.EventHandler(this.openAboutForm);
             // 
             // grpCamera
             // 
+            resources.ApplyResources(this.grpCamera, "grpCamera");
             this.grpCamera.Controls.Add(this.btnSoftUnfreeze);
             this.grpCamera.Controls.Add(this.btnSoftFreeze);
             this.grpCamera.Controls.Add(this.btnUnfreeze);
             this.grpCamera.Controls.Add(this.btnFreeze);
-            resources.ApplyResources(this.grpCamera, "grpCamera");
             this.grpCamera.Name = "grpCamera";
             this.grpCamera.TabStop = false;
             // 
@@ -137,11 +137,11 @@
             // 
             // statusStrip
             // 
+            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblProgramStatus,
             this.lblCameraStatus,
             this.lblCameraCode});
-            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.SizingGrip = false;
             // 
@@ -157,11 +157,12 @@
             // 
             // lblCameraCode
             // 
-            this.lblCameraCode.Name = "lblCameraCode";
             resources.ApplyResources(this.lblCameraCode, "lblCameraCode");
+            this.lblCameraCode.Name = "lblCameraCode";
             // 
             // grpAnimSwap
             // 
+            resources.ApplyResources(this.grpAnimSwap, "grpAnimSwap");
             this.grpAnimSwap.Controls.Add(this.btnAnimResetAll);
             this.grpAnimSwap.Controls.Add(this.btnAnimReset);
             this.grpAnimSwap.Controls.Add(this.btnAnimSwap);
@@ -169,7 +170,6 @@
             this.grpAnimSwap.Controls.Add(this.lblAnimOld);
             this.grpAnimSwap.Controls.Add(this.cbAnimNew);
             this.grpAnimSwap.Controls.Add(this.cbAnimOld);
-            resources.ApplyResources(this.grpAnimSwap, "grpAnimSwap");
             this.grpAnimSwap.Name = "grpAnimSwap";
             this.grpAnimSwap.TabStop = false;
             // 
@@ -206,16 +206,16 @@
             // 
             // cbAnimNew
             // 
+            resources.ApplyResources(this.cbAnimNew, "cbAnimNew");
             this.cbAnimNew.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbAnimNew.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            resources.ApplyResources(this.cbAnimNew, "cbAnimNew");
             this.cbAnimNew.Name = "cbAnimNew";
             // 
             // cbAnimOld
             // 
+            resources.ApplyResources(this.cbAnimOld, "cbAnimOld");
             this.cbAnimOld.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbAnimOld.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            resources.ApplyResources(this.cbAnimOld, "cbAnimOld");
             this.cbAnimOld.Name = "cbAnimOld";
             this.cbAnimOld.SelectedIndexChanged += new System.EventHandler(this.cbAnimOld_SelectedIndexChanged);
             // 
@@ -225,9 +225,9 @@
             // 
             // grpCamStyle
             // 
+            resources.ApplyResources(this.grpCamStyle, "grpCamStyle");
             this.grpCamStyle.Controls.Add(this.btnChangeCamStyle);
             this.grpCamStyle.Controls.Add(this.cbCamStyles);
-            resources.ApplyResources(this.grpCamStyle, "grpCamStyle");
             this.grpCamStyle.Name = "grpCamStyle";
             this.grpCamStyle.TabStop = false;
             // 
@@ -240,8 +240,8 @@
             // 
             // cbCamStyles
             // 
-            this.cbCamStyles.FormattingEnabled = true;
             resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
+            this.cbCamStyles.FormattingEnabled = true;
             this.cbCamStyles.Name = "cbCamStyles";
             // 
             // MainForm
@@ -257,6 +257,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.grpCamera.ResumeLayout(false);

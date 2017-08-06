@@ -81,9 +81,9 @@
             // 
             // marioSprite
             // 
+            resources.ApplyResources(this.marioSprite, "marioSprite");
             this.marioSprite.BackColor = System.Drawing.Color.Transparent;
             this.marioSprite.Image = global::M64MM2.Properties.Resources.CC_Mario_big;
-            resources.ApplyResources(this.marioSprite, "marioSprite");
             this.marioSprite.Name = "marioSprite";
             this.marioSprite.TabStop = false;
             this.marioSprite.Paint += new System.Windows.Forms.PaintEventHandler(this.marioSprite_Paint);
@@ -91,108 +91,108 @@
             // 
             // hatColorMain
             // 
+            resources.ApplyResources(this.hatColorMain, "hatColorMain");
             this.hatColorMain.BackColor = System.Drawing.Color.Red;
             this.hatColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.hatColorMain, "hatColorMain");
             this.hatColorMain.Name = "hatColorMain";
             this.hatColorMain.UseVisualStyleBackColor = false;
             this.hatColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // hatColorShade
             // 
+            resources.ApplyResources(this.hatColorShade, "hatColorShade");
             this.hatColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.hatColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.hatColorShade, "hatColorShade");
             this.hatColorShade.Name = "hatColorShade";
             this.hatColorShade.UseVisualStyleBackColor = false;
             this.hatColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // hairColorShade
             // 
+            resources.ApplyResources(this.hairColorShade, "hairColorShade");
             this.hairColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(3)))), ((int)(((byte)(0)))));
             this.hairColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.hairColorShade, "hairColorShade");
             this.hairColorShade.Name = "hairColorShade";
             this.hairColorShade.UseVisualStyleBackColor = false;
             this.hairColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // hairColorMain
             // 
+            resources.ApplyResources(this.hairColorMain, "hairColorMain");
             this.hairColorMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(6)))), ((int)(((byte)(0)))));
             this.hairColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.hairColorMain, "hairColorMain");
             this.hairColorMain.Name = "hairColorMain";
             this.hairColorMain.UseVisualStyleBackColor = false;
             this.hairColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // skinColorShade
             // 
+            resources.ApplyResources(this.skinColorShade, "skinColorShade");
             this.skinColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(96)))), ((int)(((byte)(60)))));
             this.skinColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.skinColorShade, "skinColorShade");
             this.skinColorShade.Name = "skinColorShade";
             this.skinColorShade.UseVisualStyleBackColor = false;
             this.skinColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // skinColorMain
             // 
+            resources.ApplyResources(this.skinColorMain, "skinColorMain");
             this.skinColorMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(193)))), ((int)(((byte)(121)))));
             this.skinColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.skinColorMain, "skinColorMain");
             this.skinColorMain.Name = "skinColorMain";
             this.skinColorMain.UseVisualStyleBackColor = false;
             this.skinColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // glovesColorShade
             // 
+            resources.ApplyResources(this.glovesColorShade, "glovesColorShade");
             this.glovesColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.glovesColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.glovesColorShade, "glovesColorShade");
             this.glovesColorShade.Name = "glovesColorShade";
             this.glovesColorShade.UseVisualStyleBackColor = false;
             this.glovesColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // glovesColorMain
             // 
+            resources.ApplyResources(this.glovesColorMain, "glovesColorMain");
             this.glovesColorMain.BackColor = System.Drawing.Color.White;
             this.glovesColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.glovesColorMain, "glovesColorMain");
             this.glovesColorMain.Name = "glovesColorMain";
             this.glovesColorMain.UseVisualStyleBackColor = false;
             this.glovesColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // pantsColorShade
             // 
+            resources.ApplyResources(this.pantsColorShade, "pantsColorShade");
             this.pantsColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
             this.pantsColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.pantsColorShade, "pantsColorShade");
             this.pantsColorShade.Name = "pantsColorShade";
             this.pantsColorShade.UseVisualStyleBackColor = false;
             this.pantsColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // pantsColorMain
             // 
+            resources.ApplyResources(this.pantsColorMain, "pantsColorMain");
             this.pantsColorMain.BackColor = System.Drawing.Color.Blue;
             this.pantsColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.pantsColorMain, "pantsColorMain");
             this.pantsColorMain.Name = "pantsColorMain";
             this.pantsColorMain.UseVisualStyleBackColor = false;
             this.pantsColorMain.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // shoesColorShade
             // 
+            resources.ApplyResources(this.shoesColorShade, "shoesColorShade");
             this.shoesColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(14)))), ((int)(((byte)(7)))));
             this.shoesColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.shoesColorShade, "shoesColorShade");
             this.shoesColorShade.Name = "shoesColorShade";
             this.shoesColorShade.UseVisualStyleBackColor = false;
             this.shoesColorShade.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // shoesColorMain
             // 
+            resources.ApplyResources(this.shoesColorMain, "shoesColorMain");
             this.shoesColorMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(28)))), ((int)(((byte)(14)))));
             this.shoesColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.shoesColorMain, "shoesColorMain");
             this.shoesColorMain.Name = "shoesColorMain";
             this.shoesColorMain.UseVisualStyleBackColor = false;
             this.shoesColorMain.Click += new System.EventHandler(this.colorButton_Click);
@@ -250,6 +250,7 @@
             // 
             // grpColor
             // 
+            resources.ApplyResources(this.grpColor, "grpColor");
             this.grpColor.Controls.Add(this.btnLoadFromGame);
             this.grpColor.Controls.Add(this.btnResetColors);
             this.grpColor.Controls.Add(this.btnExportCode);
@@ -274,7 +275,6 @@
             this.grpColor.Controls.Add(this.shoesColorShade);
             this.grpColor.Controls.Add(this.pantsColorShade);
             this.grpColor.Controls.Add(this.shoesColorMain);
-            resources.ApplyResources(this.grpColor, "grpColor");
             this.grpColor.Name = "grpColor";
             this.grpColor.TabStop = false;
             // 
@@ -308,6 +308,7 @@
             // 
             // grpShading
             // 
+            resources.ApplyResources(this.grpShading, "grpShading");
             this.grpShading.Controls.Add(this.btnRandomizeShading);
             this.grpShading.Controls.Add(this.btnResetShading);
             this.grpShading.Controls.Add(this.label13);
@@ -319,7 +320,6 @@
             this.grpShading.Controls.Add(this.tbBackFront);
             this.grpShading.Controls.Add(this.tbBottomTop);
             this.grpShading.Controls.Add(this.tbLeftRight);
-            resources.ApplyResources(this.grpShading, "grpShading");
             this.grpShading.Name = "grpShading";
             this.grpShading.TabStop = false;
             // 
