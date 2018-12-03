@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using M64MM2.Properties;
-using System.Threading;
 using static M64MM2.Utils;
 
 
