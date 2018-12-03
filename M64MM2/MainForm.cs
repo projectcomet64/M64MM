@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using M64MM2.Properties;
+using System.Threading;
 using static M64MM2.Utils;
 
 
@@ -23,6 +24,7 @@ namespace M64MM2
         bool cameraSoftFrozen = false;
         List<Animation> animList;
         List<CamStyle> camStyles;
+        Animation defaultAnimation;
         Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : new Animation();
         Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : new Animation();
 
@@ -34,6 +36,7 @@ namespace M64MM2
             updateTimer.Start();
             animList = new List<Animation>();
             camStyles = new List<CamStyle>();
+            defaultAnimation.Value = "0";
 
 
             //Load animation data
@@ -51,6 +54,16 @@ namespace M64MM2
                         //anim.Description = splitLine[1];
                         anim.RealIndex = int.Parse(splitLine[2]);
                         animList.Add(anim);
+                        try
+                        {
+                            if (splitLine[3] != null)
+                            {
+                                defaultAnimation = anim;
+                            }
+                        } catch (Exception ex)
+                        {
+
+                        }
 
                         cbAnimOld.Items.Add(splitLine[1]);
                         cbAnimNew.Items.Add(splitLine[1]);
@@ -58,6 +71,8 @@ namespace M64MM2
                         cbAnimOld.SelectedIndex = 0;
                         cbAnimNew.SelectedIndex = 0;
                     }
+
+                    btnAnimRestart.Enabled = (defaultAnimation.Value != "0");
                 }
             }
             catch (Exception e)
@@ -69,6 +84,7 @@ namespace M64MM2
                 btnAnimSwap.Enabled = false;
                 btnAnimReset.Enabled = false;
                 btnAnimResetAll.Enabled = false;
+                btnAnimReset.Enabled = false;
             }
 
             
@@ -308,6 +324,28 @@ namespace M64MM2
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAnimRestart_Click(object sender, EventArgs e)
+        {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
+            if (selectedAnimOld.Value == "" || selectedAnimNew.Value == "")
+            {
+                MessageBox.Show(this, String.Format(Resources.invalidAnimSelected, ((Control)sender).Name));
+                return;
+            }
+            byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimNew.Value), 4);
+            byte[] initialAnimation = SwapEndian(StringToByteArray(defaultAnimation.Value), 4);
+            long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
+            WriteUInt(BaseAddress + 0x33B198, 255);
+            while ((BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x33B198, 2), 4), 0) < 255) == false)
+            {
+                WriteBytes(address, initialAnimation);
+                //Stall, for literally just one in-game frame.
+            }
+            WriteBytes(address, stuffToWrite);
+            
         }
     }
 
