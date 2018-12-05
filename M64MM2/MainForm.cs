@@ -21,6 +21,7 @@ namespace M64MM2
         ExtraControlsForm extraControlsForm;
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
+        ModelStatus modelStatus = ModelStatus.NONE;
         List<Animation> animList;
         List<CamStyle> camStyles;
         Animation defaultAnimation;
@@ -31,12 +32,13 @@ namespace M64MM2
         public MainForm()
         {
             InitializeComponent();
+            Text = Resources.programName + " " + Application.ProductVersion;
             updateTimer.Interval = 1000;
             updateTimer.Start();
             animList = new List<Animation>();
             camStyles = new List<CamStyle>();
             defaultAnimation.Value = "0";
-
+            lblCameraStatus.Text = Resources.cameraStateDefault;
 
             //Load animation data
             try
@@ -59,7 +61,7 @@ namespace M64MM2
                             {
                                 defaultAnimation = anim;
                             }
-                        } catch (Exception ex)
+                        } catch (Exception)
                         {
 
                         }
@@ -130,6 +132,7 @@ namespace M64MM2
             //Early validity checks
             if (!IsEmuOpen)
             {
+                Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus1;
                 FindEmuProcess();
                 return;
@@ -138,11 +141,25 @@ namespace M64MM2
             FindBaseAddress();
             if (BaseAddress <= 0)
             {
+                Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus2;
                 return;
             }
 
+            //Reading level address (It's meant to be 0x32DDF8 but ENDIANESS:TM:)
+            if (ReadUShort(BaseAddress + 0x32DDFA) < 3)
+            {
+                lblProgramStatus.Text = Resources.programStatusAwaitingLevel + "0x" + BaseAddress.ToString("X8");
+                return;
+            }
+            
+            //Are we running a moddded model ROM? (Working with Vanilla-styled vs. EXMO)
+            modelStatus = ValidateModel();
+
+            Text = Resources.programName + " " + Application.ProductVersion + " - " + modelStatus.ToString() + " ROM."; 
+
             lblProgramStatus.Text = Resources.programStatus3 + "0x" + BaseAddress.ToString("X8");
+
 
 
             //==============================

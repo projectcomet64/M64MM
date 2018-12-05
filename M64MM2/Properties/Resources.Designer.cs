@@ -19,7 +19,7 @@ namespace M64MM2.Properties {
     // a través de una herramienta como ResGen o Visual Studio.
     // Para agregar o quitar un miembro, edite el archivo .ResX y, a continuación, vuelva a ejecutar ResGen
     // con la opción /str o recompile su proyecto de VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -134,7 +134,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a 73nzHcB.
+        ///   Busca una cadena traducida similar a -.
         /// </summary>
         internal static string discordInvite {
             get {
@@ -247,6 +247,15 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Mario 64 Movie Maker.
+        /// </summary>
+        internal static string programName {
+            get {
+                return ResourceManager.GetString("programName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Status: Project64 is not open..
         /// </summary>
         internal static string programStatus1 {
@@ -270,6 +279,15 @@ namespace M64MM2.Properties {
         internal static string programStatus3 {
             get {
                 return ResourceManager.GetString("programStatus3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Status: Waiting for level. Base addr. found at:.
+        /// </summary>
+        internal static string programStatusAwaitingLevel {
+            get {
+                return ResourceManager.GetString("programStatusAwaitingLevel", resourceCulture);
             }
         }
         

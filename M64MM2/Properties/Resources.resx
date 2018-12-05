@@ -169,15 +169,6 @@
   <data name="programStatus2" xml:space="preserve">
     <value>Status: Base address not found.</value>
   </data>
-  <data name="programStatus3" xml:space="preserve">
-    <value>Status: Base address found at </value>
-  </data>
-  <data name="setDefaultColorsMsg" xml:space="preserve">
-    <value>Set these colors as default?</value>
-  </data>
-  <data name="setDefaultColorsMsgTitle" xml:space="preserve">
-    <value>Set defaults?</value>
-  </data>
   <data name="M64MM2_New" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\M64MM2 New.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -191,6 +182,21 @@
     <value>You have entered an invalid animation name into {0}. Please make sure to choose a valid option from the list.</value>
   </data>
   <data name="discordInvite" xml:space="preserve">
-    <value>73nzHcB</value>
+    <value>-</value>
+  </data>
+  <data name="programName" xml:space="preserve">
+    <value>Mario 64 Movie Maker</value>
+  </data>
+  <data name="programStatus3" xml:space="preserve">
+    <value>Status: Base address found at </value>
+  </data>
+  <data name="programStatusAwaitingLevel" xml:space="preserve">
+    <value>Status: Waiting for level. Base addr. found at:</value>
+  </data>
+  <data name="setDefaultColorsMsg" xml:space="preserve">
+    <value>Set these colors as default?</value>
+  </data>
+  <data name="setDefaultColorsMsgTitle" xml:space="preserve">
+    <value>Set defaults?</value>
   </data>
 </root>

@@ -10,7 +10,13 @@ namespace M64MM2
     {
         public static long BaseAddress;
         public static bool IsEmuOpen => (emuProcess != null && !emuProcess.HasExited);
-
+        public enum ModelStatus
+        {
+            NONE,
+            VANILLA,
+            EMPTY,
+            MODDED
+        }
         static Process emuProcess;
         static IntPtr emuProcessHandle;
         const int PROCESS_ALL_ACCESS = 0x01F0FF;
@@ -105,6 +111,7 @@ namespace M64MM2
             }
         }
 
+
         public static void FindBaseAddress()
         {
             uint value = 0;
@@ -134,6 +141,49 @@ namespace M64MM2
 
             //If we don't find anything, reset the base address to 0
             BaseAddress = 0;
+        }
+
+
+        public static ModelStatus ValidateModel()
+        {
+            byte[] Color1;
+            byte[] Color2;
+            byte[] Shadow1;
+            byte[] FinalSetOfBytes;
+
+            Color1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
+            Color2 = SwapEndian(ReadBytes(BaseAddress + 0x07EC74, 4), 4);
+            Shadow1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC78, 4), 4);
+            FinalSetOfBytes = SwapEndian(ReadBytes(BaseAddress + 0x07EC7C, 4), 4);
+
+            //If the color data is all zeros (Testing...)
+            if ((BitConverter.ToInt32(Color1, 0) == 0) &&
+                (BitConverter.ToInt32(Color2, 0) == 0) &&
+                (BitConverter.ToInt32(Shadow1, 0) == 0) &&
+                (BitConverter.ToInt32(FinalSetOfBytes, 0) == 0))
+            {
+                return ModelStatus.EMPTY;
+            }
+
+            //If the color data is not RR GG BB *00* RR GG BB *00* XX YY ZZ *00* *00 00 00 00*
+            if ((Color1[3] != 0)
+                || (Color2[3] != 0)
+                || (Shadow1[3] != 0)
+                || (BitConverter.ToInt32(FinalSetOfBytes, 0) != 0))
+            {
+                return ModelStatus.MODDED;
+            }
+            //If all's good :)
+            return ModelStatus.VANILLA;
+        }
+
+        public static void WaitForNextFrame()
+        {
+            int viNumber = BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 4), 4), 0);
+            while (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 4), 4), 0) != viNumber)
+            {
+                //Stall
+            }
         }
 
         public static byte[] StringToByteArray(string hex)
