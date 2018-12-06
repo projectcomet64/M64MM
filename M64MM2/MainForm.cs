@@ -39,6 +39,7 @@ namespace M64MM2
             camStyles = new List<CamStyle>();
             defaultAnimation.Value = "0";
             lblCameraStatus.Text = Resources.cameraStateDefault;
+            toolsMenuItem.Enabled = false;
 
             //Load animation data
             try
@@ -149,13 +150,14 @@ namespace M64MM2
             //Reading level address (It's meant to be 0x32DDF8 but ENDIANESS:TM:)
             if (ReadUShort(BaseAddress + 0x32DDFA) < 3)
             {
+                toolsMenuItem.Enabled = false;
                 lblProgramStatus.Text = Resources.programStatusAwaitingLevel + "0x" + BaseAddress.ToString("X8");
                 return;
             }
             
             //Are we running a moddded model ROM? (Working with Vanilla-styled vs. EXMO)
             modelStatus = ValidateModel();
-
+            toolsMenuItem.Enabled = true;
             Text = Resources.programName + " " + Application.ProductVersion + " - " + modelStatus.ToString() + " ROM."; 
 
             lblProgramStatus.Text = Resources.programStatus3 + "0x" + BaseAddress.ToString("X8");
@@ -314,13 +316,26 @@ namespace M64MM2
 
         void openAppearanceSettings(object sender, EventArgs e)
         {
-            if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
 
-            if (!appearanceForm.Visible)
-                appearanceForm.Show();
+            switch (modelStatus)
+            {
+                case ModelStatus.EMPTY:
+                    MessageBox.Show(Resources.colorCodeEmptyRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    break;
+                case ModelStatus.MODDED:
+                    MessageBox.Show(Resources.colorCodeModdedRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case ModelStatus.VANILLA:
+                    if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
 
-            if (appearanceForm.WindowState == FormWindowState.Minimized)
-                appearanceForm.WindowState = FormWindowState.Normal;
+                    if (!appearanceForm.Visible)
+                        appearanceForm.Show();
+
+                    if (appearanceForm.WindowState == FormWindowState.Minimized)
+                        appearanceForm.WindowState = FormWindowState.Normal;
+                    break;
+            }
+            
         }
 
         void openAboutForm(object sender, EventArgs e)

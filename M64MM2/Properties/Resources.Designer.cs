@@ -116,6 +116,16 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ...This ROM has no model data.
+        ///It won&apos;t work..
+        /// </summary>
+        internal static string colorCodeEmptyRom {
+            get {
+                return ResourceManager.GetString("colorCodeEmptyRom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Here&apos;s your generated color code:.
         /// </summary>
         internal static string colorCodeExportMsg {
@@ -130,6 +140,15 @@ namespace M64MM2.Properties {
         internal static string colorCodeImportMsg {
             get {
                 return ResourceManager.GetString("colorCodeImportMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a This ROM has a different model data compared to Mario&apos;s usual model data. The Color Code Studio and Shading Editor have been disabled; they might not work correctly in this ROM..
+        /// </summary>
+        internal static string colorCodeModdedRom {
+            get {
+                return ResourceManager.GetString("colorCodeModdedRom", resourceCulture);
             }
         }
         

@@ -193,4 +193,11 @@
   <data name="programStatusAwaitingLevel" xml:space="preserve">
     <value>Estado: Esperando nivel. D.B.: </value>
   </data>
+  <data name="colorCodeEmptyRom" xml:space="preserve">
+    <value>...Este ROM no tiene datos de modelo.
+No funcionará.</value>
+  </data>
+  <data name="colorCodeModdedRom" xml:space="preserve">
+    <value>Este ROM tiene datos de modelo diferentes de los usuales de Mario. El Estudio de Códigos de Color y el Editor de Sombras serán deshabilitados; pueden no ser compatibles con este modelo.</value>
+  </data>
 </root>
