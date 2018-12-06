@@ -42,10 +42,5 @@ namespace M64MM2
             WriteUInt(BaseAddress + 0x2E3DC8, 0);
             WriteUInt(BaseAddress + 0x3325F4, 0x01000000);
         }
-
-        private void btnValidateMod_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(ValidateModel().ToString());
-        }
     }
 }

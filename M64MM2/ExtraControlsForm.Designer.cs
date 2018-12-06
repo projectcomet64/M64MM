@@ -35,7 +35,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRemoveHud = new System.Windows.Forms.Button();
-            this.btnValidateMod = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tbLevitate)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -69,7 +68,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnValidateMod);
             this.groupBox2.Controls.Add(this.btnRemoveHud);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
@@ -81,13 +79,6 @@
             this.btnRemoveHud.Name = "btnRemoveHud";
             this.btnRemoveHud.UseVisualStyleBackColor = true;
             this.btnRemoveHud.Click += new System.EventHandler(this.btnRemoveHud_Click);
-            // 
-            // btnValidateMod
-            // 
-            resources.ApplyResources(this.btnValidateMod, "btnValidateMod");
-            this.btnValidateMod.Name = "btnValidateMod";
-            this.btnValidateMod.UseVisualStyleBackColor = true;
-            this.btnValidateMod.Click += new System.EventHandler(this.btnValidateMod_Click);
             // 
             // ExtraControlsForm
             // 
@@ -113,6 +104,5 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnRemoveHud;
-        private System.Windows.Forms.Button btnValidateMod;
     }
 }
