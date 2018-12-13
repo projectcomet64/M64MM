@@ -28,7 +28,7 @@ namespace M64MM2
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 
-            byte[] data = { (byte) tbLevitate.Value };
+            byte[] data = { (byte)tbLevitate.Value };
             WriteBytes(BaseAddress + 0x33B223, data);
         }
 
@@ -41,6 +41,24 @@ namespace M64MM2
             WriteUInt(BaseAddress + 0x2E3E18, 0);
             WriteUInt(BaseAddress + 0x2E3DC8, 0);
             WriteUInt(BaseAddress + 0x3325F4, 0x01000000);
+        }
+
+        private void btnBatchWrite_Click(object sender, EventArgs e)
+        {
+            //Separate by commas and only commas
+            string[] addrs = tbAddresses.Text.Split(',');
+            //for (int i = 0; i < addrs.Length; i++)
+            //{
+            //    addrs[i] = "0x" + addrs[i];
+            //}
+            byte[] dataTW = StringToByteArray(tbData.Text.ToUpper());
+            WriteBatchBytes(addrs, dataTW, true);
+        }
+
+        private void btnClearBoxes_Click(object sender, EventArgs e)
+        {
+            tbAddresses.Text = "";
+            tbData.Text = "";
         }
     }
 }

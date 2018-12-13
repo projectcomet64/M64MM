@@ -118,18 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 20</value>
-  </data>
-  <data name="toolsMenuItem.Text" xml:space="preserve">
-    <value>&amp;Herramientas</value>
-  </data>
-  <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 20</value>
-  </data>
-  <data name="aboutMenuItem.Text" xml:space="preserve">
-    <value>&amp;Acerca de</value>
-  </data>
   <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
   </data>
@@ -142,8 +130,17 @@
   <data name="extraControlsToolStripMenuItem.Text" xml:space="preserve">
     <value>Controles &amp;Extra...</value>
   </data>
-  <data name="grpCamera.Text" xml:space="preserve">
-    <value>Controles de cámara</value>
+  <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 20</value>
+  </data>
+  <data name="toolsMenuItem.Text" xml:space="preserve">
+    <value>&amp;Herramientas</value>
+  </data>
+  <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="aboutMenuItem.Text" xml:space="preserve">
+    <value>&amp;Acerca de</value>
   </data>
   <data name="btnSoftUnfreeze.Text" xml:space="preserve">
     <value>Desc. Ligero (Ctrl + 5)</value>
@@ -157,11 +154,11 @@
   <data name="btnFreeze.Text" xml:space="preserve">
     <value>Congelar (Ctrl + 1)</value>
   </data>
+  <data name="grpCamera.Text" xml:space="preserve">
+    <value>Controles de cámara</value>
+  </data>
   <data name="lblCameraStatus.Text" xml:space="preserve">
     <value>Cámara: Por defecto</value>
-  </data>
-  <data name="grpAnimSwap.Text" xml:space="preserve">
-    <value>Controles de cambio de animación</value>
   </data>
   <data name="btnAnimRestart.Text" xml:space="preserve">
     <value>Re-reproducir</value>
@@ -187,11 +184,14 @@
   <data name="lblAnimOld.Text" xml:space="preserve">
     <value>Reemplazar esta animación:</value>
   </data>
-  <data name="grpCamStyle.Text" xml:space="preserve">
-    <value>Cambio de estilo de cámara</value>
+  <data name="grpAnimSwap.Text" xml:space="preserve">
+    <value>Controles de cambio de animación</value>
   </data>
   <data name="btnChangeCamStyle.Text" xml:space="preserve">
     <value>Aplicar</value>
+  </data>
+  <data name="grpCamStyle.Text" xml:space="preserve">
+    <value>Cambio de estilo de cámara</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

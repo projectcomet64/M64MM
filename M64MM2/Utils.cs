@@ -78,6 +78,25 @@ namespace M64MM2
             WriteProcessMemory(emuProcessHandle, ptr, data, size, ref bytesWritten);
         }
 
+        public static void WriteBatchBytes(string[] addresses, byte[] data, bool useBase)
+        {
+            SwapEndian(data, 4);
+            long baseAddr;
+            if (useBase == true)
+            {
+                baseAddr = BaseAddress;
+            }
+            else
+            {
+                baseAddr = 0;
+            }
+            foreach(string addr in addresses)
+            {
+                long address = Convert.ToInt64(addr, 16);
+                WriteBytes(baseAddr + address, data);
+            }
+        }
+
         public static void WriteUShort(long address, ushort data)
         {
             byte[] buffer = BitConverter.GetBytes(data);
