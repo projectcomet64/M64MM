@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using M64MM2.Properties;
 using static M64MM2.Utils;
@@ -21,16 +19,50 @@ namespace M64MM2
         ExtraControlsForm extraControlsForm;
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
-        ModelStatus modelStatus = ModelStatus.NONE;
+        static ModelStatus modelStatus = ModelStatus.NONE;
         List<Animation> animList;
         List<CamStyle> camStyles;
         Animation defaultAnimation;
         Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : new Animation();
         Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : new Animation();
+        static int ingameTimer;
+        static int previousFrame;
+        //This handles the "Each ingame frame"
+        //ASYNCHRONOUS FOR THE WIN
+        //FUNNILY ENOUGH! This takes little to no CPU, actually
+        //It's goddamn amazing
+        Task updateFunction = Task.Factory.StartNew(async () =>{
+             while (true)
+             {
+                //If there's a level loaded EVEN if there's no model
+                if (modelStatus != ModelStatus.NONE) { 
+                    //Ingame timer update
+                ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x33B198, 2), 4), 0));
+                if (ingameTimer < previousFrame)
+                {
+                        //Ingame timer is a variable that decrements every frame in game. In case our previous snapshot of said value is above the timer:
+                    foreach(Updatable upd in moduleList)
+                    {
+                            //Unity 1996
+                        upd.Update();
+                    }
+                }
+                //Set new value
+                previousFrame = ingameTimer;
+                    //If the ingame timer reaches zero then let's just write 255 more to it
+                if (ingameTimer == 0){
+                    await Task.Run(() => { WriteUInt(BaseAddress + 0x33B198, 255); });
+                }
+                }
+                // zzz
+                Thread.Sleep(1);
+             }
 
+            });
 
         public MainForm()
         {
+            moduleList.Add(new UpdateCounterEveryFrame());
             InitializeComponent();
             Text = Resources.programName + " " + Application.ProductVersion;
             updateTimer.Interval = 1000;
@@ -144,6 +176,10 @@ namespace M64MM2
             {
                 Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus2;
+                foreach (Updatable upd in moduleList)
+                {
+                    upd.Update();
+                }
                 return;
             }
 
@@ -158,7 +194,7 @@ namespace M64MM2
             //Are we running a moddded model ROM? (Working with Vanilla-styled vs. EXMO)
             modelStatus = ValidateModel();
             toolsMenuItem.Enabled = true;
-            Text = Resources.programName + " " + Application.ProductVersion + " - " + modelStatus.ToString() + " ROM."; 
+            Text = Resources.programName + " " + Application.ProductVersion + " - " + modelStatus.ToString() + " ROM." + " - " + UpdateCounterEveryFrame.framenumber + " frames since startup."; 
 
             lblProgramStatus.Text = Resources.programStatus3 + "0x" + BaseAddress.ToString("X8");
 

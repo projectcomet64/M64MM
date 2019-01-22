@@ -266,7 +266,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Mario 64 Movie Maker.
+        ///   Busca una cadena traducida similar a M64MM.
         /// </summary>
         internal static string programName {
             get {

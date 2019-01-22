@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -8,6 +10,7 @@ namespace M64MM2
 {
     static class Utils
     {
+        public static List<Updatable> moduleList = new List<Updatable>();
         public static long BaseAddress;
         public static bool IsEmuOpen => (emuProcess != null && !emuProcess.HasExited);
         public enum ModelStatus
@@ -228,5 +231,11 @@ namespace M64MM2
         {
             return 0 != GetAsyncKeyState(vKey);
         }
+    }
+
+    abstract class Updatable
+    {
+        abstract public void Update();
+        abstract public void Reset();
     }
 }
