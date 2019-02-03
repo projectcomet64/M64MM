@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace M64MM2
 {
-    static class Utils
+    public static class Utils
     {
-        public static List<Updatable> moduleList = new List<Updatable>();
+        public static List<IModule> moduleList = new List<IModule>();
         public static long BaseAddress;
         public static bool IsEmuOpen => (emuProcess != null && !emuProcess.HasExited);
         public enum ModelStatus
@@ -233,9 +233,11 @@ namespace M64MM2
         }
     }
 
-    abstract class Updatable
+    public interface IModule
     {
-        abstract public void Update();
-        abstract public void Reset();
+        void Initialize();
+        void Update();
+        void Reset();
+        void Close();
     }
 }

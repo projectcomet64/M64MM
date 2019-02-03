@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
@@ -31,8 +31,7 @@ namespace M64MM2
         //ASYNCHRONOUS FOR THE WIN
         //FUNNILY ENOUGH! This takes little to no CPU, actually
         //It's goddamn amazing
-        //Okay, leave it for another branch.
-        /* Task updateFunction = Task.Factory.StartNew(async () =>{
+        Task updateFunction = Task.Factory.StartNew(async () =>{
               while (true)
              {
                 //If there's a level loaded EVEN if there's no model
@@ -42,7 +41,7 @@ namespace M64MM2
                 if (ingameTimer < previousFrame)
                 {
                         //Ingame timer is a variable that decrements every frame in game. In case our previous snapshot of said value is above the timer:
-                    foreach(Updatable upd in moduleList)
+                    foreach(IModule upd in moduleList)
                     {
                             //Unity 1996
                         upd.Update();
@@ -59,11 +58,44 @@ namespace M64MM2
                 Thread.Sleep(1);
              }
 
-            }); */
+            });
 
         public MainForm()
         {
             InitializeComponent();
+            try
+            {
+                DirectoryInfo d = new DirectoryInfo(Application.StartupPath + "\\Plugins");
+                foreach (FileInfo file in d.GetFiles("*.dll"))
+                {
+                    try
+                    {
+                        Assembly assmb = Assembly.LoadFile(file.FullName);
+                        Type[] classes = assmb.GetTypes();
+                        foreach(Type typ in classes)
+                        {
+                            if (typ.GetInterface("IModule") != null)
+                            {
+                                moduleList.Add((IModule)assmb.CreateInstance(typ.FullName));
+                            }
+                        }
+                    }
+                    catch (DirectoryNotFoundException)
+                    {
+                        Directory.CreateDirectory(Application.StartupPath + "\\Plugins");
+                        MessageBox.Show("No plugins folder was present, plugins folder created.\nMake sure you're running M64MM from an extracted folder.",
+                            "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    catch (Exception ex){
+                        MessageBox.Show("Unexpected error while loading plugins:\n" + ex.ToString(), "Oops.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            InitializeModules();
             Text = Resources.programName + " " + Application.ProductVersion;
             updateTimer.Interval = 1000;
             updateTimer.Start();
@@ -160,6 +192,14 @@ namespace M64MM2
 
         }
 
+        void InitializeModules()
+        {
+            foreach(IModule mod in moduleList)
+            {
+                mod.Initialize();
+            }
+        }
+
         void Update(object sender, EventArgs e)
         {
             //Early validity checks
@@ -176,11 +216,6 @@ namespace M64MM2
             {
                 Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus2;
-                foreach (Updatable upd in moduleList)
-                {
-                    upd.Update();
-                }
-                return;
             }
 
             //Reading level address (It's meant to be 0x32DDF8 but ENDIANESS:TM:)
@@ -414,6 +449,16 @@ namespace M64MM2
             WriteBytes(address, stuffToWrite);
             
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            foreach (IModule mod in moduleList)
+            {
+                mod.Close();
+            }
+            base.OnClosed(e);
+        }
+
     }
 
 
