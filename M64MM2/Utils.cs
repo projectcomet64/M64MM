@@ -238,6 +238,6 @@ namespace M64MM2
         void Initialize();
         void Update();
         void Reset();
-        void Close();
+        void Close(System.ComponentModel.CancelEventArgs e);
     }
 }

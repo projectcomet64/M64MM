@@ -450,11 +450,11 @@ namespace M64MM2
             
         }
 
-        protected override void OnClosed(EventArgs e)
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             foreach (IModule mod in moduleList)
             {
-                mod.Close();
+                mod.Close(e);
             }
             base.OnClosed(e);
         }
