@@ -31,8 +31,9 @@ namespace M64MM2
         //ASYNCHRONOUS FOR THE WIN
         //FUNNILY ENOUGH! This takes little to no CPU, actually
         //It's goddamn amazing
-        Task updateFunction = Task.Factory.StartNew(async () =>{
-             while (true)
+        //Okay, leave it for another branch.
+        /* Task updateFunction = Task.Factory.StartNew(async () =>{
+              while (true)
              {
                 //If there's a level loaded EVEN if there's no model
                 if (modelStatus != ModelStatus.NONE) { 
@@ -58,11 +59,10 @@ namespace M64MM2
                 Thread.Sleep(1);
              }
 
-            });
+            }); */
 
         public MainForm()
         {
-            moduleList.Add(new UpdateCounterEveryFrame());
             InitializeComponent();
             Text = Resources.programName + " " + Application.ProductVersion;
             updateTimer.Interval = 1000;
@@ -194,7 +194,7 @@ namespace M64MM2
             //Are we running a moddded model ROM? (Working with Vanilla-styled vs. EXMO)
             modelStatus = ValidateModel();
             toolsMenuItem.Enabled = true;
-            Text = Resources.programName + " " + Application.ProductVersion + " - " + modelStatus.ToString() + " ROM." + " - " + UpdateCounterEveryFrame.framenumber + " frames since startup."; 
+            Text = Resources.programName + " " + Application.ProductVersion + " - " + modelStatus.ToString() + " ROM.";
 
             lblProgramStatus.Text = Resources.programStatus3 + "0x" + BaseAddress.ToString("X8");
 
