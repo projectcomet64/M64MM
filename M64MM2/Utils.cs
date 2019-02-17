@@ -239,5 +239,18 @@ namespace M64MM2
         void Update();
         void Reset();
         void Close(System.ComponentModel.CancelEventArgs e);
+        ICollection<ToolCommand> GetCommands();
+    }
+
+    public class ToolCommand
+    {
+        public string name;
+        event EventHandler Summon;
+    }
+
+    public class Plugin
+    {
+        IModule module;
+        bool Active { get; set; }
     }
 }
