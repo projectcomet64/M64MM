@@ -260,6 +260,10 @@ namespace M64MM2
             Version = vr;
             Active = true;
         }
-        
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }

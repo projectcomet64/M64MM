@@ -480,15 +480,8 @@ namespace M64MM2
 
         private void showRunningPluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach(Plugin p in moduleList)
-            {
-                if (p.Active == true)
-                {
-                    sb.AppendLine(p.Name + ", ver.: " + p.Version);
-                }
-            }
-            MessageBox.Show("Plugins enabled:\n" + sb.ToString());
+            Taskman tman = new Taskman(moduleList);
+            tman.Show();
         }
     }
 
