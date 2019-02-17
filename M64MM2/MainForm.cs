@@ -9,12 +9,13 @@ using System.Threading;
 using System.Windows.Forms;
 using M64MM2.Properties;
 using static M64MM2.Utils;
-
+using System.Diagnostics;
 
 namespace M64MM2
 {
     public partial class MainForm : Form
     {
+        public static List<Plugin> moduleList = new List<Plugin>();
         AppearanceForm appearanceForm;
         ExtraControlsForm extraControlsForm;
         bool cameraFrozen = false;
@@ -31,34 +32,49 @@ namespace M64MM2
         //ASYNCHRONOUS FOR THE WIN
         //FUNNILY ENOUGH! This takes little to no CPU, actually
         //It's goddamn amazing
-        Task updateFunction = Task.Factory.StartNew(async () =>{
-              while (true)
-             {
+        Task updateFunction = Task.Factory.StartNew(async () =>
+        {
+            while (true)
+            {
                 //If there's a level loaded EVEN if there's no model
-                if (modelStatus != ModelStatus.NONE) { 
-                    //Ingame timer update
-                ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x33B198, 2), 4), 0));
-                if (ingameTimer < previousFrame)
+                if (modelStatus != ModelStatus.NONE)
                 {
-                        //Ingame timer is a variable that decrements every frame in game. In case our previous snapshot of said value is above the timer:
-                    foreach(IModule upd in moduleList)
+                    //Ingame timer update
+                    ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x33B198, 2), 4), 0));
+                    if (ingameTimer < previousFrame)
                     {
+                        //Ingame timer is a variable that decrements every frame in game. In case our previous snapshot of said value is above the timer:
+                        foreach (Plugin upd in moduleList)
+                        {
                             //Unity 1996
-                        upd.Update();
+                            if (upd.Active == true)
+                            {
+                                try
+                                {
+                                    upd.Module.Update();
+                                }
+                                catch (Exception e)
+                                {
+                                    MessageBox.Show("Plugin " + upd.Name + " stopped due to an error:\n" + e.ToString());
+                                    upd.Active = false;
+                                }
+                                
+                            }
+                        }
                     }
-                }
-                //Set new value
-                previousFrame = ingameTimer;
+                    //Set new value
+                    previousFrame = ingameTimer;
                     //If the ingame timer reaches zero then let's just write 255 more to it
-                if (ingameTimer == 0){
-                    await Task.Run(() => { WriteUInt(BaseAddress + 0x33B198, 255); });
-                }
+                    if (ingameTimer == 0)
+                    {
+                        await Task.Run(() => { WriteUInt(BaseAddress + 0x33B198, 255); });
+                    }
                 }
                 // zzz
                 Thread.Sleep(1);
-             }
+            }
 
-            });
+        });
 
         public MainForm()
         {
@@ -72,11 +88,12 @@ namespace M64MM2
                     {
                         Assembly assmb = Assembly.LoadFile(file.FullName);
                         Type[] classes = assmb.GetTypes();
-                        foreach(Type typ in classes)
+                        foreach (Type typ in classes)
                         {
                             if (typ.GetInterface("IModule") != null)
                             {
-                                moduleList.Add((IModule)assmb.CreateInstance(typ.FullName));
+                                Plugin neoPlugin = new Plugin((IModule)assmb.CreateInstance(typ.FullName), assmb.GetName().Name, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString());
+                                moduleList.Add(neoPlugin);
                             }
                         }
                     }
@@ -86,7 +103,8 @@ namespace M64MM2
                         MessageBox.Show("No plugins folder was present, plugins folder created.\nMake sure you're running M64MM from an extracted folder.",
                             "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    catch (Exception ex){
+                    catch (Exception ex)
+                    {
                         MessageBox.Show("Unexpected error while loading plugins:\n" + ex.ToString(), "Oops.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -108,13 +126,13 @@ namespace M64MM2
             //Load animation data
             try
             {
-                using (StreamReader sr =  new StreamReader("animation_data.txt"))
+                using (StreamReader sr = new StreamReader("animation_data.txt"))
                 {
                     while (!sr.EndOfStream && sr.Peek() != 0)
                     {
                         string rawLine = sr.ReadLine();
                         string[] splitLine = rawLine.Trim().Split('|');
-                        
+
                         Animation anim;
                         anim.Value = splitLine[0];
                         //anim.Description = splitLine[1];
@@ -126,7 +144,8 @@ namespace M64MM2
                             {
                                 defaultAnimation = anim;
                             }
-                        } catch (Exception)
+                        }
+                        catch (Exception)
                         {
 
                         }
@@ -153,7 +172,7 @@ namespace M64MM2
                 btnAnimReset.Enabled = false;
             }
 
-            
+
             //Load camera style data
             try
             {
@@ -194,9 +213,9 @@ namespace M64MM2
 
         void InitializeModules()
         {
-            foreach(IModule mod in moduleList)
+            foreach (Plugin mod in moduleList)
             {
-                mod.Initialize();
+                mod.Module.Initialize();
             }
         }
 
@@ -225,7 +244,7 @@ namespace M64MM2
                 lblProgramStatus.Text = Resources.programStatusAwaitingLevel + "0x" + BaseAddress.ToString("X8");
                 return;
             }
-            
+
             //Are we running a moddded model ROM? (Working with Vanilla-styled vs. EXMO)
             modelStatus = ValidateModel();
             toolsMenuItem.Enabled = true;
@@ -327,7 +346,7 @@ namespace M64MM2
 
             if (selectedAnimOld.Value == "" || selectedAnimNew.Value == "")
             {
-                MessageBox.Show(this, String.Format(Resources.invalidAnimSelected, ((Control) sender).Name));
+                MessageBox.Show(this, String.Format(Resources.invalidAnimSelected, ((Control)sender).Name));
                 return;
             }
 
@@ -406,7 +425,7 @@ namespace M64MM2
                         appearanceForm.WindowState = FormWindowState.Normal;
                     break;
             }
-            
+
         }
 
         void openAboutForm(object sender, EventArgs e)
@@ -447,18 +466,30 @@ namespace M64MM2
                 //Stall, for literally just one in-game frame.
             }
             WriteBytes(address, stuffToWrite);
-            
+
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            foreach (IModule mod in moduleList)
+            foreach (Plugin mod in moduleList)
             {
-                mod.Close(e);
+                mod.Module.Close(e);
             }
             base.OnClosed(e);
         }
 
+        private void showRunningPluginsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(Plugin p in moduleList)
+            {
+                if (p.Active == true)
+                {
+                    sb.AppendLine(p.Name + ", ver.: " + p.Version);
+                }
+            }
+            MessageBox.Show("Plugins enabled:\n" + sb.ToString());
+        }
     }
 
 

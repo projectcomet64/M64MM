@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Collections.Generic;
+using System.Collections;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -10,7 +10,6 @@ namespace M64MM2
 {
     public static class Utils
     {
-        public static List<IModule> moduleList = new List<IModule>();
         public static long BaseAddress;
         public static bool IsEmuOpen => (emuProcess != null && !emuProcess.HasExited);
         public enum ModelStatus
@@ -239,7 +238,7 @@ namespace M64MM2
         void Update();
         void Reset();
         void Close(System.ComponentModel.CancelEventArgs e);
-        ICollection<ToolCommand> GetCommands();
+        ICollection GetCommands();
     }
 
     public class ToolCommand
@@ -250,7 +249,17 @@ namespace M64MM2
 
     public class Plugin
     {
-        IModule module;
-        bool Active { get; set; }
+        public IModule Module { get; set; }
+        public bool Active { get; set; }
+        public string Name { get; }
+        public string Version { get; }
+        public Plugin (IModule mod, string nm, string vr)
+        {
+            Module = mod;
+            Name = nm;
+            Version = vr;
+            Active = true;
+        }
+        
     }
 }
