@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using static M64MM2.Utils;
+using static M64MM.Utils;
 
 namespace M64MM2
 {

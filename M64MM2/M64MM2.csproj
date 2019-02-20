@@ -177,5 +177,11 @@
     <None Include="Resources\M64MM2 Icon.png" />
     <None Include="Resources\M64MM2 CC Mario big.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\M64MM.Utils\M64MM.Utils.csproj">
+      <Project>{3587b41b-7005-49ce-a884-6986adc8ca01}</Project>
+      <Name>M64MM.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

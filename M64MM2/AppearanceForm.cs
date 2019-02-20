@@ -7,7 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using M64MM2.Properties;
 
-using static M64MM2.Utils;
+using static M64MM.Utils;
 
 
 namespace M64MM2
