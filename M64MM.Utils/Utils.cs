@@ -240,7 +240,7 @@ namespace M64MM
             byte[] FinalSetOfBytes;
 
             Color1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
-            Color2 = SwapEndian(ReadBytes(BaseAddress + 0x07EC74, 4), 4);
+            Color2 = SwapEndian(ReadBytes(BaseAddress + 0x07EC80, 4), 4);
             Shadow1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC78, 4), 4);
             FinalSetOfBytes = SwapEndian(ReadBytes(BaseAddress + 0x07EC7C, 4), 4);
 
@@ -259,6 +259,7 @@ namespace M64MM
                 || (Shadow1[3] != 0)
                 || (BitConverter.ToInt32(FinalSetOfBytes, 0) != 0))
             {
+                //MessageBox.Show("Color data: Color 1[3] = " + (byte)Color1[3] + "\nColor 2[3] = " + (byte)Color2[3] + "\nShadow 1[3] = " + (byte)Shadow1[3]);
                 return ModelStatus.MODDED;
             }
             //If all's good :)
