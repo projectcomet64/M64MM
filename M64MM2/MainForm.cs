@@ -93,7 +93,8 @@ namespace M64MM2
                         {
                             if (typ.GetInterface("IModule") != null)
                             {
-                                Plugin neoPlugin = new Plugin((IModule)assmb.CreateInstance(typ.FullName), assmb.GetName().Name, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString());
+                                IModule mod = (IModule)assmb.CreateInstance(typ.FullName);
+                                Plugin neoPlugin = new Plugin(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description);
                                 moduleList.Add(neoPlugin);
                             }
                         }
@@ -104,9 +105,9 @@ namespace M64MM2
                         MessageBox.Show("No plugins folder was present, plugins folder created.\nMake sure you're running M64MM from an extracted folder.",
                             "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    catch (Exception ex)
+                    catch (ReflectionTypeLoadException ex)
                     {
-                        MessageBox.Show("Unexpected error while loading plugins:\n" + ex.ToString(), "Oops.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Unexpected error while loading plugins:\n" + ex.ToString() + "\n\n" + ex.LoaderExceptions[0].ToString(), "Oops.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

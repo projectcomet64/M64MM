@@ -300,6 +300,14 @@ namespace M64MM
         }
     }
 
+    public class UI
+    {
+        public static void ShowMsgBox(string text, string title = "")
+        {
+            MessageBox.Show(text, title);
+        }
+    }
+
 
 
     public interface IModule
@@ -324,12 +332,14 @@ namespace M64MM
         public IModule Module { get; }
         public bool Active { get; set; }
         public string Name { get; }
+        public string Description { get; }
         public string Version { get; }
-        public Plugin (IModule mod, string nm, string vr)
+        public Plugin (IModule mod, string nm, string vr, string dc)
         {
             Module = mod;
             Name = nm;
             Version = vr;
+            Description = dc;
             Active = true;
         }
         public override string ToString()

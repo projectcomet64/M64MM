@@ -30,7 +30,10 @@ namespace M64MM2
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (listView1.SelectedItems[0] != null)
+            {
+                lb_Desc.Text = "Description: \n" + ((Plugin)listView1.SelectedItems[0].Tag).Description;
+            }
         }
 
         private void btn_OK_Click(object sender, EventArgs e)
