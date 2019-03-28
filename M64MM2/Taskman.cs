@@ -30,9 +30,13 @@ namespace M64MM2
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems[0] != null)
+            if (listView1.SelectedItems.Count != 0)
             {
                 lb_Desc.Text = "Description: \n" + ((Plugin)listView1.SelectedItems[0].Tag).Description;
+            }
+            else
+            {
+                lb_Desc.Text = "<Please select an item.>";
             }
         }
 

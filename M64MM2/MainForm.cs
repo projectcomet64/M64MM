@@ -59,7 +59,7 @@ namespace M64MM2
                                     MessageBox.Show("Plugin " + upd.Name + " stopped due to an error:\n" + e.ToString());
                                     upd.Active = false;
                                 }
-                                
+
                             }
                         }
                     }
@@ -82,33 +82,36 @@ namespace M64MM2
             InitializeComponent();
             try
             {
-                DirectoryInfo d = new DirectoryInfo(Application.StartupPath + "\\Plugins");
-                foreach (FileInfo file in d.GetFiles("*.dll"))
+                try
                 {
-                    try
+                    DirectoryInfo d = new DirectoryInfo(Application.StartupPath + "\\Plugins");
+                    foreach (FileInfo file in d.GetFiles("*.dll"))
                     {
-                        Assembly assmb = Assembly.LoadFile(file.FullName);
-                        Type[] classes = assmb.GetTypes();
-                        foreach (Type typ in classes)
+                        try
                         {
-                            if (typ.GetInterface("IModule") != null)
+                            Assembly assmb = Assembly.LoadFile(file.FullName);
+                            Type[] classes = assmb.GetTypes();
+                            foreach (Type typ in classes)
                             {
-                                IModule mod = (IModule)assmb.CreateInstance(typ.FullName);
-                                Plugin neoPlugin = new Plugin(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description);
-                                moduleList.Add(neoPlugin);
+                                if (typ.GetInterface("IModule") != null)
+                                {
+                                    IModule mod = (IModule)assmb.CreateInstance(typ.FullName);
+                                    Plugin neoPlugin = new Plugin(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description);
+                                    moduleList.Add(neoPlugin);
+                                }
                             }
                         }
+                        catch (ReflectionTypeLoadException ex)
+                        {
+                            MessageBox.Show("Unexpected error while loading plugins:\n" + ex.ToString() + "\n\n" + ex.LoaderExceptions[0].ToString(), "Oops.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    catch (DirectoryNotFoundException)
-                    {
-                        Directory.CreateDirectory(Application.StartupPath + "\\Plugins");
-                        MessageBox.Show("No plugins folder was present, plugins folder created.\nMake sure you're running M64MM from an extracted folder.",
-                            "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    catch (ReflectionTypeLoadException ex)
-                    {
-                        MessageBox.Show("Unexpected error while loading plugins:\n" + ex.ToString() + "\n\n" + ex.LoaderExceptions[0].ToString(), "Oops.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                }
+                catch (DirectoryNotFoundException ex)
+                {
+                    Directory.CreateDirectory(Application.StartupPath + "\\Plugins");
+                    MessageBox.Show("No plugins folder was present, plugins folder created.\nMake sure you're running M64MM from an extracted folder.",
+                        "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception e)
