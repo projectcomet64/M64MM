@@ -324,7 +324,13 @@ namespace M64MM
     public class ToolCommand
     {
         public string name;
-        event EventHandler Summon;
+        public event EventHandler Summon;
+
+        public ToolCommand(string n, EventHandler sm)
+        {
+            name = n;
+            Summon += sm;
+        }
     }
 
     public class Plugin

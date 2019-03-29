@@ -31,6 +31,7 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.btn_OK = new System.Windows.Forms.Button();
             this.lb_Desc = new System.Windows.Forms.Label();
+            this.cb_pluginEnabled = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // listView1
@@ -62,11 +63,23 @@
             this.lb_Desc.TabIndex = 2;
             this.lb_Desc.Text = "<Please select an item.>";
             // 
+            // cb_pluginEnabled
+            // 
+            this.cb_pluginEnabled.AutoSize = true;
+            this.cb_pluginEnabled.Location = new System.Drawing.Point(15, 258);
+            this.cb_pluginEnabled.Name = "cb_pluginEnabled";
+            this.cb_pluginEnabled.Size = new System.Drawing.Size(175, 17);
+            this.cb_pluginEnabled.TabIndex = 3;
+            this.cb_pluginEnabled.Text = "Plugin can execute every frame";
+            this.cb_pluginEnabled.UseVisualStyleBackColor = true;
+            this.cb_pluginEnabled.CheckedChanged += new System.EventHandler(this.cb_pluginEnabled_CheckedChanged);
+            // 
             // Taskman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 289);
+            this.Controls.Add(this.cb_pluginEnabled);
             this.Controls.Add(this.lb_Desc);
             this.Controls.Add(this.btn_OK);
             this.Controls.Add(this.listView1);
@@ -85,5 +98,6 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btn_OK;
         private System.Windows.Forms.Label lb_Desc;
+        private System.Windows.Forms.CheckBox cb_pluginEnabled;
     }
 }

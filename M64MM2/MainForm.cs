@@ -93,6 +93,7 @@ namespace M64MM2
                            trustedLoadFromRemoteSourcesSetup,
                            trustedLoadFromRemoteSourcesGrantSet);
             InitializeComponent();
+            ToolStripMenuItem plugins = new ToolStripMenuItem("Plugins");
             try
             {
                 try
@@ -110,6 +111,15 @@ namespace M64MM2
                                 {
                                     IModule mod = (IModule)assmb.CreateInstance(typ.FullName);
                                     Plugin neoPlugin = new Plugin(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description);
+                                    List<ToolCommand> tc_list = (List<ToolCommand>)mod.GetCommands();
+                                    if (tc_list != null)
+                                    {
+                                        foreach (ToolCommand tc in tc_list)
+                                        {
+                                            ToolStripMenuItem mod_ = new ToolStripMenuItem(tc.name, null, (a, b) => { });
+                                            plugins.DropDownItems.Add(mod_);
+                                        }
+                                    }
                                     moduleList.Add(neoPlugin);
                                 }
                             }
@@ -120,7 +130,7 @@ namespace M64MM2
                         }
                     }
                 }
-                catch (DirectoryNotFoundException ex)
+                catch (DirectoryNotFoundException)
                 {
                     Directory.CreateDirectory(Application.StartupPath + "\\Plugins");
                     MessageBox.Show("No plugins folder was present, plugins folder created.\nMake sure you're running M64MM from an extracted folder.",
@@ -132,6 +142,7 @@ namespace M64MM2
                 MessageBox.Show(e.ToString());
             }
             InitializeModules();
+            menuStrip.Items.Add(plugins);
             Text = Resources.programName + " " + Application.ProductVersion;
             updateTimer.Interval = 1000;
             updateTimer.Start();
@@ -498,7 +509,7 @@ namespace M64MM2
 
         private void showRunningPluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Taskman tman = new Taskman(moduleList);
+            Taskman tman = new Taskman(ref moduleList);
             tman.Show();
         }
     }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M64MM2", "M64MM2\M64MM2.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M64MM.Utils", "M64MM.Utils\M64MM.Utils.csproj", "{3587B41B-7005-49CE-A884-6986ADC8CA01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Base0", "..\M64MM2Addons\Test0\Base0\Base0.csproj", "{F22B2DB9-A412-40B2-B2C9-96E090A2E396}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3587B41B-7005-49CE-A884-6986ADC8CA01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3587B41B-7005-49CE-A884-6986ADC8CA01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3587B41B-7005-49CE-A884-6986ADC8CA01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F22B2DB9-A412-40B2-B2C9-96E090A2E396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F22B2DB9-A412-40B2-B2C9-96E090A2E396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F22B2DB9-A412-40B2-B2C9-96E090A2E396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F22B2DB9-A412-40B2-B2C9-96E090A2E396}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
