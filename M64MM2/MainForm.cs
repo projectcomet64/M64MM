@@ -11,6 +11,8 @@ using M64MM2.Properties;
 using M64MM;
 using static M64MM.Utils;
 using System.Diagnostics;
+using System.Security;
+using System.Security.Permissions;
 
 namespace M64MM2
 {
@@ -77,8 +79,19 @@ namespace M64MM2
 
         });
 
+
         public MainForm()
         {
+            /* Code for plugin sandboxing */
+
+            PermissionSet trustedLoadFromRemoteSourcesGrantSet = new PermissionSet(PermissionState.Unrestricted);
+            AppDomainSetup trustedLoadFromRemoteSourcesSetup = new AppDomainSetup();
+            trustedLoadFromRemoteSourcesSetup.ApplicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+
+            AppDomain trustedRemoteLoadDomain = AppDomain.CreateDomain("Trusted LoadFromRemoteSources Domain",
+                           null,
+                           trustedLoadFromRemoteSourcesSetup,
+                           trustedLoadFromRemoteSourcesGrantSet);
             InitializeComponent();
             try
             {
