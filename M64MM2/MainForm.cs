@@ -116,7 +116,8 @@ namespace M64MM2
                                     {
                                         foreach (ToolCommand tc in tc_list)
                                         {
-                                            ToolStripMenuItem mod_ = new ToolStripMenuItem(tc.name, null, (a, b) => { });
+                                            ToolStripMenuItem mod_ = new ToolStripMenuItem(tc.name);
+                                            mod_.Click += (a, b) => tc.Summon(a, b);
                                             plugins.DropDownItems.Add(mod_);
                                         }
                                     }

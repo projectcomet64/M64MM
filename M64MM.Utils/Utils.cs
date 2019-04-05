@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Drawing;
-using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -318,18 +318,23 @@ namespace M64MM
         void Close(System.ComponentModel.CancelEventArgs e);
         string SafeName { get; }
         string Description { get; }
-        ICollection GetCommands();
+        List<ToolCommand> GetCommands();
     }
 
     public class ToolCommand
     {
         public string name;
-        public event EventHandler Summon;
+        public delegate void SummonCommand(object sender, EventArgs e);
+        public event SummonCommand Summoned;
 
-        public ToolCommand(string n, EventHandler sm)
+        public ToolCommand(string n)
         {
             name = n;
-            Summon += sm;
+        }
+
+        public void Summon(object sender, EventArgs e)
+        {
+            Summoned(this, e);
         }
     }
 
