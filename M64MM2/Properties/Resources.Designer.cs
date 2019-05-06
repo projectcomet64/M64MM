@@ -153,7 +153,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a -.
+        ///   Busca una cadena traducida similar a comet.glitchypsi.xyz.
         /// </summary>
         internal static string discordInvite {
             get {

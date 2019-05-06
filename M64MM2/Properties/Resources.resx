@@ -182,7 +182,7 @@
     <value>You have entered an invalid animation name into {0}. Please make sure to choose a valid option from the list.</value>
   </data>
   <data name="discordInvite" xml:space="preserve">
-    <value>-</value>
+    <value>comet.glitchypsi.xyz</value>
   </data>
   <data name="programName" xml:space="preserve">
     <value>M64MM</value>
