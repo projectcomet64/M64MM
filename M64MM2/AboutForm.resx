@@ -298,7 +298,7 @@ Special thanks to Matthew "MatthewGU4" Guerra for helping me make this project a
     <value>6</value>
   </data>
   <data name="lblBuildDate.Text" xml:space="preserve">
-    <value>Build Date: August 6, 2017</value>
+    <value>Build Date: May 5th, 2019</value>
   </data>
   <data name="lblBuildDate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -376,13 +376,13 @@ Special thanks to Matthew "MatthewGU4" Guerra for helping me make this project a
     <value>206, 264</value>
   </data>
   <data name="lnkDiscord.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 13</value>
+    <value>131, 13</value>
   </data>
   <data name="lnkDiscord.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="lnkDiscord.Text" xml:space="preserve">
-    <value>http://discord.gg/link</value>
+    <value>http://comet.glitchypsi.xyz</value>
   </data>
   <data name="&gt;&gt;lnkDiscord.Name" xml:space="preserve">
     <value>lnkDiscord</value>

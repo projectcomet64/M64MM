@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -8,9 +10,16 @@ namespace M64MM2
 {
     static class Utils
     {
+        public static List<Updatable> moduleList = new List<Updatable>();
         public static long BaseAddress;
         public static bool IsEmuOpen => (emuProcess != null && !emuProcess.HasExited);
-
+        public enum ModelStatus
+        {
+            NONE,
+            VANILLA,
+            EMPTY,
+            MODDED
+        }
         static Process emuProcess;
         static IntPtr emuProcessHandle;
         const int PROCESS_ALL_ACCESS = 0x01F0FF;
@@ -72,6 +81,25 @@ namespace M64MM2
             WriteProcessMemory(emuProcessHandle, ptr, data, size, ref bytesWritten);
         }
 
+        public static void WriteBatchBytes(string[] addresses, byte[] data, bool useBase)
+        {
+            SwapEndian(data, 4);
+            long baseAddr;
+            if (useBase == true)
+            {
+                baseAddr = BaseAddress;
+            }
+            else
+            {
+                baseAddr = 0;
+            }
+            foreach(string addr in addresses)
+            {
+                long address = Convert.ToInt64(addr, 16);
+                WriteBytes(baseAddr + address, data);
+            }
+        }
+
         public static void WriteUShort(long address, ushort data)
         {
             byte[] buffer = BitConverter.GetBytes(data);
@@ -105,6 +133,7 @@ namespace M64MM2
             }
         }
 
+
         public static void FindBaseAddress()
         {
             uint value = 0;
@@ -136,6 +165,49 @@ namespace M64MM2
             BaseAddress = 0;
         }
 
+
+        public static ModelStatus ValidateModel()
+        {
+            byte[] Color1;
+            byte[] Color2;
+            byte[] Shadow1;
+            byte[] FinalSetOfBytes;
+
+            Color1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
+            Color2 = SwapEndian(ReadBytes(BaseAddress + 0x07EC74, 4), 4);
+            Shadow1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC78, 4), 4);
+            FinalSetOfBytes = SwapEndian(ReadBytes(BaseAddress + 0x07EC7C, 4), 4);
+
+            //If the color data is all zeros (Testing...)
+            if ((BitConverter.ToInt32(Color1, 0) == 0) &&
+                (BitConverter.ToInt32(Color2, 0) == 0) &&
+                (BitConverter.ToInt32(Shadow1, 0) == 0) &&
+                (BitConverter.ToInt32(FinalSetOfBytes, 0) == 0))
+            {
+                return ModelStatus.EMPTY;
+            }
+
+            //If the color data is not RR GG BB *00* RR GG BB *00* XX YY ZZ *00* *00 00 00 00*
+            if ((Color1[3] != 0)
+                || (Color2[3] != 0)
+                || (Shadow1[3] != 0)
+                || (BitConverter.ToInt32(FinalSetOfBytes, 0) != 0))
+            {
+                return ModelStatus.MODDED;
+            }
+            //If all's good :)
+            return ModelStatus.VANILLA;
+        }
+
+        public static void WaitForNextFrame()
+        {
+            int viNumber = BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 4), 4), 0);
+            while (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 4), 4), 0) != viNumber)
+            {
+                //Stall
+            }
+        }
+
         public static byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)
@@ -159,5 +231,11 @@ namespace M64MM2
         {
             return 0 != GetAsyncKeyState(vKey);
         }
+    }
+
+    abstract class Updatable
+    {
+        abstract public void Update();
+        abstract public void Reset();
     }
 }

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using M64MM2.Properties;
 using static M64MM2.Utils;
@@ -21,20 +19,59 @@ namespace M64MM2
         ExtraControlsForm extraControlsForm;
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
+        static ModelStatus modelStatus = ModelStatus.NONE;
         List<Animation> animList;
         List<CamStyle> camStyles;
+        Animation defaultAnimation;
         Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : new Animation();
         Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : new Animation();
+        static int ingameTimer;
+        static int previousFrame;
+        //This handles the "Each ingame frame"
+        //ASYNCHRONOUS FOR THE WIN
+        //FUNNILY ENOUGH! This takes little to no CPU, actually
+        //It's goddamn amazing
+        //Okay, leave it for another branch.
+        /* Task updateFunction = Task.Factory.StartNew(async () =>{
+              while (true)
+             {
+                //If there's a level loaded EVEN if there's no model
+                if (modelStatus != ModelStatus.NONE) { 
+                    //Ingame timer update
+                ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x33B198, 2), 4), 0));
+                if (ingameTimer < previousFrame)
+                {
+                        //Ingame timer is a variable that decrements every frame in game. In case our previous snapshot of said value is above the timer:
+                    foreach(Updatable upd in moduleList)
+                    {
+                            //Unity 1996
+                        upd.Update();
+                    }
+                }
+                //Set new value
+                previousFrame = ingameTimer;
+                    //If the ingame timer reaches zero then let's just write 255 more to it
+                if (ingameTimer == 0){
+                    await Task.Run(() => { WriteUInt(BaseAddress + 0x33B198, 255); });
+                }
+                }
+                // zzz
+                Thread.Sleep(1);
+             }
 
+            }); */
 
         public MainForm()
         {
             InitializeComponent();
+            Text = Resources.programName + " " + Application.ProductVersion;
             updateTimer.Interval = 1000;
             updateTimer.Start();
             animList = new List<Animation>();
             camStyles = new List<CamStyle>();
-
+            defaultAnimation.Value = "0";
+            lblCameraStatus.Text = Resources.cameraStateDefault;
+            toolsMenuItem.Enabled = false;
 
             //Load animation data
             try
@@ -51,6 +88,16 @@ namespace M64MM2
                         //anim.Description = splitLine[1];
                         anim.RealIndex = int.Parse(splitLine[2]);
                         animList.Add(anim);
+                        try
+                        {
+                            if (splitLine[3] != null)
+                            {
+                                defaultAnimation = anim;
+                            }
+                        } catch (Exception)
+                        {
+
+                        }
 
                         cbAnimOld.Items.Add(splitLine[1]);
                         cbAnimNew.Items.Add(splitLine[1]);
@@ -58,6 +105,8 @@ namespace M64MM2
                         cbAnimOld.SelectedIndex = 0;
                         cbAnimNew.SelectedIndex = 0;
                     }
+
+                    btnAnimRestart.Enabled = (defaultAnimation.Value != "0");
                 }
             }
             catch (Exception e)
@@ -69,6 +118,7 @@ namespace M64MM2
                 btnAnimSwap.Enabled = false;
                 btnAnimReset.Enabled = false;
                 btnAnimResetAll.Enabled = false;
+                btnAnimReset.Enabled = false;
             }
 
             
@@ -115,6 +165,7 @@ namespace M64MM2
             //Early validity checks
             if (!IsEmuOpen)
             {
+                Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus1;
                 FindEmuProcess();
                 return;
@@ -123,11 +174,30 @@ namespace M64MM2
             FindBaseAddress();
             if (BaseAddress <= 0)
             {
+                Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus2;
+                foreach (Updatable upd in moduleList)
+                {
+                    upd.Update();
+                }
                 return;
             }
 
+            //Reading level address (It's meant to be 0x32DDF8 but ENDIANESS:TM:)
+            if (ReadUShort(BaseAddress + 0x32DDFA) < 3)
+            {
+                toolsMenuItem.Enabled = false;
+                lblProgramStatus.Text = Resources.programStatusAwaitingLevel + "0x" + BaseAddress.ToString("X8");
+                return;
+            }
+            
+            //Are we running a moddded model ROM? (Working with Vanilla-styled vs. EXMO)
+            modelStatus = ValidateModel();
+            toolsMenuItem.Enabled = true;
+            Text = Resources.programName + " " + Application.ProductVersion + " - " + modelStatus.ToString() + " ROM.";
+
             lblProgramStatus.Text = Resources.programStatus3 + "0x" + BaseAddress.ToString("X8");
+
 
 
             //==============================
@@ -282,13 +352,26 @@ namespace M64MM2
 
         void openAppearanceSettings(object sender, EventArgs e)
         {
-            if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
 
-            if (!appearanceForm.Visible)
-                appearanceForm.Show();
+            switch (modelStatus)
+            {
+                case ModelStatus.EMPTY:
+                    MessageBox.Show(Resources.colorCodeEmptyRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    break;
+                case ModelStatus.MODDED:
+                    MessageBox.Show(Resources.colorCodeModdedRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case ModelStatus.VANILLA:
+                    if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
 
-            if (appearanceForm.WindowState == FormWindowState.Minimized)
-                appearanceForm.WindowState = FormWindowState.Normal;
+                    if (!appearanceForm.Visible)
+                        appearanceForm.Show();
+
+                    if (appearanceForm.WindowState == FormWindowState.Minimized)
+                        appearanceForm.WindowState = FormWindowState.Normal;
+                    break;
+            }
+            
         }
 
         void openAboutForm(object sender, EventArgs e)
@@ -308,6 +391,28 @@ namespace M64MM2
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAnimRestart_Click(object sender, EventArgs e)
+        {
+            if (!IsEmuOpen || BaseAddress == 0) return;
+
+            if (selectedAnimOld.Value == "" || selectedAnimNew.Value == "")
+            {
+                MessageBox.Show(this, String.Format(Resources.invalidAnimSelected, ((Control)sender).Name));
+                return;
+            }
+            byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimNew.Value), 4);
+            byte[] initialAnimation = SwapEndian(StringToByteArray(defaultAnimation.Value), 4);
+            long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
+            WriteUInt(BaseAddress + 0x33B198, 255);
+            while ((BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x33B198, 2), 4), 0) < 255) == false)
+            {
+                WriteBytes(address, initialAnimation);
+                //Stall, for literally just one in-game frame.
+            }
+            WriteBytes(address, stuffToWrite);
+            
         }
     }
 

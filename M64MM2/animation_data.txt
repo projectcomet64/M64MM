@@ -36,7 +36,7 @@
 000083F400000670|Hand stand in tree?|11
 0000840C00000658|Go back from handstand|12
 00008A6400000416|In tree?|13
-00008E7C00000164|Standing straight with arms out (T-pose)|14
+00008E7C00000164|Standing straight with arms out (T-pose)|14|1
 00008FE00000070A|Skid on ground|15
 00008FF8000006F2|Skid on ground, go back to normal|16
 00009C980000063A|Land from long jump|18

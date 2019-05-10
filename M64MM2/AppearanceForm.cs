@@ -184,67 +184,78 @@ namespace M64MM2
             if (!IsEmuOpen || BaseAddress == 0) return;
 
             byte[] colorData = new byte[4];
-            colorData[3] = 0;
 
             colorData[0] = pantsColorShade.BackColor.R;
             colorData[1] = pantsColorShade.BackColor.G;
             colorData[2] = pantsColorShade.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC20, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC20, colorData);
 
             colorData[0] = pantsColorMain.BackColor.R;
             colorData[1] = pantsColorMain.BackColor.G;
             colorData[2] = pantsColorMain.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC28, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC28, colorData);
 
             colorData[0] = hatColorShade.BackColor.R;
             colorData[1] = hatColorShade.BackColor.G;
             colorData[2] = hatColorShade.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC38, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC38, colorData);
 
             colorData[0] = hatColorMain.BackColor.R;
             colorData[1] = hatColorMain.BackColor.G;
             colorData[2] = hatColorMain.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC40, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC40, colorData);
 
             colorData[0] = glovesColorShade.BackColor.R;
             colorData[1] = glovesColorShade.BackColor.G;
             colorData[2] = glovesColorShade.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC50, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC50, colorData);
 
             colorData[0] = glovesColorMain.BackColor.R;
             colorData[1] = glovesColorMain.BackColor.G;
             colorData[2] = glovesColorMain.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC58, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC58, colorData);
 
             colorData[0] = shoesColorShade.BackColor.R;
             colorData[1] = shoesColorShade.BackColor.G;
             colorData[2] = shoesColorShade.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC68, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC68, colorData);
 
             colorData[0] = shoesColorMain.BackColor.R;
             colorData[1] = shoesColorMain.BackColor.G;
             colorData[2] = shoesColorMain.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC70, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC70, colorData);
 
             colorData[0] = skinColorShade.BackColor.R;
             colorData[1] = skinColorShade.BackColor.G;
             colorData[2] = skinColorShade.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC80, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC80, colorData);
 
             colorData[0] = skinColorMain.BackColor.R;
             colorData[1] = skinColorMain.BackColor.G;
             colorData[2] = skinColorMain.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC88, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC88, colorData);
 
             colorData[0] = hairColorShade.BackColor.R;
             colorData[1] = hairColorShade.BackColor.G;
             colorData[2] = hairColorShade.BackColor.B;
-            WriteBytes(BaseAddress + 0x07EC98, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07EC98, colorData);
 
             colorData[0] = hairColorMain.BackColor.R;
             colorData[1] = hairColorMain.BackColor.G;
             colorData[2] = hairColorMain.BackColor.B;
-            WriteBytes(BaseAddress + 0x07ECA0, SwapEndian(colorData, 4));
+            SwapEndian(colorData, 4)[0] = 0;
+            WriteBytes(BaseAddress + 0x07ECA0, colorData);
         }
 
         void openCopyPasteForm(object sender, EventArgs e)

@@ -167,10 +167,10 @@
     <value>Estado: Project64 no está abierto.</value>
   </data>
   <data name="programStatus2" xml:space="preserve">
-    <value>Estado: No se ha encontrado la dirección base.</value>
+    <value>Estado: Dir. base no encontrada</value>
   </data>
   <data name="programStatus3" xml:space="preserve">
-    <value>Estado: Dirección base encontrada en </value>
+    <value>Estado: Dirección base: </value>
   </data>
   <data name="setDefaultColorsMsg" xml:space="preserve">
     <value>¿Establecer como colores por defecto?</value>
@@ -189,5 +189,15 @@
   </data>
   <data name="invalidAnimSelected" xml:space="preserve">
     <value>Intentaste cargar un nombre de animación inválido en {0}. Asegúrate de escoger una opción válida de la lista.</value>
+  </data>
+  <data name="programStatusAwaitingLevel" xml:space="preserve">
+    <value>Estado: Esperando nivel. D.B.: </value>
+  </data>
+  <data name="colorCodeEmptyRom" xml:space="preserve">
+    <value>...Este ROM no tiene datos de modelo.
+No funcionará.</value>
+  </data>
+  <data name="colorCodeModdedRom" xml:space="preserve">
+    <value>Este ROM tiene datos de modelo diferentes de los usuales de Mario. El Estudio de Códigos de Color y el Editor de Sombras serán deshabilitados; pueden no ser compatibles con este modelo.</value>
   </data>
 </root>
