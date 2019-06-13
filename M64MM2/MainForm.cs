@@ -29,56 +29,14 @@ namespace M64MM2
         Animation defaultAnimation;
         Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : new Animation();
         Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : new Animation();
-        static int ingameTimer;
-        static int previousFrame;
+        static UInt32 ingameTimer;
+        static UInt32 previousFrame;
+
         //This handles the "Each ingame frame"
         //ASYNCHRONOUS FOR THE WIN
         //FUNNILY ENOUGH! This takes little to no CPU, actually
         //It's goddamn amazing
-        Task updateFunction = Task.Factory.StartNew(async () =>
-        {
-            while (true)
-            {
-                //If there's a level loaded EVEN if there's no model
-                if (modelStatus != ModelStatus.NONE)
-                {
-                    //Ingame timer update
-                    ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x33B198, 2), 4), 0));
-                    if (ingameTimer < previousFrame)
-                    {
-                        //Ingame timer is a variable that decrements every frame in game. In case our previous snapshot of said value is above the timer:
-                        foreach (Plugin upd in moduleList)
-                        {
-                            //Unity 1996
-                            if (upd.Active == true)
-                            {
-                                try
-                                {
-                                    upd.Module.Update();
-                                }
-                                catch (Exception e)
-                                {
-                                    MessageBox.Show("Plugin " + upd.Name + " stopped due to an error:\n" + e.ToString());
-                                    upd.Active = false;
-                                }
-
-                            }
-                        }
-                    }
-                    //Set new value
-                    previousFrame = ingameTimer;
-                    //If the ingame timer reaches zero then let's just write 255 more to it
-                    if (ingameTimer == 0)
-                    {
-                        await Task.Run(() => { WriteUInt(BaseAddress + 0x33B198, 255); });
-                    }
-                }
-                // zzz
-                Thread.Sleep(1);
-            }
-
-        });
-
+        Task updateFunction = Task.Run(() => doUpdate());
 
         public MainForm()
         {
@@ -137,6 +95,7 @@ namespace M64MM2
                     MessageBox.Show("No plugins folder was present, plugins folder created.\nMake sure you're running M64MM from an extracted folder.",
                         "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                menuStrip.Items.Add(plugins);
             }
             catch (Exception e)
             {
@@ -144,6 +103,7 @@ namespace M64MM2
             }
             InitializeModules();
             menuStrip.Items.Add(plugins);
+
             Text = Resources.programName + " " + Application.ProductVersion;
             updateTimer.Interval = 1000;
             updateTimer.Start();
@@ -257,6 +217,7 @@ namespace M64MM2
                 Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus1;
                 FindEmuProcess();
+                modelStatus = ModelStatus.NONE;
                 return;
             }
 
@@ -265,6 +226,7 @@ namespace M64MM2
             {
                 Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus2;
+                modelStatus = ModelStatus.NONE;
             }
 
             //Reading level address (It's meant to be 0x32DDF8 but ENDIANESS:TM:)
@@ -272,6 +234,7 @@ namespace M64MM2
             {
                 toolsMenuItem.Enabled = false;
                 lblProgramStatus.Text = Resources.programStatusAwaitingLevel + "0x" + BaseAddress.ToString("X8");
+                modelStatus = ModelStatus.NONE;
                 return;
             }
 
@@ -433,10 +396,60 @@ namespace M64MM2
             }
         }
 
+        async static void doUpdate()
+        {
+            while (true)
+            {
+                //Ingame timer update
+                //ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
+                ingameTimer = await Task.Run(() => ReadUInt(BaseAddress + 0x32D580));
+                //If there's a level loaded EVEN if there's no model
+                if (modelStatus != ModelStatus.NONE)
+                {
+                    if (ingameTimer > previousFrame)
+                    {
+                        //Set new value
+                        previousFrame = ingameTimer;
+                        //If the ingame timer reaches zero then let's just write 255 more to it
+                        //This was when using a variable that decremented each frame, with VI Timer this shouldn't need to be used anymore
+                        /*
+                        if (ingameTimer == 0)
+                        {
+                            await Task.Run(() => { WriteUInt(BaseAddress + 0x33B198, 255); });
+                        }
+                        */
+                        //Ingame timer is a variable that INCREMENTS every frame in game. In case our previous snapshot of said value is above the timer:
+                        for (int i = 0; i < moduleList.Count; i++)
+                        {
+                            //Unity 1996
+                            if (moduleList[i].Active == true)
+                            {
+                                try
+                                {
+                                    moduleList[i].Module.Update();
+                                    continue;
+                                }
+                                catch (Exception e)
+                                {
+                                    MessageBox.Show("Plugin " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
+                                    moduleList[i].Active = false;
+                                }
 
+                            }
+                        }
+                    }
+                    else if (ingameTimer <= previousFrame)
+                    {
+                        await Task.Run(() => previousFrame = ingameTimer);
+                        ingameTimer = await Task.Run(() => ReadUInt(BaseAddress + 0x32D580));
+                    }
+                }
+                // zzz
+                Thread.Sleep(1);
+            }
+        }
         void openAppearanceSettings(object sender, EventArgs e)
         {
-
             switch (modelStatus)
             {
                 case ModelStatus.EMPTY:
