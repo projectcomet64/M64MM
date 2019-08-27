@@ -6,8 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using M64MM2.Properties;
-
-using static M64MM.Utils;
+using static M64MM.Utils.Core;
 
 
 namespace M64MM2

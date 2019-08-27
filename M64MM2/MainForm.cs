@@ -9,7 +9,8 @@ using System.Threading;
 using System.Windows.Forms;
 using M64MM2.Properties;
 using M64MM;
-using static M64MM.Utils;
+using static M64MM.Utils.Core;
+using M64MM.Addon;
 using System.Diagnostics;
 using System.Security;
 using System.Security.Permissions;
@@ -18,7 +19,7 @@ namespace M64MM2
 {
     public partial class MainForm : Form
     {
-        public static List<Plugin> moduleList = new List<Plugin>();
+        public static List<Addon> moduleList = new List<Addon>();
         AppearanceForm appearanceForm;
         ExtraControlsForm extraControlsForm;
         bool cameraFrozen = false;
@@ -68,7 +69,7 @@ namespace M64MM2
                                 if (typ.GetInterface("IModule") != null)
                                 {
                                     IModule mod = (IModule)assmb.CreateInstance(typ.FullName);
-                                    Plugin neoPlugin = new Plugin(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description);
+                                    Addon neoPlugin = new Addon(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description);
                                     List<ToolCommand> tc_list = (List<ToolCommand>)mod.GetCommands();
                                     if (tc_list != null)
                                     {
@@ -203,7 +204,7 @@ namespace M64MM2
 
         void InitializeModules()
         {
-            foreach (Plugin mod in moduleList)
+            foreach (Addon mod in moduleList)
             {
                 mod.Module.Initialize();
             }
@@ -431,7 +432,7 @@ namespace M64MM2
                                 }
                                 catch (Exception e)
                                 {
-                                    MessageBox.Show("Plugin " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
+                                    MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
                                     moduleList[i].Active = false;
                                 }
 
@@ -514,7 +515,7 @@ namespace M64MM2
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            foreach (Plugin mod in moduleList)
+            foreach (Addon mod in moduleList)
             {
                 mod.Module.Close(e);
             }

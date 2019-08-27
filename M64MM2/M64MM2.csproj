@@ -96,7 +96,6 @@
     <Compile Include="Taskman.Designer.cs">
       <DependentUpon>Taskman.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.es.resx">
@@ -178,6 +177,10 @@
     <None Include="Resources\M64MM2 CC Mario big.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\M64MM.Addon\M64MM.Addon.csproj">
+      <Project>{1c729327-892f-42d2-9316-fb8d34a76a27}</Project>
+      <Name>M64MM.Addon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\M64MM.Utils\M64MM.Utils.csproj">
       <Project>{3587b41b-7005-49ce-a884-6986adc8ca01}</Project>
       <Name>M64MM.Utils</Name>

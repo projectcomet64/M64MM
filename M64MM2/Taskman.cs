@@ -3,26 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using M64MM;
+using M64MM.Addon;
 
 namespace M64MM2
 {
     public partial class Taskman : Form
     {
-        List<Plugin> PluginList;
-        public Taskman(ref List<Plugin> pl_)
+        List<Addon> PluginList;
+        public Taskman(ref List<Addon> pl_)
         {
             InitializeComponent();
             PluginList = pl_;
             RepopulateList(PluginList, true);
         }
 
-        private void RepopulateList(List<Plugin> pl, bool resetList = false)
+        private void RepopulateList(List<Addon> pl, bool resetList = false)
         {
             if (resetList)
             {
                 listView1.View = View.Details;
                 listView1.Clear();
-                listView1.Columns.Add("Plugin name", -2, HorizontalAlignment.Left);
+                listView1.Columns.Add("Addon name", -2, HorizontalAlignment.Left);
                 listView1.Columns.Add("Version", -2, HorizontalAlignment.Left);
                 listView1.Columns.Add("Is active everyframe", -2, HorizontalAlignment.Center);
             }
@@ -43,8 +44,8 @@ namespace M64MM2
         {
             if (listView1.SelectedItems.Count != 0)
             {
-                lb_Desc.Text = "Description: \n" + ((Plugin)listView1.SelectedItems[0].Tag).Description;
-                cb_pluginEnabled.Checked = ((Plugin)listView1.SelectedItems[0].Tag).Active;
+                lb_Desc.Text = "Description: \n" + ((Addon)listView1.SelectedItems[0].Tag).Description;
+                cb_pluginEnabled.Checked = ((Addon)listView1.SelectedItems[0].Tag).Active;
             }
             else
             {
@@ -61,7 +62,7 @@ namespace M64MM2
         {
             if (listView1.SelectedItems.Count != 0)
             {
-                ((Plugin)listView1.SelectedItems[0].Tag).Active = cb_pluginEnabled.Checked;
+                ((Addon)listView1.SelectedItems[0].Tag).Active = cb_pluginEnabled.Checked;
                 RepopulateList(PluginList, true);
             }
                 
