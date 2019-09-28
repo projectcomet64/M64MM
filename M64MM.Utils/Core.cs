@@ -59,30 +59,6 @@ namespace M64MM.Utils
             ReadProcessMemory(emuProcessHandle, ptr, buffer, size, ref bytesRead);
             return buffer;
         }
-
-        public static ushort ReadUShort(long address)
-        {
-            long size = sizeof(ushort);
-            byte[] buffer = ReadBytes(address, size);
-            ushort value = BitConverter.ToUInt16(buffer, 0);
-            return value;
-        }
-
-        public static uint ReadUInt(long address)
-        {
-            long size = sizeof(uint);
-            byte[] buffer = ReadBytes(address, size);
-            uint value = BitConverter.ToUInt32(buffer, 0);
-            return value;
-        }
-
-        public static ulong ReadULong(long address)
-        {
-            long size = sizeof(ulong);
-            byte[] buffer = ReadBytes(address, size);
-            ulong value = BitConverter.ToUInt64(buffer, 0);
-            return value;
-        }
         #endregion
 
 
@@ -114,24 +90,6 @@ namespace M64MM.Utils
                 WriteBytes(baseAddr + address, data);
             }
         }
-
-        public static void WriteUShort(long address, ushort data)
-        {
-            byte[] buffer = BitConverter.GetBytes(data);
-            WriteBytes(address, buffer);
-        }
-
-        public static void WriteUInt(long address, uint data)
-        {
-            byte[] buffer = BitConverter.GetBytes(data);
-            WriteBytes(address, buffer);
-        }
-
-        public static void WriteULong(long address, ulong data)
-        {
-            byte[] buffer = BitConverter.GetBytes(data);
-            WriteBytes(address, buffer);
-        }
         #endregion
 
 
@@ -160,14 +118,14 @@ namespace M64MM.Utils
             //Check if the old base address is still valid
             if (BaseAddress > 0)
             {
-                value = ReadUInt(BaseAddress);
+                value = BitConverter.ToUInt32(ReadBytes(BaseAddress, sizeof(uint)), 0);
 
                 if (value == 0x3C1A8032) return;
             }
 
             for (long scanAddress = start; scanAddress < stop - step; scanAddress += step)
             {
-                value = ReadUInt(scanAddress);
+                value = BitConverter.ToUInt32(ReadBytes(BaseAddress, sizeof(uint)), 0);
 
                 if (value == 0x3C1A8032)
                 {
@@ -267,6 +225,7 @@ namespace M64MM.Utils
             return ModelStatus.VANILLA;
         }
 
+        [Obsolete]
         public static void WaitForNextFrame()
         {
             int viNumber = BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 4), 4), 0);
@@ -292,6 +251,17 @@ namespace M64MM.Utils
             }
 
             return array;
+        }
+
+        public static byte[] SwapEndianRet(byte[] array, int wordSize)
+        {
+            byte[] byteArray = array;
+            for (int x = 0; x < byteArray.Length / wordSize; x++)
+            {
+                Array.Reverse(byteArray, x * wordSize, wordSize);
+            }
+
+            return byteArray;
         }
 
 
