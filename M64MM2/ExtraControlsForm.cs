@@ -35,15 +35,15 @@ namespace M64MM2
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 
-            WriteUInt(BaseAddress + 0x2E3DB0, 0);
-            WriteUInt(BaseAddress + 0x2E3DE0, 0);
-            WriteUInt(BaseAddress + 0x2E3E18, 0);
-            WriteUInt(BaseAddress + 0x2E3DC8, 0);
-            WriteUInt(BaseAddress + 0x3325F4, 0x01000000);
+            WriteBatchBytes(new long[] { 0x2E3DB0, 0x2E3DE0, 0x2E3E18, 0x2E3DC8 }, new byte[] { 0,0,0,0 }, true);
+            WriteBytes(BaseAddress + 0x3325F4, SwapEndianRet(StringToByteArray("01000000"), 4));
         }
 
         private void btnBatchWrite_Click(object sender, EventArgs e)
         {
+            //TODO: Remake this feature for later uses to use Longs instead of Strings (wtf)
+
+            /*
             //Separate by commas and only commas
             string[] addrs = tbAddresses.Text.Split(',');
             //for (int i = 0; i < addrs.Length; i++)
@@ -52,6 +52,7 @@ namespace M64MM2
             //}
             byte[] dataTW = StringToByteArray(tbData.Text.ToUpper());
             WriteBatchBytes(addrs, dataTW, true);
+            */
         }
 
         private void btnClearBoxes_Click(object sender, EventArgs e)

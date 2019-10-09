@@ -46,5 +46,11 @@
     <Compile Include="Core.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\M64MM.Addon\M64MM.Addon.csproj">
+      <Project>{1c729327-892f-42d2-9316-fb8d34a76a27}</Project>
+      <Name>M64MM.Addon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

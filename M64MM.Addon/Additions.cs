@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M64MM.Addon
+namespace M64MM.Additions
 {
     public class Addon
     {

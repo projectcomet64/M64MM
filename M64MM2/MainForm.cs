@@ -5,12 +5,11 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading;
 using System.Windows.Forms;
 using M64MM2.Properties;
 using M64MM;
 using static M64MM.Utils.Core;
-using M64MM.Addon;
+using M64MM.Additions;
 using System.Diagnostics;
 using System.Security;
 using System.Security.Permissions;
@@ -24,20 +23,17 @@ namespace M64MM2
         ExtraControlsForm extraControlsForm;
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
-        static ModelStatus modelStatus = ModelStatus.NONE;
         List<Animation> animList;
         List<CamStyle> camStyles;
         Animation defaultAnimation;
         Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : new Animation();
         Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : new Animation();
-        static UInt32 ingameTimer;
-        static UInt32 previousFrame;
 
         //This handles the "Each ingame frame"
         //ASYNCHRONOUS FOR THE WIN
         //FUNNILY ENOUGH! This takes little to no CPU, actually
         //It's goddamn amazing
-        Task updateFunction = Task.Run(() => doUpdate());
+        Task updateFunction = Task.Run(() => performUpdate(moduleList));
 
         public MainForm()
         {
@@ -231,8 +227,9 @@ namespace M64MM2
             }
 
             //Reading level address (It's meant to be 0x32DDF8 but ENDIANESS:TM:)
-            if (ReadUShort(BaseAddress + 0x32DDFA) < 3)
+            if (BitConverter.ToInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0) < 3)
             {
+                int level = BitConverter.ToInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
                 toolsMenuItem.Enabled = false;
                 lblProgramStatus.Text = Resources.programStatusAwaitingLevel + "0x" + BaseAddress.ToString("X8");
                 modelStatus = ModelStatus.NONE;
@@ -308,7 +305,7 @@ namespace M64MM2
             if (!IsEmuOpen || BaseAddress == 0) return;
 
             cameraSoftFrozen = true;
-            WriteUInt(BaseAddress + 0x33B204, 0x8001C520);
+            WriteBytes(BaseAddress + 0x33B204, BitConverter.GetBytes(0x8001C520));
 
             lblCameraStatus.Text = cameraFrozen ? Resources.cameraStateFrozen : Resources.cameraStateSoftFrozen;
         }
@@ -318,7 +315,7 @@ namespace M64MM2
             if (!IsEmuOpen || BaseAddress == 0) return;
 
             cameraSoftFrozen = false;
-            WriteUInt(BaseAddress + 0x33B204, 0x8033C520);
+            WriteBytes(BaseAddress + 0x33B204, BitConverter.GetBytes(0x8033C520));
 
             lblCameraStatus.Text = cameraFrozen ? Resources.cameraStateFrozen : Resources.cameraStateDefault;
         }
@@ -397,58 +394,6 @@ namespace M64MM2
             }
         }
 
-        async static void doUpdate()
-        {
-            while (true)
-            {
-                //Ingame timer update
-                //ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
-                ingameTimer = await Task.Run(() => ReadUInt(BaseAddress + 0x32D580));
-                //If there's a level loaded EVEN if there's no model
-                if (modelStatus != ModelStatus.NONE)
-                {
-                    if (ingameTimer > previousFrame)
-                    {
-                        //Set new value
-                        previousFrame = ingameTimer;
-                        //If the ingame timer reaches zero then let's just write 255 more to it
-                        //This was when using a variable that decremented each frame, with VI Timer this shouldn't need to be used anymore
-                        /*
-                        if (ingameTimer == 0)
-                        {
-                            await Task.Run(() => { WriteUInt(BaseAddress + 0x33B198, 255); });
-                        }
-                        */
-                        //Ingame timer is a variable that INCREMENTS every frame in game. In case our previous snapshot of said value is above the timer:
-                        for (int i = 0; i < moduleList.Count; i++)
-                        {
-                            //Unity 1996
-                            if (moduleList[i].Active == true)
-                            {
-                                try
-                                {
-                                    moduleList[i].Module.Update();
-                                    continue;
-                                }
-                                catch (Exception e)
-                                {
-                                    MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
-                                    moduleList[i].Active = false;
-                                }
-
-                            }
-                        }
-                    }
-                    else if (ingameTimer <= previousFrame)
-                    {
-                        await Task.Run(() => previousFrame = ingameTimer);
-                        ingameTimer = await Task.Run(() => ReadUInt(BaseAddress + 0x32D580));
-                    }
-                }
-                // zzz
-                Thread.Sleep(1);
-            }
-        }
         void openAppearanceSettings(object sender, EventArgs e)
         {
             switch (modelStatus)
@@ -503,7 +448,7 @@ namespace M64MM2
             byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimNew.Value), 4);
             byte[] initialAnimation = SwapEndian(StringToByteArray(defaultAnimation.Value), 4);
             long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
-            WriteUInt(BaseAddress + 0x33B198, 255);
+            WriteBytes(BaseAddress + 0x33B198, new byte[]{ 0 });
             while ((BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x33B198, 2), 4), 0) < 255) == false)
             {
                 WriteBytes(address, initialAnimation);

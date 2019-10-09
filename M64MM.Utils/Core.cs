@@ -5,6 +5,9 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Threading;
+using System.Threading.Tasks;
+using M64MM.Additions;
 
 namespace M64MM.Utils
 {
@@ -13,6 +16,8 @@ namespace M64MM.Utils
     {
         public static long BaseAddress;
         public static bool IsEmuOpen => (emuProcess != null && !emuProcess.HasExited);
+        public static UInt32 ingameTimer;
+        public static UInt32 previousFrame;
         public enum ModelStatus
         {
             NONE,
@@ -20,6 +25,9 @@ namespace M64MM.Utils
             EMPTY,
             MODDED
         }
+
+        public static ModelStatus modelStatus = ModelStatus.NONE;
+
         public enum VanillaModelColor
         {
             PantsShade,
@@ -72,22 +80,14 @@ namespace M64MM.Utils
             WriteProcessMemory(emuProcessHandle, ptr, data, size, ref bytesWritten);
         }
 
-        public static void WriteBatchBytes(string[] addresses, byte[] data, bool useBase)
+        public static void WriteBatchBytes(long[] addresses, byte[] data, bool useBase)
         {
             SwapEndian(data, 4);
-            long baseAddr;
-            if (useBase == true)
+            long baseAddr = useBase ? BaseAddress : 0;
+            foreach(long addr in addresses)
             {
-                baseAddr = BaseAddress;
-            }
-            else
-            {
-                baseAddr = 0;
-            }
-            foreach(string addr in addresses)
-            {
-                long address = Convert.ToInt64(addr, 16);
-                WriteBytes(baseAddr + address, data);
+                byte[] val = ReadBytes(baseAddr + addr, 1);
+                WriteBytes(baseAddr + addr, data);
             }
         }
         #endregion
@@ -125,7 +125,7 @@ namespace M64MM.Utils
 
             for (long scanAddress = start; scanAddress < stop - step; scanAddress += step)
             {
-                value = BitConverter.ToUInt32(ReadBytes(BaseAddress, sizeof(uint)), 0);
+                value = BitConverter.ToUInt32(ReadBytes(scanAddress, sizeof(uint)), 0);
 
                 if (value == 0x3C1A8032)
                 {
@@ -191,12 +191,13 @@ namespace M64MM.Utils
             }
         }
 
-        public static ModelStatus ValidateModel()
+        public static ModelStatus ValidateModel(bool updateGlobal = true)
         {
             byte[] Color1;
             byte[] Color2;
             byte[] Shadow1;
             byte[] FinalSetOfBytes;
+            ModelStatus ms;
 
             Color1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
             Color2 = SwapEndian(ReadBytes(BaseAddress + 0x07EC80, 4), 4);
@@ -209,7 +210,7 @@ namespace M64MM.Utils
                 (BitConverter.ToInt32(Shadow1, 0) == 0) &&
                 (BitConverter.ToInt32(FinalSetOfBytes, 0) == 0))
             {
-                return ModelStatus.EMPTY;
+                ms = ModelStatus.EMPTY;
             }
 
             //If the color data is not RR GG BB *00* RR GG BB *00* XX YY ZZ *00* *00 00 00 00*
@@ -218,11 +219,16 @@ namespace M64MM.Utils
                 || (Shadow1[3] != 0)
                 || (BitConverter.ToInt32(FinalSetOfBytes, 0) != 0))
             {
-                //MessageBox.Show("Color data: Color 1[3] = " + (byte)Color1[3] + "\nColor 2[3] = " + (byte)Color2[3] + "\nShadow 1[3] = " + (byte)Shadow1[3]);
-                return ModelStatus.MODDED;
+                ms = ModelStatus.MODDED;
             }
             //If all's good :)
-            return ModelStatus.VANILLA;
+            ms = ModelStatus.VANILLA;
+
+            if (updateGlobal)
+            {
+                modelStatus = ms;
+            }
+            return ms;
         }
 
         [Obsolete]
@@ -264,10 +270,74 @@ namespace M64MM.Utils
             return byteArray;
         }
 
+        public async static void performUpdate(List<Addon> moduleList)
+        {
+            while (true)
+            {
+                //Ingame timer update
+                //ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
+                ingameTimer = await Task.Run(() => BitConverter.ToUInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32D580, 2), 4),0));
+                //If there's a level loaded EVEN if there's no model
+                if (modelStatus != ModelStatus.NONE)
+                {
+                    if (ingameTimer > previousFrame)
+                    {
+                        //Set new value
+                        previousFrame = ingameTimer;
+                        //If the ingame timer reaches zero then let's just write 255 more to it
+                        //This was when using a variable that decremented each frame, with VI Timer this shouldn't need to be used anymore
+                        /*
+                        if (ingameTimer == 0)
+                        {
+                            await Task.Run(() => { WriteUInt(BaseAddress + 0x33B198, 255); });
+                        }
+                        */
+                        //Ingame timer is a variable that INCREMENTS every frame in game. In case our previous snapshot of said value is above the timer:
+                        for (int i = 0; i < moduleList.Count(); i++)
+                        {
+                            //Unity 1996
+                            if (moduleList[i].Active == true)
+                            {
+                                try
+                                {
+                                    moduleList[i].Module.Update();
+                                    continue;
+                                }
+                                catch (Exception e)
+                                {
+                                    MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
+                                    moduleList[i].Active = false;
+                                }
+
+                            }
+                        }
+                    }
+                    else if (ingameTimer <= previousFrame)
+                    {
+                        await Task.Run(() => previousFrame = ingameTimer);
+                        ingameTimer = await Task.Run(() => BitConverter.ToUInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
+                    }
+                }
+                // zzz
+                Thread.Sleep(1);
+            }
+        }
 
         public static bool GetKey(Keys vKey)
         {
             return 0 != GetAsyncKeyState(vKey);
         }
+    }
+
+    public struct Animation
+    {
+        public string Value;
+        public int RealIndex;
+    }
+
+    public struct CamStyle
+    {
+        public byte Value;
+        public string Name;
     }
 }
