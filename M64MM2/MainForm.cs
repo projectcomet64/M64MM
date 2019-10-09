@@ -40,8 +40,10 @@ namespace M64MM2
             /* Code for plugin sandboxing */
 
             PermissionSet trustedLoadFromRemoteSourcesGrantSet = new PermissionSet(PermissionState.Unrestricted);
-            AppDomainSetup trustedLoadFromRemoteSourcesSetup = new AppDomainSetup();
-            trustedLoadFromRemoteSourcesSetup.ApplicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+            AppDomainSetup trustedLoadFromRemoteSourcesSetup = new AppDomainSetup
+            {
+                ApplicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase
+            };
 
             AppDomain trustedRemoteLoadDomain = AppDomain.CreateDomain("Trusted LoadFromRemoteSources Domain",
                            null,

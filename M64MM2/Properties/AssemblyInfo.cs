@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Mario 64 Movie Maker 2.1")]
+[assembly: AssemblyTitle("Mario 64 Movie Maker: Comet")]
 [assembly: AssemblyDescription("A program for making Super Mario 64 machinima.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Mario 64 Movie Maker 2.1")]
-[assembly: AssemblyCopyright("Copyright © 2017  James Pelster")]
+[assembly: AssemblyProduct("Mario 64 Movie Maker")]
+[assembly: AssemblyCopyright("Copyright © 2019  Project Comet")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.0.2")]
-[assembly: AssemblyFileVersion("2.1.0.2")]
+[assembly: AssemblyVersion("3.0.0.999")]
+[assembly: AssemblyFileVersion("3.0.0.999")]
 [assembly: NeutralResourcesLanguage("en-US")]
 

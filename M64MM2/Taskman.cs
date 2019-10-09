@@ -30,9 +30,11 @@ namespace M64MM2
             List<ListViewItem> lvil = new List<ListViewItem>();
             for (int i = 0; i < pl.Count; i++)
             {
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = pl[i].Name;
-                lvi.Tag = pl[i];
+                ListViewItem lvi = new ListViewItem
+                {
+                    Text = pl[i].Name,
+                    Tag = pl[i]
+                };
                 lvi.SubItems.Add(pl[i].Version);
                 lvi.SubItems.Add(pl[i].Active.ToString());
                 lvil.Add(lvi);

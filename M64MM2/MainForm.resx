@@ -140,7 +140,7 @@
     <value>Show Running Plugins</value>
   </data>
   <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 20</value>
+    <value>46, 20</value>
   </data>
   <data name="toolsMenuItem.Text" xml:space="preserve">
     <value>&amp;Tools</value>
@@ -337,7 +337,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="lblCameraCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
+    <value>67, 17</value>
   </data>
   <data name="lblCameraCode.Text" xml:space="preserve">
     <value>0x00000000</value>
@@ -976,7 +976,7 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Mario 64 Movie Maker 2.1</value>
+    <value>Mario 64 Movie Maker</value>
   </data>
   <data name="&gt;&gt;toolsMenuItem.Name" xml:space="preserve">
     <value>toolsMenuItem</value>
@@ -994,6 +994,12 @@
     <value>extraControlsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;extraControlsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showRunningPluginsToolStripMenuItem.Name" xml:space="preserve">
+    <value>showRunningPluginsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;showRunningPluginsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;aboutMenuItem.Name" xml:space="preserve">
@@ -1025,12 +1031,6 @@
   </data>
   <data name="&gt;&gt;updateTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showRunningPluginsToolStripMenuItem.Name" xml:space="preserve">
-    <value>showRunningPluginsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;showRunningPluginsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

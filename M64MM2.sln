@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M64MM2", "M64MM2\M64MM2.csproj", "{9DA9E453-E83C-450C-8093-DA6249B4F751}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M64MM", "M64MM2\M64MM.csproj", "{9DA9E453-E83C-450C-8093-DA6249B4F751}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M64MM.Utils", "M64MM.Utils\M64MM.Utils.csproj", "{3587B41B-7005-49CE-A884-6986ADC8CA01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M64MM.Addon", "M64MM.Addon\M64MM.Addon.csproj", "{1C729327-892F-42D2-9316-FB8D34A76A27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M64MM.Addon", "M64MM.Addon\M64MM.Addon.csproj", "{1C729327-892F-42D2-9316-FB8D34A76A27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

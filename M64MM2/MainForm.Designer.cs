@@ -34,6 +34,7 @@
             this.toolsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appearanceSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extraControlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showRunningPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCamera = new System.Windows.Forms.GroupBox();
             this.btnSoftUnfreeze = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.grpCamStyle = new System.Windows.Forms.GroupBox();
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
-            this.showRunningPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -93,6 +93,12 @@
             this.extraControlsToolStripMenuItem.Name = "extraControlsToolStripMenuItem";
             resources.ApplyResources(this.extraControlsToolStripMenuItem, "extraControlsToolStripMenuItem");
             this.extraControlsToolStripMenuItem.Click += new System.EventHandler(this.openExtraControls);
+            // 
+            // showRunningPluginsToolStripMenuItem
+            // 
+            this.showRunningPluginsToolStripMenuItem.Name = "showRunningPluginsToolStripMenuItem";
+            resources.ApplyResources(this.showRunningPluginsToolStripMenuItem, "showRunningPluginsToolStripMenuItem");
+            this.showRunningPluginsToolStripMenuItem.Click += new System.EventHandler(this.showRunningPluginsToolStripMenuItem_Click);
             // 
             // aboutMenuItem
             // 
@@ -254,12 +260,6 @@
             this.cbCamStyles.FormattingEnabled = true;
             resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
             this.cbCamStyles.Name = "cbCamStyles";
-            // 
-            // showRunningPluginsToolStripMenuItem
-            // 
-            this.showRunningPluginsToolStripMenuItem.Name = "showRunningPluginsToolStripMenuItem";
-            resources.ApplyResources(this.showRunningPluginsToolStripMenuItem, "showRunningPluginsToolStripMenuItem");
-            this.showRunningPluginsToolStripMenuItem.Click += new System.EventHandler(this.showRunningPluginsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
