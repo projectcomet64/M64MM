@@ -37,7 +37,7 @@
     <StartupObject>M64MM2.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\M64MM2 New.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\version3.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
@@ -172,6 +172,9 @@
     <Content Include="Resources\M64MM2 New Icon 2 small.png" />
     <Content Include="Resources\M64MM2 New Icon 2.png" />
     <Content Include="Resources\M64MM2 New Icon.png" />
+    <None Include="Resources\version3 big.png" />
+    <Content Include="Resources\version3.ico" />
+    <None Include="Resources\version31.ico" />
     <None Include="Resources\M64MM2 New.ico" />
     <None Include="Resources\M64MM2 Icon.png" />
     <None Include="Resources\M64MM2 CC Mario big.png" />

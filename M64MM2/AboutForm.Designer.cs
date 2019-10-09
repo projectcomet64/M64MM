@@ -35,7 +35,6 @@
             this.lblSpecialThanks = new System.Windows.Forms.Label();
             this.lblBugReport = new System.Windows.Forms.Label();
             this.lnkEmail = new System.Windows.Forms.LinkLabel();
-            this.lblBuildDate = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.lblLicenseInfo = new System.Windows.Forms.Label();
             this.lnkDiscord = new System.Windows.Forms.LinkLabel();
@@ -55,8 +54,8 @@
             // 
             // appIcon
             // 
-            this.appIcon.Image = global::M64MM2.Properties.Resources.M64MM2_New_Icon_2;
             resources.ApplyResources(this.appIcon, "appIcon");
+            this.appIcon.Image = global::M64MM2.Properties.Resources.version3_big;
             this.appIcon.Name = "appIcon";
             this.appIcon.TabStop = false;
             // 
@@ -76,11 +75,6 @@
             this.lnkEmail.Name = "lnkEmail";
             this.lnkEmail.TabStop = true;
             this.lnkEmail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // lblBuildDate
-            // 
-            resources.ApplyResources(this.lblBuildDate, "lblBuildDate");
-            this.lblBuildDate.Name = "lblBuildDate";
             // 
             // btnOK
             // 
@@ -115,7 +109,6 @@
             this.Controls.Add(this.lnkGithubIssues);
             this.Controls.Add(this.lblLicenseInfo);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.lblBuildDate);
             this.Controls.Add(this.lnkDiscord);
             this.Controls.Add(this.lnkEmail);
             this.Controls.Add(this.lblBugReport);
@@ -142,7 +135,6 @@
         private System.Windows.Forms.Label lblSpecialThanks;
         private System.Windows.Forms.Label lblBugReport;
         private System.Windows.Forms.LinkLabel lnkEmail;
-        private System.Windows.Forms.Label lblBuildDate;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label lblLicenseInfo;
         private System.Windows.Forms.LinkLabel lnkDiscord;

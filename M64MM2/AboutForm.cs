@@ -31,7 +31,7 @@ namespace M64MM2
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
-            lnkDiscord.Text = ("http://discord.gg/" + Resources.discordInvite);
+            lnkDiscord.Text = (Resources.discordInvite);
         }
 
         private void lnkDiscord_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -153,7 +153,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a -.
+        ///   Busca una cadena traducida similar a http://comet.glitchypsi.xyz.
         /// </summary>
         internal static string discordInvite {
             get {
@@ -266,7 +266,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a M64MM.
+        ///   Busca una cadena traducida similar a M64MM PRE.
         /// </summary>
         internal static string programName {
             get {
@@ -325,6 +325,26 @@ namespace M64MM2.Properties {
         internal static string setDefaultColorsMsgTitle {
             get {
                 return ResourceManager.GetString("setDefaultColorsMsgTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap version3 {
+            get {
+                object obj = ResourceManager.GetObject("version3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap version3_big {
+            get {
+                object obj = ResourceManager.GetObject("version3 big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
