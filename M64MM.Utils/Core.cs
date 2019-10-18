@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Threading;
+using System.Text;
 using System.Threading.Tasks;
 using M64MM.Additions;
 
@@ -14,6 +14,7 @@ namespace M64MM.Utils
     //TODO: Move M64MM.Utils to a dotnetStandard project, to reduce .NETFX dependency
     public static class Core
     {
+        public static StringBuilder AddonErrorsBuilder;
         public static long BaseAddress;
         public static bool IsEmuOpen => (emuProcess != null && !emuProcess.HasExited);
         public static UInt32 ingameTimer;
@@ -305,6 +306,7 @@ namespace M64MM.Utils
                                 }
                                 catch (Exception e)
                                 {
+                                    AddonErrorsBuilder.AppendFormat("{0} [RUNTIME ERROR] - Error while executing Update from Addon {1}. Exception: {2}\nAddon has been disabled.\n--------\n", DateTime.Now.ToLongTimeString(), moduleList[i].Name, e.Message);
                                     MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
                                     moduleList[i].Active = false;
                                 }
@@ -319,7 +321,7 @@ namespace M64MM.Utils
                     }
                 }
                 // zzz
-                Thread.Sleep(1);
+                await Task.Delay(1);
             }
         }
 
