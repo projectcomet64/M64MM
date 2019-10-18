@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using M64MM2.Properties;
-using M64MM;
 using static M64MM.Utils.Core;
 using M64MM.Additions;
 using System.Diagnostics;
@@ -49,59 +47,59 @@ namespace M64MM2
                            null,
                            trustedLoadFromRemoteSourcesSetup,
                            trustedLoadFromRemoteSourcesGrantSet);
+            AddonErrorsBuilder = new System.Text.StringBuilder();
             InitializeComponent();
-            ToolStripMenuItem plugins = new ToolStripMenuItem("Plugins");
+            ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
             try
-            {
-                try
-                {
-                    DirectoryInfo d = new DirectoryInfo(Application.StartupPath + "\\Plugins");
-                    foreach (FileInfo file in d.GetFiles("*.dll"))
+            { // Loading DLLs from ./Plugins
+                DirectoryInfo d = new DirectoryInfo(Application.StartupPath + "\\Addons");
+                foreach (FileInfo file in d.GetFiles("*.dll"))
+                { // For each DLL
+                    try // If getting all types fails for some reason (Ex: cannot load required assembly)...
                     {
-                        try
+                        Assembly assmb = Assembly.LoadFile(file.FullName);
+                        Type[] classes = assmb.GetTypes();
+                        foreach (Type typ in classes)
                         {
-                            Assembly assmb = Assembly.LoadFile(file.FullName);
-                            Type[] classes = assmb.GetTypes();
-                            foreach (Type typ in classes)
-                            {
-                                if (typ.GetInterface("IModule") != null)
-                                {
-                                    IModule mod = (IModule)assmb.CreateInstance(typ.FullName);
-                                    Addon neoPlugin = new Addon(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description);
-                                    List<ToolCommand> tc_list = (List<ToolCommand>)mod.GetCommands();
-                                    if (tc_list != null)
+                            if (typ.GetInterface("IModule") != null)
+                            { // If type implements interface IModule
+                                IModule mod = (IModule)assmb.CreateInstance(typ.FullName); // Instance the IModule
+                                Addon neoAddon = new Addon(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description); // Instance Addon
+                                List<ToolCommand> tc_list = mod.GetCommands(); // Get list of custom commands
+                                if (tc_list != null)
+                                { // Add them to the Plugins toolstrip
+                                    foreach (ToolCommand tc in tc_list)
                                     {
-                                        foreach (ToolCommand tc in tc_list)
-                                        {
-                                            ToolStripMenuItem mod_ = new ToolStripMenuItem(tc.name);
-                                            mod_.Click += (a, b) => tc.Summon(a, b);
-                                            plugins.DropDownItems.Add(mod_);
-                                        }
+                                        ToolStripMenuItem mod_ = new ToolStripMenuItem(tc.name);
+                                        mod_.Click += (a, b) => tc.Summon(a, b);
+                                        addons.DropDownItems.Add(mod_);
                                     }
-                                    moduleList.Add(neoPlugin);
                                 }
+                                moduleList.Add(neoAddon); // Add addon to the plugins list
                             }
                         }
-                        catch (ReflectionTypeLoadException ex)
-                        {
-                            MessageBox.Show("Unexpected error while loading plugins:\n" + ex.ToString() + "\n\n" + ex.LoaderExceptions[0].ToString(), "Oops.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                    }
+                    catch (ReflectionTypeLoadException ex)
+                    {
+                        AddonErrorsBuilder.AppendFormat("{0} [LOAD ERROR] - Error while loading addon from DLL {1}. Exception: {2}\nAre all the dependencies met?\n--------\n", DateTime.Now.ToLongTimeString(), ex.Types[0].Module.ToString(), ex.Message);
                     }
                 }
-                catch (DirectoryNotFoundException)
-                {
-                    Directory.CreateDirectory(Application.StartupPath + "\\Plugins");
-                    MessageBox.Show("No plugins folder was present, plugins folder created.\nMake sure you're running M64MM from an extracted folder.",
-                        "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                menuStrip.Items.Add(plugins);
             }
-            catch (Exception e)
+            catch (DirectoryNotFoundException)
             {
-                MessageBox.Show(e.ToString());
+                Directory.CreateDirectory(Application.StartupPath + "\\Addons");
+                MessageBox.Show("No addons folder was present, addons folder created.\nMake sure you're running M64MM from an extracted folder.",
+                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            if (AddonErrorsBuilder.Length > 0){
+                // If there were any errors (String, may make a collection of objects?)
+                addons.DropDownItems.Add(new ToolStripSeparator());
+                addons.DropDownItems.Add(new ToolStripMenuItem("Addon warnings", null, (a, b) => { new AddonErrors().ShowDialog(); }));
+            }
+
             InitializeModules();
-            menuStrip.Items.Add(plugins);
+            menuStrip.Items.Add(addons);
 
             Text = Resources.programName + " " + Application.ProductVersion;
             updateTimer.Interval = 1000;
@@ -111,6 +109,7 @@ namespace M64MM2
             defaultAnimation.Value = "0";
             lblCameraStatus.Text = Resources.cameraStateDefault;
             toolsMenuItem.Enabled = false;
+
 
             //Load animation data
             try
@@ -197,7 +196,6 @@ namespace M64MM2
                 cbCamStyles.SelectedIndex = 0;
                 cbCamStyles.Refresh();
             }
-
         }
 
         void InitializeModules()
@@ -207,6 +205,7 @@ namespace M64MM2
                 mod.Module.Initialize();
             }
         }
+
 
         void Update(object sender, EventArgs e)
         {
@@ -450,7 +449,7 @@ namespace M64MM2
             byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimNew.Value), 4);
             byte[] initialAnimation = SwapEndian(StringToByteArray(defaultAnimation.Value), 4);
             long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
-            WriteBytes(BaseAddress + 0x33B198, new byte[]{ 0 });
+            WriteBytes(BaseAddress + 0x33B198, new byte[] { 0 });
             while ((BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x33B198, 2), 4), 0) < 255) == false)
             {
                 WriteBytes(address, initialAnimation);

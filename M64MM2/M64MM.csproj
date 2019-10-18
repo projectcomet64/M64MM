@@ -61,6 +61,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddonErrors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddonErrors.Designer.cs">
+      <DependentUpon>AddonErrors.cs</DependentUpon>
+    </Compile>
     <Compile Include="AppearanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddonErrors.resx">
+      <DependentUpon>AddonErrors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AppearanceForm.es.resx">
       <DependentUpon>AppearanceForm.cs</DependentUpon>
