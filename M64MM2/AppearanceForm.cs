@@ -5,9 +5,10 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using M64MM.Utils;
 using M64MM2.Properties;
 using static M64MM.Utils.Core;
-
+using static M64MM.Utils.Looks;
 
 namespace M64MM2
 {
@@ -35,14 +36,7 @@ namespace M64MM2
         ColorMap pantsMap = new ColorMap();
         ColorMap shoesMap = new ColorMap();
 
-        static readonly int[] shadowAddresses = {
-            0x07EC30,
-            0x07EC48,
-            0x07EC60,
-            0x07EC78,
-            0x07EC90,
-            0x07ECA8
-        };
+
 
         public AppearanceForm()
         {
@@ -113,7 +107,7 @@ namespace M64MM2
 
         void colorButton_Click(object sender, EventArgs e)
         {
-            Button senderButton = (Button) sender;
+            Button senderButton = (Button)sender;
             colorDialog.Color = senderButton.BackColor;
 
             if (colorDialog.ShowDialog(this) != DialogResult.OK) return;
@@ -183,7 +177,7 @@ namespace M64MM2
             if (!IsEmuOpen || BaseAddress == 0) return;
 
             byte[] colorData = new byte[4];
-            
+
             colorData[0] = pantsColorShade.BackColor.R;
             colorData[1] = pantsColorShade.BackColor.G;
             colorData[2] = pantsColorShade.BackColor.B;
@@ -471,7 +465,7 @@ namespace M64MM2
             hairColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
 
             marioSprite.Refresh();
-            
+
             askSetDefaultColors();
         }
 
@@ -516,20 +510,31 @@ namespace M64MM2
             applyAllColors();
         }
 
+        void updateTrackbar(object sender, EventArgs e)
+        {
+            TrackBar changedBar = ((TrackBar)sender);
+            ShadowParts part = ShadowParts.X;
+            switch (changedBar.Name)
+            {
+                case "tbLeftRight":
+                    part = ShadowParts.X;
+                    break;
+                case "tbBottomTop":
+                    part = ShadowParts.Y;
+                    break;
+                case "tbBackFront":
+                    part = ShadowParts.Z;
+                    break;
+            }
+            changeShadow(changedBar.Value, part);
+        }
+
 
         void resetShadows(object sender, EventArgs e)
         {
             tbLeftRight.Value = 0x28;
             tbBottomTop.Value = 0x28;
             tbBackFront.Value = -0x28;
-
-            foreach (Control c in this.grpShading.Controls)
-            {
-                if (c is TrackBar)
-                {
-                    changeShadows(c, null);
-                }
-            }
         }
 
         void randomizeShadows(object sender, EventArgs e)
@@ -537,41 +542,8 @@ namespace M64MM2
             tbLeftRight.Value = rand.Next(-127, 128);
             tbBottomTop.Value = rand.Next(-127, 128);
             tbBackFront.Value = rand.Next(-127, 128);
-
-            foreach (Control c in this.grpShading.Controls)
-            {
-                if (c is TrackBar)
-                {
-                    changeShadows(c, null);
-                }
-            }
         }
 
-        void changeShadows(object sender, EventArgs e)
-        {
-            if (!IsEmuOpen || BaseAddress == 0) return;
 
-            TrackBar senderBar = (TrackBar) sender;
-            byte[] data = new byte[1];
-
-            foreach (int address in shadowAddresses)
-            {
-                if (senderBar.Name == "tbLeftRight")
-                {
-                    data[0] = (byte)senderBar.Value;
-                    WriteBytes(BaseAddress + address + 3, data);
-                }
-                else if (senderBar.Name == "tbBottomTop")
-                {
-                    data[0] = (byte)senderBar.Value;
-                    WriteBytes(BaseAddress + address + 2, data);
-                }
-                else if (senderBar.Name == "tbBackFront")
-                {
-                    data[0] = (byte)-senderBar.Value;
-                    WriteBytes(BaseAddress + address + 1, data);
-                }
-            }
-        }
     }
 }

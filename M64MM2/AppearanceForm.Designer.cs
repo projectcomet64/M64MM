@@ -375,7 +375,7 @@
             this.tbBackFront.Name = "tbBackFront";
             this.tbBackFront.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbBackFront.Value = -40;
-            this.tbBackFront.ValueChanged += new System.EventHandler(this.changeShadows);
+            this.tbBackFront.ValueChanged += new System.EventHandler(this.updateTrackbar);
             // 
             // tbBottomTop
             // 
@@ -385,7 +385,7 @@
             this.tbBottomTop.Name = "tbBottomTop";
             this.tbBottomTop.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbBottomTop.Value = 40;
-            this.tbBottomTop.ValueChanged += new System.EventHandler(this.changeShadows);
+            this.tbBottomTop.ValueChanged += new System.EventHandler(this.updateTrackbar);
             // 
             // tbLeftRight
             // 
@@ -395,7 +395,7 @@
             this.tbLeftRight.Name = "tbLeftRight";
             this.tbLeftRight.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbLeftRight.Value = 40;
-            this.tbLeftRight.ValueChanged += new System.EventHandler(this.changeShadows);
+            this.tbLeftRight.ValueChanged += new System.EventHandler(this.updateTrackbar);
             // 
             // randomizerTimer
             // 
