@@ -29,21 +29,6 @@ namespace M64MM.Utils
 
         public static ModelStatus modelStatus = ModelStatus.NONE;
 
-        public enum VanillaModelColor
-        {
-            PantsShade,
-            PantsMain,
-            HatShade,
-            HatMain,
-            GloveShade,
-            GloveMain,
-            ShoeShade,
-            ShoeMain,
-            SkinShade,
-            SkinMain,
-            HairShade,
-            HairMain
-        }
         static Process emuProcess;
         static IntPtr emuProcessHandle;
         const int PROCESS_ALL_ACCESS = 0x01F0FF;
@@ -137,59 +122,6 @@ namespace M64MM.Utils
 
             //If we don't find anything, reset the base address to 0
             BaseAddress = 0;
-        }
-
-        public static void WriteColor(VanillaModelColor ModelPart, Color color_)
-        {
-            long writeToAddress = 0;
-            byte[] colors = new byte[4];
-                switch (ModelPart)
-                {
-                    case VanillaModelColor.PantsShade:
-                        writeToAddress = 0x07EC20;
-                        break;
-                    case VanillaModelColor.PantsMain:
-                        writeToAddress = 0x07EC28;
-                        break;
-                    case VanillaModelColor.HatShade:
-                        writeToAddress = 0x07EC38;
-                        break;
-                    case VanillaModelColor.HatMain:
-                        writeToAddress = 0x07EC40;
-                        break;
-                    case VanillaModelColor.GloveShade:
-                        writeToAddress = 0x07EC50;
-                        break;
-                    case VanillaModelColor.GloveMain:
-                        writeToAddress = 0x07EC58;
-                        break;
-                    case VanillaModelColor.ShoeShade:
-                        writeToAddress = 0x07EC68;
-                        break;
-                    case VanillaModelColor.ShoeMain:
-                        writeToAddress = 0x07EC70;
-                        break;
-                    case VanillaModelColor.SkinShade:
-                        writeToAddress = 0x07EC80;
-                        break;
-                    case VanillaModelColor.SkinMain:
-                        writeToAddress = 0x07EC88;
-                        break;
-                    case VanillaModelColor.HairShade:
-                        writeToAddress = 0x07EC98;
-                        break;
-                    case VanillaModelColor.HairMain:
-                        writeToAddress = 0x07ECA0;
-                        break;
-                }
-            colors[0] = color_.R;
-            colors[1] = color_.G;
-            colors[2] = color_.B;
-            colors[3] = 0x0;
-            if (writeToAddress > 0)
-            {
-                WriteBytes(BaseAddress + writeToAddress, SwapEndian(colors, 4));
-            }
         }
 
         public static ModelStatus ValidateModel(bool updateGlobal = true)

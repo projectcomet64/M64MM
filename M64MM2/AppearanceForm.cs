@@ -109,6 +109,7 @@ namespace M64MM2
         {
             Button senderButton = (Button)sender;
             colorDialog.Color = senderButton.BackColor;
+            VanillaModelColor modelColor = VanillaModelColor.GloveMain;
 
             if (colorDialog.ShowDialog(this) != DialogResult.OK) return;
             if (!senderButton.Enabled) return;
@@ -118,137 +119,76 @@ namespace M64MM2
 
             if (!IsEmuOpen || BaseAddress == 0) return;
 
-
-            byte[] colorData = new byte[4];
-            colorData[0] = senderButton.BackColor.R;
-            colorData[1] = senderButton.BackColor.G;
-            colorData[2] = senderButton.BackColor.B;
-            colorData[3] = 0;
-
-            int address = 0;
             switch (senderButton.Name)
             {
                 case "pantsColorShade":
-                    address = 0x07EC20;
+                    modelColor = VanillaModelColor.PantsShade;
                     break;
                 case "pantsColorMain":
-                    address = 0x07EC28;
+                    modelColor = VanillaModelColor.PantsMain;
                     break;
                 case "hatColorShade":
-                    address = 0x07EC38;
+                    modelColor = VanillaModelColor.HatShade;
                     break;
                 case "hatColorMain":
-                    address = 0x07EC40;
+                    modelColor = VanillaModelColor.HatMain;
                     break;
                 case "glovesColorShade":
-                    address = 0x07EC50;
+                    modelColor = VanillaModelColor.GloveShade;
                     break;
                 case "glovesColorMain":
-                    address = 0x07EC58;
+                    modelColor = VanillaModelColor.GloveMain;
                     break;
                 case "shoesColorShade":
-                    address = 0x07EC68;
+                    modelColor = VanillaModelColor.ShoeShade;
                     break;
                 case "shoesColorMain":
-                    address = 0x07EC70;
+                    modelColor = VanillaModelColor.ShoeMain;
                     break;
                 case "skinColorShade":
-                    address = 0x07EC80;
+                    modelColor = VanillaModelColor.SkinShade;
                     break;
                 case "skinColorMain":
-                    address = 0x07EC88;
+                    modelColor = VanillaModelColor.SkinMain;
                     break;
                 case "hairColorShade":
-                    address = 0x07EC98;
+                    modelColor = VanillaModelColor.HairShade;
                     break;
                 case "hairColorMain":
-                    address = 0x07ECA0;
+                    modelColor = VanillaModelColor.HairMain;
                     break;
             }
 
-            if (address > 0)
-            {
-                WriteBytes(BaseAddress + address, SwapEndian(colorData, 4));
-            }
+            WriteColor(modelColor, senderButton.BackColor);
         }
 
         void applyAllColors()
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 
-            byte[] colorData = new byte[4];
+            WriteColor(VanillaModelColor.PantsShade, pantsColorShade.BackColor);
 
-            colorData[0] = pantsColorShade.BackColor.R;
-            colorData[1] = pantsColorShade.BackColor.G;
-            colorData[2] = pantsColorShade.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC20, colorData);
+            WriteColor(VanillaModelColor.PantsMain, pantsColorMain.BackColor);
 
-            colorData[0] = pantsColorMain.BackColor.R;
-            colorData[1] = pantsColorMain.BackColor.G;
-            colorData[2] = pantsColorMain.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC28, colorData);
+            WriteColor(VanillaModelColor.HatShade, hatColorShade.BackColor);
 
-            colorData[0] = hatColorShade.BackColor.R;
-            colorData[1] = hatColorShade.BackColor.G;
-            colorData[2] = hatColorShade.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC38, colorData);
+            WriteColor(VanillaModelColor.HatMain, hatColorMain.BackColor);
 
-            colorData[0] = hatColorMain.BackColor.R;
-            colorData[1] = hatColorMain.BackColor.G;
-            colorData[2] = hatColorMain.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC40, colorData);
+            WriteColor(VanillaModelColor.GloveShade, glovesColorShade.BackColor);
 
-            colorData[0] = glovesColorShade.BackColor.R;
-            colorData[1] = glovesColorShade.BackColor.G;
-            colorData[2] = glovesColorShade.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC50, colorData);
+            WriteColor(VanillaModelColor.GloveMain, glovesColorMain.BackColor);
 
-            colorData[0] = glovesColorMain.BackColor.R;
-            colorData[1] = glovesColorMain.BackColor.G;
-            colorData[2] = glovesColorMain.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC58, colorData);
+            WriteColor(VanillaModelColor.ShoeShade, shoesColorShade.BackColor);
 
-            colorData[0] = shoesColorShade.BackColor.R;
-            colorData[1] = shoesColorShade.BackColor.G;
-            colorData[2] = shoesColorShade.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC68, colorData);
+            WriteColor(VanillaModelColor.ShoeMain, shoesColorMain.BackColor);
 
-            colorData[0] = shoesColorMain.BackColor.R;
-            colorData[1] = shoesColorMain.BackColor.G;
-            colorData[2] = shoesColorMain.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC70, colorData);
+            WriteColor(VanillaModelColor.SkinShade, skinColorShade.BackColor);
 
-            colorData[0] = skinColorShade.BackColor.R;
-            colorData[1] = skinColorShade.BackColor.G;
-            colorData[2] = skinColorShade.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC80, colorData);
+            WriteColor(VanillaModelColor.SkinMain, skinColorMain.BackColor);
 
-            colorData[0] = skinColorMain.BackColor.R;
-            colorData[1] = skinColorMain.BackColor.G;
-            colorData[2] = skinColorMain.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC88, colorData);
+            WriteColor(VanillaModelColor.HairShade, hairColorMain.BackColor);
 
-            colorData[0] = hairColorShade.BackColor.R;
-            colorData[1] = hairColorShade.BackColor.G;
-            colorData[2] = hairColorShade.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07EC98, colorData);
-
-            colorData[0] = hairColorMain.BackColor.R;
-            colorData[1] = hairColorMain.BackColor.G;
-            colorData[2] = hairColorMain.BackColor.B;
-            SwapEndian(colorData, 4)[0] = 0;
-            WriteBytes(BaseAddress + 0x07ECA0, colorData);
+            WriteColor(VanillaModelColor.HairMain, hairColorMain.BackColor);
         }
 
         void openCopyPasteForm(object sender, EventArgs e)
