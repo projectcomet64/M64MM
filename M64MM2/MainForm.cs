@@ -405,6 +405,9 @@ namespace M64MM2
                 case ModelStatus.MODDED:
                     MessageBox.Show(Resources.colorCodeModdedRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
+                case ModelStatus.COMET:
+                    MessageBox.Show(Resources.colorCodeCometRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
                 case ModelStatus.VANILLA:
                     if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
 

@@ -24,7 +24,8 @@ namespace M64MM.Utils
             NONE,
             VANILLA,
             EMPTY,
-            MODDED
+            MODDED,
+            COMET
         }
 
         public static ModelStatus modelStatus = ModelStatus.NONE;
@@ -70,7 +71,7 @@ namespace M64MM.Utils
         {
             SwapEndian(data, 4);
             long baseAddr = useBase ? BaseAddress : 0;
-            foreach(long addr in addresses)
+            foreach (long addr in addresses)
             {
                 byte[] val = ReadBytes(baseAddr + addr, 1);
                 WriteBytes(baseAddr + addr, data);
@@ -130,14 +131,14 @@ namespace M64MM.Utils
             byte[] Color2;
             byte[] Shadow1;
             byte[] FinalSetOfBytes;
-            ModelStatus ms;
+            ModelStatus ms = ModelStatus.NONE;
 
-            Color1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
-            Color2 = SwapEndian(ReadBytes(BaseAddress + 0x07EC80, 4), 4);
-            Shadow1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC78, 4), 4);
-            FinalSetOfBytes = SwapEndian(ReadBytes(BaseAddress + 0x07EC7C, 4), 4);
+            Color1 = SwapEndianRet(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
+            Color2 = SwapEndianRet(ReadBytes(BaseAddress + 0x07EC80, 4), 4);
+            Shadow1 = SwapEndianRet(ReadBytes(BaseAddress + 0x07EC78, 4), 4);
+            FinalSetOfBytes = SwapEndianRet(ReadBytes(BaseAddress + 0x07EC7C, 4), 4);
 
-            //If the color data is all zeros (Testing...)
+            //If the color data is all zeros
             if ((BitConverter.ToInt32(Color1, 0) == 0) &&
                 (BitConverter.ToInt32(Color2, 0) == 0) &&
                 (BitConverter.ToInt32(Shadow1, 0) == 0) &&
@@ -154,8 +155,25 @@ namespace M64MM.Utils
             {
                 ms = ModelStatus.MODDED;
             }
-            //If all's good :)
-            ms = ModelStatus.VANILLA;
+
+            //If the final bytes spell "CMT"
+            //Fourth byte is for the CometROM version.
+            //More checks will be done when a ROM is a CometROM.
+            if ((FinalSetOfBytes[0] == 0x43
+                && FinalSetOfBytes[1] == 0x4D
+                && FinalSetOfBytes[2] == 0x54))
+            {
+                ms = ModelStatus.COMET;
+            }
+
+            //If all data is okay but then final bytes equal zero
+            if ((BitConverter.ToInt32(Color1, 0) != 0) &&
+                (BitConverter.ToInt32(Color2, 0) != 0) &&
+                (BitConverter.ToInt32(Shadow1, 0) != 0) &&
+                (BitConverter.ToInt32(FinalSetOfBytes, 0) == 0))
+            {
+                ms = ModelStatus.VANILLA;
+            }
 
             if (updateGlobal)
             {
@@ -209,7 +227,7 @@ namespace M64MM.Utils
             {
                 //Ingame timer update
                 //ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
-                ingameTimer = await Task.Run(() => BitConverter.ToUInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32D580, 2), 4),0));
+                ingameTimer = await Task.Run(() => BitConverter.ToUInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
                 //If there's a level loaded EVEN if there's no model
                 if (modelStatus != ModelStatus.NONE)
                 {

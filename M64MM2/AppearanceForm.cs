@@ -117,7 +117,7 @@ namespace M64MM2
             senderButton.BackColor = colorDialog.Color;
             marioSprite.Refresh();
 
-            if (!IsEmuOpen || BaseAddress == 0) return;
+            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.VANILLA) return;
 
             switch (senderButton.Name)
             {
@@ -164,7 +164,7 @@ namespace M64MM2
 
         void applyAllColors()
         {
-            if (!IsEmuOpen || BaseAddress == 0) return;
+            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.VANILLA) return;
 
             WriteColor(VanillaModelColor.PantsShade, pantsColorShade.BackColor);
 
@@ -216,61 +216,9 @@ namespace M64MM2
 
         public void ParseColorCode(string code)
         {
-            //Trim some data we don't need anymore. Now each line of the color code is represented by 3 bytes.
-            byte[] data = StringToByteArray(code.Replace("8107EC", ""));
-
-            //Every 6 bytes of the trimmed data represents one color.
-            //The first line holds the red and green values, and the second line holds the blue value.
-            for (int i = 0; i < data.Length / 6; i++)
-            {
-                byte r = data[(i * 6) + 1];
-                byte g = data[(i * 6) + 2];
-                byte b = data[(i * 6) + 4];
-
-                switch (data[(i * 6)])
-                {
-                    case 0x38:
-                        hatColorShade.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0x40:
-                        hatColorMain.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0x98:
-                        hairColorShade.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0xA0:
-                        hairColorMain.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0x80:
-                        skinColorShade.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0x88:
-                        skinColorMain.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0x50:
-                        glovesColorShade.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0x58:
-                        glovesColorMain.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0x20:
-                        pantsColorShade.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0x28:
-                        pantsColorMain.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0x68:
-                        shoesColorShade.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                    case 0x70:
-                        shoesColorMain.BackColor = Color.FromArgb(r, g, b);
-                        break;
-                }
-            }
-
+            fromColorCode(code);
             marioSprite.Refresh();
             applyAllColors();
-
             askSetDefaultColors();
         }
 
@@ -364,7 +312,7 @@ namespace M64MM2
 
         void loadFromGame(object sender, EventArgs e)
         {
-            if (!IsEmuOpen || BaseAddress == 0) return;
+            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.VANILLA) return;
 
             byte[] colorData;
 

@@ -90,6 +90,61 @@ namespace M64MM.Utils
             }
         }
 
+        public static void fromColorCode(string code)
+        {
+            //Trim some data we don't need anymore. Now each line of the color code is represented by 3 bytes.
+            byte[] data = StringToByteArray(code.Replace("8107EC", ""));
+
+            //Every 6 bytes of the trimmed data represents one color.
+            //The first line holds the red and green values, and the second line holds the blue value.
+            for (int i = 0; i < data.Length / 6; i++)
+            {
+                byte r = data[(i * 6) + 1];
+                byte g = data[(i * 6) + 2];
+                byte b = data[(i * 6) + 4];
+
+                switch (data[(i * 6)])
+                {
+                    case 0x38:
+                        WriteColor(VanillaModelColor.HatShade, Color.FromArgb(r, g, b));
+                        break;
+                    case 0x40:
+                        WriteColor(VanillaModelColor.HatMain, Color.FromArgb(r, g, b));
+                        break;
+                    case 0x98:
+                        WriteColor(VanillaModelColor.HairShade, Color.FromArgb(r, g, b));
+                        break;
+                    case 0xA0:
+                        WriteColor(VanillaModelColor.HairMain, Color.FromArgb(r, g, b));
+                        break;
+                    case 0x80:
+                        WriteColor(VanillaModelColor.SkinShade, Color.FromArgb(r, g, b));
+                        break;
+                    case 0x88:
+                        WriteColor(VanillaModelColor.SkinMain, Color.FromArgb(r, g, b));
+                        break;
+                    case 0x50:
+                        WriteColor(VanillaModelColor.GloveShade, Color.FromArgb(r, g, b));
+                        break;
+                    case 0x58:
+                        WriteColor(VanillaModelColor.GloveMain, Color.FromArgb(r, g, b));
+                        break;
+                    case 0x20:
+                        WriteColor(VanillaModelColor.PantsShade, Color.FromArgb(r, g, b));
+                        break;
+                    case 0x28:
+                        WriteColor(VanillaModelColor.PantsMain, Color.FromArgb(r, g, b));
+                        break;
+                    case 0x68:
+                        WriteColor(VanillaModelColor.ShoeShade, Color.FromArgb(r, g, b));
+                        break;
+                    case 0x70:
+                        WriteColor(VanillaModelColor.ShoeMain, Color.FromArgb(r, g, b));
+                        break;
+                }
+            }
+        }
+
         public static void changeShadow(int amount, ShadowParts part)
         {
             byte[] data = new byte[1];

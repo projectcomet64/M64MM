@@ -116,8 +116,18 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Comet ROMs need extra checks before being able to use color codes.
+        ///Wait for a later update of both M64MM and CometROM!.
+        /// </summary>
+        internal static string colorCodeCometRom {
+            get {
+                return ResourceManager.GetString("colorCodeCometRom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ...This ROM has no model data.
-        ///It won&apos;t work..
+        ///The color codes and shading only apply to vanilla models and mods that support it..
         /// </summary>
         internal static string colorCodeEmptyRom {
             get {
@@ -144,7 +154,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a This ROM has a different model data compared to Mario&apos;s usual model data. The Color Code Studio and Shading Editor have been disabled; they might not work correctly in this ROM..
+        ///   Busca una cadena traducida similar a This ROM has a different model data compared to Mario&apos;s usual model data and is not a compatible CometROM. The Color Code Studio and Shading Editor have been disabled; they might not work correctly in this ROM..
         /// </summary>
         internal static string colorCodeModdedRom {
             get {
@@ -266,7 +276,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a M64MM PRE.
+        ///   Busca una cadena traducida similar a M64MM Classic.
         /// </summary>
         internal static string programName {
             get {
