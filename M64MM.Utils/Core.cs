@@ -145,9 +145,8 @@ namespace M64MM.Utils
             {
                 ms = ModelStatus.EMPTY;
             }
-
             //If the color data is not RR GG BB *00* RR GG BB *00* XX YY ZZ *00* *00 00 00 00*
-            if ((Color1[3] != 0)
+            else if ((Color1[3] != 0)
                 || (Color2[3] != 0)
                 || (Shadow1[3] != 0)
                 || (BitConverter.ToInt32(FinalSetOfBytes, 0) != 0))
@@ -155,7 +154,10 @@ namespace M64MM.Utils
                 ms = ModelStatus.MODDED;
             }
             //If all's good :)
-            ms = ModelStatus.VANILLA;
+            else
+            {
+                ms = ModelStatus.VANILLA;
+            }
 
             if (updateGlobal)
             {
