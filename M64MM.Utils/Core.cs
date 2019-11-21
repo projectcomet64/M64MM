@@ -136,13 +136,8 @@ namespace M64MM.Utils
                 }
             }
 
-            //If we don't find anything, reset the base address to 0 and tell every addon to perform its "Zero Base Addr. routine"
-            if (BaseAddress > 0)
-            {
-                Console.WriteLine("Base Address is zero!");
-                Task.Run(() => performBaseAddrZero());
-                BaseAddress = 0;
-            }
+            //If we don't find anything, reset the base address to 0
+            BaseAddress = 0;
 
         }
 
