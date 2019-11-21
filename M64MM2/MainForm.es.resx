@@ -163,9 +163,6 @@
   <data name="lblCameraStatus.Text" xml:space="preserve">
     <value>Cámara: Por defecto</value>
   </data>
-  <data name="btnAnimRestart.Text" xml:space="preserve">
-    <value>Re-reproducir</value>
-  </data>
   <data name="btnAnimResetAll.Text" xml:space="preserve">
     <value>Reiniciar todas</value>
   </data>

@@ -145,7 +145,6 @@ namespace M64MM2
                         cbAnimNew.SelectedIndex = 0;
                     }
 
-                    btnAnimRestart.Enabled = (defaultAnimation.Value != "0");
                 }
             }
             catch (Exception e)
@@ -437,28 +436,6 @@ namespace M64MM2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnAnimRestart_Click(object sender, EventArgs e)
-        {
-            if (!IsEmuOpen || BaseAddress == 0) return;
-
-            if (selectedAnimOld.Value == "" || selectedAnimNew.Value == "")
-            {
-                MessageBox.Show(this, String.Format(Resources.invalidAnimSelected, ((Control)sender).Name));
-                return;
-            }
-            byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimNew.Value), 4);
-            byte[] initialAnimation = SwapEndian(StringToByteArray(defaultAnimation.Value), 4);
-            long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
-            WriteBytes(BaseAddress + 0x33B198, new byte[] { 0 });
-            while ((BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x33B198, 2), 4), 0) < 255) == false)
-            {
-                WriteBytes(address, initialAnimation);
-                //Stall, for literally just one in-game frame.
-            }
-            WriteBytes(address, stuffToWrite);
 
         }
 

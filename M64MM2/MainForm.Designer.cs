@@ -46,7 +46,6 @@
             this.lblCameraStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblCameraCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.grpAnimSwap = new System.Windows.Forms.GroupBox();
-            this.btnAnimRestart = new System.Windows.Forms.Button();
             this.btnAnimResetAll = new System.Windows.Forms.Button();
             this.btnAnimReset = new System.Windows.Forms.Button();
             this.btnAnimSwap = new System.Windows.Forms.Button();
@@ -172,7 +171,6 @@
             // grpAnimSwap
             // 
             resources.ApplyResources(this.grpAnimSwap, "grpAnimSwap");
-            this.grpAnimSwap.Controls.Add(this.btnAnimRestart);
             this.grpAnimSwap.Controls.Add(this.btnAnimResetAll);
             this.grpAnimSwap.Controls.Add(this.btnAnimReset);
             this.grpAnimSwap.Controls.Add(this.btnAnimSwap);
@@ -182,13 +180,6 @@
             this.grpAnimSwap.Controls.Add(this.cbAnimOld);
             this.grpAnimSwap.Name = "grpAnimSwap";
             this.grpAnimSwap.TabStop = false;
-            // 
-            // btnAnimRestart
-            // 
-            resources.ApplyResources(this.btnAnimRestart, "btnAnimRestart");
-            this.btnAnimRestart.Name = "btnAnimRestart";
-            this.btnAnimRestart.UseVisualStyleBackColor = true;
-            this.btnAnimRestart.Click += new System.EventHandler(this.btnAnimRestart_Click);
             // 
             // btnAnimResetAll
             // 
@@ -316,7 +307,6 @@
         private System.Windows.Forms.ComboBox cbCamStyles;
         private System.Windows.Forms.Button btnChangeCamStyle;
         private System.Windows.Forms.ToolStripMenuItem extraControlsToolStripMenuItem;
-        private System.Windows.Forms.Button btnAnimRestart;
         private System.Windows.Forms.ToolStripMenuItem showRunningPluginsToolStripMenuItem;
     }
 }
