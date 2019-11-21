@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace M64MM.Additions
 {
@@ -48,6 +45,8 @@ namespace M64MM.Additions
     public interface IModule
     {
         void Initialize();
+        void OnBaseAddressFound();
+        void OnBaseAddressZero();
         void Update();
         void Reset();
         void Close(EventArgs e);

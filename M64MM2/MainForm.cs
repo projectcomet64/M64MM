@@ -16,7 +16,6 @@ namespace M64MM2
 {
     public partial class MainForm : Form
     {
-        public static List<Addon> moduleList = new List<Addon>();
         AppearanceForm appearanceForm;
         ExtraControlsForm extraControlsForm;
         bool cameraFrozen = false;
@@ -31,7 +30,7 @@ namespace M64MM2
         //ASYNCHRONOUS FOR THE WIN
         //FUNNILY ENOUGH! This takes little to no CPU, actually
         //It's goddamn amazing
-        Task updateFunction = Task.Run(() => performUpdate(moduleList));
+        Task updateFunction = Task.Run(() => performUpdate());
 
         public MainForm()
         {
@@ -214,29 +213,35 @@ namespace M64MM2
                 Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus1;
                 FindEmuProcess();
+                if (BaseAddress > 0)
+                {
+                    Task.Run(() => performBaseAddrUpd());
+                    BaseAddress = 0;
+                }
                 modelStatus = ModelStatus.NONE;
                 return;
             }
 
             FindBaseAddress();
+            //Finding base address
             if (BaseAddress <= 0)
             {
                 Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus2;
                 modelStatus = ModelStatus.NONE;
+                return;
             }
 
             //Reading level address (It's meant to be 0x32DDF8 but ENDIANESS:TM:)
-            if (BitConverter.ToInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0) < 3)
+            if (CurrentLevelID < 3)
             {
-                int level = BitConverter.ToInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
                 toolsMenuItem.Enabled = false;
                 lblProgramStatus.Text = Resources.programStatusAwaitingLevel + "0x" + BaseAddress.ToString("X8");
                 modelStatus = ModelStatus.NONE;
                 return;
             }
 
-            //Are we running a moddded model ROM? (Working with Vanilla-styled vs. EXMO)
+            //Are we running a moddded model ROM? (Working with Vanilla-styled vs. COMET / [redacted])
             modelStatus = ValidateModel();
             toolsMenuItem.Enabled = true;
             Text = Resources.programName + " " + Application.ProductVersion + " - " + modelStatus.ToString() + " ROM.";

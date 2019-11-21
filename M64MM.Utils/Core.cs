@@ -15,10 +15,26 @@ namespace M64MM.Utils
     public static class Core
     {
         public static StringBuilder AddonErrorsBuilder;
+        public static List<Addon> moduleList = new List<Addon>();
         public static long BaseAddress;
-        public static bool IsEmuOpen => (emuProcess != null && !emuProcess.HasExited);
+        public static bool IsEmuOpen
+        {
+            get
+            {
+                try
+                {
+                    return (emuProcess != null && !emuProcess.HasExited);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            private set { }
+        }
         public static UInt32 ingameTimer;
         public static UInt32 previousFrame;
+        public static int CurrentLevelID => BitConverter.ToInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
         public enum ModelStatus
         {
             NONE,
@@ -27,9 +43,7 @@ namespace M64MM.Utils
             MODDED,
             COMET
         }
-
         public static ModelStatus modelStatus = ModelStatus.NONE;
-
         static Process emuProcess;
         static IntPtr emuProcessHandle;
         const int PROCESS_ALL_ACCESS = 0x01F0FF;
@@ -84,6 +98,7 @@ namespace M64MM.Utils
         {
             foreach (Process proc in Process.GetProcesses())
             {
+                // TODO: Mupen support
                 if (proc.ProcessName.Contains("Project64"))
                 {
                     emuProcess = proc;
@@ -121,8 +136,14 @@ namespace M64MM.Utils
                 }
             }
 
-            //If we don't find anything, reset the base address to 0
-            BaseAddress = 0;
+            //If we don't find anything, reset the base address to 0 and tell every addon to perform its "Zero Base Addr. routine"
+            if (BaseAddress > 0)
+            {
+                Console.WriteLine("Base Address is zero!");
+                Task.Run(() => performBaseAddrZero());
+                BaseAddress = 0;
+            }
+
         }
 
         public static ModelStatus ValidateModel(bool updateGlobal = true)
@@ -182,16 +203,6 @@ namespace M64MM.Utils
             return ms;
         }
 
-        [Obsolete]
-        public static void WaitForNextFrame()
-        {
-            int viNumber = BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 4), 4), 0);
-            while (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 4), 4), 0) != viNumber)
-            {
-                //Stall
-            }
-        }
-
         public static byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)
@@ -221,7 +232,51 @@ namespace M64MM.Utils
             return byteArray;
         }
 
-        public async static void performUpdate(List<Addon> moduleList)
+        public async static void performBaseAddrUpd()
+        {
+            for (int i = 0; i < moduleList.Count(); i++)
+            {
+                if (moduleList[i].Active == true)
+                {
+                    try
+                    {
+                        await Task.Run(() => moduleList[i].Module.OnBaseAddressFound());
+                        continue;
+                    }
+                    catch (Exception e)
+                    {
+                        AddonErrorsBuilder.AppendFormat("{0} [RUNTIME ERROR] - Error while executing Update from Addon {1}. Exception: {2}\nAddon has been disabled.\n--------\n", DateTime.Now.ToLongTimeString(), moduleList[i].Name, e.Message);
+                        MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
+                        moduleList[i].Active = false;
+                    }
+
+                }
+            }
+        }
+
+        public async static void performBaseAddrZero()
+        {
+            for (int i = 0; i < moduleList.Count(); i++)
+            {
+                if (moduleList[i].Active == true)
+                {
+                    try
+                    {
+                        await Task.Run(() => moduleList[i].Module.OnBaseAddressZero());
+                        continue;
+                    }
+                    catch (Exception e)
+                    {
+                        AddonErrorsBuilder.AppendFormat("{0} [RUNTIME ERROR] - Error while executing Update from Addon {1}. Exception: {2}\nAddon has been disabled.\n--------\n", DateTime.Now.ToLongTimeString(), moduleList[i].Name, e.Message);
+                        MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
+                        moduleList[i].Active = false;
+                    }
+
+                }
+            }
+        }
+
+        public async static void performUpdate()
         {
             while (true)
             {
