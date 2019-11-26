@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using M64MM2.Properties;
 using static M64MM.Utils.Core;
+using M64MM.Utils;
 using M64MM.Additions;
 using System.Diagnostics;
 using System.Security;
@@ -20,11 +21,8 @@ namespace M64MM2
         ExtraControlsForm extraControlsForm;
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
-        List<Animation> animList;
-        List<CamStyle> camStyles;
-        Animation defaultAnimation;
-        Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : new Animation();
-        Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : new Animation();
+        public Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : new Animation();
+        public Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : new Animation();
 
         //This handles the "Each ingame frame"
         //ASYNCHRONOUS FOR THE WIN
@@ -91,7 +89,8 @@ namespace M64MM2
                     "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            if (AddonErrorsBuilder.Length > 0){
+            if (AddonErrorsBuilder.Length > 0)
+            {
                 // If there were any errors (String, may make a collection of objects?)
                 addons.DropDownItems.Add(new ToolStripSeparator());
                 addons.DropDownItems.Add(new ToolStripMenuItem("Addon warnings", null, (a, b) => { new AddonErrors().ShowDialog(); }));
@@ -104,7 +103,7 @@ namespace M64MM2
             updateTimer.Interval = 1000;
             updateTimer.Start();
             animList = new List<Animation>();
-            camStyles = new List<CamStyle>();
+            camStyles = new List<CameraStyle>();
             defaultAnimation.Value = "0";
             lblCameraStatus.Text = Resources.cameraStateDefault;
             toolsMenuItem.Enabled = false;
@@ -120,10 +119,13 @@ namespace M64MM2
                         string rawLine = sr.ReadLine();
                         string[] splitLine = rawLine.Trim().Split('|');
 
-                        Animation anim;
-                        anim.Value = splitLine[0];
-                        //anim.Description = splitLine[1];
-                        anim.RealIndex = int.Parse(splitLine[2]);
+                        Animation anim = new Animation
+                        {
+                            Value = splitLine[0],
+                            //anim.Description = splitLine[1];
+                            RealIndex = int.Parse(splitLine[2])
+                        };
+
                         animList.Add(anim);
                         try
                         {
@@ -168,7 +170,7 @@ namespace M64MM2
                     {
                         string rawLine = sr.ReadLine().Trim();
                         string[] splitLine = rawLine.Split('|');
-                        CamStyle style = new CamStyle
+                        CameraStyle style = new CameraStyle
                         {
                             Value = byte.Parse(splitLine[0], NumberStyles.HexNumber),
                             Name = splitLine[1]
@@ -187,7 +189,7 @@ namespace M64MM2
 
             if (camStyles.Count > 0)
             {
-                foreach (CamStyle style in camStyles)
+                foreach (CameraStyle style in camStyles)
                 {
                     cbCamStyles.Items.Add(style.Name);
                 }
@@ -458,18 +460,5 @@ namespace M64MM2
             Taskman tman = new Taskman(ref moduleList);
             tman.Show();
         }
-    }
-
-
-    struct Animation
-    {
-        public string Value;
-        public int RealIndex;
-    }
-
-    struct CamStyle
-    {
-        public byte Value;
-        public string Name;
     }
 }

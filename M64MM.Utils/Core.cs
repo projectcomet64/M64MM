@@ -17,6 +17,9 @@ namespace M64MM.Utils
         public static StringBuilder AddonErrorsBuilder;
         public static List<Addon> moduleList = new List<Addon>();
         public static long BaseAddress;
+        public static List<Animation> animList;
+        public static List<CameraStyle> camStyles;
+        public static Animation defaultAnimation;
         public static bool IsEmuOpen
         {
             get
@@ -329,17 +332,5 @@ namespace M64MM.Utils
         {
             return 0 != GetAsyncKeyState(vKey);
         }
-    }
-
-    public struct Animation
-    {
-        public string Value;
-        public int RealIndex;
-    }
-
-    public struct CamStyle
-    {
-        public byte Value;
-        public string Name;
     }
 }
