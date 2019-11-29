@@ -1,4 +1,4 @@
-0006BDA000000BDA|Crouching (Default)|152
+﻿0006BDA000000BDA|Crouching (Default)|152
 000862F4000008AA|Standing normal (part 1)|195
 00086BA0000008AA|Standing normal (part 2)|196
 0008744C000008AA|Standing normal (part 3)|197
@@ -36,7 +36,7 @@
 000083F400000670|Hand stand in tree?|11
 0000840C00000658|Go back from handstand|12
 00008A6400000416|In tree?|13
-00008E7C00000164|Standing straight with arms out (T-pose)|14|1
+00008E7C00000164|Standing straight with arms out (T-pose)|14
 00008FE00000070A|Skid on ground|15
 00008FF8000006F2|Skid on ground, go back to normal|16
 00009C980000063A|Land from long jump|18
@@ -91,12 +91,12 @@
 00039330000005BA|Get up from ground with small object|70
 00042D0C00000D00|Pick up large object|89
 0005C2440000056E|Holding large object|125
-0003ED2800000636|Riding on Koopa shell|84
+0003ED2800000636|Riding with bent knees on Koopa shell (unused)|84
 000398EC0000045A|Jump on Koopa shell|71
 00051AD40000061A|Jump on Koopa shell (part 2)|109
-0003B24800000626|Side flip?|73
+0003B24800000626|Forward flip (unused)|73
 0003B8700000037C|Jump while riding shell|74
-0003DADC000004FE|Triple jump?|81
+0003DADC000004FE|Start forward spin (unused)|81
 0003DFDC00000482|Throw object|82
 0003E460000008C6|Slide kick|83
 0003F36000002D18|Legs stuck under snow / sand|85
@@ -128,7 +128,7 @@
 000526740000018E|Special triple jump|111
 0005268C00000176|Similar to last, backward|112
 0005280400000932|Crouch attack (leg sweep)|113
-000531500000120A|Running (Unused?)|115
+000531500000120A|Running (Unused)|115
 0005435C00000848|Get bumped by enemy|116
 00054BA400000878|Get bumped by enemy (from behind)|117
 0005675800000AB4|Stuck, looking around|119
