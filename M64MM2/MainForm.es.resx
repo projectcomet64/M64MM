@@ -145,32 +145,81 @@
   <data name="aboutMenuItem.Text" xml:space="preserve">
     <value>&amp;Acerca de</value>
   </data>
+  <data name="menuStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="btnSoftUnfreeze.Text" xml:space="preserve">
     <value>Desc. Ligero (Ctrl + 5)</value>
+  </data>
+  <data name="btnSoftUnfreeze.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="btnSoftFreeze.Text" xml:space="preserve">
     <value>Cong. Ligero(Ctrl + 4)</value>
   </data>
+  <data name="btnSoftFreeze.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="btnUnfreeze.Text" xml:space="preserve">
     <value>Descongelar (Ctrl + 2)</value>
+  </data>
+  <data name="btnUnfreeze.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="btnFreeze.Text" xml:space="preserve">
     <value>Congelar (Ctrl + 1)</value>
   </data>
+  <data name="btnFreeze.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="grpCamera.Text" xml:space="preserve">
     <value>Controles de cámara</value>
+  </data>
+  <data name="grpCamera.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lblCameraStatus.Text" xml:space="preserve">
     <value>Cámara: Por defecto</value>
   </data>
+  <data name="statusStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chbAutoApply.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 77</value>
+  </data>
+  <data name="chbAutoApply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 17</value>
+  </data>
+  <data name="chbAutoApply.Text" xml:space="preserve">
+    <value>Aplicar automáticamente</value>
+  </data>
+  <data name="chbAutoApply.ToolTip" xml:space="preserve">
+    <value>Si está activado, esto actualizará automáticamente la animación a
+reemplazar con la animación con la que se reemplazará, cuando el
+contenido de la segunda caja de texto cambie.
+
+Nota: puede verse raro de vez en cuando.</value>
+  </data>
   <data name="btnAnimResetAll.Text" xml:space="preserve">
     <value>Reiniciar todas</value>
+  </data>
+  <data name="btnAnimResetAll.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="btnAnimReset.Text" xml:space="preserve">
     <value>Reiniciar</value>
   </data>
+  <data name="btnAnimReset.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnAnimSwap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 23</value>
+  </data>
   <data name="btnAnimSwap.Text" xml:space="preserve">
     <value>Aplicar</value>
+  </data>
+  <data name="btnAnimSwap.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lblAnimNew.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 13</value>
@@ -178,20 +227,44 @@
   <data name="lblAnimNew.Text" xml:space="preserve">
     <value>Con esta animación:</value>
   </data>
+  <data name="lblAnimNew.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="lblAnimOld.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 13</value>
   </data>
   <data name="lblAnimOld.Text" xml:space="preserve">
     <value>Reemplazar esta animación:</value>
   </data>
+  <data name="lblAnimOld.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbAnimNew.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbAnimOld.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="grpAnimSwap.Text" xml:space="preserve">
     <value>Controles de cambio de animación</value>
+  </data>
+  <data name="grpAnimSwap.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="btnChangeCamStyle.Text" xml:space="preserve">
     <value>Aplicar</value>
   </data>
+  <data name="btnChangeCamStyle.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbCamStyles.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="grpCamStyle.Text" xml:space="preserve">
     <value>Cambio de estilo de cámara</value>
+  </data>
+  <data name="grpCamStyle.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2089,5 +2162,8 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEA
         AA==
 </value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

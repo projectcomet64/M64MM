@@ -158,6 +158,7 @@ namespace M64MM2
                 btnAnimReset.Enabled = false;
                 btnAnimResetAll.Enabled = false;
                 btnAnimReset.Enabled = false;
+                chbAutoApply.Enabled = false;
             }
 
 
@@ -459,6 +460,14 @@ namespace M64MM2
         {
             Taskman tman = new Taskman(ref moduleList);
             tman.Show();
+        }
+
+        private void cbAnimNew_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (chbAutoApply.Checked)
+            {
+                WriteAnimSwap(sender, e);
+            }
         }
     }
 }

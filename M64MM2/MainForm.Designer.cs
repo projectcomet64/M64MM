@@ -46,6 +46,7 @@
             this.lblCameraStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblCameraCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.grpAnimSwap = new System.Windows.Forms.GroupBox();
+            this.chbAutoApply = new System.Windows.Forms.CheckBox();
             this.btnAnimResetAll = new System.Windows.Forms.Button();
             this.btnAnimReset = new System.Windows.Forms.Button();
             this.btnAnimSwap = new System.Windows.Forms.Button();
@@ -57,6 +58,7 @@
             this.grpCamStyle = new System.Windows.Forms.GroupBox();
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
+            this.ttAutoApplyInfo = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -66,52 +68,52 @@
             // 
             // menuStrip
             // 
-            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsMenuItem,
             this.aboutMenuItem});
+            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
             // 
             // toolsMenuItem
             // 
-            resources.ApplyResources(this.toolsMenuItem, "toolsMenuItem");
             this.toolsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.appearanceSettingsMenuItem,
             this.extraControlsToolStripMenuItem,
             this.showRunningPluginsToolStripMenuItem});
             this.toolsMenuItem.Name = "toolsMenuItem";
+            resources.ApplyResources(this.toolsMenuItem, "toolsMenuItem");
             // 
             // appearanceSettingsMenuItem
             // 
-            resources.ApplyResources(this.appearanceSettingsMenuItem, "appearanceSettingsMenuItem");
             this.appearanceSettingsMenuItem.Name = "appearanceSettingsMenuItem";
+            resources.ApplyResources(this.appearanceSettingsMenuItem, "appearanceSettingsMenuItem");
             this.appearanceSettingsMenuItem.Click += new System.EventHandler(this.openAppearanceSettings);
             // 
             // extraControlsToolStripMenuItem
             // 
-            resources.ApplyResources(this.extraControlsToolStripMenuItem, "extraControlsToolStripMenuItem");
             this.extraControlsToolStripMenuItem.Name = "extraControlsToolStripMenuItem";
+            resources.ApplyResources(this.extraControlsToolStripMenuItem, "extraControlsToolStripMenuItem");
             this.extraControlsToolStripMenuItem.Click += new System.EventHandler(this.openExtraControls);
             // 
             // showRunningPluginsToolStripMenuItem
             // 
-            resources.ApplyResources(this.showRunningPluginsToolStripMenuItem, "showRunningPluginsToolStripMenuItem");
             this.showRunningPluginsToolStripMenuItem.Name = "showRunningPluginsToolStripMenuItem";
+            resources.ApplyResources(this.showRunningPluginsToolStripMenuItem, "showRunningPluginsToolStripMenuItem");
             this.showRunningPluginsToolStripMenuItem.Click += new System.EventHandler(this.showRunningPluginsToolStripMenuItem_Click);
             // 
             // aboutMenuItem
             // 
-            resources.ApplyResources(this.aboutMenuItem, "aboutMenuItem");
             this.aboutMenuItem.Name = "aboutMenuItem";
+            resources.ApplyResources(this.aboutMenuItem, "aboutMenuItem");
             this.aboutMenuItem.Click += new System.EventHandler(this.openAboutForm);
             // 
             // grpCamera
             // 
-            resources.ApplyResources(this.grpCamera, "grpCamera");
             this.grpCamera.Controls.Add(this.btnSoftUnfreeze);
             this.grpCamera.Controls.Add(this.btnSoftFreeze);
             this.grpCamera.Controls.Add(this.btnUnfreeze);
             this.grpCamera.Controls.Add(this.btnFreeze);
+            resources.ApplyResources(this.grpCamera, "grpCamera");
             this.grpCamera.Name = "grpCamera";
             this.grpCamera.TabStop = false;
             // 
@@ -145,11 +147,11 @@
             // 
             // statusStrip
             // 
-            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblProgramStatus,
             this.lblCameraStatus,
             this.lblCameraCode});
+            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.SizingGrip = false;
             // 
@@ -165,12 +167,12 @@
             // 
             // lblCameraCode
             // 
-            resources.ApplyResources(this.lblCameraCode, "lblCameraCode");
             this.lblCameraCode.Name = "lblCameraCode";
+            resources.ApplyResources(this.lblCameraCode, "lblCameraCode");
             // 
             // grpAnimSwap
             // 
-            resources.ApplyResources(this.grpAnimSwap, "grpAnimSwap");
+            this.grpAnimSwap.Controls.Add(this.chbAutoApply);
             this.grpAnimSwap.Controls.Add(this.btnAnimResetAll);
             this.grpAnimSwap.Controls.Add(this.btnAnimReset);
             this.grpAnimSwap.Controls.Add(this.btnAnimSwap);
@@ -178,8 +180,16 @@
             this.grpAnimSwap.Controls.Add(this.lblAnimOld);
             this.grpAnimSwap.Controls.Add(this.cbAnimNew);
             this.grpAnimSwap.Controls.Add(this.cbAnimOld);
+            resources.ApplyResources(this.grpAnimSwap, "grpAnimSwap");
             this.grpAnimSwap.Name = "grpAnimSwap";
             this.grpAnimSwap.TabStop = false;
+            // 
+            // chbAutoApply
+            // 
+            resources.ApplyResources(this.chbAutoApply, "chbAutoApply");
+            this.chbAutoApply.Name = "chbAutoApply";
+            this.ttAutoApplyInfo.SetToolTip(this.chbAutoApply, resources.GetString("chbAutoApply.ToolTip"));
+            this.chbAutoApply.UseVisualStyleBackColor = true;
             // 
             // btnAnimResetAll
             // 
@@ -214,16 +224,17 @@
             // 
             // cbAnimNew
             // 
-            resources.ApplyResources(this.cbAnimNew, "cbAnimNew");
             this.cbAnimNew.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbAnimNew.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            resources.ApplyResources(this.cbAnimNew, "cbAnimNew");
             this.cbAnimNew.Name = "cbAnimNew";
+            this.cbAnimNew.SelectedIndexChanged += new System.EventHandler(this.cbAnimNew_SelectedIndexChanged);
             // 
             // cbAnimOld
             // 
-            resources.ApplyResources(this.cbAnimOld, "cbAnimOld");
             this.cbAnimOld.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbAnimOld.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            resources.ApplyResources(this.cbAnimOld, "cbAnimOld");
             this.cbAnimOld.Name = "cbAnimOld";
             this.cbAnimOld.SelectedIndexChanged += new System.EventHandler(this.cbAnimOld_SelectedIndexChanged);
             // 
@@ -233,9 +244,9 @@
             // 
             // grpCamStyle
             // 
-            resources.ApplyResources(this.grpCamStyle, "grpCamStyle");
             this.grpCamStyle.Controls.Add(this.btnChangeCamStyle);
             this.grpCamStyle.Controls.Add(this.cbCamStyles);
+            resources.ApplyResources(this.grpCamStyle, "grpCamStyle");
             this.grpCamStyle.Name = "grpCamStyle";
             this.grpCamStyle.TabStop = false;
             // 
@@ -248,9 +259,14 @@
             // 
             // cbCamStyles
             // 
-            resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
             this.cbCamStyles.FormattingEnabled = true;
+            resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
             this.cbCamStyles.Name = "cbCamStyles";
+            // 
+            // ttAutoApplyInfo
+            // 
+            this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ttAutoApplyInfo.ToolTipTitle = "Auto apply animation";
             // 
             // MainForm
             // 
@@ -308,6 +324,8 @@
         private System.Windows.Forms.Button btnChangeCamStyle;
         private System.Windows.Forms.ToolStripMenuItem extraControlsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showRunningPluginsToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chbAutoApply;
+        private System.Windows.Forms.ToolTip ttAutoApplyInfo;
     }
 }
 
