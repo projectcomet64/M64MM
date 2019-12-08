@@ -34,9 +34,19 @@ namespace M64MM2
         void btnRemoveHud_Click(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
+            byte[] livesBytes = (cbLivesHud.Checked ? StringToByteArray("0C0B8DD1") : emptyWord);
+            byte[] powerBytes = (cbPowerMtr.Checked ? StringToByteArray("0C0B8D95") : emptyWord);
+            byte[] coinBytes = (cbCoins.Checked ? StringToByteArray("0C0B8DEA") : emptyWord);
+            byte[] starBytes = (cbStarsHud.Checked ? StringToByteArray("0C0B8E03") : emptyWord);
+            byte[] cameraBytes = (cbLakitu.Checked ? StringToByteArray("0C0B8ECF") : emptyWord);
 
-            WriteBatchBytes(new long[] { 0x2E3DB0, 0x2E3DE0, 0x2E3E18, 0x2E3DC8 }, new byte[] { 0,0,0,0 }, true);
-            WriteBytes(BaseAddress + 0x3325F4, SwapEndianRet(StringToByteArray("01000000"), 4));
+            WriteBytes(BaseAddress + 0x2E3DB0, livesBytes, true);
+            WriteBytes(BaseAddress + 0x2E3E10, powerBytes, true);
+            WriteBytes(BaseAddress + 0x2E3E18, coinBytes, true);
+            WriteBytes(BaseAddress + 0x2E3DC8, starBytes, true);
+            WriteBytes(BaseAddress + 0x2E3DE0, cameraBytes, true);
+            //TODO: Move this to Update
+            //WriteBytes(BaseAddress + 0x3325F4,StringToByteArray("FF000000"), true);
         }
 
         private void btnBatchWrite_Click(object sender, EventArgs e)

@@ -20,6 +20,7 @@ namespace M64MM.Utils
         public static List<Animation> animList;
         public static List<CameraStyle> camStyles;
         public static Animation defaultAnimation;
+        public static byte[] emptyWord = new byte[] { 0, 0, 0, 0 };
         public static bool IsEmuOpen
         {
             get
@@ -37,7 +38,7 @@ namespace M64MM.Utils
         }
         public static UInt32 ingameTimer;
         public static UInt32 previousFrame;
-        public static int CurrentLevelID => BitConverter.ToInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
+        public static int CurrentLevelID => BitConverter.ToInt16(SwapEndian(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
         public enum ModelStatus
         {
             NONE,
@@ -75,23 +76,27 @@ namespace M64MM.Utils
 
 
         #region Writing
-        public static void WriteBytes(long address, byte[] data)
+        public static void WriteBytes(long address, byte[] data, bool swap = false)
         {
             IntPtr ptr = new IntPtr(address);
             long size = data.LongLength;
             long bytesWritten = 0;
+
+            if (swap)
+            {
+                data = SwapEndian(data, 4);
+            }
 
             WriteProcessMemory(emuProcessHandle, ptr, data, size, ref bytesWritten);
         }
 
         public static void WriteBatchBytes(long[] addresses, byte[] data, bool useBase)
         {
-            SwapEndian(data, 4);
             long baseAddr = useBase ? BaseAddress : 0;
             foreach (long addr in addresses)
             {
                 byte[] val = ReadBytes(baseAddr + addr, 1);
-                WriteBytes(baseAddr + addr, data);
+                WriteBytes(baseAddr + addr, SwapEndian(data, 4));
             }
         }
         #endregion
@@ -152,10 +157,10 @@ namespace M64MM.Utils
             byte[] FinalSetOfBytes;
             ModelStatus ms = ModelStatus.NONE;
 
-            Color1 = SwapEndianRet(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
-            Color2 = SwapEndianRet(ReadBytes(BaseAddress + 0x07EC80, 4), 4);
-            Shadow1 = SwapEndianRet(ReadBytes(BaseAddress + 0x07EC78, 4), 4);
-            FinalSetOfBytes = SwapEndianRet(ReadBytes(BaseAddress + 0x07EC7C, 4), 4);
+            Color1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
+            Color2 = SwapEndian(ReadBytes(BaseAddress + 0x07EC80, 4), 4);
+            Shadow1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC78, 4), 4);
+            FinalSetOfBytes = SwapEndian(ReadBytes(BaseAddress + 0x07EC7C, 4), 4);
 
             //If the color data is all zeros
             if ((BitConverter.ToInt32(Color1, 0) == 0) &&
@@ -210,16 +215,6 @@ namespace M64MM.Utils
         }
 
         public static byte[] SwapEndian(byte[] array, int wordSize)
-        {
-            for (int x = 0; x < array.Length / wordSize; x++)
-            {
-                Array.Reverse(array, x * wordSize, wordSize);
-            }
-
-            return array;
-        }
-
-        public static byte[] SwapEndianRet(byte[] array, int wordSize)
         {
             byte[] byteArray = array;
             for (int x = 0; x < byteArray.Length / wordSize; x++)
@@ -280,7 +275,7 @@ namespace M64MM.Utils
             {
                 //Ingame timer update
                 //ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
-                ingameTimer = await Task.Run(() => BitConverter.ToUInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
+                ingameTimer = await Task.Run(() => BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
                 //If there's a level loaded EVEN if there's no model
                 if (modelStatus != ModelStatus.NONE)
                 {
@@ -320,7 +315,7 @@ namespace M64MM.Utils
                     else if (ingameTimer <= previousFrame)
                     {
                         await Task.Run(() => previousFrame = ingameTimer);
-                        ingameTimer = await Task.Run(() => BitConverter.ToUInt16(SwapEndianRet(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
+                        ingameTimer = await Task.Run(() => BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
                     }
                 }
                 // zzz

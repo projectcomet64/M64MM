@@ -34,6 +34,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbCoins = new System.Windows.Forms.CheckBox();
+            this.cbPowerMtr = new System.Windows.Forms.CheckBox();
+            this.cbLakitu = new System.Windows.Forms.CheckBox();
+            this.cbStarsHud = new System.Windows.Forms.CheckBox();
+            this.cbLivesHud = new System.Windows.Forms.CheckBox();
             this.btnRemoveHud = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tbAddresses = new System.Windows.Forms.TextBox();
@@ -65,19 +70,54 @@
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tbLevitate);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnRemoveHud);
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.cbCoins);
+            this.groupBox2.Controls.Add(this.cbPowerMtr);
+            this.groupBox2.Controls.Add(this.cbLakitu);
+            this.groupBox2.Controls.Add(this.cbStarsHud);
+            this.groupBox2.Controls.Add(this.cbLivesHud);
+            this.groupBox2.Controls.Add(this.btnRemoveHud);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // cbCoins
+            // 
+            resources.ApplyResources(this.cbCoins, "cbCoins");
+            this.cbCoins.Name = "cbCoins";
+            this.cbCoins.UseVisualStyleBackColor = true;
+            // 
+            // cbPowerMtr
+            // 
+            resources.ApplyResources(this.cbPowerMtr, "cbPowerMtr");
+            this.cbPowerMtr.Name = "cbPowerMtr";
+            this.cbPowerMtr.UseVisualStyleBackColor = true;
+            // 
+            // cbLakitu
+            // 
+            resources.ApplyResources(this.cbLakitu, "cbLakitu");
+            this.cbLakitu.Name = "cbLakitu";
+            this.cbLakitu.UseVisualStyleBackColor = true;
+            // 
+            // cbStarsHud
+            // 
+            resources.ApplyResources(this.cbStarsHud, "cbStarsHud");
+            this.cbStarsHud.Name = "cbStarsHud";
+            this.cbStarsHud.UseVisualStyleBackColor = true;
+            // 
+            // cbLivesHud
+            // 
+            resources.ApplyResources(this.cbLivesHud, "cbLivesHud");
+            this.cbLivesHud.Name = "cbLivesHud";
+            this.cbLivesHud.UseVisualStyleBackColor = true;
             // 
             // btnRemoveHud
             // 
@@ -88,11 +128,11 @@
             // 
             // groupBox3
             // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.tbAddresses);
             this.groupBox3.Controls.Add(this.tbData);
             this.groupBox3.Controls.Add(this.btnClearBoxes);
             this.groupBox3.Controls.Add(this.btnBatchWrite);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
@@ -133,6 +173,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -152,5 +193,10 @@
         private System.Windows.Forms.TextBox tbData;
         private System.Windows.Forms.Button btnClearBoxes;
         private System.Windows.Forms.Button btnBatchWrite;
+        private System.Windows.Forms.CheckBox cbCoins;
+        private System.Windows.Forms.CheckBox cbPowerMtr;
+        private System.Windows.Forms.CheckBox cbLakitu;
+        private System.Windows.Forms.CheckBox cbStarsHud;
+        private System.Windows.Forms.CheckBox cbLivesHud;
     }
 }
