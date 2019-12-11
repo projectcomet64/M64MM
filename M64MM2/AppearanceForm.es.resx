@@ -206,6 +206,24 @@ De lo contrario, los colores que elijas aquí no cambiarán en el juego.</value>
   <data name="grpShading.Text" xml:space="preserve">
     <value>Herrmiantas de iluminación:</value>
   </data>
+  <data name="cbRoutingSource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>339, 30</value>
+  </data>
+  <data name="lbShareWith.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 13</value>
+  </data>
+  <data name="lbShareWith.Text" xml:space="preserve">
+    <value>tendrá los datos de color por omisión de:</value>
+  </data>
+  <data name="btnReroute.Location" type="System.Drawing.Point, System.Drawing">
+    <value>339, 57</value>
+  </data>
+  <data name="btnReroute.Text" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
+  <data name="grpExperimental.Text" xml:space="preserve">
+    <value>CARACTERÍSTICA EXPERIMENTAL: Enrutamiento de color</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAQAAAAAAAEAIAB9CQAARgAAADAwAAABACAAqCUAAMMJAAAgIAAAAQAgAKgQAABrLwAAEBAAAAEA

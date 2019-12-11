@@ -90,13 +90,13 @@ namespace M64MM.Utils
             WriteProcessMemory(emuProcessHandle, ptr, data, size, ref bytesWritten);
         }
 
-        public static void WriteBatchBytes(long[] addresses, byte[] data, bool useBase)
+        public static void WriteBatchBytes(long[] addresses, byte[] data, bool useBase, bool swap = false)
         {
             long baseAddr = useBase ? BaseAddress : 0;
             foreach (long addr in addresses)
             {
                 byte[] val = ReadBytes(baseAddr + addr, 1);
-                WriteBytes(baseAddr + addr, SwapEndian(data, 4));
+                WriteBytes(baseAddr + addr, data, swap);
             }
         }
         #endregion
@@ -227,7 +227,8 @@ namespace M64MM.Utils
 
         public static byte[] SwapEndian(byte[] array, int wordSize)
         {
-            byte[] byteArray = array;
+            byte[] byteArray = new byte[array.Length];
+            array.CopyTo(byteArray, 0);
             for (int x = 0; x < byteArray.Length / wordSize; x++)
             {
                 Array.Reverse(byteArray, x * wordSize, wordSize);

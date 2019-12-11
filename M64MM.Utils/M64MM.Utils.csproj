@@ -44,10 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
-    <Compile Include="Appearance.cs" />
+    <Compile Include="Looks.cs" />
     <Compile Include="CameraStyle.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoutableColorPart.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\M64MM.Addon\M64MM.Addon.csproj">

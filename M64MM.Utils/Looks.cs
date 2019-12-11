@@ -1,9 +1,102 @@
 ﻿using System.Drawing;
+using System.Collections;
 using static M64MM.Utils.Core;
 namespace M64MM.Utils
 {
     public class Looks
     {
+
+        public static readonly RoutableColorPart[] defaultRoutableParts =
+        {
+            new RoutableColorPart()
+            {
+                Name = "Overalls",
+                Address86 = new long[] { 0x8B8CC },
+                Address88 = new long[] { 0x8B8D4 },
+                BankOffset86 = 8,
+                BankOffset88 = 0
+            },
+            new RoutableColorPart()
+            {
+                Name = "Left Arm",
+                Address86 = new long[] { 0x8BDFC },
+                Address88 = new long[] { 0x8BE04 },
+                BankOffset86 = 0x20,
+                BankOffset88 = 0x18
+            },
+            new RoutableColorPart()
+            {
+                Name = "Right Arm",
+                Address86 = new long[] { 0x8CA0C },
+                Address88 = new long[] { 0x8CA14 },
+                BankOffset86 = 0x20,
+                BankOffset88 = 0x18
+            },
+            new RoutableColorPart()
+            {
+                Name = "Left Glove",
+                Address86 = new long[] { 0x8C514 },
+                Address88 = new long[] { 0x8C51C },
+                BankOffset86 = 0x38,
+                BankOffset88 = 0x30
+            },
+            new RoutableColorPart()
+            {
+                Name = "Right Glove",
+                Address86 = new long[] { 0x8D07C },
+                Address88 = new long[] { 0x8D084 },
+                BankOffset86 = 0x38,
+                BankOffset88 = 0x30
+            },
+            new RoutableColorPart()
+            {
+                Name = "Left Leg",
+                Address86 = new long[] { 0x8D3E4 },
+                Address88 = new long[] { 0x8D3EC },
+                BankOffset86 = 8,
+                BankOffset88 = 0
+            },
+            new RoutableColorPart()
+            {
+                Name = "Right Leg",
+                Address86 = new long[] { 0x8DBDC },
+                Address88 = new long[] { 0x8DBE4 },
+                BankOffset86 = 8,
+                BankOffset88 = 0
+            },
+            new RoutableColorPart()
+            {
+                Name = "Left Shoe",
+                Address86 = new long[] { 0x8D8C4 },
+                Address88 = new long[] { 0x8D8CC },
+                BankOffset86 = 0x50,
+                BankOffset88 = 0x48
+            },
+            new RoutableColorPart()
+            {
+                Name = "Right Shoe",
+                Address86 = new long[] { 0x8E10C },
+                Address88 = new long[] { 0x8E114 },
+                BankOffset86 = 0x50,
+                BankOffset88 = 0x48
+            },
+            new RoutableColorPart()
+            {
+                Name = "Hat and Shirt",
+                Address86 = new long[] { 0x8EF74, 0x9058C },
+                Address88 = new long[] { 0x8EF7C, 0x90594 },
+                BankOffset86 = 0x20,
+                BankOffset88 = 0x18
+            },
+            new RoutableColorPart()
+            {
+                Name = "Hair",
+                Address86 = new long[] { 0x905A4 },
+                Address88 = new long[] { 0x905AC },
+                BankOffset86 = 0x80,
+                BankOffset88 = 0x78
+            }
+        };
 
         static readonly int[] shadowAddresses = {
             0x07EC30,
@@ -90,7 +183,7 @@ namespace M64MM.Utils
             }
         }
 
-        public static void fromColorCode(string code)
+        public static void FromColorCode(string code)
         {
             //Trim some data we don't need anymore. Now each line of the color code is represented by 3 bytes.
             byte[] data = StringToByteArray(code.Replace("8107EC", ""));
@@ -145,7 +238,7 @@ namespace M64MM.Utils
             }
         }
 
-        public static void changeShadow(int amount, ShadowParts part)
+        public static void ChangeShadow(int amount, ShadowParts part)
         {
             byte[] data = new byte[1];
             data[0] = (byte)amount;
@@ -165,6 +258,31 @@ namespace M64MM.Utils
                         break;
                 }
             }
+        }
+
+        public static void RouteColor(RoutableColorPart source, RoutableColorPart target)
+        {
+            RoutableColorPart adjustedTarget = new RoutableColorPart()
+            {
+                Name = target.Name,
+                Address86 = new long[target.Address86.Length],
+                Address88 = new long[target.Address88.Length],
+                BankOffset86 = target.BankOffset86,
+                BankOffset88 = target.BankOffset88
+            };
+            target.Address86.CopyTo(adjustedTarget.Address86, 0);
+            target.Address88.CopyTo(adjustedTarget.Address88, 0);
+            for (int i = 0; i < adjustedTarget.Address86.Length; i++)
+            {
+                adjustedTarget.Address86[i] = adjustedTarget.Address86[i];
+            }
+            for (int i = 0; i < adjustedTarget.Address88.Length; i++)
+            {
+                adjustedTarget.Address88[i] = adjustedTarget.Address88[i];
+            }
+
+            WriteBatchBytes(adjustedTarget.Address86, new byte[] {04, 0, 0, source.BankOffset86 }, true, true);
+            WriteBatchBytes(adjustedTarget.Address88, new byte[] {04, 0, 0, source.BankOffset88 }, true, true);
         }
     }
 }

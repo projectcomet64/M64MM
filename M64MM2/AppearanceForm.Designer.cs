@@ -71,12 +71,18 @@
             this.tbBottomTop = new System.Windows.Forms.TrackBar();
             this.tbLeftRight = new System.Windows.Forms.TrackBar();
             this.randomizerTimer = new System.Windows.Forms.Timer(this.components);
+            this.cbRoutingSource = new System.Windows.Forms.ComboBox();
+            this.cbRoutingTarget = new System.Windows.Forms.ComboBox();
+            this.lbShareWith = new System.Windows.Forms.Label();
+            this.btnReroute = new System.Windows.Forms.Button();
+            this.grpExperimental = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).BeginInit();
             this.grpColor.SuspendLayout();
             this.grpShading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbBackFront)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbBottomTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).BeginInit();
+            this.grpExperimental.SuspendLayout();
             this.SuspendLayout();
             // 
             // marioSprite
@@ -401,10 +407,47 @@
             // 
             this.randomizerTimer.Tick += new System.EventHandler(this.randomizerTimer_Tick);
             // 
+            // cbRoutingSource
+            // 
+            resources.ApplyResources(this.cbRoutingSource, "cbRoutingSource");
+            this.cbRoutingSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRoutingSource.FormattingEnabled = true;
+            this.cbRoutingSource.Name = "cbRoutingSource";
+            // 
+            // cbRoutingTarget
+            // 
+            resources.ApplyResources(this.cbRoutingTarget, "cbRoutingTarget");
+            this.cbRoutingTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRoutingTarget.FormattingEnabled = true;
+            this.cbRoutingTarget.Name = "cbRoutingTarget";
+            // 
+            // lbShareWith
+            // 
+            resources.ApplyResources(this.lbShareWith, "lbShareWith");
+            this.lbShareWith.Name = "lbShareWith";
+            // 
+            // btnReroute
+            // 
+            resources.ApplyResources(this.btnReroute, "btnReroute");
+            this.btnReroute.Name = "btnReroute";
+            this.btnReroute.UseVisualStyleBackColor = true;
+            this.btnReroute.Click += new System.EventHandler(this.btnReroute_Click);
+            // 
+            // grpExperimental
+            // 
+            resources.ApplyResources(this.grpExperimental, "grpExperimental");
+            this.grpExperimental.Controls.Add(this.lbShareWith);
+            this.grpExperimental.Controls.Add(this.btnReroute);
+            this.grpExperimental.Controls.Add(this.cbRoutingSource);
+            this.grpExperimental.Controls.Add(this.cbRoutingTarget);
+            this.grpExperimental.Name = "grpExperimental";
+            this.grpExperimental.TabStop = false;
+            // 
             // AppearanceForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grpExperimental);
             this.Controls.Add(this.grpShading);
             this.Controls.Add(this.grpColor);
             this.Controls.Add(this.label9);
@@ -419,6 +462,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbBackFront)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbBottomTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).EndInit();
+            this.grpExperimental.ResumeLayout(false);
+            this.grpExperimental.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -466,5 +511,10 @@
         private System.Windows.Forms.Button btnResetShading;
         private System.Windows.Forms.Button btnRandomizeShading;
         private System.Windows.Forms.Timer randomizerTimer;
+        private System.Windows.Forms.Button btnReroute;
+        private System.Windows.Forms.Label lbShareWith;
+        private System.Windows.Forms.ComboBox cbRoutingTarget;
+        private System.Windows.Forms.ComboBox cbRoutingSource;
+        private System.Windows.Forms.GroupBox grpExperimental;
     }
 }

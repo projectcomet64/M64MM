@@ -61,6 +61,16 @@ namespace M64MM2
 
             shoesMap.OldColor = Color.FromArgb(114, 28, 14);
             shoesMap.NewColor = blendColors(shoesColorMain.BackColor, shoesColorShade.BackColor);
+
+            foreach(RoutableColorPart rtc in defaultRoutableParts)
+            {
+                cbRoutingSource.Items.Add(rtc.Name);
+                cbRoutingTarget.Items.Add(rtc.Name);
+            }
+
+            cbRoutingSource.SelectedIndex = 0;
+            cbRoutingTarget.SelectedIndex = 0;
+
         }
 
         void marioSprite_Paint(object sender, PaintEventArgs e)
@@ -216,7 +226,7 @@ namespace M64MM2
 
         public void ParseColorCode(string code)
         {
-            fromColorCode(code);
+            FromColorCode(code);
             marioSprite.Refresh();
             applyAllColors();
             askSetDefaultColors();
@@ -414,7 +424,7 @@ namespace M64MM2
                     part = ShadowParts.Z;
                     break;
             }
-            changeShadow(changedBar.Value, part);
+            ChangeShadow(changedBar.Value, part);
         }
 
 
@@ -432,6 +442,10 @@ namespace M64MM2
             tbBackFront.Value = rand.Next(-127, 128);
         }
 
-
+        private void btnReroute_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("MOVEMEM 86 of Source: " + defaultRoutableParts[cbRoutingSource.SelectedIndex].Address86[0].ToString("X") + "\nMOVEMEM 86 of Target: " + defaultRoutableParts[cbRoutingTarget.SelectedIndex].Address86[0].ToString("X"));
+            RouteColor(defaultRoutableParts[cbRoutingSource.SelectedIndex], defaultRoutableParts[cbRoutingTarget.SelectedIndex]);
+        }
     }
 }
