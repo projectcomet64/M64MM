@@ -225,18 +225,18 @@
             // cbAnimNew
             // 
             this.cbAnimNew.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbAnimNew.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbAnimNew.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             resources.ApplyResources(this.cbAnimNew, "cbAnimNew");
             this.cbAnimNew.Name = "cbAnimNew";
             this.cbAnimNew.SelectedIndexChanged += new System.EventHandler(this.cbAnimNew_SelectedIndexChanged);
             // 
             // cbAnimOld
             // 
-            this.cbAnimOld.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbAnimOld.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbAnimOld.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             resources.ApplyResources(this.cbAnimOld, "cbAnimOld");
             this.cbAnimOld.Name = "cbAnimOld";
             this.cbAnimOld.SelectedIndexChanged += new System.EventHandler(this.cbAnimOld_SelectedIndexChanged);
+            this.cbAnimOld.TextChanged += new System.EventHandler(this.cbAnimOld_TextChanged);
             // 
             // updateTimer
             // 

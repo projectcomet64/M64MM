@@ -9,6 +9,7 @@ namespace M64MM.Utils
     public struct Animation
     {
         public string Value;
+        public string Description;
         public int RealIndex;
         // You'll see.
         public int Length;

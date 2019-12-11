@@ -122,7 +122,7 @@ namespace M64MM2
                         Animation anim = new Animation
                         {
                             Value = splitLine[0],
-                            //anim.Description = splitLine[1];
+                            Description = splitLine[1],
                             RealIndex = int.Parse(splitLine[2])
                         };
 
@@ -468,6 +468,11 @@ namespace M64MM2
             {
                 WriteAnimSwap(sender, e);
             }
+        }
+
+        private void cbAnimOld_TextChanged(object sender, EventArgs e)
+        {
+            // Hold up.
         }
     }
 }

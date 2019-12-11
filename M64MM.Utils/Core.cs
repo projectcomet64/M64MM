@@ -206,6 +206,17 @@ namespace M64MM.Utils
             return ms;
         }
 
+        public static AutoCompleteStringCollection GetQueriedAnimations(string query = "")
+        {
+            List<Animation> alist = animList.Where(a => a.Description.Contains(query)).Take(3).ToList();
+            AutoCompleteStringCollection results = new AutoCompleteStringCollection();
+            foreach(Animation anim in alist)
+            {
+                results.Add(anim.Description);
+            }
+            return results;
+        }
+
         public static byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)
