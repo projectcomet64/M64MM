@@ -444,7 +444,6 @@ namespace M64MM2
 
         private void btnReroute_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("MOVEMEM 86 of Source: " + defaultRoutableParts[cbRoutingSource.SelectedIndex].Address86[0].ToString("X") + "\nMOVEMEM 86 of Target: " + defaultRoutableParts[cbRoutingTarget.SelectedIndex].Address86[0].ToString("X"));
             RouteColor(defaultRoutableParts[cbRoutingSource.SelectedIndex], defaultRoutableParts[cbRoutingTarget.SelectedIndex]);
         }
     }
