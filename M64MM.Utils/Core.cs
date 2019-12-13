@@ -287,7 +287,7 @@ namespace M64MM.Utils
             {
                 //Ingame timer update
                 //ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
-                ingameTimer = await Task.Run(() => BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
+                ingameTimer = ReadBytes(BaseAddress + 0x32D5D4, 2)[0];
                 //If there's a level loaded EVEN if there's no model
                 if (modelStatus != ModelStatus.NONE)
                 {
@@ -326,12 +326,12 @@ namespace M64MM.Utils
                     }
                     else if (ingameTimer <= previousFrame)
                     {
-                        await Task.Run(() => previousFrame = ingameTimer);
-                        ingameTimer = await Task.Run(() => BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
+                        previousFrame = ingameTimer;
+                        ingameTimer = await Task.Run(() => ReadBytes(BaseAddress + 0x32D5D4, 2)[0]);
                     }
                 }
                 // zzz
-                await Task.Delay(1);
+                await Task.Delay(10);
             }
         }
 
