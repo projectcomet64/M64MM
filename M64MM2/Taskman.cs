@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using M64MM;
 using M64MM.Additions;
 
 namespace M64MM2
