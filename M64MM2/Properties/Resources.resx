@@ -151,9 +151,6 @@
   <data name="programStatus2" xml:space="preserve">
     <value>Status: Base address not found.</value>
   </data>
-  <data name="CC_Mario_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="colorCodeModdedRom" xml:space="preserve">
     <value>This ROM has a different model data compared to Mario's usual model data and is not a compatible CometROM. The Color Code Studio and Shading Editor have been disabled; they might not work correctly in this ROM.</value>
   </data>
@@ -209,11 +206,26 @@ The color codes and shading only apply to vanilla models and mods that support i
   <data name="discordInvite" xml:space="preserve">
     <value>http://comet.glitchypsi.xyz</value>
   </data>
-  <data name="version3 big" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\version3 big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="colorCodeCometRom" xml:space="preserve">
     <value>Comet ROMs need extra checks before being able to use color codes.
 Wait for a later update of both M64MM and CometROM!</value>
+  </data>
+  <data name="CC_Mario_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="m64mm3_banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m64mm3_banner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="picturedInBannerMsg" xml:space="preserve">
+    <value>In banner: </value>
+  </data>
+  <data name="picturedInBannerPeople" xml:space="preserve">
+    <value>Onewingdangl, Captainswag101, GlitchyPSI</value>
+  </data>
+  <data name="prereleaseString" xml:space="preserve">
+    <value>-alpha1</value>
+  </data>
+  <data name="version3_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\version3 big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

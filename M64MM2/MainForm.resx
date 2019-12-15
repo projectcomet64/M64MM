@@ -153,22 +153,22 @@
     <value>&amp;Tools</value>
   </data>
   <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="appearanceSettingsMenuItem.Text" xml:space="preserve">
     <value>&amp;Appearance Settings...</value>
   </data>
   <data name="extraControlsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="extraControlsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Extra Controls...</value>
   </data>
   <data name="showRunningPluginsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="showRunningPluginsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Show Running Plugins</value>
+    <value>Show Running Addons</value>
   </data>
   <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 20</value>

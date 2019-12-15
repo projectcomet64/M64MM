@@ -276,6 +276,43 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap m64mm3_banner {
+            get {
+                object obj = ResourceManager.GetObject("m64mm3_banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a In banner: .
+        /// </summary>
+        internal static string picturedInBannerMsg {
+            get {
+                return ResourceManager.GetString("picturedInBannerMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Onewingdangl, Captainswag101, GlitchyPSI.
+        /// </summary>
+        internal static string picturedInBannerPeople {
+            get {
+                return ResourceManager.GetString("picturedInBannerPeople", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a -alpha1.
+        /// </summary>
+        internal static string prereleaseString {
+            get {
+                return ResourceManager.GetString("prereleaseString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a M64MM Classic.
         /// </summary>
         internal static string programName {
@@ -353,7 +390,7 @@ namespace M64MM2.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap version3_big {
             get {
-                object obj = ResourceManager.GetObject("version3 big", resourceCulture);
+                object obj = ResourceManager.GetObject("version3_big", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

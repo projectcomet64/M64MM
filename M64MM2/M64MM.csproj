@@ -7,7 +7,7 @@
     <ProjectGuid>{9DA9E453-E83C-450C-8093-DA6249B4F751}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>M64MM2</RootNamespace>
-    <AssemblyName>M64MM2</AssemblyName>
+    <AssemblyName>M64MM</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -182,6 +182,7 @@
     <Content Include="Resources\M64MM2 New Icon 2.png" />
     <Content Include="Resources\M64MM2 New Icon.png" />
     <None Include="Resources\version3 big.png" />
+    <None Include="Resources\m64mm3_banner.png" />
     <Content Include="Resources\version3.ico" />
     <None Include="Resources\version31.ico" />
     <None Include="Resources\M64MM2 New.ico" />

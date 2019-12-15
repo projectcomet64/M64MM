@@ -200,4 +200,7 @@ No funcionará.</value>
   <data name="colorCodeModdedRom" xml:space="preserve">
     <value>Este ROM tiene datos de modelo diferentes de los usuales de Mario. El Estudio de Códigos de Color y el Editor de Sombras serán deshabilitados; pueden no ser compatibles con este modelo.</value>
   </data>
+  <data name="picturedInBannerMsg" xml:space="preserve">
+    <value>En la imagen: </value>
+  </data>
 </root>

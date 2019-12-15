@@ -19,29 +19,45 @@ namespace M64MM2
             InitializeComponent();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("mailto:" + lnkEmail.Text);
-        }
-
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
-            lnkDiscord.Text = (Resources.discordInvite);
+            lnkDiscord.Text = ("Discord: " + Resources.discordInvite);
+            lblWhosInBanner.Text = Resources.picturedInBannerMsg + Resources.picturedInBannerPeople;
+            lblVersion.Text = ("Version: " + Application.ProductVersion + Resources.prereleaseString);
         }
 
         private void lnkDiscord_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://discord.gg/" + Resources.discordInvite);
+            Process.Start(Resources.discordInvite);
         }
 
         private void lnkGithubIssues_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://github.com/jpmac26/M64MM2/issues");
+            Process.Start("http://github.com/projectcomet64/M64MM/issues");
         }
+
+        // 2e 54 54 20 2c 62 76 66 20 7a 7a 70 74 20 50
+        /*        
+                ,---,. 
+              ,'  .' | 
+            ,---.'   | 
+            |   |   .' 
+            :   :  :   
+            :   |  |-, 
+            |   :  ;/| 
+            |   |   .' 
+            '   :  '   
+            |   |  |   
+            |   :  \   
+            |   | ,'   
+            `----'     
+                       
+        */
+
     }
 }

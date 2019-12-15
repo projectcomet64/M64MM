@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Taskman));
             this.listView1 = new System.Windows.Forms.ListView();
             this.btn_OK = new System.Windows.Forms.Button();
             this.lb_Desc = new System.Windows.Forms.Label();
@@ -56,12 +57,12 @@
             // 
             // lb_Desc
             // 
-            this.lb_Desc.AutoSize = true;
             this.lb_Desc.Location = new System.Drawing.Point(12, 152);
             this.lb_Desc.Name = "lb_Desc";
-            this.lb_Desc.Size = new System.Drawing.Size(122, 13);
+            this.lb_Desc.Size = new System.Drawing.Size(316, 99);
             this.lb_Desc.TabIndex = 2;
             this.lb_Desc.Text = "<Please select an item.>";
+            this.lb_Desc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cb_pluginEnabled
             // 
@@ -84,10 +85,11 @@
             this.Controls.Add(this.btn_OK);
             this.Controls.Add(this.listView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Taskman";
-            this.Text = "Installed Plugins";
+            this.Text = "Installed Addons";
             this.ResumeLayout(false);
             this.PerformLayout();
 
