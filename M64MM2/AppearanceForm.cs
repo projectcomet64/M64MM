@@ -196,7 +196,7 @@ namespace M64MM2
 
             WriteColor(VanillaModelColor.SkinMain, skinColorMain.BackColor);
 
-            WriteColor(VanillaModelColor.HairShade, hairColorMain.BackColor);
+            WriteColor(VanillaModelColor.HairShade, hairColorShade.BackColor);
 
             WriteColor(VanillaModelColor.HairMain, hairColorMain.BackColor);
         }
@@ -228,8 +228,7 @@ namespace M64MM2
         {
             FromColorCode(code);
             marioSprite.Refresh();
-            applyAllColors();
-            askSetDefaultColors();
+            loadFromGame(null, null);
         }
 
         string[] GenerateColorCode()
@@ -432,7 +431,7 @@ namespace M64MM2
         {
             tbLeftRight.Value = 0x28;
             tbBottomTop.Value = 0x28;
-            tbBackFront.Value = -0x28;
+            tbBackFront.Value = 0x28;
         }
 
         void randomizeShadows(object sender, EventArgs e)
