@@ -234,7 +234,12 @@ namespace M64MM2
         string[] GenerateColorCode()
         {
             List<string> code = new List<string>();
-
+            /*
+             NOTE: These will only work on a regular SM64 ROM where Bank 04 is where
+             where it should be. Bank 04 changes position in RAM if it were to be longer,
+             or someone decided to use a tweak that changes its location in RAM to give more
+             space to something else like Skelux's Music Extension (SM64 Editor 2.x)
+             */
             foreach (Control control in this.grpColor.Controls)
             {
                 Button button = control as Button;
@@ -321,6 +326,7 @@ namespace M64MM2
 
         void loadFromGame(object sender, EventArgs e)
         {
+            //TODO: Change the ReadBytes to use SegmentedToVirtual
             if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.VANILLA) return;
 
             byte[] colorData;

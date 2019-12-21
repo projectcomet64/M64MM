@@ -101,7 +101,9 @@ namespace M64MM.Utils
         }
         #endregion
 
-
+        /// <summary>
+        /// Find the emulator we're going to hook to.
+        /// </summary>
         public static void FindEmuProcess()
         {
             foreach (Process proc in Process.GetProcesses())
@@ -116,7 +118,9 @@ namespace M64MM.Utils
             }
         }
 
-
+        /// <summary>
+        /// Find the base address. Big-endian Mario 64 ROMs always start with the same 4 bytes.
+        /// </summary>
         public static void FindBaseAddress()
         {
             uint value = 0;
@@ -149,6 +153,43 @@ namespace M64MM.Utils
 
         }
 
+        /// <summary>
+        /// Gets the Virtual Address of the Segmented Address. Works (almost) identical to the equivalent in-game function.
+        /// SM64 has a table of segments in RAM that has pointers to segments from Segment 00 to Segment 1F.
+        /// </summary>
+        /// <param name="address">Segmented address to turn into Virtual</param>
+        /// <param name="useBase">If the Base Address of the Emulator should be added to the returned address (defaults to true)</param>
+        /// <returns>The Virtual Address of the given Segmented Address</returns>
+        // This exists because it would appear some ROMs change the RAM location of Bank 04, effectively breaking color codes.
+        public static long SegmentedToVirtual(uint address, bool useBase = true)
+        {
+            byte[] byteArray = BitConverter.GetBytes(address);
+            if (byteArray.Length == 4) {
+                uint segment = address >> 24;
+                uint segmentedOffset = address & 0x00FFFFFF;
+                if (segment <= 0x1F && segment >= 0)
+                {
+                    long segmentedBase = (BitConverter.ToUInt32(
+                    ReadBytes(BaseAddress + 0x33B400 + segment * 4, 4), 0));
+                    //MinValue of int just so happens to be 0x80000000 so it's perfect
+                    return segmentedBase + segmentedOffset + (useBase ? BaseAddress : 0);
+                }
+                else
+                {
+                    throw new ArgumentException("Segments range from 00 to 1F.");
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Invalid address");
+            }
+        }
+
+        /// <summary>
+        /// Validates a model in Bank 04 and returns which kind of model is it.
+        /// </summary>
+        /// <param name="updateGlobal">Update the global variable?</param>
+        /// <returns>The model type</returns>
         public static ModelStatus ValidateModel(bool updateGlobal = true)
         {
             byte[] Color1;
@@ -157,10 +198,10 @@ namespace M64MM.Utils
             byte[] FinalSetOfBytes;
             ModelStatus ms = ModelStatus.NONE;
 
-            Color1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
-            Color2 = SwapEndian(ReadBytes(BaseAddress + 0x07EC80, 4), 4);
-            Shadow1 = SwapEndian(ReadBytes(BaseAddress + 0x07EC78, 4), 4);
-            FinalSetOfBytes = SwapEndian(ReadBytes(BaseAddress + 0x07EC7C, 4), 4);
+            Color1 = SwapEndian(ReadBytes(SegmentedToVirtual(0x04000050, true), 4), 4);
+            Color2 = SwapEndian(ReadBytes(SegmentedToVirtual(0x04000060, true), 4), 4);
+            Shadow1 = SwapEndian(ReadBytes(SegmentedToVirtual(0x04000058, true), 4), 4);
+            FinalSetOfBytes = SwapEndian(ReadBytes(SegmentedToVirtual(0x0400005C, true), 4), 4);
 
             //If the color data is all zeros
             if ((BitConverter.ToInt32(Color1, 0) == 0) &&
@@ -180,15 +221,7 @@ namespace M64MM.Utils
                 ms = ModelStatus.MODDED;
             }
 
-            //If the final bytes spell "CMT"
-            //Fourth byte is for the CometROM version.
-            //More checks will be done when a ROM is a CometROM.
-            if ((FinalSetOfBytes[0] == 0x43
-                && FinalSetOfBytes[1] == 0x4D
-                && FinalSetOfBytes[2] == 0x54))
-            {
-                ms = ModelStatus.COMET;
-            }
+            // CometROMs are different now.
 
             //If all data is okay but then final bytes equal zero
             if ((BitConverter.ToInt32(Color1, 0) != 0) &&
@@ -206,6 +239,11 @@ namespace M64MM.Utils
             return ms;
         }
 
+        /// <summary>
+        /// Gets a list of animation strings by looking within its name.
+        /// </summary>
+        /// <param name="query">Search query</param>
+        /// <returns>An AutoCompleteStringCollection containing the top 3 matches.</returns>
         public static AutoCompleteStringCollection GetQueriedAnimations(string query = "")
         {
             List<Animation> alist = animList.Where(a => a.Description.Contains(query)).Take(3).ToList();
@@ -217,6 +255,11 @@ namespace M64MM.Utils
             return results;
         }
 
+        /// <summary>
+        /// Transforms a hex string into a byte array.
+        /// </summary>
+        /// <param name="hex">Hexadecimal string</param>
+        /// <returns>A byte array from the string provided</returns>
         public static byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)
@@ -225,6 +268,12 @@ namespace M64MM.Utils
                 .ToArray();
         }
 
+        /// <summary>
+        /// Swaps endianness of the given Byte array.
+        /// </summary>
+        /// <param name="array">The Byte array to swap</param>
+        /// <param name="wordSize">Word size</param>
+        /// <returns>A byteswapped Byte array</returns>
         public static byte[] SwapEndian(byte[] array, int wordSize)
         {
             byte[] byteArray = new byte[array.Length];
@@ -237,6 +286,10 @@ namespace M64MM.Utils
             return byteArray;
         }
 
+        #region Plugin Execution
+        /// <summary>
+        /// Is executed when Base Address updates from an older value to another.
+        /// </summary>
         public async static void performBaseAddrUpd()
         {
             for (int i = 0; i < moduleList.Count(); i++)
@@ -254,11 +307,13 @@ namespace M64MM.Utils
                         MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
                         moduleList[i].Active = false;
                     }
-
                 }
             }
         }
 
+        /// <summary>
+        /// Is executed when Base Address is zero.
+        /// </summary>
         public async static void performBaseAddrZero()
         {
             for (int i = 0; i < moduleList.Count(); i++)
@@ -276,11 +331,13 @@ namespace M64MM.Utils
                         MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
                         moduleList[i].Active = false;
                     }
-
                 }
             }
         }
 
+        /// <summary>
+        /// Is executed every in-game frame. (Prone to FPS drops)
+        /// </summary>
         public async static void performUpdate()
         {
             while (true)
@@ -295,14 +352,6 @@ namespace M64MM.Utils
                     {
                         //Set new value
                         previousFrame = ingameTimer;
-                        //If the ingame timer reaches zero then let's just write 255 more to it
-                        //This was when using a variable that decremented each frame, with VI Timer this shouldn't need to be used anymore
-                        /*
-                        if (ingameTimer == 0)
-                        {
-                            await Task.Run(() => { WriteUInt(BaseAddress + 0x33B198, 255); });
-                        }
-                        */
                         //Ingame timer is a variable that INCREMENTS every frame in game. In case our previous snapshot of said value is above the timer:
                         for (int i = 0; i < moduleList.Count(); i++)
                         {
@@ -334,10 +383,8 @@ namespace M64MM.Utils
                 await Task.Delay(10);
             }
         }
+        #endregion
 
-        public static bool GetKey(Keys vKey)
-        {
-            return 0 != GetAsyncKeyState(vKey);
-        }
+        public static bool GetKey(Keys vKey) => GetAsyncKeyState(vKey) != 0;
     }
 }

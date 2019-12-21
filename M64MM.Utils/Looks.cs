@@ -137,40 +137,40 @@ namespace M64MM.Utils
             switch (ModelPart)
             {
                 case VanillaModelColor.PantsShade:
-                    writeToAddress = 0x07EC20;
+                    writeToAddress = SegmentedToVirtual(0x04000000);
                     break;
                 case VanillaModelColor.PantsMain:
-                    writeToAddress = 0x07EC28;
+                    writeToAddress = SegmentedToVirtual(0x04000008);
                     break;
                 case VanillaModelColor.HatShade:
-                    writeToAddress = 0x07EC38;
+                    writeToAddress = SegmentedToVirtual(0x04000018);
                     break;
                 case VanillaModelColor.HatMain:
-                    writeToAddress = 0x07EC40;
+                    writeToAddress = SegmentedToVirtual(0x04000020);
                     break;
                 case VanillaModelColor.GloveShade:
-                    writeToAddress = 0x07EC50;
+                    writeToAddress = SegmentedToVirtual(0x04000030);
                     break;
                 case VanillaModelColor.GloveMain:
-                    writeToAddress = 0x07EC58;
+                    writeToAddress = SegmentedToVirtual(0x04000038);
                     break;
                 case VanillaModelColor.ShoeShade:
-                    writeToAddress = 0x07EC68;
+                    writeToAddress = SegmentedToVirtual(0x04000048);
                     break;
                 case VanillaModelColor.ShoeMain:
-                    writeToAddress = 0x07EC70;
+                    writeToAddress = SegmentedToVirtual(0x04000050);
                     break;
                 case VanillaModelColor.SkinShade:
-                    writeToAddress = 0x07EC80;
+                    writeToAddress = SegmentedToVirtual(0x04000060);
                     break;
                 case VanillaModelColor.SkinMain:
-                    writeToAddress = 0x07EC88;
+                    writeToAddress = SegmentedToVirtual(0x04000068);
                     break;
                 case VanillaModelColor.HairShade:
-                    writeToAddress = 0x07EC98;
+                    writeToAddress = SegmentedToVirtual(0x04000078);
                     break;
                 case VanillaModelColor.HairMain:
-                    writeToAddress = 0x07ECA0;
+                    writeToAddress = SegmentedToVirtual(0x04000080);
                     break;
             }
             colors[0] = color_.R;

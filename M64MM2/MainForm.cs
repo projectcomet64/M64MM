@@ -108,7 +108,6 @@ namespace M64MM2
             lblCameraStatus.Text = Resources.cameraStateDefault;
             toolsMenuItem.Enabled = false;
 
-
             //Load animation data
             try
             {
@@ -161,7 +160,6 @@ namespace M64MM2
                 chbAutoApply.Enabled = false;
             }
 
-
             //Load camera style data
             try
             {
@@ -206,7 +204,6 @@ namespace M64MM2
                 mod.Module.Initialize();
             }
         }
-
 
         void Update(object sender, EventArgs e)
         {
@@ -425,7 +422,6 @@ namespace M64MM2
                         appearanceForm.WindowState = FormWindowState.Normal;
                     break;
             }
-
         }
 
         void openAboutForm(object sender, EventArgs e)
