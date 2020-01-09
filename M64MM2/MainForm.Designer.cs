@@ -54,7 +54,6 @@
             this.lblAnimOld = new System.Windows.Forms.Label();
             this.cbAnimNew = new System.Windows.Forms.ComboBox();
             this.cbAnimOld = new System.Windows.Forms.ComboBox();
-            this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.grpCamStyle = new System.Windows.Forms.GroupBox();
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
@@ -239,10 +238,6 @@
             this.cbAnimOld.SelectedIndexChanged += new System.EventHandler(this.cbAnimOld_SelectedIndexChanged);
             this.cbAnimOld.TextChanged += new System.EventHandler(this.cbAnimOld_TextChanged);
             // 
-            // updateTimer
-            // 
-            this.updateTimer.Tick += new System.EventHandler(this.Update);
-            // 
             // grpCamStyle
             // 
             this.grpCamStyle.Controls.Add(this.btnChangeCamStyle);
@@ -314,7 +309,6 @@
         private System.Windows.Forms.ComboBox cbAnimOld;
         private System.Windows.Forms.Label lblAnimOld;
         private System.Windows.Forms.Label lblAnimNew;
-        private System.Windows.Forms.Timer updateTimer;
         private System.Windows.Forms.Button btnAnimSwap;
         private System.Windows.Forms.Button btnAnimResetAll;
         private System.Windows.Forms.Button btnAnimReset;

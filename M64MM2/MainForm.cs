@@ -97,11 +97,12 @@ namespace M64MM2
             }
 
             InitializeModules();
+            programTimer.Tick += (a, b) => Update(this, null);
             menuStrip.Items.Add(addons);
 
             Text = Resources.programName + " " + Application.ProductVersion;
-            updateTimer.Interval = 1000;
-            updateTimer.Start();
+            programTimer.Interval = 1000;
+            programTimer.Start();
             animList = new List<Animation>();
             camStyles = new List<CameraStyle>();
             defaultAnimation.Value = "0";
@@ -253,7 +254,6 @@ namespace M64MM2
             //==============================
             //Main program logic starts here
             //------------------------------
-            updateTimer.Interval = 100;
 
             //Don't overwrite the camera state if we're in non-bugged first-person
             byte[] cameraState = SwapEndian(ReadBytes(BaseAddress + 0x33C848, 4), 4);

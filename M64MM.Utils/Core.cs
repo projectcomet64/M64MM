@@ -36,6 +36,7 @@ namespace M64MM.Utils
             }
             private set { }
         }
+        public static Timer programTimer = new Timer();
         public static UInt32 ingameTimer;
         public static UInt32 previousFrame;
         public static int CurrentLevelID => BitConverter.ToInt16(SwapEndian(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
@@ -143,11 +144,15 @@ namespace M64MM.Utils
 
                 if (value == 0x3C1A8032)
                 {
+                    //Speed up the check for the game since the base address was found
+                    programTimer.Interval = 200;
                     BaseAddress = scanAddress;
                     return;
                 }
             }
 
+            //Slow down the check so if the program is open we don't overload the CPU
+            programTimer.Interval = 1000;
             //If we don't find anything, reset the base address to 0
             BaseAddress = 0;
 
