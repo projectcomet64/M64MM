@@ -179,7 +179,7 @@ namespace M64MM.Utils
             colors[3] = 0x0;
             if (writeToAddress > 0)
             {
-                WriteBytes(BaseAddress + writeToAddress, SwapEndian(colors, 4));
+                WriteBytes(writeToAddress, SwapEndian(colors, 4));
             }
         }
 
