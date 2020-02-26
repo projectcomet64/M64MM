@@ -33,5 +33,16 @@ namespace M64MM.Utils
             }
         }
 
+        /// <summary>
+        /// Adds a SettingsGroup identified by its name.
+        /// Mostly to be used by the JSON parser.
+        /// </summary>
+        /// <param name="name">The name of the SettingGroup</param>
+        /// <param name="group">The group itself.</param>
+        public static void AddSettingsGroup(string name, SettingsGroup group)
+        {
+            _settings.Add(name, group);
+        }
+
     }
 }

@@ -8,6 +8,15 @@ namespace M64MM.Utils
     {
         Dictionary<string, string> entries = null;
 
+
+        /// <summary>
+        /// Constructor for a Settings Group
+        /// </summary>
+        public SettingsGroup()
+        {
+            entries = new Dictionary<string, string>();
+        }
+
         /// <summary>
         /// Gets a setting from this SettingsGroup. If it doesn't exist, an ArgumentException is raised.
         /// </summary>
