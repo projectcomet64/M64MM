@@ -32,62 +32,23 @@ namespace M64MM2
 
         public MainForm()
         {
-            /* Code for plugin sandboxing */
-
-            PermissionSet trustedLoadFromRemoteSourcesGrantSet = new PermissionSet(PermissionState.Unrestricted);
-            AppDomainSetup trustedLoadFromRemoteSourcesSetup = new AppDomainSetup
-            {
-                ApplicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase
-            };
-
-            AppDomain trustedRemoteLoadDomain = AppDomain.CreateDomain("Trusted LoadFromRemoteSources Domain",
-                           null,
-                           trustedLoadFromRemoteSourcesSetup,
-                           trustedLoadFromRemoteSourcesGrantSet);
-            AddonErrorsBuilder = new System.Text.StringBuilder();
+            LoadAddonsFromFolder();
             InitializeComponent();
+            InitializeModules();
             ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
-            try
-            { // Loading DLLs from ./Plugins
-                DirectoryInfo d = new DirectoryInfo(Application.StartupPath + "\\Addons");
-                foreach (FileInfo file in d.GetFiles("*.dll"))
-                { // For each DLL
-                    try // If getting all types fails for some reason (Ex: cannot load required assembly)...
-                    {
-                        Assembly assmb = Assembly.LoadFile(file.FullName);
-                        Type[] classes = assmb.GetTypes();
-                        foreach (Type typ in classes)
-                        {
-                            if (typ.GetInterface("IModule") != null)
-                            { // If type implements interface IModule
-                                IModule mod = (IModule)assmb.CreateInstance(typ.FullName); // Instance the IModule
-                                Addon neoAddon = new Addon(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description); // Instance Addon
-                                List<ToolCommand> tc_list = mod.GetCommands(); // Get list of custom commands
-                                if (tc_list != null)
-                                { // Add them to the Plugins toolstrip
-                                    foreach (ToolCommand tc in tc_list)
-                                    {
-                                        ToolStripMenuItem mod_ = new ToolStripMenuItem(tc.name);
-                                        mod_.Click += (a, b) => tc.Summon(a, b);
-                                        addons.DropDownItems.Add(mod_);
-                                    }
-                                }
-                                moduleList.Add(neoAddon); // Add addon to the plugins list
-                            }
-                        }
-                    }
-                    catch (ReflectionTypeLoadException ex)
-                    {
-                        AddonErrorsBuilder.AppendFormat("{0} [LOAD ERROR] - Error while loading addon from DLL {1}. Exception: {2}\nAre all the dependencies met?\n--------\n", DateTime.Now.ToLongTimeString(), ex.Types[0].Module.ToString(), ex.Message);
-                    }
+            foreach (Addon add in moduleList) {
+                List<ToolCommand> toolCommands = GetAddonCommands(add);
+
+                // Add them to the Plugins toolstrip
+                foreach (ToolCommand tc in toolCommands)
+                {
+                    ToolStripMenuItem mod_ = new ToolStripMenuItem(tc.name);
+                    mod_.Click += (a, b) => tc.Summon(a, b);
+                    addons.DropDownItems.Add(mod_);
                 }
             }
-            catch (DirectoryNotFoundException)
-            {
-                Directory.CreateDirectory(Application.StartupPath + "\\Addons");
-                MessageBox.Show("No addons folder was present, addons folder created.\nMake sure you're running M64MM from an extracted folder.",
-                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            programTimer.Tick += (a, b) => Update(this, null);
+            menuStrip.Items.Add(addons);
 
             if (AddonErrorsBuilder.Length > 0)
             {
@@ -95,10 +56,6 @@ namespace M64MM2
                 addons.DropDownItems.Add(new ToolStripSeparator());
                 addons.DropDownItems.Add(new ToolStripMenuItem("Addon warnings", null, (a, b) => { new AddonErrors().ShowDialog(); }));
             }
-
-            InitializeModules();
-            programTimer.Tick += (a, b) => Update(this, null);
-            menuStrip.Items.Add(addons);
 
             Text = Resources.programName + " " + Application.ProductVersion;
             programTimer.Interval = 1000;

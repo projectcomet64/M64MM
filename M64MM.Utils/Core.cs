@@ -8,6 +8,10 @@ using System.Windows.Forms;
 using System.Text;
 using System.Threading.Tasks;
 using M64MM.Additions;
+using System.IO;
+using System.Reflection;
+using System.Security;
+using System.Security.Permissions;
 
 namespace M64MM.Utils
 {
@@ -169,7 +173,8 @@ namespace M64MM.Utils
         public static long SegmentedToVirtual(uint address, bool useBase = true)
         {
             byte[] byteArray = BitConverter.GetBytes(address);
-            if (byteArray.Length == 4) {
+            if (byteArray.Length == 4)
+            {
                 uint segment = address >> 24;
                 uint segmentedOffset = address & 0x00FFFFFF;
                 if (segment <= 0x1F && segment >= 0)
@@ -187,6 +192,81 @@ namespace M64MM.Utils
             else
             {
                 throw new ArgumentException("Invalid address");
+            }
+        }
+
+        public static void LoadAddonsFromFolder(string path = "")
+        {
+            /* Code for plugin sandboxing */
+            PermissionSet trustedLoadFromRemoteSourcesGrantSet = new PermissionSet(PermissionState.Unrestricted);
+            AppDomainSetup trustedLoadFromRemoteSourcesSetup = new AppDomainSetup
+            {
+                ApplicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase
+            };
+
+            AppDomain trustedRemoteLoadDomain = AppDomain.CreateDomain("Trusted LoadFromRemoteSources Domain",
+                           null,
+                           trustedLoadFromRemoteSourcesSetup,
+                           trustedLoadFromRemoteSourcesGrantSet);
+            AddonErrorsBuilder = new StringBuilder();
+            ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
+            try
+            { // Loading DLLs from ./Addons
+                DirectoryInfo d = new DirectoryInfo(Application.StartupPath + "\\Addons");
+                foreach (FileInfo file in d.GetFiles("*.dll"))
+                { // For each DLL
+                    try // If getting all types fails for some reason (Ex: cannot load required assembly)...
+                    {
+                        try
+                        {
+                            // If the DLL is invalid or has no assembly (Not .NET?) M64MM will crash
+                            // Checking if it has an assembly first will allow us to just skip it.
+                            AssemblyName.GetAssemblyName(file.FullName);
+                        }
+                        catch (BadImageFormatException e)
+                        {
+                            AddonErrorsBuilder.AppendFormat("{0} [LOAD WARNING] - DLL {1} does not appear to have assembly info or is a corrupted DLL.\nAddon loading for this DLL has been skipped. If this is not an addon DLL but a native dependency, this is normal.\nThese warnings can be suppressed in a future.\n--------\n", DateTime.Now.ToLongTimeString(), file.Name);
+                            continue;
+                        }
+                        Assembly assmb = Assembly.LoadFile(file.FullName);
+                        Type[] classes = assmb.GetTypes();
+                        foreach (Type typ in classes)
+                        {
+                            if (typ.GetInterface("IModule") != null)
+                            { // If type implements interface IModule
+                                IModule mod = (IModule)assmb.CreateInstance(typ.FullName); // Instance the IModule
+                                Addon neoAddon = new Addon(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description); // Instance Addon
+                                moduleList.Add(neoAddon); // Add addon to the plugins list
+                            }
+                        }
+                    }
+                    catch (ReflectionTypeLoadException ex)
+                    {
+                        AddonErrorsBuilder.AppendFormat("{0} [LOAD ERROR] - Error while loading addon from DLL {1}. Exception: {2}\nAre all the dependencies met?\n--------\n", DateTime.Now.ToLongTimeString(), ex.Types[0].Module.ToString(), ex.Message);
+                    }
+                }
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\Addons");
+                MessageBox.Show("No addons folder was present, addons folder created.\nMake sure you're running M64MM from an extracted folder.",
+                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public static List<ToolCommand> GetAddonCommands(Addon addon)
+        {
+            IModule mod = addon.Module;
+            List<ToolCommand> tc_list = mod.GetCommands(); // Get list of custom commands
+            if (tc_list != null)
+            {
+                return tc_list;
+            }
+            else
+            {
+                // Return a Nothing instead of just throwing null
+                // Here only for a future
+                return new List<ToolCommand>();
             }
         }
 
@@ -253,7 +333,7 @@ namespace M64MM.Utils
         {
             List<Animation> alist = animList.Where(a => a.Description.Contains(query)).Take(3).ToList();
             AutoCompleteStringCollection results = new AutoCompleteStringCollection();
-            foreach(Animation anim in alist)
+            foreach (Animation anim in alist)
             {
                 results.Add(anim.Description);
             }
