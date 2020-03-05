@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace M64MM.Utils
 {
@@ -33,15 +34,14 @@ namespace M64MM.Utils
             }
         }
 
-        /// <summary>
-        /// Adds a SettingsGroup identified by its name.
-        /// Mostly to be used by the JSON parser.
-        /// </summary>
-        /// <param name="name">The name of the SettingGroup</param>
-        /// <param name="group">The group itself.</param>
-        public static void AddSettingsGroup(string name, SettingsGroup group)
+        public static string SettingsToJSON()
         {
-            _settings.Add(name, group);
+            return JsonConvert.SerializeObject(_settings, Formatting.Indented);
+        }
+
+        public static void JSONToSettings(string json)
+        {
+            _settings = JsonConvert.DeserializeObject<Dictionary<string, SettingsGroup>>(json);
         }
 
     }

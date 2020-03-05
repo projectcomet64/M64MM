@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Newtonsoft.Json;
 namespace M64MM.Utils
 {
     public class SettingsGroup
     {
-        Dictionary<string, string> entries = null;
-
+        // Expose the otherwise private entries property so the JSON parser can write and read.
+        [JsonProperty(PropertyName = "settings")]
+        static Dictionary<string, string> entries = null;
 
         /// <summary>
         /// Constructor for a Settings Group
@@ -15,6 +16,16 @@ namespace M64MM.Utils
         public SettingsGroup()
         {
             entries = new Dictionary<string, string>();
+        }
+        /// <summary>
+        /// Constructor for a Settings Group, adds entries immediatly.
+        /// </summary>
+        /// <param name="presetEntries">A Dictionary with already written entries (for the JSON parser)</param>
+        // We * WILL * use this one for JSON
+        [JsonConstructor]
+        public SettingsGroup(Dictionary<string, string> settings)
+        {
+            entries = settings;
         }
 
         /// <summary>

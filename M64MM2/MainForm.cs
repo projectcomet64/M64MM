@@ -53,6 +53,7 @@ namespace M64MM2
             if (AddonErrorsBuilder.Length > 0)
             {
                 // If there were any errors (String, may make a collection of objects?)
+                // Do make a Log struct later on for more than a warning use
                 addons.DropDownItems.Add(new ToolStripSeparator());
                 addons.DropDownItems.Add(new ToolStripMenuItem("Addon warnings", null, (a, b) => { new AddonErrors().ShowDialog(); }));
             }
