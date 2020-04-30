@@ -204,7 +204,9 @@ namespace M64MM2
             //Don't overwrite the camera state if we're in non-bugged first-person
             byte[] cameraState = SwapEndian(ReadBytes(BaseAddress + 0x33C848, 4), 4);
             lblCameraCode.Text = "0x" + BitConverter.ToString(cameraState).Replace("-", "");
-
+            // When the game is transitioning, the game freezes: we can no longer just trust the
+            // in-game timer in that case
+            UpdateCoreEntityAddress();
             if (cameraFrozen && (cameraState[0] == 0xA2 || cameraState[0] < 0x80))
             {
                 byte[] data = { 0x80 };

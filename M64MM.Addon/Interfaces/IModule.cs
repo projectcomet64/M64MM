@@ -14,6 +14,7 @@ namespace M64MM.Additions
         void Initialize();
         void OnBaseAddressFound();
         void OnBaseAddressZero();
+        void OnCoreEntAddressChange(uint addr);
         void Update();
         void Reset();
         void Close(EventArgs e);

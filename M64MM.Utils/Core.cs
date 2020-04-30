@@ -27,8 +27,67 @@ namespace M64MM.Utils
         public static byte[] emptyWord = new byte[] { 0, 0, 0, 0 };
         public static SettingsGroup coreSettingsGroup;
 
+        #region Events (internal use recommended)
+        public static event EventHandler<int> LevelChanged;
+        public static event EventHandler<bool> BaseAddressUpdate;
+        #endregion
+
         // Settings related variables
         public static bool enableHotkeys;
+
+        public static Timer programTimer = new Timer();
+
+        public static UInt32 ingameTimer;
+        public static UInt32 previousFrame;
+
+        static int _previousLevelID;
+        public static int CurrentLevelID
+        {
+            get
+            {
+                int id = BitConverter.ToInt16(SwapEndian(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
+                if (id != _previousLevelID)
+                {
+                    OnLevelChanged(id);
+                }
+                _previousLevelID = id;
+                return id;
+            }
+            private set { }
+        }
+
+        public static short AnimationIndex
+        {
+            get
+            {
+                return BitConverter.ToInt16(SwapEndian(ReadBytes(BaseAddress + CoreEntityAddress + 0x3A, 2), 4), 0);
+            }
+        }
+
+        public enum ModelStatus
+        {
+            NONE,
+            VANILLA,
+            EMPTY,
+            MODDED,
+            COMET
+        }
+
+        public static ModelStatus modelStatus = ModelStatus.NONE;
+
+        #region Native methods and process related
+        static Process emuProcess;
+        static IntPtr emuProcessHandle;
+        const int PROCESS_ALL_ACCESS = 0x01F0FF;
+
+        [DllImport("user32.dll")]
+        static extern short GetAsyncKeyState(Keys vKey);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesRead);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesWritten);
 
         public static bool IsEmuOpen
         {
@@ -45,33 +104,43 @@ namespace M64MM.Utils
             }
             private set { }
         }
-        public static Timer programTimer = new Timer();
-        public static UInt32 ingameTimer;
-        public static UInt32 previousFrame;
-        public static int CurrentLevelID => BitConverter.ToInt16(SwapEndian(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
+        #endregion
 
-        public enum ModelStatus
+        #region Composer related
+
+        static uint _coreEntityAddress;
+
+        public static uint CoreEntityAddress
         {
-            NONE,
-            VANILLA,
-            EMPTY,
-            MODDED,
-            COMET
+            get
+            {
+                return _coreEntityAddress;
+            }
+            private set { }
         }
 
-        public static ModelStatus modelStatus = ModelStatus.NONE;
-        static Process emuProcess;
-        static IntPtr emuProcessHandle;
-        const int PROCESS_ALL_ACCESS = 0x01F0FF;
+        public static void UpdateCoreEntityAddress()
+        {
+                uint caughtA = BitConverter.ToUInt32(
+                ReadBytes(BaseAddress + 0x33B1F8, 4), 0);
+            uint caughtFilt = caughtA & 0x00FFFFFF;
+                if (caughtA > 0)
+                {
+                if (caughtFilt != _coreEntityAddress)
+                {
+                    performCoreEntAddressChange(caughtFilt);
+                }
+                    _coreEntityAddress = caughtFilt;
+                }
+                else
+                {
+                _coreEntityAddress = 0;
+                }
+        }
 
-        [DllImport("user32.dll")]
-        static extern short GetAsyncKeyState(Keys vKey);
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesRead);
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesWritten);
+        #endregion
+
+        #region Settings related
 
         public static async void InitSettings()
         {
@@ -114,6 +183,8 @@ namespace M64MM.Utils
             enableHotkeys = coreSettingsGroup.EnsureSettingValue<bool>("enableHotkeys");
         }
 
+        #endregion
+
         #region Reading
         public static byte[] ReadBytes(long address, long size)
         {
@@ -125,7 +196,6 @@ namespace M64MM.Utils
             return buffer;
         }
         #endregion
-
 
         #region Writing
         public static void WriteBytes(long address, byte[] data, bool swap = false)
@@ -151,6 +221,15 @@ namespace M64MM.Utils
                 WriteBytes(baseAddr + addr, data, swap);
             }
         }
+        #endregion
+
+        #region Event methods
+
+        static void OnLevelChanged(int levelID)
+        {
+            LevelChanged?.Invoke(null, levelID);
+        }
+
         #endregion
 
         /// <summary>
@@ -196,7 +275,7 @@ namespace M64MM.Utils
                 if (value == 0x3C1A8032)
                 {
                     //Speed up the check for the game since the base address was found
-                    programTimer.Interval = 200;
+                    programTimer.Interval = 100;
                     BaseAddress = scanAddress;
                     return;
                 }
@@ -241,6 +320,8 @@ namespace M64MM.Utils
                 throw new ArgumentException("Invalid address");
             }
         }
+
+        #region Addon loading related
 
         public static void LoadAddonsFromFolder(string path = "")
         {
@@ -316,6 +397,8 @@ namespace M64MM.Utils
                 return new List<ToolCommand>();
             }
         }
+
+        #endregion
 
         /// <summary>
         /// Validates a model in Bank 04 and returns which kind of model is it.
@@ -435,7 +518,28 @@ namespace M64MM.Utils
                     }
                     catch (Exception e)
                     {
-                        AddonErrorsBuilder.AppendFormat("{0} [RUNTIME ERROR] - Error while executing Update from Addon {1}. Exception: {2}\nAddon has been disabled.\n--------\n", DateTime.Now.ToLongTimeString(), moduleList[i].Name, e.Message);
+                        AddonErrorsBuilder.AppendFormat("{0} [RUNTIME ERROR] - Error while executing BaseAddressFound from Addon {1}. Exception: {2}\nAddon has been disabled.\n--------\n", DateTime.Now.ToLongTimeString(), moduleList[i].Name, e.Message);
+                        MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
+                        moduleList[i].Active = false;
+                    }
+                }
+            }
+        }
+
+        public async static void performCoreEntAddressChange(uint addr)
+        {
+            for (int i = 0; i < moduleList.Count(); i++)
+            {
+                if (moduleList[i].Active == true)
+                {
+                    try
+                    {
+                        await Task.Run(() => moduleList[i].Module.OnCoreEntAddressChange(addr));
+                        continue;
+                    }
+                    catch (Exception e)
+                    {
+                        AddonErrorsBuilder.AppendFormat("{0} [RUNTIME ERROR] - Error while executing OnCoreEntAddressChange from Addon {1}. Exception: {2}\nAddon has been disabled.\n--------\n", DateTime.Now.ToLongTimeString(), moduleList[i].Name, e.Message);
                         MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
                         moduleList[i].Active = false;
                     }
@@ -459,7 +563,7 @@ namespace M64MM.Utils
                     }
                     catch (Exception e)
                     {
-                        AddonErrorsBuilder.AppendFormat("{0} [RUNTIME ERROR] - Error while executing Update from Addon {1}. Exception: {2}\nAddon has been disabled.\n--------\n", DateTime.Now.ToLongTimeString(), moduleList[i].Name, e.Message);
+                        AddonErrorsBuilder.AppendFormat("{0} [RUNTIME ERROR] - Error while executing BaseAddressZero from Addon {1}. Exception: {2}\nAddon has been disabled.\n--------\n", DateTime.Now.ToLongTimeString(), moduleList[i].Name, e.Message);
                         MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
                         moduleList[i].Active = false;
                     }
@@ -475,8 +579,7 @@ namespace M64MM.Utils
             while (true)
             {
                 //Ingame timer update
-                //ingameTimer = (BitConverter.ToUInt16(SwapEndian(ReadBytes(BaseAddress + 0x32D580, 2), 4), 0));
-                ingameTimer = ReadBytes(BaseAddress + 0x32D5D4, 2)[0];
+                ingameTimer = await Task.Run(() => ReadBytes(BaseAddress + 0x32D580, 2)[0]);
                 //If there's a level loaded EVEN if there's no model
                 if (modelStatus != ModelStatus.NONE)
                 {
@@ -508,7 +611,7 @@ namespace M64MM.Utils
                     else if (ingameTimer <= previousFrame)
                     {
                         previousFrame = ingameTimer;
-                        ingameTimer = await Task.Run(() => ReadBytes(BaseAddress + 0x32D5D4, 2)[0]);
+                        ingameTimer = await Task.Run(() => ReadBytes(BaseAddress + 0x32D580, 2)[0]);
                     }
                 }
                 // zzz
