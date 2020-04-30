@@ -58,6 +58,7 @@
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
             this.ttAutoApplyInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -69,7 +70,8 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsMenuItem,
-            this.aboutMenuItem});
+            this.aboutMenuItem,
+            this.settingsToolStripMenuItem});
             resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
             // 
@@ -264,6 +266,12 @@
             this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ttAutoApplyInfo.ToolTipTitle = "Auto apply animation";
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -321,6 +329,7 @@
         private System.Windows.Forms.ToolStripMenuItem showRunningPluginsToolStripMenuItem;
         private System.Windows.Forms.CheckBox chbAutoApply;
         private System.Windows.Forms.ToolTip ttAutoApplyInfo;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }
 

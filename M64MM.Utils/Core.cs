@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Drawing;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Text;
 using System.Threading.Tasks;
-using M64MM.Additions;
 using System.IO;
 using System.Reflection;
 using System.Security;
 using System.Security.Permissions;
 
+using M64MM.Additions;
+using static M64MM.Utils.SettingsManager;
 namespace M64MM.Utils
 {
     //TODO: Move M64MM.Utils to a dotnetStandard project, to reduce .NETFX dependency
@@ -25,6 +25,11 @@ namespace M64MM.Utils
         public static List<CameraStyle> camStyles;
         public static Animation defaultAnimation;
         public static byte[] emptyWord = new byte[] { 0, 0, 0, 0 };
+        public static SettingsGroup coreSettingsGroup;
+
+        // Settings related variables
+        public static bool enableHotkeys;
+
         public static bool IsEmuOpen
         {
             get
@@ -44,6 +49,7 @@ namespace M64MM.Utils
         public static UInt32 ingameTimer;
         public static UInt32 previousFrame;
         public static int CurrentLevelID => BitConverter.ToInt16(SwapEndian(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
+
         public enum ModelStatus
         {
             NONE,
@@ -52,6 +58,7 @@ namespace M64MM.Utils
             MODDED,
             COMET
         }
+
         public static ModelStatus modelStatus = ModelStatus.NONE;
         static Process emuProcess;
         static IntPtr emuProcessHandle;
@@ -66,6 +73,46 @@ namespace M64MM.Utils
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesWritten);
 
+        public static async void InitSettings()
+        {
+            bool settingsExist = File.Exists($"{Application.StartupPath}/config.json");
+            if (settingsExist)
+            {
+                using (StreamReader rs = new StreamReader($"{Application.StartupPath}/config.json"))
+                {
+                    string jsonRead = await rs.ReadToEndAsync();
+                    JSONToSettings(jsonRead);
+                }
+            }
+            else
+            {
+                using (StreamWriter rw = new StreamWriter($"{Application.StartupPath}/config.json"))
+                {
+                    string settings = SettingsToJSON();
+                    await rw.WriteAsync(settings);
+                }
+            }
+            coreSettingsGroup = GetSettingsGroup("core");
+        }
+
+        public static async void SaveSettings()
+        {
+            using (FileStream fs = new FileStream($"{Application.StartupPath}/config.json", FileMode.Truncate))
+            {
+                StreamWriter rw = new StreamWriter(fs);
+                await rw.FlushAsync();
+                string settings = SettingsToJSON();
+                await rw.WriteAsync(settings);
+                rw.Close();
+                rw.Dispose();
+            }
+            UpdateLocalVariables();
+        }
+
+        static void UpdateLocalVariables()
+        {
+            enableHotkeys = coreSettingsGroup.EnsureSettingValue<bool>("enableHotkeys");
+        }
 
         #region Reading
         public static byte[] ReadBytes(long address, long size)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Newtonsoft.Json;
 namespace M64MM.Utils
 {
@@ -26,6 +25,25 @@ namespace M64MM.Utils
         public SettingsGroup(Dictionary<string, string> settings)
         {
             entries = settings;
+        }
+
+        /// <summary>
+        /// Makes sure the setting exists. If it doesn't, it will set it to the default value of the variable.
+        /// </summary>
+        /// <typeparam name="T">The type of the setting to ensure.</typeparam>
+        /// <param name="settingName">The name of the setting in this group to ensure.</param>
+        /// <returns>The same that GetSettingValue would return.</returns>
+        public T EnsureSettingValue<T>(string settingName)
+        {
+            if ((entries != null && entries.ContainsKey(settingName)) == false)
+            {
+                SetSettingValue<T>(settingName, default(T), true);
+            }
+            if (typeof(T) == null)
+            {
+                throw new ArgumentException("The requested type is null.");
+            }
+            return GetSettingValue<T>(settingName);
         }
 
         /// <summary>

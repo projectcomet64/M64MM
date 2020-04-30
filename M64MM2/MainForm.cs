@@ -9,9 +9,7 @@ using M64MM2.Properties;
 using static M64MM.Utils.Core;
 using M64MM.Utils;
 using M64MM.Additions;
-using System.Diagnostics;
-using System.Security;
-using System.Security.Permissions;
+using static M64MM.Utils.SettingsManager;
 
 namespace M64MM2
 {
@@ -19,6 +17,7 @@ namespace M64MM2
     {
         AppearanceForm appearanceForm;
         ExtraControlsForm extraControlsForm;
+        SettingsForm settingsForm;
         bool cameraFrozen = false;
         bool cameraSoftFrozen = false;
         public Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : new Animation();
@@ -33,6 +32,7 @@ namespace M64MM2
         public MainForm()
         {
             LoadAddonsFromFolder();
+            InitSettings();
             InitializeComponent();
             InitializeModules();
             ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
@@ -85,18 +85,6 @@ namespace M64MM2
                         };
 
                         animList.Add(anim);
-                        try
-                        {
-                            if (splitLine[3] != null)
-                            {
-                                defaultAnimation = anim;
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-
                         cbAnimOld.Items.Add(splitLine[1]);
                         cbAnimNew.Items.Add(splitLine[1]);
 
@@ -224,20 +212,23 @@ namespace M64MM2
             }
 
 
-            //Handle hotkey input
-            if (GetKey(Keys.LControlKey) || GetKey(Keys.RControlKey))
+            //Handle hotkey input based on setting
+            if (enableHotkeys)
             {
-                if (GetKey(Keys.D1))
-                    FreezeCam(null, null);
+                if (GetKey(Keys.LControlKey) || GetKey(Keys.RControlKey))
+                {
+                    if (GetKey(Keys.D1))
+                        FreezeCam(null, null);
 
-                if (GetKey(Keys.D2))
-                    UnfreezeCam(null, null);
+                    if (GetKey(Keys.D2))
+                        UnfreezeCam(null, null);
 
-                if (GetKey(Keys.D4))
-                    SoftFreezeCam(null, null);
+                    if (GetKey(Keys.D4))
+                        SoftFreezeCam(null, null);
 
-                if (GetKey(Keys.D5))
-                    SoftUnfreezeCam(null, null);
+                    if (GetKey(Keys.D5))
+                        SoftUnfreezeCam(null, null);
+                }
             }
         }
 
@@ -427,6 +418,15 @@ namespace M64MM2
         private void cbAnimOld_TextChanged(object sender, EventArgs e)
         {
             // Hold up.
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (settingsForm == null)
+            {
+                settingsForm = new SettingsForm();
+            }
+            settingsForm.ShowDialog();
         }
     }
 }
