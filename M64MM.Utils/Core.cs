@@ -13,6 +13,8 @@ using System.Security.Permissions;
 
 using M64MM.Additions;
 using static M64MM.Utils.SettingsManager;
+using System.Globalization;
+
 namespace M64MM.Utils
 {
     //TODO: Move M64MM.Utils to a dotnetStandard project, to reduce .NETFX dependency
@@ -26,6 +28,26 @@ namespace M64MM.Utils
         public static Animation defaultAnimation;
         public static byte[] emptyWord = new byte[] { 0, 0, 0, 0 };
         public static SettingsGroup coreSettingsGroup;
+        static bool _cameraFrozen = false;
+        static bool _cameraSoftFrozen = false;
+
+        public static bool CameraFrozen
+        {
+            get
+            {
+                return _cameraFrozen;
+            }
+            private set { }
+        }
+
+        public static bool CameraSoftFrozen
+        {
+            get
+            {
+                return _cameraSoftFrozen;
+            }
+            private set { }
+        }
 
         #region Events (internal use recommended)
         public static event EventHandler<int> LevelChanged;
@@ -121,21 +143,21 @@ namespace M64MM.Utils
 
         public static void UpdateCoreEntityAddress()
         {
-                uint caughtA = BitConverter.ToUInt32(
-                ReadBytes(BaseAddress + 0x33B1F8, 4), 0);
+            uint caughtA = BitConverter.ToUInt32(
+            ReadBytes(BaseAddress + 0x33B1F8, 4), 0);
             uint caughtFilt = caughtA & 0x00FFFFFF;
-                if (caughtA > 0)
-                {
+            if (caughtA > 0)
+            {
                 if (caughtFilt != _coreEntityAddress)
                 {
                     performCoreEntAddressChange(caughtFilt);
                 }
-                    _coreEntityAddress = caughtFilt;
-                }
-                else
-                {
+                _coreEntityAddress = caughtFilt;
+            }
+            else
+            {
                 _coreEntityAddress = 0;
-                }
+            }
         }
 
         #endregion
@@ -181,6 +203,153 @@ namespace M64MM.Utils
         static void UpdateLocalVariables()
         {
             enableHotkeys = coreSettingsGroup.EnsureSettingValue<bool>("enableHotkeys");
+        }
+
+        #endregion
+
+        #region Animation related
+
+        /// <summary>
+        /// Writes the animation swap from oldAnimation to newAnimation
+        /// </summary>
+        /// <param name="oldAnimation"></param>
+        /// <param name="newAnimation"></param>
+        public static void WriteAnimationSwap(Animation oldAnimation, Animation newAnimation)
+        {
+            if (oldAnimation.Value == "" || newAnimation.Value == "")
+            {
+                throw new ArgumentException($"--Resources.invalidAnimSelected Invalid animation selected: {oldAnimation.Description} -> {newAnimation.Description}");
+            }
+
+            byte[] stuffToWrite = SwapEndian(StringToByteArray(newAnimation.Value), 4);
+            long address = BaseAddress + 0x64040 + (oldAnimation.RealIndex + 1) * 8;
+
+            WriteBytes(address, stuffToWrite);
+        }
+
+
+        /// <summary>
+        /// Returns the Animation index from the animList that the current animation has selected in memory.
+        /// </summary>
+        /// <param name="anim"></param>
+        /// <returns></returns>
+        public static int GetCurrentAnimationIndex(Animation anim)
+        {
+            long address = BaseAddress + 0x64040 + (anim.RealIndex + 1) * 8;
+            byte[] currentAnim = SwapEndian(ReadBytes(address, 8), 4);
+            string currentAnimValue = BitConverter.ToString(currentAnim).Replace("-", "");
+
+            int index = animList.FindIndex(x => x.Value == currentAnimValue);
+            return index;
+        }
+
+        public static void WriteAnimationReset(Animation anim)
+        {
+            if (anim.Value == "")
+            {
+                throw new ArgumentException($"--Resources.invalidAnimSelected Invalid animation selected: {anim.Description}");
+            }
+
+            byte[] stuffToWrite = SwapEndian(StringToByteArray(anim.Value), 4);
+            long address = BaseAddress + 0x64040 + (anim.RealIndex + 1) * 8;
+
+            WriteBytes(address, stuffToWrite);
+        }
+
+        public static bool LoadAnimationData()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader("animation_data.txt"))
+                {
+                    while (!sr.EndOfStream && sr.Peek() != 0)
+                    {
+                        string rawLine = sr.ReadLine();
+                        string[] splitLine = rawLine.Trim().Split('|');
+
+                        Animation anim = new Animation
+                        {
+                            Value = splitLine[0],
+                            Description = splitLine[1],
+                            RealIndex = int.Parse(splitLine[2])
+                        };
+
+                        animList.Add(anim);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static string[] GetAnimationNames()
+        {
+            return animList.Select(x => x.Description).ToArray();
+        }
+
+        #endregion
+
+        #region Camera related
+
+        public static void ToggleCameraFreeze()
+        {
+            if (!CameraFrozen)
+            {
+                _cameraFrozen = true;
+                byte[] data = { 0x80 };
+                WriteBytes(BaseAddress + 0x33C84B, data);
+            }
+            else
+            {
+                _cameraFrozen = false;
+                byte[] data = { 0x00 };
+                WriteBytes(BaseAddress + 0x33C84B, data);
+            }
+            
+        }
+
+        public static void ToggleCameraSoftFreeze()
+        {
+            if (!CameraSoftFrozen)
+            {
+                _cameraSoftFrozen = true;
+                WriteBytes(BaseAddress + 0x33B204, BitConverter.GetBytes(0x8001C520));
+            }
+            else
+            {
+                _cameraSoftFrozen = false;
+                WriteBytes(BaseAddress + 0x33B204, BitConverter.GetBytes(0x8033C520));
+            }
+
+        }
+
+        public static bool LoadCameraData()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader("camera_data.txt"))
+                {
+                    while (sr.Peek() >= 0)
+                    {
+                        string rawLine = sr.ReadLine().Trim();
+                        string[] splitLine = rawLine.Split('|');
+                        CameraStyle style = new CameraStyle
+                        {
+                            Value = byte.Parse(splitLine[0], NumberStyles.HexNumber),
+                            Name = splitLine[1]
+                        };
+                        camStyles.Add(style);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
         }
 
         #endregion

@@ -10,6 +10,7 @@ using static M64MM.Utils.Core;
 using M64MM.Utils;
 using M64MM.Additions;
 using static M64MM.Utils.SettingsManager;
+using System.Linq;
 
 namespace M64MM2
 {
@@ -18,10 +19,7 @@ namespace M64MM2
         AppearanceForm appearanceForm;
         ExtraControlsForm extraControlsForm;
         SettingsForm settingsForm;
-        bool cameraFrozen = false;
-        bool cameraSoftFrozen = false;
-        public Animation selectedAnimOld => cbAnimOld.SelectedIndex >= 0 ? animList[cbAnimOld.SelectedIndex] : new Animation();
-        public Animation selectedAnimNew => cbAnimNew.SelectedIndex >= 0 ? animList[cbAnimNew.SelectedIndex] : new Animation();
+
 
         //This handles the "Each ingame frame"
         //ASYNCHRONOUS FOR THE WIN
@@ -61,42 +59,15 @@ namespace M64MM2
             Text = Resources.programName + " " + Application.ProductVersion;
             programTimer.Interval = 1000;
             programTimer.Start();
-            animList = new List<Animation>();
-            camStyles = new List<CameraStyle>();
             defaultAnimation.Value = "0";
             lblCameraStatus.Text = Resources.cameraStateDefault;
             toolsMenuItem.Enabled = false;
 
             //Load animation data
-            try
+            bool validAnimData = LoadAnimationData();
+            if (!validAnimData)
             {
-                using (StreamReader sr = new StreamReader("animation_data.txt"))
-                {
-                    while (!sr.EndOfStream && sr.Peek() != 0)
-                    {
-                        string rawLine = sr.ReadLine();
-                        string[] splitLine = rawLine.Trim().Split('|');
-
-                        Animation anim = new Animation
-                        {
-                            Value = splitLine[0],
-                            Description = splitLine[1],
-                            RealIndex = int.Parse(splitLine[2])
-                        };
-
-                        animList.Add(anim);
-                        cbAnimOld.Items.Add(splitLine[1]);
-                        cbAnimNew.Items.Add(splitLine[1]);
-
-                        cbAnimOld.SelectedIndex = 0;
-                        cbAnimNew.SelectedIndex = 0;
-                    }
-
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(Resources.animDataNotLoaded);
                 cbAnimOld.Text = cbAnimNew.Text = Resources.animDataNotLoaded;
                 cbAnimOld.Enabled = false;
                 cbAnimNew.Enabled = false;
@@ -106,28 +77,19 @@ namespace M64MM2
                 btnAnimReset.Enabled = false;
                 chbAutoApply.Enabled = false;
             }
+            else
+            {
+                cbAnimNew.Items.AddRange(GetAnimationNames());
+                cbAnimOld.Items.AddRange(GetAnimationNames());
+                cbAnimNew.SelectedIndex = cbAnimOld.SelectedIndex = 0;
+            }
 
             //Load camera style data
-            try
+            bool validCamStyles = LoadCameraData();
+
+            if (!validCamStyles)
             {
-                using (StreamReader sr = new StreamReader("camera_data.txt"))
-                {
-                    while (sr.Peek() >= 0)
-                    {
-                        string rawLine = sr.ReadLine().Trim();
-                        string[] splitLine = rawLine.Split('|');
-                        CameraStyle style = new CameraStyle
-                        {
-                            Value = byte.Parse(splitLine[0], NumberStyles.HexNumber),
-                            Name = splitLine[1]
-                        };
-                        camStyles.Add(style);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(Resources.cameraDataNotLoaded);
                 cbCamStyles.Text = Resources.cameraDataNotLoaded;
                 cbCamStyles.Enabled = false;
                 btnChangeCamStyle.Enabled = false;
@@ -141,6 +103,11 @@ namespace M64MM2
                 }
                 cbCamStyles.SelectedIndex = 0;
                 cbCamStyles.Refresh();
+            }
+            else
+            {
+                cbCamStyles.Text = "NONE";
+                cbCamStyles.Enabled = false;
             }
         }
 
@@ -207,7 +174,7 @@ namespace M64MM2
             // When the game is transitioning, the game freezes: we can no longer just trust the
             // in-game timer in that case
             UpdateCoreEntityAddress();
-            if (cameraFrozen && (cameraState[0] == 0xA2 || cameraState[0] < 0x80))
+            if (CameraFrozen && (cameraState[0] == 0xA2 || cameraState[0] < 0x80))
             {
                 byte[] data = { 0x80 };
                 WriteBytes(BaseAddress + 0x33C84B, data);
@@ -220,13 +187,13 @@ namespace M64MM2
                 if (GetKey(Keys.LControlKey) || GetKey(Keys.RControlKey))
                 {
                     if (GetKey(Keys.D1))
-                        FreezeCam(null, null);
+                        ToggleFreezeCam(null, null);
 
                     if (GetKey(Keys.D2))
                         UnfreezeCam(null, null);
 
                     if (GetKey(Keys.D4))
-                        SoftFreezeCam(null, null);
+                        ToggleSoftFreezeCam(null, null);
 
                     if (GetKey(Keys.D5))
                         SoftUnfreezeCam(null, null);
@@ -235,45 +202,42 @@ namespace M64MM2
         }
 
 
-        void FreezeCam(object sender, EventArgs e)
+        void ToggleFreezeCam(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 
-            cameraFrozen = true;
-            byte[] data = { 0x80 };
-            WriteBytes(BaseAddress + 0x33C84B, data);
-            lblCameraStatus.Text = Resources.cameraStateFrozen;
+            ToggleCameraFreeze();
+            btnFreeze.Text = $"Frozen: {CameraFrozen}";
+            lblCameraStatus.Text = (CameraFrozen) ? Resources.cameraStateFrozen : ((CameraSoftFrozen) ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault);
         }
 
         void UnfreezeCam(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
+            // TODO: delete.
+            // Dropped in favor of a toggling button
+            
 
-            cameraFrozen = false;
-            byte[] data = { 0x00 };
-            WriteBytes(BaseAddress + 0x33C84B, data);
-
-            lblCameraStatus.Text = cameraSoftFrozen ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault;
+            //lblCameraStatus.Text = cameraSoftFrozen ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault;
         }
 
-        void SoftFreezeCam(object sender, EventArgs e)
+        void ToggleSoftFreezeCam(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 
-            cameraSoftFrozen = true;
-            WriteBytes(BaseAddress + 0x33B204, BitConverter.GetBytes(0x8001C520));
+            ToggleCameraSoftFreeze();
+            btnSoftFreeze.Text = $"Soft Frozen: {CameraSoftFrozen}";
 
-            lblCameraStatus.Text = cameraFrozen ? Resources.cameraStateFrozen : Resources.cameraStateSoftFrozen;
+            lblCameraStatus.Text = (CameraFrozen) ? Resources.cameraStateFrozen : ((CameraSoftFrozen) ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault);
         }
 
         void SoftUnfreezeCam(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 
-            cameraSoftFrozen = false;
-            WriteBytes(BaseAddress + 0x33B204, BitConverter.GetBytes(0x8033C520));
-
-            lblCameraStatus.Text = cameraFrozen ? Resources.cameraStateFrozen : Resources.cameraStateDefault;
+            // TODO: delete.
+            // Dropped in favor of a toggling button
+            //lblCameraStatus.Text = cameraFrozen ? Resources.cameraStateFrozen : Resources.cameraStateDefault;
         }
 
         void changeCameraStyle(object sender, EventArgs e)
@@ -290,33 +254,18 @@ namespace M64MM2
         void WriteAnimSwap(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
+            Animation oldAnim = animList[cbAnimOld.SelectedIndex];
+            Animation newAnim = animList[cbAnimNew.SelectedIndex];
+            WriteAnimationSwap(oldAnim, newAnim);
 
-            if (selectedAnimOld.Value == "" || selectedAnimNew.Value == "")
-            {
-                MessageBox.Show(this, String.Format(Resources.invalidAnimSelected, ((Control)sender).Name));
-                return;
-            }
-
-            byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimNew.Value), 4);
-            long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
-
-            WriteBytes(address, stuffToWrite);
         }
 
         void WriteAnimReset(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 
-            if (selectedAnimOld.Value == "" || selectedAnimNew.Value == "")
-            {
-                MessageBox.Show(this, String.Format(Resources.invalidAnimSelected, ((Control)sender).Name));
-                return;
-            }
-
-            byte[] stuffToWrite = SwapEndian(StringToByteArray(selectedAnimOld.Value), 4);
-            long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
-
-            WriteBytes(address, stuffToWrite);
+            Animation selectedAnimation = animList[((ComboBox)sender).SelectedIndex];
+            WriteAnimationReset(selectedAnimation);
             cbAnimNew.SelectedIndex = cbAnimOld.SelectedIndex;
         }
 
@@ -326,10 +275,7 @@ namespace M64MM2
 
             foreach (Animation anim in animList)
             {
-                byte[] stuffToWrite = SwapEndian(StringToByteArray(anim.Value), 4);
-                long address = BaseAddress + 0x64040 + (anim.RealIndex + 1) * 8;
-
-                WriteBytes(address, stuffToWrite);
+                WriteAnimationReset(anim);
             }
 
             cbAnimNew.SelectedIndex = cbAnimOld.SelectedIndex;
@@ -338,16 +284,8 @@ namespace M64MM2
         void cbAnimOld_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
-
-            long address = BaseAddress + 0x64040 + (selectedAnimOld.RealIndex + 1) * 8;
-            byte[] currentAnim = SwapEndian(ReadBytes(address, 8), 4);
-            string currentAnimValue = BitConverter.ToString(currentAnim).Replace("-", "");
-
-            for (int i = 0; i < animList.Count; i++)
-            {
-                if (animList[i].Value == currentAnimValue)
-                    cbAnimNew.SelectedIndex = i;
-            }
+            Animation selectedAnimation = animList[((ComboBox)sender).SelectedIndex];
+            cbAnimNew.SelectedIndex = GetCurrentAnimationIndex(selectedAnimation);
         }
 
         void openAppearanceSettings(object sender, EventArgs e)

@@ -121,42 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="appearanceSettingsMenuItem.Text" xml:space="preserve">
-    <value>&amp;Appearance Settings...</value>
-  </data>
-  <data name="extraControlsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="extraControlsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Extra Controls...</value>
-  </data>
-  <data name="showRunningPluginsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="showRunningPluginsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Show Running Addons</value>
-  </data>
-  <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
-  </data>
-  <data name="toolsMenuItem.Text" xml:space="preserve">
-    <value>&amp;Tools</value>
-  </data>
-  <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 20</value>
-  </data>
-  <data name="aboutMenuItem.Text" xml:space="preserve">
-    <value>&amp;About</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
   <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -182,39 +146,48 @@
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
+  </data>
+  <data name="toolsMenuItem.Text" xml:space="preserve">
+    <value>&amp;Tools</value>
+  </data>
+  <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="appearanceSettingsMenuItem.Text" xml:space="preserve">
+    <value>&amp;Appearance Settings...</value>
+  </data>
+  <data name="extraControlsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="extraControlsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Extra Controls...</value>
+  </data>
+  <data name="showRunningPluginsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="showRunningPluginsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show Running Addons</value>
+  </data>
+  <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 20</value>
+  </data>
+  <data name="aboutMenuItem.Text" xml:space="preserve">
+    <value>&amp;About</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnSoftUnfreeze.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnSoftUnfreeze.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 50</value>
-  </data>
-  <data name="btnSoftUnfreeze.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 25</value>
-  </data>
-  <data name="btnSoftUnfreeze.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="btnSoftUnfreeze.Text" xml:space="preserve">
-    <value>Soft-Unfreeze (Ctrl + 5)</value>
-  </data>
-  <data name="&gt;&gt;btnSoftUnfreeze.Name" xml:space="preserve">
-    <value>btnSoftUnfreeze</value>
-  </data>
-  <data name="&gt;&gt;btnSoftUnfreeze.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnSoftUnfreeze.Parent" xml:space="preserve">
-    <value>grpCamera</value>
-  </data>
-  <data name="&gt;&gt;btnSoftUnfreeze.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="btnSoftFreeze.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnSoftFreeze.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 50</value>
+    <value>142, 49</value>
   </data>
   <data name="btnSoftFreeze.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 25</value>
@@ -235,37 +208,10 @@
     <value>grpCamera</value>
   </data>
   <data name="&gt;&gt;btnSoftFreeze.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnUnfreeze.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnUnfreeze.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 19</value>
-  </data>
-  <data name="btnUnfreeze.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 25</value>
-  </data>
-  <data name="btnUnfreeze.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="btnUnfreeze.Text" xml:space="preserve">
-    <value>Unfreeze (Ctrl + 2)</value>
-  </data>
-  <data name="&gt;&gt;btnUnfreeze.Name" xml:space="preserve">
-    <value>btnUnfreeze</value>
-  </data>
-  <data name="&gt;&gt;btnUnfreeze.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnUnfreeze.Parent" xml:space="preserve">
-    <value>grpCamera</value>
-  </data>
-  <data name="&gt;&gt;btnUnfreeze.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="btnFreeze.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+    <value>6, 49</value>
   </data>
   <data name="btnFreeze.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 25</value>
@@ -286,7 +232,7 @@
     <value>grpCamera</value>
   </data>
   <data name="&gt;&gt;btnFreeze.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="grpCamera.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 27</value>
@@ -318,6 +264,30 @@
   <metadata name="statusStrip.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 220</value>
+  </data>
+  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>524, 22</value>
+  </data>
+  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="statusStrip.Text" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="lblProgramStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -348,30 +318,129 @@
   <data name="lblCameraCode.Text" xml:space="preserve">
     <value>0x00000000</value>
   </data>
-  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 220</value>
+  <data name="&gt;&gt;chbAutoApply.Name" xml:space="preserve">
+    <value>chbAutoApply</value>
   </data>
-  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 22</value>
+  <data name="&gt;&gt;chbAutoApply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="&gt;&gt;chbAutoApply.Parent" xml:space="preserve">
+    <value>grpAnimSwap</value>
   </data>
-  <data name="statusStrip.Text" xml:space="preserve">
-    <value>statusStrip</value>
+  <data name="&gt;&gt;chbAutoApply.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
-    <value>statusStrip</value>
+  <data name="&gt;&gt;btnAnimResetAll.Name" xml:space="preserve">
+    <value>btnAnimResetAll</value>
   </data>
-  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnAnimResetAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;btnAnimResetAll.Parent" xml:space="preserve">
+    <value>grpAnimSwap</value>
   </data>
-  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnAnimResetAll.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnAnimReset.Name" xml:space="preserve">
+    <value>btnAnimReset</value>
+  </data>
+  <data name="&gt;&gt;btnAnimReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAnimReset.Parent" xml:space="preserve">
+    <value>grpAnimSwap</value>
+  </data>
+  <data name="&gt;&gt;btnAnimReset.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;btnAnimSwap.Name" xml:space="preserve">
+    <value>btnAnimSwap</value>
+  </data>
+  <data name="&gt;&gt;btnAnimSwap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAnimSwap.Parent" xml:space="preserve">
+    <value>grpAnimSwap</value>
+  </data>
+  <data name="&gt;&gt;btnAnimSwap.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lblAnimNew.Name" xml:space="preserve">
+    <value>lblAnimNew</value>
+  </data>
+  <data name="&gt;&gt;lblAnimNew.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAnimNew.Parent" xml:space="preserve">
+    <value>grpAnimSwap</value>
+  </data>
+  <data name="&gt;&gt;lblAnimNew.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lblAnimOld.Name" xml:space="preserve">
+    <value>lblAnimOld</value>
+  </data>
+  <data name="&gt;&gt;lblAnimOld.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAnimOld.Parent" xml:space="preserve">
+    <value>grpAnimSwap</value>
+  </data>
+  <data name="&gt;&gt;lblAnimOld.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;cbAnimNew.Name" xml:space="preserve">
+    <value>cbAnimNew</value>
+  </data>
+  <data name="&gt;&gt;cbAnimNew.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbAnimNew.Parent" xml:space="preserve">
+    <value>grpAnimSwap</value>
+  </data>
+  <data name="&gt;&gt;cbAnimNew.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;cbAnimOld.Name" xml:space="preserve">
+    <value>cbAnimOld</value>
+  </data>
+  <data name="&gt;&gt;cbAnimOld.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbAnimOld.Parent" xml:space="preserve">
+    <value>grpAnimSwap</value>
+  </data>
+  <data name="&gt;&gt;cbAnimOld.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="grpAnimSwap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 115</value>
+  </data>
+  <data name="grpAnimSwap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 102</value>
+  </data>
+  <data name="grpAnimSwap.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="grpAnimSwap.Text" xml:space="preserve">
+    <value>Animation Swap Controls</value>
+  </data>
+  <data name="&gt;&gt;grpAnimSwap.Name" xml:space="preserve">
+    <value>grpAnimSwap</value>
+  </data>
+  <data name="&gt;&gt;grpAnimSwap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpAnimSwap.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpAnimSwap.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="ttAutoApplyInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>355, 17</value>
+  </metadata>
   <data name="chbAutoApply.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -387,9 +456,6 @@
   <data name="chbAutoApply.Text" xml:space="preserve">
     <value>Auto Apply</value>
   </data>
-  <metadata name="ttAutoApplyInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>355, 17</value>
-  </metadata>
   <data name="chbAutoApply.ToolTip" xml:space="preserve">
     <value>This will automatically update the animation to be replaced with
 the animation selected in the second box whenever the second
@@ -586,29 +652,53 @@ Note: May glitch with some animations.</value>
   <data name="&gt;&gt;cbAnimOld.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="grpAnimSwap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 115</value>
+  <data name="&gt;&gt;btnChangeCamStyle.Name" xml:space="preserve">
+    <value>btnChangeCamStyle</value>
   </data>
-  <data name="grpAnimSwap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 102</value>
+  <data name="&gt;&gt;btnChangeCamStyle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="grpAnimSwap.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;btnChangeCamStyle.Parent" xml:space="preserve">
+    <value>grpCamStyle</value>
   </data>
-  <data name="grpAnimSwap.Text" xml:space="preserve">
-    <value>Animation Swap Controls</value>
+  <data name="&gt;&gt;btnChangeCamStyle.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;grpAnimSwap.Name" xml:space="preserve">
-    <value>grpAnimSwap</value>
+  <data name="&gt;&gt;cbCamStyles.Name" xml:space="preserve">
+    <value>cbCamStyles</value>
   </data>
-  <data name="&gt;&gt;grpAnimSwap.Type" xml:space="preserve">
+  <data name="&gt;&gt;cbCamStyles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.Parent" xml:space="preserve">
+    <value>grpCamStyle</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpCamStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>296, 27</value>
+  </data>
+  <data name="grpCamStyle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 82</value>
+  </data>
+  <data name="grpCamStyle.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="grpCamStyle.Text" xml:space="preserve">
+    <value>Change Camera Style</value>
+  </data>
+  <data name="&gt;&gt;grpCamStyle.Name" xml:space="preserve">
+    <value>grpCamStyle</value>
+  </data>
+  <data name="&gt;&gt;grpCamStyle.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;grpAnimSwap.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpCamStyle.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;grpAnimSwap.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;grpCamStyle.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnChangeCamStyle.Location" type="System.Drawing.Point, System.Drawing">
     <value>43, 51</value>
@@ -655,30 +745,9 @@ Note: May glitch with some animations.</value>
   <data name="&gt;&gt;cbCamStyles.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="grpCamStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>296, 27</value>
-  </data>
-  <data name="grpCamStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 82</value>
-  </data>
-  <data name="grpCamStyle.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="grpCamStyle.Text" xml:space="preserve">
-    <value>Change Camera Style</value>
-  </data>
-  <data name="&gt;&gt;grpCamStyle.Name" xml:space="preserve">
-    <value>grpCamStyle</value>
-  </data>
-  <data name="&gt;&gt;grpCamStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpCamStyle.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grpCamStyle.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
+  <metadata name="ttAutoApplyInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>355, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -2621,6 +2690,12 @@ Note: May glitch with some animations.</value>
   <data name="&gt;&gt;aboutMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;settingsToolStripMenuItem.Name" xml:space="preserve">
+    <value>settingsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;settingsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;lblProgramStatus.Name" xml:space="preserve">
     <value>lblProgramStatus</value>
   </data>
@@ -2644,12 +2719,6 @@ Note: May glitch with some animations.</value>
   </data>
   <data name="&gt;&gt;ttAutoApplyInfo.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;settingsToolStripMenuItem.Name" xml:space="preserve">
-    <value>settingsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;settingsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

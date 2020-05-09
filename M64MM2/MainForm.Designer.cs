@@ -36,10 +36,9 @@
             this.extraControlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showRunningPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCamera = new System.Windows.Forms.GroupBox();
-            this.btnSoftUnfreeze = new System.Windows.Forms.Button();
             this.btnSoftFreeze = new System.Windows.Forms.Button();
-            this.btnUnfreeze = new System.Windows.Forms.Button();
             this.btnFreeze = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lblProgramStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -58,7 +57,6 @@
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
             this.ttAutoApplyInfo = new System.Windows.Forms.ToolTip(this.components);
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -108,43 +106,33 @@
             resources.ApplyResources(this.aboutMenuItem, "aboutMenuItem");
             this.aboutMenuItem.Click += new System.EventHandler(this.openAboutForm);
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
             // grpCamera
             // 
-            this.grpCamera.Controls.Add(this.btnSoftUnfreeze);
             this.grpCamera.Controls.Add(this.btnSoftFreeze);
-            this.grpCamera.Controls.Add(this.btnUnfreeze);
             this.grpCamera.Controls.Add(this.btnFreeze);
             resources.ApplyResources(this.grpCamera, "grpCamera");
             this.grpCamera.Name = "grpCamera";
             this.grpCamera.TabStop = false;
-            // 
-            // btnSoftUnfreeze
-            // 
-            resources.ApplyResources(this.btnSoftUnfreeze, "btnSoftUnfreeze");
-            this.btnSoftUnfreeze.Name = "btnSoftUnfreeze";
-            this.btnSoftUnfreeze.UseVisualStyleBackColor = true;
-            this.btnSoftUnfreeze.Click += new System.EventHandler(this.SoftUnfreezeCam);
             // 
             // btnSoftFreeze
             // 
             resources.ApplyResources(this.btnSoftFreeze, "btnSoftFreeze");
             this.btnSoftFreeze.Name = "btnSoftFreeze";
             this.btnSoftFreeze.UseVisualStyleBackColor = true;
-            this.btnSoftFreeze.Click += new System.EventHandler(this.SoftFreezeCam);
-            // 
-            // btnUnfreeze
-            // 
-            resources.ApplyResources(this.btnUnfreeze, "btnUnfreeze");
-            this.btnUnfreeze.Name = "btnUnfreeze";
-            this.btnUnfreeze.UseVisualStyleBackColor = true;
-            this.btnUnfreeze.Click += new System.EventHandler(this.UnfreezeCam);
+            this.btnSoftFreeze.Click += new System.EventHandler(this.ToggleSoftFreezeCam);
             // 
             // btnFreeze
             // 
             resources.ApplyResources(this.btnFreeze, "btnFreeze");
             this.btnFreeze.Name = "btnFreeze";
             this.btnFreeze.UseVisualStyleBackColor = true;
-            this.btnFreeze.Click += new System.EventHandler(this.FreezeCam);
+            this.btnFreeze.Click += new System.EventHandler(this.ToggleFreezeCam);
             // 
             // statusStrip
             // 
@@ -266,12 +254,6 @@
             this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ttAutoApplyInfo.ToolTipTitle = "Auto apply animation";
             // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -306,12 +288,10 @@
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
         private System.Windows.Forms.GroupBox grpCamera;
         private System.Windows.Forms.Button btnFreeze;
-        private System.Windows.Forms.Button btnUnfreeze;
         private System.Windows.Forms.Button btnSoftFreeze;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel lblProgramStatus;
         private System.Windows.Forms.ToolStripStatusLabel lblCameraStatus;
-        private System.Windows.Forms.Button btnSoftUnfreeze;
         private System.Windows.Forms.GroupBox grpAnimSwap;
         private System.Windows.Forms.ComboBox cbAnimNew;
         private System.Windows.Forms.ComboBox cbAnimOld;
