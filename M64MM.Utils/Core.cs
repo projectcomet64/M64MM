@@ -23,8 +23,8 @@ namespace M64MM.Utils
         public static StringBuilder AddonErrorsBuilder;
         public static List<Addon> moduleList = new List<Addon>();
         public static long BaseAddress;
-        public static List<Animation> animList;
-        public static List<CameraStyle> camStyles;
+        public static List<Animation> animList = new List<Animation>();
+        public static List<CameraStyle> camStyles = new List<CameraStyle>();
         public static Animation defaultAnimation;
         public static byte[] emptyWord = new byte[] { 0, 0, 0, 0 };
         public static SettingsGroup coreSettingsGroup;
@@ -78,12 +78,22 @@ namespace M64MM.Utils
             private set { }
         }
 
+        public static byte[] CameraState
+        {
+            get
+            {
+                return SwapEndian(ReadBytes(BaseAddress + 0x33C848, 4), 4);
+            }
+            private set { }
+        }
+
         public static short AnimationIndex
         {
             get
             {
                 return BitConverter.ToInt16(SwapEndian(ReadBytes(BaseAddress + CoreEntityAddress + 0x3A, 2), 4), 0);
             }
+            private set { }
         }
 
         public enum ModelStatus
@@ -184,6 +194,7 @@ namespace M64MM.Utils
                 }
             }
             coreSettingsGroup = GetSettingsGroup("core");
+            UpdateLocalVariables();
         }
 
         public static async void SaveSettings()
@@ -260,7 +271,7 @@ namespace M64MM.Utils
         {
             try
             {
-                using (StreamReader sr = new StreamReader("animation_data.txt"))
+                using (StreamReader sr = new StreamReader($"{Application.StartupPath}/animation_data.txt"))
                 {
                     while (!sr.EndOfStream && sr.Peek() != 0)
                     {
@@ -330,7 +341,7 @@ namespace M64MM.Utils
         {
             try
             {
-                using (StreamReader sr = new StreamReader("camera_data.txt"))
+                using (StreamReader sr = new StreamReader($"{Application.StartupPath}/camera_data.txt"))
                 {
                     while (sr.Peek() >= 0)
                     {

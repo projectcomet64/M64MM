@@ -94,6 +94,10 @@ namespace M64MM2
                 cbCamStyles.Enabled = false;
                 btnChangeCamStyle.Enabled = false;
             }
+            else
+            {
+
+            
 
             if (camStyles.Count > 0)
             {
@@ -108,6 +112,7 @@ namespace M64MM2
             {
                 cbCamStyles.Text = "NONE";
                 cbCamStyles.Enabled = false;
+            }
             }
         }
 
@@ -169,12 +174,11 @@ namespace M64MM2
             //------------------------------
 
             //Don't overwrite the camera state if we're in non-bugged first-person
-            byte[] cameraState = SwapEndian(ReadBytes(BaseAddress + 0x33C848, 4), 4);
-            lblCameraCode.Text = "0x" + BitConverter.ToString(cameraState).Replace("-", "");
+            lblCameraCode.Text = "0x" + BitConverter.ToString(CameraState).Replace("-", "");
             // When the game is transitioning, the game freezes: we can no longer just trust the
             // in-game timer in that case
             UpdateCoreEntityAddress();
-            if (CameraFrozen && (cameraState[0] == 0xA2 || cameraState[0] < 0x80))
+            if (CameraFrozen && (CameraState[0] == 0xA2 || CameraState[0] < 0x80))
             {
                 byte[] data = { 0x80 };
                 WriteBytes(BaseAddress + 0x33C84B, data);
@@ -190,13 +194,7 @@ namespace M64MM2
                         ToggleFreezeCam(null, null);
 
                     if (GetKey(Keys.D2))
-                        UnfreezeCam(null, null);
-
-                    if (GetKey(Keys.D4))
                         ToggleSoftFreezeCam(null, null);
-
-                    if (GetKey(Keys.D5))
-                        SoftUnfreezeCam(null, null);
                 }
             }
         }
