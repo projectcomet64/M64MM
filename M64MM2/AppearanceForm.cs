@@ -65,7 +65,10 @@ namespace M64MM2
             foreach(RoutableColorPart rtc in defaultRoutableParts)
             {
                 cbRoutingSource.Items.Add(rtc.Name);
+                if (rtc.Address86.Length > 0 && rtc.Address88.Length > 0)
+                {
                 cbRoutingTarget.Items.Add(rtc.Name);
+                }
             }
 
             cbRoutingSource.SelectedIndex = 0;

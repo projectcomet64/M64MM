@@ -29,10 +29,7 @@ namespace M64MM2
 
         public MainForm()
         {
-            LoadAddonsFromFolder();
-            InitSettings();
             InitializeComponent();
-            InitializeModules();
             ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
             foreach (Addon add in moduleList) {
                 List<ToolCommand> toolCommands = GetAddonCommands(add);
@@ -64,8 +61,8 @@ namespace M64MM2
             toolsMenuItem.Enabled = false;
 
             //Load animation data
-            bool validAnimData = LoadAnimationData();
-            if (!validAnimData)
+            
+            if (!Program.validAnimationData)
             {
                 MessageBox.Show(Resources.animDataNotLoaded);
                 cbAnimOld.Text = cbAnimNew.Text = Resources.animDataNotLoaded;
@@ -85,9 +82,7 @@ namespace M64MM2
             }
 
             //Load camera style data
-            bool validCamStyles = LoadCameraData();
-
-            if (!validCamStyles)
+            if (!Program.validCameraData)
             {
                 MessageBox.Show(Resources.cameraDataNotLoaded);
                 cbCamStyles.Text = Resources.cameraDataNotLoaded;
@@ -96,9 +91,6 @@ namespace M64MM2
             }
             else
             {
-
-            
-
             if (camStyles.Count > 0)
             {
                 foreach (CameraStyle style in camStyles)
@@ -113,14 +105,6 @@ namespace M64MM2
                 cbCamStyles.Text = "NONE";
                 cbCamStyles.Enabled = false;
             }
-            }
-        }
-
-        void InitializeModules()
-        {
-            foreach (Addon mod in moduleList)
-            {
-                mod.Module.Initialize();
             }
         }
 

@@ -1,4 +1,4 @@
-﻿/*  Copyright (C) 2015-2017  James Pelster
+﻿/*  Copyright (C) 2020 Project Comet [GlitchyPSI, James Pelster & contributors]
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,6 +24,10 @@ namespace M64MM2
 {
     static class Program
     {
+
+        public static bool validAnimationData;
+        public static bool validCameraData;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -32,6 +36,8 @@ namespace M64MM2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // SplashForm performs the initial load of everything and sets the variables up there
+            Application.Run(new SplashForm());
             Application.Run(new MainForm());
         }
     }

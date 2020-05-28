@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Taskman));
             this.listView1 = new System.Windows.Forms.ListView();
             this.btn_OK = new System.Windows.Forms.Button();
             this.lb_Desc = new System.Windows.Forms.Label();
             this.cb_pluginEnabled = new System.Windows.Forms.CheckBox();
+            this.cmsAddonStuff = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toggleActiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsAddonStuff.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
@@ -75,6 +79,20 @@
             this.cb_pluginEnabled.UseVisualStyleBackColor = true;
             this.cb_pluginEnabled.CheckedChanged += new System.EventHandler(this.cb_pluginEnabled_CheckedChanged);
             // 
+            // cmsAddonStuff
+            // 
+            this.cmsAddonStuff.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toggleActiveToolStripMenuItem});
+            this.cmsAddonStuff.Name = "cmsAddonStuff";
+            this.cmsAddonStuff.Size = new System.Drawing.Size(181, 48);
+            // 
+            // toggleActiveToolStripMenuItem
+            // 
+            this.toggleActiveToolStripMenuItem.Name = "toggleActiveToolStripMenuItem";
+            this.toggleActiveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toggleActiveToolStripMenuItem.Text = "Toggle Active";
+            this.toggleActiveToolStripMenuItem.Click += new System.EventHandler(this.toggleActiveToolStripMenuItem_Click);
+            // 
             // Taskman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +108,7 @@
             this.MinimizeBox = false;
             this.Name = "Taskman";
             this.Text = "Installed Addons";
+            this.cmsAddonStuff.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,5 +120,7 @@
         private System.Windows.Forms.Button btn_OK;
         private System.Windows.Forms.Label lb_Desc;
         private System.Windows.Forms.CheckBox cb_pluginEnabled;
+        private System.Windows.Forms.ContextMenuStrip cmsAddonStuff;
+        private System.Windows.Forms.ToolStripMenuItem toggleActiveToolStripMenuItem;
     }
 }

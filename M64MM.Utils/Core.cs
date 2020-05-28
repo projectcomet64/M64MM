@@ -14,6 +14,7 @@ using System.Security.Permissions;
 using M64MM.Additions;
 using static M64MM.Utils.SettingsManager;
 using System.Globalization;
+using M64MM.Utils.Properties;
 
 namespace M64MM.Utils
 {
@@ -543,7 +544,7 @@ namespace M64MM.Utils
                             if (typ.GetInterface("IModule") != null)
                             { // If type implements interface IModule
                                 IModule mod = (IModule)assmb.CreateInstance(typ.FullName); // Instance the IModule
-                                Addon neoAddon = new Addon(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description); // Instance Addon
+                                Addon neoAddon = new Addon(mod, mod.SafeName, FileVersionInfo.GetVersionInfo(file.FullName).FileVersion.ToString(), mod.Description, mod.AddonIcon ?? Resources.defaultAddonIcon); // Instance Addon
                                 moduleList.Add(neoAddon); // Add addon to the plugins list
                             }
                         }

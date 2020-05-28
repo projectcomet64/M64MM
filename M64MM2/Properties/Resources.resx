@@ -228,4 +228,7 @@ Wait for a later update of both M64MM and CometROM!</value>
   <data name="version3_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\version3 big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="m3_splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m3_splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

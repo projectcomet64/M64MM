@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace M64MM.Additions
@@ -20,6 +21,7 @@ namespace M64MM.Additions
         void Close(EventArgs e);
         string SafeName { get; }
         string Description { get; }
+        Image AddonIcon { get; }
         List<ToolCommand> GetCommands();
     }
 }

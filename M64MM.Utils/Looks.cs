@@ -95,6 +95,14 @@ namespace M64MM.Utils
                 Address88 = new long[] { 0x905AC },
                 BankOffset86 = 0x80,
                 BankOffset88 = 0x78
+            },
+            new RoutableColorPart()
+            {
+                Name = "Skin",
+                Address86 = new long[0],
+                Address88 = new long[0],
+                BankOffset86 = 0x68,
+                BankOffset88 = 0x60
             }
         };
 
@@ -281,8 +289,8 @@ namespace M64MM.Utils
                 adjustedTarget.Address88[i] = adjustedTarget.Address88[i];
             }
 
-            WriteBatchBytes(adjustedTarget.Address86, new byte[] {04, 0, 0, source.BankOffset86 }, true, true);
-            WriteBatchBytes(adjustedTarget.Address88, new byte[] {04, 0, 0, source.BankOffset88 }, true, true);
+            WriteBatchBytes(adjustedTarget.Address86, new byte[] { 04, 0, 0, source.BankOffset86 }, true, true);
+            WriteBatchBytes(adjustedTarget.Address88, new byte[] { 04, 0, 0, source.BankOffset88 }, true, true);
         }
     }
 }

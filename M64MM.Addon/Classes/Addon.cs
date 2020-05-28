@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace M64MM.Additions
 {
@@ -14,14 +15,16 @@ namespace M64MM.Additions
         public string Name { get; }
         public string Description { get; }
         public string Version { get; }
-        public Addon(IModule mod, string nm, string vr, string dc)
+        public Image Icon;
+        public Addon(IModule mod, string nm, string vr, string dc, Image icn)
         {
             Module = mod;
             Name = nm;
             Version = vr;
             Description = dc;
             Active = true;
-        }
+            Icon = icn;
+         }
         public override string ToString()
         {
             return Name;
