@@ -165,16 +165,19 @@ namespace M64MM2
             // in-game timer in that case
             UpdateCoreEntityAddress();
 
-            //Don't overwrite the camera state if we're in non-bugged first-person
+            
             lblCameraCode.Text = "0x" + BitConverter.ToString(CameraState).Replace("-", "");
 
-            if (cbPowercam.Checked)
+            // Animation index is -1 when the game is transitioning which is just about perfect
+            // Only override camera reset (flag 0x08) when the game is transitioning
+            // Works before entering Castle Grounds and literally any level transition
+            if (cbPowercam.Checked && AnimationIndex == -1)
             {
                 // Glitchy: AVOID CAMERA FROM RESETTING (Flag 0x08)
                 WriteBytes(BaseAddress + 0x33C84B, new byte[] { (byte)(CameraState[0] & ~(0x8)) });
             }
 
-
+            //Don't overwrite the camera state if we're in non-bugged first-person
             if (CameraFrozen && ((CameraState[0] & 0x20) == 0x20))
             {
                 // Glitchy: Camera status is actually a flag, which means we just need to take away
