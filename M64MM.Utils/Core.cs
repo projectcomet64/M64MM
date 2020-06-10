@@ -57,6 +57,7 @@ namespace M64MM.Utils
 
         // Settings related variables
         public static bool enableHotkeys;
+        public static bool enableUpdates;
 
         public static Timer programTimer = new Timer();
 
@@ -215,6 +216,7 @@ namespace M64MM.Utils
         static void UpdateLocalVariables()
         {
             enableHotkeys = coreSettingsGroup.EnsureSettingValue<bool>("enableHotkeys");
+            enableUpdates = coreSettingsGroup.EnsureSettingValue<bool>("enableUpdateCheck");
         }
 
         #endregion
@@ -308,6 +310,9 @@ namespace M64MM.Utils
 
         public static void ToggleCameraFreeze()
         {
+            #if DEBUG
+            Debug.WriteLine("Camera freeze toggled");
+            #endif
             if (!CameraFrozen)
             {
                 _cameraFrozen = true;
@@ -320,7 +325,7 @@ namespace M64MM.Utils
                 byte[] data = { 0x00 };
                 WriteBytes(BaseAddress + 0x33C84B, data);
             }
-            
+
         }
 
         public static void ToggleCameraSoftFreeze()
@@ -418,16 +423,24 @@ namespace M64MM.Utils
         /// </summary>
         public static void FindEmuProcess()
         {
-            foreach (Process proc in Process.GetProcesses())
+            List<Process> emulators = Process.GetProcesses().Where(x => x.ProcessName.Contains("Project64")).ToList();
+
+            if (emulators.Count > 1)
             {
-                // TODO: Mupen support
-                if (proc.ProcessName.Contains("Project64"))
-                {
-                    emuProcess = proc;
-                    emuProcessHandle = OpenProcess(PROCESS_ALL_ACCESS, false, emuProcess.Id);
-                    break;
-                }
+                #if DEBUG
+                    Debug.WriteLine($"Found more than one PJ64: {emulators.Count}");
+                #endif
             }
+
+            // TODO: Make it an event so to make the main UI handle the UI/UX part (lol)
+            // Possible solution: new function that selects from the emu list, make the emu list freely
+            // available class wide (private: no other class should be able to access this)
+            if (emulators.Count != 0)
+            {
+                emuProcess = emulators[0];
+                emuProcessHandle = OpenProcess(PROCESS_ALL_ACCESS, false, emuProcess.Id);
+            }
+
         }
 
         /// <summary>
@@ -581,6 +594,8 @@ namespace M64MM.Utils
 
         #endregion
 
+
+        //TODO: Deprecate. There should be no need for this
         /// <summary>
         /// Validates a model in Bank 04 and returns which kind of model is it.
         /// </summary>

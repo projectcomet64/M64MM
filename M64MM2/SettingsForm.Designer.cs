@@ -32,12 +32,13 @@
             this.cbEnableHotkeys = new System.Windows.Forms.CheckBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.cbCheckUpdates = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // cbEnableHotkeys
             // 
             this.cbEnableHotkeys.AutoSize = true;
-            this.cbEnableHotkeys.Location = new System.Drawing.Point(106, 56);
+            this.cbEnableHotkeys.Location = new System.Drawing.Point(12, 12);
             this.cbEnableHotkeys.Name = "cbEnableHotkeys";
             this.cbEnableHotkeys.Size = new System.Drawing.Size(205, 17);
             this.cbEnableHotkeys.TabIndex = 0;
@@ -64,11 +65,22 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // cbCheckUpdates
+            // 
+            this.cbCheckUpdates.AutoSize = true;
+            this.cbCheckUpdates.Location = new System.Drawing.Point(12, 35);
+            this.cbCheckUpdates.Name = "cbCheckUpdates";
+            this.cbCheckUpdates.Size = new System.Drawing.Size(160, 17);
+            this.cbCheckUpdates.TabIndex = 3;
+            this.cbCheckUpdates.Text = "Check for updates at startup";
+            this.cbCheckUpdates.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 147);
+            this.Controls.Add(this.cbCheckUpdates);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.cbEnableHotkeys);
@@ -90,5 +102,6 @@
         private System.Windows.Forms.CheckBox cbEnableHotkeys;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.CheckBox cbCheckUpdates;
     }
 }

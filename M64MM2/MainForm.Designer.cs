@@ -37,7 +37,9 @@
             this.showRunningPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForLatestUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCamera = new System.Windows.Forms.GroupBox();
+            this.cbPowercam = new System.Windows.Forms.CheckBox();
             this.btnSoftFreeze = new System.Windows.Forms.Button();
             this.btnFreeze = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -69,7 +71,8 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsMenuItem,
             this.aboutMenuItem,
-            this.settingsToolStripMenuItem});
+            this.settingsToolStripMenuItem,
+            this.checkForLatestUpdateToolStripMenuItem});
             resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
             // 
@@ -112,13 +115,27 @@
             resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
+            // checkForLatestUpdateToolStripMenuItem
+            // 
+            this.checkForLatestUpdateToolStripMenuItem.Name = "checkForLatestUpdateToolStripMenuItem";
+            resources.ApplyResources(this.checkForLatestUpdateToolStripMenuItem, "checkForLatestUpdateToolStripMenuItem");
+            this.checkForLatestUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForLatestUpdateToolStripMenuItem_Click);
+            // 
             // grpCamera
             // 
+            this.grpCamera.Controls.Add(this.cbPowercam);
             this.grpCamera.Controls.Add(this.btnSoftFreeze);
             this.grpCamera.Controls.Add(this.btnFreeze);
             resources.ApplyResources(this.grpCamera, "grpCamera");
             this.grpCamera.Name = "grpCamera";
             this.grpCamera.TabStop = false;
+            // 
+            // cbPowercam
+            // 
+            resources.ApplyResources(this.cbPowercam, "cbPowercam");
+            this.cbPowercam.Name = "cbPowercam";
+            this.ttAutoApplyInfo.SetToolTip(this.cbPowercam, resources.GetString("cbPowercam.ToolTip"));
+            this.cbPowercam.UseVisualStyleBackColor = true;
             // 
             // btnSoftFreeze
             // 
@@ -252,7 +269,6 @@
             // ttAutoApplyInfo
             // 
             this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.ttAutoApplyInfo.ToolTipTitle = "Auto apply animation";
             // 
             // MainForm
             // 
@@ -271,6 +287,7 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.grpCamera.ResumeLayout(false);
+            this.grpCamera.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.grpAnimSwap.ResumeLayout(false);
@@ -310,6 +327,8 @@
         private System.Windows.Forms.CheckBox chbAutoApply;
         private System.Windows.Forms.ToolTip ttAutoApplyInfo;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkForLatestUpdateToolStripMenuItem;
+        private System.Windows.Forms.CheckBox cbPowercam;
     }
 }
 

@@ -11,6 +11,7 @@ using M64MM.Utils;
 using M64MM.Additions;
 using static M64MM.Utils.SettingsManager;
 using System.Linq;
+using System.Net;
 
 namespace M64MM2
 {
@@ -19,6 +20,7 @@ namespace M64MM2
         AppearanceForm appearanceForm;
         ExtraControlsForm extraControlsForm;
         SettingsForm settingsForm;
+        LatestUpdateDialog ludForm;
 
 
         //This handles the "Each ingame frame"
@@ -31,7 +33,8 @@ namespace M64MM2
         {
             InitializeComponent();
             ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
-            foreach (Addon add in moduleList) {
+            foreach (Addon add in moduleList)
+            {
                 List<ToolCommand> toolCommands = GetAddonCommands(add);
 
                 // Add them to the Plugins toolstrip
@@ -61,7 +64,7 @@ namespace M64MM2
             toolsMenuItem.Enabled = false;
 
             //Load animation data
-            
+
             if (!Program.validAnimationData)
             {
                 MessageBox.Show(Resources.animDataNotLoaded);
@@ -91,20 +94,20 @@ namespace M64MM2
             }
             else
             {
-            if (camStyles.Count > 0)
-            {
-                foreach (CameraStyle style in camStyles)
+                if (camStyles.Count > 0)
                 {
-                    cbCamStyles.Items.Add(style.Name);
+                    foreach (CameraStyle style in camStyles)
+                    {
+                        cbCamStyles.Items.Add(style.Name);
+                    }
+                    cbCamStyles.SelectedIndex = 0;
+                    cbCamStyles.Refresh();
                 }
-                cbCamStyles.SelectedIndex = 0;
-                cbCamStyles.Refresh();
-            }
-            else
-            {
-                cbCamStyles.Text = "NONE";
-                cbCamStyles.Enabled = false;
-            }
+                else
+                {
+                    cbCamStyles.Text = "NONE";
+                    cbCamStyles.Enabled = false;
+                }
             }
         }
 
@@ -157,14 +160,34 @@ namespace M64MM2
             //Main program logic starts here
             //------------------------------
 
-            //Don't overwrite the camera state if we're in non-bugged first-person
-            lblCameraCode.Text = "0x" + BitConverter.ToString(CameraState).Replace("-", "");
+
             // When the game is transitioning, the game freezes: we can no longer just trust the
             // in-game timer in that case
             UpdateCoreEntityAddress();
-            if (CameraFrozen && (CameraState[0] == 0xA2 || CameraState[0] < 0x80))
+
+            //Don't overwrite the camera state if we're in non-bugged first-person
+            lblCameraCode.Text = "0x" + BitConverter.ToString(CameraState).Replace("-", "");
+
+            if (cbPowercam.Checked)
             {
-                byte[] data = { 0x80 };
+                // Glitchy: AVOID CAMERA FROM RESETTING (Flag 0x08)
+                WriteBytes(BaseAddress + 0x33C84B, new byte[] { (byte)(CameraState[0] & ~(0x8)) });
+            }
+
+
+            if (CameraFrozen && ((CameraState[0] & 0x20) == 0x20))
+            {
+                // Glitchy: Camera status is actually a flag, which means we just need to take away
+                // the first person flag to restore, so it doesn't do a false alarm on newly
+                // loaded emulator instances (freezing camera Wayyyyyyyy up in the sky)
+                byte[] data = { (byte)(CameraState[0] & ~(0x20)) };
+                WriteBytes(BaseAddress + 0x33C84B, data);
+            }
+            else if (CameraFrozen && ((CameraState[0] & 0x80) != 0x20))
+            {
+                // Glitchy: Program says camera is frozen but game says otherwise
+                // OK, in that case let's just enable the flag back
+                byte[] data = { (byte)(CameraState[0] | 0x80) };
                 WriteBytes(BaseAddress + 0x33C84B, data);
             }
 
@@ -198,7 +221,7 @@ namespace M64MM2
             if (!IsEmuOpen || BaseAddress == 0) return;
             // TODO: delete.
             // Dropped in favor of a toggling button
-            
+
 
             //lblCameraStatus.Text = cameraSoftFrozen ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault;
         }
@@ -311,7 +334,11 @@ namespace M64MM2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            if (Program.UpdateAvailable)
+            {
+                ludForm = new LatestUpdateDialog(Program.LatestRelease);
+                ludForm.ShowDialog(this);
+            }
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
@@ -349,6 +376,23 @@ namespace M64MM2
                 settingsForm = new SettingsForm();
             }
             settingsForm.ShowDialog();
+        }
+
+        private async void checkForLatestUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: Make neater, remove repetition
+            // MOVE TO CORE
+            Tuple<HttpStatusCode, GitHubRelease> requestLatest = new Tuple<HttpStatusCode, GitHubRelease>(0, null);
+            requestLatest = await Updater.CheckUpdate();
+            if (requestLatest.Item1 == HttpStatusCode.OK)
+            {
+                Program.LatestRelease = requestLatest.Item2;
+                VersionTagManager.VersionTag latest = VersionTagManager.GetVersionFromTag(requestLatest.Item2.TagName);
+                VersionTagManager.VersionTag current = VersionTagManager.GetVersionFromTag(Application.ProductVersion + Resources.prereleaseString);
+                Program.UpdateAvailable = Updater.GotNewVersion(latest, current);
+            }
+            LatestUpdateDialog ludForm = new LatestUpdateDialog(Program.LatestRelease);
+            ludForm.Show();
         }
     }
 }

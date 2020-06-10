@@ -14,6 +14,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using M64MM.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,8 @@ namespace M64MM2
         public static bool validAnimationData;
         public static bool validCameraData;
 
+        public static bool UpdateAvailable;
+        public static GitHubRelease LatestRelease;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

@@ -1,5 +1,8 @@
 ﻿using M64MM.Additions;
+using M64MM.Utils;
+using M64MM2.Properties;
 using System;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,13 +33,33 @@ namespace M64MM2
 
         public async void InitMovieMaker()
         {
-            await Task.Run(() => { UpdateProgress(0, "OK, imagine I'm checking for updates\n"); });
-            await Task.Run(() => { Thread.Sleep(2000); });
+            await Task.Run(() => { UpdateProgress(0, "Checking for updates...\n"); });
+            await Task.Run(() => {
+                try
+                {
+                    if (enableUpdates)
+                    {
+                        CheckUpdates();
+                        UpdateProgress(10, "Let's go.\n");
+                    }
+                    else
+                    {
+                        UpdateProgress(10, "Update checking is disabled. Go to Options -> Settings to enable it.");
+                        Task.Delay(500);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    UpdateProgress(10, "Could not check for updates. Check your Internet connection.");
+                    Task.Delay(1000);
+                }
+            });
             rtbLogs.AppendText("Loading addons...\n");
             await Task.Run(() => { LoadAddonsFromFolder(); });
             await Task.Run(() =>
             {
-                UpdateProgress(25, "Loading animation data...\n");
+                UpdateProgress(15, "Loading animation data...\n");
             });
             bool validAnimData = await Task.Run(() => LoadAnimationData());
             await Task.Run(() =>
@@ -56,6 +79,19 @@ namespace M64MM2
             Program.validAnimationData = validAnimData;
             Program.validCameraData = validCamStyles;
             Close();
+        }
+
+        async void CheckUpdates()
+        {
+            Tuple<HttpStatusCode, GitHubRelease> requestLatest = new Tuple<HttpStatusCode, GitHubRelease>(0, null);
+            requestLatest = await Updater.CheckUpdate();
+            if (requestLatest.Item1 == HttpStatusCode.OK)
+            {
+                Program.LatestRelease = requestLatest.Item2;
+                VersionTagManager.VersionTag latest = VersionTagManager.GetVersionFromTag(requestLatest.Item2.TagName);
+                VersionTagManager.VersionTag current = VersionTagManager.GetVersionFromTag(Application.ProductVersion + Resources.prereleaseString);
+                Program.UpdateAvailable = Updater.GotNewVersion(latest, current);
+            }
         }
 
         void UpdateProgress(int add, string progressText)

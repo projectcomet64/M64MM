@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
+    <Compile Include="Updater\GitHubRelease.cs" />
     <Compile Include="Looks.cs" />
     <Compile Include="CameraStyle.cs" />
     <Compile Include="Core.cs" />
+    <Compile Include="Updater\MarkdownRegex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -59,6 +61,8 @@
     <Compile Include="RoutableColorPart.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Settings\SettingsGroup.cs" />
+    <Compile Include="Updater\UpdateCheck.cs" />
+    <Compile Include="Updater\VersionTag.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\M64MM.Addon\M64MM.Addon.csproj">

@@ -203,4 +203,16 @@ No funcionará.</value>
   <data name="picturedInBannerMsg" xml:space="preserve">
     <value>En la imagen: </value>
   </data>
+  <data name="updateCurrentVersion" xml:space="preserve">
+    <value>Actual: </value>
+  </data>
+  <data name="updateLatestVersion" xml:space="preserve">
+    <value>Última: </value>
+  </data>
+  <data name="updateUpdateNow" xml:space="preserve">
+    <value>(¡Actualización disponible!)</value>
+  </data>
+  <data name="updateUpToDate" xml:space="preserve">
+    <value>(¡Estás al día!)</value>
+  </data>
 </root>

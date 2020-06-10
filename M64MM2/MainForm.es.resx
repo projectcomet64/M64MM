@@ -133,6 +133,9 @@
   <data name="showRunningPluginsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
   </data>
+  <data name="showRunningPluginsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Mostrar Add-ons instalados</value>
+  </data>
   <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 20</value>
   </data>
@@ -145,25 +148,35 @@
   <data name="aboutMenuItem.Text" xml:space="preserve">
     <value>&amp;Acerca de</value>
   </data>
+  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 20</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Opciones</value>
+  </data>
+  <data name="checkForLatestUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 20</value>
+  </data>
+  <data name="checkForLatestUpdateToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Revisar Actualización</value>
+  </data>
   <data name="menuStrip.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="btnSoftUnfreeze.Text" xml:space="preserve">
-    <value>Desc. Ligero (Ctrl + 5)</value>
+  <data name="cbPowercam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 17</value>
   </data>
-  <data name="btnSoftUnfreeze.ToolTip" xml:space="preserve">
-    <value />
+  <data name="cbPowercam.Text" xml:space="preserve">
+    <value>Habilitar Powercam (EXPERIMENTAL)</value>
+  </data>
+  <data name="cbPowercam.ToolTip" xml:space="preserve">
+    <value>Esto habilita la destrucción de un límite de cámara, haciendo que sea posible congelar la cámara en CUALQUIER LUGAR sin necesidad de congelar antes de entrar.
+Puede romper algunas transiciones. Usa con cuidado.</value>
   </data>
   <data name="btnSoftFreeze.Text" xml:space="preserve">
     <value>Cong. Ligero(Ctrl + 4)</value>
   </data>
   <data name="btnSoftFreeze.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnUnfreeze.Text" xml:space="preserve">
-    <value>Descongelar (Ctrl + 2)</value>
-  </data>
-  <data name="btnUnfreeze.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="btnFreeze.Text" xml:space="preserve">

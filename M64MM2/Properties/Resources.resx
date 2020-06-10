@@ -223,12 +223,24 @@ Wait for a later update of both M64MM and CometROM!</value>
     <value>Onewingdangl, Captainswag101, GlitchyPSI</value>
   </data>
   <data name="prereleaseString" xml:space="preserve">
-    <value>-alpha1.h2</value>
+    <value>-alpha2</value>
   </data>
   <data name="version3_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\version3 big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="m3_splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\m3_splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="updateCurrentVersion" xml:space="preserve">
+    <value>Current:</value>
+  </data>
+  <data name="updateLatestVersion" xml:space="preserve">
+    <value>Latest: </value>
+  </data>
+  <data name="updateUpdateNow" xml:space="preserve">
+    <value>(Update available!)</value>
+  </data>
+  <data name="updateUpToDate" xml:space="preserve">
+    <value>(You're up to date!)</value>
   </data>
 </root>

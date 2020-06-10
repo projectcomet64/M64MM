@@ -314,7 +314,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a -alpha1.h2.
+        ///   Busca una cadena traducida similar a -alpha2.
         /// </summary>
         internal static string prereleaseString {
             get {
@@ -382,6 +382,42 @@ namespace M64MM2.Properties {
         internal static string setDefaultColorsMsgTitle {
             get {
                 return ResourceManager.GetString("setDefaultColorsMsgTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Current:.
+        /// </summary>
+        internal static string updateCurrentVersion {
+            get {
+                return ResourceManager.GetString("updateCurrentVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Latest: .
+        /// </summary>
+        internal static string updateLatestVersion {
+            get {
+                return ResourceManager.GetString("updateLatestVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a (Update available!).
+        /// </summary>
+        internal static string updateUpdateNow {
+            get {
+                return ResourceManager.GetString("updateUpdateNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a (You&apos;re up to date!).
+        /// </summary>
+        internal static string updateUpToDate {
+            get {
+                return ResourceManager.GetString("updateUpToDate", resourceCulture);
             }
         }
         

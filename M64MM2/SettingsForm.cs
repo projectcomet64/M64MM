@@ -16,6 +16,7 @@ namespace M64MM2
         {
             InitializeComponent();
             cbEnableHotkeys.Checked = coreSettingsGroup.EnsureSettingValue<bool>("enableHotkeys");
+            cbCheckUpdates.Checked = coreSettingsGroup.EnsureSettingValue<bool>("enableUpdateCheck");
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
@@ -26,6 +27,7 @@ namespace M64MM2
         private void btnOK_Click(object sender, EventArgs e)
         {
             coreSettingsGroup.SetSettingValue("enableHotkeys", cbEnableHotkeys.Checked);
+            coreSettingsGroup.SetSettingValue("enableUpdateCheck", cbCheckUpdates.Checked);
             SaveSettings();
             Close();
         }

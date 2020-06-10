@@ -45,24 +45,14 @@ namespace M64MM2
             WriteBytes(BaseAddress + 0x2E3E18, coinBytes, true);
             WriteBytes(BaseAddress + 0x2E3DC8, starBytes, true);
             WriteBytes(BaseAddress + 0x2E3DE0, cameraBytes, true);
+
             //TODO: Move this to Update
             //WriteBytes(BaseAddress + 0x3325F4,StringToByteArray("FF000000"), true);
         }
 
         private void btnBatchWrite_Click(object sender, EventArgs e)
         {
-            //TODO: Remake this feature for later uses to use Longs instead of Strings (wtf)
-
-            /*
-            //Separate by commas and only commas
-            string[] addrs = tbAddresses.Text.Split(',');
-            //for (int i = 0; i < addrs.Length; i++)
-            //{
-            //    addrs[i] = "0x" + addrs[i];
-            //}
-            byte[] dataTW = StringToByteArray(tbData.Text.ToUpper());
-            WriteBatchBytes(addrs, dataTW, true);
-            */
+            //TODO: Delete
         }
 
         private void btnClearBoxes_Click(object sender, EventArgs e)
