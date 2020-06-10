@@ -136,6 +136,7 @@
             this.cbPowercam.Name = "cbPowercam";
             this.ttAutoApplyInfo.SetToolTip(this.cbPowercam, resources.GetString("cbPowercam.ToolTip"));
             this.cbPowercam.UseVisualStyleBackColor = true;
+            this.cbPowercam.CheckedChanged += new System.EventHandler(this.cbPowercam_CheckedChanged);
             // 
             // btnSoftFreeze
             // 

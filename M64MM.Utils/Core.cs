@@ -32,6 +32,8 @@ namespace M64MM.Utils
         static bool _cameraFrozen = false;
         static bool _cameraSoftFrozen = false;
 
+        public static bool PowerCamEnabled { get; set; };
+
         public static bool CameraFrozen
         {
             get
@@ -367,6 +369,35 @@ namespace M64MM.Utils
                 return false;
             }
             return true;
+        }
+
+        public static void PowercamHack()
+        {
+            // Animation index is -1 when the game is transitioning which is just about perfect
+            // Only override camera reset (flag 0x08) when the game is transitioning
+            // Works before entering Castle Grounds and literally any level transition
+            if (PowerCamEnabled && AnimationIndex == -1)
+            {
+                // Glitchy: AVOID CAMERA FROM RESETTING (Flag 0x08)
+                WriteBytes(BaseAddress + 0x33C84B, new byte[] { (byte)(CameraState[0] & ~(0x8)) });
+            }
+
+            //Don't overwrite the camera state if we're in non-bugged first-person
+            if (CameraFrozen && ((CameraState[0] & 0x20) == 0x20))
+            {
+                // Glitchy: Camera status is actually a flag, which means we just need to take away
+                // the first person flag to restore, so it doesn't do a false alarm on newly
+                // loaded emulator instances (freezing camera Wayyyyyyyy up in the sky)
+                byte[] data = { (byte)(CameraState[0] & ~(0x20)) };
+                WriteBytes(BaseAddress + 0x33C84B, data);
+            }
+            else if (CameraFrozen && ((CameraState[0] & 0x80) != 0x20))
+            {
+                // Glitchy: Program says camera is frozen but game says otherwise
+                // OK, in that case let's just enable the flag back
+                byte[] data = { (byte)(CameraState[0] | 0x80) };
+                WriteBytes(BaseAddress + 0x33C84B, data);
+            }
         }
 
         #endregion
