@@ -32,7 +32,7 @@ namespace M64MM.Utils
         static bool _cameraFrozen = false;
         static bool _cameraSoftFrozen = false;
 
-        public static bool PowerCamEnabled { get; set; };
+        public static bool PowerCamEnabled { get; set; }
 
         public static bool CameraFrozen
         {
@@ -61,6 +61,7 @@ namespace M64MM.Utils
         public static bool enableHotkeys;
         public static bool enableUpdates;
 
+        // Timers
         public static Timer programTimer = new Timer();
 
         public static UInt32 ingameTimer;
@@ -91,6 +92,7 @@ namespace M64MM.Utils
             private set { }
         }
 
+        // Animation Index
         public static short AnimationIndex
         {
             get
@@ -172,6 +174,30 @@ namespace M64MM.Utils
             {
                 _coreEntityAddress = 0;
             }
+        }
+
+        public static short AnimationTimer
+        {
+            get
+            {
+                return (short)BitConverter.ToUInt16(
+                    ReadBytes(BaseAddress + CoreEntityAddress + 0x42, sizeof(short)), 0);
+            }
+        }
+
+        public static uint AnimDataAddress
+        {
+            get
+            {
+                uint addr = BitConverter.ToUInt32(
+                ReadBytes(BaseAddress + CoreEntityAddress + 0x3C, 4), 0) & 0x00FFFFFF;
+                return addr;
+            }
+        }
+
+        public static bool ValidateAnimDataAddress()
+        {
+            return (AnimDataAddress > 0);
         }
 
         #endregion
@@ -312,9 +338,9 @@ namespace M64MM.Utils
 
         public static void ToggleCameraFreeze()
         {
-            #if DEBUG
+#if DEBUG
             Debug.WriteLine("Camera freeze toggled");
-            #endif
+#endif
             if (!CameraFrozen)
             {
                 _cameraFrozen = true;
@@ -382,20 +408,20 @@ namespace M64MM.Utils
                 WriteBytes(BaseAddress + 0x33C84B, new byte[] { (byte)(CameraState[0] & ~(0x8)) });
             }
 
+            if (CameraFrozen && ((CameraState[0] & 0x80) != 0x20))
+            {
+                // Glitchy: Program says camera is frozen but game says otherwise
+                // OK, in that case let's just enable the flag back
+                byte[] data = { (byte)(CameraState[0] | 0x80) };
+                WriteBytes(BaseAddress + 0x33C84B, data);
+            }
             //Don't overwrite the camera state if we're in non-bugged first-person
-            if (CameraFrozen && ((CameraState[0] & 0x20) == 0x20))
+            else if (CameraFrozen && ((CameraState[0] & 0x20) == 0x20))
             {
                 // Glitchy: Camera status is actually a flag, which means we just need to take away
                 // the first person flag to restore, so it doesn't do a false alarm on newly
                 // loaded emulator instances (freezing camera Wayyyyyyyy up in the sky)
                 byte[] data = { (byte)(CameraState[0] & ~(0x20)) };
-                WriteBytes(BaseAddress + 0x33C84B, data);
-            }
-            else if (CameraFrozen && ((CameraState[0] & 0x80) != 0x20))
-            {
-                // Glitchy: Program says camera is frozen but game says otherwise
-                // OK, in that case let's just enable the flag back
-                byte[] data = { (byte)(CameraState[0] | 0x80) };
                 WriteBytes(BaseAddress + 0x33C84B, data);
             }
         }
@@ -458,9 +484,9 @@ namespace M64MM.Utils
 
             if (emulators.Count > 1)
             {
-                #if DEBUG
-                    Debug.WriteLine($"Found more than one PJ64: {emulators.Count}");
-                #endif
+#if DEBUG
+                Debug.WriteLine($"Found more than one PJ64: {emulators.Count}");
+#endif
             }
 
             // TODO: Make it an event so to make the main UI handle the UI/UX part (lol)
@@ -806,11 +832,16 @@ namespace M64MM.Utils
             while (true)
             {
                 //Ingame timer update
-                ingameTimer = await Task.Run(() => ReadBytes(BaseAddress + 0x32D580, 2)[0]);
+                // Using VI timer instead of Input timer (Input timer stops counting when transitioning)
+                ingameTimer = ReadBytes(BaseAddress + 0x32D580, 2)[0];
                 //If there's a level loaded EVEN if there's no model
                 if (modelStatus != ModelStatus.NONE)
                 {
-                    if (ingameTimer > previousFrame)
+                    // a VI is executed @ 2x the framerate
+                    // NTSC VI: 60hz = 30fps (technically 29.970 but we don't mess with that.)
+                    // PAL VI: 50hz = 25fps
+                    // hahaha did you know NTSC used to be dubbed "Never The Same Color"
+                    if (ingameTimer > previousFrame+1)
                     {
                         //Set new value
                         previousFrame = ingameTimer;
@@ -838,7 +869,7 @@ namespace M64MM.Utils
                     else if (ingameTimer <= previousFrame)
                     {
                         previousFrame = ingameTimer;
-                        ingameTimer = await Task.Run(() => ReadBytes(BaseAddress + 0x32D580, 2)[0]);
+                        ingameTimer = ReadBytes(BaseAddress + 0x32D580, 2)[0];
                     }
                 }
                 // zzz
