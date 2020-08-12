@@ -130,7 +130,7 @@ namespace M64MM2
             senderButton.BackColor = colorDialog.Color;
             marioSprite.Refresh();
 
-            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.VANILLA) return;
+            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.CLASSIC) return;
 
             switch (senderButton.Name)
             {
@@ -177,7 +177,7 @@ namespace M64MM2
 
         void applyAllColors()
         {
-            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.VANILLA) return;
+            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.CLASSIC) return;
 
             WriteColor(VanillaModelColor.PantsShade, pantsColorShade.BackColor);
 
@@ -330,7 +330,7 @@ namespace M64MM2
         void loadFromGame(object sender, EventArgs e)
         {
             //TODO: Change the ReadBytes to use SegmentedToVirtual
-            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.VANILLA) return;
+            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.CLASSIC) return;
 
             byte[] colorData;
 

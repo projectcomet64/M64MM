@@ -105,9 +105,9 @@ namespace M64MM.Utils
         public enum ModelStatus
         {
             NONE,
-            VANILLA,
+            CLASSIC,
             EMPTY,
-            MODDED,
+            MOD,
             COMET
         }
 
@@ -213,18 +213,22 @@ namespace M64MM.Utils
                 {
                     string jsonRead = await rs.ReadToEndAsync();
                     JSONToSettings(jsonRead);
+                    coreSettingsGroup = GetSettingsGroup("core");
+                    UpdateLocalVariables();
                 }
             }
             else
             {
+                coreSettingsGroup = GetSettingsGroup("core", true);
+                coreSettingsGroup.SetSettingValue("enableHotkeys", true);
+                coreSettingsGroup.SetSettingValue("enableUpdateCheck", true);
+                UpdateLocalVariables();
                 using (StreamWriter rw = new StreamWriter($"{Application.StartupPath}/config.json"))
                 {
                     string settings = SettingsToJSON();
                     await rw.WriteAsync(settings);
                 }
             }
-            coreSettingsGroup = GetSettingsGroup("core");
-            UpdateLocalVariables();
         }
 
         public static async void SaveSettings()
@@ -686,7 +690,7 @@ namespace M64MM.Utils
                 || (Shadow1[3] != 0)
                 || (BitConverter.ToInt32(FinalSetOfBytes, 0) != 0))
             {
-                ms = ModelStatus.MODDED;
+                ms = ModelStatus.MOD;
             }
 
             // CometROMs are different now.
@@ -697,7 +701,7 @@ namespace M64MM.Utils
                 (BitConverter.ToInt32(Shadow1, 0) != 0) &&
                 (BitConverter.ToInt32(FinalSetOfBytes, 0) == 0))
             {
-                ms = ModelStatus.VANILLA;
+                ms = ModelStatus.CLASSIC;
             }
 
             if (updateGlobal)
