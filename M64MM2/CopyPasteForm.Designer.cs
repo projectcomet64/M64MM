@@ -33,6 +33,7 @@
             this.tbColorCode = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.btnFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblInfo
@@ -63,6 +64,14 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // btnFile
+            // 
+            resources.ApplyResources(this.btnFile, "btnFile");
+            this.btnFile.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnFile.Name = "btnFile";
+            this.btnFile.UseVisualStyleBackColor = true;
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
+            // 
             // CopyPasteForm
             // 
             this.AcceptButton = this.btnOK;
@@ -70,6 +79,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnFile);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tbColorCode);
             this.Controls.Add(this.lblInfo);
@@ -85,5 +95,6 @@
         public System.Windows.Forms.TextBox tbColorCode;
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.Button btnOK;
+        public System.Windows.Forms.Button btnFile;
     }
 }

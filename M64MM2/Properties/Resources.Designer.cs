@@ -136,11 +136,38 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Could not read color code from file.\n{0}.
+        /// </summary>
+        internal static string colorCodeErrorFileReading {
+            get {
+                return ResourceManager.GetString("colorCodeErrorFileReading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Could not write color code to file.\n{0}.
+        /// </summary>
+        internal static string colorCodeErrorWriting {
+            get {
+                return ResourceManager.GetString("colorCodeErrorWriting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Here&apos;s your generated color code:.
         /// </summary>
         internal static string colorCodeExportMsg {
             get {
                 return ResourceManager.GetString("colorCodeExportMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a From file....
+        /// </summary>
+        internal static string colorCodeFromFile {
+            get {
+                return ResourceManager.GetString("colorCodeFromFile", resourceCulture);
             }
         }
         
@@ -159,6 +186,15 @@ namespace M64MM2.Properties {
         internal static string colorCodeModdedRom {
             get {
                 return ResourceManager.GetString("colorCodeModdedRom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a To file....
+        /// </summary>
+        internal static string colorCodeToFile {
+            get {
+                return ResourceManager.GetString("colorCodeToFile", resourceCulture);
             }
         }
         

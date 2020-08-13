@@ -55,7 +55,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.grpColor = new System.Windows.Forms.GroupBox();
             this.btnLoadFromGame = new System.Windows.Forms.Button();
-            this.btnResetColors = new System.Windows.Forms.Button();
             this.btnExportCode = new System.Windows.Forms.Button();
             this.btnImportCode = new System.Windows.Forms.Button();
             this.grpShading = new System.Windows.Forms.GroupBox();
@@ -76,6 +75,9 @@
             this.lbShareWith = new System.Windows.Forms.Label();
             this.btnReroute = new System.Windows.Forms.Button();
             this.grpExperimental = new System.Windows.Forms.GroupBox();
+            this.grpCCRepo = new System.Windows.Forms.GroupBox();
+            this.lbCCs = new System.Windows.Forms.ListBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).BeginInit();
             this.grpColor.SuspendLayout();
             this.grpShading.SuspendLayout();
@@ -83,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbBottomTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).BeginInit();
             this.grpExperimental.SuspendLayout();
+            this.grpCCRepo.SuspendLayout();
             this.SuspendLayout();
             // 
             // marioSprite
@@ -257,11 +260,9 @@
             // grpColor
             // 
             this.grpColor.Controls.Add(this.btnLoadFromGame);
-            this.grpColor.Controls.Add(this.btnResetColors);
-            this.grpColor.Controls.Add(this.btnExportCode);
-            this.grpColor.Controls.Add(this.btnImportCode);
             this.grpColor.Controls.Add(this.label7);
             this.grpColor.Controls.Add(this.hatColorMain);
+            this.grpColor.Controls.Add(this.btnExportCode);
             this.grpColor.Controls.Add(this.label8);
             this.grpColor.Controls.Add(this.hatColorShade);
             this.grpColor.Controls.Add(this.hairColorMain);
@@ -290,13 +291,6 @@
             this.btnLoadFromGame.Name = "btnLoadFromGame";
             this.btnLoadFromGame.UseVisualStyleBackColor = true;
             this.btnLoadFromGame.Click += new System.EventHandler(this.loadFromGame);
-            // 
-            // btnResetColors
-            // 
-            resources.ApplyResources(this.btnResetColors, "btnResetColors");
-            this.btnResetColors.Name = "btnResetColors";
-            this.btnResetColors.UseVisualStyleBackColor = true;
-            this.btnResetColors.Click += new System.EventHandler(this.resetColors);
             // 
             // btnExportCode
             // 
@@ -437,16 +431,41 @@
             // 
             this.grpExperimental.Controls.Add(this.lbShareWith);
             this.grpExperimental.Controls.Add(this.btnReroute);
-            this.grpExperimental.Controls.Add(this.cbRoutingSource);
             this.grpExperimental.Controls.Add(this.cbRoutingTarget);
+            this.grpExperimental.Controls.Add(this.cbRoutingSource);
             resources.ApplyResources(this.grpExperimental, "grpExperimental");
             this.grpExperimental.Name = "grpExperimental";
             this.grpExperimental.TabStop = false;
+            // 
+            // grpCCRepo
+            // 
+            this.grpCCRepo.Controls.Add(this.lbCCs);
+            this.grpCCRepo.Controls.Add(this.btnRefresh);
+            this.grpCCRepo.Controls.Add(this.btnImportCode);
+            resources.ApplyResources(this.grpCCRepo, "grpCCRepo");
+            this.grpCCRepo.Name = "grpCCRepo";
+            this.grpCCRepo.TabStop = false;
+            // 
+            // lbCCs
+            // 
+            this.lbCCs.FormattingEnabled = true;
+            resources.ApplyResources(this.lbCCs, "lbCCs");
+            this.lbCCs.Name = "lbCCs";
+            this.lbCCs.Sorted = true;
+            this.lbCCs.DoubleClick += new System.EventHandler(this.lbCCs_DoubleClick);
+            // 
+            // btnRefresh
+            // 
+            resources.ApplyResources(this.btnRefresh, "btnRefresh");
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // AppearanceForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grpCCRepo);
             this.Controls.Add(this.grpExperimental);
             this.Controls.Add(this.grpShading);
             this.Controls.Add(this.grpColor);
@@ -464,6 +483,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).EndInit();
             this.grpExperimental.ResumeLayout(false);
             this.grpExperimental.PerformLayout();
+            this.grpCCRepo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -498,7 +518,6 @@
         private System.Windows.Forms.Button btnExportCode;
         private System.Windows.Forms.Button btnImportCode;
         private System.Windows.Forms.Button btnLoadFromGame;
-        private System.Windows.Forms.Button btnResetColors;
         private System.Windows.Forms.TrackBar tbLeftRight;
         private System.Windows.Forms.TrackBar tbBackFront;
         private System.Windows.Forms.TrackBar tbBottomTop;
@@ -516,5 +535,8 @@
         private System.Windows.Forms.ComboBox cbRoutingTarget;
         private System.Windows.Forms.ComboBox cbRoutingSource;
         private System.Windows.Forms.GroupBox grpExperimental;
+        private System.Windows.Forms.GroupBox grpCCRepo;
+        private System.Windows.Forms.ListBox lbCCs;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

@@ -16,27 +16,12 @@ namespace M64MM2
     {
         readonly Random rand;
 
-        Color defaultHatMain = Color.FromArgb(255, 0, 0);
-        Color defaultHatShade = Color.FromArgb(127, 0, 0);
-        Color defaultHairMain = Color.FromArgb(115, 6, 0);
-        Color defaultHairShade = Color.FromArgb(57, 3, 0);
-        Color defaultSkinMain = Color.FromArgb(254, 193, 121);
-        Color defaultSkinShade = Color.FromArgb(127, 96, 60);
-        Color defaultGlovesMain = Color.FromArgb(255, 255, 255);
-        Color defaultGlovesShade = Color.FromArgb(127, 127, 127);
-        Color defaultPantsMain = Color.FromArgb(0, 0, 255);
-        Color defaultPantsShade = Color.FromArgb(0, 0, 127);
-        Color defaultShoesMain = Color.FromArgb(114, 28, 14);
-        Color defaultShoesShade = Color.FromArgb(47, 14, 7);
-
         ColorMap hatMap = new ColorMap();
         ColorMap hairMap = new ColorMap();
         ColorMap skinMap = new ColorMap();
         ColorMap glovesMap = new ColorMap();
         ColorMap pantsMap = new ColorMap();
         ColorMap shoesMap = new ColorMap();
-
-
 
         public AppearanceForm()
         {
@@ -69,6 +54,11 @@ namespace M64MM2
                 {
                 cbRoutingTarget.Items.Add(rtc.Name);
                 }
+            }
+
+            foreach(ColorCodeGS cc in colorCodeGamesharks)
+            {
+                lbCCs.Items.Add(cc);
             }
 
             cbRoutingSource.SelectedIndex = 0;
@@ -213,7 +203,7 @@ namespace M64MM2
             if (senderButton.Name == btnImportCode.Name)
             {
                 form.lblInfo.Text = Resources.colorCodeImportMsg;
-
+                form.btnFile.Text = Resources.colorCodeFromFile;
                 form.ShowDialog(this);
             }
             else if (senderButton.Name == btnExportCode.Name)
@@ -222,6 +212,7 @@ namespace M64MM2
                 form.btnCancel.Visible = false;
                 form.tbColorCode.ReadOnly = true;
                 form.tbColorCode.Lines = GenerateColorCode();
+                form.btnFile.Text = Resources.colorCodeToFile;
 
                 form.ShowDialog(this);
             }
@@ -310,19 +301,6 @@ namespace M64MM2
 
         void resetColors(object sender, EventArgs e)
         {
-            pantsColorShade.BackColor = defaultPantsShade;
-            pantsColorMain.BackColor = defaultPantsMain;
-            hatColorShade.BackColor = defaultHatShade;
-            hatColorMain.BackColor = defaultHatMain;
-            glovesColorShade.BackColor = defaultGlovesShade;
-            glovesColorMain.BackColor = defaultGlovesMain;
-            shoesColorShade.BackColor = defaultShoesShade;
-            shoesColorMain.BackColor = defaultShoesMain;
-            skinColorShade.BackColor = defaultSkinShade;
-            skinColorMain.BackColor = defaultSkinMain;
-            hairColorShade.BackColor = defaultHairShade;
-            hairColorMain.BackColor = defaultHairMain;
-
             marioSprite.Refresh();
             applyAllColors();
         }
@@ -371,27 +349,6 @@ namespace M64MM2
             hairColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
 
             marioSprite.Refresh();
-
-            askSetDefaultColors();
-        }
-
-        void askSetDefaultColors()
-        {
-            if (MessageBox.Show(this, Resources.setDefaultColorsMsg, Resources.setDefaultColorsMsgTitle, MessageBoxButtons.YesNo) == DialogResult.No)
-                return;
-
-            defaultPantsShade = pantsColorShade.BackColor;
-            defaultPantsMain = pantsColorMain.BackColor;
-            defaultHatShade = hatColorShade.BackColor;
-            defaultHatMain = hatColorMain.BackColor;
-            defaultGlovesShade = glovesColorShade.BackColor;
-            defaultGlovesMain = glovesColorMain.BackColor;
-            defaultShoesShade = shoesColorShade.BackColor;
-            defaultShoesMain = shoesColorMain.BackColor;
-            defaultSkinShade = skinColorShade.BackColor;
-            defaultSkinMain = skinColorMain.BackColor;
-            defaultHairShade = hairColorShade.BackColor;
-            defaultHairMain = hairColorMain.BackColor;
         }
 
         void marioSprite_DoubleClick(object sender, EventArgs e)
@@ -453,6 +410,26 @@ namespace M64MM2
         private void btnReroute_Click(object sender, EventArgs e)
         {
             RouteColor(defaultRoutableParts[cbRoutingSource.SelectedIndex], defaultRoutableParts[cbRoutingTarget.SelectedIndex]);
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadColorCodeRepo();
+            lbCCs.Items.Clear();
+            foreach (ColorCodeGS cc in colorCodeGamesharks)
+            {
+                lbCCs.Items.Add(cc);
+            }
+        }
+
+        private void lbCCs_DoubleClick(object sender, EventArgs e)
+        {
+            if (((ListBox)sender).SelectedItem != null)
+            {
+                FromColorCode(((ColorCodeGS)((ListBox)sender).SelectedItem).Gameshark);
+                loadFromGame(null, null);
+                marioSprite.Refresh();
+            }
         }
     }
 }

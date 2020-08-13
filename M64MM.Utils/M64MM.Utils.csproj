@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
+    <Compile Include="Appearance\AppearanceExceptions.cs" />
     <Compile Include="Appearance\ColorCode.cs" />
+    <Compile Include="Appearance\ColorCodeGS.cs" />
     <Compile Include="Updater\GitHubRelease.cs" />
     <Compile Include="Appearance\Looks.cs" />
     <Compile Include="CameraStyle.cs" />

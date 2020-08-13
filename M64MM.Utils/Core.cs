@@ -26,6 +26,7 @@ namespace M64MM.Utils
         public static long BaseAddress;
         public static List<Animation> animList = new List<Animation>();
         public static List<CameraStyle> camStyles = new List<CameraStyle>();
+        public static List<ColorCodeGS> colorCodeGamesharks = new List<ColorCodeGS>();
         public static Animation defaultAnimation;
         public static byte[] emptyWord = new byte[] { 0, 0, 0, 0 };
         public static SettingsGroup coreSettingsGroup;
@@ -656,6 +657,49 @@ namespace M64MM.Utils
         #endregion
 
 
+        #region Color Code related
+        public static void LoadColorCodeRepo()
+        {
+            if (!Directory.Exists(Application.StartupPath + "\\Colorcodes"))
+            {
+                try
+                {
+                    Directory.CreateDirectory(Application.StartupPath + "\\Colorcodes");
+                    return;
+                }
+                catch (Exception)
+                {
+                    return;
+                    // TODO: Make it add exception to warnings list
+                }
+            }
+            colorCodeGamesharks.Clear();
+            DirectoryInfo d = new DirectoryInfo(Application.StartupPath + "\\Colorcodes");
+            foreach (FileInfo file in d.GetFiles("*.txt"))
+            {
+                using (StreamReader sr = new StreamReader(file.FullName))
+                {
+                    try
+                    {
+                        ColorCodeGS ccG = new ColorCodeGS
+                        {
+                            Name = Path.GetFileNameWithoutExtension(file.FullName),
+                            Gameshark = Looks.ValidateCC(sr.ReadToEnd().Split('\n'))
+                        };
+                        colorCodeGamesharks.Add(ccG);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        continue;
+                        // Skip this CC
+                        // Make the warning object so not only addons but CCs too can have "issue checking"
+                    }
+                }
+            }
+        }
+        #endregion
+
         //TODO: Deprecate. There should be no need for this
         /// <summary>
         /// Validates a model in Bank 04 and returns which kind of model is it.
@@ -845,7 +889,7 @@ namespace M64MM.Utils
                     // NTSC VI: 60hz = 30fps (technically 29.970 but we don't mess with that.)
                     // PAL VI: 50hz = 25fps
                     // hahaha did you know NTSC used to be dubbed "Never The Same Color"
-                    if (ingameTimer > previousFrame+1)
+                    if (ingameTimer > previousFrame + 1)
                     {
                         //Set new value
                         previousFrame = ingameTimer;

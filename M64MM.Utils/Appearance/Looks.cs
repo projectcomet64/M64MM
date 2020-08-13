@@ -3,6 +3,8 @@ using System.Collections;
 using static M64MM.Utils.Core;
 using System;
 using System.Linq;
+using System.Globalization;
+
 namespace M64MM.Utils
 {
     public class Looks
@@ -216,6 +218,36 @@ namespace M64MM.Utils
             {
                 WriteBytes(writeToAddress, SwapEndian(colors, 4));
             }
+        }
+
+        public static string ValidateCC(string[] lines)
+        {
+            string wholeCode = "";
+            for (int lineNum = 0; lineNum < lines.Length; lineNum++)
+            {
+                //Remove spaces from each line so they don't mess up the character count
+                // Also remove carriage returns and newlines (to make it not break if it's being loaded from file)
+                string line = lines[lineNum].Replace(" ", "").TrimEnd('\r', '\n');
+
+                //If the line is empty, ignore it
+                if (string.IsNullOrEmpty(line)) continue;
+
+                //If each line isn't exactly 12 characters long, it's not a valid code
+                if (line.Length != 12)
+                {
+                    throw new ClassicColorCodeInvalidException(lineNum+1, line.Length);
+                }
+
+                //If the code tries to write data outside of where Mario's colors are located, it's not a valid code
+                int address = int.Parse(line.Substring(2, 6), NumberStyles.HexNumber);
+                if (address < 0x07EC20 || address > 0x07ECA6)
+                {
+                    throw new ClassicColorCodeInvalidException(lineNum+1, line.Length, line.Substring(2, 6));
+                }
+
+                wholeCode += line;
+            }
+            return wholeCode;
         }
 
         public static void FromColorCode(string code)

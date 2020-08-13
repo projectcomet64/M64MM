@@ -149,10 +149,10 @@
     <value>Código de color inválido: La línea {0} está intentando editar la dirección de memoria {1}, que no es donde se encuentran los datos de color de Mario. ¡Asegúrate de no usar un código de color PAL!</value>
   </data>
   <data name="invalidColorCodeMsgLong" xml:space="preserve">
-    <value>largo</value>
+    <value>larga</value>
   </data>
   <data name="invalidColorCodeMsgShort" xml:space="preserve">
-    <value>corto</value>
+    <value>corta</value>
   </data>
   <data name="invalidColorCodeMsgTitle" xml:space="preserve">
     <value>Código de color inválido</value>
@@ -214,5 +214,17 @@ No funcionará.</value>
   </data>
   <data name="updateUpToDate" xml:space="preserve">
     <value>(¡Estás al día!)</value>
+  </data>
+  <data name="colorCodeErrorFileReading" xml:space="preserve">
+    <value>No se pudo leer el código de color desde el archivo.\n{0}</value>
+  </data>
+  <data name="colorCodeErrorWriting" xml:space="preserve">
+    <value>No se pudo escribir el código de color en el archivo.\n{0}</value>
+  </data>
+  <data name="colorCodeFromFile" xml:space="preserve">
+    <value>Abrir...</value>
+  </data>
+  <data name="colorCodeToFile" xml:space="preserve">
+    <value>Guardar...</value>
   </data>
 </root>

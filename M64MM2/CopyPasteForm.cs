@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using M64MM.Utils;
 using M64MM2.Properties;
 
 
@@ -30,41 +32,87 @@ namespace M64MM2
             }
 
             string wholeCode = "";
-            for (int lineNum = 0; lineNum < tbColorCode.Lines.Length; lineNum++)
+
+            try
             {
-                //Remove spaces from each line so they don't mess up the character count
-                string line = tbColorCode.Lines[lineNum].Replace(" ", "");
-
-                //If the line is empty, ignore it
-                if (string.IsNullOrEmpty(line)) continue;
-
-                //If each line isn't exactly 12 characters long, it's not a valid code
-                if (line.Length != 12)
+                wholeCode = Looks.ValidateCC(tbColorCode.Lines);
+            }
+            catch(ClassicColorCodeInvalidException ex)
+            {
+                if (String.IsNullOrWhiteSpace(ex.Address))
                 {
-                    string errorMsg = String.Format(Resources.invalidColorCodeMsg1, lineNum + 1, line.Length > 12 ? Resources.invalidColorCodeMsgLong : Resources.invalidColorCodeMsgShort);
+                    string errorMsg = String.Format(Resources.invalidColorCodeMsg2, ex.Line, ex.Address);
                     MessageBox.Show(this, errorMsg, Resources.invalidColorCodeMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                //If the code tries to write data outside of where Mario's colors are located, it's not a valid code
-                int address = int.Parse(line.Substring(2, 6), NumberStyles.HexNumber);
-                if (address < 0x07EC20 || address > 0x07ECA6)
+                else
                 {
-                    string errorMsg = String.Format(Resources.invalidColorCodeMsg2, (lineNum + 1), line.Substring(2, 6));
+                    string errorMsg = String.Format(Resources.invalidColorCodeMsg1, ex.Line, ex.Length > 12 ? Resources.invalidColorCodeMsgLong : Resources.invalidColorCodeMsgShort);
                     MessageBox.Show(this, errorMsg, Resources.invalidColorCodeMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                wholeCode += line;
             }
 
-            ((AppearanceForm) this.Owner).ParseColorCode(wholeCode);
+            ((AppearanceForm)this.Owner).ParseColorCode(wholeCode);
             this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnFile_Click(object sender, EventArgs e)
+        {
+            if (tbColorCode.ReadOnly)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Plain text Gameshark (*.txt) | *.txt";
+                sfd.AddExtension = true;
+                sfd.DefaultExt = ".txt";
+                DialogResult dRes = sfd.ShowDialog();
+                if (dRes == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (StreamWriter sw = new StreamWriter(sfd.FileName))
+                        {
+                            foreach (string line in tbColorCode.Lines)
+                            {
+                                sw.WriteLine(line);
+                            }
+                            Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(String.Format(Resources.colorCodeErrorWriting, ex.Message), "!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "Plain text Gameshark (*.txt) | *.txt";
+                ofd.AddExtension = true;
+                ofd.DefaultExt = ".txt";
+                DialogResult dRes = ofd.ShowDialog();
+                if (dRes == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (StreamReader sw = new StreamReader(ofd.FileName))
+                        {
+                            tbColorCode.Text = sw.ReadToEnd();
+                            btnOK_Click(null, null);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(String.Format(Resources.colorCodeErrorFileReading, ex.Message), "!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

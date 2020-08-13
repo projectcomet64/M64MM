@@ -57,8 +57,7 @@ namespace M64MM2
 
         private void btnClearBoxes_Click(object sender, EventArgs e)
         {
-            tbAddresses.Text = "";
-            tbData.Text = "";
+            //TODO: Delete
         }
     }
 }

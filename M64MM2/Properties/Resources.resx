@@ -243,4 +243,16 @@ Wait for a later update of both M64MM and CometROM!</value>
   <data name="updateUpToDate" xml:space="preserve">
     <value>(You're up to date!)</value>
   </data>
+  <data name="colorCodeErrorFileReading" xml:space="preserve">
+    <value>Could not read color code from file.\n{0}</value>
+  </data>
+  <data name="colorCodeErrorWriting" xml:space="preserve">
+    <value>Could not write color code to file.\n{0}</value>
+  </data>
+  <data name="colorCodeFromFile" xml:space="preserve">
+    <value>From file...</value>
+  </data>
+  <data name="colorCodeToFile" xml:space="preserve">
+    <value>To file...</value>
+  </data>
 </root>
