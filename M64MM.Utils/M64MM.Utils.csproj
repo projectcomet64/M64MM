@@ -47,8 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
+    <Compile Include="Appearance\ColorCode.cs" />
     <Compile Include="Updater\GitHubRelease.cs" />
-    <Compile Include="Looks.cs" />
+    <Compile Include="Appearance\Looks.cs" />
     <Compile Include="CameraStyle.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Updater\MarkdownRegex.cs" />
@@ -58,7 +59,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RoutableColorPart.cs" />
+    <Compile Include="Appearance\RoutableColorPart.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Settings\SettingsGroup.cs" />
     <Compile Include="Updater\UpdateCheck.cs" />

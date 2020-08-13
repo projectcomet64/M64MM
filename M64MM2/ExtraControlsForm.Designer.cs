@@ -40,15 +40,9 @@
             this.cbStarsHud = new System.Windows.Forms.CheckBox();
             this.cbLivesHud = new System.Windows.Forms.CheckBox();
             this.btnRemoveHud = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tbAddresses = new System.Windows.Forms.TextBox();
-            this.tbData = new System.Windows.Forms.TextBox();
-            this.btnClearBoxes = new System.Windows.Forms.Button();
-            this.btnBatchWrite = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tbLevitate)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbLevitate
@@ -70,22 +64,22 @@
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tbLevitate);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.cbCoins);
             this.groupBox2.Controls.Add(this.cbPowerMtr);
             this.groupBox2.Controls.Add(this.cbLakitu);
             this.groupBox2.Controls.Add(this.cbStarsHud);
             this.groupBox2.Controls.Add(this.cbLivesHud);
             this.groupBox2.Controls.Add(this.btnRemoveHud);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -126,45 +120,10 @@
             this.btnRemoveHud.UseVisualStyleBackColor = true;
             this.btnRemoveHud.Click += new System.EventHandler(this.btnRemoveHud_Click);
             // 
-            // groupBox3
-            // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.tbAddresses);
-            this.groupBox3.Controls.Add(this.tbData);
-            this.groupBox3.Controls.Add(this.btnClearBoxes);
-            this.groupBox3.Controls.Add(this.btnBatchWrite);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
-            // 
-            // tbAddresses
-            // 
-            resources.ApplyResources(this.tbAddresses, "tbAddresses");
-            this.tbAddresses.Name = "tbAddresses";
-            // 
-            // tbData
-            // 
-            resources.ApplyResources(this.tbData, "tbData");
-            this.tbData.Name = "tbData";
-            // 
-            // btnClearBoxes
-            // 
-            resources.ApplyResources(this.btnClearBoxes, "btnClearBoxes");
-            this.btnClearBoxes.Name = "btnClearBoxes";
-            this.btnClearBoxes.UseVisualStyleBackColor = true;
-            this.btnClearBoxes.Click += new System.EventHandler(this.btnClearBoxes_Click);
-            // 
-            // btnBatchWrite
-            // 
-            resources.ApplyResources(this.btnBatchWrite, "btnBatchWrite");
-            this.btnBatchWrite.Name = "btnBatchWrite";
-            this.btnBatchWrite.UseVisualStyleBackColor = true;
-            this.btnBatchWrite.Click += new System.EventHandler(this.btnBatchWrite_Click);
-            // 
             // ExtraControlsForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -174,8 +133,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -188,11 +145,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnRemoveHud;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox tbAddresses;
-        private System.Windows.Forms.TextBox tbData;
-        private System.Windows.Forms.Button btnClearBoxes;
-        private System.Windows.Forms.Button btnBatchWrite;
         private System.Windows.Forms.CheckBox cbCoins;
         private System.Windows.Forms.CheckBox cbPowerMtr;
         private System.Windows.Forms.CheckBox cbLakitu;

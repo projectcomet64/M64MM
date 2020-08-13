@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
 using System.Collections;
 using static M64MM.Utils.Core;
+using System;
+using System.Linq;
 namespace M64MM.Utils
 {
     public class Looks
@@ -14,7 +16,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x8B8CC },
                 Address88 = new long[] { 0x8B8D4 },
                 BankOffset86 = 8,
-                BankOffset88 = 0
+                BankOffset88 = 0,
+                DefaultLightColor = Color.Blue,
+                DefaultShadowColor = Color.FromArgb(0,0,127)
             },
             new RoutableColorPart()
             {
@@ -22,7 +26,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x8BDFC },
                 Address88 = new long[] { 0x8BE04 },
                 BankOffset86 = 0x20,
-                BankOffset88 = 0x18
+                BankOffset88 = 0x18,
+                DefaultLightColor = Color.Red,
+                DefaultShadowColor = Color.FromArgb(127,0,0)
             },
             new RoutableColorPart()
             {
@@ -30,7 +36,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x8CA0C },
                 Address88 = new long[] { 0x8CA14 },
                 BankOffset86 = 0x20,
-                BankOffset88 = 0x18
+                BankOffset88 = 0x18,
+                DefaultLightColor = Color.Red,
+                DefaultShadowColor = Color.FromArgb(127,0,0)
             },
             new RoutableColorPart()
             {
@@ -38,7 +46,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x8C514 },
                 Address88 = new long[] { 0x8C51C },
                 BankOffset86 = 0x38,
-                BankOffset88 = 0x30
+                BankOffset88 = 0x30,
+                DefaultLightColor = Color.White,
+                DefaultShadowColor = Color.FromArgb(127,127,127)
             },
             new RoutableColorPart()
             {
@@ -46,7 +56,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x8D07C },
                 Address88 = new long[] { 0x8D084 },
                 BankOffset86 = 0x38,
-                BankOffset88 = 0x30
+                BankOffset88 = 0x30,
+                DefaultLightColor = Color.White,
+                DefaultShadowColor = Color.FromArgb(127,127,127)
             },
             new RoutableColorPart()
             {
@@ -54,7 +66,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x8D3E4 },
                 Address88 = new long[] { 0x8D3EC },
                 BankOffset86 = 8,
-                BankOffset88 = 0
+                BankOffset88 = 0,
+                DefaultLightColor = Color.Blue,
+                DefaultShadowColor = Color.FromArgb(0,0,127)
             },
             new RoutableColorPart()
             {
@@ -62,7 +76,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x8DBDC },
                 Address88 = new long[] { 0x8DBE4 },
                 BankOffset86 = 8,
-                BankOffset88 = 0
+                BankOffset88 = 0,
+                DefaultLightColor = Color.Blue,
+                DefaultShadowColor = Color.FromArgb(0,0,127)
             },
             new RoutableColorPart()
             {
@@ -70,7 +86,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x8D8C4 },
                 Address88 = new long[] { 0x8D8CC },
                 BankOffset86 = 0x50,
-                BankOffset88 = 0x48
+                BankOffset88 = 0x48,
+                DefaultLightColor = Color.FromArgb(144,28,14),
+                DefaultShadowColor = Color.FromArgb(47,14,7)
             },
             new RoutableColorPart()
             {
@@ -78,7 +96,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x8E10C },
                 Address88 = new long[] { 0x8E114 },
                 BankOffset86 = 0x50,
-                BankOffset88 = 0x48
+                BankOffset88 = 0x48,
+                DefaultLightColor = Color.FromArgb(144,28,14),
+                DefaultShadowColor = Color.FromArgb(47,14,7)
             },
             new RoutableColorPart()
             {
@@ -86,7 +106,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x8EF74, 0x9058C },
                 Address88 = new long[] { 0x8EF7C, 0x90594 },
                 BankOffset86 = 0x20,
-                BankOffset88 = 0x18
+                BankOffset88 = 0x18,
+                DefaultLightColor = Color.Red,
+                DefaultShadowColor = Color.FromArgb(127,0,0)
             },
             new RoutableColorPart()
             {
@@ -94,7 +116,9 @@ namespace M64MM.Utils
                 Address86 = new long[] { 0x905A4 },
                 Address88 = new long[] { 0x905AC },
                 BankOffset86 = 0x80,
-                BankOffset88 = 0x78
+                BankOffset88 = 0x78,
+                DefaultLightColor = Color.FromArgb(115,6,0),
+                DefaultShadowColor = Color.FromArgb(57,3,0)
             },
             new RoutableColorPart()
             {
@@ -102,7 +126,10 @@ namespace M64MM.Utils
                 Address86 = new long[0],
                 Address88 = new long[0],
                 BankOffset86 = 0x68,
-                BankOffset88 = 0x60
+                BankOffset88 = 0x60,
+                DefaultLightColor = Color.FromArgb(254,193,121),
+                DefaultShadowColor = Color.FromArgb(127,96,60)
+
             }
         };
 
@@ -268,6 +295,42 @@ namespace M64MM.Utils
             }
         }
 
+        /// <summary>
+        /// Write the public Color variables to the location in memory where it's located
+        /// That is, to speak, "Light" and "Shadow".
+        /// </summary>
+        /// <param name="part">The RoutableColorPart to be changed</param>
+        /// <param name="defaults">Write defaults instead?</param>
+        public static void WriteRoutableColor(RoutableColorPart part, bool defaults = false)
+        {
+            byte[] colorLight;
+            byte[] colorShadow;
+
+            if (defaults)
+            {
+                colorLight = new byte[] { part.DefaultLightColor.R, part.DefaultLightColor.G, part.DefaultLightColor.B, 0 };
+                colorShadow = new byte[] { part.DefaultLightColor.R, part.DefaultLightColor.G, part.DefaultLightColor.B, 0 };
+            }
+            else
+            {
+                colorLight = new byte[] { part.CurrentLightColor.R, part.CurrentLightColor.G, part.CurrentLightColor.B, 0 };
+                colorShadow = new byte[] { part.CurrentShadowColor.R, part.CurrentShadowColor.G, part.CurrentShadowColor.B, 0 };
+            }
+
+            WriteBytes(SegmentedToVirtual((0x04000000 + part.BankOffset86)), colorLight);
+            WriteBytes(SegmentedToVirtual((0x04000000 + part.BankOffset88)), colorShadow);
+        }
+
+        /// <summary>
+        /// Write the following shadow values to the location in memory where this part specifies
+        /// </summary>
+        /// <param name="part">The RoutableColorPart to be changed</param>
+        public static void WriteRoutableShading(RoutableColorPart part, byte[] shadowDir)
+        {
+            shadowDir[3] = 0;
+            WriteBytes(SegmentedToVirtual((0x04000000 + part.BankOffset86 + 8)), shadowDir);
+        }
+
         public static void RouteColor(RoutableColorPart source, RoutableColorPart target)
         {
             RoutableColorPart adjustedTarget = new RoutableColorPart()
@@ -280,6 +343,9 @@ namespace M64MM.Utils
             };
             target.Address86.CopyTo(adjustedTarget.Address86, 0);
             target.Address88.CopyTo(adjustedTarget.Address88, 0);
+
+            // what is this
+            /*
             for (int i = 0; i < adjustedTarget.Address86.Length; i++)
             {
                 adjustedTarget.Address86[i] = adjustedTarget.Address86[i];
@@ -287,10 +353,11 @@ namespace M64MM.Utils
             for (int i = 0; i < adjustedTarget.Address88.Length; i++)
             {
                 adjustedTarget.Address88[i] = adjustedTarget.Address88[i];
-            }
+            }*/
 
-            WriteBatchBytes(adjustedTarget.Address86, new byte[] { 04, 0, 0, source.BankOffset86 }, true, true);
-            WriteBatchBytes(adjustedTarget.Address88, new byte[] { 04, 0, 0, source.BankOffset88 }, true, true);
+            // TODO: Regression testing: try out the router once again.
+            WriteBatchBytes(adjustedTarget.Address86, BitConverter.GetBytes(0x04000000 + source.BankOffset86).Reverse().ToArray(), true, true);
+            WriteBatchBytes(adjustedTarget.Address88, BitConverter.GetBytes(0x04000000 + source.BankOffset88).Reverse().ToArray(), true, true);
         }
     }
 }
