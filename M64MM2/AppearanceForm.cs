@@ -30,22 +30,22 @@ namespace M64MM2
             rand = new Random();
 
             hatMap.OldColor = Color.FromArgb(255, 0, 0);
-            hatMap.NewColor = blendColors(hatColorMain.BackColor, hatColorShade.BackColor);
+            hatMap.NewColor = BlendColors(hatColorMain.BackColor, hatColorShade.BackColor);
 
             hairMap.OldColor = Color.FromArgb(115, 6, 0);
-            hairMap.NewColor = blendColors(hairColorMain.BackColor, hairColorShade.BackColor);
+            hairMap.NewColor = BlendColors(hairColorMain.BackColor, hairColorShade.BackColor);
 
             skinMap.OldColor = Color.FromArgb(254, 193, 121);
-            skinMap.NewColor = blendColors(skinColorMain.BackColor, skinColorShade.BackColor);
+            skinMap.NewColor = BlendColors(skinColorMain.BackColor, skinColorShade.BackColor);
 
             glovesMap.OldColor = Color.FromArgb(220, 220, 220);
-            glovesMap.NewColor = blendColors(glovesColorMain.BackColor, glovesColorShade.BackColor);
+            glovesMap.NewColor = BlendColors(glovesColorMain.BackColor, glovesColorShade.BackColor);
 
             pantsMap.OldColor = Color.FromArgb(0, 0, 255);
-            pantsMap.NewColor = blendColors(pantsColorMain.BackColor, pantsColorShade.BackColor);
+            pantsMap.NewColor = BlendColors(pantsColorMain.BackColor, pantsColorShade.BackColor);
 
             shoesMap.OldColor = Color.FromArgb(114, 28, 14);
-            shoesMap.NewColor = blendColors(shoesColorMain.BackColor, shoesColorShade.BackColor);
+            shoesMap.NewColor = BlendColors(shoesColorMain.BackColor, shoesColorShade.BackColor);
 
             foreach(RoutableColorPart rtc in defaultRoutableParts)
             {
@@ -71,12 +71,12 @@ namespace M64MM2
             Graphics g = e.Graphics;
             Bitmap bmp = new Bitmap(Resources.CC_Mario_big);
 
-            hatMap.NewColor = blendColors(hatColorMain.BackColor, hatColorShade.BackColor);
-            hairMap.NewColor = blendColors(hairColorMain.BackColor, hairColorShade.BackColor);
-            skinMap.NewColor = blendColors(skinColorMain.BackColor, skinColorShade.BackColor);
-            glovesMap.NewColor = blendColors(glovesColorMain.BackColor, glovesColorShade.BackColor);
-            pantsMap.NewColor = blendColors(pantsColorMain.BackColor, pantsColorShade.BackColor);
-            shoesMap.NewColor = blendColors(shoesColorMain.BackColor, shoesColorShade.BackColor);
+            hatMap.NewColor = BlendColors(hatColorMain.BackColor, hatColorShade.BackColor);
+            hairMap.NewColor = BlendColors(hairColorMain.BackColor, hairColorShade.BackColor);
+            skinMap.NewColor = BlendColors(skinColorMain.BackColor, skinColorShade.BackColor);
+            glovesMap.NewColor = BlendColors(glovesColorMain.BackColor, glovesColorShade.BackColor);
+            pantsMap.NewColor = BlendColors(pantsColorMain.BackColor, pantsColorShade.BackColor);
+            shoesMap.NewColor = BlendColors(shoesColorMain.BackColor, shoesColorShade.BackColor);
 
             // Set the image attribute'sender color mappings
             ColorMap[] colorMap = new ColorMap[6];
@@ -97,7 +97,7 @@ namespace M64MM2
         }
 
         //Blends two colors together via a quasi-additive formula and produces a result that'sender somewhat similar to SM64'sender lighting algorithm.
-        Color blendColors(Color mainColor, Color shadeColor)
+        Color BlendColors(Color mainColor, Color shadeColor)
         {
             int r = (int)Math.Min((shadeColor.R / 1.25) + (mainColor.R / 2.0), 255);
             int g = (int)Math.Min((shadeColor.G / 1.25) + (mainColor.G / 2.0), 255);
@@ -165,7 +165,7 @@ namespace M64MM2
             WriteColor(modelColor, senderButton.BackColor);
         }
 
-        void applyAllColors()
+        void ApplyAllColors()
         {
             if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.CLASSIC) return;
 
@@ -194,7 +194,7 @@ namespace M64MM2
             WriteColor(VanillaModelColor.HairMain, hairColorMain.BackColor);
         }
 
-        void openCopyPasteForm(object sender, EventArgs e)
+        void OpenCopyPasteForm(object sender, EventArgs e)
         {
             CopyPasteForm form = new CopyPasteForm();
 
@@ -222,7 +222,7 @@ namespace M64MM2
         {
             FromColorCode(code);
             marioSprite.Refresh();
-            loadFromGame(null, null);
+            LoadFromGame(null, null);
         }
 
         string[] GenerateColorCode()
@@ -236,8 +236,7 @@ namespace M64MM2
              */
             foreach (Control control in this.grpColor.Controls)
             {
-                Button button = control as Button;
-                if (button == null || !string.IsNullOrWhiteSpace(button.Text)) continue;
+                if (!(control is Button button) || !string.IsNullOrWhiteSpace(button.Text)) continue;
 
                 string[] addressToWrite = new string[2];
                 switch (button.Name)
@@ -299,13 +298,13 @@ namespace M64MM2
             return code.ToArray();
         }
 
-        void resetColors(object sender, EventArgs e)
+        void ResetColors(object sender, EventArgs e)
         {
             marioSprite.Refresh();
-            applyAllColors();
+            ApplyAllColors();
         }
 
-        void loadFromGame(object sender, EventArgs e)
+        void LoadFromGame(object sender, EventArgs e)
         {
             //TODO: Change the ReadBytes to use SegmentedToVirtual
             if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.CLASSIC) return;
@@ -370,10 +369,10 @@ namespace M64MM2
             }
 
             marioSprite.Refresh();
-            applyAllColors();
+            ApplyAllColors();
         }
 
-        void updateTrackbar(object sender, EventArgs e)
+        void UpdateTrackbar(object sender, EventArgs e)
         {
             TrackBar changedBar = ((TrackBar)sender);
             ShadowParts part = ShadowParts.X;
@@ -393,14 +392,14 @@ namespace M64MM2
         }
 
 
-        void resetShadows(object sender, EventArgs e)
+        void ResetShadows(object sender, EventArgs e)
         {
             tbLeftRight.Value = 0x28;
             tbBottomTop.Value = 0x28;
             tbBackFront.Value = 0x28;
         }
 
-        void randomizeShadows(object sender, EventArgs e)
+        void RandomizeShadows(object sender, EventArgs e)
         {
             tbLeftRight.Value = rand.Next(-127, 128);
             tbBottomTop.Value = rand.Next(-127, 128);
@@ -427,7 +426,7 @@ namespace M64MM2
             if (((ListBox)sender).SelectedItem != null)
             {
                 FromColorCode(((ColorCodeGS)((ListBox)sender).SelectedItem).Gameshark);
-                loadFromGame(null, null);
+                LoadFromGame(null, null);
                 marioSprite.Refresh();
             }
         }

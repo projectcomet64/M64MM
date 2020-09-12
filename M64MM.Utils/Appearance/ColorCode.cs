@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using M64MM.Utils;
+
 namespace M64MM.Utils
 {
     class ColorCode
@@ -30,10 +29,10 @@ namespace M64MM.Utils
                 long ccAddrShadow2 = ccAddrShadow1 + 2;
 
                 // Append the relevant lines to the CC
-                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrLight1).Reverse().ToArray())} {kv.Value.CurrentLightColor.R.ToString("X2")}{kv.Value.CurrentLightColor.G.ToString("X2")}");
-                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrLight2).Reverse().ToArray())} {kv.Value.CurrentLightColor.B.ToString("X2")}00");
-                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrShadow1).Reverse().ToArray())} {kv.Value.CurrentShadowColor.R.ToString("X2")}{kv.Value.CurrentShadowColor.G.ToString("X2")}");
-                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrShadow2).Reverse().ToArray())} {kv.Value.CurrentShadowColor.B.ToString("X2")}00");
+                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrLight1).Reverse().ToArray())} {kv.Value.CurrentLightColor.R:X2}{kv.Value.CurrentLightColor.G:X2}");
+                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrLight2).Reverse().ToArray())} {kv.Value.CurrentLightColor.B:X2}00");
+                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrShadow1).Reverse().ToArray())} {kv.Value.CurrentShadowColor.R:X2}{kv.Value.CurrentShadowColor.G:X2}");
+                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrShadow2).Reverse().ToArray())} {kv.Value.CurrentShadowColor.B:X2}00");
             }
             return ccStringBuilder.ToString();
         }

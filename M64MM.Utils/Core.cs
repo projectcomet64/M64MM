@@ -1,20 +1,19 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using M64MM.Additions;
+using M64MM.Utils.Properties;
+using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Permissions;
-
-using M64MM.Additions;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using static M64MM.Utils.SettingsManager;
-using System.Globalization;
-using M64MM.Utils.Properties;
 
 namespace M64MM.Utils
 {
@@ -65,8 +64,8 @@ namespace M64MM.Utils
         // Timers
         public static Timer programTimer = new Timer();
 
-        public static UInt32 ingameTimer;
-        public static UInt32 previousFrame;
+        public static uint ingameTimer;
+        public static uint previousFrame;
 
         static int _previousLevelID;
         public static int CurrentLevelID
@@ -167,7 +166,7 @@ namespace M64MM.Utils
             {
                 if (caughtFilt != _coreEntityAddress)
                 {
-                    performCoreEntAddressChange(caughtFilt);
+                    PerformCoreEntAddressChange(caughtFilt);
                 }
                 _coreEntityAddress = caughtFilt;
             }
@@ -325,7 +324,7 @@ namespace M64MM.Utils
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -395,7 +394,7 @@ namespace M64MM.Utils
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -465,7 +464,6 @@ namespace M64MM.Utils
             long baseAddr = useBase ? BaseAddress : 0;
             foreach (long addr in addresses)
             {
-                byte[] val = ReadBytes(baseAddr + addr, 1);
                 WriteBytes(baseAddr + addr, data, swap);
             }
         }
@@ -510,12 +508,11 @@ namespace M64MM.Utils
         /// </summary>
         public static void FindBaseAddress()
         {
-            uint value = 0;
-
             long start = 0x20000000;
             long stop = 0x60000000;
             long step = 0x10000;
 
+            uint value;
             //Check if the old base address is still valid
             if (BaseAddress > 0)
             {
@@ -581,6 +578,7 @@ namespace M64MM.Utils
 
         public static void LoadAddonsFromFolder(string path = "")
         {
+            // TODO: Add the different path loading
             /* Code for plugin sandboxing */
             PermissionSet trustedLoadFromRemoteSourcesGrantSet = new PermissionSet(PermissionState.Unrestricted);
             AppDomainSetup trustedLoadFromRemoteSourcesSetup = new AppDomainSetup
@@ -593,10 +591,14 @@ namespace M64MM.Utils
                            trustedLoadFromRemoteSourcesSetup,
                            trustedLoadFromRemoteSourcesGrantSet);
             AddonErrorsBuilder = new StringBuilder();
-            ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
+            _ = new ToolStripMenuItem("Addons");
             try
-            { // Loading DLLs from ./Addons
-                DirectoryInfo d = new DirectoryInfo(Application.StartupPath + "\\Addons");
+            { // Loading DLLs from the desired path location (If not, .\Addons)
+                if (string.IsNullOrWhiteSpace(path))
+                {
+                    path = Application.StartupPath + "\\Addons";
+                }
+                DirectoryInfo d = new DirectoryInfo(path);
                 foreach (FileInfo file in d.GetFiles("*.dll"))
                 { // For each DLL
                     try // If getting all types fails for some reason (Ex: cannot load required assembly)...
@@ -607,7 +609,7 @@ namespace M64MM.Utils
                             // Checking if it has an assembly first will allow us to just skip it.
                             AssemblyName.GetAssemblyName(file.FullName);
                         }
-                        catch (BadImageFormatException e)
+                        catch (BadImageFormatException)
                         {
                             AddonErrorsBuilder.AppendFormat("{0} [LOAD WARNING] - DLL {1} does not appear to have assembly info or is a corrupted DLL.\nAddon loading for this DLL has been skipped. If this is not an addon DLL but a native dependency, this is normal.\nThese warnings can be suppressed in a future.\n--------\n", DateTime.Now.ToLongTimeString(), file.Name);
                             continue;
@@ -689,7 +691,7 @@ namespace M64MM.Utils
                         colorCodeGamesharks.Add(ccG);
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         continue;
                         // Skip this CC
@@ -806,7 +808,7 @@ namespace M64MM.Utils
         /// <summary>
         /// Is executed when Base Address updates from an older value to another.
         /// </summary>
-        public async static void performBaseAddrUpd()
+        public async static void PerformBaseAddrUpd()
         {
             for (int i = 0; i < moduleList.Count(); i++)
             {
@@ -827,7 +829,7 @@ namespace M64MM.Utils
             }
         }
 
-        public async static void performCoreEntAddressChange(uint addr)
+        public async static void PerformCoreEntAddressChange(uint addr)
         {
             for (int i = 0; i < moduleList.Count(); i++)
             {
@@ -851,7 +853,7 @@ namespace M64MM.Utils
         /// <summary>
         /// Is executed when Base Address is zero.
         /// </summary>
-        public async static void performBaseAddrZero()
+        public async static void PerformBaseAddrZero()
         {
             for (int i = 0; i < moduleList.Count(); i++)
             {
@@ -875,7 +877,7 @@ namespace M64MM.Utils
         /// <summary>
         /// Is executed every in-game frame. (Prone to FPS drops)
         /// </summary>
-        public async static void performUpdate()
+        public async static void PerformUpdate()
         {
             while (true)
             {

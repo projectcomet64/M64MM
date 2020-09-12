@@ -290,21 +290,21 @@
             resources.ApplyResources(this.btnLoadFromGame, "btnLoadFromGame");
             this.btnLoadFromGame.Name = "btnLoadFromGame";
             this.btnLoadFromGame.UseVisualStyleBackColor = true;
-            this.btnLoadFromGame.Click += new System.EventHandler(this.loadFromGame);
+            this.btnLoadFromGame.Click += new System.EventHandler(this.LoadFromGame);
             // 
             // btnExportCode
             // 
             resources.ApplyResources(this.btnExportCode, "btnExportCode");
             this.btnExportCode.Name = "btnExportCode";
             this.btnExportCode.UseVisualStyleBackColor = true;
-            this.btnExportCode.Click += new System.EventHandler(this.openCopyPasteForm);
+            this.btnExportCode.Click += new System.EventHandler(this.OpenCopyPasteForm);
             // 
             // btnImportCode
             // 
             resources.ApplyResources(this.btnImportCode, "btnImportCode");
             this.btnImportCode.Name = "btnImportCode";
             this.btnImportCode.UseVisualStyleBackColor = true;
-            this.btnImportCode.Click += new System.EventHandler(this.openCopyPasteForm);
+            this.btnImportCode.Click += new System.EventHandler(this.OpenCopyPasteForm);
             // 
             // grpShading
             // 
@@ -328,14 +328,14 @@
             resources.ApplyResources(this.btnRandomizeShading, "btnRandomizeShading");
             this.btnRandomizeShading.Name = "btnRandomizeShading";
             this.btnRandomizeShading.UseVisualStyleBackColor = true;
-            this.btnRandomizeShading.Click += new System.EventHandler(this.randomizeShadows);
+            this.btnRandomizeShading.Click += new System.EventHandler(this.RandomizeShadows);
             // 
             // btnResetShading
             // 
             resources.ApplyResources(this.btnResetShading, "btnResetShading");
             this.btnResetShading.Name = "btnResetShading";
             this.btnResetShading.UseVisualStyleBackColor = true;
-            this.btnResetShading.Click += new System.EventHandler(this.resetShadows);
+            this.btnResetShading.Click += new System.EventHandler(this.ResetShadows);
             // 
             // label13
             // 
@@ -375,7 +375,7 @@
             this.tbBackFront.Name = "tbBackFront";
             this.tbBackFront.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbBackFront.Value = 40;
-            this.tbBackFront.ValueChanged += new System.EventHandler(this.updateTrackbar);
+            this.tbBackFront.ValueChanged += new System.EventHandler(this.UpdateTrackbar);
             // 
             // tbBottomTop
             // 
@@ -385,7 +385,7 @@
             this.tbBottomTop.Name = "tbBottomTop";
             this.tbBottomTop.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbBottomTop.Value = 40;
-            this.tbBottomTop.ValueChanged += new System.EventHandler(this.updateTrackbar);
+            this.tbBottomTop.ValueChanged += new System.EventHandler(this.UpdateTrackbar);
             // 
             // tbLeftRight
             // 
@@ -395,7 +395,7 @@
             this.tbLeftRight.Name = "tbLeftRight";
             this.tbLeftRight.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbLeftRight.Value = 40;
-            this.tbLeftRight.ValueChanged += new System.EventHandler(this.updateTrackbar);
+            this.tbLeftRight.ValueChanged += new System.EventHandler(this.UpdateTrackbar);
             // 
             // randomizerTimer
             // 

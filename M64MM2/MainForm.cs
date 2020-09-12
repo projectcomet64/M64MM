@@ -27,7 +27,7 @@ namespace M64MM2
         //ASYNCHRONOUS FOR THE WIN
         //FUNNILY ENOUGH! This takes little to no CPU, actually
         //It's goddamn amazing
-        Task updateFunction = Task.Run(() => performUpdate());
+        Task updateFunction = Task.Run(() => PerformUpdate());
 
         public MainForm()
         {
@@ -121,7 +121,7 @@ namespace M64MM2
                 FindEmuProcess();
                 if (BaseAddress > 0)
                 {
-                    Task.Run(() => performBaseAddrUpd());
+                    Task.Run(() => PerformBaseAddrUpd());
                     BaseAddress = 0;
                 }
                 modelStatus = ModelStatus.NONE;
@@ -224,7 +224,7 @@ namespace M64MM2
             //lblCameraStatus.Text = cameraFrozen ? Resources.cameraStateFrozen : Resources.cameraStateDefault;
         }
 
-        void changeCameraStyle(object sender, EventArgs e)
+        void ChangeCameraStyle(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 
@@ -272,7 +272,7 @@ namespace M64MM2
             cbAnimNew.SelectedIndex = GetCurrentAnimationIndex(selectedAnimation);
         }
 
-        void openAppearanceSettings(object sender, EventArgs e)
+        void OpenAppearanceSettings(object sender, EventArgs e)
         {
             switch (modelStatus)
             {
@@ -297,13 +297,13 @@ namespace M64MM2
             }
         }
 
-        void openAboutForm(object sender, EventArgs e)
+        void OpenAboutForm(object sender, EventArgs e)
         {
             AboutForm about = new AboutForm();
             about.ShowDialog(this);
         }
 
-        void openExtraControls(object sender, EventArgs e)
+        void OpenExtraControls(object sender, EventArgs e)
         {
             if (extraControlsForm == null || extraControlsForm.IsDisposed) extraControlsForm = new ExtraControlsForm();
 
@@ -361,8 +361,8 @@ namespace M64MM2
         {
             // TODO: Make neater, remove repetition
             // MOVE TO CORE
-            Tuple<HttpStatusCode, GitHubRelease> requestLatest = new Tuple<HttpStatusCode, GitHubRelease>(0, null);
-            requestLatest = await Updater.CheckUpdate();
+            _ = new Tuple<HttpStatusCode, GitHubRelease>(0, null);
+            Tuple<HttpStatusCode, GitHubRelease> requestLatest = await Updater.CheckUpdate();
             if (requestLatest.Item1 == HttpStatusCode.OK)
             {
                 Program.LatestRelease = requestLatest.Item2;

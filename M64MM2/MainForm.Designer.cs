@@ -89,13 +89,13 @@
             // 
             this.appearanceSettingsMenuItem.Name = "appearanceSettingsMenuItem";
             resources.ApplyResources(this.appearanceSettingsMenuItem, "appearanceSettingsMenuItem");
-            this.appearanceSettingsMenuItem.Click += new System.EventHandler(this.openAppearanceSettings);
+            this.appearanceSettingsMenuItem.Click += new System.EventHandler(this.OpenAppearanceSettings);
             // 
             // extraControlsToolStripMenuItem
             // 
             this.extraControlsToolStripMenuItem.Name = "extraControlsToolStripMenuItem";
             resources.ApplyResources(this.extraControlsToolStripMenuItem, "extraControlsToolStripMenuItem");
-            this.extraControlsToolStripMenuItem.Click += new System.EventHandler(this.openExtraControls);
+            this.extraControlsToolStripMenuItem.Click += new System.EventHandler(this.OpenExtraControls);
             // 
             // showRunningPluginsToolStripMenuItem
             // 
@@ -107,7 +107,7 @@
             // 
             this.aboutMenuItem.Name = "aboutMenuItem";
             resources.ApplyResources(this.aboutMenuItem, "aboutMenuItem");
-            this.aboutMenuItem.Click += new System.EventHandler(this.openAboutForm);
+            this.aboutMenuItem.Click += new System.EventHandler(this.OpenAboutForm);
             // 
             // settingsToolStripMenuItem
             // 
@@ -259,7 +259,7 @@
             resources.ApplyResources(this.btnChangeCamStyle, "btnChangeCamStyle");
             this.btnChangeCamStyle.Name = "btnChangeCamStyle";
             this.btnChangeCamStyle.UseVisualStyleBackColor = true;
-            this.btnChangeCamStyle.Click += new System.EventHandler(this.changeCameraStyle);
+            this.btnChangeCamStyle.Click += new System.EventHandler(this.ChangeCameraStyle);
             // 
             // cbCamStyles
             // 
