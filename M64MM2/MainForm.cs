@@ -12,6 +12,7 @@ using M64MM.Additions;
 using static M64MM.Utils.SettingsManager;
 using System.Linq;
 using System.Net;
+using System.Diagnostics;
 
 namespace M64MM2
 {
@@ -32,6 +33,8 @@ namespace M64MM2
         public MainForm()
         {
             InitializeComponent();
+            Core.EmulatorSelected += (a, b) => { EmulatorSelected(a, b); };
+            MoreThanOneEmuFound += (a, b) => { MoreThanOneEmu(a, b); };
             ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
             foreach (Addon add in moduleList)
             {
@@ -114,20 +117,18 @@ namespace M64MM2
         void Update(object sender, EventArgs e)
         {
             //Early validity checks
-            if (!IsEmuOpen)
+            if (!IsEmuOpen && !StopProcessSearch)
             {
+                StopProcessSearch = true;
                 Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus1;
                 FindEmuProcess();
-                if (BaseAddress > 0)
-                {
-                    Task.Run(() => PerformBaseAddrUpd());
-                    BaseAddress = 0;
-                }
-                modelStatus = ModelStatus.NONE;
                 return;
             }
 
+            if (StopProcessSearch)
+                return;
+            
             FindBaseAddress();
             //Finding base address
             if (BaseAddress <= 0)
@@ -185,6 +186,21 @@ namespace M64MM2
             }
         }
 
+        void MoreThanOneEmu(object sender, Process[] proc)
+        {
+            EmuSelectorForm es = new EmuSelectorForm(proc);
+            es.ShowDialog();
+        }
+
+        void EmulatorSelected(object sender, EventArgs e)
+        {
+            if (BaseAddress > 0)
+            {
+                Task.Run(() => PerformBaseAddrUpd());
+                BaseAddress = 0;
+            }
+            modelStatus = ModelStatus.NONE;
+        }
 
         void ToggleFreezeCam(object sender, EventArgs e)
         {
@@ -377,6 +393,11 @@ namespace M64MM2
         private void cbPowercam_CheckedChanged(object sender, EventArgs e)
         {
             PowerCamEnabled = cbPowercam.Checked;
+        }
+
+        private void scanForEmulatorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Core.ResetEmuProcess();
         }
     }
 }

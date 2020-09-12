@@ -34,7 +34,8 @@ namespace M64MM2
         public async void InitMovieMaker()
         {
             await Task.Run(() => { UpdateProgress(0, "Checking for updates...\n"); });
-            await Task.Run(() => {
+            await Task.Run(() =>
+            {
                 try
                 {
                     if (enableUpdates)
@@ -59,22 +60,27 @@ namespace M64MM2
             await Task.Run(() => { LoadAddonsFromFolder(); });
             await Task.Run(() =>
             {
-                UpdateProgress(15, "Loading animation data...\n");
+                UpdateProgress(25, "Loading animation data...\n");
             });
-            bool validAnimData = await Task.Run(() => LoadAnimationData());
+            bool validAnimData = await Task.Run(LoadAnimationData);
             await Task.Run(() =>
             {
-                UpdateProgress(25, "Loading camera data...\n");
+                UpdateProgress(50, "Loading camera data...\n");
             });
-            bool validCamStyles = await Task.Run(() => LoadCameraData());
+            await Task.Run(LoadColorCodeRepo);
             await Task.Run(() =>
             {
-                UpdateProgress(25, "Initializing addons...\n");
+                UpdateProgress(65, "Loading colorcodes...\n");
             });
-            await Task.Run(() => { InitializeModules(); });
+            bool validCamStyles = await Task.Run(LoadCameraData);
             await Task.Run(() =>
             {
-                UpdateProgress(25, null);
+                UpdateProgress(75, "Initializing addons...\n");
+            });
+            await Task.Run(InitializeModules);
+            await Task.Run(() =>
+            {
+                UpdateProgress(100, null);
             });
             Program.validAnimationData = validAnimData;
             Program.validCameraData = validCamStyles;
@@ -94,24 +100,20 @@ namespace M64MM2
             }
         }
 
-        void UpdateProgress(int add, string progressText)
+        void UpdateProgress(int val, string progressText)
         {
+            // TODO: Rather than relying on percentages, make it by "Tasks Completed"
             if (splashForm.IsHandleCreated)
             {
                 splashForm.BeginInvoke(new MethodInvoker(delegate ()
                                 {
-                                    pbProgress.Value += add;
-                                    if (!String.IsNullOrEmpty(progressText))
+                                    pbProgress.Value = val;
+                                    if (!string.IsNullOrEmpty(progressText))
                                     {
                                         rtbLogs.AppendText(progressText);
                                     }
                                 }));
             }
-            else
-            {
-                // Huh?
-            }
-
         }
 
         void InitializeModules()

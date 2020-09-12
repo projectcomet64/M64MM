@@ -59,6 +59,8 @@
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
             this.ttAutoApplyInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.scanForEmulatorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -81,7 +83,9 @@
             this.toolsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.appearanceSettingsMenuItem,
             this.extraControlsToolStripMenuItem,
-            this.showRunningPluginsToolStripMenuItem});
+            this.showRunningPluginsToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.scanForEmulatorsToolStripMenuItem});
             this.toolsMenuItem.Name = "toolsMenuItem";
             resources.ApplyResources(this.toolsMenuItem, "toolsMenuItem");
             // 
@@ -271,6 +275,17 @@
             // 
             this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // scanForEmulatorsToolStripMenuItem
+            // 
+            this.scanForEmulatorsToolStripMenuItem.Name = "scanForEmulatorsToolStripMenuItem";
+            resources.ApplyResources(this.scanForEmulatorsToolStripMenuItem, "scanForEmulatorsToolStripMenuItem");
+            this.scanForEmulatorsToolStripMenuItem.Click += new System.EventHandler(this.scanForEmulatorsToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -330,6 +345,8 @@
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForLatestUpdateToolStripMenuItem;
         private System.Windows.Forms.CheckBox cbPowercam;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem scanForEmulatorsToolStripMenuItem;
     }
 }
 

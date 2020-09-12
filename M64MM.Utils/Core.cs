@@ -54,6 +54,8 @@ namespace M64MM.Utils
 
         #region Events (internal use recommended)
         public static event EventHandler<int> LevelChanged;
+        public static event EventHandler<Process[]> MoreThanOneEmuFound;
+        public static event EventHandler EmulatorSelected;
         public static event EventHandler<bool> BaseAddressUpdate;
         #endregion
 
@@ -115,6 +117,7 @@ namespace M64MM.Utils
 
         #region Native methods and process related
         static Process emuProcess;
+        public static bool StopProcessSearch;
         static IntPtr emuProcessHandle;
         const int PROCESS_ALL_ACCESS = 0x01F0FF;
 
@@ -476,6 +479,16 @@ namespace M64MM.Utils
             LevelChanged?.Invoke(null, levelID);
         }
 
+        static void OnMoreThanMoreEmuFound(Process[] plist)
+        {
+            MoreThanOneEmuFound?.Invoke(null, plist);
+        }
+
+        static void OnEmulatorSelected()
+        {
+            EmulatorSelected?.Invoke(null, null);
+        }
+
         #endregion
 
         /// <summary>
@@ -483,13 +496,20 @@ namespace M64MM.Utils
         /// </summary>
         public static void FindEmuProcess()
         {
+            if (IsEmuOpen)
+            {
+                return;
+            }
             List<Process> emulators = Process.GetProcesses().Where(x => x.ProcessName.Contains("Project64")).ToList();
 
             if (emulators.Count > 1)
             {
-#if DEBUG
+                #if DEBUG
                 Debug.WriteLine($"Found more than one PJ64: {emulators.Count}");
-#endif
+                #endif
+                StopProcessSearch = true;
+                OnMoreThanMoreEmuFound(emulators.ToArray());
+                return;
             }
 
             // TODO: Make it an event so to make the main UI handle the UI/UX part (lol)
@@ -497,10 +517,22 @@ namespace M64MM.Utils
             // available class wide (private: no other class should be able to access this)
             if (emulators.Count != 0)
             {
-                emuProcess = emulators[0];
-                emuProcessHandle = OpenProcess(PROCESS_ALL_ACCESS, false, emuProcess.Id);
+                StopProcessSearch = true;
+                SelectEmuProcess(emulators[0]);
             }
 
+        }
+        public static void SelectEmuProcess(Process proc)
+        {
+            emuProcess = proc;
+            emuProcessHandle = OpenProcess(PROCESS_ALL_ACCESS, false, emuProcess.Id);
+            StopProcessSearch = false;
+        }
+
+        public static void ResetEmuProcess()
+        {
+            emuProcess = null;
+            emuProcessHandle = IntPtr.Zero;
         }
 
         /// <summary>
