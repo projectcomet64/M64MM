@@ -119,17 +119,17 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lbEmu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 62</value>
+    <value>12, 75</value>
   </data>
   <data name="lbEmu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 173</value>
+    <value>309, 160</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 50</value>
+    <value>309, 63</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Se ha encontrado más de un emulador ejecutándose actualmente. Selecciona el que quieres usar y hac clic en "Escoger"
-</value>
+    <value>Se ha encontrado más de un emulador ejecutándose. Selecciona el que quieres usar y hac clic en "Escoger".
+Si no estás seguro, haz clic en el emulador y luego en "Mostrar" para hacer que la ventana sea visible.</value>
   </data>
   <data name="lbOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 249</value>
@@ -145,6 +145,12 @@
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>Escanear de nuevo</value>
+  </data>
+  <data name="btnBringToFront.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 23</value>
+  </data>
+  <data name="btnBringToFront.Text" xml:space="preserve">
+    <value>Mostrar</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

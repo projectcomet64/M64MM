@@ -221,6 +221,7 @@
     <Content Include="camera_data.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\m3_splash_dev.png" />
     <Content Include="Resources\M64MM2 New Icon 2 small.png" />
     <Content Include="Resources\M64MM2 New Icon 2.png" />
     <Content Include="Resources\M64MM2 New Icon.png" />

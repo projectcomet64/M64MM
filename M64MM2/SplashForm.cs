@@ -24,6 +24,9 @@ namespace M64MM2
                 splashForm = this;
             }
             Load += new EventHandler(OnLoad);
+            #if DEBUG
+            BackgroundImage = Resources.m3_splash_dev;
+            #endif
         }
 
         void OnLoad(object sender, EventArgs args)

@@ -33,12 +33,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbOK = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnBringToFront = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbEmu
             // 
-            this.lbEmu.FormattingEnabled = true;
             resources.ApplyResources(this.lbEmu, "lbEmu");
+            this.lbEmu.FormattingEnabled = true;
             this.lbEmu.Name = "lbEmu";
             // 
             // label1
@@ -60,11 +61,19 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnBringToFront
+            // 
+            resources.ApplyResources(this.btnBringToFront, "btnBringToFront");
+            this.btnBringToFront.Name = "btnBringToFront";
+            this.btnBringToFront.UseVisualStyleBackColor = true;
+            this.btnBringToFront.Click += new System.EventHandler(this.btnBringToFront_Click);
+            // 
             // EmuSelectorForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBringToFront);
             this.Controls.Add(this.lbOK);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbEmu);
@@ -82,5 +91,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button lbOK;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBringToFront;
     }
 }

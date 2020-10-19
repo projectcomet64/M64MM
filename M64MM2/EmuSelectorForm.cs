@@ -13,6 +13,8 @@ namespace M64MM2
 {
     public partial class EmuSelectorForm : Form
     {
+
+
         public EmuSelectorForm(Process[] plist)
         {
             InitializeComponent();
@@ -44,6 +46,14 @@ namespace M64MM2
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             Core.StopProcessSearch = false;
+        }
+
+        private void btnBringToFront_Click(object sender, EventArgs e)
+        {
+            if (lbEmu.SelectedItem != null)
+            {
+                Core.SetForegroundWindow(((Process)lbEmu.SelectedItem).MainWindowHandle);
+            }
         }
     }
 }
