@@ -76,6 +76,7 @@ namespace M64MM.Utils
                 int id = BitConverter.ToInt16(SwapEndian(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
                 if (id != _previousLevelID)
                 {
+                    UpdateCoreEntityAddress();
                     OnLevelChanged(id);
                 }
                 _previousLevelID = id;
@@ -515,7 +516,10 @@ namespace M64MM.Utils
             {
                 StopProcessSearch = true;
                 SelectEmuProcess(emulators[0]);
+                return;
             }
+
+            StopProcessSearch = false;
 
         }
         public static void SelectEmuProcess(Process proc)
@@ -527,6 +531,7 @@ namespace M64MM.Utils
         }
         public static void ResetEmuProcess()
         {
+            StopProcessSearch = false;
             emuProcess = null;
             emuProcessHandle = IntPtr.Zero;
         }

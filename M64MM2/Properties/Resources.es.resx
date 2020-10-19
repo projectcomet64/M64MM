@@ -227,4 +227,16 @@ No funcionará.</value>
   <data name="colorCodeToFile" xml:space="preserve">
     <value>Guardar...</value>
   </data>
+  <data name="cameraToggleFrozen" xml:space="preserve">
+    <value>Congelada: </value>
+  </data>
+  <data name="cameraToggleSoftFrozen" xml:space="preserve">
+    <value>Congelado suave: </value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
 </root>

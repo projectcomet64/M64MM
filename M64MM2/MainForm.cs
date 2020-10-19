@@ -207,7 +207,7 @@ namespace M64MM2
             if (!IsEmuOpen || BaseAddress == 0) return;
 
             ToggleCameraFreeze();
-            btnFreeze.Text = $"Frozen: {CameraFrozen}";
+            btnFreeze.Text = $"{Resources.cameraToggleFrozen}{(CameraFrozen ? Resources.yes : Resources.no)}";
             lblCameraStatus.Text = (CameraFrozen) ? Resources.cameraStateFrozen : ((CameraSoftFrozen) ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault);
         }
 
@@ -216,7 +216,7 @@ namespace M64MM2
             if (!IsEmuOpen || BaseAddress == 0) return;
 
             ToggleCameraSoftFreeze();
-            btnSoftFreeze.Text = $"Soft Frozen: {CameraSoftFrozen}";
+            btnSoftFreeze.Text = $"{Resources.cameraToggleSoftFrozen}{(CameraFrozen ? Resources.yes : Resources.no)}";
 
             lblCameraStatus.Text = (CameraFrozen) ? Resources.cameraStateFrozen : ((CameraSoftFrozen) ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault);
         }

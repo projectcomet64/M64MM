@@ -19,7 +19,7 @@ namespace M64MM2.Properties {
     // a través de una herramienta como ResGen o Visual Studio.
     // Para agregar o quitar un miembro, edite el archivo .ResX y, a continuación, vuelva a ejecutar ResGen
     // con la opción /str o recompile su proyecto de VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -102,6 +102,24 @@ namespace M64MM2.Properties {
         internal static string cameraStateSoftFrozen {
             get {
                 return ResourceManager.GetString("cameraStateSoftFrozen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Frozen: .
+        /// </summary>
+        internal static string cameraToggleFrozen {
+            get {
+                return ResourceManager.GetString("cameraToggleFrozen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Soft-frozen: .
+        /// </summary>
+        internal static string cameraToggleSoftFrozen {
+            get {
+                return ResourceManager.GetString("cameraToggleSoftFrozen", resourceCulture);
             }
         }
         
@@ -332,6 +350,15 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a No.
+        /// </summary>
+        internal static string no {
+            get {
+                return ResourceManager.GetString("no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a In banner: .
         /// </summary>
         internal static string picturedInBannerMsg {
@@ -474,6 +501,15 @@ namespace M64MM2.Properties {
             get {
                 object obj = ResourceManager.GetObject("version3_big", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Yes.
+        /// </summary>
+        internal static string yes {
+            get {
+                return ResourceManager.GetString("yes", resourceCulture);
             }
         }
     }

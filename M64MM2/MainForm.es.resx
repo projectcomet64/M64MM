@@ -118,24 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 22</value>
-  </data>
-  <data name="appearanceSettingsMenuItem.Text" xml:space="preserve">
-    <value>Herramientas de &amp;Apariencia</value>
-  </data>
-  <data name="extraControlsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 22</value>
-  </data>
-  <data name="extraControlsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Controles &amp;Extra...</value>
-  </data>
-  <data name="showRunningPluginsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 22</value>
-  </data>
-  <data name="showRunningPluginsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Mostrar Add-ons instalados</value>
-  </data>
   <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 20</value>
   </data>
@@ -160,8 +142,32 @@
   <data name="checkForLatestUpdateToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Revisar Actualización</value>
   </data>
-  <data name="menuStrip.ToolTip" xml:space="preserve">
-    <value />
+  <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="appearanceSettingsMenuItem.Text" xml:space="preserve">
+    <value>Herramientas de &amp;Apariencia</value>
+  </data>
+  <data name="extraControlsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="extraControlsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Controles &amp;Extra...</value>
+  </data>
+  <data name="showRunningPluginsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="showRunningPluginsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Mostrar Add-ons instalados</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 6</value>
+  </data>
+  <data name="scanForEmulatorsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="grpCamera.Text" xml:space="preserve">
+    <value>Controles de cámara</value>
   </data>
   <data name="cbPowercam.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 17</value>
@@ -174,28 +180,16 @@
 Puede romper algunas transiciones. Usa con cuidado.</value>
   </data>
   <data name="btnSoftFreeze.Text" xml:space="preserve">
-    <value>Cong. Ligero(Ctrl + 4)</value>
-  </data>
-  <data name="btnSoftFreeze.ToolTip" xml:space="preserve">
-    <value />
+    <value>Congelado suave: No</value>
   </data>
   <data name="btnFreeze.Text" xml:space="preserve">
-    <value>Congelar (Ctrl + 1)</value>
-  </data>
-  <data name="btnFreeze.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="grpCamera.Text" xml:space="preserve">
-    <value>Controles de cámara</value>
-  </data>
-  <data name="grpCamera.ToolTip" xml:space="preserve">
-    <value />
+    <value>Congelado: No</value>
   </data>
   <data name="lblCameraStatus.Text" xml:space="preserve">
     <value>Cámara: Por defecto</value>
   </data>
-  <data name="statusStrip.ToolTip" xml:space="preserve">
-    <value />
+  <data name="grpAnimSwap.Text" xml:space="preserve">
+    <value>Controles de cambio de animación</value>
   </data>
   <data name="chbAutoApply.Location" type="System.Drawing.Point, System.Drawing">
     <value>116, 77</value>
@@ -216,14 +210,8 @@ Nota: puede verse raro de vez en cuando.</value>
   <data name="btnAnimResetAll.Text" xml:space="preserve">
     <value>Reiniciar todas</value>
   </data>
-  <data name="btnAnimResetAll.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btnAnimReset.Text" xml:space="preserve">
     <value>Reiniciar</value>
-  </data>
-  <data name="btnAnimReset.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="btnAnimSwap.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 23</value>
@@ -231,17 +219,11 @@ Nota: puede verse raro de vez en cuando.</value>
   <data name="btnAnimSwap.Text" xml:space="preserve">
     <value>Aplicar</value>
   </data>
-  <data name="btnAnimSwap.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="lblAnimNew.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 13</value>
   </data>
   <data name="lblAnimNew.Text" xml:space="preserve">
     <value>Con esta animación:</value>
-  </data>
-  <data name="lblAnimNew.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="lblAnimOld.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 13</value>
@@ -249,35 +231,11 @@ Nota: puede verse raro de vez en cuando.</value>
   <data name="lblAnimOld.Text" xml:space="preserve">
     <value>Reemplazar esta animación:</value>
   </data>
-  <data name="lblAnimOld.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="cbAnimNew.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="cbAnimOld.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="grpAnimSwap.Text" xml:space="preserve">
-    <value>Controles de cambio de animación</value>
-  </data>
-  <data name="grpAnimSwap.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnChangeCamStyle.Text" xml:space="preserve">
-    <value>Aplicar</value>
-  </data>
-  <data name="btnChangeCamStyle.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="cbCamStyles.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="grpCamStyle.Text" xml:space="preserve">
     <value>Cambio de estilo de cámara</value>
   </data>
-  <data name="grpCamStyle.ToolTip" xml:space="preserve">
-    <value />
+  <data name="btnChangeCamStyle.Text" xml:space="preserve">
+    <value>Aplicar</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2175,8 +2133,5 @@ Nota: puede verse raro de vez en cuando.</value>
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEA
         AA==
 </value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

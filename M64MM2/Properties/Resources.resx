@@ -255,4 +255,16 @@ Wait for a later update of both M64MM and CometROM!</value>
   <data name="colorCodeToFile" xml:space="preserve">
     <value>To file...</value>
   </data>
+  <data name="cameraToggleFrozen" xml:space="preserve">
+    <value>Frozen: </value>
+  </data>
+  <data name="cameraToggleSoftFrozen" xml:space="preserve">
+    <value>Soft-frozen: </value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>
