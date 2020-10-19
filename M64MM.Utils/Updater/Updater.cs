@@ -12,6 +12,20 @@ namespace M64MM.Utils
 {
     public static class Updater
     {
+        public static async Task<GitHubRelease> FindNewUpdate(string currentTag)
+        {
+            Tuple<HttpStatusCode, GitHubRelease> requestLatest = await CheckUpdate();
+            if (requestLatest.Item1 == HttpStatusCode.OK)
+            {
+                VersionTagManager.VersionTag current = VersionTagManager.GetVersionFromTag(currentTag);
+                return requestLatest.Item2;
+            }
+            else
+            {
+                throw new HttpListenerException((int)requestLatest.Item1, "Could not check for updates; network error.");
+            }
+        }
+
         public static async Task<Tuple<HttpStatusCode, GitHubRelease>> CheckUpdate()
         {
             HttpClient client = new HttpClient();
@@ -25,6 +39,9 @@ namespace M64MM.Utils
                 return new Tuple<HttpStatusCode, GitHubRelease>(latestReleases.StatusCode, null);
             }
 
+            // TODO: Allow updating from different "release channels", also allow different URLs
+            // for example: for addons
+
             JArray parsedReleases = JArray.Parse(await latestReleases.Content.ReadAsStringAsync());
             List<JToken> releasesList = parsedReleases.ToList();
 
@@ -33,7 +50,7 @@ namespace M64MM.Utils
             return new Tuple<HttpStatusCode, GitHubRelease>(HttpStatusCode.OK, latestReleaseObject);
         }
 
-        public static bool GotNewVersion(VersionTagManager.VersionTag latest, VersionTagManager.VersionTag current)
+        public static bool CheckVersion(VersionTagManager.VersionTag latest, VersionTagManager.VersionTag current)
         {
             if (latest.FormalVersionNumber >= current.FormalVersionNumber
                 && latest.ReleaseChannel == current.ReleaseChannel

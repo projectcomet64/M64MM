@@ -15,6 +15,7 @@
 */
 
 using M64MM.Utils;
+using M64MM2.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,8 @@ namespace M64MM2
         public static bool validAnimationData;
         public static bool validCameraData;
 
-        public static bool UpdateAvailable;
+        public static VersionTagManager.VersionTag CurrentVersionTag = VersionTagManager.GetVersionFromTag(Application.ProductVersion + Resources.prereleaseString);
+        public static bool HasUpdate;
         public static GitHubRelease LatestRelease;
         /// <summary>
         /// The main entry point for the application.

@@ -17,16 +17,18 @@ namespace M64MM2
     public partial class LatestUpdateDialog : Form
     {
         GitHubRelease release;
+        bool updateAvailable;
         public LatestUpdateDialog(GitHubRelease rel)
         {
             InitializeComponent();
             release = rel;
+            updateAvailable = Updater.CheckVersion(rel.VersionTag, Program.CurrentVersionTag);
         }
 
         private void LatestUpdateDialog_Load(object sender, EventArgs e)
         {
             lbLatestVersion.Text = $"{Resources.updateLatestVersion}{release.TagName} ({release.ReleaseName})";
-            lbCurrentVersion.Text = $"{Resources.updateCurrentVersion}{Application.ProductVersion + Resources.prereleaseString} {(Program.UpdateAvailable ? Resources.updateUpdateNow: Resources.updateUpToDate)}";
+            lbCurrentVersion.Text = $"{Resources.updateCurrentVersion}{Program.CurrentVersionTag.ToString()} {(updateAvailable ? Resources.updateUpdateNow: Resources.updateUpToDate)}";
             string rtf = MarkdownToRtf(release.Body);
             rtbUpdateNotes.Rtf = @"{\rtf\ansi\deff0{\fonttbl{\f0\fnil Arial;}{\f1\fmodern Courier New;}}\fs18" + rtf;
         }

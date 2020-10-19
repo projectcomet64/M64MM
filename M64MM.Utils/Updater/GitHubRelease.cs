@@ -20,5 +20,12 @@ namespace M64MM.Utils
         [JsonProperty(PropertyName = "html_url")]
         public string ReleaseLink { get; set; }
 
+        public VersionTagManager.VersionTag VersionTag
+        {
+            get
+            {
+                return VersionTagManager.GetVersionFromTag(TagName);
+            }
+        }
     }
 }

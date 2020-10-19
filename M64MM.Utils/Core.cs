@@ -17,7 +17,6 @@ using static M64MM.Utils.SettingsManager;
 
 namespace M64MM.Utils
 {
-    //TODO: Move M64MM.Utils to a dotnetStandard project, to reduce .NETFX dependency
     public static class Core
     {
         public static StringBuilder AddonErrorsBuilder;
@@ -512,9 +511,6 @@ namespace M64MM.Utils
                 return;
             }
 
-            // TODO: Make it an event so to make the main UI handle the UI/UX part (lol)
-            // Possible solution: new function that selects from the emu list, make the emu list freely
-            // available class wide (private: no other class should be able to access this)
             if (emulators.Count != 0)
             {
                 StopProcessSearch = true;
@@ -527,8 +523,8 @@ namespace M64MM.Utils
             emuProcess = proc;
             emuProcessHandle = OpenProcess(PROCESS_ALL_ACCESS, false, emuProcess.Id);
             StopProcessSearch = false;
+            OnEmulatorSelected();
         }
-
         public static void ResetEmuProcess()
         {
             emuProcess = null;
@@ -541,7 +537,7 @@ namespace M64MM.Utils
         public static void FindBaseAddress()
         {
             long start = 0x20000000;
-            long stop = 0x60000000;
+            long stop = 0xF0000000;
             long step = 0x10000;
 
             uint value;
@@ -611,17 +607,11 @@ namespace M64MM.Utils
         public static void LoadAddonsFromFolder(string path = "")
         {
             // TODO: Add the different path loading
-            /* Code for plugin sandboxing */
-            PermissionSet trustedLoadFromRemoteSourcesGrantSet = new PermissionSet(PermissionState.Unrestricted);
-            AppDomainSetup trustedLoadFromRemoteSourcesSetup = new AppDomainSetup
-            {
-                ApplicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase
-            };
+            // NO SANDBOX
+            // AppDomains are incredibly messy
+            // Let's just hope you don't download anything suspicious
+            // HEAVILY considering moving back the Addon namespace back to .netFX
 
-            AppDomain trustedRemoteLoadDomain = AppDomain.CreateDomain("Trusted LoadFromRemoteSources Domain",
-                           null,
-                           trustedLoadFromRemoteSourcesSetup,
-                           trustedLoadFromRemoteSourcesGrantSet);
             AddonErrorsBuilder = new StringBuilder();
             _ = new ToolStripMenuItem("Addons");
             try
@@ -630,23 +620,25 @@ namespace M64MM.Utils
                 {
                     path = Application.StartupPath + "\\Addons";
                 }
+
                 DirectoryInfo d = new DirectoryInfo(path);
                 foreach (FileInfo file in d.GetFiles("*.dll"))
                 { // For each DLL
                     try // If getting all types fails for some reason (Ex: cannot load required assembly)...
                     {
+                        Assembly assmb;
                         try
                         {
-                            // If the DLL is invalid or has no assembly (Not .NET?) M64MM will crash
+                            // If the DLL is invalid or has no assembly (Not .NET?) this will throw an exception
                             // Checking if it has an assembly first will allow us to just skip it.
-                            AssemblyName.GetAssemblyName(file.FullName);
+                            assmb = Assembly.LoadFrom(file.FullName);
                         }
-                        catch (BadImageFormatException)
+                        catch (Exception ex)
                         {
                             AddonErrorsBuilder.AppendFormat("{0} [LOAD WARNING] - DLL {1} does not appear to have assembly info or is a corrupted DLL.\nAddon loading for this DLL has been skipped. If this is not an addon DLL but a native dependency, this is normal.\nThese warnings can be suppressed in a future.\n--------\n", DateTime.Now.ToLongTimeString(), file.Name);
                             continue;
                         }
-                        Assembly assmb = Assembly.LoadFile(file.FullName);
+                       
                         Type[] classes = assmb.GetTypes();
                         foreach (Type typ in classes)
                         {

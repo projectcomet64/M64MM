@@ -33,11 +33,26 @@ namespace M64MM.Utils
             return vTag;
         }
 
-        public struct VersionTag
+        public class VersionTag
         {
             public Version FormalVersionNumber;
             public string ReleaseChannel;
             public int SuffixVersion;
+
+            public string ToString(bool verbose = false)
+            {
+                string suffix = "";
+                if (ReleaseChannel == "release")
+                {
+                    if (verbose)
+                        suffix = ReleaseChannel + SuffixVersion.ToString();
+                }
+                else
+                {
+                    suffix = ReleaseChannel + SuffixVersion.ToString();
+                }
+                return string.Format(@"{0}-{1}", FormalVersionNumber, suffix);
+            }
         }
 
     }

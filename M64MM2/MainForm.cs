@@ -211,16 +211,6 @@ namespace M64MM2
             lblCameraStatus.Text = (CameraFrozen) ? Resources.cameraStateFrozen : ((CameraSoftFrozen) ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault);
         }
 
-        void UnfreezeCam(object sender, EventArgs e)
-        {
-            if (!IsEmuOpen || BaseAddress == 0) return;
-            // TODO: delete.
-            // Dropped in favor of a toggling button
-
-
-            //lblCameraStatus.Text = cameraSoftFrozen ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault;
-        }
-
         void ToggleSoftFreezeCam(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
@@ -229,15 +219,6 @@ namespace M64MM2
             btnSoftFreeze.Text = $"Soft Frozen: {CameraSoftFrozen}";
 
             lblCameraStatus.Text = (CameraFrozen) ? Resources.cameraStateFrozen : ((CameraSoftFrozen) ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault);
-        }
-
-        void SoftUnfreezeCam(object sender, EventArgs e)
-        {
-            if (!IsEmuOpen || BaseAddress == 0) return;
-
-            // TODO: delete.
-            // Dropped in favor of a toggling button
-            //lblCameraStatus.Text = cameraFrozen ? Resources.cameraStateFrozen : Resources.cameraStateDefault;
         }
 
         void ChangeCameraStyle(object sender, EventArgs e)
@@ -329,7 +310,7 @@ namespace M64MM2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (Program.UpdateAvailable)
+            if (Program.HasUpdate)
             {
                 ludForm = new LatestUpdateDialog(Program.LatestRelease);
                 ludForm.ShowDialog(this);
@@ -375,18 +356,8 @@ namespace M64MM2
 
         private async void checkForLatestUpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: Make neater, remove repetition
-            // MOVE TO CORE
-            _ = new Tuple<HttpStatusCode, GitHubRelease>(0, null);
-            Tuple<HttpStatusCode, GitHubRelease> requestLatest = await Updater.CheckUpdate();
-            if (requestLatest.Item1 == HttpStatusCode.OK)
-            {
-                Program.LatestRelease = requestLatest.Item2;
-                VersionTagManager.VersionTag latest = VersionTagManager.GetVersionFromTag(requestLatest.Item2.TagName);
-                VersionTagManager.VersionTag current = VersionTagManager.GetVersionFromTag(Application.ProductVersion + Resources.prereleaseString);
-                Program.UpdateAvailable = Updater.GotNewVersion(latest, current);
-            }
-            LatestUpdateDialog ludForm = new LatestUpdateDialog(Program.LatestRelease);
+            GitHubRelease latestRel = await Updater.FindNewUpdate(Application.ProductVersion + Resources.prereleaseString);
+            LatestUpdateDialog ludForm = new LatestUpdateDialog(latestRel);
             ludForm.Show();
         }
 

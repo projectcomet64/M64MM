@@ -35,6 +35,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.AddIn" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -64,7 +65,7 @@
     <Compile Include="Appearance\RoutableColorPart.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Settings\SettingsGroup.cs" />
-    <Compile Include="Updater\UpdateCheck.cs" />
+    <Compile Include="Updater\Updater.cs" />
     <Compile Include="Updater\VersionTag.cs" />
   </ItemGroup>
   <ItemGroup>

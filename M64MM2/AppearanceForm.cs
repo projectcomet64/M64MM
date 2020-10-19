@@ -306,7 +306,7 @@ namespace M64MM2
 
         void LoadFromGame(object sender, EventArgs e)
         {
-            //TODO: Change the ReadBytes to use SegmentedToVirtual
+            //TODO: Change these methods to be the SPARK buffer based read
             if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.CLASSIC) return;
 
             byte[] colorData;

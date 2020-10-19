@@ -49,15 +49,5 @@ namespace M64MM2
             //TODO: Move this to Update
             //WriteBytes(BaseAddress + 0x3325F4,StringToByteArray("FF000000"), true);
         }
-
-        private void btnBatchWrite_Click(object sender, EventArgs e)
-        {
-            //TODO: Delete
-        }
-
-        private void btnClearBoxes_Click(object sender, EventArgs e)
-        {
-            //TODO: Delete
-        }
     }
 }

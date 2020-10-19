@@ -89,20 +89,12 @@ namespace M64MM2
 
         async void CheckUpdates()
         {
-            Tuple<HttpStatusCode, GitHubRelease> requestLatest = new Tuple<HttpStatusCode, GitHubRelease>(0, null);
-            requestLatest = await Updater.CheckUpdate();
-            if (requestLatest.Item1 == HttpStatusCode.OK)
-            {
-                Program.LatestRelease = requestLatest.Item2;
-                VersionTagManager.VersionTag latest = VersionTagManager.GetVersionFromTag(requestLatest.Item2.TagName);
-                VersionTagManager.VersionTag current = VersionTagManager.GetVersionFromTag(Application.ProductVersion + Resources.prereleaseString);
-                Program.UpdateAvailable = Updater.GotNewVersion(latest, current);
-            }
+            Program.LatestRelease = await Updater.FindNewUpdate(Program.CurrentVersionTag.ToString());
+            Program.HasUpdate = Updater.CheckVersion(Program.LatestRelease.VersionTag, Program.CurrentVersionTag);
         }
 
         void UpdateProgress(int val, string progressText)
         {
-            // TODO: Rather than relying on percentages, make it by "Tasks Completed"
             if (splashForm.IsHandleCreated)
             {
                 splashForm.BeginInvoke(new MethodInvoker(delegate ()
