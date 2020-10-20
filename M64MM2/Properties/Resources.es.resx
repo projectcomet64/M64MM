@@ -239,4 +239,7 @@ No funcionará.</value>
   <data name="yes" xml:space="preserve">
     <value>Sí</value>
   </data>
+  <data name="colorCodeSPARKRom" xml:space="preserve">
+    <value>Este ROM tiene un encabezado que se asemeja al de un mod SPARK. En este momento, el editor de apariencia no es compatible con SPARK. Se recomienda obtener el add-on del editor de SPARK en https://comet.glitchypsi.xyz</value>
+  </data>
 </root>

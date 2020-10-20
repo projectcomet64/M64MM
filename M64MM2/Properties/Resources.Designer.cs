@@ -134,16 +134,6 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Comet ROMs need extra checks before being able to use color codes.
-        ///Wait for a later update of both M64MM and CometROM!.
-        /// </summary>
-        internal static string colorCodeCometRom {
-            get {
-                return ResourceManager.GetString("colorCodeCometRom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a ...This ROM has no model data.
         ///The color codes and shading only apply to vanilla models and mods that support it..
         /// </summary>
@@ -204,6 +194,15 @@ namespace M64MM2.Properties {
         internal static string colorCodeModdedRom {
             get {
                 return ResourceManager.GetString("colorCodeModdedRom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a This is a ROM with a header that looks like a SPARK color codeable mod. Currently, the Appearance Settings does not support SPARK, so you might want to get the CometSPARK Editor Addon at https://comet.glitchypsi.xyz.
+        /// </summary>
+        internal static string colorCodeSPARKRom {
+            get {
+                return ResourceManager.GetString("colorCodeSPARKRom", resourceCulture);
             }
         }
         

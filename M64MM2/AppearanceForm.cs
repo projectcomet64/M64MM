@@ -120,7 +120,7 @@ namespace M64MM2
             senderButton.BackColor = colorDialog.Color;
             marioSprite.Refresh();
 
-            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.CLASSIC) return;
+            if ((!IsEmuOpen || BaseAddress == 0) && (modelStatus != ModelHeaderType.CLASSIC || modelStatus != ModelHeaderType.SPARK)) return;
 
             switch (senderButton.Name)
             {
@@ -167,7 +167,7 @@ namespace M64MM2
 
         void ApplyAllColors()
         {
-            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.CLASSIC) return;
+            if ((!IsEmuOpen || BaseAddress == 0) && (modelStatus != ModelHeaderType.CLASSIC || modelStatus != ModelHeaderType.SPARK)) return;
 
             WriteColor(VanillaModelColor.PantsShade, pantsColorShade.BackColor);
 
@@ -307,7 +307,7 @@ namespace M64MM2
         void LoadFromGame(object sender, EventArgs e)
         {
             //TODO: Change these methods to be the SPARK buffer based read
-            if ((!IsEmuOpen || BaseAddress == 0) && modelStatus != ModelStatus.CLASSIC) return;
+            if ((!IsEmuOpen || BaseAddress == 0) && (modelStatus != ModelHeaderType.CLASSIC || modelStatus != ModelHeaderType.SPARK)) return;
 
             byte[] colorData;
 

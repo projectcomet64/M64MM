@@ -9,6 +9,14 @@ namespace M64MM.Utils
 {
     public class Looks
     {
+        public enum ModelHeaderType
+        {
+            UNSET,
+            CLASSIC,
+            MOD,
+            SPARK,
+            EMPTY
+        }
 
         public static readonly RoutableColorPart[] defaultRoutableParts =
         {
@@ -213,7 +221,9 @@ namespace M64MM.Utils
             colors[0] = color_.R;
             colors[1] = color_.G;
             colors[2] = color_.B;
-            colors[3] = 0x0;
+            // Model checking may detect it as empty if every color is black but the last byte is also 0
+            // Short circuit until I find a more smart way to detect if a model truly is empty
+            colors[3] = (byte)((colors[0] == 0 && colors[1] == 0 && colors[2] == 0) ? 0xFF : 0x0);
             if (writeToAddress > 0)
             {
                 WriteBytes(writeToAddress, SwapEndian(colors, 4));
@@ -326,6 +336,60 @@ namespace M64MM.Utils
                 }
             }
         }
+
+        public static ModelHeaderType AnalyzeHeader()
+        {
+            if (!IsEmuOpen)
+                return ModelHeaderType.UNSET;
+
+            long S04 = SegmentedToVirtual(0x04000000, false);
+            byte[] ModelHeader = SwapEndian(ReadBytes(S04 + BaseAddress, 0x1E0), 4);
+            int length = 0;
+            int empties = 0;
+            for (int i = 0; i < 0x1E0; i += 8)
+            {
+                if (ModelHeader[i] == 0 && ModelHeader[i+1] == 0
+                    && ModelHeader[i+2] == 0)
+                {
+                    if (ModelHeader[i + 3] != 0xFF)
+                    {
+                        empties++;
+                        length++;
+                    }
+                    continue;
+                }
+                if (ModelHeader[i + 3] == 0 && ModelHeader[i + 7] == 0)
+                {
+                    length++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (empties == length && length == 60)
+            {
+                return ModelHeaderType.EMPTY;
+            }
+            if (length < 18)
+            {
+                return ModelHeaderType.MOD;
+            }
+            else if (length >= 18 && length < 60)
+            {
+                return ModelHeaderType.CLASSIC;
+            }
+            else if (length == 60)
+            {
+                return ModelHeaderType.SPARK;
+            }
+            else if (length == 0)
+            {
+                return ModelHeaderType.EMPTY;
+            }
+            return ModelHeaderType.UNSET;
+        }
+
 
         /// <summary>
         /// Write the public Color variables to the location in memory where it's located

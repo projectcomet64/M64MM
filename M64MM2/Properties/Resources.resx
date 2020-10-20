@@ -206,9 +206,8 @@ The color codes and shading only apply to vanilla models and mods that support i
   <data name="discordInvite" xml:space="preserve">
     <value>http://comet.glitchypsi.xyz</value>
   </data>
-  <data name="colorCodeCometRom" xml:space="preserve">
-    <value>Comet ROMs need extra checks before being able to use color codes.
-Wait for a later update of both M64MM and CometROM!</value>
+  <data name="colorCodeSPARKRom" xml:space="preserve">
+    <value>This is a ROM with a header that looks like a SPARK color codeable mod. Currently, the Appearance Settings does not support SPARK, so you might want to get the CometSPARK Editor Addon at https://comet.glitchypsi.xyz</value>
   </data>
   <data name="CC_Mario_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

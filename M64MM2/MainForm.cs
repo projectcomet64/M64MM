@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using M64MM2.Properties;
 using static M64MM.Utils.Core;
+using static M64MM.Utils.Looks;
 using M64MM.Utils;
 using M64MM.Additions;
-using static M64MM.Utils.SettingsManager;
-using System.Linq;
-using System.Net;
 using System.Diagnostics;
 
 namespace M64MM2
@@ -135,7 +130,6 @@ namespace M64MM2
             {
                 Text = Resources.programName + " " + Application.ProductVersion;
                 lblProgramStatus.Text = Resources.programStatus2;
-                modelStatus = ModelStatus.NONE;
                 return;
             }
 
@@ -144,12 +138,11 @@ namespace M64MM2
             {
                 toolsMenuItem.Enabled = false;
                 lblProgramStatus.Text = Resources.programStatusAwaitingLevel + "0x" + BaseAddress.ToString("X8");
-                modelStatus = ModelStatus.NONE;
                 return;
             }
 
             //Are we running a moddded model ROM? (Working with Vanilla-styled vs. COMET / [redacted])
-            modelStatus = ValidateModel();
+            modelStatus = AnalyzeHeader();
             toolsMenuItem.Enabled = true;
             Text = Resources.programName + " " + Application.ProductVersion + " - " + modelStatus.ToString() + " ROM.";
 
@@ -199,7 +192,7 @@ namespace M64MM2
                 Task.Run(() => PerformBaseAddrUpd());
                 BaseAddress = 0;
             }
-            modelStatus = ModelStatus.NONE;
+            modelStatus = AnalyzeHeader();
         }
 
         void ToggleFreezeCam(object sender, EventArgs e)
@@ -216,7 +209,7 @@ namespace M64MM2
             if (!IsEmuOpen || BaseAddress == 0) return;
 
             ToggleCameraSoftFreeze();
-            btnSoftFreeze.Text = $"{Resources.cameraToggleSoftFrozen}{(CameraFrozen ? Resources.yes : Resources.no)}";
+            btnSoftFreeze.Text = $"{Resources.cameraToggleSoftFrozen}{(CameraSoftFrozen ? Resources.yes : Resources.no)}";
 
             lblCameraStatus.Text = (CameraFrozen) ? Resources.cameraStateFrozen : ((CameraSoftFrozen) ? Resources.cameraStateSoftFrozen : Resources.cameraStateDefault);
         }
@@ -273,16 +266,23 @@ namespace M64MM2
         {
             switch (modelStatus)
             {
-                case ModelStatus.EMPTY:
+                case ModelHeaderType.EMPTY:
                     MessageBox.Show(Resources.colorCodeEmptyRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     break;
-                case ModelStatus.MOD:
+                case ModelHeaderType.MOD:
                     MessageBox.Show(Resources.colorCodeModdedRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
-                case ModelStatus.COMET:
-                    MessageBox.Show(Resources.colorCodeCometRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                case ModelHeaderType.SPARK:
+                    MessageBox.Show(Resources.colorCodeSPARKRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
+
+                    if (!appearanceForm.Visible)
+                        appearanceForm.Show();
+
+                    if (appearanceForm.WindowState == FormWindowState.Minimized)
+                        appearanceForm.WindowState = FormWindowState.Normal;
                     break;
-                case ModelStatus.CLASSIC:
+                case ModelHeaderType.CLASSIC:
                     if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
 
                     if (!appearanceForm.Visible)

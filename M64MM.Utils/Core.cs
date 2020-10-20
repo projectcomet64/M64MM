@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static M64MM.Utils.SettingsManager;
+using static M64MM.Utils.Looks;
 
 namespace M64MM.Utils
 {
@@ -76,7 +77,7 @@ namespace M64MM.Utils
                 int id = BitConverter.ToInt16(SwapEndian(ReadBytes(BaseAddress + 0x32DDFA, 2), 4), 0);
                 if (id != _previousLevelID)
                 {
-                    UpdateCoreEntityAddress();
+                    modelStatus = AnalyzeHeader();
                     OnLevelChanged(id);
                 }
                 _previousLevelID = id;
@@ -104,16 +105,7 @@ namespace M64MM.Utils
             private set { }
         }
 
-        public enum ModelStatus
-        {
-            NONE,
-            CLASSIC,
-            EMPTY,
-            MOD,
-            COMET
-        }
-
-        public static ModelStatus modelStatus = ModelStatus.NONE;
+        public static ModelHeaderType modelStatus = ModelHeaderType.UNSET;
 
         #region Native methods and process related
         static Process emuProcess;
@@ -733,61 +725,6 @@ namespace M64MM.Utils
         }
         #endregion
 
-        //TODO: Deprecate. There should be no need for this
-        /// <summary>
-        /// Validates a model in Bank 04 and returns which kind of model is it.
-        /// </summary>
-        /// <param name="updateGlobal">Update the global variable?</param>
-        /// <returns>The model type</returns>
-        public static ModelStatus ValidateModel(bool updateGlobal = true)
-        {
-            byte[] Color1;
-            byte[] Color2;
-            byte[] Shadow1;
-            byte[] FinalSetOfBytes;
-            ModelStatus ms = ModelStatus.NONE;
-
-            Color1 = SwapEndian(ReadBytes(SegmentedToVirtual(0x04000050, true), 4), 4);
-            Color2 = SwapEndian(ReadBytes(SegmentedToVirtual(0x04000060, true), 4), 4);
-            Shadow1 = SwapEndian(ReadBytes(SegmentedToVirtual(0x04000058, true), 4), 4);
-            FinalSetOfBytes = SwapEndian(ReadBytes(SegmentedToVirtual(0x0400005C, true), 4), 4);
-
-            //If the color data is all zeros
-            if ((BitConverter.ToInt32(Color1, 0) == 0) &&
-                (BitConverter.ToInt32(Color2, 0) == 0) &&
-                (BitConverter.ToInt32(Shadow1, 0) == 0) &&
-                (BitConverter.ToInt32(FinalSetOfBytes, 0) == 0))
-            {
-                ms = ModelStatus.EMPTY;
-            }
-
-            //If the color data is not RR GG BB *00* RR GG BB *00* XX YY ZZ *00* *00 00 00 00*
-            if ((Color1[3] != 0)
-                || (Color2[3] != 0)
-                || (Shadow1[3] != 0)
-                || (BitConverter.ToInt32(FinalSetOfBytes, 0) != 0))
-            {
-                ms = ModelStatus.MOD;
-            }
-
-            // CometROMs are different now.
-
-            //If all data is okay but then final bytes equal zero
-            if ((BitConverter.ToInt32(Color1, 0) != 0) &&
-                (BitConverter.ToInt32(Color2, 0) != 0) &&
-                (BitConverter.ToInt32(Shadow1, 0) != 0) &&
-                (BitConverter.ToInt32(FinalSetOfBytes, 0) == 0))
-            {
-                ms = ModelStatus.CLASSIC;
-            }
-
-            if (updateGlobal)
-            {
-                modelStatus = ms;
-            }
-            return ms;
-        }
-
         /// <summary>
         /// Gets a list of animation strings by looking within its name.
         /// </summary>
@@ -916,7 +853,7 @@ namespace M64MM.Utils
                 // Using VI timer instead of Input timer (Input timer stops counting when transitioning)
                 ingameTimer = ReadBytes(BaseAddress + 0x32D580, 2)[0];
                 //If there's a level loaded EVEN if there's no model
-                if (modelStatus != ModelStatus.NONE)
+                if (modelStatus != ModelHeaderType.UNSET)
                 {
                     // a VI is executed @ 2x the framerate
                     // NTSC VI: 60hz = 30fps (technically 29.970 but we don't mess with that.)
