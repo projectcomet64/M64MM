@@ -13,6 +13,10 @@ namespace M64MM2
 {
     public partial class ExtraControlsForm : Form
     {
+        static readonly byte[] threeEmptyWords = new byte[12];
+        static readonly byte[] defaultLivesBytes = StringToByteArray("2C0000002A00000025640000");
+        static readonly byte[] defaultCoinBytes = StringToByteArray("2B0000002A00000025640000");
+        static readonly byte[] defaultStarBytes = StringToByteArray("2D0000002A00000025640000");
         public ExtraControlsForm()
         {
             InitializeComponent();
@@ -34,20 +38,21 @@ namespace M64MM2
         void btnRemoveHud_Click(object sender, EventArgs e)
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
-            byte[] livesBytes = (cbLivesHud.Checked ? StringToByteArray("0C0B8DD1") : emptyWord);
-            byte[] powerBytes = (cbPowerMtr.Checked ? StringToByteArray("0C0B8D95") : emptyWord);
-            byte[] coinBytes = (cbCoins.Checked ? StringToByteArray("0C0B8DEA") : emptyWord);
-            byte[] starBytes = (cbStarsHud.Checked ? StringToByteArray("0C0B8E03") : emptyWord);
+            // Thank you Shygoo
+            byte[] livesBytes = (cbLivesHud.Checked ? defaultLivesBytes : threeEmptyWords);
+            byte[] coinBytes = (cbCoins.Checked ? defaultCoinBytes : threeEmptyWords);
+            byte[] starBytes = (cbStarsHud.Checked ? defaultStarBytes : threeEmptyWords);
+            byte[] powerBytes = (cbPowerMtr.Checked ? StringToByteArray("0100008C") : StringToByteArray("0100FF00"));
             byte[] cameraBytes = (cbLakitu.Checked ? StringToByteArray("0C0B8ECF") : emptyWord);
 
-            WriteBytes(BaseAddress + 0x2E3DB0, livesBytes, true);
-            WriteBytes(BaseAddress + 0x2E3E10, powerBytes, true);
-            WriteBytes(BaseAddress + 0x2E3E18, coinBytes, true);
-            WriteBytes(BaseAddress + 0x2E3DC8, starBytes, true);
-            WriteBytes(BaseAddress + 0x2E3DE0, cameraBytes, true);
+            WriteBytes(BaseAddress + 0x338380, livesBytes, true);
+            WriteBytes(BaseAddress + 0x33838C, coinBytes, true);
+            WriteBytes(BaseAddress + 0x338398, starBytes, true);
+            WriteBytes(BaseAddress + 0x3325F0, powerBytes, true);
+            WriteBytes(BaseAddress + 0x2E3E18, cameraBytes, true);
 
             //TODO: Move this to Update
-            //WriteBytes(BaseAddress + 0x3325F4,StringToByteArray("FF000000"), true);
+            //WriteBytes(BaseAddress + 0x3325F0,StringToByteArray("FF000000"), true);
         }
     }
 }

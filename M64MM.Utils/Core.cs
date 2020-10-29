@@ -56,6 +56,7 @@ namespace M64MM.Utils
         public static event EventHandler<int> LevelChanged;
         public static event EventHandler<Process[]> MoreThanOneEmuFound;
         public static event EventHandler EmulatorSelected;
+        public static event EventHandler GameTick; // Update, but for internal program usage (Not addon)
         public static event EventHandler<bool> BaseAddressUpdate;
         #endregion
 
@@ -863,6 +864,10 @@ namespace M64MM.Utils
                     {
                         //Set new value
                         previousFrame = ingameTimer;
+
+                        // Run own update methods
+                        GameTick?.Invoke(null, null);
+
                         //Ingame timer is a variable that INCREMENTS every frame in game. In case our previous snapshot of said value is above the timer:
                         for (int i = 0; i < moduleList.Count(); i++)
                         {
