@@ -38,7 +38,7 @@
     <StartupObject>M64MM2.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\version3.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\version32.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
@@ -225,6 +225,7 @@
     <Content Include="camera_data.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\version32.ico" />
     <None Include="Resources\version3_2big.png" />
     <None Include="Resources\webb_m64mmsplash.png" />
     <None Include="Resources\m3_splash_dev.png" />
