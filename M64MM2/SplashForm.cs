@@ -2,7 +2,9 @@
 using M64MM.Utils;
 using M64MM2.Properties;
 using System;
+using System.Drawing;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +16,13 @@ namespace M64MM2
     {
 
         SplashForm splashForm;
-
+        Image[] splashAssortment = new Image[]
+        {
+            Resources.m64mm_hero,
+            Resources.superg_m64mmsplash,
+            Resources.webb_m64mmsplash
+        };
+        Random rand = new Random(DateTime.Now.Millisecond);
         public SplashForm()
         {
             InitSettings();
@@ -24,8 +32,9 @@ namespace M64MM2
                 splashForm = this;
             }
             Load += new EventHandler(OnLoad);
+            BackgroundImage = splashAssortment[rand.Next(0, 3)];
             #if DEBUG
-            BackgroundImage = Resources.m3_splash_dev;
+            BackgroundImage = Resources.m64mm_hero_devprev;
             #endif
         }
 
@@ -37,26 +46,26 @@ namespace M64MM2
         public async void InitMovieMaker()
         {
             await Task.Run(() => { UpdateProgress(0, "Checking for updates...\n"); });
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
                 try
                 {
                     if (enableUpdates)
                     {
-                        CheckUpdates();
+                        await CheckUpdates();
                         UpdateProgress(10, "Let's go.\n");
                     }
                     else
                     {
-                        UpdateProgress(10, "Update checking is disabled. Go to Options -> Settings to enable it.");
-                        Task.Delay(500);
+                        UpdateProgress(10, "Update checking is disabled. Go to Options -> Settings to enable it.\n");
+                        await Task.Delay(1000);
                     }
                 }
                 catch (Exception)
                 {
 
-                    UpdateProgress(10, "Could not check for updates. Check your Internet connection.");
-                    Task.Delay(1000);
+                    UpdateProgress(10, "Could not check for updates. Check your Internet connection.\n");
+                    await Task.Delay(1000);
                 }
             });
             rtbLogs.AppendText("Loading addons...\n");
@@ -90,9 +99,9 @@ namespace M64MM2
             Close();
         }
 
-        async void CheckUpdates()
+        async Task CheckUpdates()
         {
-            Program.LatestRelease = await Updater.FindNewUpdate(Program.CurrentVersionTag.ToString());
+            Program.LatestRelease = await Updater.FindNewUpdate();
             Program.HasUpdate = Updater.CheckVersion(Program.LatestRelease.VersionTag, Program.CurrentVersionTag);
         }
 

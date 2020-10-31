@@ -124,17 +124,26 @@
   <data name="M64MM2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\M64MM2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="superg_m64mmsplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\superg_m64mmsplash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="M64MM2_New" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\M64MM2 New.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="M64MM2_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\M64MM2 Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="colorCodeSPARKRom" xml:space="preserve">
+    <value>This is a ROM with a header that looks like a SPARK color codeable mod. Currently, the Appearance Settings does not support SPARK, so you might want to get the CometSPARK Editor Addon at https://comet.glitchypsi.xyz</value>
+  </data>
   <data name="programStatusAwaitingLevel" xml:space="preserve">
     <value>Status: Waiting for level. Base addr. found at:</value>
   </data>
   <data name="cameraDataNotLoaded" xml:space="preserve">
     <value>Camera data not loaded!</value>
+  </data>
+  <data name="m64mm3_banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m64mm3_banner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="programStatus3" xml:space="preserve">
     <value>Status: Base address found at </value>
@@ -145,11 +154,23 @@
   <data name="invalidColorCodeMsgShort" xml:space="preserve">
     <value>short</value>
   </data>
+  <data name="picturedInBannerMsg" xml:space="preserve">
+    <value>In banner: </value>
+  </data>
   <data name="colorCodeExportMsg" xml:space="preserve">
     <value>Here's your generated color code:</value>
   </data>
   <data name="programStatus2" xml:space="preserve">
     <value>Status: Base address not found.</value>
+  </data>
+  <data name="m64mm_hero_devprev" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m64mm_hero_devprev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CC_Mario_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="colorCodeToFile" xml:space="preserve">
+    <value>To file...</value>
   </data>
   <data name="colorCodeModdedRom" xml:space="preserve">
     <value>This ROM has a different model data compared to Mario's usual model data and is not a compatible CometROM. The Color Code Studio and Shading Editor have been disabled; they might not work correctly in this ROM.</value>
@@ -157,8 +178,17 @@
   <data name="invalidColorCodeMsgLong" xml:space="preserve">
     <value>long</value>
   </data>
+  <data name="prereleaseString" xml:space="preserve">
+    <value>-alpha2</value>
+  </data>
   <data name="invalidAnimSelected" xml:space="preserve">
     <value>You have entered an invalid animation name into {0}. Please make sure to choose a valid option from the list.</value>
+  </data>
+  <data name="m3_splash_dev" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m3_splash_dev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
   </data>
   <data name="animDataNotLoaded" xml:space="preserve">
     <value>Animation data not loaded!</value>
@@ -169,17 +199,32 @@
   <data name="cameraStateFrozen" xml:space="preserve">
     <value>Camera State: Frozen</value>
   </data>
+  <data name="m3_splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m3_splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="setDefaultColorsMsg" xml:space="preserve">
     <value>Set these colors as default?</value>
+  </data>
+  <data name="colorCodeErrorFileReading" xml:space="preserve">
+    <value>Could not read color code from file.\n{0}</value>
   </data>
   <data name="setDefaultColorsMsgTitle" xml:space="preserve">
     <value>Set defaults?</value>
   </data>
+  <data name="picturedInBannerPeople" xml:space="preserve">
+    <value>Onewingdangl, Captainswag101, GlitchyPSI</value>
+  </data>
   <data name="M64MM2_New_Icon_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\M64MM2 New Icon 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="colorCodeErrorWriting" xml:space="preserve">
+    <value>Could not write color code to file.\n{0}</value>
+  </data>
   <data name="cameraStateDefault" xml:space="preserve">
     <value>Camera State: Default</value>
+  </data>
+  <data name="m64mm_hero" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m64mm_hero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="programStatus1" xml:space="preserve">
     <value>Status: Project64 is not open.</value>
@@ -187,8 +232,26 @@
   <data name="version3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\version31.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cameraToggleSoftFrozen" xml:space="preserve">
+    <value>Soft-frozen: </value>
+  </data>
+  <data name="cameraToggleFrozen" xml:space="preserve">
+    <value>Frozen: </value>
+  </data>
+  <data name="updateUpToDate" xml:space="preserve">
+    <value>(You're up to date!)</value>
+  </data>
+  <data name="updateLatestVersion" xml:space="preserve">
+    <value>Latest: </value>
+  </data>
   <data name="M64MM2_New_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\M64MM2 New Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="updateUpdateNow" xml:space="preserve">
+    <value>(Update available!)</value>
   </data>
   <data name="invalidColorCodeMsg1" xml:space="preserve">
     <value>Invalid color code: line {0} is too {1}.</value>
@@ -197,76 +260,31 @@
     <value>...This ROM has no model data.
 The color codes and shading only apply to vanilla models and mods that support it.</value>
   </data>
-  <data name="cameraStateSoftFrozen" xml:space="preserve">
-    <value>Camera State: Soft-Frozen</value>
-  </data>
-  <data name="programName" xml:space="preserve">
-    <value>M64MM Classic</value>
-  </data>
-  <data name="discordInvite" xml:space="preserve">
-    <value>http://comet.glitchypsi.xyz</value>
-  </data>
-  <data name="colorCodeSPARKRom" xml:space="preserve">
-    <value>This is a ROM with a header that looks like a SPARK color codeable mod. Currently, the Appearance Settings does not support SPARK, so you might want to get the CometSPARK Editor Addon at https://comet.glitchypsi.xyz</value>
-  </data>
-  <data name="CC_Mario_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="m64mm3_banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\m64mm3_banner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="picturedInBannerMsg" xml:space="preserve">
-    <value>In banner: </value>
-  </data>
-  <data name="picturedInBannerPeople" xml:space="preserve">
-    <value>Onewingdangl, Captainswag101, GlitchyPSI</value>
-  </data>
-  <data name="prereleaseString" xml:space="preserve">
-    <value>-alpha2</value>
-  </data>
-  <data name="version3_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\version3 big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="m3_splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\m3_splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="updateCurrentVersion" xml:space="preserve">
     <value>Current:</value>
-  </data>
-  <data name="updateLatestVersion" xml:space="preserve">
-    <value>Latest: </value>
-  </data>
-  <data name="updateUpdateNow" xml:space="preserve">
-    <value>(Update available!)</value>
-  </data>
-  <data name="updateUpToDate" xml:space="preserve">
-    <value>(You're up to date!)</value>
-  </data>
-  <data name="colorCodeErrorFileReading" xml:space="preserve">
-    <value>Could not read color code from file.\n{0}</value>
-  </data>
-  <data name="colorCodeErrorWriting" xml:space="preserve">
-    <value>Could not write color code to file.\n{0}</value>
   </data>
   <data name="colorCodeFromFile" xml:space="preserve">
     <value>From file...</value>
   </data>
-  <data name="colorCodeToFile" xml:space="preserve">
-    <value>To file...</value>
+  <data name="cameraStateSoftFrozen" xml:space="preserve">
+    <value>Camera State: Soft-Frozen</value>
   </data>
-  <data name="cameraToggleFrozen" xml:space="preserve">
-    <value>Frozen: </value>
+  <data name="version3_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\version3 big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cameraToggleSoftFrozen" xml:space="preserve">
-    <value>Soft-frozen: </value>
+  <data name="programName" xml:space="preserve">
+    <value>M64MM Classic</value>
   </data>
-  <data name="m3_splash_dev" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\m3_splash_dev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="webb_m64mmsplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\webb_m64mmsplash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="no" xml:space="preserve">
-    <value>No</value>
+  <data name="discordInvite" xml:space="preserve">
+    <value>http://comet.glitchypsi.xyz</value>
   </data>
-  <data name="yes" xml:space="preserve">
-    <value>Yes</value>
+  <data name="version3_2big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\version3_2big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="updateNetworkError" xml:space="preserve">
+    <value>Something happened. Could not reach the GitHub page for updates. Check your network connection.</value>
   </data>
 </root>

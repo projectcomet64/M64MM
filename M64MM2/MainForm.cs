@@ -8,6 +8,7 @@ using static M64MM.Utils.Looks;
 using M64MM.Utils;
 using M64MM.Additions;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace M64MM2
 {
@@ -54,12 +55,11 @@ namespace M64MM2
                 addons.DropDownItems.Add(new ToolStripMenuItem("Addon warnings", null, (a, b) => { new AddonErrors().ShowDialog(); }));
             }
 
-            Text = Resources.programName + " " + Application.ProductVersion;
+            Text = Resources.programName + " " + Application.ProductVersion + Resources.prereleaseString;
             programTimer.Interval = 1000;
             programTimer.Start();
             defaultAnimation.Value = "0";
             lblCameraStatus.Text = Resources.cameraStateDefault;
-            toolsMenuItem.Enabled = false;
 
             //Load animation data
 
@@ -115,7 +115,7 @@ namespace M64MM2
             if (!IsEmuOpen && !StopProcessSearch)
             {
                 StopProcessSearch = true;
-                Text = Resources.programName + " " + Application.ProductVersion;
+                Text = Resources.programName + " " + Application.ProductVersion + Resources.prereleaseString;
                 lblProgramStatus.Text = Resources.programStatus1;
                 FindEmuProcess();
                 return;
@@ -128,7 +128,7 @@ namespace M64MM2
             //Finding base address
             if (BaseAddress <= 0)
             {
-                Text = Resources.programName + " " + Application.ProductVersion;
+                Text = Resources.programName + " " + Application.ProductVersion + Resources.prereleaseString;
                 lblProgramStatus.Text = Resources.programStatus2;
                 return;
             }
@@ -136,15 +136,13 @@ namespace M64MM2
             //Reading level address (It's meant to be 0x32DDF8 but ENDIANESS:TM:)
             if (CurrentLevelID < 3)
             {
-                toolsMenuItem.Enabled = false;
                 lblProgramStatus.Text = Resources.programStatusAwaitingLevel + "0x" + BaseAddress.ToString("X8");
                 return;
             }
 
             //Are we running a moddded model ROM? (Working with Vanilla-styled vs. COMET / [redacted])
             modelStatus = AnalyzeHeader();
-            toolsMenuItem.Enabled = true;
-            Text = Resources.programName + " " + Application.ProductVersion + " - " + modelStatus.ToString() + " ROM.";
+            Text = Resources.programName + " " + Application.ProductVersion + Resources.prereleaseString + " - " + modelStatus.ToString() + " ROM.";
 
             lblProgramStatus.Text = Resources.programStatus3 + "0x" + BaseAddress.ToString("X8");
 
@@ -356,9 +354,16 @@ namespace M64MM2
 
         private async void checkForLatestUpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GitHubRelease latestRel = await Updater.FindNewUpdate(Application.ProductVersion + Resources.prereleaseString);
+            try
+            { 
+            GitHubRelease latestRel = await Updater.FindNewUpdate();
             LatestUpdateDialog ludForm = new LatestUpdateDialog(latestRel);
             ludForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Resources.updateNetworkError + $"\n {ex.Message}");
+            }
         }
 
         private void cbPowercam_CheckedChanged(object sender, EventArgs e)

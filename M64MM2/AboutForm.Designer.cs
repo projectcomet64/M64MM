@@ -58,6 +58,7 @@
             // appIcon
             // 
             resources.ApplyResources(this.appIcon, "appIcon");
+            this.appIcon.Image = global::M64MM2.Properties.Resources.version3_2big;
             this.appIcon.Name = "appIcon";
             this.appIcon.TabStop = false;
             // 
@@ -89,8 +90,8 @@
             // 
             // pbBanner
             // 
-            this.pbBanner.Image = global::M64MM2.Properties.Resources.m64mm3_banner;
             resources.ApplyResources(this.pbBanner, "pbBanner");
+            this.pbBanner.Image = global::M64MM2.Properties.Resources.m64mm3_banner;
             this.pbBanner.Name = "pbBanner";
             this.pbBanner.TabStop = false;
             // 

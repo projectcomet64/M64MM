@@ -299,6 +299,26 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap m64mm_hero {
+            get {
+                object obj = ResourceManager.GetObject("m64mm_hero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap m64mm_hero_devprev {
+            get {
+                object obj = ResourceManager.GetObject("m64mm_hero_devprev", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
         /// </summary>
         internal static System.Drawing.Icon M64MM2 {
@@ -458,6 +478,16 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap superg_m64mmsplash {
+            get {
+                object obj = ResourceManager.GetObject("superg_m64mmsplash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Current:.
         /// </summary>
         internal static string updateCurrentVersion {
@@ -472,6 +502,15 @@ namespace M64MM2.Properties {
         internal static string updateLatestVersion {
             get {
                 return ResourceManager.GetString("updateLatestVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Something happened. Could not reach the GitHub page for updates. Check your network connection..
+        /// </summary>
+        internal static string updateNetworkError {
+            get {
+                return ResourceManager.GetString("updateNetworkError", resourceCulture);
             }
         }
         
@@ -506,9 +545,29 @@ namespace M64MM2.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap version3_2big {
+            get {
+                object obj = ResourceManager.GetObject("version3_2big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap version3_big {
             get {
                 object obj = ResourceManager.GetObject("version3_big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap webb_m64mmsplash {
+            get {
+                object obj = ResourceManager.GetObject("webb_m64mmsplash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -12,12 +12,11 @@ namespace M64MM.Utils
 {
     public static class Updater
     {
-        public static async Task<GitHubRelease> FindNewUpdate(string currentTag)
+        public static async Task<GitHubRelease> FindNewUpdate()
         {
-            Tuple<HttpStatusCode, GitHubRelease> requestLatest = await CheckUpdate();
+            Tuple<HttpStatusCode, GitHubRelease> requestLatest = await Task.Run(() => CheckUpdate());
             if (requestLatest.Item1 == HttpStatusCode.OK)
             {
-                VersionTagManager.VersionTag current = VersionTagManager.GetVersionFromTag(currentTag);
                 return requestLatest.Item2;
             }
             else
@@ -29,10 +28,10 @@ namespace M64MM.Utils
         public static async Task<Tuple<HttpStatusCode, GitHubRelease>> CheckUpdate()
         {
             HttpClient client = new HttpClient();
-
             client.DefaultRequestHeaders.Add("User-Agent", "M64MM/3.0 (.NET 4.6)");
+            HttpResponseMessage latestReleases =
+         await Task.Run(() => client.GetAsync("https://api.github.com/repos/projectcomet64/M64MM/releases"));
 
-            HttpResponseMessage latestReleases = await client.GetAsync("https://api.github.com/repos/projectcomet64/M64MM/releases");
 
             if (!latestReleases.IsSuccessStatusCode)
             {
@@ -48,6 +47,7 @@ namespace M64MM.Utils
             GitHubRelease latestReleaseObject = releasesList[0].ToObject<GitHubRelease>();
 
             return new Tuple<HttpStatusCode, GitHubRelease>(HttpStatusCode.OK, latestReleaseObject);
+
         }
 
         public static bool CheckVersion(VersionTagManager.VersionTag latest, VersionTagManager.VersionTag current)

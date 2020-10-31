@@ -41,17 +41,18 @@
             // 
             // listView1
             // 
+            this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(316, 137);
+            this.listView1.Size = new System.Drawing.Size(276, 137);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // btn_OK
             // 
-            this.btn_OK.Location = new System.Drawing.Point(253, 254);
+            this.btn_OK.Location = new System.Drawing.Point(213, 254);
             this.btn_OK.Name = "btn_OK";
             this.btn_OK.Size = new System.Drawing.Size(75, 23);
             this.btn_OK.TabIndex = 1;
@@ -63,7 +64,7 @@
             // 
             this.lb_Desc.Location = new System.Drawing.Point(12, 152);
             this.lb_Desc.Name = "lb_Desc";
-            this.lb_Desc.Size = new System.Drawing.Size(316, 99);
+            this.lb_Desc.Size = new System.Drawing.Size(276, 99);
             this.lb_Desc.TabIndex = 2;
             this.lb_Desc.Text = "<Please select an item.>";
             this.lb_Desc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -73,9 +74,9 @@
             this.cb_pluginEnabled.AutoSize = true;
             this.cb_pluginEnabled.Location = new System.Drawing.Point(15, 258);
             this.cb_pluginEnabled.Name = "cb_pluginEnabled";
-            this.cb_pluginEnabled.Size = new System.Drawing.Size(175, 17);
+            this.cb_pluginEnabled.Size = new System.Drawing.Size(134, 17);
             this.cb_pluginEnabled.TabIndex = 3;
-            this.cb_pluginEnabled.Text = "Plugin can execute every frame";
+            this.cb_pluginEnabled.Text = "Plugin can use Update";
             this.cb_pluginEnabled.UseVisualStyleBackColor = true;
             this.cb_pluginEnabled.CheckedChanged += new System.EventHandler(this.cb_pluginEnabled_CheckedChanged);
             // 
@@ -84,12 +85,12 @@
             this.cmsAddonStuff.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toggleActiveToolStripMenuItem});
             this.cmsAddonStuff.Name = "cmsAddonStuff";
-            this.cmsAddonStuff.Size = new System.Drawing.Size(181, 48);
+            this.cmsAddonStuff.Size = new System.Drawing.Size(146, 26);
             // 
             // toggleActiveToolStripMenuItem
             // 
             this.toggleActiveToolStripMenuItem.Name = "toggleActiveToolStripMenuItem";
-            this.toggleActiveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toggleActiveToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.toggleActiveToolStripMenuItem.Text = "Toggle Active";
             this.toggleActiveToolStripMenuItem.Click += new System.EventHandler(this.toggleActiveToolStripMenuItem_Click);
             // 
@@ -97,7 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 289);
+            this.ClientSize = new System.Drawing.Size(300, 289);
             this.Controls.Add(this.cb_pluginEnabled);
             this.Controls.Add(this.lb_Desc);
             this.Controls.Add(this.btn_OK);

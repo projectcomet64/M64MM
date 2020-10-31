@@ -170,6 +170,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.es.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -189,6 +190,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SettingsForm.es.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,12 +225,17 @@
     <Content Include="camera_data.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\version3_2big.png" />
+    <None Include="Resources\webb_m64mmsplash.png" />
     <None Include="Resources\m3_splash_dev.png" />
     <Content Include="Resources\M64MM2 New Icon 2 small.png" />
     <Content Include="Resources\M64MM2 New Icon 2.png" />
     <Content Include="Resources\M64MM2 New Icon.png" />
     <None Include="Resources\version3 big.png" />
     <None Include="Resources\m64mm3_banner.png" />
+    <None Include="Resources\m64mm_hero.png" />
+    <None Include="Resources\m64mm_hero_devprev.png" />
+    <None Include="Resources\superg_m64mmsplash.png" />
     <Content Include="Resources\version3.ico" />
     <None Include="Resources\version31.ico" />
     <None Include="Resources\M64MM2 New.ico" />

@@ -16,7 +16,8 @@ namespace M64MM2
             InitializeComponent();
             PluginList = pl_;
             PluginImageList = new ImageList();
-            PluginImageList.ImageSize = new System.Drawing.Size(32, 32);
+            PluginImageList.ColorDepth = ColorDepth.Depth32Bit;
+            PluginImageList.ImageSize = new System.Drawing.Size(48  , 48);
             RepopulateList(PluginList, true, true);
             listView1.HideSelection = false;
             listView1.MouseClick += (a, b) => listViewOnRightClick(a, b);
@@ -38,14 +39,14 @@ namespace M64MM2
                 listView1.Columns.Add("Active?", -2, HorizontalAlignment.Center);
             }
             List<ListViewItem> lvil = new List<ListViewItem>();
-            foreach(Addon a in pl)
+            foreach (Addon a in pl)
             {
                 PluginImageList.Images.Add(a.Icon);
             }
             listView1.LargeImageList = PluginImageList;
             for (int i = 0; i < pl.Count; i++)
             {
-                
+
                 ListViewItem lvi = new ListViewItem
                 {
                     Text = pl[i].Name,
@@ -77,10 +78,14 @@ namespace M64MM2
             if (listView1.SelectedItems.Count != 0)
             {
                 lb_Desc.Text = "Description: \n" + ((Addon)listView1.SelectedItems[0].Tag).Description;
+                cb_pluginEnabled.Enabled = true;
+                cb_pluginEnabled.Checked = ((Addon)listView1.SelectedItems[0].Tag).Active;
             }
             else
             {
+                cb_pluginEnabled.Checked = false;
                 lb_Desc.Text = "<Please select an item.>";
+                cb_pluginEnabled.Enabled = false;
             }
         }
 
@@ -94,18 +99,20 @@ namespace M64MM2
             if (listView1.SelectedItems.Count != 0)
             {
                 int lastSelIndex = listView1.SelectedIndices[0];
-                ((Addon)listView1.SelectedItems[0].Tag).Active = cb_pluginEnabled.Checked;
-                RepopulateList(PluginList, true);
+                Addon clickedAddon = ((Addon)listView1.SelectedItems[0].Tag);
+                PluginList.Find(x => x == clickedAddon).Active = cb_pluginEnabled.Checked;
+                listView1.Refresh();
             }
-                
+
         }
 
         private void toggleActiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Addon clickedAddon = ((Addon)listView1.SelectedItems[0].Tag);
-            clickedAddon.Active = !clickedAddon.Active;
+            PluginList.Find(x => x == clickedAddon).Active = !clickedAddon.Active;
+            cb_pluginEnabled.Checked = clickedAddon.Active;
             listView1.SelectedItems[0].SubItems[2].Text = clickedAddon.Active ? "Yes" : "No";
-            listView1.Update();
+            listView1.Refresh();
         }
     }
 }

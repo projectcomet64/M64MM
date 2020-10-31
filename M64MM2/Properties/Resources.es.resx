@@ -242,4 +242,7 @@ No funcionará.</value>
   <data name="colorCodeSPARKRom" xml:space="preserve">
     <value>Este ROM tiene un encabezado que se asemeja al de un mod SPARK. En este momento, el editor de apariencia no es compatible con SPARK. Se recomienda obtener el add-on del editor de SPARK en https://comet.glitchypsi.xyz</value>
   </data>
+  <data name="updateNetworkError" xml:space="preserve">
+    <value>Algo pasó. No se pudo conectar a la página de GitHub para las actualizaciones. Revisa tu conexión a Internet.</value>
+  </data>
 </root>

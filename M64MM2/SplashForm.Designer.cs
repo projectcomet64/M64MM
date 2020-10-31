@@ -37,12 +37,12 @@
             // 
             this.rtbLogs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtbLogs.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.rtbLogs.Location = new System.Drawing.Point(239, 137);
+            this.rtbLogs.Location = new System.Drawing.Point(239, 165);
             this.rtbLogs.Name = "rtbLogs";
             this.rtbLogs.ReadOnly = true;
             this.rtbLogs.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.rtbLogs.ShortcutsEnabled = false;
-            this.rtbLogs.Size = new System.Drawing.Size(190, 74);
+            this.rtbLogs.Size = new System.Drawing.Size(190, 46);
             this.rtbLogs.TabIndex = 0;
             this.rtbLogs.Text = "";
             // 
@@ -57,11 +57,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::M64MM2.Properties.Resources.m3_splash;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(441, 223);
             this.ControlBox = false;
             this.Controls.Add(this.pbProgress);
             this.Controls.Add(this.rtbLogs);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SplashForm";
