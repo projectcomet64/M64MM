@@ -406,7 +406,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a -alpha2.
+        ///   Busca una cadena traducida similar a -alpha2.wgp1.
         /// </summary>
         internal static string prereleaseString {
             get {

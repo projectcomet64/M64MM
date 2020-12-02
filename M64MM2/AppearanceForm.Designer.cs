@@ -78,6 +78,10 @@
             this.grpCCRepo = new System.Windows.Forms.GroupBox();
             this.lbCCs = new System.Windows.Forms.ListBox();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.grpRand = new System.Windows.Forms.GroupBox();
+            this.clbRandSel = new System.Windows.Forms.CheckedListBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cbRandMode = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).BeginInit();
             this.grpColor.SuspendLayout();
             this.grpShading.SuspendLayout();
@@ -86,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).BeginInit();
             this.grpExperimental.SuspendLayout();
             this.grpCCRepo.SuspendLayout();
+            this.grpRand.SuspendLayout();
             this.SuspendLayout();
             // 
             // marioSprite
@@ -260,6 +265,7 @@
             // grpColor
             // 
             this.grpColor.Controls.Add(this.btnLoadFromGame);
+            this.grpColor.Controls.Add(this.grpExperimental);
             this.grpColor.Controls.Add(this.label7);
             this.grpColor.Controls.Add(this.hatColorMain);
             this.grpColor.Controls.Add(this.btnExportCode);
@@ -461,12 +467,43 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // grpRand
+            // 
+            this.grpRand.Controls.Add(this.cbRandMode);
+            this.grpRand.Controls.Add(this.label16);
+            this.grpRand.Controls.Add(this.clbRandSel);
+            resources.ApplyResources(this.grpRand, "grpRand");
+            this.grpRand.Name = "grpRand";
+            this.grpRand.TabStop = false;
+            // 
+            // clbRandSel
+            // 
+            this.clbRandSel.FormattingEnabled = true;
+            resources.ApplyResources(this.clbRandSel, "clbRandSel");
+            this.clbRandSel.Name = "clbRandSel";
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // cbRandMode
+            // 
+            this.cbRandMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRandMode.FormattingEnabled = true;
+            this.cbRandMode.Items.AddRange(new object[] {
+            resources.GetString("cbRandMode.Items"),
+            resources.GetString("cbRandMode.Items1")});
+            resources.ApplyResources(this.cbRandMode, "cbRandMode");
+            this.cbRandMode.Name = "cbRandMode";
+            this.cbRandMode.SelectedIndexChanged += new System.EventHandler(this.cbRandMode_SelectedIndexChanged);
+            // 
             // AppearanceForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grpRand);
             this.Controls.Add(this.grpCCRepo);
-            this.Controls.Add(this.grpExperimental);
             this.Controls.Add(this.grpShading);
             this.Controls.Add(this.grpColor);
             this.Controls.Add(this.label9);
@@ -484,6 +521,8 @@
             this.grpExperimental.ResumeLayout(false);
             this.grpExperimental.PerformLayout();
             this.grpCCRepo.ResumeLayout(false);
+            this.grpRand.ResumeLayout(false);
+            this.grpRand.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -538,5 +577,9 @@
         private System.Windows.Forms.GroupBox grpCCRepo;
         private System.Windows.Forms.ListBox lbCCs;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.GroupBox grpRand;
+        private System.Windows.Forms.ComboBox cbRandMode;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckedListBox clbRandSel;
     }
 }
