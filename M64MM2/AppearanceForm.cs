@@ -22,12 +22,14 @@ namespace M64MM2
         ColorMap glovesMap = new ColorMap();
         ColorMap pantsMap = new ColorMap();
         ColorMap shoesMap = new ColorMap();
-
+        List<ColorCodeGS> currentSelection = new List<ColorCodeGS>();
         public AppearanceForm()
         {
             InitializeComponent();
 
             rand = new Random();
+
+            cbRandMode.SelectedIndex = 0;
 
             hatMap.OldColor = Color.FromArgb(255, 0, 0);
             hatMap.NewColor = BlendColors(hatColorMain.BackColor, hatColorShade.BackColor);
@@ -47,18 +49,19 @@ namespace M64MM2
             shoesMap.OldColor = Color.FromArgb(114, 28, 14);
             shoesMap.NewColor = BlendColors(shoesColorMain.BackColor, shoesColorShade.BackColor);
 
-            foreach(RoutableColorPart rtc in defaultRoutableParts)
+            foreach (RoutableColorPart rtc in defaultRoutableParts)
             {
                 cbRoutingSource.Items.Add(rtc.Name);
                 if (rtc.Address86.Length > 0 && rtc.Address88.Length > 0)
                 {
-                cbRoutingTarget.Items.Add(rtc.Name);
+                    cbRoutingTarget.Items.Add(rtc.Name);
                 }
             }
 
-            foreach(ColorCodeGS cc in colorCodeGamesharks)
+            foreach (ColorCodeGS cc in colorCodeGamesharks)
             {
                 lbCCs.Items.Add(cc);
+                clbRandSel.Items.Add(cc);
             }
 
             cbRoutingSource.SelectedIndex = 0;
@@ -353,23 +356,37 @@ namespace M64MM2
         void marioSprite_DoubleClick(object sender, EventArgs e)
         {
             if (!randomizerTimer.Enabled)
+            {
                 randomizerTimer.Start();
+                currentSelection.Clear();
+                currentSelection.AddRange(clbRandSel.CheckedItems.Cast<ColorCodeGS>());
+            }
             else
                 randomizerTimer.Stop();
         }
 
         private void randomizerTimer_Tick(object sender, EventArgs e)
         {
-            foreach (Control control in this.grpColor.Controls)
+            int mode = cbRandMode.SelectedIndex;
+            switch (mode)
             {
-                if (control is Button && String.IsNullOrEmpty(control.Text))
-                {
-                    control.BackColor = Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255));
-                }
+                case 0:
+                    foreach (Control control in grpColor.Controls)
+                    {
+                        if (control is Button && String.IsNullOrEmpty(control.Text))
+                        {
+                            control.BackColor = Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255));
+                        }
+                    }
+                    ApplyAllColors();
+                    marioSprite.Refresh();
+                    break;
+                case 1:
+                    FromColorCode(currentSelection[rand.Next(currentSelection.Count)].Gameshark);
+                    LoadFromGame(null, null);
+                    break;
             }
 
-            marioSprite.Refresh();
-            ApplyAllColors();
         }
 
         void UpdateTrackbar(object sender, EventArgs e)
@@ -415,9 +432,11 @@ namespace M64MM2
         {
             LoadColorCodeRepo();
             lbCCs.Items.Clear();
+            clbRandSel.Items.Clear();
             foreach (ColorCodeGS cc in colorCodeGamesharks)
             {
                 lbCCs.Items.Add(cc);
+                clbRandSel.Items.Add(cc);
             }
         }
 
@@ -429,6 +448,11 @@ namespace M64MM2
                 LoadFromGame(null, null);
                 marioSprite.Refresh();
             }
+        }
+
+        private void cbRandMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

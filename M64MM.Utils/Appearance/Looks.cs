@@ -313,6 +313,7 @@ namespace M64MM.Utils
                         break;
                 }
             }
+            
         }
 
         public static void ChangeShadow(int amount, ShadowParts part)
@@ -358,7 +359,7 @@ namespace M64MM.Utils
                     }
                     continue;
                 }
-                if (ModelHeader[i + 3] == 0 && ModelHeader[i + 7] == 0)
+                if ((ModelHeader[i + 3] == 0 || ModelHeader[i + 3] == 255) && (ModelHeader[i + 7] == 0 || ModelHeader[i + 7] == 255))
                 {
                     length++;
                 }
@@ -371,11 +372,11 @@ namespace M64MM.Utils
             {
                 return ModelHeaderType.EMPTY;
             }
-            if (length < 18)
+            if (length < 13)
             {
                 return ModelHeaderType.MOD;
             }
-            else if (length >= 18 && length < 60)
+            else if (length >= 13 && length < 60)
             {
                 return ModelHeaderType.CLASSIC;
             }
