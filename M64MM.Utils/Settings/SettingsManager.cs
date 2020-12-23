@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace M64MM.Utils
 {
@@ -36,7 +37,10 @@ namespace M64MM.Utils
 
         public static string SettingsToJSON()
         {
-            return JsonConvert.SerializeObject(_settings, Formatting.Indented);
+            return JsonConvert.SerializeObject(_settings, Formatting.Indented, new JsonSerializerSettings
+            {
+                DateFormatHandling = DateFormatHandling.IsoDateFormat
+            });
         }
 
         public static void JSONToSettings(string json)

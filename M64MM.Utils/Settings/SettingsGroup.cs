@@ -7,14 +7,14 @@ namespace M64MM.Utils
     {
         // Expose the otherwise private entries property so the JSON parser can write and read.
         [JsonProperty(PropertyName = "settings")]
-        static Dictionary<string, string> entries = null;
+        static Dictionary<string, object> entries = null;
 
         /// <summary>
         /// Constructor for a Settings Group
         /// </summary>
         public SettingsGroup()
         {
-            entries = new Dictionary<string, string>();
+            entries = new Dictionary<string, object>();
         }
         /// <summary>
         /// Constructor for a Settings Group, adds entries immediatly.
@@ -22,7 +22,7 @@ namespace M64MM.Utils
         /// <param name="presetEntries">A Dictionary with already written entries (for the JSON parser)</param>
         // We * WILL * use this one for JSON
         [JsonConstructor]
-        public SettingsGroup(Dictionary<string, string> settings)
+        public SettingsGroup(Dictionary<string, object> settings)
         {
             entries = settings;
         }
@@ -78,7 +78,7 @@ namespace M64MM.Utils
             //If there aren't any entry declarations for this particular group
             if (entries == null)
             {
-                entries = new Dictionary<string, string>();
+                entries = new Dictionary<string, object>();
             }
             //If the key already exists...
             if (entries.ContainsKey(settingName))
@@ -89,24 +89,26 @@ namespace M64MM.Utils
                      * It'll throw a FormatException if the type that is
                      * saved doesn't match with the type to write.
                      * 
-                     * Of course, since they're internally saved as String
-                     * to make it work easier with JSON, you can save a String
-                     * number and reading as int for example or a
-                     * "True" read as Boolean and in both cases it'll say it's good
-                     * I mean, in practical cases this is alright, so no problem.
-                    */
+                     * I have changed the value part of the Dicionary to be Object
+                     * this way the JSON will be serialized however the JsonSerializer
+                     * wants to, and I don't have to do any wacky weird stuffy stupido
+                     * string conversion thingamajig that would've actually become a problem
+                     * in the future
+                     * 
+                     * (thanks Super)
+                     */
                         Convert.ChangeType(entries[settingName], typeof(T));
-                        entries[settingName] = valueObject.ToString();
+                        entries[settingName] = valueObject;
                 }
                 else
                 {
                     //To hell with it. Throw it all in.
-                    entries[settingName] = valueObject.ToString();
+                    entries[settingName] = valueObject;
                 }
             }
             else
             {
-                entries.Add(settingName, valueObject.ToString());
+                entries.Add(settingName, valueObject);
             }
         }
     }
