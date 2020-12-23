@@ -9,6 +9,7 @@ using M64MM.Utils;
 using M64MM.Additions;
 using System.Diagnostics;
 using System.ComponentModel;
+using System.Linq;
 
 namespace M64MM2
 {
@@ -179,8 +180,17 @@ namespace M64MM2
 
         void MoreThanOneEmu(object sender, Process[] proc)
         {
-            EmuSelectorForm es = new EmuSelectorForm(proc);
-            es.ShowDialog();
+            Process[] n_plist = proc.Where(x => !string.IsNullOrEmpty(x.MainWindowTitle)).ToArray();
+            EmuSelectorForm es = new EmuSelectorForm(n_plist);
+            if (n_plist.Length > 1)
+            {
+                es.ShowDialog();
+            }
+            else
+            {
+                StopProcessSearch = false;
+            }
+            
         }
 
         void EmulatorSelected(object sender, EventArgs e)
