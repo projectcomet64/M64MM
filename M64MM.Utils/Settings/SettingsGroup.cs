@@ -7,7 +7,7 @@ namespace M64MM.Utils
     {
         // Expose the otherwise private entries property so the JSON parser can write and read.
         [JsonProperty(PropertyName = "settings")]
-        static Dictionary<string, object> entries = null;
+        Dictionary<string, object> entries = null;
 
         /// <summary>
         /// Constructor for a Settings Group

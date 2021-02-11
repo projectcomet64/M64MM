@@ -18,7 +18,7 @@ namespace M64MM.Utils
         {
             if (_settings.ContainsKey(key))
             {
-                return _settings[key];
+                return _settings[key]; 
             }
             else
             {
