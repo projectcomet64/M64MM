@@ -246,7 +246,7 @@ namespace M64MM2
         {
             if (!IsEmuOpen || BaseAddress == 0) return;
 
-            Animation selectedAnimation = animList[((ComboBox)sender).SelectedIndex];
+            Animation selectedAnimation = animList[cbAnimOld.SelectedIndex];
             WriteAnimationReset(selectedAnimation);
             cbAnimNew.SelectedIndex = cbAnimOld.SelectedIndex;
         }
