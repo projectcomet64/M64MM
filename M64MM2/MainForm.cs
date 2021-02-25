@@ -385,5 +385,9 @@ namespace M64MM2
         {
             Core.ResetEmuProcess();
         }
+        private void issuesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/projectcomet64/M64MM/issues");
+        }
     }
 }
