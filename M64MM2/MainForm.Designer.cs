@@ -61,6 +61,7 @@
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
             this.ttAutoApplyInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.issuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -70,10 +71,12 @@
             // 
             // menuStrip
             // 
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsMenuItem,
             this.aboutMenuItem,
             this.settingsToolStripMenuItem,
+            this.issuesToolStripMenuItem,
             this.checkForLatestUpdateToolStripMenuItem});
             resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
@@ -169,6 +172,7 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblProgramStatus,
             this.lblCameraStatus,
@@ -286,6 +290,12 @@
             // 
             this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // issuesToolStripMenuItem
+            // 
+            this.issuesToolStripMenuItem.Name = "issuesToolStripMenuItem";
+            resources.ApplyResources(this.issuesToolStripMenuItem, "issuesToolStripMenuItem");
+            this.issuesToolStripMenuItem.Click += new System.EventHandler(this.issuesToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -347,6 +357,7 @@
         private System.Windows.Forms.CheckBox cbPowercam;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem scanForEmulatorsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem issuesToolStripMenuItem;
     }
 }
 
