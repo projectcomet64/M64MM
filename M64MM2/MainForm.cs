@@ -20,6 +20,8 @@ namespace M64MM2
         SettingsForm settingsForm;
         LatestUpdateDialog ludForm;
 
+        Keys _heldKeys = Keys.None;
+
 
         //This handles the "Each ingame frame"
         //ASYNCHRONOUS FOR THE WIN
@@ -124,7 +126,7 @@ namespace M64MM2
 
             if (StopProcessSearch)
                 return;
-            
+
             FindBaseAddress();
             //Finding base address
             if (BaseAddress <= 0)
@@ -158,7 +160,7 @@ namespace M64MM2
             // in-game timer in that case
             UpdateCoreEntityAddress();
 
-            
+
             lblCameraCode.Text = "0x" + BitConverter.ToString(CameraState).Replace("-", "");
 
             // Execute camera fixes (bugged first person hack) and Powercam
@@ -167,13 +169,41 @@ namespace M64MM2
             //Handle hotkey input based on setting
             if (enableHotkeys)
             {
+                if (!GetKey(Keys.D1))
+                {
+                    _heldKeys &= ~Keys.D1;
+                }
+
+                if (!GetKey(Keys.D2))
+                {
+                    _heldKeys &= ~Keys.D2;
+                }
+                Debug.WriteLine($"Check time for Held, HeldKey: {_heldKeys}");
                 if (GetKey(Keys.LControlKey) || GetKey(Keys.RControlKey))
                 {
-                    if (GetKey(Keys.D1))
-                        ToggleFreezeCam(null, null);
 
-                    if (GetKey(Keys.D2))
+                    // Keeps record of held keys and only executes if they're not
+                    // held at the moment
+                    // Debating whether I should just use WinAPI's messages
+                    // or keep this implementation.
+
+                    // Implementing WinAPI's messages is painful
+                    // but if this kills performance I'll have to look
+                    // deeper into it (ugh)
+
+                    if (GetKey(Keys.D1) && ((_heldKeys & Keys.D1) == Keys.None))
+                    {
+                        _heldKeys ^= Keys.D1;
+                        ToggleFreezeCam(null, null);
+                    }
+
+
+                    if (GetKey(Keys.D2) && ((_heldKeys & Keys.D2) == Keys.None))
+                    {
+                        _heldKeys ^= Keys.D2;
                         ToggleSoftFreezeCam(null, null);
+                    }
+
                 }
             }
         }
@@ -190,7 +220,7 @@ namespace M64MM2
             {
                 StopProcessSearch = false;
             }
-            
+
         }
 
         void EmulatorSelected(object sender, EventArgs e)
@@ -365,10 +395,10 @@ namespace M64MM2
         private async void checkForLatestUpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
-            { 
-            GitHubRelease latestRel = await Updater.FindNewUpdate();
-            LatestUpdateDialog ludForm = new LatestUpdateDialog(latestRel);
-            ludForm.Show();
+            {
+                GitHubRelease latestRel = await Updater.FindNewUpdate();
+                LatestUpdateDialog ludForm = new LatestUpdateDialog(latestRel);
+                ludForm.Show();
             }
             catch (Exception ex)
             {
@@ -383,11 +413,11 @@ namespace M64MM2
 
         private void scanForEmulatorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Core.ResetEmuProcess();
+            ResetEmuProcess();
         }
         private void issuesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/projectcomet64/M64MM/issues");
+            Process.Start("https://github.com/projectcomet64/M64MM/issues/new/choose");
         }
     }
 }

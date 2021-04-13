@@ -116,6 +116,14 @@ namespace M64MM.Utils
 
         [DllImport("user32.dll")]
         static extern short GetAsyncKeyState(Keys vKey);
+
+        // what would happen if we used the synchronous one as a relay
+        [DllImport("user32.dll")]
+        static extern short GetKeyState(Keys vKey);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern bool GetKeyboardState(byte[] lpKeyState);
+
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
         [DllImport("kernel32.dll", SetLastError = true)]
@@ -410,7 +418,17 @@ namespace M64MM.Utils
                 WriteBytes(BaseAddress + 0x33C84B, new byte[] { (byte)(CameraState[0] & ~(0x8)) });
             }
 
-            if (CameraFrozen && ((CameraState[0] & 0x80) != 0x20))
+            if (CameraState[0] == 0xA2)
+            {
+                // EDGE CASE. Sometimes the bugged first person camera happens
+                // when using Powercam and the only workaround was to just
+                // knock down the single edge case when it happens.
+
+                // This edge case happens only when the camera is hard-frozen
+                // and we're in first person with overrides enabled
+                WriteBytes(BaseAddress + 0x33C84B, new byte[] { 0x81 });
+            }
+            else if (CameraFrozen && ((CameraState[0] & 0x80) != 0x20))
             {
                 // Glitchy: Program says camera is frozen but game says otherwise
                 // OK, in that case let's just enable the flag back
@@ -902,5 +920,11 @@ namespace M64MM.Utils
         #endregion
 
         public static bool GetKey(Keys vKey) => GetAsyncKeyState(vKey) != 0;
+        public static bool GetKeyDown(Keys vKey)
+        {
+            short _keyState = GetAsyncKeyState(vKey);
+            Debug.WriteLine($"KeyState: {_keyState}");
+            return ((_keyState & 0x80) != 0) && ((_keyState & 1) == 0);
+        }
     }
 }
