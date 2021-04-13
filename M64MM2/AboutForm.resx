@@ -117,138 +117,263 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.Text" xml:space="preserve">
-    <value>About Mario 64 Movie Maker</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblBugReport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 326</value>
+  <data name="lblName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 20pt, style=Underline</value>
   </data>
-  <data name="appIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 12</value>
+  <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>232, 12</value>
   </data>
-  <data name="&gt;&gt;lnkDiscord.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 31</value>
   </data>
-  <data name="&gt;&gt;lblYouCanJoin.ZOrder" xml:space="preserve">
+  <data name="lblName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="richTextBox1.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
+  <data name="lblName.Text" xml:space="preserve">
+    <value>M64MM Classic</value>
   </data>
-  <data name="lnkDiscord.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;lblName.Name" xml:space="preserve">
+    <value>lblName</value>
   </data>
-  <data name="&gt;&gt;lnkDiscord.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblYouCanJoin.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="appIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 64</value>
+  <data name="&gt;&gt;lblName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="lblYouCanJoin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 26</value>
+  <data name="&gt;&gt;lblName.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
-  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
-    <value>btnOK</value>
-  </data>
-  <data name="&gt;&gt;lblWhosInBanner.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblYouCanJoin.Text" xml:space="preserve">
-    <value>YOU can also be in the banner!
-Contact GlitchyPSI to learn more.</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AboutForm</value>
-  </data>
-  <data name="lnkGithubIssues.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 13</value>
-  </data>
-  <data name="lblWhosInBanner.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 326</value>
-  </data>
-  <data name="&gt;&gt;lnkDiscord.Name" xml:space="preserve">
-    <value>lnkDiscord</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="&gt;&gt;lblYouCanJoin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblWhosInBanner.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lnkDiscord.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 13</value>
-  </data>
-  <data name="lnkGithubIssues.Text" xml:space="preserve">
-    <value>Github Issues</value>
-  </data>
-  <data name="&gt;&gt;pbBanner.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lblYouCanJoin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 373</value>
-  </data>
-  <data name="&gt;&gt;lnkGithubIssues.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pbBanner.Name" xml:space="preserve">
-    <value>pbBanner</value>
-  </data>
-  <data name="lnkGithubIssues.Location" type="System.Drawing.Point, System.Drawing">
-    <value>437, 349</value>
+  <data name="lblAuthor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="lblAuthor.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 79</value>
   </data>
-  <data name="lblBugReport.Text" xml:space="preserve">
-    <value>Found any bugs, need help, or want to suggest a feature? Contact us at:</value>
+  <data name="lblAuthor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>346, 17</value>
   </data>
-  <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>436, 376</value>
+  <data name="lblAuthor.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;lblVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="lnkDiscord.Text" xml:space="preserve">
-    <value>Project Comet Link</value>
+  <data name="lblAuthor.Text" xml:space="preserve">
+    <value>by GlitchyPSI, built on M64MM2 by James "CaptainSwag101" Pelster</value>
   </data>
   <data name="&gt;&gt;lblAuthor.Name" xml:space="preserve">
     <value>lblAuthor</value>
   </data>
-  <data name="&gt;&gt;lblYouCanJoin.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblAuthor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAuthor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblAuthor.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="appIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 12</value>
+  </data>
+  <data name="appIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 64</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="appIcon.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="appIcon.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;appIcon.Name" xml:space="preserve">
+    <value>appIcon</value>
+  </data>
+  <data name="&gt;&gt;appIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;appIcon.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;appIcon.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="lblBugReport.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblBugReport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 326</value>
+  </data>
+  <data name="lblBugReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>349, 13</value>
+  </data>
+  <data name="lblBugReport.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblBugReport.Text" xml:space="preserve">
+    <value>Found any bugs, need help, or want to suggest a feature? Contact us at:</value>
+  </data>
+  <data name="&gt;&gt;lblBugReport.Name" xml:space="preserve">
+    <value>lblBugReport</value>
+  </data>
+  <data name="&gt;&gt;lblBugReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblBugReport.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblBugReport.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>436, 376</value>
+  </data>
+  <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
+    <value>btnOK</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lnkDiscord.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lnkDiscord.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lnkDiscord.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 349</value>
+  </data>
+  <data name="lnkDiscord.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 13</value>
+  </data>
+  <data name="lnkDiscord.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="lnkDiscord.Text" xml:space="preserve">
+    <value>Project Comet Link</value>
+  </data>
+  <data name="lnkDiscord.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;lnkDiscord.Name" xml:space="preserve">
+    <value>lnkDiscord</value>
+  </data>
+  <data name="&gt;&gt;lnkDiscord.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkDiscord.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lnkDiscord.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lnkGithubIssues.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lnkGithubIssues.Location" type="System.Drawing.Point, System.Drawing">
+    <value>437, 349</value>
+  </data>
+  <data name="lnkGithubIssues.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 13</value>
+  </data>
+  <data name="lnkGithubIssues.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="lnkGithubIssues.Text" xml:space="preserve">
+    <value>Github Issues</value>
+  </data>
+  <data name="&gt;&gt;lnkGithubIssues.Name" xml:space="preserve">
+    <value>lnkGithubIssues</value>
+  </data>
+  <data name="&gt;&gt;lnkGithubIssues.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkGithubIssues.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lnkGithubIssues.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pbBanner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="pbBanner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 311</value>
+  </data>
+  <data name="pbBanner.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pbBanner.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;pbBanner.Name" xml:space="preserve">
+    <value>pbBanner</value>
+  </data>
+  <data name="&gt;&gt;pbBanner.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbBanner.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pbBanner.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lblVersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblVersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="lblVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 54</value>
+  </data>
+  <data name="lblVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 13</value>
+  </data>
+  <data name="lblVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="lblVersion.Text" xml:space="preserve">
+    <value>Version: ALPHA</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Name" xml:space="preserve">
+    <value>lblVersion</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblVersion.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="lblName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 20pt, style=Underline</value>
+  <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>165, 99</value>
   </data>
-  <data name="appIcon.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>232, 12</value>
-  </data>
-  <data name="&gt;&gt;lblWhosInBanner.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="richTextBox1.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
   </data>
   <data name="richTextBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>343, 224</value>
@@ -256,46 +381,12 @@ Contact GlitchyPSI to learn more.</value>
   <data name="richTextBox1.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="lblBugReport.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;appIcon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;richTextBox1.Name" xml:space="preserve">
-    <value>richTextBox1</value>
-  </data>
-  <data name="lblBugReport.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;lblWhosInBanner.Name" xml:space="preserve">
-    <value>lblWhosInBanner</value>
-  </data>
-  <data name="lblWhosInBanner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 76</value>
-  </data>
-  <data name="&gt;&gt;pbBanner.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 13</value>
-  </data>
-  <data name="&gt;&gt;richTextBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblName.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblAuthor.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;lblAuthor.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>This program is dedicated to the Super Mario 64 machinima community. Thanks for all the effort you've put into your work, and I hope this tool and its future extensions will help you create awesome videos for years to come!
 
 Special thanks to:
+Patreon supporters: PonderMan, Waro
+
 Onewingdangl (Creator of the original SM64MM 1.0)
 James Pelster (CaptainSwag101, creator of the original M64MM2.0)
 Dudaw (Provider of the values for the animation swapper)
@@ -309,7 +400,7 @@ The buncha clever folks behind the SM64 Decompilation
 AloXado320
 Every tester since 2.0 Beta 1
 Everyone who supported me up to this point.
-
+MarioMario24680
 
 Special thanks to YOU for using the program. If it weren't for your passion, perhaps M64MM would've never gone past 1.0.
 Version 2 made by James "CaptainSwag101" Pelster. Thanks for being such a great person.
@@ -317,68 +408,81 @@ Version 2 made by James "CaptainSwag101" Pelster. Thanks for being such a great 
 
 This program's source code is under the GPL v3 license. Addons may have their own licenses.</value>
   </data>
-  <data name="&gt;&gt;lnkDiscord.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="appIcon.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 99</value>
-  </data>
-  <data name="lnkGithubIssues.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblWhosInBanner.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="lnkDiscord.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 31</value>
-  </data>
-  <data name="lblVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 54</value>
-  </data>
-  <data name="&gt;&gt;lnkGithubIssues.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblBugReport.Name" xml:space="preserve">
-    <value>lblBugReport</value>
-  </data>
-  <data name="&gt;&gt;lblBugReport.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="lblVersion.Text" xml:space="preserve">
-    <value>Version: ALPHA</value>
-  </data>
-  <data name="lblWhosInBanner.Text" xml:space="preserve">
-    <value>Pictured in banner:</value>
-  </data>
-  <data name="&gt;&gt;richTextBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;richTextBox1.Name" xml:space="preserve">
+    <value>richTextBox1</value>
   </data>
   <data name="&gt;&gt;richTextBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lnkGithubIssues.Name" xml:space="preserve">
-    <value>lnkGithubIssues</value>
+  <data name="&gt;&gt;richTextBox1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;lblName.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="&gt;&gt;richTextBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="lnkDiscord.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblWhosInBanner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 326</value>
+  </data>
+  <data name="lblWhosInBanner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 76</value>
+  </data>
+  <data name="lblWhosInBanner.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="lblWhosInBanner.Text" xml:space="preserve">
+    <value>Pictured in banner:</value>
+  </data>
+  <data name="lblWhosInBanner.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="&gt;&gt;lblWhosInBanner.Name" xml:space="preserve">
+    <value>lblWhosInBanner</value>
+  </data>
+  <data name="&gt;&gt;lblWhosInBanner.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblWhosInBanner.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblWhosInBanner.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblYouCanJoin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lblYouCanJoin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 373</value>
+  </data>
+  <data name="lblYouCanJoin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 26</value>
+  </data>
+  <data name="lblYouCanJoin.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="lblYouCanJoin.Text" xml:space="preserve">
+    <value>YOU can also be in the banner!
+Contact GlitchyPSI to learn more.</value>
+  </data>
+  <data name="&gt;&gt;lblYouCanJoin.Name" xml:space="preserve">
+    <value>lblYouCanJoin</value>
+  </data>
+  <data name="&gt;&gt;lblYouCanJoin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblYouCanJoin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblYouCanJoin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>520, 411</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2268,118 +2372,13 @@ This program's source code is under the GPL v3 license. Addons may have their ow
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA
 </value>
   </data>
-  <data name="&gt;&gt;lblName.Name" xml:space="preserve">
-    <value>lblName</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>About Mario 64 Movie Maker</value>
   </data>
-  <data name="pbBanner.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>AboutForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;appIcon.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;appIcon.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="lblYouCanJoin.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblAuthor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>346, 17</value>
-  </data>
-  <data name="btnOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="pbBanner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 311</value>
-  </data>
-  <data name="lblBugReport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 13</value>
-  </data>
-  <data name="lblVersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="&gt;&gt;lblYouCanJoin.Name" xml:space="preserve">
-    <value>lblYouCanJoin</value>
-  </data>
-  <data name="pbBanner.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="&gt;&gt;pbBanner.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblAuthor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="lblName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblName.Text" xml:space="preserve">
-    <value>M64MM Classic</value>
-  </data>
-  <data name="&gt;&gt;lblName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lnkDiscord.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblBugReport.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;appIcon.Name" xml:space="preserve">
-    <value>appIcon</value>
-  </data>
-  <data name="pbBanner.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>520, 411</value>
-  </data>
-  <data name="lblVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblWhosInBanner.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
-  </data>
-  <data name="lnkGithubIssues.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;lblAuthor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lnkGithubIssues.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;lblVersion.Name" xml:space="preserve">
-    <value>lblVersion</value>
-  </data>
-  <data name="lnkDiscord.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 349</value>
-  </data>
-  <data name="&gt;&gt;lblBugReport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblAuthor.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lblAuthor.Text" xml:space="preserve">
-    <value>by GlitchyPSI, built on M64MM2 by James "CaptainSwag101" Pelster</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>es</value>
-  </metadata>
 </root>

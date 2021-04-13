@@ -167,10 +167,10 @@
     <value>Settings</value>
   </data>
   <data name="issuesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 20</value>
+    <value>98, 20</value>
   </data>
   <data name="issuesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Report &amp;Issue...</value>
+    <value>Report &amp;A Bug...</value>
   </data>
   <data name="checkForLatestUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 20</value>
