@@ -9,7 +9,7 @@ namespace M64MM.Utils
 
     public struct CameraStyle
     {
-        public byte Value;
-        public string Name;
+        public byte Value { get; set; }
+        public string Name { get; set; }
     }
 }

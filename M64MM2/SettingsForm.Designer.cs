@@ -33,6 +33,9 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.cbCheckUpdates = new System.Windows.Forms.CheckBox();
+            this.cbEnablePowercamStartup = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbCamStyles = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cbEnableHotkeys
@@ -61,10 +64,31 @@
             this.cbCheckUpdates.Name = "cbCheckUpdates";
             this.cbCheckUpdates.UseVisualStyleBackColor = true;
             // 
+            // cbEnablePowercamStartup
+            // 
+            resources.ApplyResources(this.cbEnablePowercamStartup, "cbEnablePowercamStartup");
+            this.cbEnablePowercamStartup.Name = "cbEnablePowercamStartup";
+            this.cbEnablePowercamStartup.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // cbCamStyles
+            // 
+            this.cbCamStyles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCamStyles.FormattingEnabled = true;
+            resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
+            this.cbCamStyles.Name = "cbCamStyles";
+            // 
             // SettingsForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbCamStyles);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbEnablePowercamStartup);
             this.Controls.Add(this.cbCheckUpdates);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
@@ -86,5 +110,8 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.CheckBox cbCheckUpdates;
+        private System.Windows.Forms.CheckBox cbEnablePowercamStartup;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbCamStyles;
     }
 }

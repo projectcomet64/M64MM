@@ -245,4 +245,18 @@ No funcionará.</value>
   <data name="updateNetworkError" xml:space="preserve">
     <value>Algo pasó. No se pudo conectar a la página de GitHub para las actualizaciones. Revisa tu conexión a Internet.</value>
   </data>
+  <data name="powercamIngameDirtyMsg" xml:space="preserve">
+    <value>Iniciaste el juego en un nivel que causa problemas con Powercam, así que aquí no se puede habilitar.
+Entra a un nivel cuya cámara no haga zoom cuando pauses y activa Powercam.</value>
+  </data>
+  <data name="powercamIngameDirtyTitle" xml:space="preserve">
+    <value>Hay un tiempo y lugar para todo, ¡pero aquí no!</value>
+  </data>
+  <data name="powercamPregameDirtyMsg" xml:space="preserve">
+    <value>Iniciaste el juego en un nivel que causa problemas con Powercam si se activa dentro de sí, así que te lo deshabilitamos.
+Entra a un nivel cuya cámara no haga zoom cuando pauses y activa Powercam.</value>
+  </data>
+  <data name="powercamPregameDirtyTitle" xml:space="preserve">
+    <value>Atento!</value>
+  </data>
 </root>

@@ -179,7 +179,7 @@
     <value>long</value>
   </data>
   <data name="prereleaseString" xml:space="preserve">
-    <value>-alpha5</value>
+    <value>-alpha6</value>
   </data>
   <data name="invalidAnimSelected" xml:space="preserve">
     <value>You have entered an invalid animation name into {0}. Please make sure to choose a valid option from the list.</value>
@@ -289,5 +289,19 @@ The color codes and shading only apply to vanilla models and mods that support i
   </data>
   <data name="version32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\version32.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="powercamIngameDirtyMsg" xml:space="preserve">
+    <value>You started the game in a level that would cause problems with Powercam, so you can't enable it here.
+Enter a level that doesn't zoom out when the game is paused and enable Powercam again.</value>
+  </data>
+  <data name="powercamIngameDirtyTitle" xml:space="preserve">
+    <value>There is a time and a place for everything, but not here!</value>
+  </data>
+  <data name="powercamPregameDirtyMsg" xml:space="preserve">
+    <value>You started the game in a level that would mess with your camera if Powercam is first enabled in it, so we've disabled it for you.
+Enter a level that doesn't zoom out when the game is paused and enable Powercam again.</value>
+  </data>
+  <data name="powercamPregameDirtyTitle" xml:space="preserve">
+    <value>Wait, this is important.</value>
   </data>
 </root>

@@ -406,7 +406,45 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a -alpha5.
+        ///   Busca una cadena traducida similar a You started the game in a level that would cause problems with Powercam, so you can&apos;t enable it here.
+        ///Enter a level that doesn&apos;t zoom out when the game is paused and enable Powercam again..
+        /// </summary>
+        internal static string powercamIngameDirtyMsg {
+            get {
+                return ResourceManager.GetString("powercamIngameDirtyMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a There is a time and a place for everything, but not here!.
+        /// </summary>
+        internal static string powercamIngameDirtyTitle {
+            get {
+                return ResourceManager.GetString("powercamIngameDirtyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You started the game in a level that would mess with your camera if Powercam is first enabled in it, so we&apos;ve disabled it for you.
+        ///Enter a level that doesn&apos;t zoom out when the game is paused and enable Powercam again..
+        /// </summary>
+        internal static string powercamPregameDirtyMsg {
+            get {
+                return ResourceManager.GetString("powercamPregameDirtyMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Wait, this is important..
+        /// </summary>
+        internal static string powercamPregameDirtyTitle {
+            get {
+                return ResourceManager.GetString("powercamPregameDirtyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a -alpha6.
         /// </summary>
         internal static string prereleaseString {
             get {

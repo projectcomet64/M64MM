@@ -62,6 +62,7 @@
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
             this.ttAutoApplyInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.lblCameraStyle = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -182,7 +183,8 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblProgramStatus,
             this.lblCameraStatus,
-            this.lblCameraCode});
+            this.lblCameraCode,
+            this.lblCameraStyle});
             resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.SizingGrip = false;
@@ -296,6 +298,11 @@
             // 
             this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // lblCameraStyle
+            // 
+            this.lblCameraStyle.Name = "lblCameraStyle";
+            resources.ApplyResources(this.lblCameraStyle, "lblCameraStyle");
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -358,6 +365,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem scanForEmulatorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem issuesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel lblCameraStyle;
     }
 }
 

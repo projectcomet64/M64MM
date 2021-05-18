@@ -1,4 +1,5 @@
-﻿using System;
+﻿using M64MM.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,24 @@ namespace M64MM2
         public SettingsForm()
         {
             InitializeComponent();
+            if (camStyles.Count > 0)
+            {
+                foreach (CameraStyle style in camStyles)
+                {
+                    cbCamStyles.Items.Add(style);
+                }
+                cbCamStyles.DisplayMember = "Name";
+                cbCamStyles.Refresh();
+                byte preferredVal = coreSettingsGroup.EnsureSettingValue<byte>("preferredDefaultCamStyle");
+                cbCamStyles.SelectedIndex = camStyles.FindIndex(x => x.Value == preferredVal);
+            }
+            else
+            {
+                cbCamStyles.Items.Add(new CameraStyle { Name = "- X -", Value = 0x01 });
+                cbCamStyles.Enabled = false;
+            }
             cbEnableHotkeys.Checked = coreSettingsGroup.EnsureSettingValue<bool>("enableHotkeys");
+            cbEnablePowercamStartup.Checked = coreSettingsGroup.EnsureSettingValue<bool>("enableStartupPowercam");
             cbCheckUpdates.Checked = coreSettingsGroup.EnsureSettingValue<bool>("enableUpdateCheck");
         }
 
@@ -28,6 +46,8 @@ namespace M64MM2
         {
             coreSettingsGroup.SetSettingValue("enableHotkeys", cbEnableHotkeys.Checked);
             coreSettingsGroup.SetSettingValue("enableUpdateCheck", cbCheckUpdates.Checked);
+            coreSettingsGroup.SetSettingValue("enableStartupPowercam", cbEnablePowercamStartup.Checked);
+            coreSettingsGroup.SetSettingValue("preferredDefaultCamStyle", ((CameraStyle)cbCamStyles.SelectedItem).Value);
             SaveSettings();
             Close();
         }

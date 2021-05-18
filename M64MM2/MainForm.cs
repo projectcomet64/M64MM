@@ -19,7 +19,7 @@ namespace M64MM2
         ExtraControlsForm extraControlsForm;
         SettingsForm settingsForm;
         LatestUpdateDialog ludForm;
-
+        ToolTip hint = new ToolTip();
         Keys _heldKeys = Keys.None;
 
 
@@ -32,6 +32,7 @@ namespace M64MM2
         public MainForm()
         {
             InitializeComponent();
+            hint.IsBalloon = true;
             Core.EmulatorSelected += (a, b) => { EmulatorSelected(a, b); };
             MoreThanOneEmuFound += (a, b) => { MoreThanOneEmu(a, b); };
             ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
@@ -99,9 +100,10 @@ namespace M64MM2
                 {
                     foreach (CameraStyle style in camStyles)
                     {
-                        cbCamStyles.Items.Add(style.Name);
+                        cbCamStyles.Items.Add(style);
                     }
-                    cbCamStyles.SelectedIndex = 0;
+                    cbCamStyles.SelectedIndex = camStyles.FindIndex(x => x.Value == preferredCameraStyle);
+                    cbCamStyles.DisplayMember = "Name";
                     cbCamStyles.Refresh();
                 }
                 else
@@ -110,6 +112,8 @@ namespace M64MM2
                     cbCamStyles.Enabled = false;
                 }
             }
+
+            cbPowercam.Checked = prePowercam;
         }
 
         void Update(object sender, EventArgs e)
@@ -121,6 +125,7 @@ namespace M64MM2
                 Text = Resources.programName + " " + Application.ProductVersion + Resources.prereleaseString;
                 lblProgramStatus.Text = Resources.programStatus1;
                 FindEmuProcess();
+                PowerCamStyleStage = PowerCameraStyleStage.UNSET;
                 return;
             }
 
@@ -140,6 +145,10 @@ namespace M64MM2
             if (CurrentLevelID < 3)
             {
                 lblProgramStatus.Text = Resources.programStatusAwaitingLevel + "0x" + BaseAddress.ToString("X8");
+                if (Core.CameraStyle[0] == 0x00 && PowerCamStyleStage == PowerCameraStyleStage.UNSET)
+                {
+                    PowerCamStyleStage = PowerCameraStyleStage.CLEAN;
+                }
                 return;
             }
 
@@ -160,8 +169,24 @@ namespace M64MM2
             // in-game timer in that case
             UpdateCoreEntityAddress();
 
+            if (CoreEntityAddress > 0 &&
+                Core.CameraStyle[0] != 0x00 &&
+                PowerCamStyleStage == PowerCameraStyleStage.UNSET)
+            {
+                PowerCamStyleStage = PowerCameraStyleStage.DIRTY;
+                if (CoreEntityAddress > 0 &&
+                WillLevelZoomOut(CurrentLevelID) &&
+                cbPowercam.Checked)
+                {
+                    ShowPowercamTooltip(false);
+                    cbPowercam.Checked = false;
+                }
+                
+            }
+
 
             lblCameraCode.Text = "0x" + BitConverter.ToString(CameraState).Replace("-", "");
+            lblCameraStyle.Text = "0x" + BitConverter.ToString(Core.CameraStyle).Replace("-", "");
 
             // Execute camera fixes (bugged first person hack) and Powercam
             PowercamHack();
@@ -178,7 +203,6 @@ namespace M64MM2
                 {
                     _heldKeys &= ~Keys.D2;
                 }
-                Debug.WriteLine($"Check time for Held, HeldKey: {_heldKeys}");
                 if (GetKey(Keys.LControlKey) || GetKey(Keys.RControlKey))
                 {
 
@@ -258,8 +282,7 @@ namespace M64MM2
 
             byte[] data = { camStyles[cbCamStyles.SelectedIndex].Value };
 
-            WriteBytes(BaseAddress + 0x33C6D6, data);
-            WriteBytes(BaseAddress + 0x33C6D7, data);
+            WriteCameraData(data);
         }
 
 
@@ -330,6 +353,27 @@ namespace M64MM2
                         appearanceForm.WindowState = FormWindowState.Normal;
                     break;
             }
+        }
+
+        void ShowPowercamTooltip(bool inlevel)
+        {
+            hint.Hide(this);
+            BringToFront();
+            if (inlevel)
+            {
+                hint.ToolTipTitle = Resources.powercamIngameDirtyTitle;
+                hint.ToolTipIcon = ToolTipIcon.Info;
+                hint.Show(string.Empty, cbPowercam, 8, 8);
+                hint.Show(Resources.powercamIngameDirtyMsg, cbPowercam, 8, 8, 10000);
+            }
+            else
+            {
+                hint.ToolTipTitle = Resources.powercamPregameDirtyTitle;
+                hint.ToolTipIcon = ToolTipIcon.Warning;
+                hint.Show(string.Empty, cbPowercam, 8, 8);
+                hint.Show(Resources.powercamPregameDirtyMsg, cbPowercam, 8, 8, 10000);
+            }
+            
         }
 
         void OpenAboutForm(object sender, EventArgs e)
@@ -408,6 +452,15 @@ namespace M64MM2
 
         private void cbPowercam_CheckedChanged(object sender, EventArgs e)
         {
+            if (CoreEntityAddress > 0 &&
+                WillLevelZoomOut(CurrentLevelID) &&
+                ((CheckBox)sender).Checked)
+            {
+                ShowPowercamTooltip(true);
+                ((CheckBox)sender).Checked = false;
+                return;
+            }
+            
             PowerCamEnabled = cbPowercam.Checked;
         }
 

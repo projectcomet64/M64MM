@@ -28,9 +28,19 @@ namespace M64MM.Utils
         public static List<ColorCodeGS> colorCodeGamesharks = new List<ColorCodeGS>();
         public static Animation defaultAnimation;
         public static byte[] emptyWord = new byte[] { 0, 0, 0, 0 };
+        public static readonly int[] levelsZ_O = new int[] { 5, 8, 9, 10, 11, 13, 15, 16, 17, 19, 21, 22, 24, 29, 30, 31, 33, 34, 36 };
         public static SettingsGroup coreSettingsGroup;
         static bool _cameraFrozen = false;
         static bool _cameraSoftFrozen = false;
+
+        public enum PowerCameraStyleStage
+        {
+            UNSET,
+            CLEAN,
+            DIRTY
+        }
+
+        public static PowerCameraStyleStage PowerCamStyleStage { get; set; } = PowerCameraStyleStage.UNSET;
 
         public static bool PowerCamEnabled { get; set; }
 
@@ -63,6 +73,8 @@ namespace M64MM.Utils
         // Settings related variables
         public static bool enableHotkeys;
         public static bool enableUpdates;
+        public static byte preferredCameraStyle = 0x01;
+        public static bool prePowercam = true;
 
         // Timers
         public static Timer programTimer = new Timer();
@@ -92,6 +104,15 @@ namespace M64MM.Utils
             get
             {
                 return SwapEndian(ReadBytes(BaseAddress + 0x33C848, 4), 4);
+            }
+            private set { }
+        }
+
+        public static byte[] CameraStyle
+        {
+            get
+            {
+                return ReadBytes(BaseAddress + 0x33C6D6, 2);
             }
             private set { }
         }
@@ -228,6 +249,8 @@ namespace M64MM.Utils
                 coreSettingsGroup = GetSettingsGroup("core", true);
                 coreSettingsGroup.SetSettingValue("enableHotkeys", true);
                 coreSettingsGroup.SetSettingValue("enableUpdateCheck", true);
+                coreSettingsGroup.SetSettingValue("enableStartupPowercam", true);
+                coreSettingsGroup.SetSettingValue<byte>("preferredDefaultCamStyle", 0x01);
                 UpdateLocalVariables();
                 using (StreamWriter rw = new StreamWriter($"{Application.StartupPath}/config.json"))
                 {
@@ -255,6 +278,8 @@ namespace M64MM.Utils
         {
             enableHotkeys = coreSettingsGroup.EnsureSettingValue<bool>("enableHotkeys");
             enableUpdates = coreSettingsGroup.EnsureSettingValue<bool>("enableUpdateCheck");
+            prePowercam = coreSettingsGroup.EnsureSettingValue<bool>("enableStartupPowercam");
+            preferredCameraStyle = coreSettingsGroup.EnsureSettingValue<byte>("preferredDefaultCamStyle");
         }
 
         #endregion
@@ -381,6 +406,11 @@ namespace M64MM.Utils
 
         }
 
+        public static bool WillLevelZoomOut(int id)
+        {
+            return levelsZ_O.Contains(id);
+        }
+
         public static bool LoadCameraData()
         {
             try
@@ -407,8 +437,23 @@ namespace M64MM.Utils
             return true;
         }
 
+        public static void WriteCameraData(byte[] camByte)
+        {
+            WriteBytes(BaseAddress + 0x33C6D6, camByte);
+            WriteBytes(BaseAddress + 0x33C6D7, camByte);
+        }
+
         public static void PowercamHack()
         {
+            // Override camera with preferred camera preset if camera state is CLEAN
+            if (PowerCamStyleStage == PowerCameraStyleStage.CLEAN)
+            {
+                // We've changed it, set Dirty
+                PowerCamStyleStage = PowerCameraStyleStage.DIRTY;
+                WriteCameraData(new byte[] { preferredCameraStyle });
+
+            }
+
             // Animation index is -1 when the game is transitioning which is just about perfect
             // Only override camera reset (flag 0x08) when the game is transitioning
             // Works before entering Castle Grounds and literally any level transition
@@ -418,15 +463,18 @@ namespace M64MM.Utils
                 WriteBytes(BaseAddress + 0x33C84B, new byte[] { (byte)(CameraState[0] & ~(0x8)) });
             }
 
-            if (CameraState[0] == 0xA2)
+            if ((CameraState[0] & 0xA2) >= 0xA2 && (CameraState[2] & 0x0C) > 0)
             {
-                // EDGE CASE. Sometimes the bugged first person camera happens
-                // when using Powercam and the only workaround was to just
-                // knock down the single edge case when it happens.
+                // EDGE CASES
+                // Mario keeps stuck in first person mode when camera is frozen.
+                // Oh No!
 
                 // This edge case happens only when the camera is hard-frozen
-                // and we're in first person with overrides enabled
-                WriteBytes(BaseAddress + 0x33C84B, new byte[] { 0x81 });
+                // and we're in first person, so just knock down the following
+
+                // NOTE: I *HATE* UNALIGNED WRITES/READS
+                // TODO: Find a way to perform better unaligned writes
+                WriteBytes(BaseAddress + 0x33C849, new byte[] { 0x00 });
             }
             else if (CameraFrozen && ((CameraState[0] & 0x80) != 0x20))
             {
@@ -441,6 +489,8 @@ namespace M64MM.Utils
                 // Glitchy: Camera status is actually a flag, which means we just need to take away
                 // the first person flag to restore, so it doesn't do a false alarm on newly
                 // loaded emulator instances (freezing camera Wayyyyyyyy up in the sky)
+
+                // Actually this has a different fix and I'll be implementing this into auto Powercam
                 byte[] data = { (byte)(CameraState[0] & ~(0x20)) };
                 WriteBytes(BaseAddress + 0x33C84B, data);
             }
@@ -629,6 +679,7 @@ namespace M64MM.Utils
             // AppDomains are incredibly messy
             // Let's just hope you don't download anything suspicious
             // HEAVILY considering moving back the Addon namespace back to .netFX
+            // ^ already did LOL
 
             AddonErrorsBuilder = new StringBuilder();
             _ = new ToolStripMenuItem("Addons");
@@ -920,11 +971,5 @@ namespace M64MM.Utils
         #endregion
 
         public static bool GetKey(Keys vKey) => GetAsyncKeyState(vKey) != 0;
-        public static bool GetKeyDown(Keys vKey)
-        {
-            short _keyState = GetAsyncKeyState(vKey);
-            Debug.WriteLine($"KeyState: {_keyState}");
-            return ((_keyState & 0x80) != 0) && ((_keyState & 1) == 0);
-        }
     }
 }
