@@ -239,6 +239,7 @@ namespace M64MM.Utils
                 using (StreamReader rs = new StreamReader($"{Application.StartupPath}/config.json"))
                 {
                     string jsonRead = await rs.ReadToEndAsync();
+                    rs.Close();
                     JSONToSettings(jsonRead);
                     try
                     {
@@ -249,7 +250,7 @@ namespace M64MM.Utils
                     {
                         InitSettings(true);
                     }
-                    rs.Close();
+                    
                 }
             }
             else
@@ -280,16 +281,20 @@ namespace M64MM.Utils
 
         public static async void SaveSettings()
         {
-            using (FileStream fs = new FileStream($"{Application.StartupPath}/config.json", FileMode.Truncate, FileAccess.ReadWrite))
+            using (StreamWriter rw = new StreamWriter($"{Application.StartupPath}/config.json"))
             {
-                StreamWriter rw = new StreamWriter(fs);
-                await rw.FlushAsync();
+                try
+                {
+                    await rw.FlushAsync();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                }
                 string settings = SettingsToJSON();
                 await rw.WriteAsync(settings);
                 rw.Close();
                 rw.Dispose();
-                fs.Close();
-                fs.Dispose();
             }
             UpdateLocalVariables();
         }
