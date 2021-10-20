@@ -231,17 +231,25 @@ namespace M64MM.Utils
 
         #region Settings related
 
-        public static async void InitSettings()
+        public static async void InitSettings(bool force = false)
         {
             bool settingsExist = File.Exists($"{Application.StartupPath}/config.json");
-            if (settingsExist)
+            if (settingsExist && !force)
             {
                 using (StreamReader rs = new StreamReader($"{Application.StartupPath}/config.json"))
                 {
                     string jsonRead = await rs.ReadToEndAsync();
                     JSONToSettings(jsonRead);
-                    coreSettingsGroup = GetSettingsGroup("core");
-                    UpdateLocalVariables();
+                    try
+                    {
+                        coreSettingsGroup = GetSettingsGroup("core");
+                        UpdateLocalVariables();
+                    }
+                    catch
+                    {
+                        InitSettings(true);
+                    }
+                    rs.Close();
                 }
             }
             else
@@ -255,14 +263,24 @@ namespace M64MM.Utils
                 using (StreamWriter rw = new StreamWriter($"{Application.StartupPath}/config.json"))
                 {
                     string settings = SettingsToJSON();
-                    await rw.WriteAsync(settings);
+                    try
+                    {
+                        await rw.WriteAsync(settings);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
+
+                    rw.Close();
+                    rw.Dispose();
                 }
             }
         }
 
         public static async void SaveSettings()
         {
-            using (FileStream fs = new FileStream($"{Application.StartupPath}/config.json", FileMode.Truncate))
+            using (FileStream fs = new FileStream($"{Application.StartupPath}/config.json", FileMode.Truncate, FileAccess.ReadWrite))
             {
                 StreamWriter rw = new StreamWriter(fs);
                 await rw.FlushAsync();
@@ -270,6 +288,8 @@ namespace M64MM.Utils
                 await rw.WriteAsync(settings);
                 rw.Close();
                 rw.Dispose();
+                fs.Close();
+                fs.Dispose();
             }
             UpdateLocalVariables();
         }
@@ -567,9 +587,9 @@ namespace M64MM.Utils
 
             if (emulators.Count > 1)
             {
-                #if DEBUG
+#if DEBUG
                 Debug.WriteLine($"Found more than one PJ64: {emulators.Count}");
-                #endif
+#endif
                 StopProcessSearch = true;
                 OnMoreThanMoreEmuFound(emulators.ToArray());
                 return;
@@ -674,12 +694,7 @@ namespace M64MM.Utils
 
         public static void LoadAddonsFromFolder(string path = "")
         {
-            // TODO: Add the different path loading
-            // NO SANDBOX
-            // AppDomains are incredibly messy
-            // Let's just hope you don't download anything suspicious
-            // HEAVILY considering moving back the Addon namespace back to .netFX
-            // ^ already did LOL
+            // No sandbox. I hope nobody downloads a shady addon.
 
             AddonErrorsBuilder = new StringBuilder();
             _ = new ToolStripMenuItem("Addons");
@@ -707,7 +722,7 @@ namespace M64MM.Utils
                             AddonErrorsBuilder.AppendFormat("{0} [LOAD WARNING] - DLL {1} does not appear to have assembly info or is a corrupted DLL.\nAddon loading for this DLL has been skipped. If this is not an addon DLL but a native dependency, this is normal.\nThese warnings can be suppressed in a future.\n--------\n", DateTime.Now.ToLongTimeString(), file.Name);
                             continue;
                         }
-                       
+
                         Type[] classes = assmb.GetTypes();
                         foreach (Type typ in classes)
                         {

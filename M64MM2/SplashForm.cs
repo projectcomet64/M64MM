@@ -16,6 +16,8 @@ namespace M64MM2
     {
 
         SplashForm splashForm;
+        int extraHoldTime = 0;
+        string extraAddonPath = "";
         Image[] splashAssortment = new Image[]
         {
             Resources.m64mm_hero,
@@ -23,7 +25,7 @@ namespace M64MM2
             Resources.webb_m64mmsplash
         };
         Random rand = new Random(DateTime.Now.Millisecond);
-        public SplashForm()
+        public SplashForm(int holdTime = 0, string moreAddonPath = "")
         {
             InitSettings();
             InitializeComponent();
@@ -33,6 +35,8 @@ namespace M64MM2
             }
             Load += new EventHandler(OnLoad);
             BackgroundImage = splashAssortment[rand.Next(0, 3)];
+            extraHoldTime = holdTime;
+            extraAddonPath = moreAddonPath;
             #if DEBUG
             BackgroundImage = Resources.m64mm_hero_devprev;
             #endif
@@ -70,6 +74,16 @@ namespace M64MM2
             });
             rtbLogs.AppendText("Loading addons...\n");
             await Task.Run(() => { LoadAddonsFromFolder(); });
+            if (!string.IsNullOrEmpty(extraAddonPath))
+            {
+                rtbLogs.AppendText("Loading addons from defined folder..\n");
+                await Task.Run(() => { LoadAddonsFromFolder(extraAddonPath); });
+            }
+            if (extraHoldTime > 0)
+            {
+                rtbLogs.AppendText($"Got it, boss. Waiting {extraHoldTime/1000} seconds before proceeding.\n");
+                await Task.Delay(extraHoldTime);
+            }
             await Task.Run(() =>
             {
                 UpdateProgress(25, "Loading animation data...\n");

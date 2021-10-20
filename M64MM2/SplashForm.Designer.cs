@@ -68,7 +68,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SplashForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SplashForm";
+            this.Text = "ore";
             this.ResumeLayout(false);
 
         }

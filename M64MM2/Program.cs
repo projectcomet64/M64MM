@@ -18,6 +18,7 @@ using M64MM.Utils;
 using M64MM2.Properties;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,10 +40,41 @@ namespace M64MM2
         [STAThread]
         static void Main()
         {
+            string[] args = Environment.GetCommandLineArgs();
+            int holdon = 0;
+            string expath = "";
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (args[i].StartsWith("--"))
+                {
+                    try
+                    {
+                        switch (args[i])
+                        {
+                            case "--holdon":
+                                {
+                                    holdon = int.Parse(args[i + 1]);
+                                    break;
+                                }
+                            case "--moreaddons":
+                                {
+                                    expath = args[i + 1];
+                                    break;
+                                }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        #if DEBUG
+                        Debug.WriteLine($"Error while parsing arg {args[i]}: {e.Message}");
+                        #endif
+                    }
+                }
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // SplashForm performs the initial load of everything and sets the variables up there
-            Application.Run(new SplashForm());
+            Application.Run(new SplashForm(holdon, expath));
             Application.Run(new MainForm());
         }
     }
