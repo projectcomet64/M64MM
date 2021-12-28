@@ -36,6 +36,19 @@
             this.cbEnablePowercamStartup = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tpHandling = new System.Windows.Forms.TabPage();
+            this.tpNetwork = new System.Windows.Forms.TabPage();
+            this.tpCamera = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbTurbo = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tabControl1.SuspendLayout();
+            this.tpHandling.SuspendLayout();
+            this.tpNetwork.SuspendLayout();
+            this.tpCamera.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbEnableHotkeys
@@ -82,25 +95,91 @@
             resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
             this.cbCamStyles.Name = "cbCamStyles";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tpHandling);
+            this.tabControl1.Controls.Add(this.tpNetwork);
+            this.tabControl1.Controls.Add(this.tpCamera);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            // 
+            // tpHandling
+            // 
+            this.tpHandling.Controls.Add(this.label5);
+            this.tpHandling.Controls.Add(this.label4);
+            this.tpHandling.Controls.Add(this.cbTurbo);
+            this.tpHandling.Controls.Add(this.cbEnableHotkeys);
+            resources.ApplyResources(this.tpHandling, "tpHandling");
+            this.tpHandling.Name = "tpHandling";
+            this.tpHandling.UseVisualStyleBackColor = true;
+            // 
+            // tpNetwork
+            // 
+            this.tpNetwork.Controls.Add(this.label3);
+            this.tpNetwork.Controls.Add(this.cbCheckUpdates);
+            resources.ApplyResources(this.tpNetwork, "tpNetwork");
+            this.tpNetwork.Name = "tpNetwork";
+            this.tpNetwork.UseVisualStyleBackColor = true;
+            // 
+            // tpCamera
+            // 
+            this.tpCamera.Controls.Add(this.label2);
+            this.tpCamera.Controls.Add(this.cbEnablePowercamStartup);
+            this.tpCamera.Controls.Add(this.cbCamStyles);
+            this.tpCamera.Controls.Add(this.label1);
+            resources.ApplyResources(this.tpCamera, "tpCamera");
+            this.tpCamera.Name = "tpCamera";
+            this.tpCamera.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // cbTurbo
+            // 
+            resources.ApplyResources(this.cbTurbo, "cbTurbo");
+            this.cbTurbo.Name = "cbTurbo";
+            this.cbTurbo.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Name = "label5";
+            // 
             // SettingsForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.cbCamStyles);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbEnablePowercamStartup);
-            this.Controls.Add(this.cbCheckUpdates);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.cbEnableHotkeys);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Load += new System.EventHandler(this.SettingsForm_Load);
+            this.tabControl1.ResumeLayout(false);
+            this.tpHandling.ResumeLayout(false);
+            this.tpHandling.PerformLayout();
+            this.tpNetwork.ResumeLayout(false);
+            this.tpNetwork.PerformLayout();
+            this.tpCamera.ResumeLayout(false);
+            this.tpCamera.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -113,5 +192,14 @@
         private System.Windows.Forms.CheckBox cbEnablePowercamStartup;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbCamStyles;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tpHandling;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox cbTurbo;
+        private System.Windows.Forms.TabPage tpNetwork;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tpCamera;
+        private System.Windows.Forms.Label label2;
     }
 }

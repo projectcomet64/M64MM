@@ -20,6 +20,7 @@ namespace M64MM.Utils
 {
     public static class Core
     {
+        private static bool _turboUpdate;
         public static StringBuilder AddonErrorsBuilder;
         public static List<Addon> moduleList = new List<Addon>();
         public static long BaseAddress;
@@ -32,6 +33,10 @@ namespace M64MM.Utils
         public static SettingsGroup coreSettingsGroup;
         static bool _cameraFrozen = false;
         static bool _cameraSoftFrozen = false;
+        public static bool TurboUpdateEnabled
+        {
+            get => _turboUpdate;
+        }
 
         public enum PowerCameraStyleStage
         {
@@ -259,6 +264,7 @@ namespace M64MM.Utils
                 coreSettingsGroup.SetSettingValue("enableHotkeys", true);
                 coreSettingsGroup.SetSettingValue("enableUpdateCheck", true);
                 coreSettingsGroup.SetSettingValue("enableStartupPowercam", true);
+                coreSettingsGroup.SetSettingValue("turboTicks", false);
                 coreSettingsGroup.SetSettingValue<byte>("preferredDefaultCamStyle", 0x01);
                 UpdateLocalVariables();
                 using (StreamWriter rw = new StreamWriter($"{Application.StartupPath}/config.json"))
@@ -305,6 +311,7 @@ namespace M64MM.Utils
             enableUpdates = coreSettingsGroup.EnsureSettingValue<bool>("enableUpdateCheck");
             prePowercam = coreSettingsGroup.EnsureSettingValue<bool>("enableStartupPowercam");
             preferredCameraStyle = coreSettingsGroup.EnsureSettingValue<byte>("preferredDefaultCamStyle");
+            _turboUpdate = coreSettingsGroup.EnsureSettingValue<bool>("turboTicks");
         }
 
         #endregion
@@ -526,7 +533,9 @@ namespace M64MM.Utils
         #region Reading
         public static byte[] ReadBytes(long address, long size)
         {
-            IntPtr ptr = new IntPtr(address);
+            // ¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?
+            // Actually, yeah, why was it an int
+            IntPtr ptr = new IntPtr((uint)address);
             byte[] buffer = new byte[size];
             long bytesRead = 0;
 
@@ -677,7 +686,7 @@ namespace M64MM.Utils
             {
                 uint segment = address >> 24;
                 uint segmentedOffset = address & 0x00FFFFFF;
-                if (segment <= 0x1F && segment >= 0)
+                if (segment <= 0x1F)
                 {
                     long segmentedBase = (BitConverter.ToUInt32(
                     ReadBytes(BaseAddress + 0x33B400 + segment * 4, 4), 0));
@@ -849,7 +858,7 @@ namespace M64MM.Utils
         /// </summary>
         /// <param name="array">The Byte array to swap</param>
         /// <param name="wordSize">Word size</param>
-        /// <returns>A byteswapped Byte array</returns>
+        /// <returns>A byte-swapped Byte array</returns>
         public static byte[] SwapEndian(byte[] array, int wordSize)
         {
             byte[] byteArray = new byte[array.Length];
@@ -866,7 +875,7 @@ namespace M64MM.Utils
         /// <summary>
         /// Is executed when Base Address updates from an older value to another.
         /// </summary>
-        public async static void PerformBaseAddrUpd()
+        public static async void PerformBaseAddrUpd()
         {
             for (int i = 0; i < moduleList.Count(); i++)
             {
@@ -887,7 +896,7 @@ namespace M64MM.Utils
             }
         }
 
-        public async static void PerformCoreEntAddressChange(uint addr)
+        public static async void PerformCoreEntAddressChange(uint addr)
         {
             for (int i = 0; i < moduleList.Count(); i++)
             {
@@ -911,7 +920,7 @@ namespace M64MM.Utils
         /// <summary>
         /// Is executed when Base Address is zero.
         /// </summary>
-        public async static void PerformBaseAddrZero()
+        public static async void PerformBaseAddrZero()
         {
             for (int i = 0; i < moduleList.Count(); i++)
             {
@@ -935,7 +944,7 @@ namespace M64MM.Utils
         /// <summary>
         /// Is executed every in-game frame. (Prone to FPS drops)
         /// </summary>
-        public async static void PerformUpdate()
+        public static async void PerformUpdate()
         {
             while (true)
             {
@@ -944,12 +953,15 @@ namespace M64MM.Utils
                 ingameTimer = ReadBytes(BaseAddress + 0x32D580, 2)[0];
                 //If there's a level loaded EVEN if there's no model
                 if (modelStatus != ModelHeaderType.UNSET)
+
                 {
                     // a VI is executed @ 2x the framerate
                     // NTSC VI: 60hz = 30fps (technically 29.970 but we don't mess with that.)
                     // PAL VI: 50hz = 25fps
                     // hahaha did you know NTSC used to be dubbed "Never The Same Color"
-                    if (ingameTimer > previousFrame + 1)
+                    // Trigger update if: 
+                    // - The ingame timer is greater than the previous frame (plus one if it fell in non-par frame) ...
+                    if ((ingameTimer > previousFrame + (previousFrame % 2)))
                     {
                         //Set new value
                         previousFrame = ingameTimer;
@@ -957,16 +969,15 @@ namespace M64MM.Utils
                         // Run own update methods
                         GameTick?.Invoke(null, null);
 
-                        //Ingame timer is a variable that INCREMENTS every frame in game. In case our previous snapshot of said value is above the timer:
-                        for (int i = 0; i < moduleList.Count(); i++)
+                        Parallel.For(0, moduleList.Count, (i) =>
                         {
                             //Unity 1996
-                            if (moduleList[i].Active == true)
+                            if (moduleList[i].Active)
                             {
                                 try
                                 {
                                     moduleList[i].Module.Update();
-                                    continue;
+                                    return;
                                 }
                                 catch (Exception e)
                                 {
@@ -976,7 +987,17 @@ namespace M64MM.Utils
                                 }
 
                             }
+                        });
+
+                        //Ingame timer is a variable that INCREMENTS every frame in game. In case our previous snapshot of said value is above the timer:
+                        for (int i = 0; i < moduleList.Count(); i++)
+                        {
+                            
                         }
+
+                        //Ingame timer update
+                        // Using VI timer instead of Input timer (Input timer stops counting when transitioning)
+                        ingameTimer = ReadBytes(BaseAddress + 0x32D580, 2)[0];
                     }
                     else if (ingameTimer <= previousFrame)
                     {
@@ -985,7 +1006,16 @@ namespace M64MM.Utils
                     }
                 }
                 // zzz
-                await Task.Delay(10);
+                // Now running with Turbo
+                if (_turboUpdate)
+                {
+                    await Task.Delay(TimeSpan.FromTicks(9800));
+                }
+                else
+                {
+                    await Task.Delay(1);
+                }
+                
             }
         }
         #endregion

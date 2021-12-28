@@ -35,6 +35,7 @@ namespace M64MM2
             cbEnableHotkeys.Checked = coreSettingsGroup.EnsureSettingValue<bool>("enableHotkeys");
             cbEnablePowercamStartup.Checked = coreSettingsGroup.EnsureSettingValue<bool>("enableStartupPowercam");
             cbCheckUpdates.Checked = coreSettingsGroup.EnsureSettingValue<bool>("enableUpdateCheck");
+            cbTurbo.Checked = coreSettingsGroup.EnsureSettingValue<bool>("turboTicks");
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
@@ -48,6 +49,7 @@ namespace M64MM2
             coreSettingsGroup.SetSettingValue("enableUpdateCheck", cbCheckUpdates.Checked);
             coreSettingsGroup.SetSettingValue("enableStartupPowercam", cbEnablePowercamStartup.Checked);
             coreSettingsGroup.SetSettingValue("preferredDefaultCamStyle", ((CameraStyle)cbCamStyles.SelectedItem).Value);
+            coreSettingsGroup.SetSettingValue("turboTicks", cbTurbo.Checked);
             SaveSettings();
             Close();
         }

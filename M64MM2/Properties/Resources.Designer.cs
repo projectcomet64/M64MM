@@ -444,7 +444,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a -alpha6.
+        ///   Busca una cadena traducida similar a -alpha7-e.
         /// </summary>
         internal static string prereleaseString {
             get {

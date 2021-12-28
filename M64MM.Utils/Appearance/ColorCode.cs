@@ -14,7 +14,7 @@ namespace M64MM.Utils
             ccParts = new Dictionary<string, RoutableColorPart>();
         }
 
-        virtual public void FromColorCodeGS() {
+        public virtual void FromColorCodeGS() {
             // Nothing. Raw color code base should not have any implementation from gameshark CC
         }
 

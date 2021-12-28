@@ -18,7 +18,7 @@ namespace M64MM.Utils
 
         public static Regex italics = new Regex(@"(\*|_)(.*?)\1", RegexOptions.ECMAScript | RegexOptions.Multiline);
         public static Regex bold = new Regex(@"(\*\*|__)(.*?)\1", RegexOptions.ECMAScript | RegexOptions.Multiline);
-        public static Regex strike = new Regex(@"([~]{2})([^\*|\_|~]+?)([~]{1,2})", RegexOptions.ECMAScript | RegexOptions.Multiline);
+        public static Regex strike = new Regex(@"([~]{2})([^\*|_|~]+?)([~]{1,2})", RegexOptions.ECMAScript | RegexOptions.Multiline);
         public static Regex mono = new Regex(@"(?:``)(.*?)(?:``)", RegexOptions.ECMAScript);
         public static Regex mdLinks = new Regex(@"\[(.+)\]\((.+)\)");
         public static Regex escapeCharacters = new Regex(@"(\\)[*|~|_]");
