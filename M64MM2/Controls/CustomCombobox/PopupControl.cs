@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Licensed under MIT by: Lea Hayes
+ * https://www.codeproject.com/Articles/25471/Customizable-ComboBox-Drop-Down?fid=1244083&df=90&mpp=25&sort=Position&spc=Relaxed&prof=True&view=Normal&fr=26#xx0xx
+ * https://opensource.org/licenses/mit-license.php
+ *
+ */
+
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
