@@ -1,4 +1,6 @@
-﻿namespace M64MM2
+﻿using M64MM2.Controls.CustomCombobox;
+
+namespace M64MM2
 {
     partial class MainForm
     {
@@ -49,6 +51,7 @@
             this.lblProgramStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblCameraStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblCameraCode = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblCameraStyle = new System.Windows.Forms.ToolStripStatusLabel();
             this.grpAnimSwap = new System.Windows.Forms.GroupBox();
             this.chbAutoApply = new System.Windows.Forms.CheckBox();
             this.btnAnimResetAll = new System.Windows.Forms.Button();
@@ -56,13 +59,12 @@
             this.btnAnimSwap = new System.Windows.Forms.Button();
             this.lblAnimNew = new System.Windows.Forms.Label();
             this.lblAnimOld = new System.Windows.Forms.Label();
-            this.cbAnimNew = new System.Windows.Forms.ComboBox();
-            this.cbAnimOld = new System.Windows.Forms.ComboBox();
+            this.cbAnimNew = new M64MM2.Controls.CustomCombobox.CustomComboBox();
+            this.cbAnimOld = new M64MM2.Controls.CustomCombobox.CustomComboBox();
             this.grpCamStyle = new System.Windows.Forms.GroupBox();
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
             this.ttAutoApplyInfo = new System.Windows.Forms.ToolTip(this.components);
-            this.lblCameraStyle = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -204,6 +206,11 @@
             this.lblCameraCode.Name = "lblCameraCode";
             resources.ApplyResources(this.lblCameraCode, "lblCameraCode");
             // 
+            // lblCameraStyle
+            // 
+            this.lblCameraStyle.Name = "lblCameraStyle";
+            resources.ApplyResources(this.lblCameraStyle, "lblCameraStyle");
+            // 
             // grpAnimSwap
             // 
             this.grpAnimSwap.Controls.Add(this.chbAutoApply);
@@ -258,20 +265,29 @@
             // 
             // cbAnimNew
             // 
-            this.cbAnimNew.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbAnimNew.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbAnimNew.AllowResizeDropDown = true;
+            this.cbAnimNew.ControlSize = new System.Drawing.Size(1, 1);
+            this.cbAnimNew.CustomDisplayMember = "";
+            this.cbAnimNew.DropDownControl = null;
+            this.cbAnimNew.DropSize = new System.Drawing.Size(121, 106);
             resources.ApplyResources(this.cbAnimNew, "cbAnimNew");
             this.cbAnimNew.Name = "cbAnimNew";
+            this.cbAnimNew.DropDown += new System.EventHandler(this.cbAnimNew_DropDown);
             this.cbAnimNew.SelectedIndexChanged += new System.EventHandler(this.cbAnimNew_SelectedIndexChanged);
+            this.cbAnimNew.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.cbAnimNew_PreviewKeyDown);
             // 
             // cbAnimOld
             // 
-            this.cbAnimOld.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbAnimOld.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbAnimOld.AllowResizeDropDown = true;
+            this.cbAnimOld.ControlSize = new System.Drawing.Size(1, 1);
+            this.cbAnimOld.CustomDisplayMember = "";
+            this.cbAnimOld.DropDownControl = null;
+            this.cbAnimOld.DropSize = new System.Drawing.Size(121, 106);
             resources.ApplyResources(this.cbAnimOld, "cbAnimOld");
             this.cbAnimOld.Name = "cbAnimOld";
+            this.cbAnimOld.DropDown += new System.EventHandler(this.cbAnimOld_DropDown);
             this.cbAnimOld.SelectedIndexChanged += new System.EventHandler(this.cbAnimOld_SelectedIndexChanged);
-            this.cbAnimOld.TextChanged += new System.EventHandler(this.cbAnimOld_TextChanged);
+            this.cbAnimOld.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.cbAnimOld_PreviewKeyDown);
             // 
             // grpCamStyle
             // 
@@ -297,11 +313,6 @@
             // ttAutoApplyInfo
             // 
             this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            // 
-            // lblCameraStyle
-            // 
-            this.lblCameraStyle.Name = "lblCameraStyle";
-            resources.ApplyResources(this.lblCameraStyle, "lblCameraStyle");
             // 
             // MainForm
             // 
@@ -343,8 +354,8 @@
         private System.Windows.Forms.ToolStripStatusLabel lblProgramStatus;
         private System.Windows.Forms.ToolStripStatusLabel lblCameraStatus;
         private System.Windows.Forms.GroupBox grpAnimSwap;
-        private System.Windows.Forms.ComboBox cbAnimNew;
-        private System.Windows.Forms.ComboBox cbAnimOld;
+        private CustomComboBox cbAnimNew;
+        private CustomComboBox cbAnimOld;
         private System.Windows.Forms.Label lblAnimOld;
         private System.Windows.Forms.Label lblAnimNew;
         private System.Windows.Forms.Button btnAnimSwap;

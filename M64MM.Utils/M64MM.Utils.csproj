@@ -87,6 +87,8 @@
     <Compile Include="Appearance\AppearanceExceptions.cs" />
     <Compile Include="Appearance\ColorCode.cs" />
     <Compile Include="Appearance\ColorCodeGS.cs" />
+    <Compile Include="Appearance\ColorSpace.cs" />
+    <Compile Include="Extensions\MathExtensions.cs" />
     <Compile Include="Updater\GitHubRelease.cs" />
     <Compile Include="Appearance\Looks.cs" />
     <Compile Include="CameraStyle.cs" />
@@ -134,5 +136,6 @@
   <ItemGroup>
     <None Include="Resources\XSM_ICON.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

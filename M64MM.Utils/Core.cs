@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Permissions;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static M64MM.Utils.SettingsManager;
@@ -21,6 +22,7 @@ namespace M64MM.Utils
     public static class Core
     {
         private static bool _turboUpdate;
+        public static bool UsingTurbo { get; set; } = false;
         public static StringBuilder AddonErrorsBuilder;
         public static List<Addon> moduleList = new List<Addon>();
         public static long BaseAddress;
@@ -186,9 +188,11 @@ namespace M64MM.Utils
             {
                 return _coreEntityAddress;
             }
-            private set { }
         }
 
+        /// <summary>
+        /// Updates and gives the offset from base address to Mario's object
+        /// </summary>
         public static void UpdateCoreEntityAddress()
         {
             uint caughtA = BitConverter.ToUInt32(
@@ -204,6 +208,7 @@ namespace M64MM.Utils
             }
             else
             {
+                PerformCoreEntAddressChange(0);
                 _coreEntityAddress = 0;
             }
         }
@@ -660,12 +665,14 @@ namespace M64MM.Utils
                     //Speed up the check for the game since the base address was found
                     programTimer.Interval = 100;
                     BaseAddress = scanAddress;
+                    PerformBaseAddrUpd();
                     return;
                 }
             }
 
             //Slow down the check so if the program is open we don't overload the CPU
             programTimer.Interval = 1000;
+            if (BaseAddress != 0) {PerformBaseAddrZero();}
             //If we don't find anything, reset the base address to 0
             BaseAddress = 0;
 
@@ -828,16 +835,13 @@ namespace M64MM.Utils
         /// Gets a list of animation strings by looking within its name.
         /// </summary>
         /// <param name="query">Search query</param>
-        /// <returns>An AutoCompleteStringCollection containing the top 3 matches.</returns>
-        public static AutoCompleteStringCollection GetQueriedAnimations(string query = "")
+        /// <returns>A list of string containing the top matches.</returns>
+        public static List<Animation> GetQueriedAnimations(string query = "")
         {
-            List<Animation> alist = animList.Where(a => a.Description.Contains(query)).Take(3).ToList();
-            AutoCompleteStringCollection results = new AutoCompleteStringCollection();
-            foreach (Animation anim in alist)
-            {
-                results.Add(anim.Description);
-            }
-            return results;
+            Regex mRegex = new Regex($"/({query})/g");
+            List<Animation> l = animList.Where(a => a.Description.ToLower().Contains(query)).OrderBy(x => mRegex.Matches(x.Description).Count).ToList();
+            if (l.Count < 1) l = animList.ToList(); //BAHAHAHAHAHAHAHAHA
+            return l;
         }
 
         /// <summary>
@@ -989,11 +993,7 @@ namespace M64MM.Utils
                             }
                         });
 
-                        //Ingame timer is a variable that INCREMENTS every frame in game. In case our previous snapshot of said value is above the timer:
-                        for (int i = 0; i < moduleList.Count(); i++)
-                        {
-                            
-                        }
+                        //Ingame timer is a variable that INCREMENTS every frame in game. In case our previous snapshot of said value is above the timer
 
                         //Ingame timer update
                         // Using VI timer instead of Input timer (Input timer stops counting when transitioning)
@@ -1007,7 +1007,7 @@ namespace M64MM.Utils
                 }
                 // zzz
                 // Now running with Turbo
-                if (_turboUpdate)
+                if (_turboUpdate && UsingTurbo)
                 {
                     await Task.Delay(TimeSpan.FromTicks(9800));
                 }

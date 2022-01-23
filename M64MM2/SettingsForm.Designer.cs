@@ -38,13 +38,13 @@
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpHandling = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbTurbo = new System.Windows.Forms.CheckBox();
             this.tpNetwork = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
             this.tpCamera = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbTurbo = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tpHandling.SuspendLayout();
             this.tpNetwork.SuspendLayout();
@@ -114,6 +114,23 @@
             this.tpHandling.Name = "tpHandling";
             this.tpHandling.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Name = "label5";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // cbTurbo
+            // 
+            resources.ApplyResources(this.cbTurbo, "cbTurbo");
+            this.cbTurbo.Name = "cbTurbo";
+            this.cbTurbo.UseVisualStyleBackColor = true;
+            // 
             // tpNetwork
             // 
             this.tpNetwork.Controls.Add(this.label3);
@@ -121,6 +138,11 @@
             resources.ApplyResources(this.tpNetwork, "tpNetwork");
             this.tpNetwork.Name = "tpNetwork";
             this.tpNetwork.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
             // tpCamera
             // 
@@ -136,28 +158,6 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // cbTurbo
-            // 
-            resources.ApplyResources(this.cbTurbo, "cbTurbo");
-            this.cbTurbo.Name = "cbTurbo";
-            this.cbTurbo.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Name = "label5";
             // 
             // SettingsForm
             // 

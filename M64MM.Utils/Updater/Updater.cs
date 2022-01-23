@@ -28,7 +28,7 @@ namespace M64MM.Utils
         public static async Task<Tuple<HttpStatusCode, GitHubRelease>> CheckUpdate()
         {
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("User-Agent", "M64MM/3.0 (.NET 4.6)");
+            client.DefaultRequestHeaders.Add("User-Agent", "M64MM/3.0 (.NET 4.7)");
             HttpResponseMessage latestReleases =
          await Task.Run(() => client.GetAsync("https://api.github.com/repos/projectcomet64/M64MM/releases"));
 

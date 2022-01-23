@@ -359,7 +359,9 @@ namespace M64MM.Utils
                     }
                     continue;
                 }
-                if ((ModelHeader[i + 3] == 0 || ModelHeader[i + 3] == 255) && (ModelHeader[i + 7] == 0 || ModelHeader[i + 7] == 255))
+                // todo: improve this with cometchar tier reading
+                if ((ModelHeader[i + 3] == 0 || ModelHeader[i + 3] == 255) && (ModelHeader[i + 7] == 0 || ModelHeader[i + 7] == 255)
+                )
                 {
                     length++;
                 }

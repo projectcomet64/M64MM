@@ -18,7 +18,7 @@ namespace M64MM.Utils
             {
                 verNumber[i] = int.Parse(trimmedverString[i]);
             }
-            string finalTagNumber = String.Join(".", verNumber);
+            string finalTagNumber = string.Join(".", verNumber);
             vTag.FormalVersionNumber = new Version(finalTagNumber);
             if (Tag.Split('-').Length > 1)
             {
@@ -42,7 +42,7 @@ namespace M64MM.Utils
             public string ToString(bool verbose = false)
             {
                 string suffix = "";
-                if (ReleaseChannel == "release")
+                if (ReleaseChannel == "release" || string.IsNullOrWhiteSpace(ReleaseChannel))
                 {
                     if (verbose)
                         suffix = ReleaseChannel + SuffixVersion.ToString();

@@ -201,13 +201,13 @@
     <value>15, 16</value>
   </data>
   <data name="cbCheckUpdates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 17</value>
+    <value>181, 17</value>
   </data>
   <data name="cbCheckUpdates.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="cbCheckUpdates.Text" xml:space="preserve">
-    <value>Check for updates at startup</value>
+    <value>Check for updates at initialization</value>
   </data>
   <data name="&gt;&gt;cbCheckUpdates.Name" xml:space="preserve">
     <value>cbCheckUpdates</value>
@@ -293,26 +293,6 @@
   <data name="&gt;&gt;cbCamStyles.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 11.25pt, style=Bold</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 195</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 60</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Enabling Turbo Ticks will make M64MM use a little bit more CPU. If your system becomes sluggish, consider disabling.
-</value>
-  </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
   </data>
@@ -325,26 +305,6 @@
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 81</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 114</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Turbo Ticks increases the speed at which Addon updates happen.
-
-An Addon update is every tick it makes which is synchronized to game clock. Since M64MM is a trainer, this may desync with the emulator and sometimes drop 3 or 4 frames.
-
-Use this only if your computer is strong enough and addons aren't running as smooth as they should be running. Works best if M64MM is running at high CPU priority.
-
-
-
-</value>
-  </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
   </data>
@@ -356,21 +316,6 @@ Use this only if your computer is strong enough and addons aren't running as smo
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="cbTurbo.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbTurbo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 51</value>
-  </data>
-  <data name="cbTurbo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 17</value>
-  </data>
-  <data name="cbTurbo.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="cbTurbo.Text" xml:space="preserve">
-    <value>Turbo Ticks</value>
   </data>
   <data name="&gt;&gt;cbTurbo.Name" xml:space="preserve">
     <value>cbTurbo</value>
@@ -387,6 +332,7 @@ Use this only if your computer is strong enough and addons aren't running as smo
   <data name="tpHandling.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tpHandling.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
@@ -468,18 +414,6 @@ Do not ask me about bugs if you're not on the latest version, because I will lik
   <data name="&gt;&gt;tpNetwork.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 41</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>389, 43</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Auto-Powercam enables Powercam when M64MM starts. It auto-assigns a camera preset to avoid your camera from being frozen way up in the sky when the game starts.</value>
-  </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
   </data>
@@ -535,6 +469,120 @@ Do not ask me about bugs if you're not on the latest version, because I will lik
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 11.25pt, style=Bold</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 197</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>403, 78</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Enabling Turbo Ticks will make M64MM use a little bit more CPU (12-14%) if an Addon wants. If your system or game becomes sluggish, consider disabling.
+</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tpHandling</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 73</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>403, 134</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Turbo Ticks increases the speed at which Addon updates happen whenever Addons request so.
+
+An Addon update is every tick it makes which is synchronized to game clock. Since M64MM is a trainer and not 100% synchronized with the emulator, this may desync with the emulator and sometimes drop 3 or 4 frames.
+
+Use this only if your computer is strong enough and addons aren't running as smooth as they should be running. Works best if M64MM is running at high CPU priority.
+
+
+
+</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tpHandling</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbTurbo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbTurbo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 51</value>
+  </data>
+  <data name="cbTurbo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 17</value>
+  </data>
+  <data name="cbTurbo.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cbTurbo.Text" xml:space="preserve">
+    <value>Turbo Ticks</value>
+  </data>
+  <data name="&gt;&gt;cbTurbo.Name" xml:space="preserve">
+    <value>cbTurbo</value>
+  </data>
+  <data name="&gt;&gt;cbTurbo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbTurbo.Parent" xml:space="preserve">
+    <value>tpHandling</value>
+  </data>
+  <data name="&gt;&gt;cbTurbo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 41</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>389, 43</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Auto-Powercam enables Powercam when M64MM starts. It auto-assigns a camera preset to avoid your camera from being frozen way up in the sky when the game starts.</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tpCamera</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
