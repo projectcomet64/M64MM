@@ -117,182 +117,105 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rtbUpdateNotes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rtbUpdateNotes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 81</value>
+  <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>232, 11</value>
   </data>
-  <data name="rtbUpdateNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>387, 130</value>
+  <data name="lblAuthor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 73</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rtbUpdateNotes.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="lblAuthor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>346, 16</value>
   </data>
-  <data name="rtbUpdateNotes.Text" xml:space="preserve">
-    <value />
+  <data name="appIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 11</value>
   </data>
-  <data name="&gt;&gt;rtbUpdateNotes.Name" xml:space="preserve">
-    <value>rtbUpdateNotes</value>
+  <data name="appIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 59</value>
   </data>
-  <data name="&gt;&gt;rtbUpdateNotes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblBugReport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 301</value>
   </data>
-  <data name="&gt;&gt;rtbUpdateNotes.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;rtbUpdateNotes.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lbCurrentVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbCurrentVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 54</value>
-  </data>
-  <data name="lbCurrentVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 12</value>
-  </data>
-  <data name="lbCurrentVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="lbCurrentVersion.Text" xml:space="preserve">
-    <value>Current Version: NaN</value>
-  </data>
-  <data name="&gt;&gt;lbCurrentVersion.Name" xml:space="preserve">
-    <value>lbCurrentVersion</value>
-  </data>
-  <data name="&gt;&gt;lbCurrentVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCurrentVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lbCurrentVersion.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lbLatestVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbLatestVersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 11.25pt</value>
-  </data>
-  <data name="lbLatestVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
-  </data>
-  <data name="lbLatestVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 18</value>
-  </data>
-  <data name="lbLatestVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="lbLatestVersion.Text" xml:space="preserve">
-    <value>Latest Version: NaN</value>
-  </data>
-  <data name="&gt;&gt;lbLatestVersion.Name" xml:space="preserve">
-    <value>lbLatestVersion</value>
-  </data>
-  <data name="&gt;&gt;lbLatestVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbLatestVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lbLatestVersion.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnOpenRel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 216</value>
-  </data>
-  <data name="btnOpenRel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 28</value>
-  </data>
-  <data name="btnOpenRel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="btnOpenRel.Text" xml:space="preserve">
-    <value>Open Release Page and Downloads</value>
-  </data>
-  <data name="&gt;&gt;btnOpenRel.Name" xml:space="preserve">
-    <value>btnOpenRel</value>
-  </data>
-  <data name="&gt;&gt;btnOpenRel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOpenRel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnOpenRel.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="lblBugReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>431, 12</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 216</value>
+    <value>436, 347</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 28</value>
+    <value>75, 21</value>
   </data>
-  <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="lnkDiscord.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 322</value>
   </data>
-  <data name="btnOK.Text" xml:space="preserve">
-    <value>Alright</value>
+  <data name="lnkDiscord.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 12</value>
   </data>
-  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
-    <value>btnOK</value>
+  <data name="lnkGithubIssues.Location" type="System.Drawing.Point, System.Drawing">
+    <value>437, 322</value>
   </data>
-  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lbUpdateNotes.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbUpdateNotes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 66</value>
-  </data>
-  <data name="lbUpdateNotes.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lnkGithubIssues.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 12</value>
   </data>
-  <data name="lbUpdateNotes.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="pbBanner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 11</value>
   </data>
-  <data name="lbUpdateNotes.Text" xml:space="preserve">
-    <value>Update Notes:</value>
+  <data name="pbBanner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 287</value>
   </data>
-  <data name="&gt;&gt;lbUpdateNotes.Name" xml:space="preserve">
-    <value>lbUpdateNotes</value>
+  <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 50</value>
   </data>
-  <data name="&gt;&gt;lbUpdateNotes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>165, 91</value>
   </data>
-  <data name="&gt;&gt;lbUpdateNotes.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="richTextBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>343, 207</value>
   </data>
-  <data name="&gt;&gt;lbUpdateNotes.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>This program is dedicated to the Super Mario 64 machinima community. Thanks for all the effort you've put into your work, and I hope this tool and its future extensions will help you create awesome videos for years to come!
+
+Special thanks to:
+Patreon supporters: PonderMan, Waro, MrGameAndSketch
+
+Onewingdangl (Creator of the original SM64MM 1.0)
+James Pelster (CaptainSwag101, creator of the original M64MM2.0)
+Dudaw (Provider of the values for the animation swapper)
+yoshielectron (SM64 cheat documentation)
+Starxxon/VL-Tone
+shygoo (Hack64)
+kurethedead
+mountainflaw
+pannenkoek2012
+The buncha clever folks behind the SM64 Decompilation
+AloXado320
+Every tester since 2.0 Beta 1
+Everyone who supported me up to this point.
+MarioMario24680
+
+Special thanks to YOU for using the program. If it weren't for your passion, perhaps M64MM would've never gone past 1.0.
+Version 2 made by James "CaptainSwag101" Pelster. Thanks for being such a great person.
+
+
+This program's source code is under the GPL v3 license. Addons may have their own licenses.</value>
   </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>zh-Hans</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="lblWhosInBanner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 301</value>
+  </data>
+  <data name="lblWhosInBanner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 70</value>
+  </data>
+  <data name="lblYouCanJoin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 344</value>
+  </data>
+  <data name="lblYouCanJoin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 24</value>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>411, 251</value>
+    <value>520, 379</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2181,14 +2104,5 @@
         /xoMA/8aDAP/GgwD/xoMA/8aDAP/GgwD/wAAAAOAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA
 </value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Update M64MM3</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>LatestUpdateDialog</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
