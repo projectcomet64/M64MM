@@ -117,182 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rtbUpdateNotes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rtbUpdateNotes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 81</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 13</value>
   </data>
-  <data name="rtbUpdateNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>387, 130</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>帽子/上衣</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rtbUpdateNotes.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
   </data>
-  <data name="rtbUpdateNotes.Text" xml:space="preserve">
-    <value />
+  <data name="label2.Text" xml:space="preserve">
+    <value>头发</value>
   </data>
-  <data name="&gt;&gt;rtbUpdateNotes.Name" xml:space="preserve">
-    <value>rtbUpdateNotes</value>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 13</value>
   </data>
-  <data name="&gt;&gt;rtbUpdateNotes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>皮肤</value>
   </data>
-  <data name="&gt;&gt;rtbUpdateNotes.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
   </data>
-  <data name="&gt;&gt;rtbUpdateNotes.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>手套</value>
   </data>
-  <data name="lbCurrentVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
   </data>
-  <data name="lbCurrentVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 54</value>
+  <data name="label5.Text" xml:space="preserve">
+    <value>裤子</value>
   </data>
-  <data name="lbCurrentVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 12</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
   </data>
-  <data name="lbCurrentVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>鞋子</value>
   </data>
-  <data name="lbCurrentVersion.Text" xml:space="preserve">
-    <value>Current Version: NaN</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>主色</value>
   </data>
-  <data name="&gt;&gt;lbCurrentVersion.Name" xml:space="preserve">
-    <value>lbCurrentVersion</value>
+  <data name="label8.Text" xml:space="preserve">
+    <value>阴影色</value>
   </data>
-  <data name="&gt;&gt;lbCurrentVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label9.Text" xml:space="preserve">
+    <value>注意!在使用本工具修改角色颜色之前，请务必把模拟器中的所有颜色代码（Color Code）都取消打勾！
+  否则马力欧的颜色将会和你所选择的不一致！</value>
   </data>
-  <data name="&gt;&gt;lbCurrentVersion.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="grpColor.Text" xml:space="preserve">
+    <value>颜色设置：</value>
   </data>
-  <data name="&gt;&gt;lbCurrentVersion.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="btnLoadFromGame.Text" xml:space="preserve">
+    <value>从游戏中读取</value>
   </data>
-  <data name="lbLatestVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="btnExportCode.Text" xml:space="preserve">
+    <value>生成颜色代码…</value>
   </data>
-  <data name="lbLatestVersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 11.25pt</value>
+  <data name="btnImportCode.Text" xml:space="preserve">
+    <value>导入颜色代码…</value>
   </data>
-  <data name="lbLatestVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
+  <data name="grpShading.Text" xml:space="preserve">
+    <value>阴影设置：</value>
   </data>
-  <data name="lbLatestVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 18</value>
+  <data name="btnRandomizeShading.Text" xml:space="preserve">
+    <value>随机阴影</value>
   </data>
-  <data name="lbLatestVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="btnResetShading.Text" xml:space="preserve">
+    <value>重置阴影</value>
   </data>
-  <data name="lbLatestVersion.Text" xml:space="preserve">
-    <value>Latest Version: NaN</value>
+  <data name="label13.Text" xml:space="preserve">
+    <value>前</value>
   </data>
-  <data name="&gt;&gt;lbLatestVersion.Name" xml:space="preserve">
-    <value>lbLatestVersion</value>
+  <data name="label14.Text" xml:space="preserve">
+    <value>上</value>
   </data>
-  <data name="&gt;&gt;lbLatestVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label15.Text" xml:space="preserve">
+    <value>右</value>
   </data>
-  <data name="&gt;&gt;lbLatestVersion.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="label12.Text" xml:space="preserve">
+    <value>后</value>
   </data>
-  <data name="&gt;&gt;lbLatestVersion.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="label11.Text" xml:space="preserve">
+    <value>下</value>
   </data>
-  <data name="btnOpenRel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 216</value>
+  <data name="label10.Text" xml:space="preserve">
+    <value>左</value>
   </data>
-  <data name="btnOpenRel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 28</value>
+  <data name="cbRoutingSource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
   </data>
-  <data name="btnOpenRel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="cbRoutingTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 59</value>
   </data>
-  <data name="btnOpenRel.Text" xml:space="preserve">
-    <value>Open Release Page and Downloads</value>
+  <data name="lbShareWith.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 43</value>
   </data>
-  <data name="&gt;&gt;btnOpenRel.Name" xml:space="preserve">
-    <value>btnOpenRel</value>
+  <data name="lbShareWith.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 13</value>
   </data>
-  <data name="&gt;&gt;btnOpenRel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lbShareWith.Text" xml:space="preserve">
+    <value>和以下部位共用颜色：</value>
   </data>
-  <data name="&gt;&gt;btnOpenRel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="btnReroute.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 59</value>
   </data>
-  <data name="&gt;&gt;btnOpenRel.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="btnReroute.Text" xml:space="preserve">
+    <value>应用</value>
   </data>
-  <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 216</value>
+  <data name="grpExperimental.Text" xml:space="preserve">
+    <value>实验性功能： Color Routing</value>
   </data>
-  <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 28</value>
+  <data name="grpCCRepo.Text" xml:space="preserve">
+    <value>颜色代码库</value>
   </data>
-  <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="btnRefresh.Text" xml:space="preserve">
+    <value>重新载入列表</value>
   </data>
-  <data name="btnOK.Text" xml:space="preserve">
-    <value>Alright</value>
-  </data>
-  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
-    <value>btnOK</value>
-  </data>
-  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lbUpdateNotes.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbUpdateNotes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 66</value>
-  </data>
-  <data name="lbUpdateNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 12</value>
-  </data>
-  <data name="lbUpdateNotes.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="lbUpdateNotes.Text" xml:space="preserve">
-    <value>Update Notes:</value>
-  </data>
-  <data name="&gt;&gt;lbUpdateNotes.Name" xml:space="preserve">
-    <value>lbUpdateNotes</value>
-  </data>
-  <data name="&gt;&gt;lbUpdateNotes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbUpdateNotes.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lbUpdateNotes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>zh-Hans</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>411, 251</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>外观设置</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2181,14 +2123,5 @@
         /xoMA/8aDAP/GgwD/xoMA/8aDAP/GgwD/wAAAAOAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA
 </value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Update M64MM3</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>LatestUpdateDialog</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

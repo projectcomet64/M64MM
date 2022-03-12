@@ -117,182 +117,96 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rtbUpdateNotes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rtbUpdateNotes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 81</value>
+  <data name="lblAuthor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>167, 79</value>
   </data>
-  <data name="rtbUpdateNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>387, 130</value>
+  <data name="lblAuthor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>345, 32</value>
+  </data>
+  <data name="lblAuthor.Text" xml:space="preserve">
+    <value>作者：GlitchyPSI，基于 James "Captainswag101" Pelster 的 M64MM2 开发。简体中文翻译：LuigiUltra64</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rtbUpdateNotes.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="lblBugReport.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="rtbUpdateNotes.Text" xml:space="preserve">
-    <value />
+  <data name="lblBugReport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 326</value>
   </data>
-  <data name="&gt;&gt;rtbUpdateNotes.Name" xml:space="preserve">
-    <value>rtbUpdateNotes</value>
+  <data name="lblBugReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>345, 28</value>
   </data>
-  <data name="&gt;&gt;rtbUpdateNotes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rtbUpdateNotes.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;rtbUpdateNotes.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lbCurrentVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbCurrentVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 54</value>
-  </data>
-  <data name="lbCurrentVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 12</value>
-  </data>
-  <data name="lbCurrentVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="lbCurrentVersion.Text" xml:space="preserve">
-    <value>Current Version: NaN</value>
-  </data>
-  <data name="&gt;&gt;lbCurrentVersion.Name" xml:space="preserve">
-    <value>lbCurrentVersion</value>
-  </data>
-  <data name="&gt;&gt;lbCurrentVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbCurrentVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lbCurrentVersion.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lbLatestVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbLatestVersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 11.25pt</value>
-  </data>
-  <data name="lbLatestVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
-  </data>
-  <data name="lbLatestVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 18</value>
-  </data>
-  <data name="lbLatestVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="lbLatestVersion.Text" xml:space="preserve">
-    <value>Latest Version: NaN</value>
-  </data>
-  <data name="&gt;&gt;lbLatestVersion.Name" xml:space="preserve">
-    <value>lbLatestVersion</value>
-  </data>
-  <data name="&gt;&gt;lbLatestVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbLatestVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lbLatestVersion.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnOpenRel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 216</value>
-  </data>
-  <data name="btnOpenRel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 28</value>
-  </data>
-  <data name="btnOpenRel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="btnOpenRel.Text" xml:space="preserve">
-    <value>Open Release Page and Downloads</value>
-  </data>
-  <data name="&gt;&gt;btnOpenRel.Name" xml:space="preserve">
-    <value>btnOpenRel</value>
-  </data>
-  <data name="&gt;&gt;btnOpenRel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOpenRel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnOpenRel.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="lblBugReport.Text" xml:space="preserve">
+    <value>如果您发现了bug，需要帮助，或者有新功能的建议，请通过以下方式联系我们：</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 216</value>
+    <value>437, 391</value>
   </data>
-  <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 28</value>
+  <data name="lnkDiscord.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 365</value>
   </data>
-  <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="lnkGithubIssues.Location" type="System.Drawing.Point, System.Drawing">
+    <value>426, 365</value>
   </data>
-  <data name="btnOK.Text" xml:space="preserve">
-    <value>Alright</value>
+  <data name="lnkGithubIssues.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
   </data>
-  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
-    <value>btnOK</value>
+  <data name="lnkGithubIssues.Text" xml:space="preserve">
+    <value>GitHub问题反馈</value>
   </data>
-  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>169, 114</value>
   </data>
-  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="richTextBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>343, 209</value>
   </data>
-  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>该项目致力于超级马力欧64引擎电影社区。感谢您在工作中付出的所有努力，我希望这个工具及其以后的扩展将帮助您在未来创作出精彩的视频！
+
+特别感谢：
+Patreon 支持者： PonderMan, Waro
+
+Onewingdangl （原版 M64MM1.0 的制作者）
+James Pelster （CaptainSwag101， 原版 M64MM2.0 的制作者）
+Dudaw （为动画交换器提供数据）
+yoshielectron （超级马力欧64作弊文档）
+Starxxon/VL-Tone
+shygoo （Hack64）
+kurethedead
+mountainflaw
+pannenkoek2012
+超级马力欧64反编译后的聪明技术人员们
+AloXado320
+自从版本 2.0 Beta1 的每位测试者
+到目前为止，所有支持我的人。
+MarioMario24680
+
+非常感谢*您*使用本程序。如果没有您的激情，也许M64MM就不会更新到 1.0 以上的版本。
+版本 2 由 James "CaptainSwag101" Pelster 制作。您是一位好人。
+
+
+此程序的源代码受到 GPL v3 许可证的保护。</value>
   </data>
-  <data name="lbUpdateNotes.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="lblWhosInBanner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 88</value>
   </data>
-  <data name="lbUpdateNotes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 66</value>
+  <data name="lblWhosInBanner.Text" xml:space="preserve">
+    <value>在横幅上：
+</value>
   </data>
-  <data name="lbUpdateNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 12</value>
+  <data name="lblYouCanJoin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>167, 388</value>
   </data>
-  <data name="lbUpdateNotes.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="lblYouCanJoin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 24</value>
   </data>
-  <data name="lbUpdateNotes.Text" xml:space="preserve">
-    <value>Update Notes:</value>
-  </data>
-  <data name="&gt;&gt;lbUpdateNotes.Name" xml:space="preserve">
-    <value>lbUpdateNotes</value>
-  </data>
-  <data name="&gt;&gt;lbUpdateNotes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbUpdateNotes.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lbUpdateNotes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>zh-Hans</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+  <data name="lblYouCanJoin.Text" xml:space="preserve">
+    <value>您也可以成为横幅上的一份子！
+请联系GlitchyPSI了解更多。</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>411, 251</value>
+    <value>524, 423</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2183,12 +2097,6 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Update M64MM3</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>LatestUpdateDialog</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>关于神游马力欧电影制作器（Mario 64 Movie Maker）</value>
   </data>
 </root>
