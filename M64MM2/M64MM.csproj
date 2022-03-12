@@ -220,6 +220,9 @@
     <EmbeddedResource Include="EmuSelectorForm.resx">
       <DependentUpon>EmuSelectorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmuSelectorForm.zh-CN.resx">
+      <DependentUpon>EmuSelectorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExtraControlsForm.es.resx">
       <DependentUpon>ExtraControlsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,9 +240,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LatestUpdateDialog.zh-CN.resx">
       <DependentUpon>LatestUpdateDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.en.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.es.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
