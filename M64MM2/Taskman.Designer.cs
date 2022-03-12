@@ -41,74 +41,57 @@
             // 
             // listView1
             // 
+            resources.ApplyResources(this.listView1, "listView1");
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(276, 137);
-            this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // btn_OK
             // 
-            this.btn_OK.Location = new System.Drawing.Point(213, 254);
+            resources.ApplyResources(this.btn_OK, "btn_OK");
             this.btn_OK.Name = "btn_OK";
-            this.btn_OK.Size = new System.Drawing.Size(75, 23);
-            this.btn_OK.TabIndex = 1;
-            this.btn_OK.Text = "OK";
             this.btn_OK.UseVisualStyleBackColor = true;
             this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click);
             // 
             // lb_Desc
             // 
-            this.lb_Desc.Location = new System.Drawing.Point(12, 152);
+            resources.ApplyResources(this.lb_Desc, "lb_Desc");
             this.lb_Desc.Name = "lb_Desc";
-            this.lb_Desc.Size = new System.Drawing.Size(276, 99);
-            this.lb_Desc.TabIndex = 2;
-            this.lb_Desc.Text = "<Please select an item.>";
-            this.lb_Desc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cb_pluginEnabled
             // 
-            this.cb_pluginEnabled.AutoSize = true;
-            this.cb_pluginEnabled.Location = new System.Drawing.Point(15, 258);
+            resources.ApplyResources(this.cb_pluginEnabled, "cb_pluginEnabled");
             this.cb_pluginEnabled.Name = "cb_pluginEnabled";
-            this.cb_pluginEnabled.Size = new System.Drawing.Size(134, 17);
-            this.cb_pluginEnabled.TabIndex = 3;
-            this.cb_pluginEnabled.Text = "Plugin can use Update";
             this.cb_pluginEnabled.UseVisualStyleBackColor = true;
             this.cb_pluginEnabled.CheckedChanged += new System.EventHandler(this.cb_pluginEnabled_CheckedChanged);
             // 
             // cmsAddonStuff
             // 
+            resources.ApplyResources(this.cmsAddonStuff, "cmsAddonStuff");
             this.cmsAddonStuff.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toggleActiveToolStripMenuItem});
             this.cmsAddonStuff.Name = "cmsAddonStuff";
-            this.cmsAddonStuff.Size = new System.Drawing.Size(146, 26);
             // 
             // toggleActiveToolStripMenuItem
             // 
+            resources.ApplyResources(this.toggleActiveToolStripMenuItem, "toggleActiveToolStripMenuItem");
             this.toggleActiveToolStripMenuItem.Name = "toggleActiveToolStripMenuItem";
-            this.toggleActiveToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.toggleActiveToolStripMenuItem.Text = "Toggle Active";
             this.toggleActiveToolStripMenuItem.Click += new System.EventHandler(this.toggleActiveToolStripMenuItem_Click);
             // 
             // Taskman
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 289);
             this.Controls.Add(this.cb_pluginEnabled);
             this.Controls.Add(this.lb_Desc);
             this.Controls.Add(this.btn_OK);
             this.Controls.Add(this.listView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Taskman";
-            this.Text = "Installed Addons";
             this.cmsAddonStuff.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

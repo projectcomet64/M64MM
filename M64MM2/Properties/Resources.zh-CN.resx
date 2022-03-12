@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="colorCodeImportMsg" xml:space="preserve">
+    <value>请将您的颜色代码粘贴在下方，然后点击 OK 。</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="M64MM2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="superg_m64mmsplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\superg_m64mmsplash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M64MM2_New" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 New.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M64MM2_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="colorCodeSPARKRom" xml:space="preserve">
+    <value>此 ROM 似乎包含 SPARK 可编辑颜色代码模组。目前，外观设置不支持 SPARK, 所以您也许需要从https://comet.glitchypsi.xyz 下载 CometSPARK 扩展。</value>
+  </data>
+  <data name="programStatusAwaitingLevel" xml:space="preserve">
+    <value>状态：等待加载关卡--内存地址为：</value>
+  </data>
+  <data name="cameraDataNotLoaded" xml:space="preserve">
+    <value>相机数据未被加载！</value>
+  </data>
+  <data name="m64mm3_banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m64mm3_banner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="programStatus3" xml:space="preserve">
+    <value>状态：内存地址为：</value>
+  </data>
+  <data name="invalidColorCodeMsg2" xml:space="preserve">
+    <value>无效颜色代码：第 {0} 行正在试图编辑内存 {1}，但并非马力欧的颜色数据所在地址。确保您没有使用 PAL 地区的颜色代码！</value>
+  </data>
+  <data name="invalidColorCodeMsgShort" xml:space="preserve">
+    <value>短</value>
+  </data>
+  <data name="picturedInBannerMsg" xml:space="preserve">
+    <value>在横幅上：</value>
+  </data>
+  <data name="colorCodeExportMsg" xml:space="preserve">
+    <value>这是您所生成的颜色代码：</value>
+  </data>
+  <data name="programStatus2" xml:space="preserve">
+    <value>状态：内存地址未找到。</value>
+  </data>
+  <data name="m64mm_hero_devprev" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m64mm_hero_devprev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CC_Mario_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="colorCodeToFile" xml:space="preserve">
+    <value>到文件......</value>
+  </data>
+  <data name="colorCodeModdedRom" xml:space="preserve">
+    <value>此ROM中的马力欧模型数据与正常不同并且不是一个兼容的CometROM。颜色代码编辑器与阴影编辑器已被禁用。它们在此ROM中可能无法正常运作。</value>
+  </data>
+  <data name="invalidColorCodeMsgLong" xml:space="preserve">
+    <value>长</value>
+  </data>
+  <data name="prereleaseString" xml:space="preserve">
+    <value>-alpha7-e</value>
+  </data>
+  <data name="invalidAnimSelected" xml:space="preserve">
+    <value>您输入了因过 {0} 而无效的颜色代码。请确保从列表中选择了正确选项。</value>
+  </data>
+  <data name="m3_splash_dev" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m3_splash_dev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="animDataNotLoaded" xml:space="preserve">
+    <value>动画数据未被加载！</value>
+  </data>
+  <data name="invalidColorCodeMsgTitle" xml:space="preserve">
+    <value>无效颜色代码</value>
+  </data>
+  <data name="cameraStateFrozen" xml:space="preserve">
+    <value>相机状态：冻结</value>
+  </data>
+  <data name="m3_splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m3_splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="setDefaultColorsMsg" xml:space="preserve">
+    <value>将这些颜色设为默认？</value>
+  </data>
+  <data name="colorCodeErrorFileReading" xml:space="preserve">
+    <value>无法从文件中读取颜色代码。\n{0}</value>
+  </data>
+  <data name="setDefaultColorsMsgTitle" xml:space="preserve">
+    <value>设置为默认？</value>
+  </data>
+  <data name="picturedInBannerPeople" xml:space="preserve">
+    <value>Onewingdangl, Captainswag101, GlitchyPSI</value>
+  </data>
+  <data name="M64MM2_New_Icon_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 New Icon 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="colorCodeErrorWriting" xml:space="preserve">
+    <value>无法向文件中写入颜色代码。\n{0}</value>
+  </data>
+  <data name="cameraStateDefault" xml:space="preserve">
+    <value>相机状态：默认</value>
+  </data>
+  <data name="m64mm_hero" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\m64mm_hero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="programStatus1" xml:space="preserve">
+    <value>状态：Project64 未打开。</value>
+  </data>
+  <data name="version3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\version31.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cameraToggleSoftFrozen" xml:space="preserve">
+    <value>软冻结：</value>
+  </data>
+  <data name="cameraToggleFrozen" xml:space="preserve">
+    <value>冻结：</value>
+  </data>
+  <data name="updateUpToDate" xml:space="preserve">
+    <value>（您正使用最新版！）</value>
+  </data>
+  <data name="updateLatestVersion" xml:space="preserve">
+    <value>最新：</value>
+  </data>
+  <data name="M64MM2_New_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 New Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="updateUpdateNow" xml:space="preserve">
+    <value>（可用更新！）</value>
+  </data>
+  <data name="invalidColorCodeMsg1" xml:space="preserve">
+    <value>无效颜色代码：第 {0} 行过 {1} 。</value>
+  </data>
+  <data name="colorCodeEmptyRom" xml:space="preserve">
+    <value>......此 ROM 文件不包含模型文件。</value>
+  </data>
+  <data name="updateCurrentVersion" xml:space="preserve">
+    <value>当前：</value>
+  </data>
+  <data name="colorCodeFromFile" xml:space="preserve">
+    <value>从文件......</value>
+  </data>
+  <data name="cameraStateSoftFrozen" xml:space="preserve">
+    <value>相机状态：软冻结</value>
+  </data>
+  <data name="version3_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\version3 big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="programName" xml:space="preserve">
+    <value>M64MM Classic</value>
+  </data>
+  <data name="webb_m64mmsplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\webb_m64mmsplash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="discordInvite" xml:space="preserve">
+    <value>http://comet.glitchypsi.xyz</value>
+  </data>
+  <data name="version3_2big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\version3_2big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="updateNetworkError" xml:space="preserve">
+    <value>发生故障。无法连接到 GitHub 网站来获得更新。请检查网络连接。</value>
+  </data>
+  <data name="version32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\version32.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="powercamIngameDirtyMsg" xml:space="preserve">
+    <value>你打开了一个使用 Powercam 可能会导致问题的关卡，所以你无法启用 Powercam。
+请在游戏暂停时进入一个镜头未缩小的关卡并打开Powercam。</value>
+  </data>
+  <data name="powercamIngameDirtyTitle" xml:space="preserve">
+    <value>现在这是不合适的。</value>
+  </data>
+  <data name="powercamPregameDirtyMsg" xml:space="preserve">
+    <value>如果您加载了一个已经打开了Powercam的关卡，摄像机可能会出现错误，所以我们已经为您关闭了。
+请在游戏暂停时进入一个镜头未缩小的关卡并打开Powercam。</value>
+  </data>
+  <data name="powercamPregameDirtyTitle" xml:space="preserve">
+    <value>请注意，这很重要。</value>
+  </data>
+</root>
