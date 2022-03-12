@@ -178,9 +178,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AboutForm.en.resx">
-      <DependentUpon>AboutForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AboutForm.es.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +238,9 @@
     <EmbeddedResource Include="LatestUpdateDialog.zh-CN.resx">
       <DependentUpon>LatestUpdateDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LatestUpdateDialog.zh-Hans.resx">
+      <DependentUpon>LatestUpdateDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.es.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -279,6 +279,9 @@
     <EmbeddedResource Include="SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Taskman.es.resx">
+      <DependentUpon>Taskman.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Taskman.resx">
       <DependentUpon>Taskman.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,6 +308,7 @@
     <Content Include="animation_data.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="animation_data_zhCN.txt" />
     <Content Include="camera_data.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -312,6 +316,7 @@
     <None Include="Resources\version3_2big.png" />
     <None Include="Resources\webb_m64mmsplash.png" />
     <None Include="Resources\m3_splash_dev.png" />
+    <Content Include="camera_data_zhCN.txt" />
     <Content Include="Resources\M64MM2 New Icon 2 small.png" />
     <Content Include="Resources\M64MM2 New Icon 2.png" />
     <Content Include="Resources\M64MM2 New Icon.png" />

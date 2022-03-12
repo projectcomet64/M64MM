@@ -38,8 +38,8 @@
             // 
             // lbEmu
             // 
-            this.lbEmu.FormattingEnabled = true;
             resources.ApplyResources(this.lbEmu, "lbEmu");
+            this.lbEmu.FormattingEnabled = true;
             this.lbEmu.Name = "lbEmu";
             // 
             // label1

@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 63</value>
+    <value>406, 68</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
@@ -131,8 +131,8 @@
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tpNetwork.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -146,9 +146,6 @@
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="tpNetwork.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="cbCheckUpdates.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -156,7 +153,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tpHandling.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 255</value>
+    <value>438, 278</value>
   </data>
   <data name="&gt;&gt;cbCamStyles.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -170,8 +167,8 @@
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>tpNetwork</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 12</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>389, 43</value>
   </data>
   <data name="&gt;&gt;cbTurbo.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -185,8 +182,8 @@
   <data name="&gt;&gt;tpCamera.Name" xml:space="preserve">
     <value>tpCamera</value>
   </data>
-  <data name="cbEnableHotkeys.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 17</value>
+  <data name="&gt;&gt;cbTurbo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -195,7 +192,7 @@
     <value>Settings</value>
   </data>
   <data name="cbEnablePowercamStartup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 18</value>
+    <value>205, 20</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -208,7 +205,7 @@
     <value>3</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 297</value>
+    <value>300, 322</value>
   </data>
   <data name="cbTurbo.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -220,7 +217,244 @@
     <value>tpHandling</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+    <value>6, 13</value>
+  </data>
+  <data name="cbEnableHotkeys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 18</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>403, 78</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>I beg you, keep updates enabled.
+
+Do not ask me about bugs if you're not on the latest version, because I will likely ask you to update before anything else.
+</value>
+  </data>
+  <data name="&gt;&gt;cbEnableHotkeys.Parent" xml:space="preserve">
+    <value>tpHandling</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Enabling Turbo Ticks will make M64MM use a little bit more CPU (12-14%) if an Addon wants. If your system or game becomes sluggish, consider disabling.
+</value>
+  </data>
+  <data name="cbCheckUpdates.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 16</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tpHandling</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cbEnableHotkeys.Text" xml:space="preserve">
+    <value>Enable Hotkeys (CTRL+1, CTRL+2...)</value>
+  </data>
+  <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cbEnablePowercamStartup.Text" xml:space="preserve">
+    <value>Enable Auto-Powercam (on startup)</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbEnablePowercamStartup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;cbTurbo.Name" xml:space="preserve">
+    <value>cbTurbo</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Turbo Ticks increases the speed at which Addon updates happen whenever Addons request so.
+
+An Addon update is every tick it makes which is synchronized to game clock. Since M64MM is a trainer and not 100% synchronized with the emulator, this may desync with the emulator and sometimes drop 3 or 4 frames.
+
+Use this only if your computer is strong enough and addons aren't running as smooth as they should be running. Works best if M64MM is running at high CPU priority.
+
+
+
+</value>
+  </data>
+  <data name="cbTurbo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 51</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 73</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
+  </data>
+  <data name="cbCheckUpdates.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 100</value>
+  </data>
+  <data name="&gt;&gt;cbCheckUpdates.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tpHandling.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;cbCheckUpdates.Parent" xml:space="preserve">
+    <value>tpNetwork</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tpCamera.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="cbEnableHotkeys.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tpHandling.Text" xml:space="preserve">
+    <value>Handling</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
+    <value>btnOK</value>
+  </data>
+  <data name="cbCheckUpdates.Text" xml:space="preserve">
+    <value>Check for updates at initialization</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cbEnableHotkeys.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpHandling.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 197</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tpCamera</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;cbEnableHotkeys.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="&gt;&gt;cbEnablePowercamStartup.Name" xml:space="preserve">
+    <value>cbEnablePowercamStartup</value>
+  </data>
+  <data name="btnOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbCheckUpdates.Name" xml:space="preserve">
+    <value>cbCheckUpdates</value>
+  </data>
+  <data name="tpHandling.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tpCamera.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="cbTurbo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 50</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tpNetwork.Name" xml:space="preserve">
+    <value>tpNetwork</value>
+  </data>
+  <data name="cbCamStyles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 21</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SettingsForm</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="tpHandling.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.Parent" xml:space="preserve">
+    <value>tpCamera</value>
+  </data>
+  <data name="cbCamStyles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 116</value>
+  </data>
+  <data name="cbCamStyles.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;cbCamStyles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tpCamera</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Auto-Powercam enables Powercam when M64MM starts. It auto-assigns a camera preset to avoid your camera from being frozen way up in the sky when the game starts.</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbEnablePowercamStartup.Parent" xml:space="preserve">
+    <value>tpCamera</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbCheckUpdates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 17</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 13</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2110,240 +2344,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA
 </value>
   </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 72</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>I beg you, keep updates enabled.
-
-Do not ask me about bugs if you're not on the latest version, because I will likely ask you to update before anything else.
-</value>
-  </data>
-  <data name="&gt;&gt;cbEnableHotkeys.Parent" xml:space="preserve">
-    <value>tpHandling</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Enabling Turbo Ticks will make M64MM use a little bit more CPU (12-14%) if an Addon wants. If your system or game becomes sluggish, consider disabling.
-</value>
-  </data>
-  <data name="cbCheckUpdates.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 15</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tpHandling</value>
-  </data>
-  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="cbEnableHotkeys.Text" xml:space="preserve">
-    <value>Enable Hotkeys (CTRL+1, CTRL+2...)</value>
-  </data>
-  <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="cbEnablePowercamStartup.Text" xml:space="preserve">
-    <value>Enable Auto-Powercam (on startup)</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="cbCamStyles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 20</value>
-  </data>
-  <data name="&gt;&gt;cbEnablePowercamStartup.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;cbTurbo.Name" xml:space="preserve">
-    <value>cbTurbo</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Turbo Ticks increases the speed at which Addon updates happen whenever Addons request so.
-
-An Addon update is every tick it makes which is synchronized to game clock. Since M64MM is a trainer and not 100% synchronized with the emulator, this may desync with the emulator and sometimes drop 3 or 4 frames.
-
-Use this only if your computer is strong enough and addons aren't running as smooth as they should be running. Works best if M64MM is running at high CPU priority.
-
-
-
-</value>
-  </data>
-  <data name="cbTurbo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 47</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 67</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
-    <value>btnCancel</value>
-  </data>
-  <data name="cbCheckUpdates.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 92</value>
-  </data>
-  <data name="&gt;&gt;cbCheckUpdates.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tpHandling.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;cbCheckUpdates.Parent" xml:space="preserve">
-    <value>tpNetwork</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tpCamera.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="cbEnableHotkeys.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tpHandling.Text" xml:space="preserve">
-    <value>Handling</value>
-  </data>
-  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
-    <value>btnOK</value>
-  </data>
-  <data name="cbCheckUpdates.Text" xml:space="preserve">
-    <value>Check for updates at initialization</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>389, 40</value>
-  </data>
-  <data name="&gt;&gt;cbEnableHotkeys.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tpHandling.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 182</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tpCamera</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cbEnableHotkeys.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 11</value>
-  </data>
-  <data name="&gt;&gt;cbEnablePowercamStartup.Name" xml:space="preserve">
-    <value>cbEnablePowercamStartup</value>
-  </data>
-  <data name="btnOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbCheckUpdates.Name" xml:space="preserve">
-    <value>cbCheckUpdates</value>
-  </data>
-  <data name="tpHandling.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tpCamera.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="cbTurbo.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 46</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;tpNetwork.Name" xml:space="preserve">
-    <value>tpNetwork</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>SettingsForm</value>
-  </data>
-  <data name="btnCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="tpHandling.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;cbCamStyles.Parent" xml:space="preserve">
-    <value>tpCamera</value>
-  </data>
-  <data name="cbCamStyles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 107</value>
-  </data>
-  <data name="cbCamStyles.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;cbCamStyles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tpCamera</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Auto-Powercam enables Powercam when M64MM starts. It auto-assigns a camera preset to avoid your camera from being frozen way up in the sky when the game starts.</value>
-  </data>
-  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
-  </data>
-  <data name="&gt;&gt;cbEnablePowercamStartup.Parent" xml:space="preserve">
-    <value>tpCamera</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cbCheckUpdates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 16</value>
-  </data>
-  <data name="&gt;&gt;cbTurbo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;tpCamera.Parent" xml:space="preserve">
     <value>tabControl1</value>
   </data>
@@ -2366,7 +2366,7 @@ Use this only if your computer is strong enough and addons aren't running as smo
     <value>Networking</value>
   </data>
   <data name="cbEnablePowercamStartup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 13</value>
+    <value>14, 14</value>
   </data>
   <data name="cbEnablePowercamStartup.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2393,16 +2393,16 @@ Use this only if your computer is strong enough and addons aren't running as smo
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 38</value>
+    <value>11, 41</value>
   </data>
   <data name="tpNetwork.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>466, 330</value>
+    <value>466, 358</value>
   </data>
   <data name="cbEnableHotkeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 16</value>
+    <value>205, 17</value>
   </data>
   <data name="&gt;&gt;tpNetwork.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2411,22 +2411,22 @@ Use this only if your computer is strong enough and addons aren't running as smo
     <value>0</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>383, 297</value>
+    <value>383, 322</value>
   </data>
   <data name="&gt;&gt;cbEnablePowercamStartup.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>446, 281</value>
+    <value>446, 304</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>75, 23</value>
   </data>
   <data name="tpCamera.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 255</value>
+    <value>438, 278</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 124</value>
+    <value>403, 134</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>tpHandling</value>
@@ -2435,15 +2435,15 @@ Use this only if your computer is strong enough and addons aren't running as smo
     <value>True</value>
   </data>
   <data name="cbTurbo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 16</value>
+    <value>83, 17</value>
   </data>
   <data name="tpNetwork.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 255</value>
+    <value>438, 278</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>zh-CN</value>
+    <value>es</value>
   </metadata>
 </root>
