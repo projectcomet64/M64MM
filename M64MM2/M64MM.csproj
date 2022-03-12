@@ -157,6 +157,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Properties\Resources.zh-CN.Designer.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +184,9 @@
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AboutForm.zh-CN.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddonErrors.resx">
       <DependentUpon>AddonErrors.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +194,9 @@
       <DependentUpon>AppearanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AppearanceForm.resx">
+      <DependentUpon>AppearanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppearanceForm.zh-CN.resx">
       <DependentUpon>AppearanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\HSLColorDialog.resx">
@@ -201,10 +208,16 @@
     <EmbeddedResource Include="CopyPasteForm.resx">
       <DependentUpon>CopyPasteForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CopyPasteForm.zh-CN.resx">
+      <DependentUpon>CopyPasteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmuSelectorForm.es.resx">
       <DependentUpon>EmuSelectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmuSelectorForm.resx">
+      <DependentUpon>EmuSelectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmuSelectorForm.zh-CN.resx">
       <DependentUpon>EmuSelectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExtraControlsForm.es.resx">
@@ -213,10 +226,16 @@
     <EmbeddedResource Include="ExtraControlsForm.resx">
       <DependentUpon>ExtraControlsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExtraControlsForm.zh-CN.resx">
+      <DependentUpon>ExtraControlsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LatestUpdateDialog.es.resx">
       <DependentUpon>LatestUpdateDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LatestUpdateDialog.resx">
+      <DependentUpon>LatestUpdateDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LatestUpdateDialog.zh-CN.resx">
       <DependentUpon>LatestUpdateDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.es.resx">
@@ -224,6 +243,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.zh-CN.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.es.resx">
@@ -241,16 +263,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.zh-CN.resx" />
     <EmbeddedResource Include="SettingsForm.es.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.zh-CN.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Taskman.resx">
+      <DependentUpon>Taskman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Taskman.zh-CN.resx">
       <DependentUpon>Taskman.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
