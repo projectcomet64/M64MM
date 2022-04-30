@@ -13,102 +13,80 @@ using M64MM.Utils;
 using M64MM2.Properties;
 
 
-namespace M64MM2
-{
-    public partial class CopyPasteForm : Form
-    {
-        public CopyPasteForm()
-        {
+namespace M64MM2 {
+    public partial class CopyPasteForm : Form {
+        public CopyPasteForm() {
             InitializeComponent();
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
-        {
+        private void btnOK_Click(object sender, EventArgs e) {
             //Don't re-parse the color code if we're exporting
-            if (tbColorCode.ReadOnly)
-            {
+            if (tbColorCode.ReadOnly) {
                 this.Close();
                 return;
             }
 
             string wholeCode = "";
 
-            try
-            {
+            try {
                 wholeCode = Looks.ValidateCC(tbColorCode.Lines);
             }
-            catch(ClassicColorCodeInvalidException ex)
-            {
-                if (String.IsNullOrWhiteSpace(ex.Address))
-                {
+            catch (ColorCodeInvalidException ex) {
+                if (String.IsNullOrWhiteSpace(ex.Address)) {
                     string errorMsg = String.Format(Resources.invalidColorCodeMsg2, ex.Line, ex.Address);
                     MessageBox.Show(this, errorMsg, Resources.invalidColorCodeMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else
-                {
+                else {
                     string errorMsg = String.Format(Resources.invalidColorCodeMsg1, ex.Line, ex.Length > 12 ? Resources.invalidColorCodeMsgLong : Resources.invalidColorCodeMsgShort);
                     MessageBox.Show(this, errorMsg, Resources.invalidColorCodeMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
 
-            ((AppearanceForm)this.Owner).ParseColorCode(wholeCode);
+            ((AppearanceForm)Owner).ParseColorCode(tbColorCode.Text);
             this.Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
+        private void btnCancel_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void btnFile_Click(object sender, EventArgs e)
-        {
-            if (tbColorCode.ReadOnly)
-            {
+        private void btnFile_Click(object sender, EventArgs e) {
+            if (tbColorCode.ReadOnly) {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "Plain text Gameshark (*.txt) | *.txt";
                 sfd.AddExtension = true;
                 sfd.DefaultExt = ".txt";
                 DialogResult dRes = sfd.ShowDialog();
-                if (dRes == DialogResult.OK)
-                {
-                    try
-                    {
-                        using (StreamWriter sw = new StreamWriter(sfd.FileName))
-                        {
-                            foreach (string line in tbColorCode.Lines)
-                            {
+                if (dRes == DialogResult.OK) {
+                    try {
+                        using (StreamWriter sw = new StreamWriter(sfd.FileName)) {
+                            foreach (string line in tbColorCode.Lines) {
                                 sw.WriteLine(line);
                             }
                             Close();
                         }
                     }
-                    catch (Exception ex)
-                    {
+                    catch (Exception ex) {
                         MessageBox.Show(String.Format(Resources.colorCodeErrorWriting, ex.Message), "!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-            else
-            {
+            else {
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "Plain text Gameshark (*.txt) | *.txt";
                 ofd.AddExtension = true;
                 ofd.DefaultExt = ".txt";
                 DialogResult dRes = ofd.ShowDialog();
-                if (dRes == DialogResult.OK)
-                {
-                    try
-                    {
-                        using (StreamReader sw = new StreamReader(ofd.FileName))
-                        {
+                if (dRes == DialogResult.OK) {
+                    try {
+                        using (StreamReader sw = new StreamReader(ofd.FileName)) {
                             tbColorCode.Text = sw.ReadToEnd();
                             btnOK_Click(null, null);
                         }
                     }
-                    catch (Exception ex)
-                    {
+                    catch (Exception ex) {
                         MessageBox.Show(String.Format(Resources.colorCodeErrorFileReading, ex.Message), "!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }

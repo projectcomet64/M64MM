@@ -71,8 +71,9 @@ namespace M64MM.Utils
 
         #region Events (internal use recommended)
         public static event EventHandler<int> LevelChanged;
-        public static event EventHandler<Process[]> MoreThanOneEmuFound;
+        public static event EventHandler<EmuFoundEventArgs> MoreThanOneEmuFound;
         public static event EventHandler EmulatorSelected;
+        public static event EventHandler EmulatorInaccessible;
         public static event EventHandler GameTick; // Update, but for internal program usage (Not addon)
         public static event EventHandler<bool> BaseAddressUpdate;
         #endregion
@@ -82,6 +83,7 @@ namespace M64MM.Utils
         public static bool enableUpdates;
         public static byte preferredCameraStyle = 0x01;
         public static bool prePowercam = true;
+        public static string[] preferredReleases;
 
         // Timers
         public static Timer programTimer = new Timer();
@@ -270,6 +272,7 @@ namespace M64MM.Utils
                 coreSettingsGroup.SetSettingValue("enableUpdateCheck", true);
                 coreSettingsGroup.SetSettingValue("enableStartupPowercam", true);
                 coreSettingsGroup.SetSettingValue("turboTicks", false);
+                coreSettingsGroup.SetSettingValue("preferredReleases",new string[]{ "release" });
                 coreSettingsGroup.SetSettingValue<byte>("preferredDefaultCamStyle", 0x01);
                 UpdateLocalVariables();
                 using (StreamWriter rw = new StreamWriter($"{Application.StartupPath}/config.json"))
@@ -316,6 +319,7 @@ namespace M64MM.Utils
             enableUpdates = coreSettingsGroup.EnsureSettingValue<bool>("enableUpdateCheck");
             prePowercam = coreSettingsGroup.EnsureSettingValue<bool>("enableStartupPowercam");
             preferredCameraStyle = coreSettingsGroup.EnsureSettingValue<byte>("preferredDefaultCamStyle");
+            preferredReleases = coreSettingsGroup.EnsureSettingValue<string[]>("preferredReleases") ?? new string[]{"release"};
             _turboUpdate = coreSettingsGroup.EnsureSettingValue<bool>("turboTicks");
         }
 
@@ -583,12 +587,16 @@ namespace M64MM.Utils
 
         static void OnMoreThanMoreEmuFound(Process[] plist)
         {
-            MoreThanOneEmuFound?.Invoke(null, plist);
+            MoreThanOneEmuFound?.Invoke(null, new EmuFoundEventArgs(plist, false));
         }
 
         static void OnEmulatorSelected()
         {
             EmulatorSelected?.Invoke(null, null);
+        }
+
+        static void OnEmulatorInaccessible() {
+            EmulatorInaccessible?.Invoke(null, null);
         }
 
         #endregion
@@ -602,12 +610,11 @@ namespace M64MM.Utils
             {
                 return;
             }
-            List<Process> emulators = Process.GetProcesses().Where(x => x.ProcessName.Contains("Project64")).ToList();
-
+            List<Process> emulators = Process.GetProcesses().Where(x => x.ProcessName.ToLowerInvariant().Contains("project64") || x.ProcessName.ToLowerInvariant().Contains("mupen64")).ToList();
             if (emulators.Count > 1)
             {
 #if DEBUG
-                Debug.WriteLine($"Found more than one PJ64: {emulators.Count}");
+                Debug.WriteLine($"Found more than one emu: {emulators.Count}");
 #endif
                 StopProcessSearch = true;
                 OnMoreThanMoreEmuFound(emulators.ToArray());
@@ -628,6 +635,12 @@ namespace M64MM.Utils
         {
             emuProcess = proc;
             emuProcessHandle = OpenProcess(PROCESS_ALL_ACCESS, false, emuProcess.Id);
+            if (emuProcessHandle == IntPtr.Zero) {
+                OnEmulatorInaccessible();
+                StopProcessSearch = false;
+                emuProcess = null;
+                return;
+            }
             StopProcessSearch = false;
             OnEmulatorSelected();
         }
@@ -815,6 +828,7 @@ namespace M64MM.Utils
                         ColorCodeGS ccG = new ColorCodeGS
                         {
                             Name = Path.GetFileNameWithoutExtension(file.FullName),
+                            // hi windows, i hate carriage return
                             Gameshark = Looks.ValidateCC(sr.ReadToEnd().Split('\n'))
                         };
                         colorCodeGamesharks.Add(ccG);

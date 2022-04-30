@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using M64MM.Utils;
 using M64MM2.Properties;
 using static M64MM.Utils.Core;
 using static M64MM.Utils.Looks;
 
-namespace M64MM2
-{
-    public partial class AppearanceForm : Form
-    {
-        readonly Random rand;
+namespace M64MM2 {
+    public partial class AppearanceForm : Form {
+        readonly Random _rand = new Random();
+
+        private readonly List<ColorCodeGS> _currentSelection = new List<ColorCodeGS>();
 
         ColorMap hatMap = new ColorMap();
         ColorMap hairMap = new ColorMap();
@@ -22,64 +24,382 @@ namespace M64MM2
         ColorMap glovesMap = new ColorMap();
         ColorMap pantsMap = new ColorMap();
         ColorMap shoesMap = new ColorMap();
-        List<ColorCodeGS> currentSelection = new List<ColorCodeGS>();
-        public AppearanceForm()
-        {
+
+        private BindingList<ColorPart> _chosenParts = new BindingList<ColorPart>();
+        public AppearanceForm() {
             InitializeComponent();
+            long s04addr = SegmentedToVirtual(0x04000000, false);
+            lbColors.DrawMode = DrawMode.OwnerDrawFixed;
+            lbColors.ItemHeight = 16;
 
-            rand = new Random();
+            // .ToList() clones.
 
-            cbRandMode.SelectedIndex = 0;
-
-            hatMap.OldColor = Color.FromArgb(255, 0, 0);
-            hatMap.NewColor = BlendColors(hatColorMain.BackColor, hatColorShade.BackColor);
-
-            hairMap.OldColor = Color.FromArgb(115, 6, 0);
-            hairMap.NewColor = BlendColors(hairColorMain.BackColor, hairColorShade.BackColor);
-
-            skinMap.OldColor = Color.FromArgb(254, 193, 121);
-            skinMap.NewColor = BlendColors(skinColorMain.BackColor, skinColorShade.BackColor);
-
-            glovesMap.OldColor = Color.FromArgb(220, 220, 220);
-            glovesMap.NewColor = BlendColors(glovesColorMain.BackColor, glovesColorShade.BackColor);
-
-            pantsMap.OldColor = Color.FromArgb(0, 0, 255);
-            pantsMap.NewColor = BlendColors(pantsColorMain.BackColor, pantsColorShade.BackColor);
-
-            shoesMap.OldColor = Color.FromArgb(114, 28, 14);
-            shoesMap.NewColor = BlendColors(shoesColorMain.BackColor, shoesColorShade.BackColor);
-
-            foreach (RoutableColorPart rtc in defaultRoutableParts)
-            {
-                cbRoutingSource.Items.Add(rtc.Name);
-                if (rtc.Address86.Length > 0 && rtc.Address88.Length > 0)
-                {
-                    cbRoutingTarget.Items.Add(rtc.Name);
-                }
+            switch (modelStatus) {
+                case ModelHeaderType.CLASSIC: {
+                        _chosenParts = new BindingList<ColorPart>(classicParts.ToList());
+                        break;
+                    }
+                case ModelHeaderType.SPARK: {
+                        _chosenParts = new BindingList<ColorPart>(sparkParts.ToList());
+                        break;
+                    }
             }
 
-            foreach (ColorCodeGS cc in colorCodeGamesharks)
-            {
+            cbRandMode.SelectedIndex = 0;
+            if (lbColors.Items.Count > 0) {
+                lbColors.SelectedIndex = 0;
+            }
+
+            hatMap.OldColor = Color.FromArgb(255, 0, 0);
+
+            hairMap.OldColor = Color.FromArgb(115, 6, 0);
+
+            skinMap.OldColor = Color.FromArgb(254, 193, 121);
+
+            glovesMap.OldColor = Color.FromArgb(220, 220, 220);
+
+            pantsMap.OldColor = Color.FromArgb(0, 0, 255);
+
+            shoesMap.OldColor = Color.FromArgb(114, 28, 14);
+
+            marioSprite_Paint(marioSprite, new PaintEventArgs(Graphics.FromImage(marioSprite.Image), Rectangle.Empty));
+
+            lbColors.DataSource = _chosenParts;
+
+            foreach (ColorCodeGS cc in colorCodeGamesharks) {
                 lbCCs.Items.Add(cc);
                 clbRandSel.Items.Add(cc);
             }
 
-            cbRoutingSource.SelectedIndex = 0;
-            cbRoutingTarget.SelectedIndex = 0;
+            LoadFromGame(null, null);
+        }
+
+        void colorButton_Click(object sender, EventArgs e) {
+            Button senderButton = (Button)sender;
+            colorDialog.Color = senderButton.BackColor;
+
+            if (colorDialog.ShowDialog(this) != DialogResult.OK) return;
+            if (!senderButton.Enabled) return;
+
+            senderButton.BackColor = colorDialog.Color;
+            marioSprite.Refresh();
+
+            if ((!IsEmuOpen || BaseAddress == 0) && (modelStatus != ModelHeaderType.CLASSIC || modelStatus != ModelHeaderType.SPARK)
+                && lbColors.SelectedItem == null) return;
+
+            switch (senderButton.Name) {
+                case "btnLightCol":
+                    ((ColorPart)lbColors.SelectedItem).LightColor = senderButton.BackColor;
+                    break;
+                case "btnDarkCol":
+                    ((ColorPart)lbColors.SelectedItem).DarkColor = senderButton.BackColor;
+                    break;
+            }
+            WriteColorPart((ColorPart)lbColors.SelectedItem);
+            lbColors.Refresh();
+        }
+
+        public static void WriteColorPart(ColorPart cPart) {
+
+            cPart.CommitColorsToRam();
+        }
+
+        void DefaultAllColors() {
+            foreach (ColorPart cPart in _chosenParts) {
+                cPart.LightColor = cPart.DefaultLightColor;
+                cPart.DarkColor = cPart.DefaultDarkColor;
+                cPart.CommitColorsToRam();
+            }
+        }
+
+        void ApplyAllColors(bool refreshList = true) {
+            if ((!IsEmuOpen || BaseAddress == 0) && (modelStatus != ModelHeaderType.CLASSIC || modelStatus != ModelHeaderType.SPARK)) return;
+
+            btnLightCol.BackColor = ((ColorPart)lbColors.SelectedItem).LightColor;
+            btnDarkCol.BackColor = ((ColorPart)lbColors.SelectedItem).DarkColor;
+
+            foreach (ColorPart cPart in _chosenParts) {
+                cPart.CommitColorsToRam();
+            }
+
+            if (refreshList) {
+                lbColors_SelectedValueChanged(null, null);
+                lbColors.Refresh();
+            }
+        }
+
+        void OpenCopyPasteForm(object sender, EventArgs e) {
+            CopyPasteForm form = new CopyPasteForm();
+
+            Button senderButton = (Button)sender;
+
+            if (senderButton.Name == btnImportCode.Name) {
+                form.lblInfo.Text = Resources.colorCodeImportMsg;
+                form.btnFile.Text = Resources.colorCodeFromFile;
+                form.ShowDialog(this);
+            }
+            else if (senderButton.Name == btnExportCode.Name) {
+                form.lblInfo.Text = Resources.colorCodeExportMsg;
+                form.btnCancel.Visible = false;
+                form.tbColorCode.ReadOnly = true;
+                form.tbColorCode.Text = GenerateColorCode();
+                form.btnFile.Text = Resources.colorCodeToFile;
+                form.ShowDialog(this);
+            }
+        }
+
+        public void ParseColorCode(string code) {
+            // all my homies hate U+000D CARRIAGE RETURN 
+            FromColorCode(code.Replace("\r", ""), _chosenParts.ToList());
+            marioSprite.Refresh();
+            lbColors.Refresh();
+            ApplyAllColors();
+        }
+
+        public void ChangeShadow() {
+            foreach (ColorPart cPart in _chosenParts) {
+                cPart.ChangeLightDirection((byte)tbLeftRight.Value, (byte)tbBottomTop.Value, (byte)tbBackFront.Value);
+            }
+        }
+
+        string GenerateColorCode() {
+            StringBuilder code = new StringBuilder();
+
+            foreach (ColorPart cPart in _chosenParts) {
+                code.Append(cPart.ToGameshark());
+            }
+
+            return code.ToString();
+        }
+
+        void ResetColors(object sender, EventArgs e) {
+            marioSprite.Refresh();
+            DefaultAllColors();
+            lbColors.Refresh();
+        }
+
+        void LoadFromGame(object sender, EventArgs e) {
+            if ((!IsEmuOpen || BaseAddress == 0) && (modelStatus != ModelHeaderType.CLASSIC || modelStatus != ModelHeaderType.SPARK)) return;
+            long seg04addr = SegmentedToVirtual(0x04000000);
+            foreach (ColorPart cPart in _chosenParts) {
+                var colorData = SwapEndian(ReadBytes(seg04addr + cPart.Offset86, 4), 4);
+                cPart.LightColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+                colorData = SwapEndian(ReadBytes(seg04addr + cPart.Offset88, 4), 4);
+                cPart.DarkColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+            }
+            lbColors.Refresh();
+            marioSprite.Refresh();
+        }
+
+        void marioSprite_DoubleClick(object sender, EventArgs e) {
+            if (!tmrRandom.Enabled) {
+                _currentSelection.Clear();
+                _currentSelection.AddRange(clbRandSel.CheckedItems.Cast<ColorCodeGS>());
+                tmrRandom.Start();
+                lbColors.Refresh();
+            }
+            else {
+                tmrRandom.Stop();
+                lbColors.Refresh();
+            }
 
         }
 
-        void marioSprite_Paint(object sender, PaintEventArgs e)
-        {
+        public void ExecuteRandomCC() {
+
+            int mode = cbRandMode.SelectedIndex;
+            switch (mode) {
+                case 0:
+                    foreach (ColorPart cPart in _chosenParts) {
+                        cPart.LightColor = Color.FromArgb(_rand.Next(255), _rand.Next(255), _rand.Next(255));
+                        cPart.DarkColor = Color.FromArgb(_rand.Next(255), _rand.Next(255), _rand.Next(255));
+                    }
+                    break;
+                case 1:
+                    if (_currentSelection.Count == 0) break;
+                    // FUCK CARRIAGE RETURN
+                    FromColorCode(_currentSelection[_rand.Next(_currentSelection.Count)].Gameshark.Replace("\r", ""),
+                        _chosenParts.ToList());
+                    break;
+            }
+
+            marioSprite.Refresh();
+            ApplyAllColors();
+        }
+
+        void UpdateTrackbar(object sender, EventArgs e) {
+            TrackBar changedBar = ((TrackBar)sender);
+            ShadowParts part = ShadowParts.X;
+            switch (changedBar.Name) {
+                case "tbLeftRight":
+                    part = ShadowParts.X;
+                    break;
+                case "tbBottomTop":
+                    part = ShadowParts.Y;
+                    break;
+                case "tbBackFront":
+                    part = ShadowParts.Z;
+                    break;
+            }
+
+            ChangeShadow();
+        }
+
+
+        void ResetShadows(object sender, EventArgs e) {
+            tbLeftRight.Value = 0x28;
+            tbBottomTop.Value = 0x28;
+            tbBackFront.Value = 0x28;
+        }
+
+        void RandomizeShadows(object sender, EventArgs e) {
+            tbLeftRight.Value = _rand.Next(-127, 128);
+            tbBottomTop.Value = _rand.Next(-127, 128);
+            tbBackFront.Value = _rand.Next(-127, 128);
+        }
+
+        private void lbColors_DrawItem(object sender, DrawItemEventArgs e) {
+            e.DrawBackground();
+            SolidBrush textColor = new SolidBrush(((Control)sender).ForeColor);
+            SolidBrush SelectedColor = new SolidBrush(Color.White);
+            SolidBrush lightColor = new SolidBrush(((ColorPart)lbColors.Items[e.Index]).LightColor);
+            SolidBrush darkColor = new SolidBrush(((ColorPart)lbColors.Items[e.Index]).DarkColor);
+            if (tmrRandom.Enabled) {
+                e.Graphics.DrawImageUnscaled(Resources.randomSlot, new Point(e.Bounds.X, e.Bounds.Y));
+                e.Graphics.DrawImageUnscaled(Resources.randomSlot, new Point(e.Bounds.X + 16, e.Bounds.Y));
+            }
+            else {
+                e.Graphics.FillRectangle(lightColor, new Rectangle(new Point(e.Bounds.X, e.Bounds.Y), new Size(16, 16)));
+                e.Graphics.FillRectangle(darkColor, new Rectangle(new Point(e.Bounds.X + 16, e.Bounds.Y), new Size(16, 16)));
+            }
+            e.Graphics.DrawString(((ColorPart)lbColors.Items[e.Index]).Name,
+                DefaultFont,
+                ((ListBox)sender).SelectedIndex == e.Index ? SelectedColor : textColor,
+                new Point(e.Bounds.X + 32, e.Bounds.Y));
+        }
+
+        private void lbColors_SelectedValueChanged(object sender, EventArgs e) {
+            btnLightCol.BackColor = ((ColorPart)lbColors.SelectedItem).LightColor;
+            btnDarkCol.BackColor = ((ColorPart)lbColors.SelectedItem).DarkColor;
+            lbColors.Refresh();
+        }
+
+        private void btnTFCC2SCC_Click(object sender, EventArgs e) {
+            ColorPart hatShirt = _chosenParts.FirstOrDefault(x => x.Name == "Hat");
+            IEnumerable<ColorPart> hatTransform = _chosenParts.Where(x => x.Name == "Arms" || x.Name == "Shoulders" || x.Name == "Shirt");
+
+            ColorPart overall = _chosenParts.FirstOrDefault(x => x.Name == "Overalls Top");
+            IEnumerable<ColorPart> overallTransform = _chosenParts.Where(x => x.Name.StartsWith("Leg") || x.Name == "Overalls Bottom");
+
+            foreach (ColorPart cp in hatTransform) {
+                cp.LightColor = hatShirt.LightColor;
+                cp.DarkColor = hatShirt.DarkColor;
+            }
+
+            foreach (ColorPart cp in overallTransform) {
+                cp.LightColor = overall.LightColor;
+                cp.DarkColor = overall.DarkColor;
+            }
+            ApplyAllColors();
+        }
+
+        private void btnTFShirtPants_Click(object sender, EventArgs e) {
+            ColorPart shirt = _chosenParts.FirstOrDefault(x => x.Name == "Shirt");
+            ColorPart overall = _chosenParts.FirstOrDefault(x => x.Name == "Overalls Top");
+
+            IEnumerable<ColorPart> shirtTransform = _chosenParts.Where(x => x.Name == "Arms" || x.Name == "Shoulders" || x.Name == "Overalls Top");
+            IEnumerable<ColorPart> overallTransform = _chosenParts.Where(x => x.Name.StartsWith("Leg") || x.Name == "Overalls Bottom");
+
+            foreach (ColorPart cp in overallTransform) {
+                cp.LightColor = overall.LightColor;
+                cp.DarkColor = overall.DarkColor;
+            }
+
+            foreach (ColorPart cp in shirtTransform) {
+                cp.LightColor = shirt.LightColor;
+                cp.DarkColor = shirt.DarkColor;
+            }
+            ApplyAllColors();
+        }
+
+        private void btnTFShorties_Click(object sender, EventArgs e) {
+            ColorPart skin = _chosenParts.FirstOrDefault(x => x.Name == "Skin");
+            ColorPart legbottom = _chosenParts.FirstOrDefault(x => x.Name == "Leg Bottom");
+
+            legbottom.LightColor = skin.LightColor;
+            legbottom.DarkColor = skin.DarkColor;
+
+            ApplyAllColors();
+        }
+
+        private void btnTFSCCSleeves_Click(object sender, EventArgs e) {
+            ColorPart skin = _chosenParts.FirstOrDefault(x => x.Name == "Skin");
+            ColorPart arm = _chosenParts.FirstOrDefault(x => x.Name == "Arms");
+
+            arm.LightColor = skin.LightColor;
+            arm.DarkColor = skin.DarkColor;
+
+            ApplyAllColors();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e) {
+            e.Cancel = true;
+            Hide();
+        }
+
+        private void btnTFCustomRestore_Click(object sender, EventArgs e) {
+            IEnumerable<ColorPart> customTransform = _chosenParts.Where(x => x.Name.StartsWith("Custom"));
+
+            foreach (ColorPart cPart in customTransform) {
+                cPart.LightColor = Color.White;
+                cPart.DarkColor = Color.FromArgb(128, 128, 128);
+            }
+
+            ApplyAllColors();
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            cmsTransforms.Show((Control)sender, ((Control)sender).Width / 2, ((Control)sender).Height / 2);
+        }
+
+        private void tmrRandom_Tick(object sender, EventArgs e) {
+            ExecuteRandomCC();
+        }
+
+        /// <summary>
+        /// Blends two colors together via a quasi-additive formula and produces a result that's somewhat similar to SM64's lighting algorithm.
+        /// </summary>
+        /// <param name="mainColor">Diffuse color</param>
+        /// <param name="shadeColor">Ambient color</param>
+        /// <returns></returns>
+        Color BlendColors(Color mainColor, Color shadeColor) {
+            int r = (int)Math.Min((shadeColor.R / 1.25) + (mainColor.R / 2.0), 255);
+            int g = (int)Math.Min((shadeColor.G / 1.25) + (mainColor.G / 2.0), 255);
+            int b = (int)Math.Min((shadeColor.B / 1.25) + (mainColor.B / 2.0), 255);
+
+            Color result = Color.FromArgb(r, g, b);
+            return result;
+        }
+
+        public void marioSprite_Paint(object sender, PaintEventArgs e) {
             Graphics g = e.Graphics;
             Bitmap bmp = new Bitmap(Resources.CC_Mario_big);
+            if (_chosenParts == null || _chosenParts.Count == 0) return;
 
-            hatMap.NewColor = BlendColors(hatColorMain.BackColor, hatColorShade.BackColor);
-            hairMap.NewColor = BlendColors(hairColorMain.BackColor, hairColorShade.BackColor);
-            skinMap.NewColor = BlendColors(skinColorMain.BackColor, skinColorShade.BackColor);
-            glovesMap.NewColor = BlendColors(glovesColorMain.BackColor, glovesColorShade.BackColor);
-            pantsMap.NewColor = BlendColors(pantsColorMain.BackColor, pantsColorShade.BackColor);
-            shoesMap.NewColor = BlendColors(shoesColorMain.BackColor, shoesColorShade.BackColor);
+            // Ho boy.
+            ColorPart hatCol = _chosenParts.FirstOrDefault(x => x.Name == "Hat" || x.Name == "Hat & Shirt" || x.Name == "X3S Tint");
+            ColorPart hairCol = _chosenParts.FirstOrDefault(x => x.Name == "Hair" || x.Name == "X3S Tint");
+            ColorPart skinCol = _chosenParts.FirstOrDefault(x => x.Name == "Skin" || x.Name == "X3S Tint");
+            ColorPart overallsCol = _chosenParts.FirstOrDefault(x => x.Name == "Overalls" || x.Name == "Overalls Top" || x.Name == "X3S Tint");
+            ColorPart gloveCol = _chosenParts.FirstOrDefault(x => x.Name == "Gloves" || x.Name == "X3S Tint");
+            ColorPart shoeCol = _chosenParts.FirstOrDefault(x => x.Name == "Shoes" || x.Name == "X3S Tint");
+
+            hatMap.NewColor = BlendColors(hatCol.LightColor, hatCol.DarkColor);
+            hairMap.NewColor = BlendColors(hairCol.LightColor, hairCol.DarkColor);
+            skinMap.NewColor = BlendColors(skinCol.LightColor, skinCol.DarkColor);
+            glovesMap.NewColor = BlendColors(gloveCol.LightColor, gloveCol.DarkColor);
+            pantsMap.NewColor = BlendColors(overallsCol.LightColor, overallsCol.DarkColor);
+            shoesMap.NewColor = BlendColors(shoeCol.LightColor, shoeCol.DarkColor);
 
             // Set the image attribute'sender color mappings
             ColorMap[] colorMap = new ColorMap[6];
@@ -99,360 +419,63 @@ namespace M64MM2
             g.DrawImage(bmp, rect, 0, 0, bmp.Width, bmp.Height, GraphicsUnit.Pixel, attr);
         }
 
-        //Blends two colors together via a quasi-additive formula and produces a result that'sender somewhat similar to SM64'sender lighting algorithm.
-        Color BlendColors(Color mainColor, Color shadeColor)
-        {
-            int r = (int)Math.Min((shadeColor.R / 1.25) + (mainColor.R / 2.0), 255);
-            int g = (int)Math.Min((shadeColor.G / 1.25) + (mainColor.G / 2.0), 255);
-            int b = (int)Math.Min((shadeColor.B / 1.25) + (mainColor.B / 2.0), 255);
-
-            Color result = Color.FromArgb(r, g, b);
-            return result;
-        }
-
-
-        void colorButton_Click(object sender, EventArgs e)
-        {
-            Button senderButton = (Button)sender;
-            colorDialog.Color = senderButton.BackColor;
-            VanillaModelColor modelColor = VanillaModelColor.GloveMain;
-
-            if (colorDialog.ShowDialog(this) != DialogResult.OK) return;
-            if (!senderButton.Enabled) return;
-
-            senderButton.BackColor = colorDialog.Color;
-            marioSprite.Refresh();
-
-            if ((!IsEmuOpen || BaseAddress == 0) && (modelStatus != ModelHeaderType.CLASSIC || modelStatus != ModelHeaderType.SPARK)) return;
-
-            switch (senderButton.Name)
-            {
-                case "pantsColorShade":
-                    modelColor = VanillaModelColor.PantsShade;
-                    break;
-                case "pantsColorMain":
-                    modelColor = VanillaModelColor.PantsMain;
-                    break;
-                case "hatColorShade":
-                    modelColor = VanillaModelColor.HatShade;
-                    break;
-                case "hatColorMain":
-                    modelColor = VanillaModelColor.HatMain;
-                    break;
-                case "glovesColorShade":
-                    modelColor = VanillaModelColor.GloveShade;
-                    break;
-                case "glovesColorMain":
-                    modelColor = VanillaModelColor.GloveMain;
-                    break;
-                case "shoesColorShade":
-                    modelColor = VanillaModelColor.ShoeShade;
-                    break;
-                case "shoesColorMain":
-                    modelColor = VanillaModelColor.ShoeMain;
-                    break;
-                case "skinColorShade":
-                    modelColor = VanillaModelColor.SkinShade;
-                    break;
-                case "skinColorMain":
-                    modelColor = VanillaModelColor.SkinMain;
-                    break;
-                case "hairColorShade":
-                    modelColor = VanillaModelColor.HairShade;
-                    break;
-                case "hairColorMain":
-                    modelColor = VanillaModelColor.HairMain;
-                    break;
-            }
-
-            WriteColor(modelColor, senderButton.BackColor);
-        }
-
-        void ApplyAllColors()
-        {
-            if ((!IsEmuOpen || BaseAddress == 0) && (modelStatus != ModelHeaderType.CLASSIC || modelStatus != ModelHeaderType.SPARK)) return;
-
-            WriteColor(VanillaModelColor.PantsShade, pantsColorShade.BackColor);
-
-            WriteColor(VanillaModelColor.PantsMain, pantsColorMain.BackColor);
-
-            WriteColor(VanillaModelColor.HatShade, hatColorShade.BackColor);
-
-            WriteColor(VanillaModelColor.HatMain, hatColorMain.BackColor);
-
-            WriteColor(VanillaModelColor.GloveShade, glovesColorShade.BackColor);
-
-            WriteColor(VanillaModelColor.GloveMain, glovesColorMain.BackColor);
-
-            WriteColor(VanillaModelColor.ShoeShade, shoesColorShade.BackColor);
-
-            WriteColor(VanillaModelColor.ShoeMain, shoesColorMain.BackColor);
-
-            WriteColor(VanillaModelColor.SkinShade, skinColorShade.BackColor);
-
-            WriteColor(VanillaModelColor.SkinMain, skinColorMain.BackColor);
-
-            WriteColor(VanillaModelColor.HairShade, hairColorShade.BackColor);
-
-            WriteColor(VanillaModelColor.HairMain, hairColorMain.BackColor);
-        }
-
-        void OpenCopyPasteForm(object sender, EventArgs e)
-        {
-            CopyPasteForm form = new CopyPasteForm();
-
-            Button senderButton = (Button)sender;
-
-            if (senderButton.Name == btnImportCode.Name)
-            {
-                form.lblInfo.Text = Resources.colorCodeImportMsg;
-                form.btnFile.Text = Resources.colorCodeFromFile;
-                form.ShowDialog(this);
-            }
-            else if (senderButton.Name == btnExportCode.Name)
-            {
-                form.lblInfo.Text = Resources.colorCodeExportMsg;
-                form.btnCancel.Visible = false;
-                form.tbColorCode.ReadOnly = true;
-                form.tbColorCode.Lines = GenerateColorCode();
-                form.btnFile.Text = Resources.colorCodeToFile;
-
-                form.ShowDialog(this);
-            }
-        }
-
-        public void ParseColorCode(string code)
-        {
-            FromColorCode(code);
-            marioSprite.Refresh();
-            LoadFromGame(null, null);
-        }
-
-        string[] GenerateColorCode()
-        {
-            List<string> code = new List<string>();
-            /*
-             NOTE: These will only work on a regular SM64 ROM where Bank 04 is where
-             where it should be. Bank 04 changes position in RAM if it were to be longer,
-             or someone decided to use a tweak that changes its location in RAM to give more
-             space to something else like Skelux's Music Extension (SM64 Editor 2.x)
-             */
-            foreach (Control control in this.grpColor.Controls)
-            {
-                if (!(control is Button button) || !string.IsNullOrWhiteSpace(button.Text)) continue;
-
-                string[] addressToWrite = new string[2];
-                switch (button.Name)
-                {
-                    case "hatColorShade":
-                        addressToWrite[0] = "07EC38";
-                        addressToWrite[1] = "07EC3A";
-                        break;
-                    case "hatColorMain":
-                        addressToWrite[0] = "07EC40";
-                        addressToWrite[1] = "07EC42";
-                        break;
-                    case "hairColorShade":
-                        addressToWrite[0] = "07EC98";
-                        addressToWrite[1] = "07EC9A";
-                        break;
-                    case "hairColorMain":
-                        addressToWrite[0] = "07ECA0";
-                        addressToWrite[1] = "07ECA2";
-                        break;
-                    case "skinColorShade":
-                        addressToWrite[0] = "07EC80";
-                        addressToWrite[1] = "07EC82";
-                        break;
-                    case "skinColorMain":
-                        addressToWrite[0] = "07EC88";
-                        addressToWrite[1] = "07EC8A";
-                        break;
-                    case "glovesColorShade":
-                        addressToWrite[0] = "07EC50";
-                        addressToWrite[1] = "07EC52";
-                        break;
-                    case "glovesColorMain":
-                        addressToWrite[0] = "07EC58";
-                        addressToWrite[1] = "07EC5A";
-                        break;
-                    case "pantsColorShade":
-                        addressToWrite[0] = "07EC20";
-                        addressToWrite[1] = "07EC22";
-                        break;
-                    case "pantsColorMain":
-                        addressToWrite[0] = "07EC28";
-                        addressToWrite[1] = "07EC2A";
-                        break;
-                    case "shoesColorShade":
-                        addressToWrite[0] = "07EC68";
-                        addressToWrite[1] = "07EC6A";
-                        break;
-                    case "shoesColorMain":
-                        addressToWrite[0] = "07EC70";
-                        addressToWrite[1] = "07EC72";
-                        break;
-                }
-
-                code.Add("81" + addressToWrite[0] + " " + button.BackColor.R.ToString("X2") + button.BackColor.G.ToString("X2"));
-                code.Add("81" + addressToWrite[1] + " " + button.BackColor.B.ToString("X2") + "00");
-            }
-
-            return code.ToArray();
-        }
-
-        void ResetColors(object sender, EventArgs e)
-        {
-            marioSprite.Refresh();
-            ApplyAllColors();
-        }
-
-        void LoadFromGame(object sender, EventArgs e)
-        {
-            //TODO: Change these methods to be the SPARK buffer based read
-            if ((!IsEmuOpen || BaseAddress == 0) && (modelStatus != ModelHeaderType.CLASSIC || modelStatus != ModelHeaderType.SPARK)) return;
-
-            byte[] colorData;
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC20, 4), 4);
-            pantsColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC28, 4), 4);
-            pantsColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC38, 4), 4);
-            hatColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC40, 4), 4);
-            hatColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC50, 4), 4);
-            glovesColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC58, 4), 4);
-            glovesColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC68, 4), 4);
-            shoesColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC70, 4), 4);
-            shoesColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC80, 4), 4);
-            skinColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC88, 4), 4);
-            skinColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07EC98, 4), 4);
-            hairColorShade.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            colorData = SwapEndian(ReadBytes(BaseAddress + 0x07ECA0, 4), 4);
-            hairColorMain.BackColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
-
-            marioSprite.Refresh();
-        }
-
-        void marioSprite_DoubleClick(object sender, EventArgs e)
-        {
-            if (!randomizerTimer.Enabled)
-            {
-                randomizerTimer.Start();
-                currentSelection.Clear();
-                currentSelection.AddRange(clbRandSel.CheckedItems.Cast<ColorCodeGS>());
-            }
-            else
-                randomizerTimer.Stop();
-        }
-
-        private void randomizerTimer_Tick(object sender, EventArgs e)
-        {
-            int mode = cbRandMode.SelectedIndex;
-            switch (mode)
-            {
-                case 0:
-                    foreach (Control control in grpColor.Controls)
-                    {
-                        if (control is Button && String.IsNullOrEmpty(control.Text))
-                        {
-                            control.BackColor = Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255));
-                        }
-                    }
-                    ApplyAllColors();
-                    marioSprite.Refresh();
-                    break;
-                case 1:
-                    FromColorCode(currentSelection[rand.Next(currentSelection.Count)].Gameshark);
-                    LoadFromGame(null, null);
-                    break;
-            }
-
-        }
-
-        void UpdateTrackbar(object sender, EventArgs e)
-        {
-            TrackBar changedBar = ((TrackBar)sender);
-            ShadowParts part = ShadowParts.X;
-            switch (changedBar.Name)
-            {
-                case "tbLeftRight":
-                    part = ShadowParts.X;
-                    break;
-                case "tbBottomTop":
-                    part = ShadowParts.Y;
-                    break;
-                case "tbBackFront":
-                    part = ShadowParts.Z;
-                    break;
-            }
-            ChangeShadow(changedBar.Value, part);
-        }
-
-
-        void ResetShadows(object sender, EventArgs e)
-        {
-            tbLeftRight.Value = 0x28;
-            tbBottomTop.Value = 0x28;
-            tbBackFront.Value = 0x28;
-        }
-
-        void RandomizeShadows(object sender, EventArgs e)
-        {
-            tbLeftRight.Value = rand.Next(-127, 128);
-            tbBottomTop.Value = rand.Next(-127, 128);
-            tbBackFront.Value = rand.Next(-127, 128);
-        }
-
-        private void btnReroute_Click(object sender, EventArgs e)
-        {
-            RouteColor(defaultRoutableParts[cbRoutingSource.SelectedIndex], defaultRoutableParts[cbRoutingTarget.SelectedIndex]);
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
+        private void btnRefresh_Click(object sender, EventArgs e) {
             LoadColorCodeRepo();
             lbCCs.Items.Clear();
             clbRandSel.Items.Clear();
-            foreach (ColorCodeGS cc in colorCodeGamesharks)
-            {
+            foreach (ColorCodeGS cc in colorCodeGamesharks) {
                 lbCCs.Items.Add(cc);
                 clbRandSel.Items.Add(cc);
             }
         }
 
-        private void lbCCs_DoubleClick(object sender, EventArgs e)
-        {
-            if (((ListBox)sender).SelectedItem != null)
-            {
-                FromColorCode(((ColorCodeGS)((ListBox)sender).SelectedItem).Gameshark);
-                LoadFromGame(null, null);
+        private void lbCCs_DoubleClick(object sender, EventArgs e) {
+            if (((ListBox)sender).SelectedItem != null) {
+                ParseColorCode(((ColorCodeGS)((ListBox)sender).SelectedItem).Gameshark);
                 marioSprite.Refresh();
             }
         }
 
-        private void cbRandMode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+        private void cbPartListOverride_SelectedIndexChanged(object sender, EventArgs e) {
+            // Again, .ToList() clones.
+            switch (cbPartListOverride.SelectedIndex) {
+                case 0: {
+                        _chosenParts = new BindingList<ColorPart>(classicParts.ToList());
+                        _chosenParts.ResetBindings();
+                        lbColors.DataSource = _chosenParts;
+                        lbColors.ResetBindings();
+                        if (modelStatus != ModelHeaderType.CLASSIC) {
+                            MessageBox.Show(
+                                string.Format(Resources.incompatibleModelMsg, "CLASSIC", modelStatus.ToString()), "Whoa!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        break;
+                    }
+                case 1: {
+                        _chosenParts = new BindingList<ColorPart>(sparkParts.ToList());
+                        _chosenParts.ResetBindings();
+                        lbColors.DataSource = _chosenParts;
+                        lbColors.ResetBindings();
+                        if (modelStatus != ModelHeaderType.SPARK) {
+                            MessageBox.Show(
+                                string.Format(Resources.incompatibleModelMsg, "SPARK", modelStatus.ToString()), "Whoa!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        break;
+                    }
+                case 2: {
+                        _chosenParts = new BindingList<ColorPart>(x3sParts.ToList());
+                        _chosenParts.ResetBindings();
+                        lbColors.DataSource = _chosenParts;
+                        lbColors.ResetBindings();
+                        MessageBox.Show(
+                            // The most C# developer thing ever: using LINQ in unexpected places
+                            Resources.x3sMsg, $"A{string.Join("", Enumerable.Range(1, _rand.Next(1, 10)).Select(x => "HA").ToArray())}HA",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                    }
+            }
+            LoadFromGame(this, EventArgs.Empty);
         }
     }
 }

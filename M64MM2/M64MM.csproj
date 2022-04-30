@@ -105,12 +105,6 @@
     <Compile Include="AddonErrors.Designer.cs">
       <DependentUpon>AddonErrors.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppearanceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AppearanceForm.Designer.cs">
-      <DependentUpon>AppearanceForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\CustomCombobox\CustomComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -152,12 +146,17 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppearanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppearanceForm.Designer.cs">
+      <DependentUpon>AppearanceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.es.Designer.cs">
       <DependentUpon>Resources.es.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Properties\Resources.zh-CN.Designer.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,15 +188,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddonErrors.resx">
       <DependentUpon>AddonErrors.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppearanceForm.es.resx">
-      <DependentUpon>AppearanceForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppearanceForm.resx">
-      <DependentUpon>AppearanceForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppearanceForm.zh-CN.resx">
-      <DependentUpon>AppearanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\HSLColorDialog.resx">
       <DependentUpon>HSLColorDialog.cs</DependentUpon>
@@ -250,6 +240,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.zh-CN.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppearanceForm.bin.resx">
+      <DependentUpon>AppearanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppearanceForm.es.resx">
+      <DependentUpon>AppearanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppearanceForm.resx">
+      <DependentUpon>AppearanceForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppearanceForm.zh-CN.resx">
+      <DependentUpon>AppearanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -325,6 +328,7 @@
     <None Include="Resources\m64mm_hero.png" />
     <None Include="Resources\m64mm_hero_devprev.png" />
     <None Include="Resources\superg_m64mmsplash.png" />
+    <None Include="Resources\randomSlot.png" />
     <Content Include="Resources\version3.ico" />
     <None Include="Resources\version31.ico" />
     <None Include="Resources\M64MM2 New.ico" />

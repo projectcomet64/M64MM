@@ -12,9 +12,13 @@ namespace M64MM.Utils
 {
     public static class Updater
     {
-        public static async Task<GitHubRelease> FindNewUpdate()
+        public static async Task<GitHubRelease> FindNewUpdate(VersionTagManager.VersionTag currentVersion, string[] lookingFor = null)
         {
-            Tuple<HttpStatusCode, GitHubRelease> requestLatest = await Task.Run(() => CheckUpdate());
+            if (lookingFor == null) {
+                lookingFor = new[] { currentVersion.ReleaseChannel };
+            }
+
+            Tuple<HttpStatusCode, GitHubRelease> requestLatest = await Task.Run(() => CheckUpdate(currentVersion, lookingFor));
             if (requestLatest.Item1 == HttpStatusCode.OK)
             {
                 return requestLatest.Item2;
@@ -25,7 +29,7 @@ namespace M64MM.Utils
             }
         }
 
-        public static async Task<Tuple<HttpStatusCode, GitHubRelease>> CheckUpdate()
+        public static async Task<Tuple<HttpStatusCode, GitHubRelease>> CheckUpdate(VersionTagManager.VersionTag currentVer, string[] lookingFor = null)
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("User-Agent", "M64MM/3.0 (.NET 4.7)");
@@ -38,25 +42,33 @@ namespace M64MM.Utils
                 return new Tuple<HttpStatusCode, GitHubRelease>(latestReleases.StatusCode, null);
             }
 
-            // TODO: Allow updating from different "release channels", also allow different URLs
+            // TODO: Allow updating from different URLs
             // for example: for addons
 
             JArray parsedReleases = JArray.Parse(await latestReleases.Content.ReadAsStringAsync());
-            List<JToken> releasesList = parsedReleases.ToList();
+            List<GitHubRelease> releasesList = parsedReleases.ToObject<List<GitHubRelease>>();
 
-            GitHubRelease latestReleaseObject = releasesList[0].ToObject<GitHubRelease>();
+            IEnumerable<GitHubRelease> matchingList = releasesList.Where(x => CheckVersion(x.VersionTag, currentVer, lookingFor));
 
-            return new Tuple<HttpStatusCode, GitHubRelease>(HttpStatusCode.OK, latestReleaseObject);
+            return new Tuple<HttpStatusCode, GitHubRelease>(HttpStatusCode.OK, matchingList.First());
 
         }
 
-        public static bool CheckVersion(VersionTagManager.VersionTag latest, VersionTagManager.VersionTag current)
+        public static bool CheckVersion(VersionTagManager.VersionTag latest, VersionTagManager.VersionTag current, string[] lookingFor = null)
         {
+            if (lookingFor == null) {
+                lookingFor = new[] {current.ReleaseChannel};
+            }
+
             if (latest.FormalVersionNumber >= current.FormalVersionNumber
-                && latest.ReleaseChannel == current.ReleaseChannel
-                && latest.SuffixVersion > current.SuffixVersion)
+                && lookingFor.Contains(latest.ReleaseChannel))
             {
+                if (latest.ReleaseChannel == current.ReleaseChannel) {
+                    return (latest.SuffixVersion > current.SuffixVersion);
+                }
+
                 return true;
+
             }
             else
             {

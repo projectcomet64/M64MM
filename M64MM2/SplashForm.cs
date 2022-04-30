@@ -56,7 +56,6 @@ namespace M64MM2
                 {
                     if (enableUpdates)
                     {
-                        await CheckUpdates();
                         UpdateProgress(10, "Let's go.\n");
                     }
                     else
@@ -113,12 +112,6 @@ namespace M64MM2
             Close();
         }
 
-        async Task CheckUpdates()
-        {
-            Program.LatestRelease = await Updater.FindNewUpdate();
-            Program.HasUpdate = Updater.CheckVersion(Program.LatestRelease.VersionTag, Program.CurrentVersionTag);
-        }
-
         void UpdateProgress(int val, string progressText)
         {
             if (splashForm.IsHandleCreated)
@@ -140,6 +133,15 @@ namespace M64MM2
             {
                 mod.Module.Initialize();
             }
+        }
+
+        private void SplashForm_FormClosed(object sender, FormClosedEventArgs e) {
+            if (e.CloseReason == CloseReason.FormOwnerClosing ||
+                e.CloseReason == CloseReason.WindowsShutDown ||
+                e.CloseReason == CloseReason.TaskManagerClosing) {
+                Application.Exit();
+            }
+            
         }
     }
 }

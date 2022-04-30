@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace M64MM.Utils
 {
-    public class ClassicColorCodeInvalidException : Exception
+    public class ColorCodeInvalidException : Exception
     {
         int _line;
         int _length;
@@ -15,7 +15,7 @@ namespace M64MM.Utils
         public int Length { get { return _length; } private set { } }
         public string Address { get { return _addr; } private set { } }
 
-        public ClassicColorCodeInvalidException(int line, int length = 0, string addr = null) : base()
+        public ColorCodeInvalidException(int line, int length = 0, string addr = null) : base()
         {
             _line = line;
             _length = length;
