@@ -50,6 +50,9 @@ namespace M64MM.Utils
 
             IEnumerable<GitHubRelease> matchingList = releasesList.Where(x => CheckVersion(x.VersionTag, currentVer, lookingFor));
 
+            if (!matchingList.Any())
+                return new Tuple<HttpStatusCode, GitHubRelease>(HttpStatusCode.OK, releasesList.First());
+
             return new Tuple<HttpStatusCode, GitHubRelease>(HttpStatusCode.OK, matchingList.First());
 
         }
