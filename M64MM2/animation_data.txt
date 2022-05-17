@@ -21,7 +21,7 @@
 0008375000000AA8|Land from back flip / triple jump (“ta-dah” pose)|192
 0008B06400001554|Get star|205
 0008C5B8000006C8|Get star (part 2)|206
-0003D0E40000073E|Kick in mid-air|79
+0003D0E40000073E|Jump kick|79
 0002960400001FE6|Normal death|50
 0000069000000B40|Climb up ledge (right leg going up)|0
 000011E800001AC4|Blown by wind|2
@@ -35,7 +35,7 @@
 000078F000000B04|Jump out of tree from handstand|10
 000083F400000670|Hand stand in tree?|11
 0000840C00000658|Go back from handstand|12
-00008A6400000416|In tree?|13
+00008A6400000416|Holding up in tree|13
 00008E7C00000164|Standing straight with arms out (T-pose)|14
 00008FE00000070A|Skid on ground|15
 00008FF8000006F2|Skid on ground, go back to normal|16
@@ -74,17 +74,17 @@
 0003390C0000028A|Sliding on bottom|58
 00033B98000005C8|Triple jump then ground-pound|59
 0003416000000432|Ground-pound|60
-000341780000041A|Ground-pound part|61
+000341780000041A|Ground-pound on ground|61
 0003459400002DF6|Bottom stuck in snow / sand|62
 0001FD4C00000506|Get out of sand / snow|40
 0003077400003196|Head stuck under sand|57
 000380B80000055A|Pick up small object|64
 0003738C00000D2A|Standing and holding small object|63
 000386140000032C|Jump with small object (wearing wing cap)|65
-00038940000004D0|Pick up small object|66
+00038940000004D0|Pick up small object (Quick)|66
 0000B49400001278|Walk while holding small object|22
-0000C70C00000C92|Run while holding small object?|23
-0000D3A000001278|Walk while holding small object?|24
+0000C70C00000C92|Run while holding small object|23
+0000D3A000001278|Walk while holding small object|24
 00038E1000000168|Coming down with small object (wearing wing cap)|67
 00038F780000039E|Slide then fall with small object|68
 00039318000005D2|Sliding with small object|69
@@ -93,7 +93,7 @@
 0005C2440000056E|Holding large object|125
 0003ED2800000636|Riding with bent knees on Koopa shell (unused)|84
 000398EC0000045A|Jump on Koopa shell|71
-00051AD40000061A|Jump on Koopa shell (part 2)|109
+00051AD40000061A|Land on Koopa shell|109
 0003B24800000626|Forward flip (unused)|73
 0003B8700000037C|Jump while riding shell|74
 0003DADC000004FE|Start forward spin (unused)|81
@@ -113,11 +113,11 @@
 000487C4000014D6|Open door and walk in|95
 00049C9C000010C8|Exit door|96
 0004AD6400003288|Open door with key|97
-0004DFEC000003FA|Unknown, looks like Mario is bowing|98
-0004E3E80000076E|Similar to last|99
-0004EB58000005F2|Animates both last|100
-0004F14C000007B8|Unknown, Mario moves arms|101
-0004F904000008B0|Kick in mid-air and land|102
+0004DFEC000003FA|Crying (part 1)|98
+0004E3E80000076E|Crying (part 2)|99
+0004EB58000005F2|End crying|100
+0004F14C000007B8|Throw/punch (unused)|101
+0004F904000008B0|Ground kick|102
 000501B400000296|Unknown, similar to 04F14C, punch left?|103
 0005044C00000268|Punch left (part 2)|104
 000506B400000410|Punch right|105
@@ -125,7 +125,6 @@
 00050FFC000004C0|Pick up small object and stand|107
 000514BC00000618|Push against something while walking|108
 000520F000000584|Set small object down|110
-000526740000018E|Special triple jump|111
 0005268C00000176|Similar to last, backward|112
 0005280400000932|Crouch attack (leg sweep)|113
 000531500000120A|Running (Unused)|115
@@ -153,11 +152,11 @@
 00065AF400000730|Laying and sleeping|135
 000890C000000784|Get up after sleeping (sitting)|200
 00089844000008A8|Get up after sleeping (laying)|201
-0006622400000618|Belly flop|136
+0006622400000618|Dive|136
 0006623C00000600|On belly|137
 0006683C00000CB8|Get up after bumping into wall|138
-000674F400000CAE|Get up after belly flop, holding small object|139
-000681A40000039A|Beginning of side kick|140
+000674F400000CAE|Get up after dive, holding small object|139
+000681A40000039A|Beginning of slide kick|140
 0006854000000552|Get up from slide kick, go back to crouching|141
 00068A940000077E|Sliding with hands back|142
 00068AAC00000766|Get up and stand|143
@@ -200,10 +199,11 @@
 0008124400001138|Walking with large object|187
 0008237C00000724|Skid on ground start|188
 000823940000070C|Switch direction quickly|189
-00082AA00000040C|Land from side flip?|190
+00082AA00000040C|Land from side flip|190
 00082EAC000008A4|Side flip|191
 00084CB000001642|Reading sign/First-person pose|194
 0008A9D000000692|Wall kick/jump from tree|203
 0008A9E80000067A|Hang onto pole / tree|204
 0008CC8000000BA8|Triple jump and start flying|207
-0008D828000003EE|Start special triple jump?|208
+0008D828000003EE|Begin to roll|208
+000526740000018E|Rolling|111
