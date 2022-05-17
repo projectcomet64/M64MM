@@ -48,16 +48,14 @@ namespace M64MM.Utils {
 
             // lol LINQ moment
             IEnumerable<GitHubRelease> matchingLatestList = releasesList
-                .Where(x => CheckVersion(x.VersionTag, currentVer, lookingFor)).Reverse().Skip(matchingLatestNumber)
-                .Reverse();
+                .Where(x => CheckVersion(x.VersionTag, currentVer, lookingFor)).Reverse().Skip(matchingLatestNumber);
 
-
-            if (!matchingLatestList.Any()) {
+            // no, resharper, any doesn't work
+            if (matchingLatestList.Count() == 0) {
                 return new Tuple<HttpStatusCode, GitHubRelease>(HttpStatusCode.OK, matchingList.First());
             }
-                
 
-            return new Tuple<HttpStatusCode, GitHubRelease>(HttpStatusCode.OK, matchingLatestList.First());
+            return new Tuple<HttpStatusCode, GitHubRelease>(HttpStatusCode.OK, matchingLatestList.Reverse().First());
 
         }
 

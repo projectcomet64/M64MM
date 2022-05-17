@@ -272,7 +272,7 @@ namespace M64MM.Utils
                 coreSettingsGroup.SetSettingValue("enableUpdateCheck", true);
                 coreSettingsGroup.SetSettingValue("enableStartupPowercam", true);
                 coreSettingsGroup.SetSettingValue("turboTicks", false);
-                coreSettingsGroup.SetSettingValue("preferredReleases",new string[]{ "release" });
+                coreSettingsGroup.SetSettingValue("preferredReleases",new string[]{ "release", "beta" });
                 coreSettingsGroup.SetSettingValue<byte>("preferredDefaultCamStyle", 0x01);
                 UpdateLocalVariables();
                 using (StreamWriter rw = new StreamWriter($"{Application.StartupPath}/config.json"))
