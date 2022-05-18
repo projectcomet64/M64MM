@@ -179,7 +179,7 @@
     <value>long</value>
   </data>
   <data name="prereleaseString" xml:space="preserve">
-    <value>-beta1.h1</value>
+    <value>-beta1.h2</value>
   </data>
   <data name="invalidAnimSelected" xml:space="preserve">
     <value>You have entered an invalid animation name into {0}. Please make sure to choose a valid option from the list.</value>
