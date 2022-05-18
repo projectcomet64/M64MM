@@ -324,7 +324,7 @@
     <None Include="Resources\m64mm_hero.png" />
     <None Include="Resources\m64mm_hero_devprev.png" />
     <None Include="Resources\superg_m64mmsplash.png" />
-    <None Include="Resources\randomSlot.png" />
+    <Content Include="Resources\randomSlot.png" />
     <Content Include="Resources\version3.ico" />
     <None Include="Resources\version31.ico" />
     <None Include="Resources\M64MM2 New.ico" />

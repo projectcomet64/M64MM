@@ -1,3 +1,2 @@
 language: csharp
 solution: M64MM2.sln
-os: windows
