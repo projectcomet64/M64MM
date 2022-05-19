@@ -119,53 +119,53 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblAuthor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>167, 79</value>
+    <value>167, 86</value>
   </data>
   <data name="lblAuthor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>345, 32</value>
+    <value>345, 35</value>
   </data>
   <data name="lblAuthor.Text" xml:space="preserve">
-    <value>作者：GlitchyPSI，基于 James "Captainswag101" Pelster 的 M64MM2 开发。简体中文翻译：LuigiUltra64</value>
+    <value>作者：GlitchyPSI，基于 James "Captainswag101" Pelster 的 M64MM2 开发</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblBugReport.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="lblBugReport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 326</value>
+    <value>168, 353</value>
   </data>
   <data name="lblBugReport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>345, 28</value>
+    <value>345, 30</value>
   </data>
   <data name="lblBugReport.Text" xml:space="preserve">
     <value>如果您发现了bug，需要帮助，或者有新功能的建议，请通过以下方式联系我们：</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>437, 391</value>
+    <value>437, 424</value>
   </data>
   <data name="lnkDiscord.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 365</value>
+    <value>168, 395</value>
   </data>
   <data name="lnkGithubIssues.Location" type="System.Drawing.Point, System.Drawing">
-    <value>426, 365</value>
+    <value>426, 395</value>
   </data>
   <data name="lnkGithubIssues.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 12</value>
+    <value>88, 13</value>
   </data>
   <data name="lnkGithubIssues.Text" xml:space="preserve">
     <value>GitHub问题反馈</value>
   </data>
   <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 114</value>
+    <value>169, 124</value>
   </data>
   <data name="richTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>343, 209</value>
+    <value>343, 226</value>
   </data>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>该项目致力于超级马力欧64引擎电影社区。感谢您在工作中付出的所有努力，我希望这个工具及其以后的扩展将帮助您在未来创作出精彩的视频！
 
 特别感谢：
-Patreon 支持者： PonderMan, Waro
+Patreon 支持者： PonderMan, Waro, Mine
 
 Onewingdangl （原版 M64MM1.0 的制作者）
 James Pelster （CaptainSwag101， 原版 M64MM2.0 的制作者）
@@ -182,6 +182,11 @@ AloXado320
 到目前为止，所有支持我的人。
 MarioMario24680
 
+中文翻译：
+LuigiUltra64
+8192Bit
+
+
 非常感谢*您*使用本程序。如果没有您的激情，也许M64MM就不会更新到 1.0 以上的版本。
 版本 2 由 James "CaptainSwag101" Pelster 制作。您是一位好人。
 
@@ -189,24 +194,24 @@ MarioMario24680
 此程序的源代码受到 GPL v3 许可证的保护。</value>
   </data>
   <data name="lblWhosInBanner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 88</value>
+    <value>144, 95</value>
   </data>
   <data name="lblWhosInBanner.Text" xml:space="preserve">
     <value>在横幅上：
-</value>
+GlitchyPSI, Captainswag101, Onewingdangl</value>
   </data>
   <data name="lblYouCanJoin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>167, 388</value>
+    <value>167, 420</value>
   </data>
   <data name="lblYouCanJoin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 24</value>
+    <value>175, 26</value>
   </data>
   <data name="lblYouCanJoin.Text" xml:space="preserve">
     <value>您也可以成为横幅上的一份子！
 请联系GlitchyPSI了解更多。</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>524, 423</value>
+    <value>524, 458</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

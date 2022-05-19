@@ -39,10 +39,12 @@ namespace M64MM2
             this.showRunningPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.scanForEmulatorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.issuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForLatestUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCamera = new System.Windows.Forms.GroupBox();
             this.cbPowercam = new System.Windows.Forms.CheckBox();
             this.btnSoftFreeze = new System.Windows.Forms.Button();
@@ -59,12 +61,12 @@ namespace M64MM2
             this.btnAnimSwap = new System.Windows.Forms.Button();
             this.lblAnimNew = new System.Windows.Forms.Label();
             this.lblAnimOld = new System.Windows.Forms.Label();
-            this.cbAnimNew = new M64MM2.Controls.CustomCombobox.CustomComboBox();
-            this.cbAnimOld = new M64MM2.Controls.CustomCombobox.CustomComboBox();
             this.grpCamStyle = new System.Windows.Forms.GroupBox();
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
             this.ttAutoApplyInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.cbAnimNew = new M64MM2.Controls.CustomCombobox.CustomComboBox();
+            this.cbAnimOld = new M64MM2.Controls.CustomCombobox.CustomComboBox();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -78,10 +80,9 @@ namespace M64MM2
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsMenuItem,
-            this.aboutMenuItem,
             this.settingsToolStripMenuItem,
-            this.issuesToolStripMenuItem,
-            this.checkForLatestUpdateToolStripMenuItem});
+            this.helpToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
             this.ttAutoApplyInfo.SetToolTip(this.menuStrip, resources.GetString("menuStrip.ToolTip"));
             // 
@@ -125,17 +126,21 @@ namespace M64MM2
             this.scanForEmulatorsToolStripMenuItem.Name = "scanForEmulatorsToolStripMenuItem";
             this.scanForEmulatorsToolStripMenuItem.Click += new System.EventHandler(this.scanForEmulatorsToolStripMenuItem_Click);
             // 
-            // aboutMenuItem
-            // 
-            resources.ApplyResources(this.aboutMenuItem, "aboutMenuItem");
-            this.aboutMenuItem.Name = "aboutMenuItem";
-            this.aboutMenuItem.Click += new System.EventHandler(this.OpenAboutForm);
-            // 
             // settingsToolStripMenuItem
             // 
             resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.issuesToolStripMenuItem,
+            this.checkForLatestUpdateToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.aboutMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
             // issuesToolStripMenuItem
             // 
@@ -148,6 +153,17 @@ namespace M64MM2
             resources.ApplyResources(this.checkForLatestUpdateToolStripMenuItem, "checkForLatestUpdateToolStripMenuItem");
             this.checkForLatestUpdateToolStripMenuItem.Name = "checkForLatestUpdateToolStripMenuItem";
             this.checkForLatestUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForLatestUpdateToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // aboutMenuItem
+            // 
+            this.aboutMenuItem.Name = "aboutMenuItem";
+            resources.ApplyResources(this.aboutMenuItem, "aboutMenuItem");
+            this.aboutMenuItem.Click += new System.EventHandler(this.OpenAboutForm);
             // 
             // grpCamera
             // 
@@ -274,6 +290,31 @@ namespace M64MM2
             this.lblAnimOld.Name = "lblAnimOld";
             this.ttAutoApplyInfo.SetToolTip(this.lblAnimOld, resources.GetString("lblAnimOld.ToolTip"));
             // 
+            // grpCamStyle
+            // 
+            this.grpCamStyle.Controls.Add(this.btnChangeCamStyle);
+            this.grpCamStyle.Controls.Add(this.cbCamStyles);
+            resources.ApplyResources(this.grpCamStyle, "grpCamStyle");
+            this.grpCamStyle.Name = "grpCamStyle";
+            this.grpCamStyle.TabStop = false;
+            // 
+            // btnChangeCamStyle
+            // 
+            resources.ApplyResources(this.btnChangeCamStyle, "btnChangeCamStyle");
+            this.btnChangeCamStyle.Name = "btnChangeCamStyle";
+            this.btnChangeCamStyle.UseVisualStyleBackColor = true;
+            this.btnChangeCamStyle.Click += new System.EventHandler(this.ChangeCameraStyle);
+            // 
+            // cbCamStyles
+            // 
+            this.cbCamStyles.FormattingEnabled = true;
+            resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
+            this.cbCamStyles.Name = "cbCamStyles";
+            // 
+            // ttAutoApplyInfo
+            // 
+            this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
             // cbAnimNew
             // 
             resources.ApplyResources(this.cbAnimNew, "cbAnimNew");
@@ -301,34 +342,6 @@ namespace M64MM2
             this.cbAnimOld.DropDown += new System.EventHandler(this.cbAnimOld_DropDown);
             this.cbAnimOld.SelectedIndexChanged += new System.EventHandler(this.cbAnimOld_SelectedIndexChanged);
             this.cbAnimOld.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.cbAnimOld_PreviewKeyDown);
-            // 
-            // grpCamStyle
-            // 
-            resources.ApplyResources(this.grpCamStyle, "grpCamStyle");
-            this.grpCamStyle.Controls.Add(this.btnChangeCamStyle);
-            this.grpCamStyle.Controls.Add(this.cbCamStyles);
-            this.grpCamStyle.Name = "grpCamStyle";
-            this.grpCamStyle.TabStop = false;
-            this.ttAutoApplyInfo.SetToolTip(this.grpCamStyle, resources.GetString("grpCamStyle.ToolTip"));
-            // 
-            // btnChangeCamStyle
-            // 
-            resources.ApplyResources(this.btnChangeCamStyle, "btnChangeCamStyle");
-            this.btnChangeCamStyle.Name = "btnChangeCamStyle";
-            this.ttAutoApplyInfo.SetToolTip(this.btnChangeCamStyle, resources.GetString("btnChangeCamStyle.ToolTip"));
-            this.btnChangeCamStyle.UseVisualStyleBackColor = true;
-            this.btnChangeCamStyle.Click += new System.EventHandler(this.ChangeCameraStyle);
-            // 
-            // cbCamStyles
-            // 
-            resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
-            this.cbCamStyles.FormattingEnabled = true;
-            this.cbCamStyles.Name = "cbCamStyles";
-            this.ttAutoApplyInfo.SetToolTip(this.cbCamStyles, resources.GetString("cbCamStyles.ToolTip"));
-            // 
-            // ttAutoApplyInfo
-            // 
-            this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // MainForm
             // 
@@ -363,7 +376,6 @@ namespace M64MM2
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem toolsMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
         private System.Windows.Forms.GroupBox grpCamera;
         private System.Windows.Forms.Button btnFreeze;
         private System.Windows.Forms.Button btnSoftFreeze;
@@ -388,12 +400,15 @@ namespace M64MM2
         private System.Windows.Forms.CheckBox chbAutoApply;
         private System.Windows.Forms.ToolTip ttAutoApplyInfo;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkForLatestUpdateToolStripMenuItem;
         private System.Windows.Forms.CheckBox cbPowercam;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem scanForEmulatorsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem issuesToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel lblCameraStyle;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem issuesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkForLatestUpdateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
     }
 }
 

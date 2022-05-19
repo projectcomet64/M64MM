@@ -189,7 +189,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a This ROM has a different model data compared to Mario&apos;s usual model data and is not a compatible CometROM. The Color Code Studio and Shading Editor have been disabled; they might not work correctly in this ROM..
+        ///   Busca una cadena traducida similar a This ROM has a different model data compared to Mario&apos;s usual model data. If you&apos;re using a X3S ROM, change the Color Parts Override to X3S to use it..
         /// </summary>
         internal static string colorCodeModdedRom {
             get {
@@ -221,6 +221,27 @@ namespace M64MM2.Properties {
         internal static string discordInvite {
             get {
                 return ResourceManager.GetString("discordInvite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The selected emulator (or only available opened emulators) cannot be accessed by M64MM.
+        ///This often happens if the emulator started as Administrator.
+        ///There is no reason to start the emulator as an administrator. To use M64MM, please start the emulator without administrator privileges..
+        /// </summary>
+        internal static string inaccessibleEmuMsg {
+            get {
+                return ResourceManager.GetString("inaccessibleEmuMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You have opted to use the {0} parts, but this ROM is {1}.
+        ///Stability not guaranteed..
+        /// </summary>
+        internal static string incompatibleModelMsg {
+            get {
+                return ResourceManager.GetString("incompatibleModelMsg", resourceCulture);
             }
         }
         
@@ -444,7 +465,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a -alpha7-e.
+        ///   Busca una cadena traducida similar a -beta1.h2.
         /// </summary>
         internal static string prereleaseString {
             get {
@@ -462,7 +483,7 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Status: Project64 is not open..
+        ///   Busca una cadena traducida similar a Status: Project64/Mupen not open..
         /// </summary>
         internal static string programStatus1 {
             get {
@@ -494,6 +515,25 @@ namespace M64MM2.Properties {
         internal static string programStatusAwaitingLevel {
             get {
                 return ResourceManager.GetString("programStatusAwaitingLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Status: Couldn&apos;t open Project64/Mupen.
+        /// </summary>
+        internal static string programStatusInaccessible {
+            get {
+                return ResourceManager.GetString("programStatusInaccessible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap randomSlot {
+            get {
+                object obj = ResourceManager.GetObject("randomSlot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -617,6 +657,16 @@ namespace M64MM2.Properties {
             get {
                 object obj = ResourceManager.GetObject("webb_m64mmsplash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The X3S Tint is only available for the X3 + Shading mods distributed by Project Comet or other affiliated people.
+        ///Changing the tint in a non-X3S ROM may cause distortions, an unexpected color being changed, or nothing..
+        /// </summary>
+        internal static string x3sMsg {
+            get {
+                return ResourceManager.GetString("x3sMsg", resourceCulture);
             }
         }
         

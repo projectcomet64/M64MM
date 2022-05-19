@@ -118,6 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 20</value>
+  </data>
+  <data name="toolsMenuItem.Text" xml:space="preserve">
+    <value>&amp;Herramientas</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 20</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Opciones</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Ayuda</value>
+  </data>
   <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
   </data>
@@ -142,35 +160,32 @@
   <data name="scanForEmulatorsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
   </data>
-  <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 20</value>
-  </data>
-  <data name="toolsMenuItem.Text" xml:space="preserve">
-    <value>&amp;Herramientas</value>
-  </data>
-  <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 20</value>
-  </data>
-  <data name="aboutMenuItem.Text" xml:space="preserve">
-    <value>&amp;Acerca de</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Opciones</value>
+  <data name="scanForEmulatorsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Escanear en busca de &amp;PJ64</value>
   </data>
   <data name="issuesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 20</value>
+    <value>201, 22</value>
   </data>
   <data name="issuesToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Reportar bug</value>
+    <value>&amp;Reportar bug/Pedir funcionalidad...</value>
   </data>
   <data name="checkForLatestUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 20</value>
+    <value>201, 22</value>
   </data>
   <data name="checkForLatestUpdateToolStripMenuItem.Text" xml:space="preserve">
-    <value>Act&amp;ualizar</value>
+    <value>B&amp;uscar actualizaciones...</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 6</value>
+  </data>
+  <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="aboutMenuItem.Text" xml:space="preserve">
+    <value>&amp;Acerca de...</value>
+  </data>
+  <data name="grpCamera.Text" xml:space="preserve">
+    <value>Controles de cámara</value>
   </data>
   <data name="cbPowercam.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 17</value>
@@ -188,11 +203,11 @@ Puede romper algunas transiciones. Usa con cuidado.</value>
   <data name="btnFreeze.Text" xml:space="preserve">
     <value>Congelado: No</value>
   </data>
-  <data name="grpCamera.Text" xml:space="preserve">
-    <value>Controles de cámara</value>
-  </data>
   <data name="lblCameraStatus.Text" xml:space="preserve">
     <value>Cámara: Por defecto</value>
+  </data>
+  <data name="grpAnimSwap.Text" xml:space="preserve">
+    <value>Controles de cambio de animación</value>
   </data>
   <data name="chbAutoApply.Location" type="System.Drawing.Point, System.Drawing">
     <value>116, 77</value>
@@ -234,14 +249,11 @@ Nota: puede verse raro de vez en cuando.</value>
   <data name="lblAnimOld.Text" xml:space="preserve">
     <value>Reemplazar esta animación:</value>
   </data>
-  <data name="grpAnimSwap.Text" xml:space="preserve">
-    <value>Controles de cambio de animación</value>
+  <data name="grpCamStyle.Text" xml:space="preserve">
+    <value>Cambio de estilo de cámara</value>
   </data>
   <data name="btnChangeCamStyle.Text" xml:space="preserve">
     <value>Aplicar</value>
-  </data>
-  <data name="grpCamStyle.Text" xml:space="preserve">
-    <value>Cambio de estilo de cámara</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

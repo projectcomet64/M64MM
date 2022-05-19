@@ -1,7 +1,5 @@
-﻿namespace M64MM2
-{
-    partial class AppearanceForm
-    {
+﻿namespace M64MM2 {
+    partial class AppearanceForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,10 +9,8 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -26,37 +22,26 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppearanceForm));
-            this.marioSprite = new System.Windows.Forms.PictureBox();
-            this.hatColorMain = new System.Windows.Forms.Button();
-            this.hatColorShade = new System.Windows.Forms.Button();
-            this.hairColorShade = new System.Windows.Forms.Button();
-            this.hairColorMain = new System.Windows.Forms.Button();
-            this.skinColorShade = new System.Windows.Forms.Button();
-            this.skinColorMain = new System.Windows.Forms.Button();
-            this.glovesColorShade = new System.Windows.Forms.Button();
-            this.glovesColorMain = new System.Windows.Forms.Button();
-            this.pantsColorShade = new System.Windows.Forms.Button();
-            this.pantsColorMain = new System.Windows.Forms.Button();
-            this.shoesColorShade = new System.Windows.Forms.Button();
-            this.shoesColorMain = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.grpColor = new System.Windows.Forms.GroupBox();
+            this.cbPartListOverride = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbCCParts = new System.Windows.Forms.Label();
+            this.lbPart = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnLightCol = new System.Windows.Forms.Button();
+            this.btnDarkCol = new System.Windows.Forms.Button();
+            this.lbColors = new System.Windows.Forms.ListBox();
             this.btnLoadFromGame = new System.Windows.Forms.Button();
+            this.btnResetColors = new System.Windows.Forms.Button();
             this.btnExportCode = new System.Windows.Forms.Button();
             this.btnImportCode = new System.Windows.Forms.Button();
+            this.marioSprite = new System.Windows.Forms.PictureBox();
             this.grpShading = new System.Windows.Forms.GroupBox();
             this.btnRandomizeShading = new System.Windows.Forms.Button();
             this.btnResetShading = new System.Windows.Forms.Button();
@@ -69,183 +54,90 @@
             this.tbBackFront = new System.Windows.Forms.TrackBar();
             this.tbBottomTop = new System.Windows.Forms.TrackBar();
             this.tbLeftRight = new System.Windows.Forms.TrackBar();
-            this.randomizerTimer = new System.Windows.Forms.Timer(this.components);
-            this.cbRoutingSource = new System.Windows.Forms.ComboBox();
-            this.cbRoutingTarget = new System.Windows.Forms.ComboBox();
-            this.lbShareWith = new System.Windows.Forms.Label();
-            this.btnReroute = new System.Windows.Forms.Button();
-            this.grpExperimental = new System.Windows.Forms.GroupBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sPARKColorcodeTransformsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiClassicToSpark = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSPARKShirtPants = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSPARKShorts = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSPARKShortSleeves = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRestoreSPARKCustom = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsTransforms = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.grpRand = new System.Windows.Forms.GroupBox();
+            this.cbRandMode = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.clbRandSel = new System.Windows.Forms.CheckedListBox();
             this.grpCCRepo = new System.Windows.Forms.GroupBox();
             this.lbCCs = new System.Windows.Forms.ListBox();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.grpRand = new System.Windows.Forms.GroupBox();
-            this.clbRandSel = new System.Windows.Forms.CheckedListBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.cbRandMode = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).BeginInit();
+            this.tmrRandom = new System.Windows.Forms.Timer(this.components);
+            this.lbWarning = new System.Windows.Forms.Label();
             this.grpColor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).BeginInit();
             this.grpShading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbBackFront)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbBottomTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).BeginInit();
-            this.grpExperimental.SuspendLayout();
-            this.grpCCRepo.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.grpRand.SuspendLayout();
+            this.grpCCRepo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // marioSprite
-            // 
-            this.marioSprite.BackColor = System.Drawing.Color.Transparent;
-            this.marioSprite.Image = global::M64MM2.Properties.Resources.CC_Mario_big;
-            resources.ApplyResources(this.marioSprite, "marioSprite");
-            this.marioSprite.Name = "marioSprite";
-            this.marioSprite.TabStop = false;
-            this.marioSprite.Paint += new System.Windows.Forms.PaintEventHandler(this.marioSprite_Paint);
-            this.marioSprite.DoubleClick += new System.EventHandler(this.marioSprite_DoubleClick);
-            // 
-            // hatColorMain
-            // 
-            this.hatColorMain.BackColor = System.Drawing.Color.Red;
-            this.hatColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.hatColorMain, "hatColorMain");
-            this.hatColorMain.Name = "hatColorMain";
-            this.hatColorMain.UseVisualStyleBackColor = false;
-            this.hatColorMain.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // hatColorShade
-            // 
-            this.hatColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.hatColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.hatColorShade, "hatColorShade");
-            this.hatColorShade.Name = "hatColorShade";
-            this.hatColorShade.UseVisualStyleBackColor = false;
-            this.hatColorShade.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // hairColorShade
-            // 
-            this.hairColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(3)))), ((int)(((byte)(0)))));
-            this.hairColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.hairColorShade, "hairColorShade");
-            this.hairColorShade.Name = "hairColorShade";
-            this.hairColorShade.UseVisualStyleBackColor = false;
-            this.hairColorShade.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // hairColorMain
-            // 
-            this.hairColorMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(6)))), ((int)(((byte)(0)))));
-            this.hairColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.hairColorMain, "hairColorMain");
-            this.hairColorMain.Name = "hairColorMain";
-            this.hairColorMain.UseVisualStyleBackColor = false;
-            this.hairColorMain.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // skinColorShade
-            // 
-            this.skinColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(96)))), ((int)(((byte)(60)))));
-            this.skinColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.skinColorShade, "skinColorShade");
-            this.skinColorShade.Name = "skinColorShade";
-            this.skinColorShade.UseVisualStyleBackColor = false;
-            this.skinColorShade.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // skinColorMain
-            // 
-            this.skinColorMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(193)))), ((int)(((byte)(121)))));
-            this.skinColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.skinColorMain, "skinColorMain");
-            this.skinColorMain.Name = "skinColorMain";
-            this.skinColorMain.UseVisualStyleBackColor = false;
-            this.skinColorMain.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // glovesColorShade
-            // 
-            this.glovesColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.glovesColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.glovesColorShade, "glovesColorShade");
-            this.glovesColorShade.Name = "glovesColorShade";
-            this.glovesColorShade.UseVisualStyleBackColor = false;
-            this.glovesColorShade.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // glovesColorMain
-            // 
-            this.glovesColorMain.BackColor = System.Drawing.Color.White;
-            this.glovesColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.glovesColorMain, "glovesColorMain");
-            this.glovesColorMain.Name = "glovesColorMain";
-            this.glovesColorMain.UseVisualStyleBackColor = false;
-            this.glovesColorMain.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // pantsColorShade
-            // 
-            this.pantsColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(127)))));
-            this.pantsColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.pantsColorShade, "pantsColorShade");
-            this.pantsColorShade.Name = "pantsColorShade";
-            this.pantsColorShade.UseVisualStyleBackColor = false;
-            this.pantsColorShade.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // pantsColorMain
-            // 
-            this.pantsColorMain.BackColor = System.Drawing.Color.Blue;
-            this.pantsColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.pantsColorMain, "pantsColorMain");
-            this.pantsColorMain.Name = "pantsColorMain";
-            this.pantsColorMain.UseVisualStyleBackColor = false;
-            this.pantsColorMain.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // shoesColorShade
-            // 
-            this.shoesColorShade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(14)))), ((int)(((byte)(7)))));
-            this.shoesColorShade.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.shoesColorShade, "shoesColorShade");
-            this.shoesColorShade.Name = "shoesColorShade";
-            this.shoesColorShade.UseVisualStyleBackColor = false;
-            this.shoesColorShade.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // shoesColorMain
-            // 
-            this.shoesColorMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(28)))), ((int)(((byte)(14)))));
-            this.shoesColorMain.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.shoesColorMain, "shoesColorMain");
-            this.shoesColorMain.Name = "shoesColorMain";
-            this.shoesColorMain.UseVisualStyleBackColor = false;
-            this.shoesColorMain.Click += new System.EventHandler(this.colorButton_Click);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
             // 
             // colorDialog
             // 
             this.colorDialog.AnyColor = true;
             this.colorDialog.FullOpen = true;
             this.colorDialog.SolidColorOnly = true;
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // grpColor
+            // 
+            this.grpColor.Controls.Add(this.cbPartListOverride);
+            this.grpColor.Controls.Add(this.label1);
+            this.grpColor.Controls.Add(this.lbCCParts);
+            this.grpColor.Controls.Add(this.lbPart);
+            this.grpColor.Controls.Add(this.label7);
+            this.grpColor.Controls.Add(this.label8);
+            this.grpColor.Controls.Add(this.btnLightCol);
+            this.grpColor.Controls.Add(this.btnDarkCol);
+            this.grpColor.Controls.Add(this.lbColors);
+            this.grpColor.Controls.Add(this.btnLoadFromGame);
+            this.grpColor.Controls.Add(this.btnResetColors);
+            this.grpColor.Controls.Add(this.btnExportCode);
+            resources.ApplyResources(this.grpColor, "grpColor");
+            this.grpColor.Name = "grpColor";
+            this.grpColor.TabStop = false;
+            // 
+            // cbPartListOverride
+            // 
+            this.cbPartListOverride.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPartListOverride.FormattingEnabled = true;
+            this.cbPartListOverride.Items.AddRange(new object[] {
+            resources.GetString("cbPartListOverride.Items"),
+            resources.GetString("cbPartListOverride.Items1"),
+            resources.GetString("cbPartListOverride.Items2")});
+            resources.ApplyResources(this.cbPartListOverride, "cbPartListOverride");
+            this.cbPartListOverride.Name = "cbPartListOverride";
+            this.cbPartListOverride.SelectedIndexChanged += new System.EventHandler(this.cbPartListOverride_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // lbCCParts
+            // 
+            resources.ApplyResources(this.lbCCParts, "lbCCParts");
+            this.lbCCParts.Name = "lbCCParts";
+            // 
+            // lbPart
+            // 
+            resources.ApplyResources(this.lbPart, "lbPart");
+            this.lbPart.Name = "lbPart";
             // 
             // label7
             // 
@@ -257,39 +149,31 @@
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
             // 
-            // label9
+            // btnLightCol
             // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
+            this.btnLightCol.BackColor = System.Drawing.Color.Red;
+            this.btnLightCol.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.btnLightCol, "btnLightCol");
+            this.btnLightCol.Name = "btnLightCol";
+            this.btnLightCol.UseVisualStyleBackColor = false;
+            this.btnLightCol.Click += new System.EventHandler(this.colorButton_Click);
             // 
-            // grpColor
+            // btnDarkCol
             // 
-            this.grpColor.Controls.Add(this.btnLoadFromGame);
-            this.grpColor.Controls.Add(this.grpExperimental);
-            this.grpColor.Controls.Add(this.label7);
-            this.grpColor.Controls.Add(this.hatColorMain);
-            this.grpColor.Controls.Add(this.btnExportCode);
-            this.grpColor.Controls.Add(this.label8);
-            this.grpColor.Controls.Add(this.hatColorShade);
-            this.grpColor.Controls.Add(this.hairColorMain);
-            this.grpColor.Controls.Add(this.label6);
-            this.grpColor.Controls.Add(this.hairColorShade);
-            this.grpColor.Controls.Add(this.label5);
-            this.grpColor.Controls.Add(this.skinColorMain);
-            this.grpColor.Controls.Add(this.label4);
-            this.grpColor.Controls.Add(this.skinColorShade);
-            this.grpColor.Controls.Add(this.label3);
-            this.grpColor.Controls.Add(this.glovesColorMain);
-            this.grpColor.Controls.Add(this.label2);
-            this.grpColor.Controls.Add(this.glovesColorShade);
-            this.grpColor.Controls.Add(this.label1);
-            this.grpColor.Controls.Add(this.pantsColorMain);
-            this.grpColor.Controls.Add(this.shoesColorShade);
-            this.grpColor.Controls.Add(this.pantsColorShade);
-            this.grpColor.Controls.Add(this.shoesColorMain);
-            resources.ApplyResources(this.grpColor, "grpColor");
-            this.grpColor.Name = "grpColor";
-            this.grpColor.TabStop = false;
+            this.btnDarkCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnDarkCol.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.btnDarkCol, "btnDarkCol");
+            this.btnDarkCol.Name = "btnDarkCol";
+            this.btnDarkCol.UseVisualStyleBackColor = false;
+            this.btnDarkCol.Click += new System.EventHandler(this.colorButton_Click);
+            // 
+            // lbColors
+            // 
+            this.lbColors.FormattingEnabled = true;
+            resources.ApplyResources(this.lbColors, "lbColors");
+            this.lbColors.Name = "lbColors";
+            this.lbColors.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbColors_DrawItem);
+            this.lbColors.SelectedValueChanged += new System.EventHandler(this.lbColors_SelectedValueChanged);
             // 
             // btnLoadFromGame
             // 
@@ -297,6 +181,13 @@
             this.btnLoadFromGame.Name = "btnLoadFromGame";
             this.btnLoadFromGame.UseVisualStyleBackColor = true;
             this.btnLoadFromGame.Click += new System.EventHandler(this.LoadFromGame);
+            // 
+            // btnResetColors
+            // 
+            resources.ApplyResources(this.btnResetColors, "btnResetColors");
+            this.btnResetColors.Name = "btnResetColors";
+            this.btnResetColors.UseVisualStyleBackColor = true;
+            this.btnResetColors.Click += new System.EventHandler(this.ResetColors);
             // 
             // btnExportCode
             // 
@@ -311,6 +202,16 @@
             this.btnImportCode.Name = "btnImportCode";
             this.btnImportCode.UseVisualStyleBackColor = true;
             this.btnImportCode.Click += new System.EventHandler(this.OpenCopyPasteForm);
+            // 
+            // marioSprite
+            // 
+            this.marioSprite.BackColor = System.Drawing.Color.Transparent;
+            this.marioSprite.Image = global::M64MM2.Properties.Resources.CC_Mario_big;
+            resources.ApplyResources(this.marioSprite, "marioSprite");
+            this.marioSprite.Name = "marioSprite";
+            this.marioSprite.TabStop = false;
+            this.marioSprite.Paint += new System.Windows.Forms.PaintEventHandler(this.marioSprite_Paint);
+            this.marioSprite.DoubleClick += new System.EventHandler(this.marioSprite_DoubleClick);
             // 
             // grpShading
             // 
@@ -403,45 +304,95 @@
             this.tbLeftRight.Value = 40;
             this.tbLeftRight.ValueChanged += new System.EventHandler(this.UpdateTrackbar);
             // 
-            // randomizerTimer
+            // menuStrip1
             // 
-            this.randomizerTimer.Tick += new System.EventHandler(this.randomizerTimer_Tick);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolsToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
             // 
-            // cbRoutingSource
+            // toolsToolStripMenuItem
             // 
-            this.cbRoutingSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRoutingSource.FormattingEnabled = true;
-            resources.ApplyResources(this.cbRoutingSource, "cbRoutingSource");
-            this.cbRoutingSource.Name = "cbRoutingSource";
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sPARKColorcodeTransformsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
             // 
-            // cbRoutingTarget
+            // sPARKColorcodeTransformsToolStripMenuItem
             // 
-            this.cbRoutingTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRoutingTarget.FormattingEnabled = true;
-            resources.ApplyResources(this.cbRoutingTarget, "cbRoutingTarget");
-            this.cbRoutingTarget.Name = "cbRoutingTarget";
+            this.sPARKColorcodeTransformsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiClassicToSpark,
+            this.tsmiSPARKShirtPants,
+            this.tsmiSPARKShorts,
+            this.tsmiSPARKShortSleeves,
+            this.tsmiRestoreSPARKCustom});
+            this.sPARKColorcodeTransformsToolStripMenuItem.Name = "sPARKColorcodeTransformsToolStripMenuItem";
+            resources.ApplyResources(this.sPARKColorcodeTransformsToolStripMenuItem, "sPARKColorcodeTransformsToolStripMenuItem");
             // 
-            // lbShareWith
+            // tsmiClassicToSpark
             // 
-            resources.ApplyResources(this.lbShareWith, "lbShareWith");
-            this.lbShareWith.Name = "lbShareWith";
+            this.tsmiClassicToSpark.Name = "tsmiClassicToSpark";
+            resources.ApplyResources(this.tsmiClassicToSpark, "tsmiClassicToSpark");
+            this.tsmiClassicToSpark.Click += new System.EventHandler(this.btnTFCC2SCC_Click);
             // 
-            // btnReroute
+            // tsmiSPARKShirtPants
             // 
-            resources.ApplyResources(this.btnReroute, "btnReroute");
-            this.btnReroute.Name = "btnReroute";
-            this.btnReroute.UseVisualStyleBackColor = true;
-            this.btnReroute.Click += new System.EventHandler(this.btnReroute_Click);
+            this.tsmiSPARKShirtPants.Name = "tsmiSPARKShirtPants";
+            resources.ApplyResources(this.tsmiSPARKShirtPants, "tsmiSPARKShirtPants");
+            this.tsmiSPARKShirtPants.Click += new System.EventHandler(this.btnTFShirtPants_Click);
             // 
-            // grpExperimental
+            // tsmiSPARKShorts
             // 
-            this.grpExperimental.Controls.Add(this.lbShareWith);
-            this.grpExperimental.Controls.Add(this.btnReroute);
-            this.grpExperimental.Controls.Add(this.cbRoutingTarget);
-            this.grpExperimental.Controls.Add(this.cbRoutingSource);
-            resources.ApplyResources(this.grpExperimental, "grpExperimental");
-            this.grpExperimental.Name = "grpExperimental";
-            this.grpExperimental.TabStop = false;
+            this.tsmiSPARKShorts.Name = "tsmiSPARKShorts";
+            resources.ApplyResources(this.tsmiSPARKShorts, "tsmiSPARKShorts");
+            this.tsmiSPARKShorts.Click += new System.EventHandler(this.btnTFShorties_Click);
+            // 
+            // tsmiSPARKShortSleeves
+            // 
+            this.tsmiSPARKShortSleeves.Name = "tsmiSPARKShortSleeves";
+            resources.ApplyResources(this.tsmiSPARKShortSleeves, "tsmiSPARKShortSleeves");
+            this.tsmiSPARKShortSleeves.Click += new System.EventHandler(this.btnTFSCCSleeves_Click);
+            // 
+            // tsmiRestoreSPARKCustom
+            // 
+            this.tsmiRestoreSPARKCustom.Name = "tsmiRestoreSPARKCustom";
+            resources.ApplyResources(this.tsmiRestoreSPARKCustom, "tsmiRestoreSPARKCustom");
+            this.tsmiRestoreSPARKCustom.Click += new System.EventHandler(this.btnTFCustomRestore_Click);
+            // 
+            // cmsTransforms
+            // 
+            this.cmsTransforms.Name = "cmsTransforms";
+            resources.ApplyResources(this.cmsTransforms, "cmsTransforms");
+            // 
+            // grpRand
+            // 
+            this.grpRand.Controls.Add(this.cbRandMode);
+            this.grpRand.Controls.Add(this.label16);
+            this.grpRand.Controls.Add(this.clbRandSel);
+            resources.ApplyResources(this.grpRand, "grpRand");
+            this.grpRand.Name = "grpRand";
+            this.grpRand.TabStop = false;
+            // 
+            // cbRandMode
+            // 
+            this.cbRandMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRandMode.FormattingEnabled = true;
+            this.cbRandMode.Items.AddRange(new object[] {
+            resources.GetString("cbRandMode.Items"),
+            resources.GetString("cbRandMode.Items1")});
+            resources.ApplyResources(this.cbRandMode, "cbRandMode");
+            this.cbRandMode.Name = "cbRandMode";
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // clbRandSel
+            // 
+            this.clbRandSel.FormattingEnabled = true;
+            resources.ApplyResources(this.clbRandSel, "clbRandSel");
+            this.clbRandSel.Name = "clbRandSel";
             // 
             // grpCCRepo
             // 
@@ -467,96 +418,58 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // grpRand
+            // tmrRandom
             // 
-            this.grpRand.Controls.Add(this.cbRandMode);
-            this.grpRand.Controls.Add(this.label16);
-            this.grpRand.Controls.Add(this.clbRandSel);
-            resources.ApplyResources(this.grpRand, "grpRand");
-            this.grpRand.Name = "grpRand";
-            this.grpRand.TabStop = false;
+            this.tmrRandom.Tick += new System.EventHandler(this.tmrRandom_Tick);
             // 
-            // clbRandSel
+            // lbWarning
             // 
-            this.clbRandSel.FormattingEnabled = true;
-            resources.ApplyResources(this.clbRandSel, "clbRandSel");
-            this.clbRandSel.Name = "clbRandSel";
+            resources.ApplyResources(this.lbWarning, "lbWarning");
+            this.lbWarning.Name = "lbWarning";
             // 
-            // label16
-            // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
-            // 
-            // cbRandMode
-            // 
-            this.cbRandMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRandMode.FormattingEnabled = true;
-            this.cbRandMode.Items.AddRange(new object[] {
-            resources.GetString("cbRandMode.Items"),
-            resources.GetString("cbRandMode.Items1")});
-            resources.ApplyResources(this.cbRandMode, "cbRandMode");
-            this.cbRandMode.Name = "cbRandMode";
-            this.cbRandMode.SelectedIndexChanged += new System.EventHandler(this.cbRandMode_SelectedIndexChanged);
-            // 
-            // AppearanceForm
+            // NewAppearanceForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbWarning);
             this.Controls.Add(this.grpRand);
             this.Controls.Add(this.grpCCRepo);
             this.Controls.Add(this.grpShading);
             this.Controls.Add(this.grpColor);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.marioSprite);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "AppearanceForm";
-            ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).EndInit();
             this.grpColor.ResumeLayout(false);
-            this.grpColor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).EndInit();
             this.grpShading.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tbBackFront)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbBottomTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).EndInit();
-            this.grpExperimental.ResumeLayout(false);
-            this.grpExperimental.PerformLayout();
-            this.grpCCRepo.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.grpRand.ResumeLayout(false);
             this.grpRand.PerformLayout();
+            this.grpCCRepo.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox marioSprite;
-        private System.Windows.Forms.Button hatColorMain;
-        private System.Windows.Forms.Button hatColorShade;
-        private System.Windows.Forms.Button hairColorShade;
-        private System.Windows.Forms.Button hairColorMain;
-        private System.Windows.Forms.Button skinColorShade;
-        private System.Windows.Forms.Button skinColorMain;
-        private System.Windows.Forms.Button glovesColorShade;
-        private System.Windows.Forms.Button glovesColorMain;
-        private System.Windows.Forms.Button pantsColorShade;
-        private System.Windows.Forms.Button pantsColorMain;
-        private System.Windows.Forms.Button shoesColorShade;
-        private System.Windows.Forms.Button shoesColorMain;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ColorDialog colorDialog;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox grpColor;
         private System.Windows.Forms.GroupBox grpShading;
         private System.Windows.Forms.Button btnExportCode;
         private System.Windows.Forms.Button btnImportCode;
         private System.Windows.Forms.Button btnLoadFromGame;
+        private System.Windows.Forms.Button btnResetColors;
         private System.Windows.Forms.TrackBar tbLeftRight;
         private System.Windows.Forms.TrackBar tbBackFront;
         private System.Windows.Forms.TrackBar tbBottomTop;
@@ -568,18 +481,32 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnResetShading;
         private System.Windows.Forms.Button btnRandomizeShading;
-        private System.Windows.Forms.Timer randomizerTimer;
-        private System.Windows.Forms.Button btnReroute;
-        private System.Windows.Forms.Label lbShareWith;
-        private System.Windows.Forms.ComboBox cbRoutingTarget;
-        private System.Windows.Forms.ComboBox cbRoutingSource;
-        private System.Windows.Forms.GroupBox grpExperimental;
-        private System.Windows.Forms.GroupBox grpCCRepo;
-        private System.Windows.Forms.ListBox lbCCs;
-        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.ListBox lbColors;
+        private System.Windows.Forms.Button btnLightCol;
+        private System.Windows.Forms.Button btnDarkCol;
+        private System.Windows.Forms.Label lbCCParts;
+        private System.Windows.Forms.Label lbPart;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ContextMenuStrip cmsTransforms;
+        private System.Windows.Forms.ToolStripMenuItem tsmiClassicToSpark;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSPARKShirtPants;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSPARKShorts;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSPARKShortSleeves;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRestoreSPARKCustom;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sPARKColorcodeTransformsToolStripMenuItem;
         private System.Windows.Forms.GroupBox grpRand;
         private System.Windows.Forms.ComboBox cbRandMode;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckedListBox clbRandSel;
+        private System.Windows.Forms.GroupBox grpCCRepo;
+        private System.Windows.Forms.ListBox lbCCs;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Timer tmrRandom;
+        private System.Windows.Forms.Label lbWarning;
+        private System.Windows.Forms.ComboBox cbPartListOverride;
+        private System.Windows.Forms.Label label1;
     }
 }

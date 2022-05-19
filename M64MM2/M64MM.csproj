@@ -105,12 +105,6 @@
     <Compile Include="AddonErrors.Designer.cs">
       <DependentUpon>AddonErrors.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppearanceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AppearanceForm.Designer.cs">
-      <DependentUpon>AppearanceForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\CustomCombobox\CustomComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -152,6 +146,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppearanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppearanceForm.Designer.cs">
+      <DependentUpon>AppearanceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.es.Designer.cs">
       <DependentUpon>Resources.es.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -192,9 +192,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddonErrors.resx">
       <DependentUpon>AddonErrors.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppearanceForm.es.resx">
-      <DependentUpon>AppearanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AppearanceForm.resx">
       <DependentUpon>AppearanceForm.cs</DependentUpon>
@@ -241,6 +238,9 @@
     <EmbeddedResource Include="LatestUpdateDialog.zh-CN.resx">
       <DependentUpon>LatestUpdateDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LatestUpdateDialog.zh-Hans.resx">
+      <DependentUpon>LatestUpdateDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.es.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -250,6 +250,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.zh-CN.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppearanceForm.es.resx">
+      <DependentUpon>AppearanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppearanceForm.zh-CN.resx">
+      <DependentUpon>AppearanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -279,6 +285,9 @@
     <EmbeddedResource Include="SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Taskman.es.resx">
+      <DependentUpon>Taskman.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Taskman.resx">
       <DependentUpon>Taskman.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,6 +314,7 @@
     <Content Include="animation_data.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="animation_data_zhCN.txt" />
     <Content Include="camera_data.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -312,6 +322,7 @@
     <None Include="Resources\version3_2big.png" />
     <None Include="Resources\webb_m64mmsplash.png" />
     <None Include="Resources\m3_splash_dev.png" />
+    <Content Include="camera_data_zhCN.txt" />
     <Content Include="Resources\M64MM2 New Icon 2 small.png" />
     <Content Include="Resources\M64MM2 New Icon 2.png" />
     <Content Include="Resources\M64MM2 New Icon.png" />
@@ -320,6 +331,7 @@
     <None Include="Resources\m64mm_hero.png" />
     <None Include="Resources\m64mm_hero_devprev.png" />
     <None Include="Resources\superg_m64mmsplash.png" />
+    <Content Include="Resources\randomSlot.png" />
     <Content Include="Resources\version3.ico" />
     <None Include="Resources\version31.ico" />
     <None Include="Resources\M64MM2 New.ico" />

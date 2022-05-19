@@ -50,9 +50,6 @@ namespace M64MM2
             WriteBytes(BaseAddress + 0x338398, starBytes, true);
             WriteBytes(BaseAddress + 0x3325F0, powerBytes, true);
             WriteBytes(BaseAddress + 0x2E3E18, cameraBytes, true);
-
-            //TODO: Move this to Update
-            //WriteBytes(BaseAddress + 0x3325F0,StringToByteArray("FF000000"), true);
         }
     }
 }
