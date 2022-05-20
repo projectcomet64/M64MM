@@ -45,6 +45,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tpCamera = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
+            this.cbHaHaYouLookedWhyAreYou = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbRelBeta = new System.Windows.Forms.CheckBox();
+            this.cbRelAlpha = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tpHandling.SuspendLayout();
             this.tpNetwork.SuspendLayout();
@@ -133,7 +137,10 @@
             // 
             // tpNetwork
             // 
-            resources.ApplyResources(this.tpNetwork, "tpNetwork");
+            this.tpNetwork.Controls.Add(this.cbRelAlpha);
+            this.tpNetwork.Controls.Add(this.cbRelBeta);
+            this.tpNetwork.Controls.Add(this.label6);
+            this.tpNetwork.Controls.Add(this.cbHaHaYouLookedWhyAreYou);
             this.tpNetwork.Controls.Add(this.label3);
             this.tpNetwork.Controls.Add(this.cbCheckUpdates);
             this.tpNetwork.Name = "tpNetwork";
@@ -158,6 +165,31 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            // 
+            // cbHaHaYouLookedWhyAreYou
+            // 
+            resources.ApplyResources(this.cbHaHaYouLookedWhyAreYou, "cbHaHaYouLookedWhyAreYou");
+            this.cbHaHaYouLookedWhyAreYou.Checked = true;
+            this.cbHaHaYouLookedWhyAreYou.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbHaHaYouLookedWhyAreYou.Name = "cbHaHaYouLookedWhyAreYou";
+            this.cbHaHaYouLookedWhyAreYou.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // cbRelBeta
+            // 
+            resources.ApplyResources(this.cbRelBeta, "cbRelBeta");
+            this.cbRelBeta.Name = "cbRelBeta";
+            this.cbRelBeta.UseVisualStyleBackColor = true;
+            // 
+            // cbRelAlpha
+            // 
+            resources.ApplyResources(this.cbRelAlpha, "cbRelAlpha");
+            this.cbRelAlpha.Name = "cbRelAlpha";
+            this.cbRelAlpha.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -201,5 +233,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tpCamera;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox cbRelAlpha;
+        private System.Windows.Forms.CheckBox cbRelBeta;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox cbHaHaYouLookedWhyAreYou;
     }
 }

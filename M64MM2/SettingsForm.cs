@@ -36,6 +36,8 @@ namespace M64MM2
             cbEnablePowercamStartup.Checked = coreSettingsGroup.EnsureSettingValue<bool>("enableStartupPowercam");
             cbCheckUpdates.Checked = coreSettingsGroup.EnsureSettingValue<bool>("enableUpdateCheck");
             cbTurbo.Checked = coreSettingsGroup.EnsureSettingValue<bool>("turboTicks");
+            cbRelBeta.Checked = Core.preferredReleases.Contains("beta");
+            cbRelAlpha.Checked = Core.preferredReleases.Contains("alpha");
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
@@ -50,6 +52,17 @@ namespace M64MM2
             coreSettingsGroup.SetSettingValue("enableStartupPowercam", cbEnablePowercamStartup.Checked);
             coreSettingsGroup.SetSettingValue("preferredDefaultCamStyle", ((CameraStyle)cbCamStyles.SelectedItem).Value);
             coreSettingsGroup.SetSettingValue("turboTicks", cbTurbo.Checked);
+            
+            // the following is very ugly
+            List<string> releaseCycles = new List<string>();
+            releaseCycles.Add("release");
+            if (cbRelBeta.Checked) {
+                releaseCycles.Add("beta");
+            }
+            if (cbRelAlpha.Checked) {
+                releaseCycles.Add("alpha");
+            }
+            coreSettingsGroup.SetSettingValue<string[]>("preferredReleases", releaseCycles.ToArray());
             SaveSettings();
             Close();
         }

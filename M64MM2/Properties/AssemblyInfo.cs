@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Mario 64 Movie Maker")]
-[assembly: AssemblyCopyright("Copyright © 2019  Project Comet")]
+[assembly: AssemblyCopyright("Copyright © 2022 Project Comet")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

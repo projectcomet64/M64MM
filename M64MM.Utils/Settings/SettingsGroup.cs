@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace M64MM.Utils
 {
     public class SettingsGroup
@@ -62,7 +64,20 @@ namespace M64MM.Utils
             {
                 throw new ArgumentException("The requested type is null.");
             }
-            return (T)Convert.ChangeType(entries[settingName], typeof(T));
+
+            try {
+                T fullRet = (T)Convert.ChangeType(entries[settingName], typeof(T));
+                return fullRet;
+            }
+            catch {
+                if (entries[settingName] is T fullReturn)
+                    return fullReturn;
+                else {
+                    // holy fuck
+                    return ((JToken) entries[settingName]).ToObject<T>();
+                }
+            }
+            
         }
 
         /// <summary>
@@ -89,7 +104,7 @@ namespace M64MM.Utils
                      * It'll throw a FormatException if the type that is
                      * saved doesn't match with the type to write.
                      * 
-                     * I have changed the value part of the Dicionary to be Object
+                     * I have changed the value part of the Dictionary to be Object
                      * this way the JSON will be serialized however the JsonSerializer
                      * wants to, and I don't have to do any wacky weird stuffy stupido
                      * string conversion thingamajig that would've actually become a problem
@@ -97,8 +112,17 @@ namespace M64MM.Utils
                      * 
                      * (thanks Super)
                      */
-                        Convert.ChangeType(entries[settingName], typeof(T));
+
+                    try {
+                        _ = Convert.ChangeType(entries[settingName], typeof(T));
                         entries[settingName] = valueObject;
+                    }
+                    catch (InvalidCastException) {
+                         _ = ((JToken) entries[settingName]).ToObject<T>();
+                         entries[settingName] = valueObject;
+                    }
+
+
                 }
                 else
                 {

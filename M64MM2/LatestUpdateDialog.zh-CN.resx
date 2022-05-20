@@ -119,13 +119,13 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lbCurrentVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
+    <value>73, 13</value>
   </data>
   <data name="lbCurrentVersion.Text" xml:space="preserve">
     <value>当前版本：无</value>
   </data>
   <data name="lbLatestVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 29</value>
+    <value>91, 18</value>
   </data>
   <data name="lbLatestVersion.Text" xml:space="preserve">
     <value>最新版本：无</value>
@@ -137,7 +137,7 @@
     <value>好的</value>
   </data>
   <data name="lbUpdateNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
+    <value>61, 13</value>
   </data>
   <data name="lbUpdateNotes.Text" xml:space="preserve">
     <value>更新信息：</value>
@@ -2032,5 +2032,8 @@
         /xoMA/8aDAP/GgwD/xoMA/8aDAP/GgwD/wAAAAOAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA
 </value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>更新M64MM3</value>
   </data>
 </root>

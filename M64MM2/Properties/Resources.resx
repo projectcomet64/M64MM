@@ -173,13 +173,13 @@
     <value>To file...</value>
   </data>
   <data name="colorCodeModdedRom" xml:space="preserve">
-    <value>This ROM has a different model data compared to Mario's usual model data and is not a compatible CometROM. The Color Code Studio and Shading Editor have been disabled; they might not work correctly in this ROM.</value>
+    <value>This ROM has a different model data compared to Mario's usual model data. If you're using a X3S ROM, change the Color Parts Override to X3S to use it.</value>
   </data>
   <data name="invalidColorCodeMsgLong" xml:space="preserve">
     <value>long</value>
   </data>
   <data name="prereleaseString" xml:space="preserve">
-    <value>-alpha7-e</value>
+    <value>-beta1.h2</value>
   </data>
   <data name="invalidAnimSelected" xml:space="preserve">
     <value>You have entered an invalid animation name into {0}. Please make sure to choose a valid option from the list.</value>
@@ -227,7 +227,7 @@
     <value>..\Resources\m64mm_hero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="programStatus1" xml:space="preserve">
-    <value>Status: Project64 is not open.</value>
+    <value>Status: Project64/Mupen not open.</value>
   </data>
   <data name="version3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\version31.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -303,5 +303,24 @@ Enter a level that doesn't zoom out when the game is paused and enable Powercam 
   </data>
   <data name="powercamPregameDirtyTitle" xml:space="preserve">
     <value>Wait, this is important.</value>
+  </data>
+  <data name="randomSlot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\randomSlot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="inaccessibleEmuMsg" xml:space="preserve">
+    <value>The selected emulator (or only available opened emulators) cannot be accessed by M64MM.
+This often happens if the emulator started as Administrator.
+There is no reason to start the emulator as an administrator. To use M64MM, please start the emulator without administrator privileges.</value>
+  </data>
+  <data name="incompatibleModelMsg" xml:space="preserve">
+    <value>You have opted to use the {0} parts, but this ROM is {1}.
+Stability not guaranteed.</value>
+  </data>
+  <data name="programStatusInaccessible" xml:space="preserve">
+    <value>Status: Couldn't open Project64/Mupen</value>
+  </data>
+  <data name="x3sMsg" xml:space="preserve">
+    <value>The X3S Tint is only available for the X3 + Shading mods distributed by Project Comet or other affiliated people.
+Changing the tint in a non-X3S ROM may cause distortions, an unexpected color being changed, or nothing.</value>
   </data>
 </root>

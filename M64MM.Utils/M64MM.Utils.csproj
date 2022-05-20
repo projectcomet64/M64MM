@@ -88,6 +88,8 @@
     <Compile Include="Appearance\ColorCode.cs" />
     <Compile Include="Appearance\ColorCodeGS.cs" />
     <Compile Include="Appearance\ColorSpace.cs" />
+    <Compile Include="Appearance\ColorPart.cs" />
+    <Compile Include="EmuFoundEventArgs.cs" />
     <Compile Include="Extensions\MathExtensions.cs" />
     <Compile Include="Updater\GitHubRelease.cs" />
     <Compile Include="Appearance\Looks.cs" />

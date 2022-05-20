@@ -31,6 +31,8 @@ namespace M64MM2 {
         //It's goddamn amazing
         Task updateFunction = Task.Run(() => PerformUpdate());
 
+        private bool _lastProcessWasInaccessible;
+
         public MainForm() {
             InitializeComponent();
             hint.IsBalloon = true;
@@ -71,8 +73,9 @@ namespace M64MM2 {
 
             // End Binding Setup
 
-            Core.EmulatorSelected += (a, b) => { EmulatorSelected(a, b); };
-            MoreThanOneEmuFound += (a, b) => { MoreThanOneEmu(a, b); };
+            Core.EmulatorSelected += EmulatorSelected;
+            MoreThanOneEmuFound += MoreThanOneEmu;
+            EmulatorInaccessible += InaccessibleEmu;
             ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
             foreach (Addon add in moduleList) {
                 List<ToolCommand> toolCommands = GetAddonCommands(add);
@@ -149,7 +152,12 @@ namespace M64MM2 {
             if (!IsEmuOpen && !StopProcessSearch) {
                 StopProcessSearch = true;
                 Text = Resources.programName + " " + Application.ProductVersion + Resources.prereleaseString;
-                lblProgramStatus.Text = Resources.programStatus1;
+                if (_lastProcessWasInaccessible) {
+                    lblProgramStatus.Text = Resources.programStatusInaccessible;
+                }
+                else {
+                    lblProgramStatus.Text = Resources.programStatus1;
+                }
                 FindEmuProcess();
                 PowerCamStyleStage = PowerCameraStyleStage.UNSET;
                 return;
@@ -161,6 +169,7 @@ namespace M64MM2 {
             FindBaseAddress();
             //Finding base address
             if (BaseAddress <= 0) {
+                _lastProcessWasInaccessible = false;
                 Text = Resources.programName + " " + Application.ProductVersion + Resources.prereleaseString;
                 lblProgramStatus.Text = Resources.programStatus2;
                 return;
@@ -247,8 +256,8 @@ namespace M64MM2 {
             }
         }
 
-        void MoreThanOneEmu(object sender, Process[] proc) {
-            Process[] n_plist = proc.Where(x => !string.IsNullOrEmpty(x.MainWindowTitle)).ToArray();
+        void MoreThanOneEmu(object sender, EmuFoundEventArgs proc) {
+            Process[] n_plist = proc.ProcessList.Where(x => !string.IsNullOrEmpty(x.MainWindowTitle)).ToArray();
             EmuSelectorForm es = new EmuSelectorForm(n_plist);
             if (n_plist.Length > 1) {
                 es.ShowDialog();
@@ -257,6 +266,12 @@ namespace M64MM2 {
                 StopProcessSearch = false;
             }
 
+        }
+
+        void InaccessibleEmu(object sender, EventArgs e) {
+            if (_lastProcessWasInaccessible) return;
+            MessageBox.Show(Resources.inaccessibleEmuMsg, ":/", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            _lastProcessWasInaccessible = true;
         }
 
         void EmulatorSelected(object sender, EventArgs e) {
@@ -328,31 +343,22 @@ namespace M64MM2 {
         void OpenAppearanceSettings(object sender, EventArgs e) {
             switch (modelStatus) {
                 case ModelHeaderType.EMPTY:
-                    MessageBox.Show(Resources.colorCodeEmptyRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    break;
+                    MessageBox.Show(Resources.colorCodeEmptyRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 case ModelHeaderType.MOD:
-                    MessageBox.Show(Resources.colorCodeModdedRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Resources.colorCodeModdedRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
-                case ModelHeaderType.SPARK:
-                    MessageBox.Show(Resources.colorCodeSPARKRom, "...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
-
-                    if (!appearanceForm.Visible)
-                        appearanceForm.Show();
-
-                    if (appearanceForm.WindowState == FormWindowState.Minimized)
-                        appearanceForm.WindowState = FormWindowState.Normal;
-                    break;
-                case ModelHeaderType.CLASSIC:
-                    if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
-
-                    if (!appearanceForm.Visible)
-                        appearanceForm.Show();
-
-                    if (appearanceForm.WindowState == FormWindowState.Minimized)
-                        appearanceForm.WindowState = FormWindowState.Normal;
-                    break;
+                case ModelHeaderType.UNSET:
+                    return;
             }
+
+            if (appearanceForm == null || appearanceForm.IsDisposed) appearanceForm = new AppearanceForm();
+
+            if (!appearanceForm.Visible)
+                appearanceForm.Show();
+
+            if (appearanceForm.WindowState == FormWindowState.Minimized)
+                appearanceForm.WindowState = FormWindowState.Normal;
         }
 
         void ShowPowercamTooltip(bool inlevel) {
@@ -386,6 +392,9 @@ namespace M64MM2 {
         }
 
         private void MainForm_Load(object sender, EventArgs e) {
+            Program.LatestRelease = Task.Run(() => Updater.FindNewUpdate(Program.CurrentVersionTag, Core.preferredReleases)).Result;
+            Program.HasUpdate = Updater.CheckVersion(Program.LatestRelease.VersionTag, Program.CurrentVersionTag);
+
             if (Program.HasUpdate) {
                 ludForm = new LatestUpdateDialog(Program.LatestRelease);
                 ludForm.ShowDialog(this);
@@ -410,10 +419,6 @@ namespace M64MM2 {
             }
         }
 
-        private void cbAnimOld_TextChanged(object sender, EventArgs e) {
-
-        }
-
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e) {
             if (settingsForm == null) {
                 settingsForm = new SettingsForm();
@@ -423,7 +428,7 @@ namespace M64MM2 {
 
         private async void checkForLatestUpdateToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                GitHubRelease latestRel = await Updater.FindNewUpdate();
+                GitHubRelease latestRel = await Updater.FindNewUpdate(Program.CurrentVersionTag, preferredReleases);
                 LatestUpdateDialog ludForm = new LatestUpdateDialog(latestRel);
                 ludForm.Show();
             }

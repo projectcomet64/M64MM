@@ -152,9 +152,6 @@
   <data name="btnBringToFront.Text" xml:space="preserve">
     <value>移到最前</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>模拟器选择</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAcAAAAAAAEAIABvKgAAdgAAAICAAAABACAAKAgBAOUqAABAQAAAAQAgAChCAAANMwEAMDAAAAEA
@@ -2042,5 +2039,8 @@
         /xoMA/8aDAP/GgwD/xoMA/8aDAP/GgwD/wAAAAOAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA
 </value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>模拟器选择</value>
   </data>
 </root>

@@ -156,6 +156,38 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Estilo de cámara a usar con Auto-Powercam</value>
   </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Habilitar Turbo Ticks hará que M64MM use un poco más de CPU (12-14%) si así lo quiere un Addon. Si tu sistema o juego se pone lento, considera deshabilitarlo.
+</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Turbo Ticks incrementa la frecuencia de actualización de Addons cada vez que algún Addon lo pida.
+
+Un Addon es cada tic que realiza sincronizado al reloj interno del juego. Ya que M64MM es un trainer y no está 100% sincronizado con el emulador, puede que esto desincronice y se caigan 3 o 4 fotogramas.
+
+Usa esto sólo si los Addons no corren tan suave como deberían y tu PC lo soporta. Funciona mejor si M64MM está en prioridad de CPU "Alta".
+
+
+</value>
+  </data>
+  <data name="tpHandling.Text" xml:space="preserve">
+    <value>Manejo</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Te imploro que dejes la búsqueda de actualizaciones ACTIVADA.
+
+No me digas ni pío sobre errores si no estás en la última versión, porque muy segurito te pido que actualices antes de cualquier cosa.
+</value>
+  </data>
+  <data name="tpNetwork.Text" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Auto-Powercam habilita Powercam cuando M64MM inicia. Autoasigna una preconfiguración de cámara para evitar que ésta se congele altísimo en el cielo cuando el juego inicia.</value>
+  </data>
+  <data name="tpCamera.Text" xml:space="preserve">
+    <value>Cámara</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAcAAAAAAAEAIABvKgAAdgAAAICAAAABACAAKAgBAOUqAABAQAAAAQAgAChCAAANMwEAMDAAAAEA
