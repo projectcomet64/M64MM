@@ -94,27 +94,27 @@
             // 
             // cbCamStyles
             // 
+            resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
             this.cbCamStyles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCamStyles.FormattingEnabled = true;
-            resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
             this.cbCamStyles.Name = "cbCamStyles";
             // 
             // tabControl1
             // 
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tpHandling);
             this.tabControl1.Controls.Add(this.tpNetwork);
             this.tabControl1.Controls.Add(this.tpCamera);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
             // tpHandling
             // 
+            resources.ApplyResources(this.tpHandling, "tpHandling");
             this.tpHandling.Controls.Add(this.label5);
             this.tpHandling.Controls.Add(this.label4);
             this.tpHandling.Controls.Add(this.cbTurbo);
             this.tpHandling.Controls.Add(this.cbEnableHotkeys);
-            resources.ApplyResources(this.tpHandling, "tpHandling");
             this.tpHandling.Name = "tpHandling";
             this.tpHandling.UseVisualStyleBackColor = true;
             // 
@@ -143,7 +143,6 @@
             this.tpNetwork.Controls.Add(this.cbHaHaYouLookedWhyAreYou);
             this.tpNetwork.Controls.Add(this.label3);
             this.tpNetwork.Controls.Add(this.cbCheckUpdates);
-            resources.ApplyResources(this.tpNetwork, "tpNetwork");
             this.tpNetwork.Name = "tpNetwork";
             this.tpNetwork.UseVisualStyleBackColor = true;
             // 
@@ -154,11 +153,11 @@
             // 
             // tpCamera
             // 
+            resources.ApplyResources(this.tpCamera, "tpCamera");
             this.tpCamera.Controls.Add(this.label2);
             this.tpCamera.Controls.Add(this.cbEnablePowercamStartup);
             this.tpCamera.Controls.Add(this.cbCamStyles);
             this.tpCamera.Controls.Add(this.label1);
-            resources.ApplyResources(this.tpCamera, "tpCamera");
             this.tpCamera.Name = "tpCamera";
             this.tpCamera.UseVisualStyleBackColor = true;
             // 
