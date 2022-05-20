@@ -82,7 +82,6 @@ namespace M64MM2
             this.toolsMenuItem,
             this.settingsToolStripMenuItem,
             this.helpToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
             this.ttAutoApplyInfo.SetToolTip(this.menuStrip, resources.GetString("menuStrip.ToolTip"));
             // 
@@ -134,13 +133,13 @@ namespace M64MM2
             // 
             // helpToolStripMenuItem
             // 
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.issuesToolStripMenuItem,
             this.checkForLatestUpdateToolStripMenuItem,
             this.toolStripSeparator2,
             this.aboutMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
             // issuesToolStripMenuItem
             // 
@@ -156,13 +155,13 @@ namespace M64MM2
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
             // 
             // aboutMenuItem
             // 
-            this.aboutMenuItem.Name = "aboutMenuItem";
             resources.ApplyResources(this.aboutMenuItem, "aboutMenuItem");
+            this.aboutMenuItem.Name = "aboutMenuItem";
             this.aboutMenuItem.Click += new System.EventHandler(this.OpenAboutForm);
             // 
             // grpCamera
@@ -292,24 +291,27 @@ namespace M64MM2
             // 
             // grpCamStyle
             // 
+            resources.ApplyResources(this.grpCamStyle, "grpCamStyle");
             this.grpCamStyle.Controls.Add(this.btnChangeCamStyle);
             this.grpCamStyle.Controls.Add(this.cbCamStyles);
-            resources.ApplyResources(this.grpCamStyle, "grpCamStyle");
             this.grpCamStyle.Name = "grpCamStyle";
             this.grpCamStyle.TabStop = false;
+            this.ttAutoApplyInfo.SetToolTip(this.grpCamStyle, resources.GetString("grpCamStyle.ToolTip"));
             // 
             // btnChangeCamStyle
             // 
             resources.ApplyResources(this.btnChangeCamStyle, "btnChangeCamStyle");
             this.btnChangeCamStyle.Name = "btnChangeCamStyle";
+            this.ttAutoApplyInfo.SetToolTip(this.btnChangeCamStyle, resources.GetString("btnChangeCamStyle.ToolTip"));
             this.btnChangeCamStyle.UseVisualStyleBackColor = true;
             this.btnChangeCamStyle.Click += new System.EventHandler(this.ChangeCameraStyle);
             // 
             // cbCamStyles
             // 
-            this.cbCamStyles.FormattingEnabled = true;
             resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
+            this.cbCamStyles.FormattingEnabled = true;
             this.cbCamStyles.Name = "cbCamStyles";
+            this.ttAutoApplyInfo.SetToolTip(this.cbCamStyles, resources.GetString("cbCamStyles.ToolTip"));
             // 
             // ttAutoApplyInfo
             // 
@@ -361,7 +363,6 @@ namespace M64MM2
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.grpCamera.ResumeLayout(false);
-            this.grpCamera.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.grpAnimSwap.ResumeLayout(false);

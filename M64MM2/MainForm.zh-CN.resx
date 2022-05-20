@@ -119,73 +119,87 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>208, 22</value>
   </data>
   <data name="appearanceSettingsMenuItem.Text" xml:space="preserve">
     <value>外观设置</value>
   </data>
   <data name="extraControlsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>208, 22</value>
   </data>
   <data name="extraControlsToolStripMenuItem.Text" xml:space="preserve">
     <value>其他操作</value>
   </data>
   <data name="showRunningPluginsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>208, 22</value>
   </data>
   <data name="showRunningPluginsToolStripMenuItem.Text" xml:space="preserve">
     <value>显示正在运行的额外组件</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
+    <value>205, 6</value>
   </data>
   <data name="scanForEmulatorsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
+    <value>208, 22</value>
   </data>
   <data name="scanForEmulatorsToolStripMenuItem.Text" xml:space="preserve">
     <value>搜索Project64</value>
   </data>
-  <data name="scanForEmulatorsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 22</value>
-  </data>
   <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
+    <value>59, 21</value>
   </data>
   <data name="toolsMenuItem.Text" xml:space="preserve">
     <value>工具(&amp;T)</value>
   </data>
-  <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="aboutMenuItem.Text" xml:space="preserve">
-    <value>关于(&amp;A)</value>
-  </data>
   <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 20</value>
+    <value>59, 21</value>
   </data>
   <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
     <value>设置(&amp;S)</value>
   </data>
   <data name="issuesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 20</value>
+    <value>180, 22</value>
   </data>
   <data name="issuesToolStripMenuItem.Text" xml:space="preserve">
     <value>报告BUG</value>
   </data>
   <data name="checkForLatestUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
+    <value>180, 22</value>
   </data>
   <data name="checkForLatestUpdateToolStripMenuItem.Text" xml:space="preserve">
     <value>检查更新</value>
   </data>
-  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>528, 24</value>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 6</value>
   </data>
-  <data name="cbPowercam.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 25</value>
+  <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="aboutMenuItem.Text" xml:space="preserve">
+    <value>关于(&amp;A)</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>528, 25</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbPowercam.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="cbPowercam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 17</value>
+    <value>198, 16</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbPowercam.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="cbPowercam.Text" xml:space="preserve">
     <value>启动Powercam（实验性功能）</value>
@@ -195,50 +209,38 @@
 可以到到在&lt;b&gt;任何时候&lt;/b&gt;锁定相机而不会变成远景的效果。
 可能会导致一些场景切换时相机视角错误。请小心使用。</value>
   </data>
-  <data name="btnSoftFreeze.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 49</value>
-  </data>
-  <data name="btnSoftFreeze.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 25</value>
-  </data>
   <data name="btnSoftFreeze.Text" xml:space="preserve">
     <value>已软锁定：否</value>
   </data>
-  <data name="btnFreeze.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 49</value>
-  </data>
   <data name="btnFreeze.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 25</value>
+    <value>130, 23</value>
   </data>
   <data name="btnFreeze.Text" xml:space="preserve">
     <value>已锁定：否</value>
   </data>
-  <data name="grpCamera.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
-  </data>
-  <data name="grpCamera.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 82</value>
+  <data name="btnFreeze.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="grpCamera.Text" xml:space="preserve">
     <value>相机操作</value>
+  </data>
+  <data name="grpCamera.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="lblCameraStatus.Text" xml:space="preserve">
     <value>相机状态：默认</value>
   </data>
   <data name="lblCameraCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 17</value>
-  </data>
-  <data name="lblCameraStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 17</value>
+    <value>0, 17</value>
   </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 220</value>
+    <value>0, 201</value>
   </data>
   <data name="chbAutoApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 83</value>
+    <value>116, 77</value>
   </data>
   <data name="chbAutoApply.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 17</value>
+    <value>72, 16</value>
   </data>
   <data name="chbAutoApply.Text" xml:space="preserve">
     <value>自动应用</value>
@@ -248,101 +250,77 @@
     
     提示：可能会导致部分动作动画表现不正常。</value>
   </data>
-  <data name="btnAnimResetAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>382, 73</value>
-  </data>
   <data name="btnAnimResetAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 23</value>
+    <value>112, 21</value>
   </data>
   <data name="btnAnimResetAll.Text" xml:space="preserve">
     <value>全部恢复</value>
   </data>
+  <data name="btnAnimResetAll.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="btnAnimReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>264, 73</value>
+    <value>264, 67</value>
   </data>
   <data name="btnAnimReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 23</value>
+    <value>112, 21</value>
   </data>
   <data name="btnAnimReset.Text" xml:space="preserve">
     <value>恢复</value>
   </data>
-  <data name="btnAnimSwap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 73</value>
+  <data name="btnAnimSwap.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnAnimSwap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 25</value>
+    <value>103, 23</value>
   </data>
   <data name="btnAnimSwap.Text" xml:space="preserve">
     <value>应用</value>
   </data>
   <data name="lblAnimNew.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 49</value>
+    <value>6, 45</value>
   </data>
   <data name="lblAnimNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 13</value>
+    <value>101, 12</value>
   </data>
   <data name="lblAnimNew.Text" xml:space="preserve">
     <value>替换为这个动作：</value>
   </data>
-  <data name="lblAnimOld.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 22</value>
-  </data>
   <data name="lblAnimOld.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 13</value>
+    <value>101, 12</value>
+  </data>
+  <data name="lblAnimOld.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="lblAnimOld.Text" xml:space="preserve">
     <value>把这个动作：</value>
   </data>
-  <data name="cbAnimNew.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 46</value>
-  </data>
-  <data name="cbAnimNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>346, 21</value>
-  </data>
   <data name="cbAnimOld.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 20</value>
-  </data>
-  <data name="cbAnimOld.Size" type="System.Drawing.Size, System.Drawing">
-    <value>346, 21</value>
+    <value>148, 18</value>
   </data>
   <data name="grpAnimSwap.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 115</value>
-  </data>
-  <data name="grpAnimSwap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 102</value>
+    <value>12, 106</value>
   </data>
   <data name="grpAnimSwap.Text" xml:space="preserve">
     <value>动作替换操作</value>
   </data>
   <data name="btnChangeCamStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 51</value>
+    <value>43, 47</value>
   </data>
   <data name="btnChangeCamStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 23</value>
+    <value>130, 21</value>
   </data>
   <data name="btnChangeCamStyle.Text" xml:space="preserve">
     <value>应用</value>
   </data>
   <data name="cbCamStyles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 23</value>
-  </data>
-  <data name="cbCamStyles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 21</value>
-  </data>
-  <data name="grpCamStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>296, 27</value>
+    <value>6, 21</value>
   </data>
   <data name="grpCamStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 82</value>
+    <value>216, 76</value>
   </data>
   <data name="grpCamStyle.Text" xml:space="preserve">
     <value>切换相机模式</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>528, 242</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2231,5 +2209,11 @@
         /xoMA/8aDAP/GgwD/xoMA/8aDAP/GgwD/wAAAAOAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
