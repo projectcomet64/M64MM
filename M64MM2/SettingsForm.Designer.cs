@@ -137,7 +137,6 @@
             // 
             // tpNetwork
             // 
-            resources.ApplyResources(this.tpNetwork, "tpNetwork");
             this.tpNetwork.Controls.Add(this.cbRelAlpha);
             this.tpNetwork.Controls.Add(this.cbRelBeta);
             this.tpNetwork.Controls.Add(this.label6);
@@ -166,7 +165,6 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-
             // 
             // cbHaHaYouLookedWhyAreYou
             // 
@@ -175,7 +173,7 @@
             this.cbHaHaYouLookedWhyAreYou.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbHaHaYouLookedWhyAreYou.Name = "cbHaHaYouLookedWhyAreYou";
             this.cbHaHaYouLookedWhyAreYou.UseVisualStyleBackColor = true;
-            //
+            // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
@@ -192,7 +190,7 @@
             resources.ApplyResources(this.cbRelAlpha, "cbRelAlpha");
             this.cbRelAlpha.Name = "cbRelAlpha";
             this.cbRelAlpha.UseVisualStyleBackColor = true;
-            //
+            // 
             // SettingsForm
             // 
             resources.ApplyResources(this, "$this");

@@ -157,6 +157,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Properties\Resources.zh-CN.Designer.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,24 +238,25 @@
     <EmbeddedResource Include="LatestUpdateDialog.zh-CN.resx">
       <DependentUpon>LatestUpdateDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LatestUpdateDialog.zh-Hans.resx">
+      <DependentUpon>LatestUpdateDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.es.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.zh-CN.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AppearanceForm.es.resx">
       <DependentUpon>AppearanceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="AppearanceForm.zh-CN.resx">
+    <EmbeddedResource Include="AppearanceForm.zh-CN.resx">
       <DependentUpon>AppearanceForm.cs</DependentUpon>
-    </None>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.es.Designer.cs</LastGenOutput>
@@ -276,11 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.zh-CN.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
