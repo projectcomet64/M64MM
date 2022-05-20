@@ -164,6 +164,9 @@
     <value>注意!在使用本工具修改角色颜色之前，请务必把模拟器中的所有颜色代码（Color Code）都取消打勾！
   否则马力欧的颜色将会和你所选择的不一致！</value>
   </data>
+  <data name="grpColor.Text" xml:space="preserve">
+    <value>颜色设置：</value>
+  </data>
   <data name="btnLoadFromGame.Text" xml:space="preserve">
     <value>从游戏中读取</value>
   </data>
@@ -199,6 +202,9 @@
   </data>
   <data name="btnImportCode.Text" xml:space="preserve">
     <value>导入颜色代码…</value>
+  </data>
+  <data name="grpShading.Text" xml:space="preserve">
+    <value>阴影设置：</value>
   </data>
   <data name="btnRandomizeShading.Text" xml:space="preserve">
     <value>随机阴影</value>

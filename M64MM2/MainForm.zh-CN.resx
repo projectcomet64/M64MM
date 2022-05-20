@@ -145,6 +145,9 @@
   <data name="scanForEmulatorsToolStripMenuItem.Text" xml:space="preserve">
     <value>搜索Project64</value>
   </data>
+  <data name="scanForEmulatorsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
   <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 20</value>
   </data>
