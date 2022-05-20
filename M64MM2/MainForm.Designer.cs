@@ -274,6 +274,31 @@ namespace M64MM2
             this.lblAnimOld.Name = "lblAnimOld";
             this.ttAutoApplyInfo.SetToolTip(this.lblAnimOld, resources.GetString("lblAnimOld.ToolTip"));
             // 
+            // grpCamStyle
+            // 
+            this.grpCamStyle.Controls.Add(this.btnChangeCamStyle);
+            this.grpCamStyle.Controls.Add(this.cbCamStyles);
+            resources.ApplyResources(this.grpCamStyle, "grpCamStyle");
+            this.grpCamStyle.Name = "grpCamStyle";
+            this.grpCamStyle.TabStop = false;
+            // 
+            // btnChangeCamStyle
+            // 
+            resources.ApplyResources(this.btnChangeCamStyle, "btnChangeCamStyle");
+            this.btnChangeCamStyle.Name = "btnChangeCamStyle";
+            this.btnChangeCamStyle.UseVisualStyleBackColor = true;
+            this.btnChangeCamStyle.Click += new System.EventHandler(this.ChangeCameraStyle);
+            // 
+            // cbCamStyles
+            // 
+            this.cbCamStyles.FormattingEnabled = true;
+            resources.ApplyResources(this.cbCamStyles, "cbCamStyles");
+            this.cbCamStyles.Name = "cbCamStyles";
+            // 
+            // ttAutoApplyInfo
+            // 
+            this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
             // cbAnimNew
             // 
             resources.ApplyResources(this.cbAnimNew, "cbAnimNew");
