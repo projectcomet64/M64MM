@@ -118,23 +118,38 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cbEnableHotkeys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 20</value>
+  </data>
   <data name="cbEnableHotkeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 16</value>
+    <value>193, 17</value>
   </data>
   <data name="cbEnableHotkeys.Text" xml:space="preserve">
     <value>启用快捷键 （CTRL+1, CTRL+2…）</value>
+  </data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>298, 348</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
   </data>
   <data name="btnCancel.Text" xml:space="preserve">
     <value>取消</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>302, 298</value>
+    <value>379, 348</value>
+  </data>
+  <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
   </data>
   <data name="btnOK.Text" xml:space="preserve">
     <value>确定</value>
   </data>
+  <data name="cbCheckUpdates.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 17</value>
+  </data>
   <data name="cbCheckUpdates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 16</value>
+    <value>110, 17</value>
   </data>
   <data name="cbCheckUpdates.Text" xml:space="preserve">
     <value>启动时检查更新</value>
@@ -147,85 +162,106 @@
   <data name="cbEnablePowercamStartup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="cbEnablePowercamStartup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 15</value>
+  </data>
   <data name="cbEnablePowercamStartup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 16</value>
+    <value>160, 17</value>
   </data>
   <data name="cbEnablePowercamStartup.Text" xml:space="preserve">
     <value>启动时自动开启Powercam</value>
   </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 108</value>
+  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 12</value>
+    <value>195, 13</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>自动开启 Powercam 所用的相机预设</value>
   </data>
+  <data name="cbCamStyles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 126</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 213</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>403, 85</value>
+  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>如果插件需要，启用高速刷新将会导致 M64MM 使用更多的 CPU 资源（约12-14%）。如果你的系统或游戏运行迟钝，建议关闭。</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 79</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>403, 145</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>高速刷新增加了插件在请求时刷新的速度。每次插件更新都会与游戏同步。作为一个修改器，M64MM 无法完全与模拟器同步，勾选此选项可能会导致与模拟器失去同步或是掉 3 - 4 帧。</value>
   </data>
+  <data name="cbTurbo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 55</value>
+  </data>
   <data name="cbTurbo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
+    <value>74, 17</value>
   </data>
   <data name="cbTurbo.Text" xml:space="preserve">
     <value>高速刷新</value>
   </data>
   <data name="tpHandling.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 255</value>
+    <value>438, 303</value>
   </data>
   <data name="tpHandling.Text" xml:space="preserve">
     <value>进程</value>
   </data>
-  <data name="tpNetwork.Text" xml:space="preserve">
-    <value>网络</value>
-  </data>
-  <data name="tpCamera.Text" xml:space="preserve">
-    <value>相机</value>
-  </data>
-  <data name="cbRelAlpha.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 145</value>
-  </data>
-  <data name="cbRelAlpha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 16</value>
-  </data>
-  <data name="cbRelBeta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 145</value>
-  </data>
-  <data name="cbRelBeta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 16</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 123</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 19</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>从这些发布通道获取更新：</value>
   </data>
-  <data name="cbHaHaYouLookedWhyAreYou.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 145</value>
-  </data>
   <data name="cbHaHaYouLookedWhyAreYou.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 16</value>
+    <value>50, 17</value>
   </data>
   <data name="cbHaHaYouLookedWhyAreYou.Text" xml:space="preserve">
     <value>发布</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 63</value>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 54</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>求求你了，请勾选“启动时检查更新”。
 
 如果你没有使用最新版本，请不要向我反馈BUG，不然我应该会先让你升级到最新版本。</value>
   </data>
+  <data name="tpNetwork.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 303</value>
+  </data>
+  <data name="tpNetwork.Text" xml:space="preserve">
+    <value>网络</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 44</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>389, 47</value>
+  </data>
   <data name="label2.Text" xml:space="preserve">
     <value>此选项将会在 M64MM 启动时打开 Powercam。这将会自动把当前摄像头位置对应到一个预设位置列表中，以防止在冻结摄像机时出现错误。</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+  <data name="tpCamera.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 303</value>
+  </data>
+  <data name="tpCamera.Text" xml:space="preserve">
+    <value>相机</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 13</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>446, 329</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>466, 388</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

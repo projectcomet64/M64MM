@@ -42,13 +42,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cbTurbo = new System.Windows.Forms.CheckBox();
             this.tpNetwork = new System.Windows.Forms.TabPage();
+            this.cbRelAlpha = new System.Windows.Forms.CheckBox();
+            this.cbRelBeta = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbHaHaYouLookedWhyAreYou = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tpCamera = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbHaHaYouLookedWhyAreYou = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbRelBeta = new System.Windows.Forms.CheckBox();
-            this.cbRelAlpha = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tpHandling.SuspendLayout();
             this.tpNetwork.SuspendLayout();
@@ -147,6 +147,31 @@
             this.tpNetwork.Name = "tpNetwork";
             this.tpNetwork.UseVisualStyleBackColor = true;
             // 
+            // cbRelAlpha
+            // 
+            resources.ApplyResources(this.cbRelAlpha, "cbRelAlpha");
+            this.cbRelAlpha.Name = "cbRelAlpha";
+            this.cbRelAlpha.UseVisualStyleBackColor = true;
+            // 
+            // cbRelBeta
+            // 
+            resources.ApplyResources(this.cbRelBeta, "cbRelBeta");
+            this.cbRelBeta.Name = "cbRelBeta";
+            this.cbRelBeta.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // cbHaHaYouLookedWhyAreYou
+            // 
+            resources.ApplyResources(this.cbHaHaYouLookedWhyAreYou, "cbHaHaYouLookedWhyAreYou");
+            this.cbHaHaYouLookedWhyAreYou.Checked = true;
+            this.cbHaHaYouLookedWhyAreYou.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbHaHaYouLookedWhyAreYou.Name = "cbHaHaYouLookedWhyAreYou";
+            this.cbHaHaYouLookedWhyAreYou.UseVisualStyleBackColor = true;
+            // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
@@ -166,33 +191,7 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-
             // 
-            // cbHaHaYouLookedWhyAreYou
-            // 
-            resources.ApplyResources(this.cbHaHaYouLookedWhyAreYou, "cbHaHaYouLookedWhyAreYou");
-            this.cbHaHaYouLookedWhyAreYou.Checked = true;
-            this.cbHaHaYouLookedWhyAreYou.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbHaHaYouLookedWhyAreYou.Name = "cbHaHaYouLookedWhyAreYou";
-            this.cbHaHaYouLookedWhyAreYou.UseVisualStyleBackColor = true;
-            //
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // cbRelBeta
-            // 
-            resources.ApplyResources(this.cbRelBeta, "cbRelBeta");
-            this.cbRelBeta.Name = "cbRelBeta";
-            this.cbRelBeta.UseVisualStyleBackColor = true;
-            // 
-            // cbRelAlpha
-            // 
-            resources.ApplyResources(this.cbRelAlpha, "cbRelAlpha");
-            this.cbRelAlpha.Name = "cbRelAlpha";
-            this.cbRelAlpha.UseVisualStyleBackColor = true;
-            //
             // SettingsForm
             // 
             resources.ApplyResources(this, "$this");
