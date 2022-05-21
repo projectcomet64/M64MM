@@ -137,7 +137,7 @@
     <value>此 ROM 似乎包含 SPARK 可编辑颜色代码模组。目前，外观设置不支持 SPARK, 所以您也许需要从https://comet.glitchypsi.xyz 下载 CometSPARK 扩展。</value>
   </data>
   <data name="programStatusAwaitingLevel" xml:space="preserve">
-    <value>状态：等待加载关卡--内存地址为：</value>
+    <value>状态：等待选关--地址：</value>
   </data>
   <data name="cameraDataNotLoaded" xml:space="preserve">
     <value>相机数据未被加载！</value>
@@ -146,7 +146,7 @@
     <value>..\Resources\m64mm3_banner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="programStatus3" xml:space="preserve">
-    <value>状态：内存地址为：</value>
+    <value>状态：地址：</value>
   </data>
   <data name="invalidColorCodeMsg2" xml:space="preserve">
     <value>无效颜色代码：第 {0} 行正在试图编辑内存 {1}，但并非马力欧的颜色数据所在地址。确保您没有使用 PAL 地区的颜色代码！</value>
@@ -284,7 +284,7 @@
     <value>..\Resources\version3_2big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="updateNetworkError" xml:space="preserve">
-    <value>发生故障。无法连接到 GitHub 网站来获得更新。请检查网络连接。</value>
+    <value>发生故障。无法连接到 GitHub 来获得更新。请检查网络连接。</value>
   </data>
   <data name="version32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\version32.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -297,7 +297,7 @@
     <value>现在这是不合适的。</value>
   </data>
   <data name="powercamPregameDirtyMsg" xml:space="preserve">
-    <value>如果您加载了一个已经打开了Powercam的关卡，摄像机可能会出现错误，所以我们已经为您关闭了。
+    <value>如果您选择了一个已经打开了Powercam的关卡，摄像机可能会出现错误，所以我们已经为您关闭了。
 请在游戏暂停时进入一个镜头未缩小的关卡并打开Powercam。</value>
   </data>
   <data name="powercamPregameDirtyTitle" xml:space="preserve">
