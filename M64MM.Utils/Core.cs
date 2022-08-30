@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using static M64MM.Utils.SettingsManager;
 using static M64MM.Utils.Looks;
 
@@ -245,6 +246,9 @@ namespace M64MM.Utils
 
         public static async void InitSettings(bool force = false)
         {
+            // Mitigate GHSA-5crp-9r3c-p9vr because getting people to update addons is notoriously hard
+            // https://github.com/advisories/GHSA-5crp-9r3c-p9vr
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings { MaxDepth = 128 };
             bool settingsExist = File.Exists($"{Application.StartupPath}/config.json");
             if (settingsExist && !force)
             {
@@ -977,6 +981,7 @@ namespace M64MM.Utils
                     // NTSC VI: 60hz = 30fps (technically 29.970 but we don't mess with that.)
                     // PAL VI: 50hz = 25fps
                     // hahaha did you know NTSC used to be dubbed "Never The Same Color"
+
                     // Trigger update if: 
                     // - The ingame timer is greater than the previous frame (plus one if it fell in non-par frame) ...
                     if ((ingameTimer > previousFrame + (previousFrame % 2)))
@@ -987,21 +992,21 @@ namespace M64MM.Utils
                         // Run own update methods
                         GameTick?.Invoke(null, null);
 
-                        Parallel.For(0, moduleList.Count, (i) =>
+                        Parallel.ForEach(moduleList, (add) =>
                         {
                             //Unity 1996
-                            if (moduleList[i].Active)
+                            if (add.Active)
                             {
                                 try
                                 {
-                                    moduleList[i].Module.Update();
+                                    add.Module.Update();
                                     return;
                                 }
                                 catch (Exception e)
                                 {
-                                    AddonErrorsBuilder.AppendFormat("{0} [RUNTIME ERROR] - Error while executing Update from Addon {1}. Exception: {2}\nAddon has been disabled.\n--------\n", DateTime.Now.ToLongTimeString(), moduleList[i].Name, e.Message);
-                                    MessageBox.Show("Addon " + moduleList[i].Name + " stopped due to an error:\n" + e.ToString());
-                                    moduleList[i].Active = false;
+                                    AddonErrorsBuilder.AppendFormat("{0} [RUNTIME ERROR] - Error while executing Update from Addon {1}. Exception: {2}\nAddon has been disabled.\n--------\n", DateTime.Now.ToLongTimeString(), add.Name, e.Message);
+                                    MessageBox.Show("Addon " + add.Name + " stopped due to an error:\n" + e.ToString());
+                                    add.Active = false;
                                 }
 
                             }

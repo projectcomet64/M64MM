@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>M64MM2</RootNamespace>
     <AssemblyName>M64MM</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -77,6 +77,9 @@
     <PlatformTarget>x86</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -252,6 +255,7 @@
     <EmbeddedResource Include="AppearanceForm.es.resx">
       <DependentUpon>AppearanceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="AppearanceForm.zh-CN.resx">
       <DependentUpon>AppearanceForm.cs</DependentUpon>
     </None>

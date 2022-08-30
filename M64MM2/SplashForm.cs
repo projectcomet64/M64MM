@@ -141,7 +141,6 @@ namespace M64MM2
                 e.CloseReason == CloseReason.TaskManagerClosing) {
                 Application.Exit();
             }
-            
         }
     }
 }

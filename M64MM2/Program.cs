@@ -71,11 +71,18 @@ namespace M64MM2
                     }
                 }
             }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // SplashForm performs the initial load of everything and sets the variables up there
-            Application.Run(new SplashForm(holdon, expath));
-            Application.Run(new MainForm());
+            SplashForm splashForm = new SplashForm(holdon, expath);
+            ApplicationContext encompassingAppContext = new ApplicationContext() {MainForm = splashForm};
+            Application.Run(encompassingAppContext);
+
+            
+            MainForm mainForm = new MainForm();
+            encompassingAppContext = new ApplicationContext() { MainForm = mainForm };
+            Application.Run(encompassingAppContext);
         }
     }
 }
