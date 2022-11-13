@@ -572,6 +572,34 @@ namespace M64MM.Utils
             WriteProcessMemory(emuProcessHandle, ptr, data, size, ref bytesWritten);
         }
 
+        /// <summary>
+        /// Works the same as WriteBytes except it snaps the word count to the highest word count while retaining what was originally in memory at the time.
+        /// </summary>
+        /// <param name="address">The address to write to</param>
+        /// <param name="data">The data to write, even if unaligned</param>
+        /// <param name="swap">Whether to byteswap the data bytes</param>
+        public static void WriteBytesAdditiveAligned(long address, byte[] data, bool swap = false)
+        {
+            IntPtr ptr = new IntPtr(address);
+            long size = data.LongLength;
+            long wordCount = (long)Math.Ceiling(data.LongLength / 4d);
+            long bytesWritten = 0;
+            long bytesReadFromExistingData = 0;
+
+            if (swap)
+            {
+                data = SwapEndian(data, 4);
+            }
+
+            byte[] existingData = new byte[wordCount * 4];
+            ReadProcessMemory(emuProcessHandle, ptr, existingData, wordCount * 4, ref bytesReadFromExistingData);
+
+            // Our own data boy
+            Array.Copy(data, existingData, data.Length);
+
+            WriteProcessMemory(emuProcessHandle, ptr, existingData, size, ref bytesWritten);
+        }
+
         public static void WriteBatchBytes(long[] addresses, byte[] data, bool useBase, bool swap = false)
         {
             long baseAddr = useBase ? BaseAddress : 0;
