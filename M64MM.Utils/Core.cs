@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -36,6 +37,7 @@ namespace M64MM.Utils
         public static SettingsGroup coreSettingsGroup;
         static bool _cameraFrozen = false;
         static bool _cameraSoftFrozen = false;
+
         public static bool TurboUpdateEnabled
         {
             get => _turboUpdate;
@@ -161,6 +163,14 @@ namespace M64MM.Utils
         static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesRead);
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, long nSize, ref long lpNumberOfBytesWritten);
+
+        // demon
+        [DllImport("ntdll.dll", SetLastError = true)]
+        static extern NtStatus NtWriteVirtualMemory(IntPtr ProcessHandle, IntPtr BaseAddress, byte[] Buffer, UInt32 NumberOfBytesToWrite, ref UInt32 NumberOfBytesWritten);
+
+        [DllImport("ntdll.dll", SetLastError = true)]
+        static extern NtStatus NtReadVirtualMemory(IntPtr ProcessHandle, IntPtr BaseAddress, byte[] Buffer, UInt32 NumberOfBytesToRead, ref UInt32 NumberOfBytesRead);
+
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
 
@@ -550,9 +560,10 @@ namespace M64MM.Utils
             // Actually, yeah, why was it an int
             IntPtr ptr = new IntPtr((uint)address);
             byte[] buffer = new byte[size];
-            long bytesRead = 0;
+            uint bytesRead = 0;
 
-            ReadProcessMemory(emuProcessHandle, ptr, buffer, size, ref bytesRead);
+            //ReadProcessMemory(emuProcessHandle, ptr, buffer, size, ref bytesRead);
+            NtReadVirtualMemory(emuProcessHandle, ptr, buffer, (uint)size, ref bytesRead);
             return buffer;
         }
         #endregion
@@ -562,14 +573,15 @@ namespace M64MM.Utils
         {
             IntPtr ptr = new IntPtr(address);
             long size = data.LongLength;
-            long bytesWritten = 0;
+            uint bytesWritten = 0;
 
             if (swap)
             {
                 data = SwapEndian(data, 4);
             }
 
-            WriteProcessMemory(emuProcessHandle, ptr, data, size, ref bytesWritten);
+            //WriteProcessMemory(emuProcessHandle, ptr, data, size, ref bytesWritten);
+            NtWriteVirtualMemory(emuProcessHandle, ptr, data, (uint)size, ref bytesWritten);
         }
 
         /// <summary>
@@ -583,8 +595,8 @@ namespace M64MM.Utils
             IntPtr ptr = new IntPtr(address);
             long size = data.LongLength;
             long wordCount = (long)Math.Ceiling(data.LongLength / 4d);
-            long bytesWritten = 0;
-            long bytesReadFromExistingData = 0;
+            uint bytesWritten = 0;
+            uint bytesReadFromExistingData = 0;
 
             if (swap)
             {
@@ -592,12 +604,12 @@ namespace M64MM.Utils
             }
 
             byte[] existingData = new byte[wordCount * 4];
-            ReadProcessMemory(emuProcessHandle, ptr, existingData, wordCount * 4, ref bytesReadFromExistingData);
+            NtReadVirtualMemory(emuProcessHandle, ptr, existingData, (uint)wordCount * 4, ref bytesReadFromExistingData);
 
             // Our own data boy
             Array.Copy(data, existingData, data.Length);
 
-            WriteProcessMemory(emuProcessHandle, ptr, existingData, size, ref bytesWritten);
+            NtWriteVirtualMemory(emuProcessHandle, ptr, existingData, (uint)size, ref bytesWritten);
         }
 
         public static void WriteBatchBytes(long[] addresses, byte[] data, bool useBase, bool swap = false)
