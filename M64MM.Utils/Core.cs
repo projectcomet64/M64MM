@@ -37,6 +37,7 @@ namespace M64MM.Utils
         public static SettingsGroup coreSettingsGroup;
         static bool _cameraFrozen = false;
         static bool _cameraSoftFrozen = false;
+        public static Lightset CurrentLightset { get; set; }
 
         public static bool TurboUpdateEnabled
         {

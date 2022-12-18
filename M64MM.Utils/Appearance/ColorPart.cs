@@ -27,8 +27,8 @@ namespace M64MM.Utils
             byte[] colors_L = {LightColor.R, LightColor.G, LightColor.B, 0x0};
             byte[] colors_D = {DarkColor.R, DarkColor.G, DarkColor.B, 0x0};
 
-            if (colors_L.Aggregate((x, y) => (byte)(x + y)) == 0) colors_L[3] = 0xFF;
-            if (colors_D.Aggregate((x, y) => (byte)(x + y)) == 0) colors_D[3] = 0xFF;
+            if (colors_L.Sum(x => (int)x) == 0) colors_L[3] = 0xFF;
+            if (colors_D.Sum(x => (int)x) == 0) colors_D[3] = 0xFF;
 
             
             WriteBytes(baseOffset + Offset86, SwapEndian(colors_L, 4));

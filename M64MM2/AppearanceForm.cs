@@ -229,16 +229,16 @@ namespace M64MM2 {
 
         void UpdateTrackbar(object sender, EventArgs e) {
             TrackBar changedBar = ((TrackBar)sender);
-            ShadowParts part = ShadowParts.X;
+            ShadowAxis part = ShadowAxis.X;
             switch (changedBar.Name) {
                 case "tbLeftRight":
-                    part = ShadowParts.X;
+                    part = ShadowAxis.X;
                     break;
                 case "tbBottomTop":
-                    part = ShadowParts.Y;
+                    part = ShadowAxis.Y;
                     break;
                 case "tbBackFront":
-                    part = ShadowParts.Z;
+                    part = ShadowAxis.Z;
                     break;
             }
 
