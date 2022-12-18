@@ -244,7 +244,7 @@ namespace M64MM.Utils {
             }
         };
 
-        public enum ShadowParts {
+        public enum ShadowAxis {
             X,
             Y,
             Z
