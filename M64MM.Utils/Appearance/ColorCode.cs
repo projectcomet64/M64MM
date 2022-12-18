@@ -7,11 +7,11 @@ namespace M64MM.Utils
 {
     class ColorCode
     {
-        Dictionary<string, RoutableColorPart> ccParts;
+        Dictionary<string, ColorPart> ccParts;
 
         public ColorCode()
         {
-            ccParts = new Dictionary<string, RoutableColorPart>();
+            ccParts = new Dictionary<string, ColorPart>();
         }
 
         public virtual void FromColorCodeGS() {
@@ -21,18 +21,18 @@ namespace M64MM.Utils
         public string ToColorCodeGS()
         {
             StringBuilder ccStringBuilder = new StringBuilder();
-            foreach (KeyValuePair<string, RoutableColorPart> kv in ccParts)
+            foreach (KeyValuePair<string, ColorPart> kv in ccParts)
             {
-                long ccAddrLight1 = Core.SegmentedToVirtual(0x04000000, false) + kv.Value.BankOffset86;
+                long ccAddrLight1 = Core.SegmentedToVirtual(0x04000000, false) + kv.Value.Offset86;
                 long ccAddrLight2 = ccAddrLight1 + 2;
-                long ccAddrShadow1 = Core.SegmentedToVirtual(0x04000000, false) + kv.Value.BankOffset88;
+                long ccAddrShadow1 = Core.SegmentedToVirtual(0x04000000, false) + kv.Value.Offset88;
                 long ccAddrShadow2 = ccAddrShadow1 + 2;
 
                 // Append the relevant lines to the CC
-                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrLight1).Reverse().ToArray())} {kv.Value.CurrentLightColor.R:X2}{kv.Value.CurrentLightColor.G:X2}");
-                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrLight2).Reverse().ToArray())} {kv.Value.CurrentLightColor.B:X2}00");
-                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrShadow1).Reverse().ToArray())} {kv.Value.CurrentShadowColor.R:X2}{kv.Value.CurrentShadowColor.G:X2}");
-                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrShadow2).Reverse().ToArray())} {kv.Value.CurrentShadowColor.B:X2}00");
+                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrLight1).Reverse().ToArray())} {kv.Value.LightColor.R:X2}{kv.Value.LightColor.G:X2}");
+                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrLight2).Reverse().ToArray())} {kv.Value.LightColor.B:X2}00");
+                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrShadow1).Reverse().ToArray())} {kv.Value.DarkColor.R:X2}{kv.Value.LightColor.G:X2}");
+                ccStringBuilder.AppendLine($"81{BitConverter.ToString(BitConverter.GetBytes(ccAddrShadow2).Reverse().ToArray())} {kv.Value.DarkColor.B:X2}00");
             }
             return ccStringBuilder.ToString();
         }
