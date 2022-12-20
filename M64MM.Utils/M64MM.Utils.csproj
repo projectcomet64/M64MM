@@ -92,6 +92,7 @@
     <Compile Include="Appearance\ColorSpace.cs" />
     <Compile Include="Appearance\ColorPart.cs" />
     <Compile Include="Appearance\ColorStandardNaming.cs" />
+    <Compile Include="Appearance\DefaultLightsets.cs" />
     <Compile Include="Appearance\Lightset.cs" />
     <Compile Include="EmuFoundEventArgs.cs" />
     <Compile Include="Extensions\MathExtensions.cs" />

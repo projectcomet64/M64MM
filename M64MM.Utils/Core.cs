@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Permissions;
@@ -37,7 +38,17 @@ namespace M64MM.Utils
         public static SettingsGroup coreSettingsGroup;
         static bool _cameraFrozen = false;
         static bool _cameraSoftFrozen = false;
-        public static Lightset CurrentLightset { get; set; }
+        private static Lightset _currentLightset;
+
+
+        public static Lightset CurrentLightset {
+            get => _currentLightset;
+            set
+            {
+                _currentLightset = value;
+                LightsetChanged?.Invoke(null, value);
+            }
+        }
 
         public static bool TurboUpdateEnabled
         {
@@ -80,6 +91,7 @@ namespace M64MM.Utils
         public static event EventHandler EmulatorInaccessible;
         public static event EventHandler GameTick; // Update, but for internal program usage (Not addon)
         public static event EventHandler<bool> BaseAddressUpdate;
+        public static event EventHandler<Lightset> LightsetChanged;
         #endregion
 
         // Settings related variables
@@ -898,7 +910,10 @@ namespace M64MM.Utils
         public static List<Animation> GetQueriedAnimations(string query = "")
         {
             Regex mRegex = new Regex($"/({query})/g");
-            List<Animation> l = animList.Where(a => a.Description.ToLower().Contains(query)).OrderBy(x => mRegex.Matches(x.Description).Count).ToList();
+            List<Animation> l = animList.Select(x => {
+                    x.Description = x.Description.ToLowerInvariant(); return x;
+            }).Where(a => a.Description.ToLowerInvariant().Contains(query))
+                .OrderBy(x => mRegex.Matches(x.Description.ToLowerInvariant()).Count).ToList();
             if (l.Count < 1) l = animList.ToList(); //BAHAHAHAHAHAHAHAHA
             return l;
         }

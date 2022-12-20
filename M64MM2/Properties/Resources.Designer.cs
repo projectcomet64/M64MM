@@ -409,6 +409,15 @@ namespace M64MM2.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a This option is in early preview. Will most likely explode and will most likely kill the game if done in a level other than Castle Grounds. You&apos;ve been warned..
+        /// </summary>
+        internal static string peachGrassMsg {
+            get {
+                return ResourceManager.GetString("peachGrassMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a In banner: .
         /// </summary>
         internal static string picturedInBannerMsg {

@@ -323,4 +323,7 @@ Stability not guaranteed.</value>
     <value>The X3S Tint is only available for the X3 + Shading mods distributed by Project Comet or other affiliated people.
 Changing the tint in a non-X3S ROM may cause distortions, an unexpected color being changed, or nothing.</value>
   </data>
+  <data name="peachGrassMsg" xml:space="preserve">
+    <value>This option is in early preview. Will most likely explode and will most likely kill the game if done in a level other than Castle Grounds. You've been warned.</value>
+  </data>
 </root>

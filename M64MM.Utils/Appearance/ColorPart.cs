@@ -19,34 +19,85 @@ namespace M64MM.Utils
         public Color DefaultLightColor { get; set; }
         public Color DefaultDarkColor { get; set; }
 
-        public void CommitColorsToRam() {
-            CommitColorsToRam(SegmentedToVirtual(0x04000000));
+        public bool IsAddressSegmented { get; set; } = false;
+
+        public void CommitColorsToRam()
+        {
+
+            CommitColorsToRam((IsAddressSegmented ? 0 : SegmentedToVirtual(0x04000000)));
         }
 
-        public void CommitColorsToRam(long baseOffset) {
-            byte[] colors_L = {LightColor.R, LightColor.G, LightColor.B, 0x0};
-            byte[] colors_D = {DarkColor.R, DarkColor.G, DarkColor.B, 0x0};
+        public void PullColorsFromRam()
+        {
+
+            PullColorsFromRam((IsAddressSegmented ? 0 : SegmentedToVirtual(0x04000000)));
+        }
+
+        public void CommitColorsToRam(long baseOffset)
+        {
+            byte[] colors_L = { LightColor.R, LightColor.G, LightColor.B, 0x0 };
+            byte[] colors_D = { DarkColor.R, DarkColor.G, DarkColor.B, 0x0 };
 
             if (colors_L.Sum(x => (int)x) == 0) colors_L[3] = 0xFF;
             if (colors_D.Sum(x => (int)x) == 0) colors_D[3] = 0xFF;
 
+            if (baseOffset == 0 && IsAddressSegmented)
+            {
+                WriteBytes(SegmentedToVirtual(Offset86), SwapEndian(colors_L, 4));
+                WriteBytes(SegmentedToVirtual(Offset88), SwapEndian(colors_D, 4));
+
+                WriteBytes(SegmentedToVirtual(Offset86) + 4, SwapEndian(colors_L, 4));
+                WriteBytes(SegmentedToVirtual(Offset88) + 4, SwapEndian(colors_D, 4));
+
+            }
+            else
+            {
+                WriteBytes(baseOffset + Offset86, SwapEndian(colors_L, 4));
+                WriteBytes(baseOffset + Offset88, SwapEndian(colors_D, 4));
+
+                WriteBytes(baseOffset + Offset86 + 4, SwapEndian(colors_L, 4));
+                WriteBytes(baseOffset + Offset88 + 4, SwapEndian(colors_D, 4));
+            }
+
+        }
+
+        public void PullColorsFromRam(long baseOffset)
+        {
+            if (baseOffset == 0 && IsAddressSegmented) {
+                var colorData = SwapEndian(ReadBytes(SegmentedToVirtual(Offset86), 4), 4);
+                LightColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+                colorData = SwapEndian(ReadBytes(SegmentedToVirtual(Offset88), 4), 4);
+                DarkColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+            }
+            else {
+                var colorData = SwapEndian(ReadBytes(baseOffset + Offset86, 4), 4);
+                LightColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+                colorData = SwapEndian(ReadBytes(baseOffset + Offset88, 4), 4);
+                DarkColor = Color.FromArgb(colorData[0], colorData[1], colorData[2]);
+            }
+
             
-            WriteBytes(baseOffset + Offset86, SwapEndian(colors_L, 4));
-            WriteBytes(baseOffset + Offset88, SwapEndian(colors_D, 4));
-
-            WriteBytes(baseOffset + Offset86 + 4, SwapEndian(colors_L, 4));
-            WriteBytes(baseOffset + Offset88 + 4, SwapEndian(colors_D, 4));
+            
         }
 
-        public void ChangeLightDirection(byte nX, byte nY, byte nZ) {
-            ChangeLightDirection(SegmentedToVirtual(0x04000000), nX, nY, nZ);
+        public void ChangeLightDirection(byte nX, byte nY, byte nZ)
+        {
+            ChangeLightDirection((IsAddressSegmented ? 0 : SegmentedToVirtual(0x04000000)), nX, nY, nZ);
         }
 
-        public void ChangeLightDirection(long baseOffset, byte nX, byte nY, byte nZ) {
-            WriteBytes(baseOffset + OffsetLightDir, new byte[]{ nX, nY, nZ, 00}, true);
+        public void ChangeLightDirection(long baseOffset, byte nX, byte nY, byte nZ)
+        {
+            if (baseOffset == 0 && IsAddressSegmented) {
+                WriteBytes(SegmentedToVirtual(OffsetLightDir), new byte[] { nX, nY, nZ, 00 }, true);
+            }
+            else {
+                WriteBytes(baseOffset + OffsetLightDir, new byte[] { nX, nY, nZ, 00 }, true);
+            }
+            
         }
 
-        public string ToGameshark() {
+        public string ToGameshark()
+        {
             // It's like this because I want color codes to be "universal" so if S04 ends up
             // being in another location I just subtract 0x7EC20 from each line
 

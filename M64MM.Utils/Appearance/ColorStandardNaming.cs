@@ -37,10 +37,8 @@
         };
 
         public static readonly CCStandardPart[] ColorcodeableStandard = new CCStandardPart[] {
-            CCStandardPart.SHIRT, CCStandardPart.SHIRT_ARM, CCStandardPart.SHIRT_SHOULDER,
-            CCStandardPart.OVERALLS_BOTTOM, CCStandardPart.LEGS_TOP, CCStandardPart.LEGS_BOTTOM,
-            CCStandardPart.CUSTOM1, CCStandardPart.CUSTOM2, CCStandardPart.CUSTOM3, CCStandardPart.CUSTOM4,
-            CCStandardPart.CUSTOM5, CCStandardPart.CUSTOM6, CCStandardPart.CUSTOM7, CCStandardPart.CUSTOM8
+            CCStandardPart.HAT, CCStandardPart.HAIR, CCStandardPart.SKIN, CCStandardPart.GLOVES,
+            CCStandardPart.OVERALLS_TOP, CCStandardPart.SHOES
         };
     }
 }

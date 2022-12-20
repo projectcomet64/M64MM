@@ -119,7 +119,8 @@
             this.cbPartListOverride.Items.AddRange(new object[] {
             resources.GetString("cbPartListOverride.Items"),
             resources.GetString("cbPartListOverride.Items1"),
-            resources.GetString("cbPartListOverride.Items2")});
+            resources.GetString("cbPartListOverride.Items2"),
+            resources.GetString("cbPartListOverride.Items3")});
             resources.ApplyResources(this.cbPartListOverride, "cbPartListOverride");
             this.cbPartListOverride.Name = "cbPartListOverride";
             this.cbPartListOverride.SelectedIndexChanged += new System.EventHandler(this.cbPartListOverride_SelectedIndexChanged);
@@ -427,7 +428,7 @@
             resources.ApplyResources(this.lbWarning, "lbWarning");
             this.lbWarning.Name = "lbWarning";
             // 
-            // NewAppearanceForm
+            // AppearanceForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

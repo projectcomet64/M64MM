@@ -1,11 +1,15 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace M64MM.Utils {
     public class Lightset {
-        private Dictionary<string, ColorPart> _parts;
-        private Dictionary<CCStandardPart, string> _partMapping;
+        private Dictionary<string, ColorPart> _parts = new Dictionary<string, ColorPart>();
+        private Dictionary<CCStandardPart, string> _partMapping = new Dictionary<CCStandardPart, string>();
+
+        public List<ColorPart> Parts => _parts.Values.ToList();
 
         public bool SparkCompatible {
             get
@@ -27,7 +31,7 @@ namespace M64MM.Utils {
         /// </summary>
         /// <param name="id">An ID to get the part by</param>
         /// <param name="part">The CC part to set</param>
-        public void SetPart(string id, ColorPart part) {
+        public Lightset SetPart(string id, ColorPart part) {
             if (_parts.ContainsKey(id)) {
                 _parts[id] = part;
             }
@@ -37,9 +41,11 @@ namespace M64MM.Utils {
                 }
                 _parts.Add(id, part);
             }
-        }
 
-        public void SetPartMapping(CCStandardPart source, string id) {
+            return this;
+        }
+        // TODO: Add a SetPartAndMap variant of this so creation is easier
+        public Lightset SetPartMapping(CCStandardPart source, string id) {
             if (!_parts.ContainsKey(id)) {
                 throw new ArgumentException($"This Lightset has no part with ID \"{id}\".");
             }
@@ -50,6 +56,8 @@ namespace M64MM.Utils {
             else {
                 _partMapping.Add(source, id);
             }
+
+            return this;
         }
 
         public ColorPart GetPartById(string id)
@@ -64,4 +72,5 @@ namespace M64MM.Utils {
         }
 
     }
+
 }
