@@ -160,6 +160,9 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
   <data name="cbPartListOverride.Items2" xml:space="preserve">
     <value>X3S</value>
   </data>
+  <data name="cbPartListOverride.Items3" xml:space="preserve">
+    <value>[Level] Castle Grounds</value>
+  </data>
   <data name="cbPartListOverride.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 196</value>
   </data>
