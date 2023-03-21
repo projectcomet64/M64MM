@@ -40,8 +40,3 @@ body:
     attributes:
       label: Additional context
       description: Write any other information pertaining to your request here.
-  - type: markdown
-    attributes:
-      value: >-
-        This template was generated with [Issue Forms
-        Creator](https://issue-forms-creator.netlify.app)

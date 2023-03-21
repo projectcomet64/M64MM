@@ -36,7 +36,7 @@ body:
         See error
     validations:
       required: true
-  - type: input
+  - type: textarea
     id: screenshots
     attributes:
       label: Screenshots
@@ -80,8 +80,3 @@ body:
     attributes:
       label: Additional context
       description: Add any other context about the problem here.
-  - type: markdown
-    attributes:
-      value: >-
-        This template was generated with [Issue Forms
-        Creator](https://issue-forms-creator.netlify.app)
