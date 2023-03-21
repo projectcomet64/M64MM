@@ -43,6 +43,8 @@
             this.btnImportCode = new System.Windows.Forms.Button();
             this.marioSprite = new System.Windows.Forms.PictureBox();
             this.grpShading = new System.Windows.Forms.GroupBox();
+            this.cbRecord = new System.Windows.Forms.CheckBox();
+            this.btnKeyframe = new System.Windows.Forms.Button();
             this.btnRandomizeShading = new System.Windows.Forms.Button();
             this.btnResetShading = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -72,6 +74,8 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.tmrRandom = new System.Windows.Forms.Timer(this.components);
             this.lbWarning = new System.Windows.Forms.Label();
+            this.normalColrocodeTransformsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allBlackShadingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).BeginInit();
             this.grpShading.SuspendLayout();
@@ -216,6 +220,8 @@
             // 
             // grpShading
             // 
+            this.grpShading.Controls.Add(this.cbRecord);
+            this.grpShading.Controls.Add(this.btnKeyframe);
             this.grpShading.Controls.Add(this.btnRandomizeShading);
             this.grpShading.Controls.Add(this.btnResetShading);
             this.grpShading.Controls.Add(this.label13);
@@ -230,6 +236,19 @@
             resources.ApplyResources(this.grpShading, "grpShading");
             this.grpShading.Name = "grpShading";
             this.grpShading.TabStop = false;
+            // 
+            // cbRecord
+            // 
+            resources.ApplyResources(this.cbRecord, "cbRecord");
+            this.cbRecord.Name = "cbRecord";
+            this.cbRecord.UseVisualStyleBackColor = true;
+            // 
+            // btnKeyframe
+            // 
+            resources.ApplyResources(this.btnKeyframe, "btnKeyframe");
+            this.btnKeyframe.Name = "btnKeyframe";
+            this.btnKeyframe.UseVisualStyleBackColor = true;
+            this.btnKeyframe.Click += new System.EventHandler(this.btnKeyframe_Click);
             // 
             // btnRandomizeShading
             // 
@@ -315,7 +334,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sPARKColorcodeTransformsToolStripMenuItem});
+            this.sPARKColorcodeTransformsToolStripMenuItem,
+            this.normalColrocodeTransformsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
             // 
@@ -428,6 +448,19 @@
             resources.ApplyResources(this.lbWarning, "lbWarning");
             this.lbWarning.Name = "lbWarning";
             // 
+            // normalColrocodeTransformsToolStripMenuItem
+            // 
+            this.normalColrocodeTransformsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allBlackShadingToolStripMenuItem});
+            this.normalColrocodeTransformsToolStripMenuItem.Name = "normalColrocodeTransformsToolStripMenuItem";
+            resources.ApplyResources(this.normalColrocodeTransformsToolStripMenuItem, "normalColrocodeTransformsToolStripMenuItem");
+            // 
+            // allBlackShadingToolStripMenuItem
+            // 
+            this.allBlackShadingToolStripMenuItem.Name = "allBlackShadingToolStripMenuItem";
+            resources.ApplyResources(this.allBlackShadingToolStripMenuItem, "allBlackShadingToolStripMenuItem");
+            this.allBlackShadingToolStripMenuItem.Click += new System.EventHandler(this.btnTFSCCHardShade);
+            // 
             // AppearanceForm
             // 
             resources.ApplyResources(this, "$this");
@@ -447,6 +480,7 @@
             this.grpColor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).EndInit();
             this.grpShading.ResumeLayout(false);
+            this.grpShading.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbBackFront)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbBottomTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLeftRight)).EndInit();
@@ -509,5 +543,9 @@
         private System.Windows.Forms.Label lbWarning;
         private System.Windows.Forms.ComboBox cbPartListOverride;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox cbRecord;
+        private System.Windows.Forms.Button btnKeyframe;
+        private System.Windows.Forms.ToolStripMenuItem normalColrocodeTransformsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allBlackShadingToolStripMenuItem;
     }
 }

@@ -67,6 +67,8 @@ namespace M64MM2
             this.btnChangeCamStyle = new System.Windows.Forms.Button();
             this.cbCamStyles = new System.Windows.Forms.ComboBox();
             this.ttAutoApplyInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.timelineManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.grpCamera.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -91,7 +93,9 @@ namespace M64MM2
             this.extraControlsToolStripMenuItem,
             this.showRunningPluginsToolStripMenuItem,
             this.toolStripSeparator1,
-            this.scanForEmulatorsToolStripMenuItem});
+            this.scanForEmulatorsToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.timelineManagerToolStripMenuItem});
             this.toolsMenuItem.Name = "toolsMenuItem";
             resources.ApplyResources(this.toolsMenuItem, "toolsMenuItem");
             // 
@@ -329,6 +333,17 @@ namespace M64MM2
             // 
             this.ttAutoApplyInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
+            // timelineManagerToolStripMenuItem
+            // 
+            this.timelineManagerToolStripMenuItem.Name = "timelineManagerToolStripMenuItem";
+            resources.ApplyResources(this.timelineManagerToolStripMenuItem, "timelineManagerToolStripMenuItem");
+            this.timelineManagerToolStripMenuItem.Click += new System.EventHandler(this.timelineManagerToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -394,6 +409,8 @@ namespace M64MM2
         private System.Windows.Forms.ToolStripMenuItem checkForLatestUpdateToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem timelineManagerToolStripMenuItem;
     }
 }
 

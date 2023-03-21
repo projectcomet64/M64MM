@@ -96,6 +96,8 @@
     <Compile Include="Appearance\Lightset.cs" />
     <Compile Include="EmuFoundEventArgs.cs" />
     <Compile Include="Extensions\MathExtensions.cs" />
+    <Compile Include="TimelineTools\TimelineCollection.cs" />
+    <Compile Include="TimelineTools\TimelineInfo.cs" />
     <Compile Include="Updater\GitHubRelease.cs" />
     <Compile Include="Appearance\Looks.cs" />
     <Compile Include="CameraStyle.cs" />
@@ -141,9 +143,13 @@
     <None Include="Resources\XSM_ICON.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Keyshift">
+      <Version>0.1.3</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.2</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

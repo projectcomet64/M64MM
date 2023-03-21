@@ -213,6 +213,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimelinesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimelinesForm.Designer.cs">
+      <DependentUpon>TimelinesForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutForm.es.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AppearanceForm.es.resx">
       <DependentUpon>AppearanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimelinesForm.resx">
+      <DependentUpon>TimelinesForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="AppearanceForm.zh-CN.resx">
@@ -400,6 +409,10 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Keyshift.Forms">
+      <Version>0.1.3</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

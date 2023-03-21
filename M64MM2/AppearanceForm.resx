@@ -562,6 +562,63 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
   <data name="&gt;&gt;marioSprite.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="cbRecord.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbRecord.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cbRecord.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 77</value>
+  </data>
+  <data name="cbRecord.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 17</value>
+  </data>
+  <data name="cbRecord.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="cbRecord.Text" xml:space="preserve">
+    <value>Record Mode</value>
+  </data>
+  <data name="&gt;&gt;cbRecord.Name" xml:space="preserve">
+    <value>cbRecord</value>
+  </data>
+  <data name="&gt;&gt;cbRecord.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbRecord.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;cbRecord.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnKeyframe.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnKeyframe.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 48</value>
+  </data>
+  <data name="btnKeyframe.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 23</value>
+  </data>
+  <data name="btnKeyframe.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="btnKeyframe.Text" xml:space="preserve">
+    <value>Make Keyframeable (bars do not update)</value>
+  </data>
+  <data name="&gt;&gt;btnKeyframe.Name" xml:space="preserve">
+    <value>btnKeyframe</value>
+  </data>
+  <data name="&gt;&gt;btnKeyframe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnKeyframe.Parent" xml:space="preserve">
+    <value>grpShading</value>
+  </data>
+  <data name="&gt;&gt;btnKeyframe.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="btnRandomizeShading.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -587,7 +644,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;btnRandomizeShading.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="btnResetShading.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -614,7 +671,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;btnResetShading.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -644,7 +701,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -674,7 +731,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -704,7 +761,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -734,7 +791,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -764,7 +821,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -794,7 +851,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="tbBackFront.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -821,7 +878,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;tbBackFront.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="tbBottomTop.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -848,7 +905,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;tbBottomTop.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="tbLeftRight.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -875,7 +932,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>grpShading</value>
   </data>
   <data name="&gt;&gt;tbLeftRight.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="grpShading.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 474</value>
@@ -935,10 +992,22 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>Restore SPARK Custom Colors</value>
   </data>
   <data name="sPARKColorcodeTransformsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 22</value>
+    <value>233, 22</value>
   </data>
   <data name="sPARKColorcodeTransformsToolStripMenuItem.Text" xml:space="preserve">
     <value>SPARK Colorcode Transforms</value>
+  </data>
+  <data name="allBlackShadingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="allBlackShadingToolStripMenuItem.Text" xml:space="preserve">
+    <value>All-Black Shading</value>
+  </data>
+  <data name="normalColrocodeTransformsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="normalColrocodeTransformsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Normal Colrocode Transforms</value>
   </data>
   <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 20</value>
@@ -3143,6 +3212,18 @@ Epilepsy warning: flashing colors.</value>
   </data>
   <data name="&gt;&gt;tmrRandom.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;normalColrocodeTransformsToolStripMenuItem.Name" xml:space="preserve">
+    <value>normalColrocodeTransformsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;normalColrocodeTransformsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;allBlackShadingToolStripMenuItem.Name" xml:space="preserve">
+    <value>allBlackShadingToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;allBlackShadingToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>AppearanceForm</value>

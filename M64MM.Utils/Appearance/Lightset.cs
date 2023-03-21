@@ -44,6 +44,7 @@ namespace M64MM.Utils {
 
             return this;
         }
+
         // TODO: Add a SetPartAndMap variant of this so creation is easier
         public Lightset SetPartMapping(CCStandardPart source, string id) {
             if (!_parts.ContainsKey(id)) {

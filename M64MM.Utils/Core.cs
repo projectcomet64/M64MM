@@ -16,6 +16,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Keyshift.Core.Classes;
+using M64MM.Utils.TimelineTools;
 using Newtonsoft.Json;
 using static M64MM.Utils.SettingsManager;
 using static M64MM.Utils.Looks;
@@ -41,7 +43,8 @@ namespace M64MM.Utils
         private static Lightset _currentLightset;
 
 
-        public static Lightset CurrentLightset {
+        public static Lightset CurrentLightset
+        {
             get => _currentLightset;
             set
             {
@@ -103,6 +106,9 @@ namespace M64MM.Utils
 
         // Timers
         public static Timer programTimer = new Timer();
+
+        // Composable
+        public static TimelineCollection TimelineCollection { get; } = new TimelineCollection();
 
         public static uint ingameTimer;
         public static uint previousFrame;
@@ -289,7 +295,7 @@ namespace M64MM.Utils
                     {
                         InitSettings(true);
                     }
-                    
+
                 }
             }
             else
@@ -299,7 +305,7 @@ namespace M64MM.Utils
                 coreSettingsGroup.SetSettingValue("enableUpdateCheck", true);
                 coreSettingsGroup.SetSettingValue("enableStartupPowercam", true);
                 coreSettingsGroup.SetSettingValue("turboTicks", false);
-                coreSettingsGroup.SetSettingValue("preferredReleases",new string[]{ "release", "beta" });
+                coreSettingsGroup.SetSettingValue("preferredReleases", new string[] { "release", "beta" });
                 coreSettingsGroup.SetSettingValue<byte>("preferredDefaultCamStyle", 0x01);
                 UpdateLocalVariables();
                 using (StreamWriter rw = new StreamWriter($"{Application.StartupPath}/config.json"))
@@ -346,7 +352,7 @@ namespace M64MM.Utils
             enableUpdates = coreSettingsGroup.EnsureSettingValue<bool>("enableUpdateCheck");
             prePowercam = coreSettingsGroup.EnsureSettingValue<bool>("enableStartupPowercam");
             preferredCameraStyle = coreSettingsGroup.EnsureSettingValue<byte>("preferredDefaultCamStyle");
-            preferredReleases = coreSettingsGroup.EnsureSettingValue<string[]>("preferredReleases") ?? new string[]{"release"};
+            preferredReleases = coreSettingsGroup.EnsureSettingValue<string[]>("preferredReleases") ?? new string[] { "release" };
             _turboUpdate = coreSettingsGroup.EnsureSettingValue<bool>("turboTicks");
         }
 
@@ -652,8 +658,32 @@ namespace M64MM.Utils
             EmulatorSelected?.Invoke(null, null);
         }
 
-        static void OnEmulatorInaccessible() {
+        static void OnEmulatorInaccessible()
+        {
             EmulatorInaccessible?.Invoke(null, null);
+        }
+
+        #endregion
+
+        #region Composable related
+
+        public static void InitializeTimelines()
+        {
+            TimelineCollection.AddTimeline("Camera", new Timeline());
+            TimelineCollection.AddTimeline("Appearance", new Timeline());
+            TimelineCollection.AddTimeline("Mario", new Timeline());
+            GameTick += (s, e) => { TriggerUpdateOnTimelines(); };
+        }
+
+        public static void TriggerUpdateOnTimelines()
+        {
+            foreach (TimelineInfo tls in TimelineCollection.Timelines.Values)
+            {
+                if (tls.Timeline.Playing)
+                {
+                    tls.Timeline.TrackheadPosition++;
+                }
+            }
         }
 
         #endregion
@@ -692,7 +722,8 @@ namespace M64MM.Utils
         {
             emuProcess = proc;
             emuProcessHandle = OpenProcess(PROCESS_ALL_ACCESS, false, emuProcess.Id);
-            if (emuProcessHandle == IntPtr.Zero) {
+            if (emuProcessHandle == IntPtr.Zero)
+            {
                 OnEmulatorInaccessible();
                 StopProcessSearch = false;
                 emuProcess = null;
@@ -742,7 +773,7 @@ namespace M64MM.Utils
 
             //Slow down the check so if the program is open we don't overload the CPU
             programTimer.Interval = 1000;
-            if (BaseAddress != 0) {PerformBaseAddrZero();}
+            if (BaseAddress != 0) { PerformBaseAddrZero(); }
             //If we don't find anything, reset the base address to 0
             BaseAddress = 0;
 
@@ -910,8 +941,9 @@ namespace M64MM.Utils
         public static List<Animation> GetQueriedAnimations(string query = "")
         {
             Regex mRegex = new Regex($"/({query})/g");
-            List<Animation> l = animList.Select(x => {
-                    x.Description = x.Description.ToLowerInvariant(); return x;
+            List<Animation> l = animList.Select(x =>
+            {
+                x.Description = x.Description.ToLowerInvariant(); return x;
             }).Where(a => a.Description.ToLowerInvariant().Contains(query))
                 .OrderBy(x => mRegex.Matches(x.Description.ToLowerInvariant()).Count).ToList();
             if (l.Count < 1) l = animList.ToList(); //BAHAHAHAHAHAHAHAHA
@@ -1090,7 +1122,7 @@ namespace M64MM.Utils
                 {
                     await Task.Delay(1);
                 }
-                
+
             }
         }
         #endregion

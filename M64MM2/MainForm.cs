@@ -20,6 +20,7 @@ namespace M64MM2
     public partial class MainForm : Form
     {
         AppearanceForm appearanceForm;
+        TimelinesForm timelinesForm;
         ExtraControlsForm extraControlsForm;
         SettingsForm settingsForm;
         LatestUpdateDialog ludForm;
@@ -575,5 +576,13 @@ namespace M64MM2
             }
         }
 
+        private void timelineManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (timelinesForm == null) {
+                timelinesForm = new TimelinesForm();
+            }
+
+            timelinesForm.Show();
+        }
     }
 }

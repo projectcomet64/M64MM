@@ -27,6 +27,7 @@ namespace M64MM2
         Random rand = new Random(DateTime.Now.Millisecond);
         public SplashForm(int holdTime = 0, string moreAddonPath = "")
         {
+            InitializeTimelines();
             InitSettings();
             InitializeComponent();
             if (splashForm == null)

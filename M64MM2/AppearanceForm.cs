@@ -7,7 +7,10 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Keyshift.Core.Classes;
+using Keyshift.Core.Classes.Rack;
 using M64MM.Utils;
+using M64MM.Utils.TimelineTools;
 using M64MM2.Properties;
 using static M64MM.Utils.Core;
 using static M64MM.Utils.Looks;
@@ -26,6 +29,12 @@ namespace M64MM2
         ColorMap glovesMap = new ColorMap();
         ColorMap pantsMap = new ColorMap();
         ColorMap shoesMap = new ColorMap();
+
+        private bool _keyframeable = false;
+
+        private Timeline _appearanceTimeline = Core.TimelineCollection.Timelines["appearance"].Timeline;
+
+        private FloatKeyframeRack _krShadingX, _krShadingY, _krShadingZ;
 
         private BindingList<ColorPart> _chosenParts = new BindingList<ColorPart>();
         public AppearanceForm()
@@ -182,6 +191,14 @@ namespace M64MM2
             }
         }
 
+        public void ChangeShadow(byte X, byte Y, byte Z)
+        {
+            foreach (ColorPart cPart in _chosenParts)
+            {
+                cPart.ChangeLightDirection(X, Y, Z);
+            }
+        }
+
         string GenerateColorCode()
         {
             StringBuilder code = new StringBuilder();
@@ -270,6 +287,21 @@ namespace M64MM2
                 case "tbBackFront":
                     part = ShadowAxis.Z;
                     break;
+            }
+
+            if (_keyframeable && cbRecord.Checked) {
+                switch (part)
+                {
+                    case ShadowAxis.X:
+                        _appearanceTimeline.AddValueToRack("shadeX");
+                        break;
+                    case ShadowAxis.Y:
+                        _appearanceTimeline.AddValueToRack("shadeY");
+                        break;
+                    case ShadowAxis.Z:
+                        _appearanceTimeline.AddValueToRack("shadeZ");
+                        break;
+                }
             }
 
             ChangeShadow();
@@ -386,6 +418,15 @@ namespace M64MM2
             ApplyAllColors();
         }
 
+        private void btnTFSCCHardShade(object sender, EventArgs e)
+        {
+            foreach (ColorPart cPart in _chosenParts) {
+                cPart.DarkColor = Color.Black;
+            }
+
+            ApplyAllColors();
+        }
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             e.Cancel = true;
@@ -489,6 +530,51 @@ namespace M64MM2
                 ParseColorCode(((ColorCodeGS)((ListBox)sender).SelectedItem).Gameshark);
                 marioSprite.Refresh();
             }
+        }
+
+        private void btnKeyframe_Click(object sender, EventArgs e)
+        {
+            _krShadingX = new FloatKeyframeRack(() =>
+            {
+                float valu = 0;
+                Invoke(new MethodInvoker(() =>
+                {
+                    valu = tbLeftRight.Value;
+                }));
+                return valu;
+            });
+            _krShadingX.Name = "Shading Horz.";
+            _krShadingY = new FloatKeyframeRack(() =>
+            {
+                float valu = 0;
+                Invoke(new MethodInvoker(() =>
+                {
+                    valu = tbBottomTop.Value;
+                }));
+                return valu;
+            });
+            _krShadingX.Name = "Shading Vert.";
+            _krShadingZ = new FloatKeyframeRack(() =>
+            {
+                float valu = 0;
+                Invoke(new MethodInvoker(() =>
+                {
+                    valu = tbBackFront.Value;
+                }));
+                return valu;
+            });
+            _krShadingX.CurrentFrameChanged += (() => {
+                ChangeShadow((byte) Math.Round(_krShadingX.CalculateInterpolation()),
+                    (byte) Math.Round(_krShadingY.CalculateInterpolation()),
+                    (byte) Math.Round(_krShadingZ.CalculateInterpolation()));
+            });
+            _krShadingZ.Name = "Shading Depth";
+            _appearanceTimeline.AddRack("shadeX", _krShadingX);
+            _appearanceTimeline.AddRack("shadeY", _krShadingY);
+            _appearanceTimeline.AddRack("shadeZ", _krShadingZ);
+            _keyframeable = true;
+            btnKeyframe.Enabled = false;
+            cbRecord.Enabled = true;
         }
 
         private void UpdateColorPartList()
