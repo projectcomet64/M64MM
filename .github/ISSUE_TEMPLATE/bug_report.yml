@@ -1,0 +1,87 @@
+name: Bug report
+description: Create a report to help us improve
+assignees:
+  - GlitchyPSIX
+labels:
+  - bug
+body:
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Make sure you're filling the right template the right way.
+      options:
+        - label: >-
+            I confirm that this is a bug, perceived as a bug, a mistake or
+            something that needs real fixing as oppossed to an enhancement or
+            feature request.
+          required: true
+        - label: >-
+            I faithfully believe this is for M64MM and not an addon with an
+            existing repository.
+          required: true
+  - type: textarea
+    id: desc
+    attributes:
+      label: Describe the bug
+      description: Write in here a clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      description: Steps to reproduce the undesired behavior
+      placeholder: >-
+        Example: 1. Go to '...' 2. Click on '....' 3. Scroll down to '....' 4.
+        See error
+    validations:
+      required: true
+  - type: input
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If possible, please add screenshots that explain your problem.
+    validations:
+      required: true
+  - type: textarea
+    id: desktop
+    attributes:
+      label: Computer Environment
+      description: Please replace the examples below with your own.
+      value: |-
+        OS: [e.g. Windows 10]
+        Version: [e.g. 22]
+        Architecture: [e.g. 64 bit]
+    validations:
+      required: true
+  - type: textarea
+    id: emuenv
+    attributes:
+      label: Emulator Environment
+      description: Please replace the examples below with your own.
+      value: |-
+        Emulator: [e.g. Project64]
+        Version: [e.g. iOS8.1]
+        Installed emulator plugins (with their versions): [e.g. GlideN 4.0]
+    validations:
+      required: true
+  - type: textarea
+    id: m64mm
+    attributes:
+      label: M64MM Environment
+      description: Please complete the following information.
+      value: |-
+        Version: [e.g. 3.0 Beta 1]
+        Installed addons: (e.g. METAL Composer, SPARK Studio)
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+  - type: markdown
+    attributes:
+      value: >-
+        This template was generated with [Issue Forms
+        Creator](https://issue-forms-creator.netlify.app)

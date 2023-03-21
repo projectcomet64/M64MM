@@ -1,0 +1,47 @@
+name: Feature Request
+description: Suggest an idea for this project
+assignees:
+  - GlitchyPSIX
+labels:
+  - enhancement
+body:
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Make sure you're filling the right form
+      options:
+        - label: This is a feature or addon request for M64MM.
+          required: true
+        - label: >-
+            This request does not seek to extend functionality for an addon that
+            already has a separate repository (use their repository instead).
+          required: true
+  - type: textarea
+    attributes:
+      label: Description
+      description: A clear and concise description of the problem or request
+      placeholder: 'Example: I''m always frustrated when [...]'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe the solution you'd like
+      description: If you have a solution in mind, please describe it.
+      placeholder: >-
+        It's okay if you don't have one, I can also see myself if I can find
+        one.
+  - type: textarea
+    attributes:
+      label: Describe alternatives you've considered
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: Only valid if you fill the above
+  - type: textarea
+    id: ctx
+    attributes:
+      label: Additional context
+      description: Write any other information pertaining to your request here.
+  - type: markdown
+    attributes:
+      value: >-
+        This template was generated with [Issue Forms
+        Creator](https://issue-forms-creator.netlify.app)
