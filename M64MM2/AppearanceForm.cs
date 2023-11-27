@@ -289,7 +289,8 @@ namespace M64MM2
                     break;
             }
 
-            if (_keyframeable && cbRecord.Checked) {
+            if (_keyframeable && cbRecord.Checked)
+            {
                 switch (part)
                 {
                     case ShadowAxis.X:
@@ -420,7 +421,8 @@ namespace M64MM2
 
         private void btnTFSCCHardShade(object sender, EventArgs e)
         {
-            foreach (ColorPart cPart in _chosenParts) {
+            foreach (ColorPart cPart in _chosenParts)
+            {
                 cPart.DarkColor = Color.Black;
             }
 
@@ -543,7 +545,7 @@ namespace M64MM2
                 }));
                 return valu;
             });
-            _krShadingX.Name = "Shading Horz.";
+
             _krShadingY = new FloatKeyframeRack(() =>
             {
                 float valu = 0;
@@ -553,7 +555,7 @@ namespace M64MM2
                 }));
                 return valu;
             });
-            _krShadingX.Name = "Shading Vert.";
+
             _krShadingZ = new FloatKeyframeRack(() =>
             {
                 float valu = 0;
@@ -563,11 +565,16 @@ namespace M64MM2
                 }));
                 return valu;
             });
+
+            // Only one is needed to change the entire set
             _krShadingX.CurrentFrameChanged += (() => {
-                ChangeShadow((byte) Math.Round(_krShadingX.CalculateInterpolation()),
-                    (byte) Math.Round(_krShadingY.CalculateInterpolation()),
-                    (byte) Math.Round(_krShadingZ.CalculateInterpolation()));
+                ChangeShadow((byte)Math.Round(_krShadingX.CalculateInterpolation()),
+                    (byte)Math.Round(_krShadingY.CalculateInterpolation()),
+                    (byte)Math.Round(_krShadingZ.CalculateInterpolation()));
             });
+
+            _krShadingX.Name = "Shading Horz.";
+            _krShadingY.Name = "Shading Vert.";
             _krShadingZ.Name = "Shading Depth";
             _appearanceTimeline.AddRack("shadeX", _krShadingX);
             _appearanceTimeline.AddRack("shadeY", _krShadingY);
