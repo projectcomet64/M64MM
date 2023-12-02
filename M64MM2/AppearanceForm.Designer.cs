@@ -64,6 +64,8 @@
             this.tsmiSPARKShorts = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSPARKShortSleeves = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRestoreSPARKCustom = new System.Windows.Forms.ToolStripMenuItem();
+            this.normalColrocodeTransformsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allBlackShadingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsTransforms = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.grpRand = new System.Windows.Forms.GroupBox();
             this.cbRandMode = new System.Windows.Forms.ComboBox();
@@ -74,8 +76,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.tmrRandom = new System.Windows.Forms.Timer(this.components);
             this.lbWarning = new System.Windows.Forms.Label();
-            this.normalColrocodeTransformsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.allBlackShadingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightDirectionPanel1 = new M64MM2.Controls.LightDirectionPanel.LightDirectionPanel();
             this.grpColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.marioSprite)).BeginInit();
             this.grpShading.SuspendLayout();
@@ -380,6 +381,19 @@
             resources.ApplyResources(this.tsmiRestoreSPARKCustom, "tsmiRestoreSPARKCustom");
             this.tsmiRestoreSPARKCustom.Click += new System.EventHandler(this.btnTFCustomRestore_Click);
             // 
+            // normalColrocodeTransformsToolStripMenuItem
+            // 
+            this.normalColrocodeTransformsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allBlackShadingToolStripMenuItem});
+            this.normalColrocodeTransformsToolStripMenuItem.Name = "normalColrocodeTransformsToolStripMenuItem";
+            resources.ApplyResources(this.normalColrocodeTransformsToolStripMenuItem, "normalColrocodeTransformsToolStripMenuItem");
+            // 
+            // allBlackShadingToolStripMenuItem
+            // 
+            this.allBlackShadingToolStripMenuItem.Name = "allBlackShadingToolStripMenuItem";
+            resources.ApplyResources(this.allBlackShadingToolStripMenuItem, "allBlackShadingToolStripMenuItem");
+            this.allBlackShadingToolStripMenuItem.Click += new System.EventHandler(this.btnTFSCCHardShade);
+            // 
             // cmsTransforms
             // 
             this.cmsTransforms.Name = "cmsTransforms";
@@ -448,23 +462,20 @@
             resources.ApplyResources(this.lbWarning, "lbWarning");
             this.lbWarning.Name = "lbWarning";
             // 
-            // normalColrocodeTransformsToolStripMenuItem
+            // lightDirectionPanel1
             // 
-            this.normalColrocodeTransformsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.allBlackShadingToolStripMenuItem});
-            this.normalColrocodeTransformsToolStripMenuItem.Name = "normalColrocodeTransformsToolStripMenuItem";
-            resources.ApplyResources(this.normalColrocodeTransformsToolStripMenuItem, "normalColrocodeTransformsToolStripMenuItem");
-            // 
-            // allBlackShadingToolStripMenuItem
-            // 
-            this.allBlackShadingToolStripMenuItem.Name = "allBlackShadingToolStripMenuItem";
-            resources.ApplyResources(this.allBlackShadingToolStripMenuItem, "allBlackShadingToolStripMenuItem");
-            this.allBlackShadingToolStripMenuItem.Click += new System.EventHandler(this.btnTFSCCHardShade);
+            this.lightDirectionPanel1.LightX = ((sbyte)(0));
+            this.lightDirectionPanel1.LightY = ((sbyte)(0));
+            this.lightDirectionPanel1.LightZ = ((sbyte)(0));
+            resources.ApplyResources(this.lightDirectionPanel1, "lightDirectionPanel1");
+            this.lightDirectionPanel1.Name = "lightDirectionPanel1";
+            this.lightDirectionPanel1.TabStop = false;
             // 
             // AppearanceForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lightDirectionPanel1);
             this.Controls.Add(this.lbWarning);
             this.Controls.Add(this.grpRand);
             this.Controls.Add(this.grpCCRepo);
@@ -547,5 +558,6 @@
         private System.Windows.Forms.Button btnKeyframe;
         private System.Windows.Forms.ToolStripMenuItem normalColrocodeTransformsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allBlackShadingToolStripMenuItem;
+        private Controls.LightDirectionPanel.LightDirectionPanel lightDirectionPanel1;
     }
 }

@@ -149,7 +149,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="cbPartListOverride.Items" xml:space="preserve">
     <value>Classic</value>
@@ -506,7 +506,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;grpColor.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnImportCode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -560,13 +560,16 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;marioSprite.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="cbRecord.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="cbRecord.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="cbRecord.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="cbRecord.Location" type="System.Drawing.Point, System.Drawing">
     <value>334, 77</value>
@@ -863,7 +866,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>59, 77</value>
   </data>
   <data name="tbBackFront.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 23</value>
+    <value>146, 23</value>
   </data>
   <data name="tbBackFront.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -890,7 +893,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>59, 48</value>
   </data>
   <data name="tbBottomTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 23</value>
+    <value>146, 23</value>
   </data>
   <data name="tbBottomTop.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -917,7 +920,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>59, 19</value>
   </data>
   <data name="tbLeftRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 23</value>
+    <value>146, 23</value>
   </data>
   <data name="tbLeftRight.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -956,7 +959,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;grpShading.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>131, 17</value>
@@ -998,7 +1001,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>SPARK Colorcode Transforms</value>
   </data>
   <data name="allBlackShadingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="allBlackShadingToolStripMenuItem.Text" xml:space="preserve">
     <value>All-Black Shading</value>
@@ -1019,7 +1022,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>602, 24</value>
+    <value>1033, 24</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -1037,7 +1040,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <metadata name="cmsTransforms.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>246, 17</value>
@@ -1151,7 +1154,7 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;grpRand.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lbCCs.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 20</value>
@@ -1223,13 +1226,16 @@ Otherwise, Mario's colors won't match the ones you pick here.</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;grpCCRepo.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <metadata name="tmrRandom.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>380, 17</value>
   </metadata>
   <data name="lbWarning.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lbWarning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lbWarning.Location" type="System.Drawing.Point, System.Drawing">
     <value>371, 302</value>
@@ -1257,6 +1263,27 @@ Epilepsy warning: flashing colors.</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbWarning.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lightDirectionPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>632, 72</value>
+  </data>
+  <data name="lightDirectionPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 326</value>
+  </data>
+  <data name="lightDirectionPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;lightDirectionPanel1.Name" xml:space="preserve">
+    <value>lightDirectionPanel1</value>
+  </data>
+  <data name="&gt;&gt;lightDirectionPanel1.Type" xml:space="preserve">
+    <value>M64MM2.Controls.LightDirectionPanel.LightDirectionPanel, M64MM, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lightDirectionPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lightDirectionPanel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1266,7 +1293,7 @@ Epilepsy warning: flashing colors.</value>
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>602, 597</value>
+    <value>1033, 597</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3207,12 +3234,6 @@ Epilepsy warning: flashing colors.</value>
   <data name="&gt;&gt;tsmiRestoreSPARKCustom.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tmrRandom.Name" xml:space="preserve">
-    <value>tmrRandom</value>
-  </data>
-  <data name="&gt;&gt;tmrRandom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;normalColrocodeTransformsToolStripMenuItem.Name" xml:space="preserve">
     <value>normalColrocodeTransformsToolStripMenuItem</value>
   </data>
@@ -3224,6 +3245,12 @@ Epilepsy warning: flashing colors.</value>
   </data>
   <data name="&gt;&gt;allBlackShadingToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tmrRandom.Name" xml:space="preserve">
+    <value>tmrRandom</value>
+  </data>
+  <data name="&gt;&gt;tmrRandom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>AppearanceForm</value>
