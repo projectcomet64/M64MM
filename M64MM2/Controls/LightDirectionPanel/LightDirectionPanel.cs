@@ -17,32 +17,48 @@ namespace M64MM2.Controls.LightDirectionPanel
     {
         private Pen _boundingBoxPen = new Pen(Color.Black, 2f);
         private Brush _sunBrush = new SolidBrush(Color.Orange);
+        private Brush _sunShadow = new SolidBrush(Color.DarkOrange);
+        private Brush _objectSilhouette = new SolidBrush(Color.DarkSlateGray);
         private sbyte _lightX, _lightY, _lightZ;
-        private Point lastpoint;
-        public sbyte LightX {
+        private bool _mouseHeld;
+
+        [Browsable(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public event EventHandler UserValueChange;
+        [Browsable(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public event EventHandler ValueChange;
+
+        public sbyte LightX
+        {
             get => _lightX;
             set
             {
-                _lightX = Math.Max(Math.Min(value, (sbyte) 127), (sbyte) -128);
+                _lightX = Math.Max(Math.Min(value, (sbyte)127), (sbyte)-128);
                 Refresh();
+                ValueChange?.Invoke(this, EventArgs.Empty);
             }
         }
 
-        public sbyte LightY {
+        public sbyte LightY
+        {
             get => _lightY;
             set
             {
                 _lightY = Math.Max(Math.Min(value, (sbyte)127), (sbyte)-128);
                 Refresh();
+                ValueChange?.Invoke(this, EventArgs.Empty);
             }
         }
 
-        public sbyte LightZ {
+        public sbyte LightZ
+        {
             get => _lightZ;
             set
             {
                 _lightZ = Math.Max(Math.Min(value, (sbyte)127), (sbyte)-128);
                 Refresh();
+                ValueChange?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -59,7 +75,35 @@ namespace M64MM2.Controls.LightDirectionPanel
 
         }
 
-        public override void Refresh() {
+        public void SetLightDirection(sbyte x, sbyte y, sbyte z)
+        {
+            _lightX = x;
+            _lightY = y;
+            _lightZ = z;
+            Refresh();
+            ValueChange?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void SetLightDirection(int x, int y, int z)
+        {
+            SetLightDirection((sbyte)Math.Max(Math.Min(x, (sbyte)127), (sbyte)-128),
+                (sbyte)Math.Max(Math.Min(y, (sbyte)127), (sbyte)-128),
+                (sbyte)Math.Max(Math.Min(z, (sbyte)127), (sbyte)-128));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="direction">Normalized Vector3 that points to where the light source is</param>
+        public void SetLightDirection(Vector3 direction) {
+            Vector3 dirNormal = Vector3.Normalize(direction);
+            SetLightDirection(Math.Max((int) Math.Round(Math.Min(dirNormal.X * 128, (sbyte) 127)), (sbyte) -128),
+                Math.Max((int) Math.Round(Math.Min(dirNormal.Y * 128, (sbyte) 127)), (sbyte) -128),
+                Math.Max((int) Math.Round(Math.Min(dirNormal.Z * 128, (sbyte) 127)), (sbyte) -128));
+        }
+
+        public override void Refresh()
+        {
             base.Refresh();
         }
 
@@ -67,8 +111,7 @@ namespace M64MM2.Controls.LightDirectionPanel
         {
             float fov = 0.5f;
             Graphics gfx = e.Graphics;
-                gfx.Clear(BackColor);
-            gfx.DrawString(lastpoint.ToString(), Font, _sunBrush, 0, 0);
+            gfx.Clear(BackColor);
             Vector3 tl = new Vector3(-Bounds.Width, -Bounds.Height, 1f);
             Vector3 br = new Vector3(Bounds.Width, Bounds.Height, 1f);
             Vector3 tr = new Vector3(br.X, tl.Y, 1f);
@@ -105,17 +148,43 @@ namespace M64MM2.Controls.LightDirectionPanel
             gfx.DrawLine(_boundingBoxPen, rectFace[2], backFace[2]);
             gfx.DrawLine(_boundingBoxPen, rectFace[3], backFace[3]);
 
-            DrawSun(gfx, fov);
+            if (_lightZ < 0) {
+                DrawSubject(gfx, fov);
+                DrawSun(gfx, fov);
+            }
+            else {
+                DrawSun(gfx, fov);
+                DrawSubject(gfx, fov);
+            }
 
             // Face at z = 1.1
             gfx.DrawPolygon(_boundingBoxPen, rectFace);
-
-            
-
-            
         }
 
-        private void DrawSun(Graphics gfx, float fov) {
+        private void LightDirectionPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            _mouseHeld = true;
+        }
+
+        private void LightDirectionPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            _mouseHeld = false;
+        }
+
+        private void DrawSubject(Graphics gfx, float fov) {
+            float subjectRadiusMult = ((128) / 255f) + 0.5f;
+
+            PointF subjectPoint = VectorHelpers.WeakPerspective(new Vector3(0, 0, .25f), fov)
+                .ToPointF();
+
+            subjectPoint += new Size(Bounds.Size.Width / 2, Bounds.Size.Height / 2);
+
+            gfx.FillEllipse(_objectSilhouette, subjectPoint.X - (15 / subjectRadiusMult), subjectPoint.Y - (15 / subjectRadiusMult),
+                (15 / subjectRadiusMult) * 2, (15 / subjectRadiusMult) * 2);
+        }
+
+        private void DrawSun(Graphics gfx, float fov)
+        {
             // Z = 0 == radius = 1x
             // Z = -128 == radius = 0.5x;
             // Z = 127 == radius = around 1.5x;
@@ -130,26 +199,37 @@ namespace M64MM2.Controls.LightDirectionPanel
             PointF sunPoint = VectorHelpers.WeakPerspective(new Vector3(responsiveX, responsiveY, responsiveZ), fov)
                 .ToPointF();
 
-            sunPoint += new Size(Bounds.Size.Width/2, Bounds.Size.Height/2);
+            PointF sunBottomPoint = VectorHelpers.WeakPerspective(new Vector3(responsiveX, Bounds.Height, responsiveZ), fov)
+                .ToPointF();
+
+            sunPoint += new Size(Bounds.Size.Width / 2, Bounds.Size.Height / 2);
+
+            sunBottomPoint += new Size(Bounds.Size.Width / 2, Bounds.Size.Height / 2);
 
             gfx.FillEllipse(_sunBrush, sunPoint.X - (SUN_RADIUS / sunRadiusMult), sunPoint.Y - (SUN_RADIUS / sunRadiusMult),
-                (SUN_RADIUS / sunRadiusMult)*2, (SUN_RADIUS / sunRadiusMult)*2);
-            gfx.FillRectangle(_sunBrush, sunPoint.X, sunPoint.Y,
                 (SUN_RADIUS / sunRadiusMult) * 2, (SUN_RADIUS / sunRadiusMult) * 2);
+
+            gfx.FillEllipse(_sunShadow, sunBottomPoint.X - (SUN_RADIUS / sunRadiusMult), sunBottomPoint.Y - (SUN_RADIUS / sunRadiusMult) * 0.25f,
+                (SUN_RADIUS / sunRadiusMult) * 2, (SUN_RADIUS / sunRadiusMult) * 0.25f);
+
         }
 
-        private void LightDirectionPanel_MouseMove(object sender, MouseEventArgs e) {
-            Point mousePt = e.Location;
-            lastpoint = e.Location;
-            mousePt.X -= Width/2;
-            mousePt.Y -= Height/2;
+        private void LightDirectionPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_mouseHeld)
+            {
+                Point mousePt = e.Location;
+                mousePt.X -= Width / 2;
+                mousePt.Y -= Height / 2;
+                Console.WriteLine(e.Location);
+                _lightX = (sbyte)Math.Max(Math.Min((mousePt.X / (Width / 2f)) * 128, 127), -128);
+                _lightY = (sbyte)Math.Max(Math.Min((mousePt.Y / (Height / 2f)) * 128, 127), -128);
 
+                Refresh();
+                ValueChange?.Invoke(this, EventArgs.Empty);
+                UserValueChange?.Invoke(this, EventArgs.Empty);
+            }
 
-
-            _lightX = (sbyte)Math.Max(Math.Min((mousePt.X / (Width / 2f)) * 127, 127), -128);
-            _lightY = (sbyte)Math.Max(Math.Min((mousePt.Y / (Width / 2f)) * 127, 127), -128);
-            _lightZ = -128;
-            Refresh();
         }
     }
 }

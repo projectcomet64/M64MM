@@ -187,7 +187,7 @@ namespace M64MM2
         {
             foreach (ColorPart cPart in _chosenParts)
             {
-                cPart.ChangeLightDirection((byte)tbLeftRight.Value, (byte)tbBottomTop.Value, (byte)tbBackFront.Value);
+                cPart.ChangeLightDirection(lightDirectionPanel1.LightX, (sbyte)-lightDirectionPanel1.LightY , (sbyte)-lightDirectionPanel1.LightZ);
             }
         }
 
@@ -582,6 +582,15 @@ namespace M64MM2
             _keyframeable = true;
             btnKeyframe.Enabled = false;
             cbRecord.Enabled = true;
+        }
+
+        private void tbBackFront_Scroll(object sender, EventArgs e) {
+            lightDirectionPanel1.SetLightDirection(lightDirectionPanel1.LightX, lightDirectionPanel1.LightY, (sbyte)tbBackFront.Value);
+        }
+
+        private void lightDirectionPanel1_ValueChange(object sender, EventArgs e)
+        {
+            ChangeShadow();
         }
 
         private void UpdateColorPartList()

@@ -33,7 +33,9 @@
             // LightDirectionPanel
             // 
             this.Name = "LightDirectionPanel";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LightDirectionPanel_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LightDirectionPanel_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LightDirectionPanel_MouseUp);
             this.ResumeLayout(false);
 
         }

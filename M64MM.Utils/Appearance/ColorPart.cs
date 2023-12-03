@@ -85,6 +85,11 @@ namespace M64MM.Utils
             ChangeLightDirection((IsAddressSegmented ? 0 : SegmentedToVirtual(0x04000000)), nX, nY, nZ);
         }
 
+        public void ChangeLightDirection(sbyte nX, sbyte nY, sbyte nZ)
+        {
+            ChangeLightDirection((IsAddressSegmented ? 0 : SegmentedToVirtual(0x04000000)), (byte)(nX), (byte)(nY), (byte)(nZ));
+        }
+
         public void ChangeLightDirection(long baseOffset, byte nX, byte nY, byte nZ)
         {
             if (baseOffset == 0 && IsAddressSegmented) {

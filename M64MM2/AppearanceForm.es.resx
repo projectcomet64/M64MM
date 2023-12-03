@@ -149,20 +149,11 @@ De lo contrario, los colores que elijas aquí no cambiarán en el juego.</value>
   <data name="label8.Text" xml:space="preserve">
     <value>Sombra</value>
   </data>
-  <data name="btnLoadFromGame.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 133</value>
-  </data>
   <data name="btnLoadFromGame.Text" xml:space="preserve">
     <value>Cargar del juego</value>
   </data>
-  <data name="btnResetColors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 75</value>
-  </data>
   <data name="btnResetColors.Text" xml:space="preserve">
     <value>Reiniciar colores</value>
-  </data>
-  <data name="btnExportCode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 104</value>
   </data>
   <data name="btnExportCode.Text" xml:space="preserve">
     <value>Exportar CC...</value>
@@ -173,29 +164,42 @@ De lo contrario, los colores que elijas aquí no cambiarán en el juego.</value>
   <data name="grpShading.Text" xml:space="preserve">
     <value>Herrmiantas de iluminación:</value>
   </data>
+  <data name="btnRandomizeShading.Location" type="System.Drawing.Point, System.Drawing">
+    <value>76, 203</value>
+  </data>
   <data name="btnRandomizeShading.Text" xml:space="preserve">
     <value>Aleatorizar ilum.</value>
+  </data>
+  <data name="btnResetShading.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 23</value>
   </data>
   <data name="btnResetShading.Text" xml:space="preserve">
     <value>Reiniciar iluminación</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Delante</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Arriba</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Der.</value>
-  </data>
   <data name="label12.Text" xml:space="preserve">
     <value>Detrás</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label12.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Abajo</value>
   </data>
+  <data name="label11.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Izq.</value>
+  </data>
+  <data name="label10.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tbBottomTop.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tbLeftRight.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="grpRand.Text" xml:space="preserve">
     <value>Aleatorizador de códigos de color</value>
@@ -214,9 +218,6 @@ De lo contrario, los colores que elijas aquí no cambiarán en el juego.</value>
   </data>
   <data name="btnRefresh.Text" xml:space="preserve">
     <value>Recargar lista</value>
-  </data>
-  <data name="lbWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>353, 298</value>
   </data>
   <data name="lbWarning.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 26</value>
@@ -2112,6 +2113,10 @@ Cuidado con la epilepsia: esto va rápido.</value>
         /xoMA/8aDAP/GgwD/xoMA/8aDAP/GgwD/wAAAAOAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Opciones de apariencia</value>

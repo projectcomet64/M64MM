@@ -47,9 +47,6 @@
             this.btnKeyframe = new System.Windows.Forms.Button();
             this.btnRandomizeShading = new System.Windows.Forms.Button();
             this.btnResetShading = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -222,12 +219,10 @@
             // grpShading
             // 
             this.grpShading.Controls.Add(this.cbRecord);
+            this.grpShading.Controls.Add(this.lightDirectionPanel1);
             this.grpShading.Controls.Add(this.btnKeyframe);
             this.grpShading.Controls.Add(this.btnRandomizeShading);
             this.grpShading.Controls.Add(this.btnResetShading);
-            this.grpShading.Controls.Add(this.label13);
-            this.grpShading.Controls.Add(this.label14);
-            this.grpShading.Controls.Add(this.label15);
             this.grpShading.Controls.Add(this.label12);
             this.grpShading.Controls.Add(this.label11);
             this.grpShading.Controls.Add(this.label10);
@@ -265,21 +260,6 @@
             this.btnResetShading.UseVisualStyleBackColor = true;
             this.btnResetShading.Click += new System.EventHandler(this.ResetShadows);
             // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
-            // 
-            // label14
-            // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
-            // 
             // label12
             // 
             resources.ApplyResources(this.label12, "label12");
@@ -301,8 +281,10 @@
             this.tbBackFront.Maximum = 127;
             this.tbBackFront.Minimum = -127;
             this.tbBackFront.Name = "tbBackFront";
+            this.tbBackFront.TabStop = false;
             this.tbBackFront.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbBackFront.Value = 40;
+            this.tbBackFront.Scroll += new System.EventHandler(this.tbBackFront_Scroll);
             this.tbBackFront.ValueChanged += new System.EventHandler(this.UpdateTrackbar);
             // 
             // tbBottomTop
@@ -470,12 +452,12 @@
             resources.ApplyResources(this.lightDirectionPanel1, "lightDirectionPanel1");
             this.lightDirectionPanel1.Name = "lightDirectionPanel1";
             this.lightDirectionPanel1.TabStop = false;
+            this.lightDirectionPanel1.ValueChange += new System.EventHandler(this.lightDirectionPanel1_ValueChange);
             // 
             // AppearanceForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lightDirectionPanel1);
             this.Controls.Add(this.lbWarning);
             this.Controls.Add(this.grpRand);
             this.Controls.Add(this.grpCCRepo);
@@ -522,9 +504,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnResetShading;
         private System.Windows.Forms.Button btnRandomizeShading;
         private System.Windows.Forms.ListBox lbColors;
