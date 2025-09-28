@@ -96,6 +96,7 @@
             // 
             // grpColor
             // 
+            resources.ApplyResources(this.grpColor, "grpColor");
             this.grpColor.Controls.Add(this.cbPartListOverride);
             this.grpColor.Controls.Add(this.label1);
             this.grpColor.Controls.Add(this.lbCCParts);
@@ -108,12 +109,12 @@
             this.grpColor.Controls.Add(this.btnLoadFromGame);
             this.grpColor.Controls.Add(this.btnResetColors);
             this.grpColor.Controls.Add(this.btnExportCode);
-            resources.ApplyResources(this.grpColor, "grpColor");
             this.grpColor.Name = "grpColor";
             this.grpColor.TabStop = false;
             // 
             // cbPartListOverride
             // 
+            resources.ApplyResources(this.cbPartListOverride, "cbPartListOverride");
             this.cbPartListOverride.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPartListOverride.FormattingEnabled = true;
             this.cbPartListOverride.Items.AddRange(new object[] {
@@ -121,7 +122,6 @@
             resources.GetString("cbPartListOverride.Items1"),
             resources.GetString("cbPartListOverride.Items2"),
             resources.GetString("cbPartListOverride.Items3")});
-            resources.ApplyResources(this.cbPartListOverride, "cbPartListOverride");
             this.cbPartListOverride.Name = "cbPartListOverride";
             this.cbPartListOverride.SelectedIndexChanged += new System.EventHandler(this.cbPartListOverride_SelectedIndexChanged);
             // 
@@ -152,26 +152,26 @@
             // 
             // btnLightCol
             // 
+            resources.ApplyResources(this.btnLightCol, "btnLightCol");
             this.btnLightCol.BackColor = System.Drawing.Color.Red;
             this.btnLightCol.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.btnLightCol, "btnLightCol");
             this.btnLightCol.Name = "btnLightCol";
             this.btnLightCol.UseVisualStyleBackColor = false;
             this.btnLightCol.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // btnDarkCol
             // 
+            resources.ApplyResources(this.btnDarkCol, "btnDarkCol");
             this.btnDarkCol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDarkCol.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.btnDarkCol, "btnDarkCol");
             this.btnDarkCol.Name = "btnDarkCol";
             this.btnDarkCol.UseVisualStyleBackColor = false;
             this.btnDarkCol.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // lbColors
             // 
-            this.lbColors.FormattingEnabled = true;
             resources.ApplyResources(this.lbColors, "lbColors");
+            this.lbColors.FormattingEnabled = true;
             this.lbColors.Name = "lbColors";
             this.lbColors.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbColors_DrawItem);
             this.lbColors.SelectedValueChanged += new System.EventHandler(this.lbColors_SelectedValueChanged);
@@ -206,9 +206,9 @@
             // 
             // marioSprite
             // 
+            resources.ApplyResources(this.marioSprite, "marioSprite");
             this.marioSprite.BackColor = System.Drawing.Color.Transparent;
             this.marioSprite.Image = global::M64MM2.Properties.Resources.CC_Mario_big;
-            resources.ApplyResources(this.marioSprite, "marioSprite");
             this.marioSprite.Name = "marioSprite";
             this.marioSprite.TabStop = false;
             this.marioSprite.Paint += new System.Windows.Forms.PaintEventHandler(this.marioSprite_Paint);
@@ -216,6 +216,7 @@
             // 
             // grpShading
             // 
+            resources.ApplyResources(this.grpShading, "grpShading");
             this.grpShading.Controls.Add(this.btnRandomizeShading);
             this.grpShading.Controls.Add(this.btnResetShading);
             this.grpShading.Controls.Add(this.label13);
@@ -227,7 +228,6 @@
             this.grpShading.Controls.Add(this.tbBackFront);
             this.grpShading.Controls.Add(this.tbBottomTop);
             this.grpShading.Controls.Add(this.tbLeftRight);
-            resources.ApplyResources(this.grpShading, "grpShading");
             this.grpShading.Name = "grpShading";
             this.grpShading.TabStop = false;
             // 
@@ -307,20 +307,21 @@
             // 
             // menuStrip1
             // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
             // toolsToolStripMenuItem
             // 
+            resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sPARKColorcodeTransformsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            resources.ApplyResources(this.toolsToolStripMenuItem, "toolsToolStripMenuItem");
             // 
             // sPARKColorcodeTransformsToolStripMenuItem
             // 
+            resources.ApplyResources(this.sPARKColorcodeTransformsToolStripMenuItem, "sPARKColorcodeTransformsToolStripMenuItem");
             this.sPARKColorcodeTransformsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiClassicToSpark,
             this.tsmiSPARKShirtPants,
@@ -328,60 +329,59 @@
             this.tsmiSPARKShortSleeves,
             this.tsmiRestoreSPARKCustom});
             this.sPARKColorcodeTransformsToolStripMenuItem.Name = "sPARKColorcodeTransformsToolStripMenuItem";
-            resources.ApplyResources(this.sPARKColorcodeTransformsToolStripMenuItem, "sPARKColorcodeTransformsToolStripMenuItem");
             // 
             // tsmiClassicToSpark
             // 
-            this.tsmiClassicToSpark.Name = "tsmiClassicToSpark";
             resources.ApplyResources(this.tsmiClassicToSpark, "tsmiClassicToSpark");
+            this.tsmiClassicToSpark.Name = "tsmiClassicToSpark";
             this.tsmiClassicToSpark.Click += new System.EventHandler(this.btnTFCC2SCC_Click);
             // 
             // tsmiSPARKShirtPants
             // 
-            this.tsmiSPARKShirtPants.Name = "tsmiSPARKShirtPants";
             resources.ApplyResources(this.tsmiSPARKShirtPants, "tsmiSPARKShirtPants");
+            this.tsmiSPARKShirtPants.Name = "tsmiSPARKShirtPants";
             this.tsmiSPARKShirtPants.Click += new System.EventHandler(this.btnTFShirtPants_Click);
             // 
             // tsmiSPARKShorts
             // 
-            this.tsmiSPARKShorts.Name = "tsmiSPARKShorts";
             resources.ApplyResources(this.tsmiSPARKShorts, "tsmiSPARKShorts");
+            this.tsmiSPARKShorts.Name = "tsmiSPARKShorts";
             this.tsmiSPARKShorts.Click += new System.EventHandler(this.btnTFShorties_Click);
             // 
             // tsmiSPARKShortSleeves
             // 
-            this.tsmiSPARKShortSleeves.Name = "tsmiSPARKShortSleeves";
             resources.ApplyResources(this.tsmiSPARKShortSleeves, "tsmiSPARKShortSleeves");
+            this.tsmiSPARKShortSleeves.Name = "tsmiSPARKShortSleeves";
             this.tsmiSPARKShortSleeves.Click += new System.EventHandler(this.btnTFSCCSleeves_Click);
             // 
             // tsmiRestoreSPARKCustom
             // 
-            this.tsmiRestoreSPARKCustom.Name = "tsmiRestoreSPARKCustom";
             resources.ApplyResources(this.tsmiRestoreSPARKCustom, "tsmiRestoreSPARKCustom");
+            this.tsmiRestoreSPARKCustom.Name = "tsmiRestoreSPARKCustom";
             this.tsmiRestoreSPARKCustom.Click += new System.EventHandler(this.btnTFCustomRestore_Click);
             // 
             // cmsTransforms
             // 
-            this.cmsTransforms.Name = "cmsTransforms";
             resources.ApplyResources(this.cmsTransforms, "cmsTransforms");
+            this.cmsTransforms.Name = "cmsTransforms";
             // 
             // grpRand
             // 
+            resources.ApplyResources(this.grpRand, "grpRand");
             this.grpRand.Controls.Add(this.cbRandMode);
             this.grpRand.Controls.Add(this.label16);
             this.grpRand.Controls.Add(this.clbRandSel);
-            resources.ApplyResources(this.grpRand, "grpRand");
             this.grpRand.Name = "grpRand";
             this.grpRand.TabStop = false;
             // 
             // cbRandMode
             // 
+            resources.ApplyResources(this.cbRandMode, "cbRandMode");
             this.cbRandMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRandMode.FormattingEnabled = true;
             this.cbRandMode.Items.AddRange(new object[] {
             resources.GetString("cbRandMode.Items"),
             resources.GetString("cbRandMode.Items1")});
-            resources.ApplyResources(this.cbRandMode, "cbRandMode");
             this.cbRandMode.Name = "cbRandMode";
             // 
             // label16
@@ -391,23 +391,23 @@
             // 
             // clbRandSel
             // 
-            this.clbRandSel.FormattingEnabled = true;
             resources.ApplyResources(this.clbRandSel, "clbRandSel");
+            this.clbRandSel.FormattingEnabled = true;
             this.clbRandSel.Name = "clbRandSel";
             // 
             // grpCCRepo
             // 
+            resources.ApplyResources(this.grpCCRepo, "grpCCRepo");
             this.grpCCRepo.Controls.Add(this.lbCCs);
             this.grpCCRepo.Controls.Add(this.btnRefresh);
             this.grpCCRepo.Controls.Add(this.btnImportCode);
-            resources.ApplyResources(this.grpCCRepo, "grpCCRepo");
             this.grpCCRepo.Name = "grpCCRepo";
             this.grpCCRepo.TabStop = false;
             // 
             // lbCCs
             // 
-            this.lbCCs.FormattingEnabled = true;
             resources.ApplyResources(this.lbCCs, "lbCCs");
+            this.lbCCs.FormattingEnabled = true;
             this.lbCCs.Name = "lbCCs";
             this.lbCCs.Sorted = true;
             this.lbCCs.DoubleClick += new System.EventHandler(this.lbCCs_DoubleClick);

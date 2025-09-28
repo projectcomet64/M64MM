@@ -1,19 +1,20 @@
-﻿using System;
+﻿using M64MM.Additions;
+using M64MM.Utils;
+using M64MM2.Properties;
+using Microsoft.Win32;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using M64MM2.Properties;
-using static M64MM.Utils.Core;
-using static M64MM.Utils.Looks;
-using M64MM.Utils;
-using M64MM.Additions;
-using System.Diagnostics;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using Microsoft.Win32;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static M64MM.Utils.Core;
+using static M64MM.Utils.Looks;
 
 namespace M64MM2
 {
@@ -89,7 +90,7 @@ namespace M64MM2
             Core.EmulatorSelected += EmulatorSelected;
             MoreThanOneEmuFound += MoreThanOneEmu;
             EmulatorInaccessible += InaccessibleEmu;
-            ToolStripMenuItem addons = new ToolStripMenuItem("Addons");
+            ToolStripMenuItem addons = new ToolStripMenuItem(Resources.addonsButton);
             foreach (Addon add in moduleList)
             {
                 List<ToolCommand> toolCommands = GetAddonCommands(add);
@@ -110,7 +111,7 @@ namespace M64MM2
                 // If there were any errors (String, may make a collection of objects?)
                 // Do make a Log struct later on for more than a warning use
                 addons.DropDownItems.Add(new ToolStripSeparator());
-                addons.DropDownItems.Add(new ToolStripMenuItem("Addon warnings", null, (a, b) => { new AddonErrors().ShowDialog(); }));
+                addons.DropDownItems.Add(new ToolStripMenuItem(Resources.addonWarnings, null, (a, b) => { new AddonErrors().ShowDialog(); }));
             }
 
             Text = Resources.programName + " " + Application.ProductVersion + Resources.prereleaseString;
@@ -575,5 +576,9 @@ namespace M64MM2
             }
         }
 
+        private void openRootFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+        }
     }
 }

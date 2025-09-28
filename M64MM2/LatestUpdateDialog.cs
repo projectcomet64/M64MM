@@ -27,7 +27,7 @@ namespace M64MM2
 
         private void LatestUpdateDialog_Load(object sender, EventArgs e)
         {
-            lbLatestVersion.Text = $"{Resources.updateLatestVersion}{release.TagName} ({release.ReleaseName})";
+            lbLatestVersion.Text = $"{Resources.updateLatestVersion}\n{release.TagName} ({release.ReleaseName})";
             lbCurrentVersion.Text = $"{Resources.updateCurrentVersion}{Program.CurrentVersionTag.ToString()} {(updateAvailable ? Resources.updateUpdateNow: Resources.updateUpToDate)}";
             string rtf = MarkdownToRtf(release.Body);
             rtbUpdateNotes.Rtf = @"{\rtf\ansi\deff0{\fonttbl{\f0\fnil Arial;}{\f1\fmodern Courier New;}}\fs18" + rtf;

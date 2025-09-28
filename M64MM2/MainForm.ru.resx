@@ -118,6 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 20</value>
+  </data>
+  <data name="toolsMenuItem.Text" xml:space="preserve">
+    <value>&amp;Инструменты</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 20</value>
+  </data>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
   <data name="appearanceSettingsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>246, 22</value>
   </data>
@@ -139,53 +157,41 @@
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>243, 6</value>
   </data>
+  <data name="openRootFolderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 22</value>
+  </data>
+  <data name="openRootFolderToolStripMenuItem.Text" xml:space="preserve">
+    <value>Открыть корневую папку</value>
+  </data>
   <data name="scanForEmulatorsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>246, 22</value>
   </data>
   <data name="scanForEmulatorsToolStripMenuItem.Text" xml:space="preserve">
     <value>Найти &amp;Project64</value>
   </data>
-  <data name="toolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 20</value>
-  </data>
-  <data name="toolsMenuItem.Text" xml:space="preserve">
-    <value>&amp;Инструменты</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 20</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
   <data name="issuesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 22</value>
+    <value>306, 22</value>
   </data>
   <data name="issuesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Сообщить об ошибке / предложить идею</value>
   </data>
   <data name="checkForLatestUpdateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 22</value>
+    <value>306, 22</value>
   </data>
   <data name="checkForLatestUpdateToolStripMenuItem.Text" xml:space="preserve">
     <value>Проверить на &amp;обновления...</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 6</value>
+    <value>303, 6</value>
   </data>
   <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 22</value>
+    <value>306, 22</value>
   </data>
   <data name="aboutMenuItem.Text" xml:space="preserve">
     <value>&amp;Об M64MM3...</value>
   </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Помощь</value>
-  </data>
-  <data name="menuStrip.ToolTip" xml:space="preserve">
-    <value />
+  <data name="grpCamera.Text" xml:space="preserve">
+    <value>Камера</value>
   </data>
   <data name="cbPowercam.Size" type="System.Drawing.Size, System.Drawing">
     <value>212, 17</value>
@@ -199,20 +205,8 @@
   <data name="btnSoftFreeze.Text" xml:space="preserve">
     <value>Лёгкая зам.: Нет</value>
   </data>
-  <data name="btnSoftFreeze.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btnFreeze.Text" xml:space="preserve">
     <value>Заморозка: Нет</value>
-  </data>
-  <data name="btnFreeze.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="grpCamera.Text" xml:space="preserve">
-    <value>Камера</value>
-  </data>
-  <data name="grpCamera.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="lblProgramStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8pt</value>
@@ -244,8 +238,8 @@
   <data name="lblCameraStyle.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 17</value>
   </data>
-  <data name="statusStrip.ToolTip" xml:space="preserve">
-    <value />
+  <data name="grpAnimSwap.Text" xml:space="preserve">
+    <value>Анимации</value>
   </data>
   <data name="chbAutoApply.Location" type="System.Drawing.Point, System.Drawing">
     <value>127, 77</value>
@@ -265,23 +259,14 @@
   <data name="btnAnimResetAll.Text" xml:space="preserve">
     <value>Сбросить всё</value>
   </data>
-  <data name="btnAnimResetAll.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btnAnimReset.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 73</value>
   </data>
   <data name="btnAnimReset.Text" xml:space="preserve">
     <value>Сбросить</value>
   </data>
-  <data name="btnAnimReset.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btnAnimSwap.Text" xml:space="preserve">
     <value>Применить</value>
-  </data>
-  <data name="btnAnimSwap.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="lblAnimNew.Location" type="System.Drawing.Point, System.Drawing">
     <value>44, 49</value>
@@ -292,9 +277,6 @@
   <data name="lblAnimNew.Text" xml:space="preserve">
     <value>на:</value>
   </data>
-  <data name="lblAnimNew.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="lblAnimOld.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 23</value>
   </data>
@@ -304,17 +286,11 @@
   <data name="lblAnimOld.Text" xml:space="preserve">
     <value>Заменить:</value>
   </data>
-  <data name="lblAnimOld.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="cbAnimNew.Location" type="System.Drawing.Point, System.Drawing">
     <value>72, 46</value>
   </data>
   <data name="cbAnimNew.Size" type="System.Drawing.Size, System.Drawing">
     <value>422, 21</value>
-  </data>
-  <data name="cbAnimNew.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="cbAnimOld.Location" type="System.Drawing.Point, System.Drawing">
     <value>72, 20</value>
@@ -322,32 +298,14 @@
   <data name="cbAnimOld.Size" type="System.Drawing.Size, System.Drawing">
     <value>422, 21</value>
   </data>
-  <data name="cbAnimOld.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="grpAnimSwap.Text" xml:space="preserve">
-    <value>Анимации</value>
-  </data>
-  <data name="grpAnimSwap.ToolTip" xml:space="preserve">
-    <value />
+  <data name="grpCamStyle.Text" xml:space="preserve">
+    <value>Стиль камеры</value>
   </data>
   <data name="btnChangeCamStyle.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 23</value>
   </data>
   <data name="btnChangeCamStyle.Text" xml:space="preserve">
     <value>Применить</value>
-  </data>
-  <data name="btnChangeCamStyle.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="cbCamStyles.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="grpCamStyle.Text" xml:space="preserve">
-    <value>Стиль камеры</value>
-  </data>
-  <data name="grpCamStyle.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2236,8 +2194,5 @@
         /xoMA/8aDAP/GgwD/xoMA/8aDAP/GgwD/wAAAAOAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA
 </value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

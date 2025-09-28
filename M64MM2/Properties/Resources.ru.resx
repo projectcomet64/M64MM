@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="colorCodeImportMsg" xml:space="preserve">
-    <value>Вставьте Ваш цветовой код ниже и нажмите "ок".</value>
+    <value>Вставьте Ваш цветовой код ниже и нажмите «ОК».</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="M64MM2" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -170,10 +170,10 @@
     <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="colorCodeToFile" xml:space="preserve">
-    <value>В файл...</value>
+    <value>В файл…</value>
   </data>
   <data name="colorCodeModdedRom" xml:space="preserve">
-    <value>Данные модели в этом ROM'е отличные от обычных данных модели Марио. Если Вы используете ROM X3S, измените "Поверх списка частей" на X3S чтобы её использовать.</value>
+    <value>Данные модели в этом ROM'е отличаются от обычных данных модели Марио. Если Вы используете ROM X3S, измените «Поверх списка частей» на X3S чтобы её использовать.</value>
   </data>
   <data name="invalidColorCodeMsgLong" xml:space="preserve">
     <value>длинная</value>
@@ -257,13 +257,13 @@
     <value>Недействительный код: строка {0} слишком {1}.</value>
   </data>
   <data name="colorCodeEmptyRom" xml:space="preserve">
-    <value>...Этот ROM не содержит данных модели. Цветовые коды и освещение работают только с ванильной моделью и модами с их поддержкой.</value>
+    <value>…Этот ROM не содержит данных модели. Цветовые коды и освещение работают только с ванильной моделью и модами с их поддержкой.</value>
   </data>
   <data name="updateCurrentVersion" xml:space="preserve">
     <value>Ваша версия: </value>
   </data>
   <data name="colorCodeFromFile" xml:space="preserve">
-    <value>Из файла...</value>
+    <value>Из файла…</value>
   </data>
   <data name="cameraStateSoftFrozen" xml:space="preserve">
     <value>Камера: легко заморожена</value>
@@ -320,5 +320,17 @@
   </data>
   <data name="peachGrassMsg" xml:space="preserve">
     <value>Эта опция находится в раннем доступе. Она, возможно, «взорвётся», и, скорее всего, остановит игру если это делается не на Территории Замка. Вы были предупреждены.</value>
+  </data>
+  <data name="addonWarnings" xml:space="preserve">
+    <value>Предупреждения адд-онов</value>
+  </data>
+  <data name="taskManDescription" xml:space="preserve">
+    <value>Описание:</value>
+  </data>
+  <data name="addonsButton" xml:space="preserve">
+    <value>Адд-оны</value>
+  </data>
+  <data name="taskManSelect" xml:space="preserve">
+    <value>&lt;Выберите адд-он.&gt;</value>
   </data>
 </root>
