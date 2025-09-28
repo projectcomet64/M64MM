@@ -359,7 +359,6 @@
     <EmbeddedResource Include="Taskman.zh-CN.resx">
       <DependentUpon>Taskman.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="M64MM_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

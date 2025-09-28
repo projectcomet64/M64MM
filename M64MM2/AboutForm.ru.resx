@@ -117,87 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="lblAuthor.Text" xml:space="preserve">
+    <value>от GlitchyPSI, на основе M64MM2 от James «CaptainSwag101» Pelster</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 20pt, style=Underline</value>
-  </data>
-  <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>232, 12</value>
-  </data>
-  <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 31</value>
-  </data>
-  <data name="lblName.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblName.Text" xml:space="preserve">
-    <value>M64MM Classic</value>
-  </data>
-  <data name="lblAuthor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="lblAuthor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 79</value>
-  </data>
-  <data name="lblAuthor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>346, 17</value>
-  </data>
-  <data name="lblAuthor.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lblAuthor.Text" xml:space="preserve">
-    <value>от GlitchyPSI, на основе M64MM2 by James "CaptainSwag101" Pelster</value>
-  </data>
-  <data name="appIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 12</value>
-  </data>
-  <data name="appIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 64</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="appIcon.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="appIcon.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="lblBugReport.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblBugReport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 326</value>
-  </data>
   <data name="lblBugReport.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 26</value>
-  </data>
-  <data name="lblBugReport.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
   </data>
   <data name="lblBugReport.Text" xml:space="preserve">
     <value>Нашли баги, нужна помощь, или хотите предложить идею?
 Свяжитесь с нами через:</value>
   </data>
-  <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>436, 376</value>
-  </data>
-  <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
   <data name="btnOK.Text" xml:space="preserve">
     <value>Ок</value>
-  </data>
-  <data name="lnkDiscord.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lnkDiscord.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="lnkDiscord.Location" type="System.Drawing.Point, System.Drawing">
     <value>162, 355</value>
@@ -205,17 +137,8 @@
   <data name="lnkDiscord.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 13</value>
   </data>
-  <data name="lnkDiscord.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="lnkDiscord.Text" xml:space="preserve">
     <value>Ссылка на Project Comet</value>
-  </data>
-  <data name="lnkDiscord.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="lnkGithubIssues.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="lnkGithubIssues.Location" type="System.Drawing.Point, System.Drawing">
     <value>391, 355</value>
@@ -223,135 +146,63 @@
   <data name="lnkGithubIssues.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 13</value>
   </data>
-  <data name="lnkGithubIssues.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
   <data name="lnkGithubIssues.Text" xml:space="preserve">
     <value>Сообщить о проблеме</value>
-  </data>
-  <data name="pbBanner.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="pbBanner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 311</value>
-  </data>
-  <data name="pbBanner.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="pbBanner.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="lblVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblVersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="lblVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 54</value>
   </data>
   <data name="lblVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 13</value>
   </data>
-  <data name="lblVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
   <data name="lblVersion.Text" xml:space="preserve">
     <value>Версия: ALPHA</value>
-  </data>
-  <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 99</value>
-  </data>
-  <data name="richTextBox1.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="richTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>343, 224</value>
-  </data>
-  <data name="richTextBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
   </data>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>Эта программа предназначена для сообщества машиним по СМ64. Спасибо за все усилия, которые вы вложили в ваши работы, и я надеюсь, что эта программа и её будущие расширения помогут вам с созданием крутых видео на долгие годы!
 Отдельная благодарность:
 
 Поддерживающие на Patreon:
-- PonderMan
-- Waro
-- MrGameAndSketch
-- Mine
+• PonderMan
+• Waro
+• MrGameAndSketch
+• Mine
 
-- Onewingdangl (создатель SM64MM 1.0)
-- James Pelster (CaptainSwag101, создатель M64MM2.0)
-- Dudaw (за числа для смен анимаций)
-- yoshielectron (за документацию чит-кодов для СМ64)
-- Starxxon/VL-Tone
-- shygoo (Hack64)
-- kurethedead
-- mountainflaw
-- pannenkoek2012
-- Всем, кто декомпилировали СМ64
-- AloXado320
-- SuperG64
-- Dommypwnz
-- Каждый тестер спустя 2.0 бета 1
-- Всем, кто меня поддерживает.
-- MarioMario24680
+• Onewingdangl (создатель SM64MM 1.0)
+• James Pelster (CaptainSwag101, создатель M64MM2.0)
+• Dudaw (за числа для смен анимаций)
+• yoshielectron (за документацию чит-кодов для СМ64)
+• Starxxon/VL-Tone
+• shygoo (Hack64)
+• kurethedead
+• mountainflaw
+• pannenkoek2012
+• Всем, кто декомпилировали СМ64
+• AloXado320
+• SuperG64
+• Dommypwnz
+• Каждый тестер спустя 2.0 бета 1
+• Всем, кто меня поддерживает.
+• MarioMario24680
 
 Перевод на упрощённый китайский:
-- LuigiUltra64
-- 8192Bit
+• LuigiUltra64
+• 8192Bit
 
 Перевод на русский:
-- DanilAstroid
+• DanilAstroid
 
-- Спасибо ВАМ за то, что Вы используете эту программу. Без Вас, M64MM никогда бы не продвинулся дальше версии 1.0!
-- Версия 2 создана James "CaptainSwag101" Pelster. Спасибо за то, что ты такой добрый человек.
+• Спасибо ВАМ за то, что Вы используете эту программу. Без Вас, M64MM никогда бы не продвинулся дальше версии 1.0!
+• Версия 2 создана James «CaptainSwag101» Pelster. Спасибо за то, что ты такой добрый человек.
 
 Исходный код этой программы использует лицензию GPL v3. У адд-онов могут быть другие лицензии.</value>
-  </data>
-  <data name="lblWhosInBanner.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 326</value>
-  </data>
-  <data name="lblWhosInBanner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 76</value>
-  </data>
-  <data name="lblWhosInBanner.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
   </data>
   <data name="lblWhosInBanner.Text" xml:space="preserve">
     <value>На баннере:</value>
   </data>
-  <data name="lblWhosInBanner.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
-  </data>
-  <data name="lblYouCanJoin.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblYouCanJoin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 373</value>
-  </data>
   <data name="lblYouCanJoin.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 26</value>
-  </data>
-  <data name="lblYouCanJoin.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
   </data>
   <data name="lblYouCanJoin.Text" xml:space="preserve">
     <value>ВЫ также можете быть на баннере!
 Свяжитесь с GlitchyPSI для подробностей.</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>520, 411</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

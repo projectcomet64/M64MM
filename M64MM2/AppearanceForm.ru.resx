@@ -117,290 +117,66 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing">
-    <value>17, 17</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 29</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 30</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>ВАЖНО: Выключите любые цветовые коды в эмуляторе, иначе в игре цвета не будут совпадать с теми, что Вы выбрали тут.</value>
+    <value>ВАЖНО: выключите любые цветовые коды в эмуляторе, иначе в игре цвета не будут совпадать с теми, что Вы выбрали тут.</value>
+  </data>
+  <data name="grpColor.Text" xml:space="preserve">
+    <value>Настройки кодов</value>
   </data>
   <data name="cbPartListOverride.Items" xml:space="preserve">
     <value>Классический</value>
   </data>
-  <data name="cbPartListOverride.Items1" xml:space="preserve">
-    <value>SPARK</value>
-  </data>
-  <data name="cbPartListOverride.Items2" xml:space="preserve">
-    <value>X3S</value>
-  </data>
   <data name="cbPartListOverride.Items3" xml:space="preserve">
     <value>[Уровень] Территория Замка</value>
   </data>
-  <data name="cbPartListOverride.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 196</value>
-  </data>
-  <data name="cbPartListOverride.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 21</value>
-  </data>
-  <data name="cbPartListOverride.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>169, 159</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 34</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Поверх списка частей</value>
-  </data>
-  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="lbCCParts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lbCCParts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 21</value>
-  </data>
-  <data name="lbCCParts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 19</value>
-  </data>
-  <data name="lbCCParts.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
   </data>
   <data name="lbCCParts.Text" xml:space="preserve">
     <value>Части кода</value>
   </data>
-  <data name="lbCCParts.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="lbPart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lbPart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 10</value>
-  </data>
-  <data name="lbPart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 19</value>
-  </data>
-  <data name="lbPart.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
   <data name="lbPart.Text" xml:space="preserve">
     <value>Выбранная часть</value>
-  </data>
-  <data name="lbPart.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 29</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Свет</value>
   </data>
-  <data name="label7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 29</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Основа</value>
-  </data>
-  <data name="label8.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="btnLightCol.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnLightCol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 45</value>
-  </data>
-  <data name="btnLightCol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 24</value>
-  </data>
-  <data name="btnLightCol.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="btnDarkCol.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnDarkCol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 45</value>
-  </data>
-  <data name="btnDarkCol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 24</value>
-  </data>
-  <data name="btnDarkCol.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="lbColors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 45</value>
-  </data>
-  <data name="lbColors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 212</value>
-  </data>
-  <data name="lbColors.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="btnLoadFromGame.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnLoadFromGame.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 133</value>
-  </data>
-  <data name="btnLoadFromGame.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 23</value>
-  </data>
-  <data name="btnLoadFromGame.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
   </data>
   <data name="btnLoadFromGame.Text" xml:space="preserve">
     <value>Загрузить из игры</value>
   </data>
-  <data name="btnResetColors.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnResetColors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 75</value>
-  </data>
-  <data name="btnResetColors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 23</value>
-  </data>
-  <data name="btnResetColors.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
   <data name="btnResetColors.Text" xml:space="preserve">
     <value>Сбросить цвета</value>
-  </data>
-  <data name="btnExportCode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnExportCode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 104</value>
-  </data>
-  <data name="btnExportCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 23</value>
-  </data>
-  <data name="btnExportCode.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
   </data>
   <data name="btnExportCode.Text" xml:space="preserve">
     <value>Экспортировать...</value>
   </data>
-  <data name="grpColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 62</value>
-  </data>
-  <data name="grpColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 270</value>
-  </data>
-  <data name="grpColor.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="grpColor.Text" xml:space="preserve">
-    <value>Настройки кодов</value>
-  </data>
-  <data name="btnImportCode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnImportCode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 49</value>
-  </data>
-  <data name="btnImportCode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 23</value>
-  </data>
-  <data name="btnImportCode.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
   <data name="btnImportCode.Text" xml:space="preserve">
     <value>Импортировать...</value>
   </data>
-  <data name="marioSprite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="marioSprite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 62</value>
-  </data>
-  <data name="marioSprite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 231</value>
-  </data>
-  <data name="marioSprite.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="marioSprite.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="btnRandomizeShading.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="grpShading.Text" xml:space="preserve">
+    <value>Настройки освещения</value>
   </data>
   <data name="btnRandomizeShading.Location" type="System.Drawing.Point, System.Drawing">
     <value>456, 19</value>
   </data>
-  <data name="btnRandomizeShading.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="btnRandomizeShading.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
   <data name="btnRandomizeShading.Text" xml:space="preserve">
     <value>Случайное освещение</value>
-  </data>
-  <data name="btnResetShading.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="btnResetShading.Location" type="System.Drawing.Point, System.Drawing">
     <value>456, 48</value>
   </data>
-  <data name="btnResetShading.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="btnResetShading.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
   <data name="btnResetShading.Text" xml:space="preserve">
     <value>Сбросить освещение</value>
-  </data>
-  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
     <value>403, 77</value>
@@ -408,170 +184,56 @@
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 13</value>
   </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Спереди</value>
-  </data>
-  <data name="label13.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>403, 48</value>
   </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
-  </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Сверху</value>
-  </data>
-  <data name="label14.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>403, 19</value>
   </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
-  </data>
-  <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
   <data name="label15.Text" xml:space="preserve">
     <value>Справа</value>
-  </data>
-  <data name="label15.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 77</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
-  </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>Сзади</value>
   </data>
-  <data name="label12.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 48</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Снизу</value>
-  </data>
-  <data name="label11.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Слева</value>
   </data>
-  <data name="label10.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="tbBackFront.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tbBackFront.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tbBackFront.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 77</value>
-  </data>
   <data name="tbBackFront.Size" type="System.Drawing.Size, System.Drawing">
     <value>338, 23</value>
-  </data>
-  <data name="tbBackFront.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tbBottomTop.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tbBottomTop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tbBottomTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 48</value>
   </data>
   <data name="tbBottomTop.Size" type="System.Drawing.Size, System.Drawing">
     <value>338, 23</value>
   </data>
-  <data name="tbBottomTop.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tbLeftRight.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tbLeftRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tbLeftRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 19</value>
-  </data>
   <data name="tbLeftRight.Size" type="System.Drawing.Size, System.Drawing">
     <value>338, 23</value>
   </data>
-  <data name="tbLeftRight.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 20</value>
   </data>
-  <data name="grpShading.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 474</value>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Инструменты</value>
   </data>
-  <data name="grpShading.Size" type="System.Drawing.Size, System.Drawing">
-    <value>578, 107</value>
+  <data name="sPARKColorcodeTransformsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 22</value>
   </data>
-  <data name="grpShading.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="grpShading.Text" xml:space="preserve">
-    <value>Настройки освещения</value>
-  </data>
-  <data name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
-    <value>131, 17</value>
+  <data name="sPARKColorcodeTransformsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Трансформации SPARK-кодов</value>
   </data>
   <data name="tsmiClassicToSpark.Size" type="System.Drawing.Size, System.Drawing">
     <value>253, 22</value>
   </data>
   <data name="tsmiClassicToSpark.Text" xml:space="preserve">
-    <value>Классический код в SPARK-код...</value>
+    <value>Классический код в SPARK-код…</value>
   </data>
   <data name="tsmiSPARKShirtPants.Size" type="System.Drawing.Size, System.Drawing">
     <value>253, 22</value>
@@ -597,32 +259,8 @@
   <data name="tsmiRestoreSPARKCustom.Text" xml:space="preserve">
     <value>Восстановить цвета SPARK</value>
   </data>
-  <data name="sPARKColorcodeTransformsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 22</value>
-  </data>
-  <data name="sPARKColorcodeTransformsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Трансформации SPARK-кодов</value>
-  </data>
-  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 20</value>
-  </data>
-  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Инструменты</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>602, 24</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="cmsTransforms.TrayLocation" type="System.Drawing.Point, System.Drawing">
-    <value>246, 17</value>
-  </data>
-  <data name="cmsTransforms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 4</value>
+  <data name="grpRand.Text" xml:space="preserve">
+    <value>Рандомизатор кодов</value>
   </data>
   <data name="cbRandMode.Items" xml:space="preserve">
     <value>Случайные цвета</value>
@@ -630,95 +268,17 @@
   <data name="cbRandMode.Items1" xml:space="preserve">
     <value>Случайный код</value>
   </data>
-  <data name="cbRandMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 33</value>
-  </data>
-  <data name="cbRandMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 21</value>
-  </data>
-  <data name="cbRandMode.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 16</value>
-  </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 13</value>
-  </data>
-  <data name="label16.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>Режим рандомизатора</value>
   </data>
-  <data name="clbRandSel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
-  </data>
-  <data name="clbRandSel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 79</value>
-  </data>
-  <data name="clbRandSel.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="grpRand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 344</value>
-  </data>
-  <data name="grpRand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 109</value>
-  </data>
-  <data name="grpRand.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="grpRand.Text" xml:space="preserve">
-    <value>Рандомизатор кодов</value>
-  </data>
-  <data name="lbCCs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 20</value>
-  </data>
-  <data name="lbCCs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 95</value>
-  </data>
-  <data name="lbCCs.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="btnRefresh.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnRefresh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 20</value>
-  </data>
-  <data name="btnRefresh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 23</value>
-  </data>
-  <data name="btnRefresh.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
+  <data name="grpCCRepo.Text" xml:space="preserve">
+    <value>Репозиторий кодов</value>
   </data>
   <data name="btnRefresh.Text" xml:space="preserve">
     <value>Обновить</value>
-  </data>
-  <data name="grpCCRepo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 338</value>
-  </data>
-  <data name="grpCCRepo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 130</value>
-  </data>
-  <data name="grpCCRepo.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="grpCCRepo.Text" xml:space="preserve">
-    <value>Репозитория кодов</value>
-  </data>
-  <data name="tmrRandom.TrayLocation" type="System.Drawing.Point, System.Drawing">
-    <value>380, 17</value>
-  </data>
-  <data name="lbWarning.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="lbWarning.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 296</value>
@@ -726,24 +286,9 @@
   <data name="lbWarning.Size" type="System.Drawing.Size, System.Drawing">
     <value>261, 26</value>
   </data>
-  <data name="lbWarning.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
   <data name="lbWarning.Text" xml:space="preserve">
     <value>Нажмите два раза по Марио для рандомизации.
 Предупреждение об эпилепсии: мигающие цвета.</value>
-  </data>
-  <data name="lbWarning.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>602, 597</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

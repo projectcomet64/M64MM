@@ -326,4 +326,16 @@ Changing the tint in a non-X3S ROM may cause distortions, an unexpected color be
   <data name="peachGrassMsg" xml:space="preserve">
     <value>This option is in early preview. Will most likely explode and will most likely kill the game if done in a level other than Castle Grounds. You've been warned.</value>
   </data>
+  <data name="addonWarnings" xml:space="preserve">
+    <value>Addon warnings</value>
+  </data>
+  <data name="taskManDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="addonsButton" xml:space="preserve">
+    <value>Addons</value>
+  </data>
+  <data name="taskManSelect" xml:space="preserve">
+    <value>&lt;Please select an item.&gt;</value>
+  </data>
 </root>

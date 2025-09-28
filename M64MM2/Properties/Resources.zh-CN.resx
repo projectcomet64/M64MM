@@ -303,4 +303,16 @@
   <data name="powercamPregameDirtyTitle" xml:space="preserve">
     <value>请注意，这很重要。</value>
   </data>
+  <data name="addonWarnings" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="taskManDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="addonsButton" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="taskManSelect" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
 </root>

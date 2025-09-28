@@ -117,130 +117,130 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="animDataNotLoaded" xml:space="preserve">
-    <value>¡Los datos de animación no están cargados!</value>
-  </data>
-  <data name="cameraDataNotLoaded" xml:space="preserve">
-    <value>¡Los datos de cámara no están cargados!</value>
-  </data>
-  <data name="cameraStateDefault" xml:space="preserve">
-    <value>Cámara: Por defecto</value>
-  </data>
-  <data name="cameraStateFrozen" xml:space="preserve">
-    <value>Cámara: Congelada</value>
-  </data>
-  <data name="cameraStateSoftFrozen" xml:space="preserve">
-    <value>Cámara: Congelada (Suave)</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CC_Mario_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="colorCodeExportMsg" xml:space="preserve">
-    <value>Aquí está tu código de color generado:</value>
-  </data>
   <data name="colorCodeImportMsg" xml:space="preserve">
     <value>Por favor pega tu código de color aquí, luego presiona OK</value>
   </data>
-  <data name="invalidColorCodeMsg1" xml:space="preserve">
-    <value>Código de color inválido: La línea {0} es demasiado {1}.</value>
-  </data>
-  <data name="invalidColorCodeMsg2" xml:space="preserve">
-    <value>Código de color inválido: La línea {0} está intentando editar la dirección de memoria {1}, que no es donde se encuentran los datos de color de Mario. ¡Asegúrate de no usar un código de color PAL!</value>
-  </data>
-  <data name="invalidColorCodeMsgLong" xml:space="preserve">
-    <value>larga</value>
-  </data>
-  <data name="invalidColorCodeMsgShort" xml:space="preserve">
-    <value>corta</value>
-  </data>
-  <data name="invalidColorCodeMsgTitle" xml:space="preserve">
-    <value>Código de color inválido</value>
-  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="M64MM2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\M64MM2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="M64MM2_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\M64MM2 Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="programStatus1" xml:space="preserve">
-    <value>Estado: Project64/Mupen no abierto.</value>
-  </data>
-  <data name="programStatus2" xml:space="preserve">
-    <value>Estado: Dir. base no encontrada</value>
-  </data>
-  <data name="programStatus3" xml:space="preserve">
-    <value>Estado: Dirección base: </value>
-  </data>
-  <data name="setDefaultColorsMsg" xml:space="preserve">
-    <value>¿Establecer como colores por defecto?</value>
-  </data>
-  <data name="setDefaultColorsMsgTitle" xml:space="preserve">
-    <value>¿Establecer por defecto?</value>
   </data>
   <data name="M64MM2_New" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\M64MM2 New.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="M64MM2_New_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\M64MM2 New Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="M64MM2_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="M64MM2_New_Icon_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\M64MM2 New Icon 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="colorCodeSPARKRom" xml:space="preserve">
+    <value>Este ROM tiene un encabezado que se asemeja al de un mod SPARK. En este momento, el editor de apariencia no es compatible con SPARK. Se recomienda obtener el add-on del editor de SPARK en https://comet.glitchypsi.xyz</value>
+  </data>
+  <data name="programStatusAwaitingLevel" xml:space="preserve">
+    <value>Estado: Esperando nivel. D.B.: </value>
+  </data>
+  <data name="cameraDataNotLoaded" xml:space="preserve">
+    <value>¡Los datos de cámara no están cargados!</value>
+  </data>
+  <data name="programStatus3" xml:space="preserve">
+    <value>Estado: Dirección base: </value>
+  </data>
+  <data name="invalidColorCodeMsg2" xml:space="preserve">
+    <value>Código de color inválido: La línea {0} está intentando editar la dirección de memoria {1}, que no es donde se encuentran los datos de color de Mario. ¡Asegúrate de no usar un código de color PAL!</value>
+  </data>
+  <data name="invalidColorCodeMsgShort" xml:space="preserve">
+    <value>corta</value>
+  </data>
+  <data name="picturedInBannerMsg" xml:space="preserve">
+    <value>En la imagen: </value>
+  </data>
+  <data name="colorCodeExportMsg" xml:space="preserve">
+    <value>Aquí está tu código de color generado:</value>
+  </data>
+  <data name="programStatus2" xml:space="preserve">
+    <value>Estado: Dir. base no encontrada</value>
+  </data>
+  <data name="CC_Mario_big" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 CC Mario big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="colorCodeToFile" xml:space="preserve">
+    <value>Guardar...</value>
+  </data>
+  <data name="colorCodeModdedRom" xml:space="preserve">
+    <value>Este ROM tiene datos de modelo diferentes de los usuales de Mario. Si estás usando un mod compatible con X3S, usa el Override de partes de color X3S para poder usar el tinte.</value>
+  </data>
+  <data name="invalidColorCodeMsgLong" xml:space="preserve">
+    <value>larga</value>
   </data>
   <data name="invalidAnimSelected" xml:space="preserve">
     <value>Intentaste cargar un nombre de animación inválido en {0}. Asegúrate de escoger una opción válida de la lista.</value>
   </data>
-  <data name="programStatusAwaitingLevel" xml:space="preserve">
-    <value>Estado: Esperando nivel. D.B.: </value>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="animDataNotLoaded" xml:space="preserve">
+    <value>¡Los datos de animación no están cargados!</value>
+  </data>
+  <data name="invalidColorCodeMsgTitle" xml:space="preserve">
+    <value>Código de color inválido</value>
+  </data>
+  <data name="cameraStateFrozen" xml:space="preserve">
+    <value>Cámara: Congelada</value>
+  </data>
+  <data name="setDefaultColorsMsg" xml:space="preserve">
+    <value>¿Establecer como colores por defecto?</value>
+  </data>
+  <data name="colorCodeErrorFileReading" xml:space="preserve">
+    <value>No se pudo leer el código de color desde el archivo.\n{0}</value>
+  </data>
+  <data name="setDefaultColorsMsgTitle" xml:space="preserve">
+    <value>¿Establecer por defecto?</value>
+  </data>
+  <data name="M64MM2_New_Icon_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 New Icon 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="colorCodeErrorWriting" xml:space="preserve">
+    <value>No se pudo escribir el código de color en el archivo.\n{0}</value>
+  </data>
+  <data name="cameraStateDefault" xml:space="preserve">
+    <value>Cámara: Por defecto</value>
+  </data>
+  <data name="programStatus1" xml:space="preserve">
+    <value>Estado: Project64/Mupen no abierto.</value>
+  </data>
+  <data name="cameraToggleSoftFrozen" xml:space="preserve">
+    <value>Congelado suave: </value>
+  </data>
+  <data name="cameraToggleFrozen" xml:space="preserve">
+    <value>Congelada: </value>
+  </data>
+  <data name="updateUpToDate" xml:space="preserve">
+    <value>(¡Estás al día!)</value>
+  </data>
+  <data name="updateLatestVersion" xml:space="preserve">
+    <value>Última: </value>
+  </data>
+  <data name="M64MM2_New_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M64MM2 New Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="updateUpdateNow" xml:space="preserve">
+    <value>(¡Actualización disponible!)</value>
+  </data>
+  <data name="invalidColorCodeMsg1" xml:space="preserve">
+    <value>Código de color inválido: La línea {0} es demasiado {1}.</value>
   </data>
   <data name="colorCodeEmptyRom" xml:space="preserve">
     <value>...Este ROM no tiene datos de modelo.
 No funcionará.</value>
   </data>
-  <data name="colorCodeModdedRom" xml:space="preserve">
-    <value>Este ROM tiene datos de modelo diferentes de los usuales de Mario. Si estás usando un mod compatible con X3S, usa el Override de partes de color X3S para poder usar el tinte.</value>
-  </data>
-  <data name="picturedInBannerMsg" xml:space="preserve">
-    <value>En la imagen: </value>
-  </data>
   <data name="updateCurrentVersion" xml:space="preserve">
     <value>Actual: </value>
-  </data>
-  <data name="updateLatestVersion" xml:space="preserve">
-    <value>Última: </value>
-  </data>
-  <data name="updateUpdateNow" xml:space="preserve">
-    <value>(¡Actualización disponible!)</value>
-  </data>
-  <data name="updateUpToDate" xml:space="preserve">
-    <value>(¡Estás al día!)</value>
-  </data>
-  <data name="colorCodeErrorFileReading" xml:space="preserve">
-    <value>No se pudo leer el código de color desde el archivo.\n{0}</value>
-  </data>
-  <data name="colorCodeErrorWriting" xml:space="preserve">
-    <value>No se pudo escribir el código de color en el archivo.\n{0}</value>
   </data>
   <data name="colorCodeFromFile" xml:space="preserve">
     <value>Abrir...</value>
   </data>
-  <data name="colorCodeToFile" xml:space="preserve">
-    <value>Guardar...</value>
-  </data>
-  <data name="cameraToggleFrozen" xml:space="preserve">
-    <value>Congelada: </value>
-  </data>
-  <data name="cameraToggleSoftFrozen" xml:space="preserve">
-    <value>Congelado suave: </value>
-  </data>
-  <data name="no" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="yes" xml:space="preserve">
-    <value>Sí</value>
-  </data>
-  <data name="colorCodeSPARKRom" xml:space="preserve">
-    <value>Este ROM tiene un encabezado que se asemeja al de un mod SPARK. En este momento, el editor de apariencia no es compatible con SPARK. Se recomienda obtener el add-on del editor de SPARK en https://comet.glitchypsi.xyz</value>
+  <data name="cameraStateSoftFrozen" xml:space="preserve">
+    <value>Cámara: Congelada (Suave)</value>
   </data>
   <data name="updateNetworkError" xml:space="preserve">
     <value>Algo pasó. No se pudo conectar a la página de GitHub para las actualizaciones. Revisa tu conexión a Internet.</value>
@@ -266,5 +266,17 @@ No hay razón por la cual debas iniciar el emulador como administrador. Para usa
   </data>
   <data name="programStatusInaccessible" xml:space="preserve">
     <value>Estado: No se puedo acceder al emulador.</value>
+  </data>
+  <data name="addonWarnings" xml:space="preserve">
+    <value>Advertencias de Addon</value>
+  </data>
+  <data name="taskManDescription" xml:space="preserve">
+    <value>Descripción:</value>
+  </data>
+  <data name="addonsButton" xml:space="preserve">
+    <value>Addons</value>
+  </data>
+  <data name="taskManSelect" xml:space="preserve">
+    <value>&lt;Favor selecciona un elemento.&gt;</value>
   </data>
 </root>
